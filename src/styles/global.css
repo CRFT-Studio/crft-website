@@ -48,3 +48,26 @@ nav {
   background-clip: text;
   text-wrap: balance;
 }
+
+.primary-cta {
+    padding: 0.5rem 0.75rem;
+    color: #FA934E;
+    font-weight: 400;
+    font-size: 1rem;
+    border-radius: 12px;
+    background:
+        linear-gradient(to bottom, #FFD2B4, #9F4000) padding-box,
+        linear-gradient(to bottom, #FFD2B4, #9F4000) border-box;
+    border: 0.5px solid transparent;
+    position: relative;
+    z-index: 0;
+}
+
+.primary-cta::before {
+    content: "";
+    position: absolute;
+    inset: 0.5px; /* Adjust this value to match your border width */
+    background: #554032;
+    border-radius: 11px; /* Slightly less than the outer border-radius */
+    z-index: -1;
+}
