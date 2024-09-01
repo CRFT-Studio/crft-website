@@ -71,3 +71,13 @@ nav {
     border-radius: 11px; /* Slightly less than the outer border-radius */
     z-index: -1;
 }
+
+.secondary-cta {
+    padding: 0.5rem 0.75rem;
+    color: #C7C7C7;
+    font-weight: 400;
+    font-size: 1rem;
+    border-radius: 12px;
+    border: solid 1px #8F8F8F;
+    background-color: #2C2C2C;
+}
