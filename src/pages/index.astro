@@ -20,12 +20,14 @@ import BrandIdentity from '../../src/images/brand-identity.png'
     <body>
         <Navigation />
         <section>
-        <div class="container flex flex-col items-center">
-                <h1 class="text-6xl text-center text-balance font-semibold leading-tight">Sell more with a marketing website crafted to convert.</h1>
-                <p class="text-center text-pretty text-xl mt-5 text-neutral-300 mb-7" style="max-width: 45ch;">We design and develop beautiful, performant, and maintainable websites for the best marketing teams.</p>
-                <div class="flex flex-row gap-3">
-                    <button class="primary-cta">View pricing</button>
-                    <button class="secondary-cta">Contact Us</button>
+            <div class="container flex flex-col items-center">
+                    <h1 class="text-6xl text-center text-balance font-semibold leading-tight">Sell more with a marketing website crafted to convert.</h1>
+                    <p class="text-center text-pretty text-xl mt-5 text-neutral-300 mb-7" style="max-width: 45ch;">We design and develop beautiful, performant, and maintainable websites for the best marketing teams.</p>
+                    <div class="flex flex-row gap-3">
+                        <button class="primary-cta">View pricing</button>
+                        <button class="secondary-cta">Contact Us</button>
+                    </div>
+            </div>
             <div class="flex flex-row justify-center gap-16 mt-20 overflow-x-hidden">
                 <Image src={MobiLoud} alt="MobiLoud" />
                 <Image src={FeedBear} alt="FeedBear" />
@@ -33,8 +35,47 @@ import BrandIdentity from '../../src/images/brand-identity.png'
                 <Image src={MixBloom} alt="MixBloom" />
                 <Image src={MobiLoud} alt="MobiLoud" />
             </div>
+        </section>
+
+        <section>
+            <div class="container flex flex-col items-center mb-16">
+                <div class="text-center text-orange-300 font-normal text-lg">Our services</div>
+                <h2 class="text-4xl text-center text-balance font-semibold mt-5 leading-tight" style="max-width: 20ch;">Great sites are the culmination of many disciplines</h2>
+            </div>
+
+            <div class="container flex flex-col gap-24">
+                <div class="grid grid-cols-2 gap-20 items-center">
+                    <div>
+                        <div class="text-xl font-medium mb-3">Brand identity</div>
+                        <p class="text-lg text-pretty">Your brand identity serves as the foundation of your online presence. With stunning design, we'll craft yours to stand out and drive business results.</p>
+                    </div>
+                    <Image src={BrandIdentity} alt="Brand Identity" />
                 </div>
-        </div>
+
+                <div class="grid grid-cols-2 gap-20 items-center">
+                    <Image src={BrandIdentity} alt="Brand Identity" />
+                    <div>
+                        <div class="text-xl font-medium mb-3">Design</div>
+                        <p class="text-lg text-pretty">Your brand identity serves as the foundation of your online presence. With stunning design, we'll craft yours to stand out and drive business results.</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-20 items-center">
+                    <div>
+                        <div class="text-xl font-medium mb-3">Development</div>
+                        <p class="text-lg text-pretty">Your brand identity serves as the foundation of your online presence. With stunning design, we'll craft yours to stand out and drive business results.</p>
+                    </div>
+                    <Image src={BrandIdentity} alt="Brand Identity" />
+                </div>
+
+                <div class="grid grid-cols-2 gap-20 items-center">
+                    <Image src={BrandIdentity} alt="Brand Identity" />
+                    <div>
+                        <div class="text-xl font-medium mb-3">Copywriting</div>
+                        <p class="text-lg text-pretty">Your brand identity serves as the foundation of your online presence. With stunning design, we'll craft yours to stand out and drive business results.</p>
+                    </div>
+                </div>
+            </div>
         </section>
     </body>
 </html>
