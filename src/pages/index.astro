@@ -1,6 +1,10 @@
 ---
 import '../../src/styles/global.css'
 import Navigation from '../components/Navigation.astro'
+import { Image } from 'astro:assets'
+import FeedBear from '../../src/images/FeedBear.png'
+import MobiLoud from '../../src/images/MobiLoud.png'
+import MixBloom from '../../src/images/MixBloom.png'
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +25,13 @@ import Navigation from '../components/Navigation.astro'
                 <div class="flex flex-row gap-3">
                     <button class="primary-cta">View pricing</button>
                     <button class="secondary-cta">Contact Us</button>
+            <div class="flex flex-row justify-center gap-16 mt-20 overflow-x-hidden">
+                <Image src={MobiLoud} alt="MobiLoud" />
+                <Image src={FeedBear} alt="FeedBear" />
+                <Image src={MobiLoud} alt="MobiLoud" />
+                <Image src={MixBloom} alt="MixBloom" />
+                <Image src={MobiLoud} alt="MobiLoud" />
+            </div>
                 </div>
         </div>
         </section>
