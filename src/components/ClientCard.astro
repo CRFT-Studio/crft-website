@@ -1,0 +1,28 @@
+---
+import '../../src/styles/global.css'
+import { Image } from 'astro:assets'
+import Card from '../components/Card.astro'
+import ClientCard from '../components/ClientCard.astro'
+import MobiLoudDesktop from '../../src/images/mobiloud-desktop.png'
+---
+<!-- Make title, description, link, image and tags dynamic -->
+<Card innerStyle='padding: 32px 0px 0px 0px' outerStyle='margin: 32px 0px;'>
+    <div class="grid grid-cols-[1fr_1.5fr] gap-10 items-start">
+        <div class="flex flex-col justify-between px-8 h-full pb-8">
+            <div>
+                <div class="text-xl font-medium mb-3">MobiLoud</div>
+                <p class="text-lg text-pretty text-neutral-300 mb-4">MobiLoud turns your website into an iOS and Android app in under 2 weeks, for 10% of the usual cost. Solutions for WordPress, eCommerce, eLearning and more!</p>
+                <a href="https://mobiloud.com/" class="flex flex-row gap-1 items-center">
+                    <div class="text-lg text-orange-300 font-medium">Visit website</div>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FDBA74"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+                </a>
+            </div>
+            <div class="flex flex-row flex-wrap items-start gap-2">
+                <div class="tag">Web Design</div>
+                <div class="tag">Webflow Development</div>
+                <div class="tag">WordPress Migration</div>
+            </div>
+        </div>
+        <Image src={MobiLoudDesktop} alt="MobiLoud"/>
+    </div>
+</Card>
