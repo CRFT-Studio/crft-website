@@ -1,3 +1,8 @@
 ---
-
+const { style } = Astro.props;
 ---
+<div style={`padding: 1px; ${style}`} class="bg-gradient-to-br from-neutral-500 to-neutral-700 rounded-lg">
+  <div style={`${style}`} class="bg-neutral-800 p-8 rounded-lg">
+    <slot></slot>
+  </div>
+</div>
