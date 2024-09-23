@@ -80,3 +80,14 @@ h1 {
     border: solid 1px #8F8F8F;
     background-color: #2C2C2C;
 }
+
+.tag {
+    padding: 3px 9px;
+    display: inline-block;
+    color: #FA934E;
+    font-weight: 400;
+    font-size: 16px;
+    border-radius: 12px;
+    border: solid 1px #A1643A;
+    background-color: #996C4E;
+}
