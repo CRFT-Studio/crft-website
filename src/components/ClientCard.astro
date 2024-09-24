@@ -23,6 +23,8 @@ const {title, description, link, image, tags} = Astro.props;
                 ))}
             </div>
         </div>
-        <Image src={MobiLoudDesktop} alt="MobiLoud"/>
+        <div class='h-96 w-[110%] overflow-hidden'>
+            <Image class='w-full h-full object-cover object-left-top' src={image} alt="MobiLoud"/>
+        </div>
     </div>
 </Card>
