@@ -1,0 +1,15 @@
+{
+    "authors": {
+        "Jeremy": {
+            "name": "Jeremy",
+            "pfp": "src/images/jeremy-pfp.png",
+            "role": "Founder/designer/developer @ CRFT Studio",
+            "twitter": "@j_vejgman"
+        },
+        "David": {
+            "name": "David",
+            "pfp": "src/images/david-pfp.png",
+            "role": "Backend developer"
+        }
+    }
+}
