@@ -1,5 +1,6 @@
 ---
 import Navigation from "../components/Navigation.astro";
+import BlogPosts from "../components/BlogPosts.astro";
 ---
 <html lang="en">
     <head>
@@ -13,8 +14,9 @@ import Navigation from "../components/Navigation.astro";
     <body>
         <Navigation />
         <section style="margin-top: 50px;">
-            <div class="container">
-                <h2 class="text-5xl font-semibold max-w-[50%] leading-tight">Blog. <span class="text-neutral-400">Recent thinking and work we've done.</span></h2>
+            <div class="container" style="max-width: 800px;">
+                <h2 class="text-4xl font-semibold max-w-[60%] leading-tight mb-10">Blog. <span class="text-neutral-400">Recent thinking and work we've done.</span></h2>
+                <BlogPosts />
             </div>
         </section>
     </body>
