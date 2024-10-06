@@ -7,7 +7,7 @@ author: ['Jeremy', 'David']
 image:
     url: 'https://docs.astro.build/assets/rose.webp'
     alt: 'The Astro logo on a dark background with a pink glow.'
-tags: ["astro", "blogging", "learning in public"]
+tags: ["Client Work"]
 ---
 Many months ago, the team over at MobiLoud wanted a way to know which of their paid ads their demo call bookings came from.
 
