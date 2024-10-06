@@ -1,93 +1,105 @@
-@font-face {
-    font-family: 'Inter';
-    src: url(/Fonts/Satoshi-Variable.ttf);
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+    @font-face {
+        font-family: 'Inter';
+        src: url(/Fonts/Satoshi-Variable.ttf);
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #171717;
+        color: white;
+    }
+
+    section {
+        margin-top: 150px;
+        margin-bottom: 150px;
+    }
+
+    nav {
+        backdrop-filter: blur(20px);
+        background-color: rgba(24, 24, 24, 50);
+        border-bottom: 1px solid #525252;
+    }
+
+    h1 {
+      background: -webkit-linear-gradient(290deg, #FFF7EB, #B1AEA9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
 }
 
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #171717;
-    color: white;
-}
+@layer components {
 
-section {
-    margin-top: 150px;
-    margin-bottom: 150px;
-}
+    .container {
+        max-width: 1300px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
 
-.container {
-    max-width: 1300px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 30px;
-    padding-right: 30px;
-}
+    .nav-link {
+        color: #e4e4e7;
+        padding: 0.5rem 1rem;
+        background-color: #171717;
+        font-size: 16px;
+        font-weight: 400;
+    }
 
-.nav-link {
-    color: #e4e4e7;
-    padding: 0.5rem 1rem;
-    background-color: #171717;
-    font-size: 16px;
-    font-weight: 400;
-}
+    .divider {
+        height: 1px;
+        width: 100%;
+        background-color: #57534e;
+    }
 
-.divider {
-    height: 1px;
-    width: 100%;
-    background-color: #57534e;
-}
+    .primary-cta {
+        padding: 0.5rem 0.75rem;
+        color: #FA934E;
+        font-weight: 400;
+        font-size: 1rem;
+        border-radius: 12px;
+        background:
+            linear-gradient(to bottom, #FFD2B4, #9F4000) padding-box,
+            linear-gradient(to bottom, #FFD2B4, #9F4000) border-box;
+        border: 0.5px solid transparent;
+        position: relative;
+        z-index: 0;
+    }
 
-nav {
-    backdrop-filter: blur(20px);
-    background-color: rgba(24, 24, 24, 50);
-    border-bottom: 1px solid #525252;
-}
+    .primary-cta::before {
+        content: "";
+        position: absolute;
+        inset: 0.5px; /* Adjust this value to match your border width */
+        background: #554032;
+        border-radius: 11px; /* Slightly less than the outer border-radius */
+        z-index: -1;
+    }
 
-h1 {
-  background: -webkit-linear-gradient(290deg, #FFF7EB, #B1AEA9);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+    .secondary-cta {
+        padding: 0.5rem 0.75rem;
+        color: #C7C7C7;
+        font-weight: 400;
+        font-size: 1rem;
+        border-radius: 12px;
+        border: solid 1px #8F8F8F;
+        background-color: #2C2C2C;
+    }
 
-.primary-cta {
-    padding: 0.5rem 0.75rem;
-    color: #FA934E;
-    font-weight: 400;
-    font-size: 1rem;
-    border-radius: 12px;
-    background:
-        linear-gradient(to bottom, #FFD2B4, #9F4000) padding-box,
-        linear-gradient(to bottom, #FFD2B4, #9F4000) border-box;
-    border: 0.5px solid transparent;
-    position: relative;
-    z-index: 0;
-}
+    .tag {
+        padding: 3px 9px;
+        display: inline-block;
+        color: #FA934E;
+        font-weight: 400;
+        font-size: 16px;
+        border-radius: 12px;
+        border: solid 1px #A1643A;
+        background-color: #996C4E;
+    }
 
-.primary-cta::before {
-    content: "";
-    position: absolute;
-    inset: 0.5px; /* Adjust this value to match your border width */
-    background: #554032;
-    border-radius: 11px; /* Slightly less than the outer border-radius */
-    z-index: -1;
-}
-
-.secondary-cta {
-    padding: 0.5rem 0.75rem;
-    color: #C7C7C7;
-    font-weight: 400;
-    font-size: 1rem;
-    border-radius: 12px;
-    border: solid 1px #8F8F8F;
-    background-color: #2C2C2C;
-}
-
-.tag {
-    padding: 3px 9px;
-    display: inline-block;
-    color: #FA934E;
-    font-weight: 400;
-    font-size: 16px;
-    border-radius: 12px;
-    border: solid 1px #A1643A;
-    background-color: #996C4E;
 }
