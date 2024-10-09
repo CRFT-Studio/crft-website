@@ -16,6 +16,7 @@ import HoppyCopyDesktop from '../../src/images/hoppy-copy-desktop.png'
 import MixBloomDesktop from '../../src/images/mixbloom-desktop.png'
 import NihalPFP from '../../src/images/nihal-pfp.png'
 import PietroPFP from '../../src/images/pietro-pfp.png'
+import BlogPosts from '../components/BlogPosts.astro'
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -301,6 +302,13 @@ import PietroPFP from '../../src/images/pietro-pfp.png'
                         <div class="text-base font-normal text-neutral-300 text-pretty text-center">CEO @ MobiLoud & FeedBear, Co-founder @ MixBloom</div>
                     </div>
                 </div>
+        </section>
+
+        <section>
+            <div class="container max-w-[800px]">
+                <h2 class="text-4xl font-semibold max-w-[60%] leading-tight mb-10">Blog. <span class="bg-neutral-400 bg-clip-text">Recent thinking and work we've done.</span></h2>
+                <BlogPosts />
+            </div>
         </section>
     </body>
 </html>
