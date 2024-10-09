@@ -26,7 +26,7 @@
         border-bottom: 1px solid #525252;
     }
 
-    h1 {
+    h1:not(article h1) {
       background: -webkit-linear-gradient(290deg, #FFF7EB, #B1AEA9);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
