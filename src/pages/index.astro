@@ -19,9 +19,11 @@ import PietroPFP from '../../src/images/pietro-pfp.png';
 import BlogPosts from '../components/BlogPosts.astro';
 import Footer from '../components/Footer.astro';
 import FAQs from '../components/FAQs.astro';
+import { ViewTransitions } from 'astro:transitions';
+import { fade } from 'astro:transitions';
 ---
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" transition:animate={fade({ duration: '0.2s' })}>
     <head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
@@ -29,6 +31,7 @@ import FAQs from '../components/FAQs.astro';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Home</title>
+		<ViewTransitions/>
 	</head>
     <body>
         <Navigation />
@@ -319,6 +322,7 @@ import FAQs from '../components/FAQs.astro';
                 <FAQs/>
             </div>
         </section>
+
         <Footer />
     </body>
 </html>
