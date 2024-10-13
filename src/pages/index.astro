@@ -18,6 +18,7 @@ import NihalPFP from '../../src/images/nihal-pfp.png'
 import PietroPFP from '../../src/images/pietro-pfp.png'
 import BlogPosts from '../components/BlogPosts.astro'
 import Footer from '../components/Footer.astro'
+import FAQs from '../components/FAQs.astro';
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -312,6 +313,12 @@ import Footer from '../components/Footer.astro'
             </div>
         </section>
 
+        <section>
+            <div class="container max-w-[800px]">
+                <h2 class="text-4xl font-semibold text-center leading-tight mb-10">Your questions, answered</h2>
+                <FAQs/>
+            </div>
+        </section>
         <Footer />
     </body>
 </html>

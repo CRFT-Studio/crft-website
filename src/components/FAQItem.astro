@@ -1,0 +1,22 @@
+---
+const {question, answer} = Astro.props;
+---
+<div class="mb-4">
+    <div class="flex flex-row justify-between mb-1 items-center question">
+        <div class="text-lg font-medium mb-3">{question}</div>
+        <svg class="transition-transform" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg>
+    </div>
+    <p class="prose-lg text-neutral-300 mb-5 answer" set:html={answer}/>
+    <div class="w-full h-[1px] bg-neutral-600"></div>
+</div>
+
+<script>
+    import $ from 'jquery';
+    $(() => {
+        $(".answer").hide();
+        $(".question").click(function() {
+            $(this).find("svg").toggleClass("rotate-180");
+            $(this).next().slideToggle("fast");
+        });
+    });
+</script>
