@@ -27,7 +27,7 @@ import { fade } from 'astro:transitions';
     <head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Home</title>
@@ -37,30 +37,30 @@ import { fade } from 'astro:transitions';
         <Navigation />
         <section class="mt-24">
             <div class="container flex flex-col items-center">
-                    <h1 class="text-6xl text-center text-balance font-semibold leading-tight">Sell more with a marketing website crafted to convert.</h1>
-                    <p class="text-center text-pretty text-xl mt-5 text-neutral-300 mb-7 max-w-[44ch]">We design and develop beautiful, performant, and maintainable websites for the best marketing teams.</p>
+                    <h1 class="lg:text-6xl text-4xl text-center text-balance font-semibold leading-tight">Sell more with a marketing website crafted to convert.</h1>
+                    <p class="text-center text-pretty lg:text-xl text-base mt-5 text-neutral-300 mb-7 max-w-[44ch]">We design and develop beautiful, performant, and maintainable websites for the best marketing teams.</p>
                     <div class="flex flex-row gap-3">
                         <button class="primary-cta">View pricing</button>
                         <button class="secondary-cta">Contact Us</button>
                     </div>
             </div>
-            <div class="flex flex-row justify-center gap-16 mt-20 overflow-x-hidden">
-                <Image src={MobiLoud} alt="MobiLoud" />
-                <Image src={FeedBear} alt="FeedBear" />
-                <Image src={MobiLoud} alt="MobiLoud" />
-                <Image src={MixBloom} alt="MixBloom" />
-                <Image src={MobiLoud} alt="MobiLoud" />
+            <div class="flex flex-row justify-center gap-10 lg:gap-16 mt-20 overflow-x-hidden">
+                <Image class="w-60 lg:w-auto" src={MobiLoud} alt="MobiLoud" />
+                <Image class="w-60 lg:w-auto" src={FeedBear} alt="FeedBear" />
+                <Image class="w-60 lg:w-auto" src={MobiLoud} alt="MobiLoud" />
+                <Image class="w-60 lg:w-auto" src={MixBloom} alt="MixBloom" />
+                <Image class="w-60 lg:w-auto" src={MobiLoud} alt="MobiLoud" />
             </div>
         </section>
 
         <section>
             <div class="container flex flex-col items-center mb-20">
                 <div class="text-center text-orange-300 font-normal text-lg">Our services</div>
-                <h2 class="text-4xl text-center text-balance font-semibold mt-5 leading-tight max-w-[20ch]">Great sites are the culmination of many disciplines</h2>
+                <h2 class="text-3xl lg:text-4xl text-center text-balance font-semibold mt-5 leading-tight max-w-[20ch]">Great sites are the culmination of many disciplines</h2>
             </div>
 
             <div class="container flex flex-col gap-24">
-                <div class="grid grid-cols-2 gap-20 items-center">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-20 flex flex-col gap-7 items-center">
                     <div>
                         <div class="text-xl font-medium mb-3">Brand identity</div>
                         <p class="text-lg text-pretty">Your brand identity serves as the foundation of your online presence. With stunning design, we'll craft yours to stand out and drive business results.</p>
@@ -68,15 +68,15 @@ import { fade } from 'astro:transitions';
                     <Image src={BrandIdentity} alt="Brand Identity" />
                 </div>
 
-                <div class="grid grid-cols-2 gap-20 items-center">
-                    <Image src={Design} alt="Design" />
-                    <div>
+                <div class="lg:grid lg:grid-cols-2 lg:gap-20 flex flex-col gap-7 items-center">
+                    <Image class="order-2 lg:order-1" src={Design} alt="Design" />
+                    <div class="order-1 lg:order-2">
                         <div class="text-xl font-medium mb-3">Design</div>
                         <p class="text-lg text-pretty">Your brand identity serves as the foundation of your online presence. With stunning design, we'll craft yours to stand out and drive business results.</p>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-20 items-center">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-20 flex flex-col gap-7 items-center">
                     <div>
                         <div class="text-xl font-medium mb-3">Development</div>
                         <p class="text-lg text-pretty">Your brand identity serves as the foundation of your online presence. With stunning design, we'll craft yours to stand out and drive business results.</p>
@@ -84,8 +84,8 @@ import { fade } from 'astro:transitions';
                     <Image src={Development} alt="Development" />
                 </div>
 
-                <div class="grid grid-cols-2 gap-20 items-center">
-                    <div class="relative">
+                <div class="lg:grid lg:grid-cols-2 lg:gap-20 flex flex-col gap-7 items-center">
+                    <div class="relative w-full order-2 lg:order-1">
                         <div class="bg-gradient-to-b from-transparent via-neutral-900 via-90% to-zinc-900 z-10 absolute w-full h-full"></div>
                         <Card>
                             <div class="text-2xl mb-7">Homepage copy - Sept 2024</div>
@@ -153,7 +153,7 @@ import { fade } from 'astro:transitions';
                             </div>
                         </Card>
                     </div>
-                    <div>
+                    <div class="order-1 lg:order-2">
                         <div class="text-xl font-medium mb-3">Copywriting</div>
                         <p class="text-lg text-pretty">Your brand identity serves as the foundation of your online presence. With stunning design, we'll craft yours to stand out and drive business results.</p>
                     </div>
@@ -163,7 +163,7 @@ import { fade } from 'astro:transitions';
 
         <section>
             <div class="container mb-20">
-                <h2 class="text-4xl text-center text-balance font-semibold mt-5 leading-tight mb-12">Selected works</h2>
+                <h2 class="text-3xl lg:text-4xl text-center text-balance font-semibold mt-5 leading-tight mb-12">Selected works</h2>
                 <ClientCard
                   title="MobiLoud"
                   description="MobiLoud turns your website into an iOS and Android app in under 2 weeks, for 10% of the usual cost. Solutions for WordPress, eCommerce, eLearning and more!"
@@ -200,14 +200,14 @@ import { fade } from 'astro:transitions';
                <div>
                     <div>
                         <div class="text-orange-300 text-lg mb-3 text-center text-pretty">Our core tech stack</div>
-                        <h2 class="text-4xl font-semibold leading-tight text-center text-pretty">The power of code, with a seamless content editing experience. </h2>
+                        <h2 class="text-3xl lg:text-4xl font-semibold leading-tight text-center text-pretty">The power of code, with a seamless content editing experience. </h2>
                     </div>
                     <p class="text-lg font-medium text-neutral-200 mt-5 text-center text-pretty max-w-4xl mx-auto">Many think both aren't possible, and instead opt for no-code website builders. We used to use Webflow, after all. Now, we combine the flexbility, ownership and performance that code brings, with Payload for the best content editing experience. It's a marriage between developers and marketers.</p>
                </div>
             </div>
 
             <div class="container max-w-[800px]">
-                <div class="grid grid-cols-4 gap-4">
+                <div class="grid lg:grid-cols-4 grid-cols-2 lg:gap-4 gap-7">
                 <div class="flex flex-col items-center w-full gap-4">
                     <Card class="w-full h-full">
                         <div class="flex items-center justify-center w-full h-full">
@@ -261,8 +261,8 @@ import { fade } from 'astro:transitions';
 
         <section>
             <div class="container">
-                <h2 class="text-4xl font-semibold leading-tight text-center text-pretty mb-16">What our customers say</h2>
-                <div class="grid grid-cols-[0.5fr_1fr] gap-14 mb-16 align-top">
+                <h2 class="text-3xl lg:text-4xl font-semibold leading-tight text-center text-pretty mb-16">What our customers say</h2>
+                <div class="grid lg:grid-cols-[0.5fr_1fr] lg:gap-14 gap-10 mb-16 align-top">
                     <div class="flex flex-col items-center">
                         <Image src={NihalPFP} class='w-96 mb-6' alt="Nihal portrait" />
                         <div class="text-2xl font-medium text-pretty mb-2">Nihal Mandanna, CP</div>
@@ -286,7 +286,7 @@ import { fade } from 'astro:transitions';
                     </Card>
                 </div>
 
-                <div class="grid grid-cols-[1fr_0.75fr] gap-20 align-top">
+                <div class="flex flex-col-reverse lg:grid lg:grid-cols-[1fr_0.75fr] lg:gap-20 gap-10 align-top">
                     <Card class="self-start">
                         <div class="flex flex-row gap-1 mb-4">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFED02"><path d="m233-120 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg>
@@ -302,7 +302,7 @@ import { fade } from 'astro:transitions';
                     </Card>
 
                     <div class="flex flex-col items-center">
-                        <Image src={PietroPFP} class='w-80 mb-6' alt="Pietro portrait" />
+                        <Image src={PietroPFP} class='lg:w-60 mb-6' alt="Pietro portrait" />
                         <div class="text-2xl font-medium text-pretty mb-2">Pietro Saccomanni</div>
                         <div class="text-base font-normal text-neutral-300 text-pretty text-center">CEO @ MobiLoud & FeedBear, Co-founder @ MixBloom</div>
                     </div>
@@ -311,14 +311,14 @@ import { fade } from 'astro:transitions';
 
         <section>
             <div class="container max-w-[800px]">
-                <h2 class="text-4xl font-semibold max-w-[60%] leading-tight mb-10">Blog. <span class="bg-neutral-400 bg-clip-text">Recent thinking and work we've done.</span></h2>
+                <h2 class="text-3xl lg:text-4xl font-semibold lg:max-w-[60%] leading-tight mb-10">Blog. <span class="bg-neutral-400 bg-clip-text">Recent thinking and work we've done.</span></h2>
                 <BlogPosts />
             </div>
         </section>
 
         <section>
             <div class="container max-w-[800px]">
-                <h2 class="text-4xl font-semibold text-center leading-tight mb-10">Your questions, answered</h2>
+                <h2 class="text-3xl lg:text-4xl font-semibold text-center leading-tight mb-10">Your questions, answered</h2>
                 <FAQs/>
             </div>
         </section>

@@ -6,7 +6,7 @@ const {authors} = authorsData
 ---
 {allPosts.map(post => (
     <a href={post.url} class="flex flex-row justify-between align-middle border-t border-b border-neutral-700 py-2 px-1">
-        <div>{post.frontmatter.title}</div>
+        <div class="max-w-[75%]">{post.frontmatter.title}</div>
         <div class="text-neutral-400">{post.frontmatter.tags}</div>
     </a>
 ))}
