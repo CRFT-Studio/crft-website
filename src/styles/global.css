@@ -20,12 +20,6 @@
         margin-bottom: 150px;
     }
 
-    nav {
-        backdrop-filter: blur(20px);
-        background-color: rgba(24, 24, 24, 50);
-        border-bottom: 1px solid #525252;
-    }
-
     h1:not(article h1) {
       background: -webkit-linear-gradient(290deg, #FFF7EB, #B1AEA9);
       -webkit-background-clip: text;
@@ -46,8 +40,6 @@
 
     .nav-link {
         color: #e4e4e7;
-        padding: 0.5rem 1rem;
-        background-color: #171717;
         font-size: 16px;
         font-weight: 400;
     }
