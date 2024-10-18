@@ -1,8 +1,0 @@
----
-const { outerStyle, innerStyle, class: className } = Astro.props;
----
-<div style={`padding: 1px; ${outerStyle}; border-radius: 8px`} class={`bg-gradient-to-br from-neutral-500 to-neutral-700 ${className}`}>
-  <div style={`${innerStyle}; border-radius: 7px;`} class="bg-neutral-800 p-8 w-full h-full">
-    <slot></slot>
-  </div>
-</div>
