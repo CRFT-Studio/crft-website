@@ -1,8 +1,9 @@
 ---
-import '../../src/styles/global.css'
+import '../../src/styles/global.css';
 ---
 <nav class="sticky top-0 z-50 border-b-[1px] border-neutral-700 bg-neutral-900 bg-opacity-80 backdrop-blur-md">
-    <div class="container py-5">
+    <div id="bgOverlay" class="fixed opacity-0 w-screen h-screen bg-neutral-950 bg-opacity-60 z-[98] transition-all pointer-events-none"></div>
+    <div class="container lg:py-5 py-4">
         <div class="flex flex-row justify-between align-middle gap-8">
             <div class="flex flex-row align-middle gap-7 items-center">
                 <a href="/" class="nav-link"><svg width="110" height="23" viewBox="0 0 132 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,10 +18,68 @@ import '../../src/styles/global.css'
                 </div>
             </div>
 
-            <div class="flex flex-row align-middle gap-4">
+            <div class="lg:flex flex-row align-middle gap-4 hidden">
                 <a href="/about" class="nav-link px-5">Login</a>
                 <a href="/about" class="nav-link px-5">Contact Us</a>
+            </div>
+
+            <div id="mobileNavBtn" class="w-8 aspect-square border-[1px] bg-neutral-900 bg-opacity-35 border-neutral-700 rounded-md p-2 flex flex-col justify-center gap-1 lg:hidden">
+                <div class="h-[1px] w-full bg-neutral-500"></div>
+                <div class="h-[1px] w-full bg-neutral-500"></div>
+                <div class="h-[1px] w-full bg-neutral-500"></div>
             </div>
         </div>
     </div>
 </nav>
+
+<div id="mobileNav" class="card fixed bottom-0 w-full z-[99] rounded-b-none border-b-0 transition-all duration-[250ms] translate-y-[35rem]">
+    <div class="flex flex-col gap-2">
+        <div class="flex flex-row justify-between items-center">
+            <div class="text-lg">Go home</div>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+        </div>
+        <div class="h-[1px] w-full bg-neutral-700 my-3"></div>
+        <div class="flex flex-row justify-between items-center">
+            <div class="text-lg">Services</div>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+        </div>
+        <div class="flex flex-row justify-between items-center">
+            <div class="text-lg">Customers</div>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+        </div>
+        <div class="flex flex-row justify-between items-center">
+            <div class="text-lg">About Us</div>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+        </div>
+        <div class="flex flex-row justify-between items-center">
+            <div class="text-lg">Pricing</div>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+        </div>
+        <div class="h-[1px] w-full bg-neutral-700 my-3"></div>
+        <div class="flex flex-row justify-between items-center">
+            <div class="text-lg">FAQ</div>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+        </div>
+        <div class="flex flex-row justify-between items-center">
+            <div class="text-lg">Blog</div>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+        </div>
+        <div class="flex flex-row justify-between items-center">
+            <div class="text-lg">Manage Billing</div>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+        </div>
+        <button class="primary-cta text-base font-medium mt-5 mb-2">View pricing</button>
+        <div class="text-center text-base">Contact Us</div>
+    </div>
+</div>
+
+<script>
+    import $ from "jquery";
+    $(() => {
+        $("#mobileNavBtn, #bgOverlay").click(() => {
+            $("#bgOverlay").toggleClass("opacity-0 pointer-events-none");
+            $("#mobileNav").toggleClass("translate-y-[35rem]");
+            $("body").toggleClass("overflow-y-hidden");
+        });
+    });
+</script>
