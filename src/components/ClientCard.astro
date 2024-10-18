@@ -1,11 +1,10 @@
 ---
 import '../../src/styles/global.css'
 import { Image } from 'astro:assets'
-import Card from '../components/Card.astro'
 
 const {title, description, link, image, tags} = Astro.props;
 ---
-<Card innerStyle='padding: 32px 0px 0px 0px' class='mb-8 overflow-hidden'>
+<div class="card pt-8 p-0 mb-8 overflow-hidden">
     <div class="lg:grid lg:grid-cols-[1fr_1.5fr] flex flex-col gap-10 items-start">
         <div class="flex flex-col justify-between px-8 h-full pb-8">
             <div>
@@ -26,4 +25,4 @@ const {title, description, link, image, tags} = Astro.props;
             <Image class='w-full h-full object-cover object-left-top' src={image} alt="MobiLoud"/>
         </div>
     </div>
-</Card>
+</>
