@@ -1,0 +1,104 @@
+---
+import Navigation from "../components/Navigation.astro";
+import Testimonials from "../components/testimonials.astro";
+import Footer from "../components/Footer.astro";
+---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pricing</title>
+    </head>
+    <body>
+        <Navigation/>
+        <section class="mt-20">
+            <div class="container">
+                <div class="text-center text-lg font-normal text-orange-300 mb-6">Plans & Pricing</div>
+                <div class="flex justify-center mb-8">
+                    <div class="inline-flex flex-row card p-[2px] rounded-lg border-[1px] gap-2 mx-auto">
+                        <div class="bg-neutral-700 border-[1px] border-neutral-600 px-2 py-1 rounded-[4px]">Monthly</div>
+                        <div class="px-2 py-1 rounded-sm">Quarterly</div>
+                        <div class="px-2 py-1 rounded-sm">Annually</div>
+                    </div>
+                </div>
+                <h1 class="lg:text-7xl text-4xl text-center text-balance font-semibold leading-tight mb-7">$5000/month</h1>
+                <div class="text-center text-xl font-medium leading-normal text-neutral-200 text-pretty max-w-[800px] mx-auto">A simple, straightforward monthly fee for the length of our project. No contracts or fixed scropes of work. Pause or cancel your subscription as needed. We think of ourselves as an extension of your team, dedicated to designing and developing your website whilst you work on your core business.</div>
+            </div>
+
+            <div class="container mx-auto mt-20">
+                <div class="grid grid-cols-4 gap-12">
+                    <div class="flex flex-row gap-2 items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="flex flex-col">
+                            <div class="text-lg font-medium">Design work in Figma</div>
+                            <div class="text-lg font-normal">test</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row gap-2 items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="flex flex-col">
+                            <div class="text-lg font-medium">Custom web development</div>
+                            <div class="text-lg font-normal">test</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row gap-2 items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="flex flex-col">
+                            <div class="text-lg font-medium">Headless CMS integration</div>
+                            <div class="text-lg font-normal">test</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row gap-2 items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="flex flex-col">
+                            <div class="text-lg font-medium">Daily progress & live updates</div>
+                            <div class="text-lg font-normal">test</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row gap-2 items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="flex flex-col">
+                            <div class="text-lg font-medium">Project management in Basecamp</div>
+                            <div class="text-lg font-normal">test</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row gap-2 items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="flex flex-col">
+                            <div class="text-lg font-medium">Weekly video call (on request)</div>
+                            <div class="text-lg font-normal">test</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row gap-2 items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="flex flex-col">
+                            <div class="text-lg font-medium">Pause or cancel anytime</div>
+                            <div class="text-lg font-normal">test</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row gap-2 items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="flex flex-col">
+                            <div class="text-lg font-medium">7-day money-back guarantee</div>
+                            <div class="text-lg font-normal">test</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="w-full h-[1px] bg-neutral-700 mx-auto"></div>
+
+        <Testimonials/>
+
+        <Footer/>
+    </body>
+</html>
