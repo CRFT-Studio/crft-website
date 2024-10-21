@@ -16,13 +16,13 @@ import Footer from "../components/Footer.astro";
             <div class="container">
                 <div class="text-center text-lg font-normal text-orange-300 mb-6">Plans & Pricing</div>
                 <div class="flex justify-center mb-8">
-                    <div class="inline-flex flex-row card p-[2px] rounded-lg border-[1px] gap-2 mx-auto">
-                        <div class="bg-neutral-700 border-[1px] border-neutral-600 px-2 py-1 rounded-[4px]">Monthly</div>
-                        <div class="px-2 py-1 rounded-sm">Quarterly</div>
-                        <div class="px-2 py-1 rounded-sm">Annually</div>
+                    <div id="tabs" class="inline-flex flex-row card p-[2px] rounded-lg border-[1px] gap-2 mx-auto text-sm">
+                        <div id="monthly" class="bg-neutral-700 border-neutral-600 border-[1px] rounded-[4px] px-2 py-1 hover:cursor-pointer transition-all">Monthly</div>
+                        <div id="quarterly" class="px-2 py-1 rounded-[4px] border-[1px] border-transparent hover:cursor-pointer transition-all">Quarterly (Save 10%)</div>
+                        <div id="annually" class="px-2 py-1 rounded-[4px] border-[1px] border-transparent hover:cursor-pointer transition-all">Annually (Save 15%)</div>
                     </div>
                 </div>
-                <h1 class="lg:text-7xl text-4xl text-center text-balance font-semibold leading-tight mb-7">$5000/month</h1>
+                <h1 class="lg:text-7xl text-4xl text-center text-balance font-semibold leading-tight mb-7"><span id="price">$5000</span><span class="bg-neutral-400 bg-clip-text">/month</span></h1>
                 <div class="text-center text-xl font-medium leading-normal text-neutral-200 text-pretty max-w-[800px] mx-auto">A simple, straightforward monthly fee for the length of our project. No contracts or fixed scropes of work. Pause or cancel your subscription as needed. We think of ourselves as an extension of your team, dedicated to designing and developing your website whilst you work on your core business.</div>
             </div>
 
@@ -100,5 +100,33 @@ import Footer from "../components/Footer.astro";
         <Testimonials/>
 
         <Footer/>
+
+        <script>
+            import $ from "jquery";
+
+            $(document).ready(() => {
+                const active = "bg-neutral-700 border-neutral-600";
+                const inactive = "border-transparent";
+
+                $("#monthly").click(function() {
+                    $("#quarterly, #annually").removeClass(active).addClass(inactive);
+                    $(this).removeClass(inactive).addClass(active);
+                    $("h1 #price").html("$5000");
+                });
+
+                $("#quarterly").click(function() {
+                    $("#monthly, #annually").removeClass(active).addClass(inactive);
+                    $(this).removeClass(inactive).addClass(active);
+                    $("h1 #price").html("$4500");
+                });
+
+                $("#annually").click(function() {
+                    $("#monthly, #quarterly").removeClass(active).addClass(inactive);
+                    $(this).removeClass(inactive).addClass(active);
+                    $("h1 #price").html("$4250");
+                });
+            });
+        </script>
+
     </body>
 </html>
