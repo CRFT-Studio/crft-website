@@ -37,9 +37,13 @@ const checkoutSession = await stripe.checkout.sessions.create({
     </head>
     <body>
         <Navigation />
-        <section>
+        <section class="my-16">
             <div class="container">
-                <div class="bg-[red] min-h-[25rem]"></div>
+                <div
+                    id="checkout"
+                    class="border-[1px] border-neutral-700 rounded-xl p-5 bg-[#1c1c1c]"
+                >
+                </div>
             </div>
         </section>
         <Footer />
