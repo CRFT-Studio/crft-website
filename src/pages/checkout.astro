@@ -5,7 +5,7 @@ import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
 
 import Stripe from "stripe";
-const stripe = new Stripe("redacted");
+const stripe = new Stripe(import.meta.env.STRIPE_API);
 const checkoutSession = await stripe.checkout.sessions.create({
     line_items: [
         {
@@ -52,7 +52,7 @@ const checkoutSession = await stripe.checkout.sessions.create({
         <script>
             import $ from "jquery";
             import { loadStripe } from "@stripe/stripe-js";
-            const stripe = await loadStripe("redacted");
+            const stripe = await loadStripe(import.meta.env.PUBLIC_STRIPE_API);
             const clientSecret = $("#clientSecret").text();
             const checkout = await stripe.initEmbeddedCheckout({
                 clientSecret,
