@@ -6,7 +6,7 @@ import Footer from "../components/Footer.astro";
 
 import Stripe from "stripe";
 const stripe = new Stripe("redacted");
-const session = await stripe.checkout.sessions.create({
+const checkoutSession = await stripe.checkout.sessions.create({
     line_items: [
         {
             price_data: {
@@ -43,5 +43,17 @@ const session = await stripe.checkout.sessions.create({
             </div>
         </section>
         <Footer />
+
+        <span id="clientSecret" hidden>{checkoutSession.client_secret}</span>
+        <script>
+            import $ from "jquery";
+            import { loadStripe } from "@stripe/stripe-js";
+            const stripe = await loadStripe("redacted");
+            const clientSecret = $("#clientSecret").text();
+            const checkout = await stripe.initEmbeddedCheckout({
+                clientSecret,
+            });
+            checkout.mount("#checkout");
+        </script>
     </body>
 </html>
