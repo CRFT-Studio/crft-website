@@ -4,8 +4,10 @@ export const prerender = false;
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
 
+const { env } = Astro.locals.runtime;
+
 import Stripe from "stripe";
-const stripe = new Stripe(import.meta.env.STRIPE_API);
+const stripe = new Stripe(env.STRIPE_API);
 const checkoutSession = await stripe.checkout.sessions.create({
     line_items: [
         {
