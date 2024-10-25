@@ -3,9 +3,14 @@ export const prerender = false;
 
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
-
 import Stripe from "stripe";
-const stripe = new Stripe(import.meta.env.STRIPE_API);
+
+const { env } = Astro.locals.runtime;
+const STRIPE_API = env.STRIPE_API ?? import.meta.env.STRIPE_API;
+const PUBLIC_STRIPE_API =
+    env.PUBLIC_STRIPE_API ?? import.meta.env.PUBLIC_STRIPE_API;
+
+const stripe = new Stripe(STRIPE_API);
 const checkoutSession = await stripe.checkout.sessions.create({
     line_items: [
         {
@@ -48,11 +53,12 @@ const checkoutSession = await stripe.checkout.sessions.create({
         </section>
         <Footer />
 
+        <span id="pubStripeApi" hidden>{PUBLIC_STRIPE_API}</span>
         <span id="clientSecret" hidden>{checkoutSession.client_secret}</span>
         <script>
             import $ from "jquery";
             import { loadStripe } from "@stripe/stripe-js";
-            const stripe = await loadStripe(import.meta.env.PUBLIC_STRIPE_API);
+            const stripe = await loadStripe($("#pubStripeApi").text());
             const clientSecret = $("#clientSecret").text();
             const checkout = await stripe.initEmbeddedCheckout({
                 clientSecret,
