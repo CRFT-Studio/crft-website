@@ -1,6 +1,13 @@
 ---
 export const prerender = false;
-const num = Math.random();
+
+let num;
+try {
+  num = crypto.randomUUID();
+} catch (error) {
+  console.error('Error generating random number:', error);
+  num = 'Error generating number';
+}
 ---
 <html>
     <body>
