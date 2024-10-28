@@ -9,6 +9,15 @@ import Footer from "../components/Footer.astro";
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Pricing</title>
+        <style>
+            #tabs div {
+                @apply border-transparent;
+            }
+            .tab-active {
+                @apply border-neutral-600 !important;
+                @apply bg-neutral-700;
+            }
+        </style>
     </head>
     <body>
         <Navigation/>
@@ -17,9 +26,9 @@ import Footer from "../components/Footer.astro";
                 <div class="text-center text-lg font-normal text-orange-300 mb-6">Plans & Pricing</div>
                 <div class="flex justify-center mb-8">
                     <div id="tabs" class="inline-flex flex-row card p-[2px] rounded-lg border-[1px] gap-2 mx-auto text-sm text-nowrap overflow-x-auto">
-                        <div id="monthly" class="bg-neutral-700 border-neutral-600 border-[1px] rounded-[4px] px-2 py-1 hover:cursor-pointer transition-all">Monthly</div>
-                        <div id="quarterly" class="px-2 py-1 rounded-[4px] border-[1px] border-transparent hover:cursor-pointer transition-all">Quarterly (Save 10%)</div>
-                        <div id="annually" class="px-2 py-1 rounded-[4px] border-[1px] border-transparent hover:cursor-pointer transition-all">Annually (Save 15%)</div>
+                        <div id="monthly" class="tab-active border-[1px] rounded-[4px] px-2 py-1 hover:cursor-pointer transition-all">Monthly</div>
+                        <div id="quarterly" class="px-2 py-1 rounded-[4px] border-[1px] hover:cursor-pointer transition-all">Quarterly (Save 10%)</div>
+                        <div id="annually" class="px-2 py-1 rounded-[4px] border-[1px] hover:cursor-pointer transition-all">Annually (Save 15%)</div>
                     </div>
                 </div>
                 <h1 class="lg:text-7xl md:text-6xl sm:text-5xl text-[2.6rem] text-center text-balance font-semibold leading-tight lg:mb-7 mb-5"><span id="price">$5000</span><span class="bg-neutral-400 bg-clip-text">/month</span></h1>
@@ -109,8 +118,6 @@ import Footer from "../components/Footer.astro";
             import $ from "jquery";
 
             $(document).ready(() => {
-                const active = "bg-neutral-700 border-neutral-600";
-                const inactive = "border-transparent";
 
                 $("#monthly").click(function() {
                     $("#quarterly, #annually").removeClass(active).addClass(inactive);
