@@ -116,26 +116,10 @@ import Footer from "../components/Footer.astro";
 
         <script>
             import $ from "jquery";
-
-            $(document).ready(() => {
-
-                $("#monthly").click(function() {
-                    $("#quarterly, #annually").removeClass(active).addClass(inactive);
-                    $(this).removeClass(inactive).addClass(active);
-                    $("h1 #price").html("$5000");
-                });
-
-                $("#quarterly").click(function() {
-                    $("#monthly, #annually").removeClass(active).addClass(inactive);
-                    $(this).removeClass(inactive).addClass(active);
-                    $("h1 #price").html("$4500");
-                });
-
-                $("#annually").click(function() {
-                    $("#monthly, #quarterly").removeClass(active).addClass(inactive);
-                    $(this).removeClass(inactive).addClass(active);
-                    $("h1 #price").html("$4250");
-                });
+            $("#tabs div").click(function() {
+              if ($(this).hasClass("tab-active")) return;
+              $(".tab-active").add(this).toggleClass("tab-active");
+              $("#price").text($(this).attr("data-price"));
             });
         </script>
 
