@@ -23,6 +23,19 @@ const checkoutSession = await stripe.checkout.sessions.create({
     mode: "subscription",
     ui_mode: "embedded",
     return_url: Astro.url.origin + "/thank-you?session_id={CHECKOUT_SESSION_ID}",
+    allow_promotion_codes: true,
+    billing_address_collection: "required",
+    custom_fields: [
+      {
+        key: "Website",
+        label: {
+          type: "custom",
+          custom: "Website URL"
+        },
+        type: "text",
+        optional: true
+      }
+    ]
 });
 ---
 
