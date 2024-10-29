@@ -5,6 +5,9 @@ import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
 import Stripe from "stripe";
 
+const plan = Astro.url.searchParams.get("plan");
+if (!plan) return Astro.redirect("/pricing");
+
 const { env } = Astro.locals.runtime;
 const STRIPE_API = env.STRIPE_API ?? import.meta.env.STRIPE_API;
 const PUBLIC_STRIPE_API =
