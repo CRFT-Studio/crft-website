@@ -1,5 +1,6 @@
 ---
 import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
 import BlogPosts from "../components/BlogPosts.astro";
 ---
 <html lang="en">
@@ -13,11 +14,13 @@ import BlogPosts from "../components/BlogPosts.astro";
 	</head>
     <body>
         <Navigation />
-        <section class="mt-12">
+        <section class="mt-12 h-screen">
             <div class="container max-w-[800px]">
                 <h1 class="text-4xl font-semibold max-w-[60%] leading-tight mb-10">Blog. <span class="bg-neutral-400 bg-clip-text">Recent thinking and work we've done.</span></h1>
                 <BlogPosts />
             </div>
         </section>
+
+        <Footer/>
     </body>
 </html>
