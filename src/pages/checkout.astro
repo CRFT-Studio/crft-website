@@ -10,24 +10,17 @@ if (!plan) return Astro.redirect("/pricing");
 
 const { env } = Astro.locals.runtime;
 const STRIPE_API = env.STRIPE_API ?? import.meta.env.STRIPE_API;
-const PUBLIC_STRIPE_API =
-    env.PUBLIC_STRIPE_API ?? import.meta.env.PUBLIC_STRIPE_API;
-
+const PUBLIC_STRIPE_API = env.PUBLIC_STRIPE_API ?? import.meta.env.PUBLIC_STRIPE_API;
 const stripe = new Stripe(STRIPE_API);
+const price = (await stripe.prices.list({ lookup_keys: [plan] })).data[0];
 const checkoutSession = await stripe.checkout.sessions.create({
     line_items: [
         {
-            price_data: {
-                currency: "usd",
-                product_data: {
-                    name: "T-shirt",
-                },
-                unit_amount: 2000,
-            },
-            quantity: 2,
+            price: price.id,
+            quantity: 1,
         },
     ],
-    mode: "payment",
+    mode: "subscription",
     ui_mode: "embedded",
     return_url: Astro.url.origin + "/thank-you?session_id={CHECKOUT_SESSION_ID}",
 });
