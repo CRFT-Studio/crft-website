@@ -3,6 +3,17 @@ export const prerender = false;
 
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
+
+import Stripe from "stripe";
+const STRIPE_API = Astro.locals.runtime.env.STRIPE_API ?? import.meta.env.STRIPE_API;
+const stripe = new Stripe(STRIPE_API);
+const sessionID = Astro.url.searchParams.get("session_id");
+// const session = await stripe.checkout.sessions.retrieve({});
+
+const customer = await stripe.customers.retrieve('cus_R7bAW2n3OZXcQa');
+const fullName = customer.name.split(" ");
+const firstName = fullName[0];
+// const price = stripe.checkout.sessions.line_items.data.price;
 ---
 
 <html lang="en">
@@ -15,6 +26,7 @@ import Footer from "../components/Footer.astro";
         <title>Thank You!</title>
     </head>
     <body>
+        <div>{sessionID}</div>
         <Navigation />
         <section class="h-[50vh]">
             <div class="container max-w-[800px]">
@@ -26,7 +38,7 @@ import Footer from "../components/Footer.astro";
                 <div class="bg-neutral-700 border-[1px] border-neutral-600 p-5 rounded-t-md flex flex-row justify-between items-center max-w-[500px] mx-auto relative squiggle-border-bottom">
                     <div class="font-mono">CRFT Studio</div>
                     <div class="h-[12px] w-[50%] border-b border-dashed border-neutral-400"></div>
-                    <div class="font-mono">$5,202.00</div>
+                    <!-- <div class="font-mono">{price}</div> -->
                 </div>
             </div>
         </section>
