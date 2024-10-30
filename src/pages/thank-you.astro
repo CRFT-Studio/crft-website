@@ -28,17 +28,17 @@ const firstName = fullName[0];
     <body>
         <div>{sessionID}</div>
         <Navigation />
-        <section class="h-[50vh]">
+        <section>
             <div class="container max-w-[800px]">
                 <div class="flex flex-col items-center mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#22c55e"><path d="m423.23-309.85 268.92-268.92L650-620.92 423.23-394.15l-114-114L267.08-466l156.15 156.15ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Zm-.07-60q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
                 </div>
                 <h1 class="text-center text-4xl font-medium leading-normal mb-3">Thanks for subscribing, {firstName}.</h1>
                 <div class="text-center text-lg text-neutral-300 text-pretty mb-8">A payment to CRFT Studio will appear on your statement. Within 24 hours, expect an invitation to a newly created Basecamp project in your inbox. This is where we'll further our communication and begin working together.</div>
-                <div class="bg-neutral-700 border-[1px] border-neutral-600 p-5 rounded-t-md flex flex-row justify-between items-center max-w-[500px] mx-auto relative squiggle-border-bottom">
-                    <div class="font-mono">CRFT Studio</div>
-                    <div class="h-[12px] w-[50%] border-b border-dashed border-neutral-400"></div>
                     <!-- <div class="font-mono">{price}</div> -->
+                <div class="bg-neutral-700 border-[1px] border-neutral-600 p-5 rounded-t-md flex flex-row gap-3 justify-between items-center max-w-[500px] mx-auto relative squiggle-border-bottom">
+                    <div class="font-mono text-nowrap">CRFT Studio</div>
+                    <div class="h-[10px] border-b border-dashed border-neutral-400 grow"></div>
                 </div>
             </div>
         </section>
