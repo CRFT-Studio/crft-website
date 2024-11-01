@@ -35,7 +35,7 @@ import { Image } from "astro:assets";
                     <Image src={BitchPCMask} alt="Jeremy profile pic" class="w-[600px] mx-auto -mb-4 absolute right-0 z-20"></Image>
                 </div> -->
                 <Image src={BitchPC} alt="Jeremy profile pic" class="w-[600px] mx-auto -mb-4"></Image>
-                <h1 class="text-5xl text-center font-medium leading-tight text-pretty mb-5">Two bros, makin' cool stuff</h1>
+                <h1 class="lg:text-5xl text-4xl text-center font-medium leading-tight text-pretty mb-5">Two bros, makin' cool stuff</h1>
                 <div class="text-center text-neutral-300 text-pretty text-lg flex flex-col gap-6">
                     <p>This is Jeremy, founder, designer and developer at CRFT (pronounced "craft"). Our goal has no fluff; make the most beautiful,
                     performant and maintainable websites for the best marketing teams. The name CRFT is aspirational—the higher the quality of our work,
@@ -48,8 +48,8 @@ import { Image } from "astro:assets";
                 </div>
                 <div class="flex flex-row flex-wrap gap-5 items-center mt-7 justify-center text-neutral-300">
                     <div class="flex flex-row items-center">
-                        <Image src={JeremyPFP} alt="Jeremy pfp" class="rounded-full aspect-square w-[60px]"/>
-                        <Image src={DavidPFP} alt="Jeremy pfp" class="rounded-full aspect-square w-[60px] -ml-3"/>
+                        <Image src={JeremyPFP} alt="Jeremy pfp" class="rounded-full aspect-square object-cover w-[60px]"/>
+                        <Image src={DavidPFP} alt="Jeremy pfp" class="rounded-full aspect-square w-[60px] object-cover -ml-3"/>
                     </div>
                     <div class="font-serif italic">Jeremy & David Vejgman</div>
                 </div>
@@ -58,7 +58,7 @@ import { Image } from "astro:assets";
             <div class="container">
                 <h2 class="text-center text-3xl font-medium mb-3">Our values</h2>
                 <div class="text-center text-neutral-300 text-pretty text-lg max-w-[40ch] mx-auto">Off the top of our head, these are some ideas we hold dear to our work. Sometimes, they evolve.</div>
-                <div class="grid grid-cols-3 gap-4 mt-9">
+                <div class="grid lg:grid-cols-3 grid-cols-1 gap-4 mt-9">
                     <div class="card p-5">
                         <div class="font-medium">Design (mostly) in code</div>
                         <div class="text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
