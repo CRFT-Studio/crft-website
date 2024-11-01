@@ -1,6 +1,72 @@
 ---
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import JeremyPFP from "../images/jeremy-color-pfp.png";
+import NihalPFP from "../images/nihal-pfp.png";
+import BitchPC from "../images/bitch-pc.png";
+import BitchPCMask from "../images/bitch-pc-masked.png";
+import { Image } from "astro:assets";
 
+// show you and bro pfps side-by-side above the h1, in the same style as Pietro and Nihal. Headline can have "two bros" in it.
+
+// idea: write multi paragraph thing about how you got into development, but cowrite it with bro to get his side of the story.
+// Then, highlight the areas you each write in a similar way to Google Docs version histor, and sign both your names at the bottom.
+
+// talk about values regarding how you work. 1) design in code: no drawing sites in figma for long - move to code asap.
+// 2) simple converts best: we don't scrolljack or build crazy animations. 3) craftsmanship: get good enough at a thing and become a craftsman.
+// we make daily progress on websites towards that end.
 ---
-// idea: show you and bro pfps side-by-side above the h1, in the same style as Pietro and Nihal. Headline can have "two bros" in it. 
+<html lang="en">
+    <head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>About Us</title>
+	</head>
+    <body>
+        <Navigation />
+        <section class="mt-20">
+            <div class="container max-w-[800px] mb-14">
+                <!-- <div class="relative h-[700px]">
+                    <Image src={JeremyPFP} alt="Jeremy profile pic" class="w-[300px] mx-auto -mb-4 absolute bottom-60 right-60 z-10"></Image>
+                    <Image src={BitchPCMask} alt="Jeremy profile pic" class="w-[600px] mx-auto -mb-4 absolute right-0 z-20"></Image>
+                </div> -->
+                <Image src={BitchPC} alt="Jeremy profile pic" class="w-[600px] mx-auto -mb-4"></Image>
+                <h1 class="text-5xl text-center font-medium leading-tight text-pretty mb-5">Two bros, makin' cool stuff</h1>
+                <div class="text-center text-neutral-300 text-pretty text-lg flex flex-col gap-6">
+                    <p>This is Jeremy, founder, designer and developer at CRFT (pronounced "craft"). Our goal has no fluff; make the most beautiful,
+                    performant and maintainable websites for the best marketing teams. The name CRFT is aspirational—the higher the quality of our work,
+                    the more deserving we feel designating ourselves as craftsmen.</p>
+                    <p>My first experience with web design was many years ago in high school, when
+                    I made my attempt at running an ecommerce store. It failed, but shortly thereafter I came to realize I enjoyed designing websites,
+                    and later developing them with increasingly powerful tools, thanks to my brother, David's influence.</p>
+                    <p>CRFT is mostly a team of one, but occasionally two, with David jumping in with additonal development support.
+                    We're both based out of <span class="bg-neutral-800 border border-neutral-700 rounded-md py-0 px-2">🇨🇦 Toronto, Canada</span>.</p>
+                </div>
+            </div>
 
-//idea: write multi paragraph thing about how you got into development, but cowrite it with bro to get his side of the story. Then, highlight the areas you each write in a similar way to Google Docs version histor, and sign both your names at the bottom.
+            <div class="container">
+                <h2 class="text-center text-3xl font-medium mb-3">Our values</h2>
+                <div class="text-center text-neutral-300 text-pretty text-lg max-w-[40ch] mx-auto">Off the top of our head, these are some ideas we hold dear to our work. Sometimes, they evolve.</div>
+                <div class="grid grid-cols-3 gap-4 mt-9">
+                    <div class="card p-5">
+                        <div class="font-medium">Design (mostly) in code</div>
+                        <div class="text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                    </div>
+                    <div class="card p-5">
+                        <div class="font-medium">Simple designs convert best</div>
+                        <div class="text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                    </div>
+                    <div class="card p-5">
+                        <div class="font-medium">Craftsmanship</div>
+                        <div class="text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <Footer/>
+    </body>
+</html>
