@@ -1,0 +1,27 @@
+---
+// minimal demo form. e.g. https://www.shopify.com/ca/plus#contact-sales
+// make it free, bc company employees may not be able to spend cash haphazardly
+// worry less about money as a means to qualify leads
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+---
+<html lang="en">
+    <head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Free Hero Audit</title>
+	</head>
+    <body>
+        <Navigation />
+        <section class="mt-12">
+            <div class="container">
+                <div></div>
+            </div>
+        </section>
+
+        <Footer/>
+    </body>
+</html>
