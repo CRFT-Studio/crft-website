@@ -113,6 +113,15 @@
         border: solid 1px #A6653B;
         background-color: #7F5032;
     }
+    
+    input, textarea {
+        @apply w-full text-base text-neutral-300 bg-neutral-600 px-2 py-[6px] 
+        rounded-md border border-neutral-500 focus:outline outline-neutral-300
+    }
+    
+    label {
+        @apply block text-base text-neutral-300 font-normal mb-2
+    }
 
 }
 
