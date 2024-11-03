@@ -1,0 +1,57 @@
+---
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro'
+import ClientCard from '../components/ClientCard.astro';
+import MobiLoudDesktop from '../../src/images/mobiloud-desktop.png';
+import FeedBearDesktop from '../../src/images/feedbear-desktop.png';
+import HoppyCopyDesktop from '../../src/images/hoppy-copy-desktop.png';
+import MixBloomDesktop from '../../src/images/mixbloom-desktop.png';
+---
+<html lang="en">
+    <head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Home</title>
+	</head>
+    <body>
+        <Navigation/>
+        <section class='mt-20'>
+            <div class="container mb-20">
+                <h1 class="text-3xl lg:text-4xl text-center text-balance font-semibold mt-5 leading-tight mb-16">Selected works</h1>
+                <ClientCard
+                title="MobiLoud"
+                description="MobiLoud turns your website into an iOS and Android app in under 2 weeks, for 10% of the usual cost. Solutions for WordPress, eCommerce, eLearning and more!"
+                link="https://www.mobiloud.com/"
+                image={MobiLoudDesktop}
+                tags={["Web Design", "Webflow Development", "WordPress Migration"]}
+                />
+                <ClientCard
+                title="FeedBear"
+                description="FeedBear is a better way to collect and manage customer feedback and ideas and keep your customers in the loop about product changes."
+                link="https://www.feedbear.com/"
+                image={FeedBearDesktop}
+                tags={["Web Design", "Webflow Development", "Umso Migration"]}
+                />
+                <ClientCard
+                title="MixBloom"
+                description="MixBloom helps you scale social media content creation for your clients with a talented and reliable team of social media managers and white label approvals software."
+                link="https://www.mixbloom.com/"
+                image={MixBloomDesktop}
+                tags={["Web Design", "Webflow Development", "Umso Migration"]}
+                />
+                <ClientCard
+                title="Hoppy Copy"
+                description="Save countless hours writing. Use AI to generate powerful copy for hundreds of different email marketing campaigns, drips, newsletters and more—in seconds."
+                link="https://www.hoppycopy.co/"
+                image={HoppyCopyDesktop}
+                tags={["Squarespace Migration", "Webflow Development"]}
+                />
+            </div>
+        </section>
+
+        <Footer/>
+    </body>
+</html>
