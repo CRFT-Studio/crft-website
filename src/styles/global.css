@@ -3,14 +3,23 @@
 @tailwind utilities;
 
 @layer base {
-
+    
+    * {
+      font-synthesis: none;
+    }
+    
+    @font-face {
+        font-family: 'Satoshi';
+        src: url('/Fonts/Satoshi-Variable.ttf') format('truetype');
+    }
+    
     @font-face {
         font-family: 'Inter';
-        src: url(/Fonts/Satoshi-Variable.ttf);
+        src: url('/Fonts/Inter-VariableFont_slnt,wght.ttf') format('truetype');
     }
 
     body {
-        font-family: 'Inter', sans-serif;
+        font-family: 'Satoshi', sans-serif;
         background-color: #171717;
         color: white;
     }
