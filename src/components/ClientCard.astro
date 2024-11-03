@@ -9,9 +9,9 @@ const {title, description, link, image, tags} = Astro.props;
         <div class="flex flex-col justify-between px-8 h-full pb-8">
             <div>
                 <div class="text-xl font-medium mb-3">{title}</div>
-                <p class="text-lg text-pretty text-neutral-300 mb-4">{description}</p>
+                <p class="text-base text-pretty text-neutral-300 mb-4">{description}</p>
                 <a href={link} target="_blank" rel="noopener noreferrer" class="flex flex-row gap-1 items-center">
-                    <div class="text-lg text-orange-300 font-medium">Visit website</div>
+                    <div class="text-base text-orange-300 font-medium">Visit website</div>
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FDBA74"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
                 </a>
             </div>
