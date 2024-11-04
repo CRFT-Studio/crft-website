@@ -114,7 +114,7 @@
         background-color: #7F5032;
     }
     
-    input, textarea {
+    input:where([type="text"], [type="email"], [type="url"]), textarea {
         @apply w-full text-base text-neutral-300 bg-neutral-600 px-2 py-[6px] 
         rounded-md border border-neutral-500 focus:outline outline-neutral-300
     }
