@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+const {companyName, websiteUrl} = Astro.props;
+---
+<div class="grid grid-cols-[0.5fr_1.25fr] mb-20 gap-14">
+    <div>
+        <div class="sticky top-32">
+            <div class="text-2xl mb-2">{companyName}</div>
+            <div class="text-lg text-neutral-300 mb-3">Audited URL: https://{websiteUrl}</div>
+            <a href="/audit#hero" class="text-orange-300 text-lg">Get my audit →</a>
+            <div class="flex flex-col scale-90 origin-top-left mt-8">
+                <slot name="annotations"/>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="w-full aspect-video bg-neutral-500 mb-2"></div>
+        <div class="mb-10">Before</div>
+        <div class="w-full aspect-video bg-neutral-500 mb-2"></div>
+        <div>After</div>
+    </div>
+</div>
