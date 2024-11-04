@@ -8,6 +8,8 @@ import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
 import NihalPFP from '../images/nihal-pfp.png';
+import AuditExample from '../components/AuditExample.astro';
+import FAQItem from '../components/FAQItem.astro';
 ---
 <html lang="en">
     <head>
@@ -16,49 +18,66 @@ import NihalPFP from '../images/nihal-pfp.png';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Free Hero Audit</title>
+		<title>Free Hero Redesign | CRFT Studio</title>
 	</head>
     <body>
         <Navigation />
-        <section class="mt-20">
+        <section id="hero" class="mt-20 mb-24">
             <div class="container">
                 <div class="grid lg:grid-cols-2 grid-cols-1 gap-12">
                     <div>
-                        <div class="mb-7 flex flex-row gap-5 lg:items-center items-start">
-                            <Image src={NihalPFP} alt='Nihal profile pic' class='w-20'></Image>
-                            <div class="card inline-block p-2 rounded-tl-none">"I walked in and I was like woww what a great audit"</div>
-                        </div>
-                        <h1 class="lg:text-4xl text-3xl font-semibold leading-tight text-pretty mb-4">Get a taste of <span class="card p-2 inline-block translate-y-2"><svg class="w-[100px]" viewBox="0 0 132 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.47615 11.5709C6.47615 7.67882 8.42219 5.8923 16.6211 5.8923C21.6297 5.8923 26.8298 6.78556 30.5623 7.51931L31.7108 2.12783C27.2764 1.10696 21.6616 0.341309 16.3977 0.341309C4.46631 0.341309 0 4.26528 0 11.5709C0 18.8765 4.46631 22.8324 16.3977 22.8324C21.6616 22.8324 27.2764 22.0667 31.7108 21.0459L30.5623 15.6544C26.8298 16.3881 21.6297 17.2814 16.6211 17.2814C8.42219 17.2814 6.47615 15.4949 6.47615 11.5709ZM40.6676 22.4176V16.101H48.9303L56.7463 22.4176H64.8814L57.7353 16.8029L56.0125 15.7501L57.4162 15.7182C62.2335 15.3354 65.0728 13.0384 65.0728 8.25306C65.0728 2.54256 61.3402 0.66033 55.9806 0.66033H34.1914V22.4176H40.6676ZM40.6676 6.21132H55.3426C57.48 6.21132 58.3733 6.81746 58.3733 8.7635C58.3733 10.55 57.48 11.2519 55.3426 11.2519H40.6676V6.21132ZM74.3768 22.4176V15.3035H96.3257V10.1991H74.3768V6.21132H96.9319V0.66033H67.9006V22.4176H74.3768ZM111.951 6.21132V22.4176H118.427V6.21132H131.316V0.66033H99.0305V6.21132H111.951Z" fill="white"/>
-                        </svg></span> with a free hero redesign.</h1>
-                        <div class="text-xl font-normal text-pretty mb-6 text-neutral-300">Get a free test run before you commit to working with us on a full-scale redesign. We'll give you the free, personalized insights you need to boost your hero's conversion rate.</div>
-                        <div class="flex flex-col gap-2 text-neutral-300">
-                            <div class="flex flex-row gap-2 items-start">
-                                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
-                                <div class="flex flex-col gap-2">
-                                    <div class="text-lg font-medium">Fully designed, custom mobile and desktop mockups</div>
+                        <div class="sticky top-14">
+                            <div class="mb-7 flex flex-row gap-5 lg:items-center items-start">
+                                <Image src={NihalPFP} alt='Nihal profile pic' class='w-24'></Image>
+                                <div class="card inline-block py-2 px-3 rounded-tl-none md:text-base sm:text-sm text-xs">
+                                    <div class="mb-1">"Working with him on our website design was an awesome experience and everything from start to finish felt like a breeze."</div>
+                                    <div class="text-neutral-400 text-pretty"> - Nihal Mandanna, Head of Growth @ MobiLoud</div>
                                 </div>
                             </div>
-                            <div class="flex flex-row gap-2 items-start">
-                                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
-                                <div class="flex flex-col gap-2">
-                                    <div class="text-lg font-medium">Clear, concise and persuasive copywriting</div>
+                            <h1 class="lg:text-4xl text-3xl font-semibold leading-tight text-pretty mb-4">Get a taste of <span class="card p-2 inline-block translate-y-2"><svg class="w-[100px]" viewBox="0 0 132 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.47615 11.5709C6.47615 7.67882 8.42219 5.8923 16.6211 5.8923C21.6297 5.8923 26.8298 6.78556 30.5623 7.51931L31.7108 2.12783C27.2764 1.10696 21.6616 0.341309 16.3977 0.341309C4.46631 0.341309 0 4.26528 0 11.5709C0 18.8765 4.46631 22.8324 16.3977 22.8324C21.6616 22.8324 27.2764 22.0667 31.7108 21.0459L30.5623 15.6544C26.8298 16.3881 21.6297 17.2814 16.6211 17.2814C8.42219 17.2814 6.47615 15.4949 6.47615 11.5709ZM40.6676 22.4176V16.101H48.9303L56.7463 22.4176H64.8814L57.7353 16.8029L56.0125 15.7501L57.4162 15.7182C62.2335 15.3354 65.0728 13.0384 65.0728 8.25306C65.0728 2.54256 61.3402 0.66033 55.9806 0.66033H34.1914V22.4176H40.6676ZM40.6676 6.21132H55.3426C57.48 6.21132 58.3733 6.81746 58.3733 8.7635C58.3733 10.55 57.48 11.2519 55.3426 11.2519H40.6676V6.21132ZM74.3768 22.4176V15.3035H96.3257V10.1991H74.3768V6.21132H96.9319V0.66033H67.9006V22.4176H74.3768ZM111.951 6.21132V22.4176H118.427V6.21132H131.316V0.66033H99.0305V6.21132H111.951Z" fill="white"/>
+                            </svg></span> with a free hero redesign.</h1>
+                            <div class="lg:text-xl text-base font-normal text-pretty mb-6 text-neutral-300">Get a free test run before you commit to working with us on a full-scale redesign. We'll give you the free, personalized insights you need to boost your hero's conversion rate.</div>
+                            <div class="flex flex-col gap-2 text-neutral-300 lg:text-lg text-base">
+                                <div class="flex flex-row gap-2 items-start">
+                                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                    <div class="flex flex-col gap-2">
+                                        <div class="font-medium">Fully designed, custom mobile and desktop mockups</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="flex flex-row gap-2 items-start">
-                                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
-                                <div class="flex flex-col gap-2">
-                                    <div class="text-lg font-medium">3 business day email delivery</div>
+                                <div class="flex flex-row gap-2 items-start">
+                                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                    <div class="flex flex-col gap-2">
+                                        <div class="font-medium">Annotated design changes</div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-row gap-2 items-start">
+                                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                    <div class="flex flex-col gap-2">
+                                        <div class="font-medium">Clear, concise and persuasive copywriting</div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-row gap-2 items-start">
+                                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                    <div class="flex flex-col gap-2">
+                                        <div class="font-medium">3 business day delivery by email</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="mt-2">
-                        <div class="card">
+                    <div>
+                        <div class="card lg:p-8 p-5">
                             <form class="flex flex-col gap-5">
-                                <div>
-                                    <label for="firstName">Full Name</label>
-                                    <input id="firstName" type="text" placeholder="Jimmy John">
+                                <div class="flex md:flex-row flex-col md:gap-8 gap-5">
+                                    <div class="w-full">
+                                        <label for="firstName">First Name</label>
+                                        <input id="firstName" type="text" placeholder="Jimmy">
+                                    </div>
+                                    <div class="w-full">
+                                        <label for="lastName">Last Name</label>
+                                        <input id="lastName" type="text" placeholder="John">
+                                    </div>
                                 </div>
                                 <div>
                                     <label for="email">Work Email</label>
@@ -83,7 +102,35 @@ import NihalPFP from '../images/nihal-pfp.png';
                 </div>
             </div>
         </section>
-
+        
+        <section class="mt-0">
+            <div class="container">
+                <h2 class="text-4xl font-medium text-center mb-20">See some examples</h2>
+                <AuditExample companyName="Privy" websiteUrl="privy.com">
+                    <FAQItem slot="annotations"
+                    question="Note 1"
+                    answer="Add a sign-up CTA to the navigation menu. This ensures a visitor can instantly try Privy no matter their scroll position on the site, and is constantly reminding them of their ability to do so."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 2"
+                    answer="Make the heading more visually prominent by increasing its font size, and align the rest of the content's width with that of the navigation menu's."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 3"
+                    answer="Direct your visitor's attention towards trying Privy with bold, full-width buttons. As the primary CTA redirects to Privy's listing on the Shopify App Store, its text can be renamed from 'One-click signup with Shopify' to a shorter 'Add to Shopify.' The secondary CTA, labeled 'Not on Shopify? Sign up here' may lead visitors to think that clicking this would lead to signing up for Shopify and not Privy, when this is not the case. To clarify the intent of the secondary CTA, rename it to 'Not on Shopify' Try Privy here' for the website visitors who use other eCommerce platforms."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 4"
+                    answer="Showcase some of the store/customer profile pictures from your reviews for added credibility, and feature Privy's average star rating from the Shopify App Store alongside it."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 5"
+                    answer="Display an image whose association to the heading can be understood at a glance. In this instance, that would be a view of a shopper's device as they receive emails and sms messages from a brand that uses Privy to send them."
+                    />
+                </AuditExample>
+            </div>
+        </section>
+        
         <Footer/>
     </body>
 </html>
