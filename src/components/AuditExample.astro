@@ -1,6 +1,8 @@
 ---
 import { Image } from 'astro:assets';
-const {companyName, websiteUrl} = Astro.props;
+const {companyName, websiteUrl, imageBefore, imageAfter} = Astro.props;
+
+import HenryAfter from "../images/audits/henry-james-legal-after.png";
 ---
 <div class="grid grid-cols-[0.5fr_1.25fr] mb-20 gap-14">
     <div>
@@ -14,9 +16,9 @@ const {companyName, websiteUrl} = Astro.props;
         </div>
     </div>
     <div>
-        <div class="w-full aspect-video bg-neutral-500 mb-2"></div>
+        <Image src={imageBefore} alt={`${companyName} before`} class="w-full aspect-video object-contain object-center mb-2 border border-neutral-700 bg-neutral-800"></Image>
         <div class="mb-10">Before</div>
-        <div class="w-full aspect-video bg-neutral-500 mb-2"></div>
+        <Image src={imageAfter} alt={`${companyName} after`} class="w-full aspect-video object-cover object-top mb-2"></Image>
         <div>After</div>
     </div>
 </div>
