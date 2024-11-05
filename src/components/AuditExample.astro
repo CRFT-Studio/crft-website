@@ -5,13 +5,13 @@ const {companyName, websiteUrl, imageBefore, imageAfter} = Astro.props;
 import HenryAfter from "../images/audits/henry-james-legal-after.png";
 ---
 <div class="lg:grid lg:grid-cols-[0.5fr_1.25fr] grid-cols-1 mb-20 gap-14">
-    <div>
+    <div class="mb-8">
         <div class="sticky top-32">
             <div class="text-2xl lg:font-normal font-medium mb-2">{companyName}</div>
             <div class="text-lg text-neutral-300 mb-3">Audited URL: https://{websiteUrl}</div>
-            <a href="/audit#hero" class="text-orange-300 text-lg">Get my audit →</a>
-            <div class="flex flex-col scale-90 origin-top-left mt-8">
-                <slot class="w-full" name="annotations"/>
+            <a href="#hero" class="text-orange-300 text-lg">Get my audit →</a>
+            <div class="flex flex-col lg:scale-90 lg:origin-top-left mt-8">
+                <slot name="annotations"/>
             </div>
         </div>
     </div>
