@@ -10,6 +10,18 @@ import { Image } from 'astro:assets';
 import NihalPFP from '../images/nihal-pfp.png';
 import AuditExample from '../components/AuditExample.astro';
 import FAQItem from '../components/FAQItem.astro';
+
+//audit imports
+import HenryBefore from "../images/audits/henry-james-legal-before.png"
+import HenryAfter from "../images/audits/henry-james-legal-after.png";
+import DocytBefore from "../images/audits/docyt-before.png";
+import DocytAfter from "../images/audits/docyt-after.png";
+import SendBarsBefore from "../images/audits/send-bars-before.png";
+import SendBarsAfter from "../images/audits/send-bars-after.png";
+import PrivyBefore from "../images/audits/privy-before.png";
+import PrivyAfter from "../images/audits/privy-after.png";
+import serVmeBefore from "../images/audits/servme-before.png";
+import serVmeAfter from "../images/audits/servme-after.png";
 ---
 <html lang="en">
     <head>
@@ -106,7 +118,53 @@ import FAQItem from '../components/FAQItem.astro';
         <section class="mt-0">
             <div class="container">
                 <h2 class="text-4xl font-medium text-center mb-20">See some examples</h2>
-                <AuditExample companyName="Privy" websiteUrl="privy.com">
+                <AuditExample companyName="Docyt" websiteUrl="docyt.com" imageBefore={DocytBefore} imageAfter={DocytAfter}>
+                    <FAQItem slot="annotations"
+                    question="Note 1"
+                    answer="Unwrap the banner text such that it occupies a single, horizontally scrolling line. This way, the text will not push the rest of the content further down the screen."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 2"
+                    answer="Add the “Schedule a Demo” button inside the mobile navigation. This ensures visitors will be able to express their interest in Docyt no matter their current scroll position."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 3"
+                    answer="Display your Capterra and App Store ratings immediately on page load, in addition to those from GetApp and G2. This helps establish social proof and credibility with new website visitors, and encourages them to scroll down."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 4"
+                    answer="Shorten the heading to minimize the time it takes visitors to understand what Docyt is."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 5"
+                    answer="Showcase an image of Docyt to allow visitors to visualize what the heading and subtitle are describing. To accommodate the narrower dimensions of mobile devices, this image will be of the iOS app."
+                    />
+                </AuditExample>
+                
+                <AuditExample companyName="Send Bars" websiteUrl="sendbars.com" imageBefore={SendBarsBefore} imageAfter={SendBarsAfter}>
+                    <FAQItem slot="annotations"
+                    question="Note 1"
+                    answer="Showcase an image of one of the bars, and the outcome they sell as high up on the page as possible. This immediately makes it easier for your visitors to understand who you are and what you make without having to dig. Additionally, the picture of the bar should have the wrapper slightly torn off (without removing branding) so as to display what the very thing people will put in their mouth looks like."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 2"
+                    answer="Update your title and subtitle to be more descriptive. The title introduces the product within its particular use case, and the subtitle explains how it provides its value."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 3"
+                    answer="Direct your visitor’s attention where you want it with full-width buttons. The call-to-action is most effective through the use of verbs."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 4"
+                    answer="Showcase your customer reviews, with their profile pictures, under the CTA. This builds trust and credibility early on, and removes hesitation in clicking the button."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 5"
+                    answer="Feature all the nutritional claims/certifications in a horizontally scrolling bar. This is another way to illustrate what makes your bars better than others on the market."
+                    />
+                </AuditExample>
+                
+                <AuditExample companyName="Privy" websiteUrl="privy.com" imageBefore={PrivyBefore} imageAfter={PrivyAfter}>
                     <FAQItem slot="annotations"
                     question="Note 1"
                     answer="Add a sign-up CTA to the navigation menu. This ensures a visitor can instantly try Privy no matter their scroll position on the site, and is constantly reminding them of their ability to do so."
@@ -117,7 +175,7 @@ import FAQItem from '../components/FAQItem.astro';
                     />
                     <FAQItem slot="annotations"
                     question="Note 3"
-                    answer="Direct your visitor's attention towards trying Privy with bold, full-width buttons. As the primary CTA redirects to Privy's listing on the Shopify App Store, its text can be renamed from 'One-click signup with Shopify' to a shorter 'Add to Shopify.' The secondary CTA, labeled 'Not on Shopify? Sign up here' may lead visitors to think that clicking this would lead to signing up for Shopify and not Privy, when this is not the case. To clarify the intent of the secondary CTA, rename it to 'Not on Shopify' Try Privy here' for the website visitors who use other eCommerce platforms."
+                    answer="Direct your visitor's attention towards trying Privy with bold, full-width buttons. As the primary CTA redirects to Privy's listing on the Shopify App Store, its text can be renamed from 'One-click signup with Shopify' to a shorter 'Add to Shopify.' The secondary CTA, labeled 'Not on Shopify? Sign up here' may lead visitors to think that clicking this would lead to signing up for Shopify and not Privy, when this is not the case. To clarify the intent of the secondary CTA, rename it to 'Not on Shopify? Try Privy here' for the website visitors who use other eCommerce platforms."
                     />
                     <FAQItem slot="annotations"
                     question="Note 4"
@@ -126,6 +184,64 @@ import FAQItem from '../components/FAQItem.astro';
                     <FAQItem slot="annotations"
                     question="Note 5"
                     answer="Display an image whose association to the heading can be understood at a glance. In this instance, that would be a view of a shopper's device as they receive emails and sms messages from a brand that uses Privy to send them."
+                    />
+                </AuditExample>
+                
+                <AuditExample companyName="serVme" websiteUrl="servemeco.com" imageBefore={serVmeBefore} imageAfter={serVmeAfter}>
+                    <FAQItem slot="annotations"
+                    question="Note 1"
+                    answer="Place a “Request a demo” button inside the navigation menu. This ensures that visitors have the option to readily provide you with their information, no matter their current scroll position on the website."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 2"
+                    answer="Display a form of social proof further up the page to more immediately build credibility with your visitors."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 3"
+                    answer="Darken the restaurant background image to ensure that text always remains legible. Here, I darkened the background slightly more than required for legibility, and added concentrated lighting to the text with the goal of giving a luxury restaurant “feel” to the website."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 4"
+                    answer="Showcase the serVme platform as high up on the page as possible, just as your users will see it when using it. This further solidifies the visitor’s understanding of who you are and what you do, which they can only partially receive from reading a headline and subtitle."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 5"
+                    answer="Move the “Login” link beside the “Request a demo” button, and move the rest of the navigation links to the center of the screen. This adds separation to the navigation menu, and ensures visitors will not be overwhelmed by the number of buttons and links beside one another - allowing them to quickly process which they’d like to click."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 6"
+                    answer="To account for serVme’s other capabilites beyond table management; screenshots of restaurant analytics and CRM data can also be included here. For example, the table management screen inside the tablet can change to a different screen as the website visitor scrolls down. This approach would ensure that visitors can process each image at a time, without being overwhelmed by everything serVme can do all at  once."
+                    />
+                </AuditExample>
+                
+                <AuditExample companyName="Henry James Legal" websiteUrl="henryjameslegal.com" imageBefore={HenryBefore} imageAfter={HenryAfter}>
+                    <FAQItem slot="annotations"
+                    question="Note 1"
+                    answer="Place a “Contact us” button inside the navigation menu, and give it sticky positioning. This ensures that visitors can always reach out, no matter their scroll position on the website."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 2"
+                    answer="Immediately communicate your value proposition to your visitors right as they land on the page. This is accomplished with a bold heading and description on a white background, ensuring they are legible."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 3"
+                    answer="Display a call-to-action spanning the full width of the display, encouraging your visitors to engage with your firm."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 4"
+                    answer="Showcase a professional image of yourself to humanize your brand and leave visitors with a good impression. Here, the portrait on your current site was edited to include a courthouse in the background, ensuring it fits the description of a lawyer."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 5"
+                    answer="Feature snippets from your testimonials under the portrait of yourself, further establishing credibility and authority with your visitors."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 6"
+                    answer="Build additional pages to substantiate your offering (each of which will rank in search), and feature them in the navigation menu."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 7"
+                    answer="Showcase your practice areas directly below the first section of the page, as this is information that visitors will likely want to know before reading a multi-paragraph bio of yourself."
                     />
                 </AuditExample>
             </div>
