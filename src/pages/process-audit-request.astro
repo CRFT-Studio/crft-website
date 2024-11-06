@@ -1,26 +1,13 @@
 ---
 export const prerender = false;
 
-let firstName = '';
-let lastName = '';
-let email = '';
-let websiteUrl = '';
-let role = '';
+const out = Astro.redirect("/audit");
+if (Astro.request.method !== "POST") return out;
 
-if (Astro.request.method === "POST") {
-  try {
-    const data = await Astro.request.formData();
-    firstName = data.get("First Name");
-    lastName = data.get("Last Name")
-    email = data.get("Work Email");
-    websiteUrl = data.get("Website URL");
-    role = data.get("role");
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(error.message);
-    }
-  }
-}
+const fields = ["First Name", "Last Name", "Work Email", "Website URL", "Role", "Notes"];
+const formData = await Astro.request.formData();
+const params = fields.reduce((a, c) => { a[c] = formData.get(c); return a; }, {});
+if (!fields.filter(field => field !== "Notes").every(field => params[field])) return out;
 
 import { Resend } from 'resend';
 const resend = new Resend(import.meta.env.RESEND_API);
