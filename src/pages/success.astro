@@ -3,6 +3,13 @@ export const prerender = false;
 
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
+
+const out = Astro.redirect("/audit");
+if (Astro.request.method !== "GET") return out;
+
+const fields = ["First Name", "Last Name", "Work Email", "Website URL", "Role", "Notes"];
+const params = fields.reduce((a, c) => { a[c] = Astro.url.searchParams.get(c); return a; }, {});
+if (!fields.filter(field => field !== "Notes").every(field => params[field])) return out;
 ---
 <html lang="en">
     <head>
