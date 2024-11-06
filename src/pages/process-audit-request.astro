@@ -9,6 +9,13 @@ const formData = await Astro.request.formData();
 const params = fields.reduce((a, c) => { a[c] = formData.get(c); return a; }, {});
 if (!fields.filter(field => field !== "Notes").every(field => params[field])) return out;
 
+/*
+  TODOs:
+    - add email validation
+    - add url validation
+    - fixup notification email to crft (cuz its shit rn)
+    - send confirmation email to person requesting audit
+*/
 
 import { Resend } from 'resend';
 const resend = new Resend(Astro.locals.runtime.env.RESEND_API ?? import.meta.env.RESEND_API);
