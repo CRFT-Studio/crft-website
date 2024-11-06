@@ -16,9 +16,9 @@ resend.emails.send({
   from: 'jeremy@crft.studio',
   to: 'hi@crft.studio',
   subject: 'Thanks for requesting a website audit!',
-  html: `<p>Thank you, ${firstName} ${lastName}!</p>
-  <p>We'll send a confirmation email to: ${email}</p>
-  <p>Website URL: ${websiteUrl}</p>
-  <p>Role: ${role}</p>`
+  html: `<p>Thank you, ${params["First Name"]} ${params["Last Name"]}!</p>
+  <p>We'll send a confirmation email to: ${params["Work Email"]}</p>
+  <p>Website URL: ${params["Website URL"]}</p>
+  <p>Role: ${params["Role"]}</p>`
 });
 ---
