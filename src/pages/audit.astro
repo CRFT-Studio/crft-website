@@ -80,32 +80,32 @@ import serVmeAfter from "../images/audits/servme-after.png";
                     </div>
                     <div>
                         <div class="card lg:p-8 p-5">
-                            <form class="flex flex-col gap-5">
+                                <form method="post" action="/process-audit-request" class="flex flex-col gap-5">
                                 <div class="flex md:flex-row flex-col md:gap-8 gap-5">
                                     <div class="w-full">
                                         <label for="firstName">First Name</label>
-                                        <input id="firstName" type="text" placeholder="Jimmy">
+                                        <input id="firstName" name="First Name" type="text" placeholder="Jimmy" required>
                                     </div>
                                     <div class="w-full">
                                         <label for="lastName">Last Name</label>
-                                        <input id="lastName" type="text" placeholder="John">
+                                        <input id="lastName" name="Last Name" type="text" placeholder="John" required>
                                     </div>
                                 </div>
                                 <div>
                                     <label for="email">Work Email</label>
-                                    <input id="email" type="email" placeholder="john@example.com">
+                                    <input id="email" name="Work Email" type="email" placeholder="john@example.com" required>
                                 </div>
                                 <div>
                                     <label for="websiteUrl">Website URL</label>
-                                    <input id="websiteUrl" type="url" placeholder="https://example.com">
+                                    <input id="websiteUrl" name="Website URL" type="url" placeholder="https://example.com" required>
                                 </div>
                                 <div>
                                     <label for="role">Role</label>
-                                    <input id="role" type="text" placeholder="e.g. CEO, Marketing Manager, etc">
+                                    <input id="role" name="Role" type="text" placeholder="e.g. CEO, Marketing Manager, etc" required>
                                 </div>
                                 <div>
                                     <label for="notes">Notes</label>
-                                    <textarea id="story" name="notes" rows="5" cols="33" placeholder="Enter your message here..."></textarea>
+                                    <textarea id="story" name="Notes" rows="5" cols="33" placeholder="Enter your message here..."></textarea>
                                 </div>
                                 <button class="primary-cta text-center">Request Hero Redesign</button>
                             </form>
