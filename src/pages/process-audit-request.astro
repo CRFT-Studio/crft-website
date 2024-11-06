@@ -26,7 +26,8 @@ resend.emails.send({
   html: `<p>Thank you, ${params["First Name"]} ${params["Last Name"]}!</p>
   <p>We'll send a confirmation email to: ${params["Work Email"]}</p>
   <p>Website URL: ${params["Website URL"]}</p>
-  <p>Role: ${params["Role"]}</p>`
+  <p>Role: ${params["Role"]}</p>
+  <p>Notes: ${params["Notes"]}</p>`
 });
 
 return Astro.redirect("/success?" + new URLSearchParams(params));
