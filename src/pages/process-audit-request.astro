@@ -21,4 +21,6 @@ resend.emails.send({
   <p>Website URL: ${params["Website URL"]}</p>
   <p>Role: ${params["Role"]}</p>`
 });
+
+return Astro.redirect("/success?" + new URLSearchParams(params));
 ---
