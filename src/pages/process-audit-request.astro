@@ -19,16 +19,28 @@ if (!fields.filter(field => field !== "Notes").every(field => params[field])) re
 
 import { Resend } from 'resend';
 const resend = new Resend(Astro.locals.runtime.env.RESEND_API ?? import.meta.env.RESEND_API);
-await resend.emails.send({
-  from: 'jeremy@crft.studio',
-  to: 'hi@crft.studio',
-  subject: 'Thanks for requesting a website audit!',
-  html: `<p>Thank you, ${params["First Name"]} ${params["Last Name"]}!</p>
-  <p>We'll send a confirmation email to: ${params["Work Email"]}</p>
-  <p>Website URL: ${params["Website URL"]}</p>
-  <p>Role: ${params["Role"]}</p>
-  <p>Notes: ${params["Notes"]}</p>`
-});
+await resend.batch.send([
+  {
+    from: 'audit@crft.studio',
+    to: params["Work Email"],
+    subject: `${params["First Name"]}, thanks for requesting a hero redesign!`,
+    html: `<p>Thanks for requesting a hero redesign of ${params["Website URL"]}, ${params["First Name"]}. We'll have it ready for you within 3 business days. In the meantime, feel free to check out examples of past redesigns in case you haven't already, and reply to this email with any questions or comments you have.' </p>
+    <p>I look forward to hearing back,</p>
+    <p>Jeremy, Founder @ CRFT Studio</p>`
+  },
+  {
+    from: 'audit@crft.studio',
+    to: 'jeremy@crft.studio',
+    subject: `New audit request from ${params["First Name"]}`,
+    html: `<p>First Name: ${params["First Name"]}<br>
+    Last Name: ${params["Last Name"]}<br>
+    Work Email: ${params["Work Email"]}<br>
+    Website URL: ${params["Website URL"]}<br>
+    Role: ${params["Role"]}<br>
+    Notes: ${params["Notes"]}<br>
+    </p>`,
+  },
+]);
 
 return Astro.redirect("/success?" + new URLSearchParams(params));
 ---
