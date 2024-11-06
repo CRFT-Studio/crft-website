@@ -19,7 +19,7 @@ if (!fields.filter(field => field !== "Notes").every(field => params[field])) re
 
 import { Resend } from 'resend';
 const resend = new Resend(Astro.locals.runtime.env.RESEND_API ?? import.meta.env.RESEND_API);
-resend.emails.send({
+await resend.emails.send({
   from: 'jeremy@crft.studio',
   to: 'hi@crft.studio',
   subject: 'Thanks for requesting a website audit!',
