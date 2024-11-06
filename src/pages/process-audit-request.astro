@@ -1,0 +1,37 @@
+---
+export const prerender = false;
+
+let firstName = '';
+let lastName = '';
+let email = '';
+let websiteUrl = '';
+let role = '';
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    firstName = data.get("First Name");
+    lastName = data.get("Last Name")
+    email = data.get("Work Email");
+    websiteUrl = data.get("Website URL");
+    role = data.get("role");
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+
+import { Resend } from 'resend';
+const resend = new Resend(import.meta.env.RESEND_API);
+
+resend.emails.send({
+  from: 'jeremy@crft.studio',
+  to: 'hi@crft.studio',
+  subject: 'Thanks for requesting a website audit!',
+  html: `<p>Thank you, ${firstName} ${lastName}!</p>
+  <p>We'll send a confirmation email to: ${email}</p>
+  <p>Website URL: ${websiteUrl}</p>
+  <p>Role: ${role}</p>`
+});
+---
