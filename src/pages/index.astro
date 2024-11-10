@@ -41,12 +41,15 @@ import { fade } from 'astro:transitions';
                         <a href="/audit" class="secondary-cta">Get Free Audit</a>
                     </div>
             </div>
-            <div class="flex flex-row justify-center gap-10 lg:gap-16 mt-20 overflow-x-hidden">
-                <Image class="w-60 lg:w-auto" src={MobiLoud} alt="MobiLoud" />
-                <Image class="w-60 lg:w-auto" src={FeedBear} alt="FeedBear" />
-                <Image class="w-60 lg:w-auto" src={MobiLoud} alt="MobiLoud" />
-                <Image class="w-60 lg:w-auto" src={MixBloom} alt="MixBloom" />
-                <Image class="w-60 lg:w-auto" src={MobiLoud} alt="MobiLoud" />
+            <div class="lg:max-w-[1400px] lg:mx-auto relative">
+                <div class="lg:absolute w-full h-full bg-gradient-to-r from-neutral-900 via-transparent to-neutral-900 z-20"></div>
+                <div class="flex flex-row justify-center gap-10 lg:gap-16 mt-20 overflow-x-hidden z-10">
+                    <Image class="w-60 lg:w-auto" src={MobiLoud} alt="MobiLoud" />
+                    <Image class="w-60 lg:w-auto" src={FeedBear} alt="FeedBear" />
+                    <Image class="w-60 lg:w-auto" src={MobiLoud} alt="MobiLoud" />
+                    <Image class="w-60 lg:w-auto" src={MixBloom} alt="MixBloom" />
+                    <Image class="w-60 lg:w-auto" src={MobiLoud} alt="MobiLoud" />
+                </div>
             </div>
         </section>
 
