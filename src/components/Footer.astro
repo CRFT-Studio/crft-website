@@ -1,7 +1,37 @@
 ---
-
+import { Image } from 'astro:assets';
+import JeremyPFP from '../images/jeremy-pfp.png';
+import DavidPFP from '../images/david-pfp.png';
 ---
-<footer class="bg-neutral-800 py-10">
+<footer class="bg-[#1C1A1A] py-10">
+    <div class="container mb-14">
+        <div class="card p-5 flex md:flex-row flex-col gap-9 justify-between items-center">
+            <div class="lg:px-5">
+                <div class="flex flex-row items-center mb-4">
+                    <Image src={JeremyPFP} alt="Jeremy pfp" class="rounded-full aspect-square object-cover w-[50px]"/>
+                    <Image src={DavidPFP} alt="Jeremy pfp" class="rounded-full aspect-square w-[50px] object-cover -ml-3"/>
+                </div>
+                <div class="text-3xl text-pretty font-medium mb-2">Tell us about your website</div>
+                <div class="text-lg text-pretty">See what a redesigned, lightning-fast website can do for your business.</div>
+            </div>
+            
+            <div>
+                <div class="flex md:flex-row flex-col gap-3 lg:max-w-[600px]">
+                    <a href="/pricing" class="card p-5 text-lg hover:-translate-y-1 transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#D4D4D4"><path d="M560-440q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35ZM280-320q-33 0-56.5-23.5T200-400v-320q0-33 23.5-56.5T280-800h560q33 0 56.5 23.5T920-720v320q0 33-23.5 56.5T840-320H280Zm80-80h400q0-33 23.5-56.5T840-480v-160q-33 0-56.5-23.5T760-720H360q0 33-23.5 56.5T280-640v160q33 0 56.5 23.5T360-400Zm440 240H120q-33 0-56.5-23.5T40-240v-440h80v440h680v80ZM280-400v-320 320Z"/></svg>
+                        <div class="font-normal leading-normal mb-2 mt-3">Find out which plan works best for your project</div>
+                        <div class="text-orange-300">Learn about pricing →</div>
+                    </a>
+                    <a href="/audit" class="card p-5 text-lg hover:-translate-y-1 transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#D4D4D4"><path d="m352-522 86-87-56-57-44 44-56-56 43-44-45-45-87 87 159 158Zm328 329 87-87-45-45-44 43-56-56 43-44-57-56-86 86 158 159Zm24-567 57 57-57-57ZM290-120H120v-170l175-175L80-680l200-200 216 216 151-152q12-12 27-18t31-6q16 0 31 6t27 18l53 54q12 12 18 27t6 31q0 16-6 30.5T816-647L665-495l215 215L680-80 465-295 290-120Zm-90-80h56l392-391-57-57-391 392v56Zm420-419-29-29 57 57-28-28Z"/></svg>
+                        <div class="font-normal leading-normal mb-2 mt-3">Kick things off with a free redesign of your website's hero</div>
+                        <div class="text-orange-300">Get a free hero redesign →</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="flex flex-row justify-between flex-wrap lg:flex-nowrap">
             <div class="w-full mb-8">
