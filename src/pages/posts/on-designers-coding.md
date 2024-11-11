@@ -15,7 +15,7 @@ Whether designers should code or not seems to be a topic of heated debate. As a 
 
 When it comes down to it, a designer's job is to *draw* an interface. I want to be able to turn that interface into a real thing that people can use and interact with, without having to rely on someone else.
 
-In large companies, my impression is that there's this odd disconnect between designers and developers. Designers view developers as these stuck-up assholes who never implement their work correctly, and developers view designers as annoyances who always complain about the font weights being incorrect, or the spacing between elements looking "off". I want to do away with this dichotomy by building my own designs - not complaining about how somebody else didn't.
+In large companies, my impression is that there's this odd disconnect between designers and developers. Designers view developers as stuck-up people who never implement their work correctly, and developers view designers as annoyances who always complain about the font weights being incorrect, or the spacing between elements looking "off". I want to do away with this dichotomy by building my own designs - not complaining about how somebody else didn't.
 
 When dealing with computers more broadly, and the web specifically, knowing how to code is to understand how they work - and I want to be a curious person.
 
