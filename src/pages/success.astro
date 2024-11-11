@@ -7,6 +7,7 @@ import { Image } from "astro:assets";
 import JeremyPFP from "../images/jeremy-pfp.png";
 import FAQItem from "../components/FAQItem.astro";
 import AuditExample from "../components/AuditExample.astro";
+import HeadScripts from "../components/HeadScripts.astro";
 
 //audit imports
 import HenryBefore from "../images/audits/henry-james-legal-before.png"
@@ -35,6 +36,7 @@ if (!fields.filter(field => field !== "Notes").every(field => params[field])) re
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
         <title>Thanks {params["First Name"]} | CRFT Studio</title>
+        <HeadScripts/>
     </head>
     <body>
         <Navigation />

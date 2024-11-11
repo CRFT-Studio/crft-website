@@ -7,6 +7,7 @@ import BitchPC from "../images/bitch-pc-new.png";
 import BitchPCMask from "../images/bitch-pc-masked.png";
 import DavidPFP from "../images/david-pfp.png"
 import { Image } from "astro:assets";
+import HeadScripts from "../components/HeadScripts.astro";
 
 // show you and bro pfps side-by-side above the h1, in the same style as Pietro and Nihal. Headline can have "two bros" in it.
 
@@ -25,6 +26,7 @@ import { Image } from "astro:assets";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>About Us | CRFT Studio</title>
+		<HeadScripts/>
 	</head>
     <body>
         <Navigation />

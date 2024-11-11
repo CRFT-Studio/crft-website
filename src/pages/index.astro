@@ -16,6 +16,7 @@ import BlogPosts from '../components/BlogPosts.astro';
 import Footer from '../components/Footer.astro';
 import FAQs from '../components/FAQs.astro';
 import Testimonials from '../components/Testimonials.astro';
+import HeadScripts from '../components/HeadScripts.astro';
 import { ViewTransitions } from 'astro:transitions';
 import { fade } from 'astro:transitions';
 ---
@@ -29,6 +30,7 @@ import { fade } from 'astro:transitions';
 		<meta name="generator" content={Astro.generator} />
 		<title>CRFT Studio | Marketing Sites Built to Convert</title>
 		<ViewTransitions/>
+		<HeadScripts/>
 	</head>
     <body>
         <Navigation />

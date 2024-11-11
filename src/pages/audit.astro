@@ -10,6 +10,7 @@ import { Image } from 'astro:assets';
 import NihalPFP from '../images/nihal-pfp.png';
 import AuditExample from '../components/AuditExample.astro';
 import FAQItem from '../components/FAQItem.astro';
+import HeadScripts from '../components/HeadScripts.astro';
 
 //audit imports
 import HenryBefore from "../images/audits/henry-james-legal-before.png"
@@ -31,6 +32,7 @@ import serVmeAfter from "../images/audits/servme-after.png";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Free Hero Redesign | CRFT Studio</title>
+		<HeadScripts/>
 	</head>
     <body>
         <Navigation />

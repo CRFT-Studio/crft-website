@@ -3,6 +3,7 @@ import Navigation from "../components/Navigation.astro";
 import Testimonials from "../components/Testimonials.astro";
 import Footer from "../components/Footer.astro";
 import Stripe from "stripe";
+import HeadScripts from "../components/HeadScripts.astro";
 
 const STRIPE_API = Astro.locals.runtime.env.STRIPE_API ?? import.meta.env.STRIPE_API;
 const stripe = new Stripe(STRIPE_API);
@@ -25,6 +26,7 @@ tiers.forEach(tier => prices[tier] = pricesRaw.data.find(price => price.lookup_k
                 @apply bg-neutral-700;
             }
         </style>
+        <HeadScripts/>
     </head>
     <body>
         <Navigation/>
