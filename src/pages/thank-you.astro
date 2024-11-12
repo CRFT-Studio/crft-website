@@ -17,13 +17,10 @@ const websiteUrl = checkoutSession.custom_fields.find(field => field.key === "We
 
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="description" content="Astro description" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="generator" content={Astro.generator} />
-        <title>Thank You! | CRFT Studio</title>
-        <HeadScripts/>
+        <meta name="robots" content="noindex" />
+        <HeadScripts
+        title="Thank You! | CRFT Studio"
+        />
     </head>
     <body>
         <Navigation />

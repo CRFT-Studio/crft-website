@@ -14,9 +14,6 @@ tiers.forEach(tier => prices[tier] = pricesRaw.data.find(price => price.lookup_k
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pricing | CRFT Studio</title>
         <style>
             #tabs div {
                 @apply border-transparent;
@@ -26,7 +23,10 @@ tiers.forEach(tier => prices[tier] = pricesRaw.data.find(price => price.lookup_k
                 @apply bg-neutral-700;
             }
         </style>
-        <HeadScripts/>
+        <HeadScripts
+        title="Pricing | CRFT Studio"
+        description="A simple, straightforward monthly fee for the length of our project. No contracts or fixed scropes of work. Pause or cancel your subscription as needed."
+        />
     </head>
     <body>
         <Navigation/>

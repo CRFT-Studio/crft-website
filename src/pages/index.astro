@@ -23,14 +23,11 @@ import { fade } from 'astro:transitions';
 <!DOCTYPE html>
 <html lang="en" transition:animate={fade({ duration: '0.2s' })}>
     <head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>CRFT Studio | Marketing Sites Built to Convert</title>
 		<ViewTransitions/>
-		<HeadScripts/>
+		<HeadScripts
+		title="CRFT Studio | Marketing Sites Built to Convert"
+		description="We design and develop beautiful, performant, and maintainable websites for the best marketing teams."
+		/>
 	</head>
     <body>
         <Navigation />
