@@ -103,14 +103,8 @@
     }
 
     .tag {
-        padding: 3px 9px;
-        display: inline-block;
-        color: #FA934E;
-        font-weight: 400;
-        font-size: 16px;
-        border-radius: 8px;
-        border: solid 1px #A6653B;
-        background-color: #7F5032;
+        @apply px-2 py-0 inline-block bg-orange-400 bg-opacity-25 font-normal text-base 
+        text-orange-300 rounded-lg border border-orange-400 border-opacity-50
     }
     
     input:where([type="text"], [type="email"], [type="url"]), textarea {
