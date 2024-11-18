@@ -1,0 +1,41 @@
+---
+import HeadScripts from "../components/HeadScripts.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+import GlossaryNav from "../components/GlossaryNav.astro";
+
+const {frontmatter} = Astro.props;
+---
+
+<html lang="en">
+    <head>
+        <HeadScripts
+        title=''
+        description=''
+        />
+    </head>
+    
+    <body>
+        <Navigation/>
+        <section class="my-20">
+            <div class="container">
+                <div class="grid grid-cols-[0.3fr_1fr]">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        <GlossaryNav/>
+                        <article class="bg-neutral-800 p-10 rounded-lg border border-neutral-700 shadow-md mt-3">
+                            <h1 class="lg:text-5xl text-4xl font-serif font-semibold leading-normal mb-2">Hero Section</h1>
+                            <div class="text-lg mb-8">[uhn tee ree ur duh-zai-nr] noun</div>
+                            <div class="prose prose-lg text-neutral-50 leading-normal prose-h1:text-2xl prose-h1:font-medium prose-headings:text-neutral-200">
+                                <slot>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <Footer/>
+    </body>
+</html>
