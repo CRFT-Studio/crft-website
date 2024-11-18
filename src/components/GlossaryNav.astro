@@ -1,31 +1,16 @@
 ---
 import GlossaryLetter from "./GlossaryLetter.astro";
+const { highlightedLetter } = Astro.props;
+const alphabet = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
 ---
 <div class="w-auto inline-flex flex-row gap-2 items-center bg-neutral-800 border border-neutral-700 rounded-md p-[2px] px-1">
-    <GlossaryLetter><slot><div>A</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>B</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>C</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>D</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>E</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>F</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>G</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>H</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>I</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>J</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>K</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>L</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>M</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>N</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>O</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>P</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>Q</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>R</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>S</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>T</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>U</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>V</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>W</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>X</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>Y</div></slot></GlossaryLetter>
-    <GlossaryLetter><slot><div>Z</div></slot></GlossaryLetter>
+    {alphabet.map(letter =>
+        <GlossaryLetter highlighted={highlightedLetter === letter}>
+            <slot>
+                <div>
+                    {letter}
+                </div>
+            </slot>
+        </GlossaryLetter>
+    )}
 </div>

@@ -14,17 +14,17 @@ const {frontmatter} = Astro.props;
         description=''
         />
     </head>
-    
+
     <body>
         <Navigation/>
         <section class="my-20">
             <div class="container">
                 <div class="grid grid-cols-[0.3fr_1fr]">
                     <div>
-                        
+
                     </div>
                     <div>
-                        <GlossaryNav/>
+                        <GlossaryNav highlightedLetter={frontmatter.term[0]}/>
                         <article class="bg-neutral-800 p-10 rounded-lg border border-neutral-700 shadow-md mt-3">
                             <h1 class="lg:text-5xl text-4xl font-serif font-semibold leading-normal mb-2">Hero Section</h1>
                             <div class="text-lg mb-8">[uhn tee ree ur duh-zai-nr] noun</div>
