@@ -1,8 +1,10 @@
 ---
-layout: ../../layouts/GlossaryLayout.astro
-title: 'On designers coding'
-description: 'This is the first post of my new Astro blog.'
-term: 'Hero Section'
+layout: "../../layouts/GlossaryLayout.astro"
+title: "Hero Section"
+description: "Learn about hero sections - the impactful first impression of your website"
+term: "Hero Section"
+phonetic: "[hee-roh sek-shun]"
+shortDefinition: "The topmost section of a webpage that serves as an introduction to the content below. It is the first thing visitors see when they land on your website."
 ---
 A hero section, also known as a hero image or header, is the topmost section of a webpage that serves as an introduction to the content below it. It's usually the first thing visitors see when they land on your website. The primary goal of a hero section is to capture users' attention, communicate the value proposition of your brand, and entice them to explore further.
 
