@@ -1,9 +1,9 @@
 ---
 import GlossaryLetter from "./GlossaryLetter.astro";
-const { highlightedLetter } = Astro.props;
+const { highlightedLetter, vertical } = Astro.props;
 const alphabet = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
 ---
-<div class="w-auto inline-flex flex-row gap-2 items-center bg-neutral-800 border border-neutral-700 rounded-md p-[2px] px-1">
+<div class={`w-auto inline-flex ${vertical ? "flex-col" : "flex-row"} gap-2 items-center bg-neutral-800 border border-neutral-700 rounded-md p-[2px] px-1`}>
     {alphabet.map(letter =>
         <GlossaryLetter highlighted={highlightedLetter === letter}>
             <slot>
