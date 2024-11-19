@@ -1,0 +1,70 @@
+---
+import HeadScripts from "../../components/HeadScripts.astro";
+import Navigation from "../../components/Navigation.astro";
+import Footer from "../../components/Footer.astro";
+import GlossaryNav from "../../components/GlossaryNav.astro";
+
+const alphabet = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
+---
+<html lang="en">
+    <head>
+        <HeadScripts
+        title=''
+        description=''
+        />
+    </head>
+
+    <body>
+        <Navigation/>
+        <section class="my-20">
+            <div class="container">
+                
+                <div class="text-center mb-24">
+                    <h1 class="text-4xl font-medium leading-normal mb-3">Web Design Glossary</h1>
+                    <div class="text-lg">The A-Z glossary for marketers and designers to stay in the know</div>
+                </div>    
+            
+                <div class="grid grid-cols-[0.1fr_1fr]">
+                    <div>
+                        <div class="sticky top-24">
+                            <GlossaryNav vertical/>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        {alphabet.map((letter) =>
+                            <div class="text-5xl mb-10 scroll-mt-24" id={letter}>{letter}</div>
+                            <div class="grid grid-cols-3 mb-20">
+                                <div class="border border-neutral-600 p-5 -m-[1px]">
+                                    <div class="text-xl mb-1">Hero Section</div>
+                                    <div class="mb-2">[uhn tee ree ur duh-zai-nr]</div>
+                                    <div class="mb-2">The topmost section of a webpage that serves as an introduction to the content below. It's the first thing visitors see when they land on your website.</div>
+                                    <a href="/pricing" class="text-orange-300">Learn more →</a>
+                                </div>
+                                <div class="border border-neutral-600 p-5 -m-[1px]">
+                                    <div class="text-xl mb-1">Hero Section</div>
+                                    <div class="mb-2">[uhn tee ree ur duh-zai-nr]</div>
+                                    <div class="mb-2">The topmost section of a webpage that serves as an introduction to the content below. It's the first thing visitors see when they land on your website.</div>
+                                    <a href="/pricing" class="text-orange-300">Learn more →</a>
+                                </div>
+                                <div class="border border-neutral-600 p-5 -m-[1px]">
+                                    <div class="text-xl mb-1">Hero Section</div>
+                                    <div class="mb-2">[uhn tee ree ur duh-zai-nr]</div>
+                                    <div class="mb-2">The topmost section of a webpage that serves as an introduction to the content below. It's the first thing visitors see when they land on your website.</div>
+                                    <a href="/pricing" class="text-orange-300">Learn more →</a>
+                                </div>
+                                <div class="border border-neutral-600 p-5 -m-[1px]">
+                                    <div class="text-xl mb-1">Hero Section</div>
+                                    <div class="mb-2">[uhn tee ree ur duh-zai-nr]</div>
+                                    <div class="mb-2">The topmost section of a webpage that serves as an introduction to the content below. It's the first thing visitors see when they land on your website.</div>
+                                    <a href="/pricing" class="text-orange-300">Learn more →</a>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <Footer/>
+    </body>
+</html>
