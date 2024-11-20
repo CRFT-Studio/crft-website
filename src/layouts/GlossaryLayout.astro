@@ -3,16 +3,15 @@ import HeadScripts from "../components/HeadScripts.astro";
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
 import GlossaryNav from "../components/GlossaryNav.astro";
-const {frontmatter} = Astro.props;
+import TableOfContents from "../components/TableOfContents.astro";
+
+const {frontmatter, headings} = Astro.props;
 
 // make internal linking dynamic, and done at build time
 // sidebar letter highlighting
 // article recommendations
 // search/fitlering
 // mobile table of contents
-
-import TableOfContents from "../components/TableOfContents.astro";
-const { headings } = Astro.props;
 ---
 
 <html lang="en">
