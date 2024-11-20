@@ -27,21 +27,23 @@ const { headings } = Astro.props;
         <Navigation/>
         <section class="my-20">
             <div class="container">
-                <div class="grid grid-cols-[0.25fr_1fr] gap-14">
+                <div class="lg:grid lg:grid-cols-[0.25fr_1fr] gap-14">
                     <div>
-                        <div class="sticky top-24 mt-12">
+                        <div class="sticky top-24 mt-2">
                             <a href="/glossary" class="font-normal text-neutral-300 lg:block hidden hover:text-neutral-100">← Glossary</a>
-                            <TableOfContents headings={headings} levels={3} />
+                            <div class="lg:block hidden">
+                                <TableOfContents headings={headings} levels={3} />
+                            </div>
                         </div>
                     </div>
                     <div>
                         <GlossaryNav highlightedLetter={frontmatter.term[0]}/>
-                        <article class="p-10 rounded-sm border border-neutral-700 shadow-md mt-3">
+                        <article class="lg:p-10 p-5 rounded-sm border border-neutral-700 shadow-md mt-3">
                             <a href="/glossary" class="text-neutral-400 hover:underline">The Web Design Glossary</a>
                             <h1 class="lg:text-5xl text-4xl font-serif font-semibold leading-normal mb-3 mt-3">{frontmatter.term}</h1>
                             <div class="text-lg mb-8">{frontmatter.pronunciation}</div>
                             <div class="prose prose-lg text-neutral-300 leading-normal prose-h2:text-2xl prose-h2:font-medium prose-h2:mt-4 prose-h2:mb-3 prose-a:text-orange-300 prose-code:text-orange-300 prose-headings:text-neutral-200 prose-strong:text-neutral-300">
-                                <slot>
+                                <slot/>
                             </div>
                         </article>
                     </div>
