@@ -1,0 +1,63 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "Time on Page: Understanding User Engagement Metrics"
+description: "Time on Page is a crucial web analytics metric that measures how long users spend on individual web pages, helping assess content engagement and user behavior."
+term: "Time on Page"
+pronunciation: "[tahym on peyj]"
+shortDefinition: "A web analytics metric that measures the duration a user spends actively viewing a specific webpage before navigating away."
+---
+
+Time on Page is a fundamental web analytics metric that calculates the amount of time a user spends actively viewing and engaging with a specific webpage, from the moment they land on it until they navigate to another page or exit the site.
+
+## Understanding Time on Page
+
+Time on Page provides valuable insights into user engagement and content effectiveness. A longer time spent on a page often indicates that users find the content valuable, relevant, or engaging. However, context is crucial – while a long duration might be positive for blog posts or detailed product pages, it could signal confusion or poor user experience on checkout or contact pages.
+
+## How Time on Page is Calculated
+
+The calculation of Time on Page involves tracking:
+- The timestamp when a user enters a page
+- The timestamp when they navigate to another page
+- The difference between these two timestamps
+
+It's important to note that the final page in a session cannot have an accurate Time on Page measurement since there's no subsequent pageview to mark the end time.
+
+## Tracking with PostHog
+
+At CRFT Studio, we utilize [PostHog](https://posthog.com) as our primary analytics tool to track Time on Page and other engagement metrics. PostHog offers several advantages for measuring Time on Page:
+
+### Session Recording
+- Captures real user interactions
+- Provides visual replay of user sessions
+- Helps identify engagement patterns and potential UX issues
+
+### Event-Based Tracking
+- Records specific user actions and timestamps
+- Enables custom event tracking for more accurate measurements
+- Allows for segmentation based on user behavior
+
+### Advanced Analytics Features
+- Heat maps showing user engagement
+- Custom dashboards for monitoring Time on Page metrics
+- Integration with other engagement metrics for comprehensive analysis
+
+## Best Practices for Time on Page Analysis
+
+### Context Matters
+- Compare similar page types (e.g., blog posts with blog posts)
+- Consider the intended purpose of each page
+- Account for content length and type
+
+### Improvement Strategies
+- Optimize content readability
+- Enhance page load speed
+- Implement engaging multimedia elements
+- Create clear calls-to-action
+
+### Common Benchmarks
+- Blog posts: 3-4 minutes
+- Landing pages: 2-3 minutes
+- Product pages: 1-2 minutes
+- Contact/checkout pages: Under 1 minute
+
+Understanding Time on Page metrics helps in making data-driven decisions about content strategy, user experience improvements, and overall website optimization. When combined with other analytics data, it provides a comprehensive view of how users interact with your website.

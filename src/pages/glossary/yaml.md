@@ -1,0 +1,82 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "YAML - Data Serialization Format for Web Development"
+description: "YAML is a human-readable data serialization format used in web development for configuration files and frontmatter. Learn how YAML works and its implementation in Astro."
+term: "YAML"
+pronunciation: "[yaml]"
+shortDefinition: "A human-readable data serialization language commonly used for configuration files and frontmatter in static site generators."
+---
+
+YAML (YAML Ain't Markup Language) is a data serialization language designed to be easily readable by humans while being machine-parsable. It uses indentation and simple punctuation to structure data, making it an ideal choice for configuration files, data exchange, and frontmatter in web development projects.
+
+## Key Features of YAML
+
+### Syntax Structure
+- Uses indentation (spaces, not tabs) to indicate nesting
+- Supports lists, maps, and scalar values
+- Allows for comments using the '#' symbol
+- Can represent complex data structures
+- More readable than JSON or XML
+
+### Common Use Cases
+- Configuration files for applications
+- Build tool settings
+- Docker compose files
+- Content management systems
+- Static site generators
+- CI/CD pipeline configurations
+
+## YAML in Astro
+
+Astro, the web framework we use to build websites, specifically uses YAML in two primary ways:
+
+### Frontmatter
+```yaml
+---
+title: "My Blog Post"
+author: "Jane Doe"
+date: 2024-01-01
+draft: false
+tags: 
+  - web development
+  - astro
+---
+```
+
+### Configuration Files
+The `astro.config.mjs` file, while not directly YAML, often contains configuration objects that follow similar structural patterns:
+
+```javascript
+export default defineConfig({
+  site: 'https://example.com',
+  integrations: [
+    mdx(),
+    tailwind()
+  ],
+  markdown: {
+    shikiConfig: {
+      theme: 'dracula'
+    }
+  }
+});
+```
+
+## Best Practices
+
+### When Working with YAML
+- Maintain consistent indentation
+- Use descriptive key names
+- Validate YAML syntax before deployment
+- Document complex structures
+- Keep configurations modular
+- Use appropriate data types
+
+### Common Pitfalls to Avoid
+- Mixing tabs and spaces
+- Incorrect indentation levels
+- Missing required fields
+- Invalid character usage
+- Improper list formatting
+- Unescaped special characters
+
+YAML's simplicity and readability make it an essential tool in modern web development, particularly in static site generators like Astro. Its ability to represent complex data structures in a human-readable format has contributed to its widespread adoption across various development tools and platforms.
