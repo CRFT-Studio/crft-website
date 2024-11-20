@@ -25,10 +25,11 @@ const {frontmatter} = Astro.props;
                     </div>
                     <div>
                         <GlossaryNav highlightedLetter={frontmatter.term[0]}/>
-                        <article class="bg-neutral-800 p-10 rounded-lg border border-neutral-700 shadow-md mt-3">
-                            <h1 class="lg:text-5xl text-4xl font-serif font-semibold leading-normal mb-2">Hero Section</h1>
-                            <div class="text-lg mb-8">[uhn tee ree ur duh-zai-nr] noun</div>
-                            <div class="prose prose-lg text-neutral-50 leading-normal prose-h1:text-2xl prose-h1:font-medium prose-headings:text-neutral-200">
+                        <article class="p-10 rounded-sm border border-neutral-700 shadow-md mt-3">
+                            <a href="/glossary" class="text-neutral-400 hover:underline">The Web Design Glossary</a>
+                            <h1 class="lg:text-5xl text-4xl font-serif font-semibold leading-normal mb-3 mt-3">{frontmatter.term}</h1>
+                            <div class="text-lg mb-8">{frontmatter.pronunciation}</div>
+                            <div class="prose prose-lg text-neutral-300 leading-normal prose-h2:text-2xl prose-h2:font-medium prose-h2:mt-4 prose-h2:mb-3 prose-a:text-orange-300 prose-code:text-orange-300 prose-headings:text-neutral-200 prose-strong:text-neutral-300">
                                 <slot>
                             </div>
                         </article>
