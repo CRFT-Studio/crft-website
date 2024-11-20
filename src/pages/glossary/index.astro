@@ -5,7 +5,7 @@ import Footer from "../../components/Footer.astro";
 import GlossaryNav from "../../components/GlossaryNav.astro";
 
 const alphabet = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
-const glossaryPages = await Astro.glob('./*.md');
+const glossaryPages = await Astro.glob('./*.mdx');
 const {frontmatter} = Astro.props;
 ---
 <html lang="en">
