@@ -18,6 +18,9 @@ const {frontmatter} = Astro.props;
 
     <body>
         <Navigation/>
+        <div class="sticky lg:hidden top-16 mb-11 z-10">
+            <GlossaryNav/>
+        </div>
         <section class="my-20">
             <div class="container">
                 
@@ -30,9 +33,9 @@ const {frontmatter} = Astro.props;
                     </form>
                 </div>    
             
-                <div class="grid grid-cols-[0.1fr_1fr]">
-                    <div>
-                        <div class="sticky top-24">
+                <div class="lg:grid lg:grid-cols-[0.1fr_1fr]">
+                    <div class="mb-11">
+                        <div class="sticky lg:block hidden top-24">
                             <GlossaryNav vertical/>
                         </div>
                     </div>
@@ -40,7 +43,7 @@ const {frontmatter} = Astro.props;
                     <div>
                         {alphabet.map((letter) =>
                             <div class="text-5xl mb-10 scroll-mt-24" id={letter}>{letter}</div>
-                            <div class="grid grid-cols-3 mb-20">
+                            <div class="grid md:grid-cols-3 mb-20">
                                 {glossaryPages.filter((page) =>
                                     page.frontmatter.term.charAt(0).toUpperCase() === letter
                                     ).map((page) => (
