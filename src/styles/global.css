@@ -115,6 +115,14 @@
     label {
         @apply block text-base text-neutral-300 font-normal mb-2
     }
+    
+    .blog-content {
+        @apply prose prose-lg text-pretty text-neutral-300 leading-normal 
+        prose-h2:text-2xl prose-h2:font-medium prose-h2:mt-4 prose-h2:mb-4 
+        prose-h3:text-xl prose-h3:mb-2
+        prose-a:text-orange-300 prose-code:text-orange-300 
+        prose-headings:text-neutral-200 prose-strong:text-neutral-300
+    }
 
 }
 

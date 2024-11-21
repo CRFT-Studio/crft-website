@@ -41,7 +41,7 @@ const {frontmatter, headings} = Astro.props;
                             <a href="/glossary" class="text-neutral-400 hover:underline">The Web Design Glossary</a>
                             <h1 class="lg:text-5xl text-4xl font-serif font-semibold leading-normal mb-3 mt-3">{frontmatter.term}</h1>
                             <div class="text-lg mb-8">{frontmatter.pronunciation}</div>
-                            <div class="prose prose-lg text-neutral-300 leading-normal prose-h2:text-2xl prose-h2:font-medium prose-h2:mt-4 prose-h2:mb-3 prose-a:text-orange-300 prose-code:text-orange-300 prose-headings:text-neutral-200 prose-strong:text-neutral-300">
+                            <div class="blog-content">
                                 <slot/>
                             </div>
                         </article>
