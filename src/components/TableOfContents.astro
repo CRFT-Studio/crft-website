@@ -17,10 +17,10 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
 ---
 <div class="p-3 px-4 rounded-sm border border-neutral-700 shadow-md mt-4">
     <div class="text-lg mb-2">Table of contents</div>
-        <ul class="mt-4 flex flex-col gap-2 text-neutral-300">
+        <div class="mt-4 flex flex-col gap-2 text-neutral-300">
         {
             filteredHeadings.map((heading) => (
-            <li
+            <div
                 class:list={{
                 "pl-0": heading.depth === 2,
                 "pl-3": heading.depth === 3,
@@ -32,10 +32,10 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= levels);
                 >
                 {heading.text}
                 </a>
-            </li>
+            </div>
             ))
         }
-        </ul>
+        </div>
 </div>
 
 <style>
