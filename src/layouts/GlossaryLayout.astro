@@ -6,10 +6,16 @@ import GlossaryNav from "../components/GlossaryNav.astro";
 import TableOfContents from "../components/TableOfContents.astro";
 
 const {frontmatter, headings} = Astro.props;
+const alphabet = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
+const glossaryPages = await Astro.glob('../pages/glossary/*.mdx');
+
+const sortedPages = glossaryPages.sort((a, b) => a.url.localeCompare(b.url));
+const currentIndex = sortedPages.findIndex(page => page.url === Astro.url.pathname);
+const prevPage = currentIndex > 0 ? sortedPages[currentIndex - 1] : sortedPages[sortedPages.length -1];
+const nextPage = currentIndex < sortedPages.length - 1 ? sortedPages[currentIndex + 1] : sortedPages[0];
 
 // make internal linking dynamic, and done at build time
 // sidebar letter highlighting
-// article recommendations
 // search/fitlering
 ---
 
@@ -46,11 +52,25 @@ const {frontmatter, headings} = Astro.props;
                                 <slot/>
                             </div>
                         </article>
+                        <div>
+                            <div class="flex flex-row mt-5 gap-5">
+                                <a href={prevPage?.url} class="hover:bg-neutral-800 transition-all w-1/2 p-5 rounded-sm border border-neutral-700 shadow-md text-left" style={!prevPage ? "display: none" : ""}>
+                                    <div class="text-neutral-400 mb-2">← Previous</div>
+                                    <div>{prevPage?.frontmatter.term}</div>
+                                </a>
+                                <a href={nextPage?.url} class="hover:bg-neutral-800 transition-all w-1/2 p-5 rounded-sm border border-neutral-700 shadow-md text-right" style={!nextPage ? "display: none" : ""}>
+                                    <div class="text-neutral-400 mb-2">Next →</div>
+                                    <div>{nextPage?.frontmatter.term}</div>
+                                </a>
+                            </div>
+                            <!-- astro.glob returns an array of file paths. have it ordered in alphabetical order, then find the one you're on, and link to the path above and before it in the buttons -->
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
         <Footer/>
+        
         <script>
         import $ from 'jquery';
         
