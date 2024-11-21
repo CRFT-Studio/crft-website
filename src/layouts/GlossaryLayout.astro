@@ -9,10 +9,21 @@ const {frontmatter, headings} = Astro.props;
 const alphabet = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
 const glossaryPages = await Astro.glob('../pages/glossary/*.mdx');
 
-const sortedPages = glossaryPages.sort((a, b) => a.url.localeCompare(b.url));
-const currentIndex = sortedPages.findIndex(page => page.url === Astro.url.pathname);
+const sortedPages = glossaryPages.sort((a, b) => {
+    const urlA = a.url.split('/').filter(Boolean).pop();
+    const urlB = b.url.split('/').filter(Boolean).pop();
+    return urlA.localeCompare(urlB);
+});
+
+const currentIndex = sortedPages.findIndex(page => 
+    page.url.split('/').filter(Boolean).pop() === Astro.url.pathname.split('/').filter(Boolean).pop()
+);
+
 const prevPage = currentIndex > 0 ? sortedPages[currentIndex - 1] : sortedPages[sortedPages.length -1];
 const nextPage = currentIndex < sortedPages.length - 1 ? sortedPages[currentIndex + 1] : sortedPages[0];
+
+console.log("Current URL:", Astro.url.pathname);
+console.log("Page URLs:", glossaryPages.map(p => p.url));
 
 // make internal linking dynamic, and done at build time
 // sidebar letter highlighting
