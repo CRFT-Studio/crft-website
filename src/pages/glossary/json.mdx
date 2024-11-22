@@ -1,0 +1,68 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "JSON: Understanding the Universal Data Format"
+description: "Learn about JSON (JavaScript Object Notation), the lightweight data interchange format that has become the standard for web APIs and data storage."
+term: "JSON"
+pronunciation: "[jay-sawn]"
+shortDefinition: "A lightweight, text-based data format that's easy for humans to read and write, and simple for machines to parse and generate."
+---
+
+JSON (JavaScript Object Notation) is a language-independent data format that uses human-readable text to store and transmit data objects consisting of attribute-value pairs and arrays. Originally derived from JavaScript, JSON has become the de facto standard for data interchange in web applications and APIs.
+
+## Structure and Syntax
+
+JSON is built on two fundamental structures:
+- A collection of name/value pairs (objects)
+- An ordered list of values (arrays)
+
+The basic syntax includes:
+- Objects enclosed in curly braces {}
+- Arrays enclosed in square brackets []
+- Name/value pairs separated by colons
+- Elements separated by commas
+
+## Common Use Cases
+
+### API Communication
+JSON is the most widely used format for sending and receiving data through APIs. Its lightweight nature and easy parsing make it ideal for client-server communication in web applications.
+
+### Configuration Files
+Many applications use JSON files to store configuration settings, as they're easy to edit and maintain. Popular tools like NPM use package.json files to manage project dependencies and settings.
+
+### Data Storage
+While not a database format itself, JSON is commonly used in document-based databases like MongoDB, where data is stored in a JSON-like format called BSON.
+
+## Advantages and Benefits
+
+- **Simplicity**: Easy to read and write for both humans and machines
+- **Language Independence**: Supported by virtually all programming languages
+- **Lightweight**: Minimal overhead in data transmission
+- **Self-Documenting**: The structure is clear and intuitive
+- **Wide Support**: Built-in parsing in modern browsers and extensive library support
+
+## Best Practices
+
+### Data Types
+JSON supports six basic data types:
+- Strings: "Hello, World"
+- Numbers: 42, 3.14
+- Booleans: true, false
+- null
+- Objects: `{"key": "value"}`
+- Arrays: [1, 2, 3]
+
+### Validation
+Always validate JSON data before parsing to prevent security vulnerabilities and ensure data integrity. Many tools and libraries are available for JSON schema validation.
+
+### Formatting
+While JSON doesn't require specific formatting, using proper indentation and line breaks makes the data more readable and maintainable. Most code editors include JSON formatting tools.
+
+## Common Pitfalls
+
+- Forgetting to handle JSON parsing errors
+- Using single quotes instead of double quotes for strings
+- Including trailing commas (not allowed in JSON)
+- Adding comments (JSON doesn't support comments)
+- Not escaping special characters in strings
+
+Understanding JSON is crucial for modern web development, as it continues to be the primary format for data exchange in web applications and APIs. Its simplicity and versatility have contributed to its widespread adoption across the technology landscape.

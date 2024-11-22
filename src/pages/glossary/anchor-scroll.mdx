@@ -1,0 +1,69 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "What is Anchor Scroll: Smooth Navigation in Web Design"
+description: "Learn about anchor scroll, a web navigation technique that allows smooth scrolling to specific sections of a webpage using HTML anchor links and CSS properties."
+term: "Anchor Scroll"
+pronunciation: "[ang-ker skrohl]"
+shortDefinition: "A navigation technique that smoothly scrolls the webpage to specific sections when clicking on links, creating a seamless user experience."
+---
+
+Anchor scroll, also known as smooth scrolling or anchor link scrolling, is a [navigation](/glossary/navigation) method that automatically moves the [viewport](/glossary/viewport) to a specific section of a webpage when a user clicks on a corresponding link. This creates a smooth, animated transition instead of an abrupt jump to the target location.
+
+## How Anchor Scrolling Works
+
+Anchor scrolling relies on two main components: HTML anchor links and CSS scroll behavior. The HTML element uses an ID attribute that corresponds to a link's href attribute with a hashtag (#). When implemented with CSS's scroll-behavior property set to "smooth," the browser creates an animated scroll effect between the current position and the target element.
+
+## Implementation Methods
+
+### Basic HTML Setup
+```html
+<nav>
+  <a href="#section1">Section 1</a>
+  <a href="#section2">Section 2</a>
+</nav>
+
+<section id="section1">Content</section>
+<section id="section2">Content</section>
+```
+
+### CSS Implementation
+```css
+html {
+  scroll-behavior: smooth;
+}
+```
+
+## Benefits of Anchor Scrolling
+
+### Enhanced User Experience
+- Provides visual feedback during navigation
+- Creates a more polished, professional feel
+- Helps users maintain context while moving through content
+
+### Improved Navigation
+- Makes long-form content more accessible
+- Reduces disorientation from sudden page jumps
+- Supports better content hierarchy understanding
+
+## Best Practices
+
+### Performance Considerations
+- Keep animation duration reasonable (300-800ms)
+- Consider users who prefer reduced motion
+- Test scroll behavior across different devices and browsers
+
+### Accessibility
+- Ensure keyboard navigation support
+- Provide visible focus states
+- Include skip navigation options for screen readers
+
+## Modern Implementations
+
+Contemporary websites often enhance anchor scrolling with JavaScript libraries or frameworks for additional features like:
+- Custom animation timing
+- Scroll offset adjustments
+- Mobile-specific behaviors
+- Progress indicators
+- Scroll-spy functionality
+
+Understanding and implementing anchor scroll effectively can significantly improve your website's navigation experience, making it an essential tool in modern web design.

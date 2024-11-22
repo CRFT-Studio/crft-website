@@ -1,0 +1,62 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "What is DNS? Understanding Domain Name Systems"
+description: "Learn about DNS (Domain Name System), how it works, and its crucial role in connecting domain names to IP addresses for seamless web browsing."
+term: "DNS"
+pronunciation: "[dee-en-es]"
+shortDefinition: "A hierarchical naming system that translates human-readable domain names into machine-readable IP addresses."
+---
+
+The Domain Name System (DNS) is a fundamental technology that functions as the internet's directory, converting human-friendly website addresses (like www.example.com) into numeric IP addresses (like 192.0.2.1) that computers use to identify each other on the network.
+
+## How DNS Works
+
+DNS operates through a complex but efficient process called DNS resolution. When you type a website address into your browser, your computer initiates a series of queries through various DNS servers:
+
+1. DNS Resolver (Recursive Server)
+2. Root Nameservers
+3. Top-Level Domain (TLD) Servers
+4. Authoritative Nameservers
+
+This process typically happens within milliseconds, allowing for seamless web browsing.
+
+## Types of DNS Records
+
+Several types of DNS records serve different purposes:
+
+- A Record: Maps a domain to an IPv4 address
+- AAAA Record: Maps a domain to an IPv6 address
+- CNAME Record: Creates an alias pointing to another domain
+- MX Record: Directs email to the correct mail servers
+- TXT Record: Stores text information for various purposes
+- NS Record: Specifies authoritative nameservers
+
+## DNS Caching and TTL
+
+To improve performance and reduce server load, DNS information is cached at various levels:
+
+- Browser DNS Cache
+- Operating System DNS Cache
+- ISP DNS Cache
+
+The Time To Live (TTL) value determines how long DNS records are cached before requiring a fresh lookup.
+
+## Security Considerations
+
+DNS security is crucial for maintaining a safe internet:
+
+- DNSSEC (DNS Security Extensions) adds cryptographic signatures to DNS records
+- DNS over HTTPS (DoH) encrypts DNS queries for privacy
+- Regular monitoring for DNS hijacking attempts
+- Implementation of proper DNS security policies
+
+## Impact on Web Performance
+
+DNS resolution time directly affects website loading speed. Best practices include:
+
+- Using reliable DNS providers
+- Implementing DNS prefetching
+- Setting appropriate TTL values
+- Regular DNS health monitoring
+
+Understanding DNS is essential for web developers and site administrators, as it plays a crucial role in website availability, security, and performance. Proper DNS configuration ensures reliable website access and helps protect against various cyber threats while maintaining optimal loading speeds for end users.

@@ -1,0 +1,68 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "What is Cache? Understanding Web Browser Storage"
+description: "Learn about cache in web development, how it improves website performance, and its various implementations in modern web browsers."
+term: "Cache"
+pronunciation: "[kash]"
+shortDefinition: "A temporary storage system that saves website data locally to reduce load times and server requests on subsequent visits."
+---
+
+A cache is a hardware or software component that stores data temporarily to speed up future requests for that same data. In web development, caching involves storing copies of files, images, scripts, and other resources locally on a user's device for faster access.
+
+## How Web Caching Works
+
+When a user visits a website for the first time, their browser downloads various assets like HTML files, images, stylesheets, and JavaScript files. The browser then stores these files in its cache. On subsequent visits, instead of downloading everything again, the browser can retrieve these files from the cache, significantly reducing load times and server load.
+
+## Types of Web Caching
+
+### Browser Cache
+The most common type of cache that stores website data directly in the user's browser. Modern browsers like Chrome, Firefox, and Safari all implement browser caching to improve user experience.
+
+### Memory Cache
+Also known as RAM cache, this type stores data in the computer's memory for extremely fast access but is cleared when the browser closes.
+
+### Disk Cache
+A more permanent form of cache that stores files on the computer's hard drive, allowing data to persist between browser sessions.
+
+## Benefits of Caching
+
+### Performance Improvement
+- Faster page load times
+- Reduced server load and bandwidth usage
+- Better user experience
+- Lower hosting costs
+
+### Offline Functionality
+Modern caching techniques, especially when combined with Service Workers, can enable websites to function offline or in poor network conditions.
+
+## Cache Control
+
+Developers can control caching behavior through various HTTP headers:
+
+- Cache-Control
+- ETag
+- Expires
+- Last-Modified
+
+These headers help determine how long content should be cached and when it should be updated.
+
+## Common Caching Challenges
+
+### Cache Invalidation
+One of the most challenging aspects of caching is knowing when to update or clear the cache. Outdated cache can lead to users seeing stale content.
+
+### Cache Busting
+Developers often implement cache busting techniques, such as adding version numbers to file names, to ensure users receive updated resources when necessary.
+
+### Privacy Concerns
+Cached data can potentially expose sensitive information, making it important to implement proper cache controls for secure content.
+
+## Best Practices
+
+1. Set appropriate cache durations for different types of content
+2. Use cache busting for frequently updated resources
+3. Implement secure caching policies for sensitive data
+4. Regular monitoring and maintenance of caching systems
+5. Consider implementing progressive web app (PWA) caching strategies
+
+Understanding and implementing proper caching strategies is crucial for modern web development, as it directly impacts website performance, user experience, and server efficiency.

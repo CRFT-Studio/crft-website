@@ -1,0 +1,66 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "What is a Canonical URL? Understanding Website URL Standardization"
+description: "Learn about canonical URLs, their importance in SEO, and how they help prevent duplicate content issues by specifying the preferred version of a webpage."
+term: "Canonical URL"
+pronunciation: "[kuh-non-i-kuhl yoo-ar-el]"
+shortDefinition: "A designated preferred version of a webpage URL that helps search engines identify and index the main version when multiple similar pages exist."
+---
+
+A canonical URL is an HTML element that specifies the preferred or main version of a webpage when similar or identical content exists at multiple URLs. It helps search engines understand which version of a page should be indexed and displayed in search results, preventing duplicate content issues.
+
+## Why Canonical URLs Matter
+
+Canonical URLs play a crucial role in website optimization and SEO strategy. They help maintain clean search engine results by consolidating ranking signals across similar pages and ensuring that the correct version of a page receives the maximum search visibility.
+
+### Common Use Cases
+
+1. E-commerce websites where products appear under multiple categories
+2. Print-friendly versions of pages
+3. Mobile and desktop versions of the same content
+4. Pages accessible through multiple URL parameters
+5. Regional versions of the same content with minimal changes
+
+## Implementation Methods
+
+### HTML Link Tag
+The most common method is implementing a canonical tag in the HTML head section:
+```html
+<link rel="canonical" href="https://example.com/preferred-page" />
+```
+
+### HTTP Header
+For non-HTML documents like PDFs, canonical URLs can be specified through HTTP headers:
+```
+Link: <https://example.com/preferred-page>; rel="canonical"
+```
+
+## Best Practices
+
+### When to Use Canonical URLs
+
+- Multiple URLs serving similar content
+- Parameter-based URLs (sorting, filtering)
+- Printer-friendly versions
+- Mobile/desktop variations
+- Cross-domain content syndication
+
+### Common Mistakes to Avoid
+
+1. Canonicalizing to pages that return error codes
+2. Creating canonical chains
+3. Using multiple canonical tags
+4. Implementing contradictory canonicals
+5. Canonicalizing every page to the homepage
+
+## Impact on SEO
+
+Proper canonical URL implementation provides several SEO benefits:
+
+- Prevents duplicate content penalties
+- Consolidates link equity
+- Improves crawl efficiency
+- Ensures correct page indexing
+- Maintains clean search results
+
+By implementing canonical URLs correctly, websites can better control how their content appears in search results and ensure that the most important version of each page receives maximum visibility and ranking potential.

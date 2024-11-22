@@ -1,0 +1,56 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "Understanding Cross-Origin Resource Sharing (CORS)"
+description: "Learn about Cross-Origin Resource Sharing (CORS), a security feature that enables web browsers to securely handle requests between different domains, protocols, or ports."
+term: "Cross-Origin Resource Sharing (CORS)"
+pronunciation: "[kraws-awr-i-jin ri-sawrs shair-ing]"
+shortDefinition: "A security mechanism that allows web servers to specify which origins can access their resources through browser-enforced policies."
+---
+
+Cross-Origin Resource Sharing (CORS) is a security protocol implemented by web browsers that controls how web pages in one domain can request and interact with resources hosted on another domain. This mechanism helps protect users from malicious websites while enabling legitimate cross-origin data sharing.
+
+## How CORS Works
+
+When a web application makes a request to a different origin (domain, protocol, or port), the browser sends a preflight request to the server hosting the resource. This preflight request uses the HTTP OPTIONS method and includes headers specifying the intended request method, headers, and origin. The server then responds with headers indicating whether the actual request is allowed.
+
+## Key CORS Headers
+
+### Request Headers
+- `Origin`: Indicates where the request originates from
+- `Access-Control-Request-Method`: Specifies the HTTP method for the actual request
+- `Access-Control-Request-Headers`: Lists any custom headers the actual request will include
+
+### Response Headers
+- `Access-Control-Allow-Origin`: Specifies which origins can access the resource
+- `Access-Control-Allow-Methods`: Lists permitted HTTP methods
+- `Access-Control-Allow-Headers`: Indicates which headers can be used
+- `Access-Control-Max-Age`: Defines how long the preflight response can be cached
+
+## Common CORS Scenarios
+
+### Simple Requests
+Some requests don't trigger a preflight check. These "simple requests" must meet specific criteria:
+- Use GET, HEAD, or POST methods
+- Only include standard headers
+- Use standard content types
+
+### Preflighted Requests
+More complex requests require a preflight check, including those that:
+- Use methods other than GET, HEAD, or POST
+- Include custom headers
+- Use non-standard content types
+
+## CORS Best Practices
+
+### Security Considerations
+- Never use `Access-Control-Allow-Origin: *` in production for sensitive resources
+- Implement proper authentication and authorization
+- Validate and sanitize all cross-origin requests
+- Use HTTPS for all cross-origin communications
+
+### Performance Optimization
+- Set appropriate `Access-Control-Max-Age` values to reduce preflight requests
+- Minimize the number of cross-origin requests
+- Consider using same-origin solutions when possible
+
+Understanding and properly implementing CORS is crucial for modern web development, as it balances security requirements with the need for cross-origin resource sharing in today's interconnected web applications.

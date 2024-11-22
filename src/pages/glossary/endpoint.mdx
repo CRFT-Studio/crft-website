@@ -1,0 +1,57 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "What is an Endpoint in Web Development?"
+description: "Learn about endpoints in web development - the URLs where your API can access resources, handle requests, and enable communication between different software systems."
+term: "Endpoint"
+pronunciation: "[end-point]"
+shortDefinition: "A URL or URI where an API can be accessed to perform specific actions or retrieve data from a service or system."
+---
+
+An endpoint is a specific URL or URI (Uniform Resource Identifier) that serves as a point of communication between different software systems, typically in the context of [APIs (Application Programming Interfaces)](/glossary/api). It represents the location where resources can be accessed and where the API can receive requests to perform specific actions.
+
+## Understanding API Endpoints
+
+Endpoints are fundamental components of modern web architecture, acting as the digital doorways through which different applications and services communicate. They follow a structured format that typically includes:
+
+- Base URL (e.g., `https://api.example.com`)
+- Resource path (e.g., `/users`)
+- Optional parameters (e.g., `/users?id=123`)
+
+## Common Types of Endpoints
+
+### RESTful Endpoints
+REST (Representational State Transfer) APIs organize endpoints around resources and HTTP methods:
+- GET `/users` - Retrieve users
+- POST `/users` - Create a new user
+- PUT `/users/{id}` - Update a user
+- DELETE `/users/{id}` - Remove a user
+
+### GraphQL Endpoints
+Unlike REST, GraphQL typically uses a single endpoint (e.g., `/graphql`) that accepts different queries and mutations to interact with data.
+
+## Best Practices for Endpoint Design
+
+### Naming Conventions
+- Use clear, descriptive names
+- Follow consistent patterns
+- Use nouns for resources
+- Keep URLs lowercase
+- Use hyphens for word separation
+
+### Security Considerations
+- Implement authentication and authorization
+- Use HTTPS encryption
+- Rate limiting to prevent abuse
+- Input validation
+- Error handling
+
+## Role in Modern Web Development
+
+Endpoints are crucial in:
+- Microservices architecture
+- Mobile app development
+- Third-party integrations
+- Serverless functions
+- Web APIs
+
+Understanding endpoints is essential for modern web development as they form the foundation of how different systems interact and exchange data in our interconnected digital world.
