@@ -31,6 +31,14 @@ const {frontmatter} = Astro.props;
                         <svg class="absolute top-1/2 -translate-y-1/2 ml-2" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#a3a3a3"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
                         <input id="search" type="text" placeholder="Search for any term..." class="h-9 text-neutral-300 bg-neutral-800 border-neutral-600 rounded-md outline-neutral-600 pl-10">
                     </div>
+                    
+                    <div id="noMatch" hidden class="text-center mt-32 mb-32 mx-auto border border-neutral-600 p-6">
+                        <div class="max-w-[600px] mx-auto">
+                            <svg class="mb-4 mx-auto w-[34px] fill-orange-300" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M280-80q-83 0-141.5-58.5T80-280q0-83 58.5-141.5T280-480q83 0 141.5 58.5T480-280q0 83-58.5 141.5T280-80Zm544-40L568-376q-12-13-25.5-26.5T516-428q38-24 61-64t23-88q0-75-52.5-127.5T420-760q-75 0-127.5 52.5T240-580q0 6 .5 11.5T242-557q-18 2-39.5 8T164-535q-2-11-3-22t-1-23q0-109 75.5-184.5T420-840q109 0 184.5 75.5T680-580q0 43-13.5 81.5T629-428l251 252-56 56Zm-615-61 71-71 70 71 29-28-71-71 71-71-28-28-71 71-71-71-28 28 71 71-71 71 28 28Z"/></svg>
+                            <div class="text-2xl text-pretty mb-2">Oops, we didn't find results for "<span id="query">fucko</span>"</div>
+                            <div class="text-neutral-300 text-lg">We don't currenty have that term in our glossary. In the meantime, try searching for something else.</div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="lg:grid lg:grid-cols-[0.1fr_1fr]">
@@ -42,20 +50,22 @@ const {frontmatter} = Astro.props;
 
                     <div>
                         {alphabet.map((letter) =>
-                            <div class="text-5xl mb-10 scroll-mt-24" id={letter}>{letter}</div>
-                            <div class="grid md:grid-cols-3 mb-20">
-                                {glossaryPages.filter((page) =>
-                                    page.frontmatter.term.charAt(0).toUpperCase() === letter).map((page) =>
-                                        <div class="glossaryEntry border border-neutral-600 p-5 -m-[1px] flex flex-col justify-between h-full">
-                                            <div>
-                                                <div class="term text-xl mb-1" data-lc={page.frontmatter.term.toLowerCase()}>{page.frontmatter.term}</div>
-                                                <div class="mb-2">{page.frontmatter.pronunciation}</div>
-                                                <div class="mb-2">{page.frontmatter.shortDefinition}</div>
+                            <div class="glossaryLetter">
+                                <div class="text-5xl mb-10 scroll-mt-24" id={letter}>{letter}</div>
+                                <div class="grid md:grid-cols-3 mb-20">
+                                    {glossaryPages.filter((page) =>
+                                        page.frontmatter.term.charAt(0).toUpperCase() === letter).map((page) =>
+                                            <div class="glossaryEntry border border-neutral-600 p-5 -m-[1px] flex flex-col justify-between h-full">
+                                                <div>
+                                                    <div class="term text-xl mb-1" data-lc={page.frontmatter.term.toLowerCase()}>{page.frontmatter.term}</div>
+                                                    <div class="mb-2">{page.frontmatter.pronunciation}</div>
+                                                    <div class="mb-2">{page.frontmatter.shortDefinition}</div>
+                                                </div>
+                                                <a href={page.url} class="text-orange-300">Learn more →</a>
                                             </div>
-                                            <a href={page.url} class="text-orange-300">Learn more →</a>
-                                        </div>
-                                    )
-                                }
+                                        )
+                                    }
+                                </div>
                             </div>
                         )}
                     </div>
