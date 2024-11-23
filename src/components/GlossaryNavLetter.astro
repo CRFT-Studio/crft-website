@@ -1,0 +1,10 @@
+---
+const { letter, highlighted } = Astro.props;
+---
+<div class="glossaryNavLetter">
+    <a href={`/glossary#${letter}`}>
+        <div class={`px-1 w-6 text-center border ${highlighted ? "bg-neutral-700 border-neutral-600" : "border-transparent hover:bg-neutral-700 hover:border-neutral-600"} rounded-sm cursor-pointer`}>
+            {letter}
+        </div>
+    </a>
+</div>
