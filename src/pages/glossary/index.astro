@@ -23,39 +23,39 @@ const {frontmatter} = Astro.props;
         </div>
         <section class="my-20">
             <div class="container">
-                
+
                 <div class="text-center mb-24">
                     <h1 class="text-4xl font-medium leading-tight mb-3">Web Design Glossary</h1>
                     <div class="text-lg mb-7 text-neutral-300 text-pretty">The A-Z glossary for marketers and designers to stay in the know</div>
-                    <!-- <form class="max-w-96 mx-auto relative" action="">
-                    <svg class="absolute top-1/2 -translate-y-1/2 ml-2" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#a3a3a3"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
-                        <input type="text" placeholder="Search for any term..." class="h-9 text-neutral-300 bg-neutral-800 border-neutral-600 rounded-md outline-neutral-600 pl-10">
-                    </form> -->
-                </div>    
-            
+                    <div class="max-w-96 mx-auto relative">
+                        <svg class="absolute top-1/2 -translate-y-1/2 ml-2" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#a3a3a3"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
+                        <input id="search" type="text" placeholder="Search for any term..." class="h-9 text-neutral-300 bg-neutral-800 border-neutral-600 rounded-md outline-neutral-600 pl-10">
+                    </div>
+                </div>
+
                 <div class="lg:grid lg:grid-cols-[0.1fr_1fr]">
                     <div class="mb-11">
                         <div class="sticky lg:block hidden top-24">
                             <GlossaryNav vertical/>
                         </div>
                     </div>
-                    
+
                     <div>
                         {alphabet.map((letter) =>
                             <div class="text-5xl mb-10 scroll-mt-24" id={letter}>{letter}</div>
                             <div class="grid md:grid-cols-3 mb-20">
                                 {glossaryPages.filter((page) =>
-                                    page.frontmatter.term.charAt(0).toUpperCase() === letter
-                                    ).map((page) => (
-                                        <div class="border border-neutral-600 p-5 -m-[1px] flex flex-col justify-between h-full">
+                                    page.frontmatter.term.charAt(0).toUpperCase() === letter).map((page) =>
+                                        <div class="glossaryEntry border border-neutral-600 p-5 -m-[1px] flex flex-col justify-between h-full">
                                             <div>
-                                                <div class="text-xl mb-1">{page.frontmatter.term}</div>
+                                                <div class="term text-xl mb-1" data-lc={page.frontmatter.term.toLowerCase()}>{page.frontmatter.term}</div>
                                                 <div class="mb-2">{page.frontmatter.pronunciation}</div>
                                                 <div class="mb-2">{page.frontmatter.shortDefinition}</div>
                                             </div>
                                             <a href={page.url} class="text-orange-300">Learn more →</a>
                                         </div>
-                                ))}
+                                    )
+                                }
                             </div>
                         )}
                     </div>
@@ -63,5 +63,17 @@ const {frontmatter} = Astro.props;
             </div>
         </section>
         <Footer/>
+
+        <script>
+          import $ from "jquery";
+          $(() => {
+            $("#search").on("input", function() {
+              const searchStr = $(this).val();
+              const entries = $(".glossaryEntry");
+              const matches = entries.has(`.term:contains(${searchStr}), .term[data-lc*='${searchStr}']`).show();
+              entries.not(matches).hide();
+            });
+          });
+        </script
     </body>
 </html>
