@@ -27,7 +27,6 @@ console.log("Page URLs:", glossaryPages.map(p => p.url));
 
 // make internal linking dynamic, and done at build time
 // sidebar letter highlighting
-// search/fitlering
 ---
 
 <html lang="en">
@@ -44,15 +43,15 @@ console.log("Page URLs:", glossaryPages.map(p => p.url));
             <div class="container">
                 <div class="lg:grid lg:grid-cols-[0.25fr_1fr] gap-14">
                     <div>
-                        <aside id="sidebar" class="sticky top-24 mt-2">
+                        <aside id="sidebar" class="sticky top-24 mt-2 min-w-[200px]">
                             <a href="/glossary" class="font-normal text-neutral-300 lg:block hidden hover:text-neutral-100">← Glossary</a>
                             <div id="toc" class="lg:mb-0 mb-5">
                                 <TableOfContents headings={headings} levels={3} />
                             </div>
                         </aside>
                     </div>
-                    <div>
-                        <div class="sticky top-16">
+                    <div class="min-w-0">
+                        <div class="sticky top-16 w-full">
                             <GlossaryNav highlightedLetter={frontmatter.term[0]}/>
                         </div>
                         <article class="lg:p-10 p-5 rounded-sm border border-neutral-700 shadow-md mt-3">
