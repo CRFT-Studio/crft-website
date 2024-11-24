@@ -17,6 +17,11 @@
         font-family: 'Inter';
         src: url('/Fonts/Inter-VariableFont_slnt,wght.ttf') format('truetype');
     }
+    
+    @font-face {
+        font-family: 'Playfair Display';
+        src: url('/Fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
+    }
 
     body {
         font-family: 'Satoshi', sans-serif;
