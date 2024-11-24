@@ -56,7 +56,7 @@ console.log("Page URLs:", glossaryPages.map(p => p.url));
                         </div>
                         <article class="lg:p-10 p-5 rounded-sm border border-neutral-700 shadow-md mt-3">
                             <a href="/glossary" class="text-neutral-400 hover:underline">The Web Design Glossary</a>
-                            <h1 class="lg:text-5xl text-4xl font-serif font-semibold mb-1 mt-4 leading-tight">{frontmatter.term}</h1>
+                            <h1 class="lg:text-5xl text-4xl text-pretty font-serif font-semibold mb-1 mt-4 leading-tight">{frontmatter.term}</h1>
                             <div class="text-lg mb-8">{frontmatter.pronunciation}</div>
                             <div class="blog-content">
                                 <slot/>
