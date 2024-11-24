@@ -16,6 +16,7 @@
     "@astrojs/tailwind": "^5.1.0",
     "@stripe/stripe-js": "^4.9.0",
     "astro": "^4.16.7",
+    "astro-robots-txt": "^1.0.0",
     "gsap": "^3.12.5",
     "jquery": "^3.7.1",
     "resend": "^4.0.1-alpha.0",
