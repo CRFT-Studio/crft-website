@@ -1,0 +1,63 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "What is a User Agent? Understanding Web Browser Identification"
+description: "Learn about User Agents in web development - the string of information that identifies browsers and devices when they interact with websites and servers."
+term: "User Agent"
+pronunciation: "[yoo-zer ey-juhnt]"
+shortDefinition: "A string of text that identifies a browser, operating system, and device when making requests to web servers."
+---
+
+A User Agent is a software identifier that web browsers and other applications use to identify themselves when communicating with web servers. It typically includes information about the browser type, version, operating system, and device being used to access the web.
+
+## Why User Agents Matter
+
+User Agents play a crucial role in web development and user experience. They enable websites to:
+- Deliver device-appropriate content
+- Implement browser-specific features
+- Provide optimized experiences for different platforms
+- Track usage analytics and visitor behavior
+
+## Anatomy of a User Agent String
+
+A typical User Agent string contains several components:
+- Browser name and version
+- Layout engine
+- Platform/operating system
+- Device information (for mobile devices)
+- Additional compatibility tokens
+
+For example:
+```
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36
+```
+
+## Common Uses in Web Development
+
+### Feature Detection
+Developers use User Agent strings to:
+- Implement fallback solutions for older browsers
+- Enable or disable specific features based on browser capabilities
+- Serve different stylesheets or scripts for different browsers
+
+### Responsive Design
+While modern responsive design primarily relies on feature detection and media queries, User Agents can help:
+- Identify mobile devices
+- Optimize content delivery
+- Handle legacy browser support
+
+### Analytics and Tracking
+User Agents provide valuable data for:
+- Understanding visitor demographics
+- Tracking browser usage
+- Monitoring device types
+- Making informed development decisions
+
+## Best Practices
+
+While User Agent detection can be useful, modern web development emphasizes:
+- Feature detection over browser detection
+- Progressive enhancement
+- Responsive design principles
+- Cross-browser compatibility testing
+
+Understanding User Agents remains important for web developers, but should be used judiciously alongside modern development practices to create robust, accessible websites.
