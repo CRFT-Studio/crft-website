@@ -1,0 +1,65 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "What is Deploy in Web Development"
+description: "Learn about deployment in web development - the process of making a website or application live and accessible on the internet, including different deployment methods and best practices."
+term: "Deploy"
+pronunciation: "[dih-ploy]"
+shortDefinition: "The process of publishing and making a website or web application live and accessible on the internet through a web server or hosting platform."
+---
+
+Deployment is the process of moving a website or web application from a local development environment to a live server where it becomes accessible to users on the internet. This crucial step transforms a project from development to production, making it available for public or private use.
+
+## Types of Deployment
+
+### Traditional Deployment
+Traditional deployment involves manually uploading files to a web server using FTP (File Transfer Protocol) or SFTP (Secure File Transfer Protocol). While this method is straightforward, it's becoming less common due to its potential for human error and lack of automation.
+
+### Continuous Deployment (CD)
+Continuous deployment is an automated approach where code changes automatically go through testing and are deployed to production once they pass all checks. This modern method reduces human error and speeds up the deployment process.
+
+### Static Site Deployment
+[Static site](/glossary/static-content) deployment has gained popularity with the rise of JAMstack architecture. Platforms like Netlify, Vercel, and GitHub Pages specialize in deploying static sites with features like automatic builds and instant cache invalidation.
+
+## Key Deployment Considerations
+
+### Environment Configuration
+Different environments (development, staging, production) require different configurations. Environment variables help manage these differences and keep sensitive information secure.
+
+### Version Control
+Using version control systems like [Git](/glossary/git) helps track changes and enables rolling back to previous versions if issues arise during deployment.
+
+### Performance Optimization
+Deployment often includes optimization steps like:
+- [Minifying code](/glossary/minification)
+- [Compressing images](/glossary/image-optimization)
+- Configuring [caching](/glossary/cache)
+- Setting up [CDN](/glossary/cdn) integration
+
+## Deployment Best Practices
+
+### Testing
+Always test thoroughly in a staging environment before deploying to production. This includes:
+- Unit testing
+- Integration testing
+- User acceptance testing
+- Performance testing
+
+### Backup Strategy
+Maintain regular backups and have a rollback plan in case deployment causes unexpected issues.
+
+### Monitoring
+Implement monitoring tools to track:
+- Server performance
+- Application errors
+- User experience metrics
+- Security threats
+
+### Documentation
+Maintain clear deployment documentation including:
+- Server configurations
+- Dependencies
+- Environment variables
+- Deployment procedures
+- Troubleshooting guides
+
+Modern deployment practices have evolved to become more automated and reliable, making it easier for development teams to frequently update and maintain web applications while minimizing downtime and potential errors.
