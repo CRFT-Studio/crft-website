@@ -1,0 +1,60 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "First Input Delay (FID): Understanding Web Performance Metrics"
+description: "Learn about First Input Delay (FID), a crucial web performance metric that measures a website's interactivity and responsiveness to user interactions."
+term: "First Input Delay (FID)"
+pronunciation: "[furst in-put dih-ley]"
+shortDefinition: "A Core Web Vital that measures the time between a user's first interaction and the browser's response, indicating a site's interactivity."
+---
+
+First Input Delay (FID) is a crucial performance metric that measures the time from when a user first interacts with your website (like clicking a button or link) to the moment the browser begins processing that interaction. It's a key indicator of your site's responsiveness and interactivity, directly impacting user experience and search engine rankings.
+
+## Why FID Matters
+
+FID is one of Google's Core Web Vitals, making it a critical factor in both user experience and search engine optimization. A good FID score should be less than 100 milliseconds, ensuring users perceive your site as responsive and reliable. Poor FID scores can lead to frustrated users and potentially impact your site's search rankings.
+
+## Common Causes of Poor FID
+
+Several factors can contribute to a high First Input Delay:
+
+- Heavy JavaScript execution
+- Large bundle sizes
+- Third-party scripts
+- Complex event handlers
+- Resource-intensive operations during page load
+
+## Improving FID Scores
+
+### Code Splitting and Lazy Loading
+
+Breaking down JavaScript into smaller chunks and loading them only when needed can significantly improve FID. This is where modern frameworks like [Astro](https://astro.build) excel, as they automatically implement efficient code splitting and offer partial hydration through islands architecture.
+
+### Optimizing JavaScript Execution
+
+- Minimize main thread blocking
+- Defer non-critical JavaScript
+- Break up long tasks into smaller ones
+- Reduce JavaScript bundle size
+- Implement efficient event handlers
+
+### Framework Selection
+
+Using performance-focused frameworks like Astro can dramatically improve FID scores. Astro's unique approach to JavaScript - shipping zero JavaScript by default and only hydrating interactive components when necessary - ensures minimal impact on First Input Delay.
+
+## Measuring FID
+
+Several tools can help you measure and monitor FID:
+
+- [Chrome User Experience Report](https://developer.chrome.com/docs/crux/)
+- [PageSpeed Insights](https://pagespeed.web.dev/)
+- [Chrome DevTools](https://developer.chrome.com/docs/devtools/)
+- [Web Vitals JavaScript library](https://github.com/GoogleChrome/web-vitals)
+- [Google Search Console](https://search.google.com/search-console/about)
+
+## The Future of FID
+
+Google has announced plans to replace FID with a new metric called Interaction to Next Paint (INP) in March 2024. However, understanding and optimizing for FID remains valuable as the underlying principles of optimizing for interactivity remain consistent across both metrics.
+
+## Role of Modern Web Development
+
+Modern web development practices, particularly those employed by frameworks like Astro, are specifically designed to address metrics like FID. By leveraging these tools and following performance best practices, developers can create highly responsive websites that provide excellent user experiences while maintaining strong performance scores.

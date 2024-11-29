@@ -1,0 +1,82 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "Scripts: Client-Side Programming for Web Development"
+description: "Understanding scripts in web development, including their role, implementation methods, and how modern frameworks like Astro handle client-side JavaScript."
+term: "Script"
+pronunciation: "[skript]"
+shortDefinition: "Code files or blocks that enable dynamic functionality and interactivity on websites through programming languages like JavaScript."
+---
+
+Scripts are pieces of code that execute instructions to make web pages interactive and dynamic. They can be written in various programming languages, with JavaScript being the most common for web browsers. Scripts enable everything from simple button animations to complex web applications.
+
+## Types of Scripts
+
+### Client-Side Scripts
+These run in the user's browser and handle interactions like form validation, animations, and dynamic content updates. JavaScript is the primary language for client-side scripting, though modern frameworks and build tools often transform other languages into JavaScript.
+
+### Server-Side Scripts
+Running on the web server, these scripts process data, interact with databases, and generate dynamic content before sending it to the browser. Languages like PHP, Python, and Node.js are common for server-side scripting.
+
+## Script Implementation Methods
+
+### Inline Scripts
+```html
+<button onclick="alert('Hello!')">Click me</button>
+```
+
+### Internal Scripts
+```html
+<script>
+  function sayHello() {
+    alert('Hello!');
+  }
+</script>
+```
+
+### External Scripts
+```html
+<script src="/path/to/script.js"></script>
+```
+
+## Modern Script Management with Astro
+
+[Astro](https://astro.build), our [framework](/glossary/framework) of choice at CRFT Studio, takes a unique approach to script management through its "partial [hydration](/glossary/hydration)" model. This approach allows developers to control exactly when JavaScript is loaded and executed, leading to better performance and user experience.
+
+### Astro Client Directives
+
+Astro provides several client directives for controlling script loading:
+
+- `client:load`: Loads and executes JavaScript immediately
+- `client:idle`: Waits for the browser to be idle
+- `client:visible`: Loads when the component enters the viewport
+- `client:media`: Loads based on media query matches
+- `client:only`: Renders only on the client side
+
+Example usage:
+```astro
+<InteractiveComponent client:visible />
+```
+
+## Script Performance Optimization
+
+Modern web development emphasizes script optimization through:
+
+- Code splitting
+- Lazy loading
+- [Minification](/glossary/minification)
+- [Caching](/glossary/cache) strategies
+- Async and defer attributes
+
+These techniques, many of which are automatically handled by Astro, ensure that scripts enhance rather than hinder website performance.
+
+## Best Practices
+
+When working with scripts, it's important to:
+
+1. Load scripts strategically to minimize impact on page load
+2. Use modern ES6+ features when browser support allows
+3. Implement error handling and logging
+4. Consider accessibility implications
+5. Test across different browsers and devices
+
+Scripts remain a fundamental part of modern web development, enabling the rich, interactive experiences users expect while requiring careful consideration for performance and user experience.

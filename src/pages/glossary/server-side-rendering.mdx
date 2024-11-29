@@ -1,0 +1,75 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "Server-Side Rendering (SSR) Explained"
+description: "Understand server-side rendering (SSR) and its relationship with dynamic content in web development. Learn about SSR benefits and implementation with Astro."
+term: "Server-Side Rendering (SSR)"
+pronunciation: "[sur-ver-sahyd ren-der-ing]"
+shortDefinition: "A web rendering method where the server processes and generates HTML for each request, enabling dynamic content and improved initial load times."
+---
+
+Server-Side Rendering (SSR) is a web rendering technique where the server processes and generates the full HTML markup for a web page in response to a user's request. This approach contrasts with client-side rendering, where the browser builds the page using JavaScript after receiving minimal initial HTML.
+
+## How SSR Works
+
+When a user requests a page, the server:
+
+1. Receives the request
+2. Fetches necessary data from databases or [APIs](/glossary/api)
+3. Processes the data and generates HTML
+4. Sends the complete HTML to the client's browser
+
+This process allows for [dynamic content](/glossary/dynamic-content) to be incorporated directly into the initial page load, as opposed to [static content](/glossary/static-content) which remains unchanged between requests.
+
+## SSR and Dynamic Content
+
+Server-side rendering is particularly beneficial for websites with dynamic content. It allows for:
+
+- Personalized user experiences
+- Real-time data integration
+- Content that changes frequently
+
+By generating HTML on the server, SSR ensures that the latest data is always presented to the user without requiring additional client-side API calls or rendering.
+
+## Benefits of Server-Side Rendering
+
+1. **Improved Initial Load Time**: Users receive a fully rendered page faster, especially beneficial for users with slower internet connections.
+
+2. **Better SEO**: Search engines can more easily crawl and index content, as it's immediately available in the HTML.
+
+3. **Enhanced Performance on Low-Power Devices**: Less client-side processing is required, improving performance on mobile devices or older computers.
+
+4. **Increased Security**: Sensitive operations can be performed server-side, reducing exposure of critical data or logic to the client.
+
+## Challenges of SSR
+
+While SSR offers many advantages, it also comes with some challenges:
+
+- **Server Load**: Generating pages for each request can be resource-intensive for high-traffic sites.
+- **Time to Interactive (TTI)**: Although initial content is visible quickly, interactivity may be delayed until JavaScript loads.
+- **Complexity**: Implementing SSR can be more complex than static site generation or purely client-side rendering.
+
+## SSR Implementation with Astro
+
+At CRFT Studio, we leverage [Astro](https://astro.build) for implementing server-side rendering. Astro is a modern static site builder that also supports SSR, offering a flexible approach to web development.
+
+Astro's SSR capabilities allow us to:
+
+- Render dynamic content on the server
+- Improve page load times
+- Enhance SEO performance
+
+Astro's unique "Islands Architecture" enables us to combine the benefits of static content with dynamic, server-rendered components where necessary. This approach results in fast, efficient websites that can still incorporate dynamic elements seamlessly.
+
+## When to Use SSR
+
+Server-side rendering is particularly useful for:
+
+1. Content-heavy websites that require frequent updates
+2. Applications with user-specific content or authentication
+3. E-commerce sites with real-time inventory or pricing
+
+By carefully considering the needs of each project, we can determine whether SSR is the most appropriate rendering strategy or if a combination of techniques would be more beneficial.
+
+## Conclusion
+
+Server-side rendering is a powerful technique that bridges the gap between static and dynamic content, offering improved performance, SEO benefits, and the ability to serve up-to-date information efficiently. By utilizing tools like Astro, we at CRFT Studio can implement SSR effectively, creating fast, dynamic, and search-engine-friendly websites for our clients.

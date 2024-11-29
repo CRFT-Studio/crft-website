@@ -1,0 +1,59 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "Time to Interactive (TTI): Web Performance Metric Explained"
+description: "Time to Interactive (TTI) measures how long it takes for a webpage to become fully interactive, indicating when users can reliably interact with page elements."
+term: "Time to Interactive (TTI)"
+pronunciation: "[tahym tu in-ter-ak-tiv]"
+shortDefinition: "A performance metric that measures the time it takes for a webpage to become fully interactive and responsive to user input."
+---
+
+Time to Interactive (TTI) is a crucial performance metric that measures the time from when a page starts loading to when it becomes reliably interactive for users. A page is considered "reliably interactive" when visual elements are rendered, key page scripts have loaded, and the page responds quickly to user interactions.
+
+## Why TTI Matters
+
+Time to Interactive directly impacts user experience and is a key indicator of a website's performance. When a page has a high TTI, users may experience frustration as they attempt to interact with elements that appear ready but don't respond immediately. This can lead to increased bounce rates and decreased user satisfaction.
+
+## How TTI is Measured
+
+TTI measurement involves several key criteria:
+- The page has displayed useful content (First Contentful Paint)
+- Event handlers are registered for most visible page elements
+- The page responds to user interactions within 50 milliseconds
+- The main thread is free of long tasks (those exceeding 50ms)
+
+## Optimizing TTI
+
+### Astro's Zero-JavaScript Approach
+At CRFT Studio, we leverage [Astro](https://astro.build), our web framework of choice's "Zero JavaScript by default" architecture. This framework automatically removes unnecessary JavaScript from the final [build](/glossary/build-process), sending only the minimal code required for interactivity. This approach significantly reduces TTI by serving static HTML wherever possible.
+
+### Code Splitting
+Breaking down large JavaScript bundles into smaller chunks that load on-demand can significantly improve TTI by reducing the initial JavaScript payload.
+
+### Minimizing Main Thread Work
+- Defer non-critical JavaScript
+- Remove unnecessary third-party scripts
+- Optimize JavaScript execution time
+- Use Web Workers for CPU-intensive tasks
+
+### Server-Side Rendering
+Implementing server-side rendering can help deliver content faster while reducing the client-side JavaScript needed for initial interactivity.
+
+## TTI vs Other Metrics
+
+TTI works in conjunction with other performance metrics like:
+- [First Contentful Paint (FCP)](/glossary/first-contentful-paint)
+- [Largest Contentful Paint (LCP)](/glossary/largest-contentful-paint)
+- [First Input Delay (FID)](/glossary/first-input-delay)
+- [Total Blocking Time (TBT)](/glossary/total-blocking-time)
+
+Understanding how these metrics work together provides a complete picture of your website's performance and user experience.
+
+## Measuring Tools
+
+Several tools can help measure TTI:
+- [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/)
+- [Chrome DevTools](https://developer.chrome.com/docs/devtools/)
+- [WebPageTest](https://www.webpagetest.org/)
+- [Performance API](https://developer.mozilla.org/en-US/docs/Web/API/Performance)
+
+By monitoring and optimizing TTI, developers can create more responsive and user-friendly web experiences that contribute to better engagement and conversion rates.

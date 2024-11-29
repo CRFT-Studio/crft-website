@@ -1,0 +1,66 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "Total Blocking Time (TBT): Understanding Web Performance Metrics"
+description: "Total Blocking Time (TBT) measures the total time when a webpage's main thread is blocked, preventing user interactions. Learn how it impacts user experience and optimization strategies."
+term: "Total Blocking Time (TBT)"
+pronunciation: "[toh-tuhl blok-ing tahym]"
+shortDefinition: "A performance metric that measures the total time between First Contentful Paint and Time to Interactive when the main thread is blocked for long enough to prevent input responsiveness."
+---
+
+Total Blocking Time (TBT) is a crucial web performance metric that measures the total amount of time between [First Contentful Paint (FCP)](/glossary/first-contentful-paint) and [Time to Interactive (TTI)](/glossary/time-to-interactive) during which the main thread is blocked for long enough to prevent input responsiveness. Any tasks that take longer than 50 milliseconds to execute are considered "blocking" and contribute to the TBT score.
+
+## Why TBT Matters
+
+Total Blocking Time is a vital indicator of your website's interactivity and responsiveness. A high TBT score often results in a frustrating user experience where clicks, taps, and keyboard inputs feel sluggish or unresponsive. Google considers TBT as one of the [Core Web Vitals](/glossary/core-web-vitals) metrics, making it important for both user experience and search engine optimization.
+
+## Measuring TBT
+
+The calculation of TBT involves:
+- Identifying all long tasks (those exceeding 50ms)
+- Calculating the "blocking time" of each task (duration beyond 50ms)
+- Summing up all blocking times between FCP and TTI
+
+For example, if a task takes 70ms to complete, it contributes 20ms (70ms - 50ms) to the Total Blocking Time.
+
+## Common Causes of High TBT
+
+Several factors can contribute to a high TBT score:
+- Heavy JavaScript execution
+- Large third-party scripts
+- Complex rendering operations
+- Resource-intensive calculations
+- Multiple synchronous API calls
+
+## Optimizing TBT with Astro
+
+At CRFT Studio, we leverage [Astro](https://astro.build) as our preferred framework to optimize Total Blocking Time. Astro's unique "zero JavaScript by default" approach provides several advantages:
+
+### Partial Hydration
+Astro's partial [hydration](/glossary/hydration) strategy means JavaScript is only sent to the browser when absolutely necessary. This dramatically reduces the main thread blocking time as less JavaScript needs to be parsed and executed.
+
+### Static Site Generation
+By generating [static HTML](/glossary/static-content) at [build](/glossary/build-process) time, Astro minimizes the amount of JavaScript required for initial page loads, resulting in lower TBT scores.
+
+### Component Islands
+Astro's component islands architecture allows us to isolate interactive components, preventing unnecessary JavaScript from blocking the main thread in static parts of the page.
+
+## Best Practices for TBT Optimization
+
+To maintain optimal TBT scores:
+1. Break up long tasks into smaller chunks
+2. Defer non-critical JavaScript
+3. Implement code splitting
+4. Minimize third-party script impact
+5. Use web workers for computationally intensive tasks
+6. Optimize CSS and JavaScript execution
+
+## Impact on User Experience
+
+A good TBT score (less than 200ms) ensures:
+- Responsive user interactions
+- Smooth scrolling and animations
+- Better conversion rates
+- Improved user satisfaction
+- Higher search engine rankings
+
+Understanding and optimizing Total Blocking Time is essential for delivering fast, responsive web experiences. By using modern tools like Astro and following performance best practices, we can significantly reduce TBT and create more engaging websites for our clients.
