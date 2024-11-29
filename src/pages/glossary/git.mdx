@@ -9,14 +9,31 @@ shortDefinition: "A distributed version control system that tracks changes in so
 
 Git is a distributed version control system designed to handle everything from small to very large projects with speed and efficiency. Created by Linus Torvalds in 2005 for the development of the Linux kernel, Git has become the most widely used modern version control system in software development.
 
+## History of Git
+
+The name "Git" has several potential origins and meanings, as humorously documented in the [official Git source code repository](https://github.com/git/git?tab=readme-ov-file#git---fast-scalable-distributed-revision-control-system). As Linus Torvalds explains in the readme file:
+
+> - Random three-letter combination that is pronounceable, and not actually used by any common UNIX command. The fact that it is a mispronunciation of "get" may or may not be relevant.
+> - Stupid. Contemptible and despicable. Simple. Take your pick from the dictionary of slang.
+> - "Global Information Tracker": you're in a good mood, and it actually works for you. Angels sing, and a light suddenly fills the room.
+"goddamn idiotic truckload of sh*t": when it breaks
+
 ## How Git Works
 
 Git maintains a history of changes made to files in a project by taking "snapshots" of the project's state at different points in time. When you commit changes, Git stores a reference to that snapshot, creating a timeline of your project's evolution. This system allows developers to track modifications, revert to previous versions, and collaborate with others seamlessly.
 
 ## Key Concepts in Git
 
+### Distributed Nature
+In Git's context, "distributed" means that every developer has a complete copy of the entire project and its history on their local machine. Unlike centralized version control systems where there's a single source of truth on a central server, Git's distributed approach means:
+- Each developer's copy is a full backup
+- Work can continue offline
+- No single point of failure exists
+- Developers can commit, branch, and merge locally
+- Changes can be synchronized between any two repositories
+
 ### Repositories
-A Git repository (or "repo") contains all of your project's files and their complete history. It can be either local (on your computer) or remote (on a server), with platforms like GitHub, GitLab, and Bitbucket hosting remote repositories.
+A Git repository (or "repo") contains all of your project's files and their complete history with platforms like GitHub, GitLab, and Bitbucket hosting remote repositories.
 
 ### Branches
 Branches allow developers to work on different features or versions of a project simultaneously without affecting the main codebase. The default branch is typically called "main" or "master," and developers create feature branches to work on specific updates or fixes.
