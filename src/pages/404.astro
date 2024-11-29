@@ -1,0 +1,26 @@
+---
+import HeadScripts from "../components/HeadScripts.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+---
+<html lang="en">
+    <head>
+        <HeadScripts
+        title="404 | CRFT Studio"
+        />
+    </head>
+    <body>
+        <Navigation/>
+        <section>
+            <div class="container text-center">
+                <div class="text-3xl text-orange-300 mb-5">404</div>
+                <h1 class="lg:text-5xl text-4xl font-medium mb-5">Oops, we haven't found that page</h1>
+                <div class="text-xl text-neutral-300 mb-7">The page you're looking for doesn't exist or has been moved.</div>
+                <a href="/">
+                    <button class="primary-cta">Return home</button>
+                </a>
+            </div>
+        </section>
+        <Footer/>
+    </body>
+</html>
