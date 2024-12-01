@@ -1,0 +1,66 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "Understanding Bundling in Web Development"
+description: "Learn about bundling in web development - the process of combining multiple JavaScript files and assets into optimized bundles for improved website performance."
+term: "Bundling"
+pronunciation: "[buhn-dl-ing]"
+shortDefinition: "The process of combining multiple code files and assets into fewer optimized files to improve website loading speed and performance."
+---
+
+Bundling is a crucial development process that combines multiple [JavaScript](/glossary/javascript) files, stylesheets, and other web assets into a smaller number of optimized bundles. This technique reduces [HTTP](/glossary/httpP) requests and improves website loading performance by delivering consolidated, [minified](/glossary/minification) code to the browser.
+
+## Why Bundling Matters
+
+Modern web applications often consist of hundreds of individual files, including JavaScript modules, CSS stylesheets, images, and other assets. Without bundling, browsers would need to make separate [HTTP requests](/glossary/http) for each file, significantly slowing down page load times. Bundling solves this problem by:
+
+- Reducing the number of server [requests](/glossary/http)
+- Minimizing network overhead
+- Managing code dependencies efficiently
+- Enabling code splitting and lazy loading
+- Improving [caching](/glossary/cache) effectiveness
+
+## Popular Bundling Tools
+
+### Webpack
+The most widely-used bundler in the JavaScript ecosystem, Webpack offers powerful features like code splitting, hot module replacement, and extensive plugin support. It's particularly popular in React applications and can handle various asset types beyond JavaScript.
+
+### Vite
+A newer, lightning-fast bundler that leverages native ES modules during development and uses Rollup for production builds. Vite has gained significant popularity due to its superior development experience and quick startup times - and it's a key component of [Astro](https://astro.build), our web [framework](/glossary/framework) of choice.
+
+### Rollup
+Primarily focused on JavaScript modules, Rollup excels at creating efficient bundles for libraries and applications. It's known for its tree-shaking capabilities, which eliminate unused code from the final bundle.
+
+## Benefits of Modern Bundling
+
+### Performance Optimization
+Modern bundlers don't just combine files; they optimize them through:
+- [Minification](/glossary/minification) and compression
+- Dead code elimination
+- [Asset optimization](/glossary/image-optimization)
+- Efficient code splitting
+
+### Development Experience
+Bundlers enhance the development workflow with features like:
+- Hot module replacement
+- Source maps for debugging
+- Development servers with live reload
+- Build process automation
+
+### Production Ready
+For production environments, bundling provides:
+- Optimized asset delivery
+- Improved caching strategies
+- Reduced bandwidth usage
+- Better cross-browser compatibility
+
+## Best Practices
+
+To maximize the benefits of bundling, developers should:
+- Implement code splitting for larger applications
+- Configure appropriate cache headers
+- Optimize images and other assets
+- Monitor bundle sizes regularly
+- Use modern bundling features like tree shaking
+- Consider implementing dynamic imports
+
+Bundling remains a fundamental aspect of modern web development, enabling developers to build complex applications while maintaining optimal performance and user experience.
