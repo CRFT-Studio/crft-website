@@ -39,14 +39,19 @@ console.log("Page URLs:", glossaryPages.map(p => p.url));
 
     <body>
         <Navigation/>
-        <section class="my-20">
+        <section class="mb-20 lg:mt-20 mt-10">
             <div class="container">
                 <div class="lg:grid lg:grid-cols-[0.25fr_1fr] gap-14">
                     <div>
                         <aside id="sidebar" class="sticky top-24 mt-2 min-w-[200px]">
-                            <a href="/glossary" class="font-normal text-neutral-300 lg:block hidden hover:text-neutral-100">← Glossary</a>
-                            <div id="toc" class="lg:mb-0 mb-5">
+                            <a href="/glossary" class="font-normal text-neutral-300 lg:block hidden hover:text-neutral-100 mb-5">← Glossary</a>
+                            <div id="toc" class="lg:mb-0 mb-7 lg:overflow-y-auto lg:h-[90vh] lg:pb-24">
                                 <TableOfContents headings={headings} levels={3} />
+                                <div class="p-3 px-4 rounded-sm border border-neutral-700 shadow-md mt-4">
+                                    <div class="text-base mb-1 font-medium text-neutral-50">Want a new website?</div>
+                                    <div class="text-base text-neutral-300 mb-2">We design and develop beautiful, performant, and maintainable sites for the best marketing teams.</div>
+                                    <a href="/audit" class="text-base text-orange-300">Get a free site audit →</a>
+                                </div>
                             </div>
                         </aside>
                     </div>
