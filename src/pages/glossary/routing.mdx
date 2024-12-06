@@ -1,0 +1,92 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "Understanding Routing in Web Development"
+description: "A comprehensive guide to routing in web development, including how URLs map to content and Astro's file-based routing system."
+term: "Routing"
+pronunciation: "[roo-ting]"
+shortDefinition: "The process of determining how different URLs and paths in a website map to specific content or pages, controlling navigation and content display."
+---
+
+Routing is a fundamental concept in web development that determines how an application handles different URL requests and directs users to the appropriate content. It acts as a traffic controller, interpreting URL paths and parameters to decide what content should be displayed on the screen.
+
+## Core Routing Concepts
+
+### URL Structure
+A typical [URL](/glossary/url) consists of several components:
+- Protocol (https://)
+- Domain (example.com)
+- Path (/blog/posts)
+- Parameters (?id=123)
+- Fragments (#section)
+
+### Types of Routes
+
+#### Static Routes
+Fixed paths that always lead to the same content, like:
+- /about
+- /contact
+- /services
+
+#### Dynamic Routes
+URLs that include variables or parameters:
+- /products/:id
+- /blog/:year/:month/:slug
+- /users/:username
+
+## Routing Methods
+
+### Server-Side Routing
+- Traditional method where each URL request triggers a server response
+- Full page reloads occur with each navigation
+- Better for initial SEO but slower user experience
+
+### Client-Side Routing
+- Modern approach used in Single Page Applications (SPAs)
+- Handles navigation without full page reloads
+- Smoother user experience but requires additional setup for SEO
+
+## Astro's Routing System
+
+### File-Based Routing
+Astro implements an intuitive file-based routing system where the file structure in your project directly maps to your website's URLs:
+
+src/pages/
+├── index.astro → /
+├── about.astro → /about
+└── blog/
+├── index.astro → /blog
+└── post-1.astro → /blog/post-1
+
+
+### Dynamic Routes
+Astro supports dynamic routing through special filename patterns:
+- `[slug].astro` creates dynamic routes
+- `[...slug].astro` enables catch-all routes
+- Parameters can be accessed via `Astro.params`
+
+### Route Customization
+Astro allows for:
+- Custom 404 pages
+- Redirects
+- API routes
+- SSR and static output options
+
+## Best Practices
+
+### URL Design
+- Use clear, descriptive paths
+- Keep URLs human-readable
+- Maintain consistent patterns
+- Consider SEO implications
+
+### Performance
+- Implement proper caching strategies
+- Consider code splitting
+- Use preloading for critical routes
+
+### Security
+- Validate [URL parameters](/glossary/query-string)
+- Implement proper access controls
+- Handle edge cases and errors
+
+Understanding routing is essential for creating well-structured web applications that provide intuitive navigation and optimal user experience. Whether using traditional server-side routing or modern client-side approaches, proper route management ensures your application remains maintainable and scalable.
