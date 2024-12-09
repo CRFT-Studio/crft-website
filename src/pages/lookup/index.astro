@@ -1,0 +1,40 @@
+---
+export const prerender = false;
+
+import HeadScripts from "../../components/HeadScripts.astro";
+import Navigation from "../../components/Navigation.astro";
+import Footer from "../../components/Footer.astro";
+import GlossaryNav from "../../components/GlossaryNav.astro";
+
+const {frontmatter} = Astro.props;
+---
+<html lang="en">
+    <head>
+        <HeadScripts
+        title="The CRFT Lookup"
+        description="All the info we look for in websites, consolidated. See the tech stack, pagespeed and heatmap of the URLs you're curious about."
+        />
+    </head>
+
+    <body>
+        <Navigation/>
+        <section class="my-20">
+            <div class="container lg:h-[40vh] flex flex-col justify-center">
+                <div class="text-center">
+                    <h1 class="lg:text-4xl text-3xl font-semibold leading-tight text-pretty mb-4">The <span class="card p-2 inline-block translate-y-2"><svg class="w-[100px]" viewBox="0 0 132 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.47615 11.5709C6.47615 7.67882 8.42219 5.8923 16.6211 5.8923C21.6297 5.8923 26.8298 6.78556 30.5623 7.51931L31.7108 2.12783C27.2764 1.10696 21.6616 0.341309 16.3977 0.341309C4.46631 0.341309 0 4.26528 0 11.5709C0 18.8765 4.46631 22.8324 16.3977 22.8324C21.6616 22.8324 27.2764 22.0667 31.7108 21.0459L30.5623 15.6544C26.8298 16.3881 21.6297 17.2814 16.6211 17.2814C8.42219 17.2814 6.47615 15.4949 6.47615 11.5709ZM40.6676 22.4176V16.101H48.9303L56.7463 22.4176H64.8814L57.7353 16.8029L56.0125 15.7501L57.4162 15.7182C62.2335 15.3354 65.0728 13.0384 65.0728 8.25306C65.0728 2.54256 61.3402 0.66033 55.9806 0.66033H34.1914V22.4176H40.6676ZM40.6676 6.21132H55.3426C57.48 6.21132 58.3733 6.81746 58.3733 8.7635C58.3733 10.55 57.48 11.2519 55.3426 11.2519H40.6676V6.21132ZM74.3768 22.4176V15.3035H96.3257V10.1991H74.3768V6.21132H96.9319V0.66033H67.9006V22.4176H74.3768ZM111.951 6.21132V22.4176H118.427V6.21132H131.316V0.66033H99.0305V6.21132H111.951Z" fill="white"/>
+                    </svg></span> lookup.</h1>
+                </div>
+                <div class="text-lg mb-7 text-neutral-300 text-pretty text-center mx-auto max-w-[50ch]">All the info we look for in websites, consolidated. See the tech stack, pagespeed, meta tags and heatmap of the URLs you're curious about.</div>
+                <div class="flex lg:flex-row flex-col lg:gap-1 gap-2 items-center mx-auto lg:min-w-[400px] lg:w-auto w-full">
+                    <div class="lg:min-w-[400px] lg:w-auto w-full relative">
+                        <svg class="absolute top-1/2 -translate-y-1/2 ml-2" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#a3a3a3"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
+                        <input id="search" type="text" placeholder="Type a URL..." class="h-9 text-neutral-300 bg-neutral-800 border-neutral-600 rounded-md outline-neutral-600 pl-10">
+                    </div>
+                    <button class="lg:w-auto w-full px-2 py-1 rounded-md border border-neutral-600 bg-neutral-800 hover:bg-neutral-700 transition-all text-nowrap">Generate report</button>
+                </div>
+            </div>
+        </section>
+        <Footer/>
+    </body>
+</html>

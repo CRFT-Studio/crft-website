@@ -1,0 +1,149 @@
+---
+import HeadScripts from "../../components/HeadScripts.astro";
+import Navigation from "../../components/Navigation.astro";
+import Footer from "../../components/Footer.astro";
+
+const {frontmatter} = Astro.props;
+
+---
+<html lang="en">
+    <head>
+        <HeadScripts
+        title="The CRFT Lookup"
+        description="All the info we look for in websites, consolidated. See the tech stack, pagespeed and heatmap of the URLs you're curious about."
+        />
+        
+        <script>
+        import { renderReport } from 'lighthouse-viewer';
+        import report from '../../data/report.json';
+        
+        const app = document.querySelector<HTMLDivElement>('#lighthouse-viewer-element')!;
+        
+        const reportHtml = renderReport(report as any, {});
+        app.appendChild(reportHtml);
+        </script>
+    </head>
+
+    <body>
+        <Navigation/>
+        <section class="my-20">
+            <div class="container">
+                <div class="inline-flex flex-row gap-3 square-card px-2 py-[3px] items-center text-neutral-300 mb-5">
+                    <div>CRFT Lookup</div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="fill-neutral-300 h-[20px] w-auto" viewBox="0 -960 960 960" width="24px"><path d="m517.85-480-184-184L376-706.15 602.15-480 376-253.85 333.85-296l184-184Z"/></svg>
+                    <div>https://linear.app</div>
+                    <div class="aspect-square h-[5px] rounded-xl bg-neutral-300 mx-2"></div>
+                    <div>Generated on Dec 7, 2024, 6:01:34 PM </div>
+                </div>
+                <div class="grid grid-cols-[0.15fr_1fr] gap-8">
+                    <div class="h-full">
+                        <div class="square-card pt-3 sticky top-28">
+                            <div class="mb-3 text-neutral-400">On this report</div>
+                            <div class="flex flex-col gap-1 text-neutral-200">
+                                <div class="text-orange-300">Overview</div>
+                                <div>Lighthouse</div>
+                                <div>Tech Stack</div>
+                                <div>Heat Map</div>
+                                <div>Meta Tags</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="grid grid-cols-[1fr_0.15fr] gap-4">
+                            <div>
+                                <div class="square-card p-0 mb-6">
+                                    <img class="h-full w-full object-cover object-center" src="https://linear.app/static/og/homepage-2024.jpg" alt="Linear Open Graph image">
+                                </div>
+                                <div class="flex flex-row justify-between gap-16">
+                                    <div class="max-w-[400px]">
+                                        <div class="text-xl font-medium mb-1 text-pretty">Linear – Plan and build products</div>
+                                        <div class="text-lg text-neutral-300 text-pretty">Linear streamlines issues, projects, and roadmaps. Purpose-built for modern product development.</div>
+                                    </div>
+                                    <div class="flex flex-row gap-8 flex-wrap">
+                                        <div class="flex flex-col gap-2">
+                                            <div class="text-neutral-300">Fonts</div>
+                                            <div class="flex flex-col gap-1">
+                                                <div>Satoshi</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col gap-2">
+                                            <div class="text-neutral-300">Framework</div>
+                                            <div class="flex flex-col gap-1">
+                                                <div class="flex flex-row gap-2 items-center">
+                                                    <svg class="h-5" viewBox="0 0 256 366" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><path fill="#fff" d="M182.022 9.147c2.982 3.702 4.502 8.697 7.543 18.687L256 246.074a276.467 276.467 0 0 0-79.426-26.891L133.318 73.008a5.63 5.63 0 0 0-10.802.017L79.784 219.11A276.453 276.453 0 0 0 0 246.04L66.76 27.783c3.051-9.972 4.577-14.959 7.559-18.654a24.541 24.541 0 0 1 9.946-7.358C88.67 0 93.885 0 104.314 0h47.683c10.443 0 15.664 0 20.074 1.774a24.545 24.545 0 0 1 9.95 7.373Z"/><path fill="#FF5D01" d="M189.972 256.46c-10.952 9.364-32.812 15.751-57.992 15.751-30.904 0-56.807-9.621-63.68-22.56-2.458 7.415-3.009 15.903-3.009 21.324 0 0-1.619 26.623 16.898 45.14 0-9.615 7.795-17.41 17.41-17.41 16.48 0 16.46 14.378 16.446 26.043l-.001 1.041c0 17.705 10.82 32.883 26.21 39.28a35.685 35.685 0 0 1-3.588-15.647c0-16.886 9.913-23.173 21.435-30.48 9.167-5.814 19.353-12.274 26.372-25.232a47.588 47.588 0 0 0 5.742-22.735c0-5.06-.786-9.938-2.243-14.516Z"/></svg>
+                                                    <div>Astro</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col gap-2">
+                                            <div class="text-neutral-300">Hosting</div>
+                                            <div class="flex flex-col gap-1">
+                                                <div class="flex flex-row gap-2 items-center">
+                                                    <svg viewBox="0 0 256 116" class="h-3" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><path fill="#FFF" d="m202.357 49.394-5.311-2.124C172.085 103.434 72.786 69.289 66.81 85.997c-.996 11.286 54.227 2.146 93.706 4.059 12.039.583 18.076 9.671 12.964 24.484l10.069.031c11.615-36.209 48.683-17.73 50.232-29.68-2.545-7.857-42.601 0-31.425-35.497Z"/><path fill="#F4811F" d="M176.332 108.348c1.593-5.31 1.062-10.622-1.593-13.809-2.656-3.187-6.374-5.31-11.154-5.842L71.17 87.634c-.531 0-1.062-.53-1.593-.53-.531-.532-.531-1.063 0-1.594.531-1.062 1.062-1.594 2.124-1.594l92.946-1.062c11.154-.53 22.839-9.56 27.087-20.182l5.312-13.809c0-.532.531-1.063 0-1.594C191.203 20.182 166.772 0 138.091 0 111.535 0 88.697 16.995 80.73 40.896c-5.311-3.718-11.684-5.843-19.12-5.31-12.747 1.061-22.838 11.683-24.432 24.43-.531 3.187 0 6.374.532 9.56C16.996 70.107 0 87.103 0 108.348c0 2.124 0 3.718.531 5.842 0 1.063 1.062 1.594 1.594 1.594h170.489c1.062 0 2.125-.53 2.125-1.594l1.593-5.842Z"/><path fill="#FAAD3F" d="M205.544 48.863h-2.656c-.531 0-1.062.53-1.593 1.062l-3.718 12.747c-1.593 5.31-1.062 10.623 1.594 13.809 2.655 3.187 6.373 5.31 11.153 5.843l19.652 1.062c.53 0 1.062.53 1.593.53.53.532.53 1.063 0 1.594-.531 1.063-1.062 1.594-2.125 1.594l-20.182 1.062c-11.154.53-22.838 9.56-27.087 20.182l-1.063 4.78c-.531.532 0 1.594 1.063 1.594h70.108c1.062 0 1.593-.531 1.593-1.593 1.062-4.25 2.124-9.03 2.124-13.81 0-27.618-22.838-50.456-50.456-50.456"/></svg>
+                                                    <div>Cloudflare</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex flex-col gap-2">
+                                            <div class="text-neutral-300">CMS</div>
+                                            <div class="flex flex-col gap-1">
+                                                <div class="flex flex-row gap-2 items-center">
+                                                    <svg viewBox="0 0 256 305" class="h-5" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><path fill="#fff" d="M116.204 0 256 84.031v159.5l-105.265 60.896v-159.5L10.772 61.008 116.204 0ZM105.49 171.121v124.463L0 232.13l105.489-61.008Z"/></svg>
+                                                    <div>Payload</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="square-card p-2 flex flex-col gap-4">
+                                    <div class="square-card p-0">
+                                        <div class="bg-green-600 text-center">Performance</div>
+                                        <div class="text-center text-3xl bg-green-300 text-green-600 font-medium">98</div>
+                                    </div>
+                                    <div class="square-card p-0">
+                                        <div class="bg-green-600 text-center">Accessibility</div>
+                                        <div class="text-center text-3xl bg-green-300 text-green-600 font-medium">98</div>
+                                    </div>
+                                    <div class="square-card p-0">
+                                        <div class="bg-green-600 text-center">Best Practices</div>
+                                        <div class="text-center text-3xl bg-green-300 text-green-600 font-medium">98</div>
+                                    </div>
+                                    <div class="square-card p-0">
+                                        <div class="bg-green-600 text-center">SEO</div>
+                                        <div class="text-center text-3xl bg-green-300 text-green-600 font-medium">98</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-28">
+                            <h2 class="text-2xl font-medium mb-2">Lighthouse</h2>
+                            <div class="text-lg text-neutral-300 text-pretty mb-8 max-w-[700px]">A Lighthouse Score is a comprehensive performance metric generated by Google’s open-source tool, Lighthouse, which analyzes web pages and provides scores across multiple categories to help developers improve their websites’ quality.</div>
+                            <div id="lighthouse-viewer-element" class="lighthouse-viewer bg-neutral-700 square-card p-0"></div>
+                        </div>
+                        <div class="mt-28">
+                            <h2 class="text-2xl font-medium mb-2">Tech Stack</h2>
+                            <div class="text-lg text-neutral-300 text-pretty mb-8 max-w-[700px]">
+                            This is a scan of <span>https://linear.app</span> to determine what technologies it was made with. From analytics tools,
+                            to hosting provider, frameworks and more, here's what we found.
+                            </div>
+                        </div>
+                        <div class="mt-28">
+                            <h2 class="text-2xl font-medium mb-2">Heat Map</h2>
+                            <div class="text-lg text-neutral-300 text-pretty mb-4 max-w-[700px]">
+                            This is a simulation that uses color-coded patterns to represent user interaction data on a website. Similar to weather maps showing temperature 
+                            variations, website heat maps display “hot” areas with high user engagement in warmer colors (reds and oranges) and “cold” areas with lower engagement
+                            in cooler colors (blues and greens).
+                            </div>
+                            <div class="text-lg text-neutral-300 text-pretty mb-8 max-w-[700px]">While we aim for this simulation to be as accurate as possible, we recommend 
+                            the use of Posthog, our analytics tool of choice, to gather heat maps from your live website visitors. 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <Footer/>
+    </body>
+</html>
