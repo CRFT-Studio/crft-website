@@ -179,15 +179,15 @@ if (url) {
             }
         </section>
         <Footer/>
-        {report && <span id="report" hidden>{JSON.stringify(report)}</span>}
+        {report && <span id="report" hidden>{JSON.stringify(report.lighthouseResult)}</span>}
         <script>
             import $ from 'jquery';
             import { renderReport } from 'lighthouse-viewer';
             $(() => {
                 if ($("#report")[0]) {
-                    console.log("begin here: " + $("#report").text() + " <-- end there");
+                    const reportData = JSON.parse($("#report").text());
                     const app = document.querySelector('#lighthouse-viewer-element');
-                    const reportHtml = renderReport(JSON.parse($("#report").text()), {});
+                    const reportHtml = renderReport(reportData, {});
                     app.appendChild(reportHtml);
                 }
             });
