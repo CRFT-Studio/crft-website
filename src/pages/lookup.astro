@@ -30,15 +30,6 @@ if (url) {
         description="All the info we look for in websites, consolidated. See the tech stack, pagespeed and heatmap of the URLs you're curious about."
         />
 
-        <script>
-            import { renderReport } from 'lighthouse-viewer';
-            import report from '../data/report.json';
-
-            const app = document.querySelector<HTMLDivElement>('#lighthouse-viewer-element')!;
-
-            const reportHtml = renderReport(report as any, {});
-            app.appendChild(reportHtml);
-        </script>
     </head>
 
     <body>
@@ -188,5 +179,18 @@ if (url) {
             }
         </section>
         <Footer/>
+        {report && <span id="report" hidden>{JSON.stringify(report)}</span>}
+        <script>
+            import $ from 'jquery';
+            import { renderReport } from 'lighthouse-viewer';
+            $(() => {
+                if ($("#report")[0]) {
+                    console.log("begin here: " + $("#report").text() + " <-- end there");
+                    const app = document.querySelector('#lighthouse-viewer-element');
+                    const reportHtml = renderReport(JSON.parse($("#report").text()), {});
+                    app.appendChild(reportHtml);
+                }
+            });
+        </script>
     </body>
 </html>
