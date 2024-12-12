@@ -17,13 +17,11 @@ import Footer from '../components/Footer.astro';
 import FAQs from '../components/FAQs.astro';
 import Testimonials from '../components/Testimonials.astro';
 import HeadScripts from '../components/HeadScripts.astro';
-import { ViewTransitions } from 'astro:transitions';
 import { fade } from 'astro:transitions';
 ---
 <!DOCTYPE html>
 <html lang="en" transition:animate={fade({ duration: '0.2s' })}>
     <head>
-		<ViewTransitions/>
 		<HeadScripts
 		title="CRFT Studio | Marketing Sites Built to Convert"
 		description="We design and develop beautiful, performant, and maintainable websites for the best marketing teams."

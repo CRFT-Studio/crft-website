@@ -7,7 +7,7 @@ import TableOfContents from "../components/TableOfContents.astro";
 
 const {frontmatter, headings} = Astro.props;
 const alphabet = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
-const glossaryPages = await Astro.glob('../pages/glossary/*.mdx');
+const glossaryPages = Object.values(import.meta.glob('../pages/glossary/*.mdx', {eager: true}));
 
 const sortedPages = glossaryPages.sort((a, b) => {
     const urlA = a.url.split('/').filter(Boolean).pop();
@@ -15,7 +15,7 @@ const sortedPages = glossaryPages.sort((a, b) => {
     return urlA.localeCompare(urlB);
 });
 
-const currentIndex = sortedPages.findIndex(page => 
+const currentIndex = sortedPages.findIndex(page =>
     page.url.split('/').filter(Boolean).pop() === Astro.url.pathname.split('/').filter(Boolean).pop()
 );
 
@@ -85,10 +85,10 @@ console.log("Page URLs:", glossaryPages.map(p => p.url));
             </div>
         </section>
         <Footer/>
-        
+
         <script>
         import $ from 'jquery';
-        
+
         const moveTocOnMobile = () => {
             if ($(window).width() < 1024) {
                 $("#toc").insertBefore("h2:first");
