@@ -7,6 +7,12 @@ import Footer from "../components/Footer.astro";
 import Lighthouse from "../components/Lighthouse.astro";
 
 const url = Astro.url.searchParams.get("url");
+
+import ogs from 'open-graph-scraper';
+const {result} = await ogs({url: url});
+const ogTitle = result.ogTitle;
+const ogImageUrl = result.ogImage?.[0]?.url;
+const ogDescription = result.ogDescription;
 ---
 <html lang="en">
     <head>
@@ -62,12 +68,12 @@ const url = Astro.url.searchParams.get("url");
                             <div class="grid grid-cols-[1fr_0.15fr] gap-4">
                                 <div>
                                     <div class="square-card p-0 mb-6">
-                                        <img class="h-full w-full object-cover object-center" src="https://linear.app/static/og/homepage-2024.jpg" alt="Linear Open Graph image">
+                                    <img class="h-full w-full object-cover object-center" src={ogImageUrl} alt={`Open Graph Image of ${url}`}>
                                     </div>
                                     <div class="flex flex-row justify-between gap-16">
                                         <div class="max-w-[400px]">
-                                            <div class="text-xl font-medium mb-1 text-pretty">Linear – Plan and build products</div>
-                                            <div class="text-lg text-neutral-300 text-pretty">Linear streamlines issues, projects, and roadmaps. Purpose-built for modern product development.</div>
+                                            <div class="text-xl font-medium mb-1 text-pretty">{ogTitle}</div>
+                                            <div class="text-lg text-neutral-300 text-pretty">{ogDescription}</div>
                                         </div>
                                         <div class="flex flex-row gap-8 flex-wrap">
                                             <div class="flex flex-col gap-2">
