@@ -9,10 +9,14 @@ import Lighthouse from "../components/Lighthouse.astro";
 const url = Astro.url.searchParams.get("url");
 
 import ogs from 'open-graph-scraper';
-const {result} = await ogs({url: url});
-const ogTitle = result.ogTitle;
-const ogImageUrl = result.ogImage?.[0]?.url;
-const ogDescription = result.ogDescription;
+let ogTitle, ogImageUrl, ogDescription;
+
+if (url) {
+    const {result} = await ogs({url: url});
+    ogTitle = result.ogTitle;
+    ogImageUrl = result.ogImage?.[0]?.url;
+    ogDescription = result.ogDescription;
+}
 ---
 <html lang="en">
     <head>
