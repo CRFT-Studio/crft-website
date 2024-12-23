@@ -24,6 +24,18 @@ if (url) {
         title="The CRFT Lookup"
         description="All the info we look for in websites, consolidated. See the tech stack, pagespeed and heatmap of the URLs you're curious about."
         />
+        <script>
+            import $ from 'jquery';
+
+            $(document).ready(function () {
+                $("#metaTitle").on("input", () => {
+                    $("#titleLength").text($("#metaTitle").val().length);
+                });
+                $("#metaDescription").on("input", () => {
+                    $("#descriptionLength").text($("#metaDescription").val().length);
+                });
+            });
+        </script>
     </head>
 
     <body>
