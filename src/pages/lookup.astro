@@ -185,6 +185,26 @@ if (url) {
                                 This is what <span>{url}</span> will look like when shared online through various social media services
                                 and messaging platforms.
                                 </div>
+                                <div class="grid grid-cols-[1fr_1fr] mt-5">
+                                    <div class="square-card flex flex-col gap-5">
+                                        <div>
+                                            <div class="mb-2">Title</div>
+                                            <input id="metaTitle" class="square-card rounded-none p-2 text-neutral-300 mb-2" type="text" value={ogTitle}>
+                                            <div><span id="titleLength">{ogTitle.length}</span> / 60 characters</div>
+                                        </div>
+                                        <div>
+                                            <div class="mb-2">Description</div>
+                                            <textarea id="metaDescription" rows="3" cols="33" class="square-card rounded-none p-2 text-neutral-300 mb-1" placeholder="seo meta description">{ogDescription}</textarea>
+                                            <div><span id="descriptionLength">{ogDescription.length}</span> / 155 characters</div>
+                                        </div>
+                                        <div>
+                                            <div class="mb-2">Image</div>
+                                            <div class="square-card p-0">
+                                                <img class="h-full w-full object-cover object-center" src={ogImageUrl} alt={`Open Graph Image of ${url}`}>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
