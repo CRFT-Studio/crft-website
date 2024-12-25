@@ -259,6 +259,18 @@ if (url) {
                                                         <div class="p-1 px-2 text-sm bg-neutral-950 bg-opacity-80 inline-block absolute bottom-0 mb-2 ml-2 rounded-md">{ogTitle}</div>
                                                     </div>
                                                 </div>
+                                                <div>
+                                                    <h4 class="text-lg mb-3 font-medium">Facebook</h4>
+                                                    <div class="bg-[#333334] overflow-hidden">
+                                                        <img src={ogImageUrl} alt="">
+                                                        <div class="p-3 relative">
+                                                            <div class="w-7 h-7 flex flex-row items-center justify-center rounded-full bg-neutral-800 border border-neutral-700 absolute -top-[15px] right-0 mr-6 text-xl">𝒊</div>
+                                                            <div class="text-neutral-300 leading-tight mb-[6px] uppercase">{url.replace(/^https?:\/\//i, '').split('/')[0]}</div>
+                                                            <div class="font-medium text-lg leading-tight mb-[6px]">{ogTitle}</div>
+                                                            <div class="text-neutral-300 leading-tight">{ogDescription}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
