@@ -353,6 +353,19 @@ if (url) {
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div>
+                                                    <h4 class="text-lg mb-2 font-medium">Slack</h4>
+                                                    <div class="text-[#1D9BD1] mb-2">{url}</div>
+                                                    <div class="flex flex-row gap-4">
+                                                        <div class="w-1 h-auto rounded-xl bg-neutral-600 shrink-0"></div>
+                                                        <div>
+                                                            <div class="font-semibold mb-1">{url.replace(/^https?:\/\//i, '').split('/')[0]}</div>
+                                                            <div class="text-[#1D9BD1] font-medium mb-1">{ogTitle}</div>
+                                                            <div class="text-neutral-300 leading-snug">{ogDescription}</div>
+                                                            <img src={ogImageUrl} class="rounded-md overflow-hidden mt-3" alt="">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
