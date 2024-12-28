@@ -91,7 +91,7 @@ if (url) {
                             <div class="grid grid-cols-[1fr_0.15fr] gap-4">
                                 <div>
                                     <div class="square-card p-0 mb-6">
-                                    <img class="h-full w-full object-cover object-center" src={ogImageUrl} alt={`Open Graph Image of ${url}`}>
+                                        <img class="h-full w-full object-cover object-center" src={ogImageUrl} alt={`Open Graph Image of ${url}`}>
                                     </div>
                                     <div class="flex flex-row justify-between gap-16">
                                         <div class="max-w-[400px]">
@@ -194,20 +194,9 @@ if (url) {
                             <div class="mt-28">
                                 <h2 class="text-2xl font-medium mb-2">Meta Tags</h2>
                                 <div class="text-lg text-neutral-300 text-pretty mb-4 max-w-[700px]">
-                                This is what <span>{url}</span> will look like when shared online through various social media services
+                                This is what <span>{url}</span> will look like when seen on search engines and shared online through various social media services
                                 and messaging platforms.
                                 </div>
-                                <div class="grid grid-cols-[1fr_1fr] mt-5">
-                                    <div class="square-card flex flex-col gap-5">
-                                        <div>
-                                            <div class="mb-2">Title</div>
-                                            <input id="metaTitle" class="square-card rounded-none p-2 text-neutral-300 mb-2" type="text" value={ogTitle}>
-                                            <div><span id="titleLength">{ogTitle.length}</span> / 60 characters</div>
-                                        </div>
-                                        <div>
-                                            <div class="mb-2">Description</div>
-                                            <textarea id="metaDescription" rows="3" cols="33" class="square-card rounded-none p-2 text-neutral-300 mb-1" placeholder="seo meta description">{ogDescription}</textarea>
-                                            <div><span id="descriptionLength">{ogDescription.length}</span> / 155 characters</div>
                                 <div class="grid grid-cols-[1fr_1fr] mt-9 gap-14">
                                     <div>
                                         <div class="square-card flex flex-col gap-5 sticky top-28">
@@ -308,13 +297,13 @@ if (url) {
                                                 </div>
                                                 <div>
                                                     <h4 class="text-lg mb-3 font-medium">Telegram</h4>
-                                                    <div class="rounded-2xl rounded-br-[0px] p-3 pb-1 bg-gradient-to-b from-[#7F47C0] to-[#676AEF] relative">
+                                                    <div class="rounded-2xl rounded-br-[0px] p-3 pb-1 bg-gradient-to-b from-[#7F47C0] to-[#676AEF] relative max-w-[400px]">
                                                         <div class="mb-2 text-xl underline">{url}</div>
                                                         <div class="rounded-xl overflow-hidden bg-white bg-opacity-10 mb-1">
                                                             <div class="border-l-4 border-neutral-50 p-2">
                                                                 <div class="font-semibold">{url.replace(/^https?:\/\//i, '').split('/')[0]}</div>
-                                                                <div class="font-semibold text-lg">{ogTitle}</div>
-                                                                <div class="text-lg text-neutral-100 leading-snug font-medium">{ogDescription}</div>
+                                                                <div class="font-semibold">{ogTitle}</div>
+                                                                <div class="text-neutral-100 leading-snug font-medium">{ogDescription}</div>
                                                                 <img src={ogImageUrl} class="rounded-xl overflow-hidden mt-3" alt="">
                                                             </div>
                                                         </div>
@@ -331,6 +320,8 @@ if (url) {
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div>
+                                                    <h4 class="text-lg mb-3 font-medium">Signal</h4>
                                                     <div class="rounded-2xl rounded-br-sm bg-[#2E2E2E] max-w-[300px] overflow-hidden">
                                                         <img src={ogImageUrl} alt="">
                                                         <div class="p-3">
