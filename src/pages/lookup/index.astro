@@ -1,12 +1,15 @@
 ---
 export const prerender = false;
 
-import HeadScripts from "../components/HeadScripts.astro";
-import Navigation from "../components/Navigation.astro";
-import Footer from "../components/Footer.astro";
-import Lighthouse from "../components/Lighthouse.astro";
+import HeadScripts from "../../components/HeadScripts.astro";
+import Navigation from "../../components/Navigation.astro";
+import Footer from "../../components/Footer.astro";
+import Lighthouse from "../../components/Lighthouse.astro";
+// import Wappalyzer from "../../components/Wappalyzer.astro";
+import techStack from "../../data/techstack.json";
 
 const url = Astro.url.searchParams.get("url");
+const technologies = techStack.technologies;
 
 import ogs from 'open-graph-scraper';
 let ogTitle, ogImageUrl, ogDescription;
@@ -17,6 +20,16 @@ if (url) {
     ogImageUrl = result.ogImage?.[0]?.url;
     ogDescription = result.ogDescription;
 }
+
+const techByCategory = technologies.reduce((acc, tech) => {
+  tech.categories.forEach(cat => {
+    if (!acc[cat.name]) {
+      acc[cat.name] = [];
+    }
+    acc[cat.name].push(tech);
+  });
+  return acc;
+}, {});
 ---
 <html lang="en">
     <head>
@@ -39,14 +52,12 @@ if (url) {
                 });
 
                 function lhStyles() {
-                    console.log("open")
                     if ($("#lighthouse-viewer-element")[0]) {
                         $(".lh-sticky-header").css("position", "static");
                         $(".lh-topbar").css("position", "static");
                     } else {
                         setTimeout(lhStyles, 10000);
                     }
-                    console.log("close")
                 }
                 lhStyles();
             });
@@ -75,14 +86,14 @@ if (url) {
                 </div>
             :
                 <div class="container">
-                    <div class="inline-flex flex-row gap-3 square-card px-2 py-[3px] items-center text-neutral-300 mb-5 sticky top-20">
+                    <div class="inline-flex flex-row gap-3 square-card px-2 py-[3px] items-center text-neutral-300 mb-5 sticky top-20 z-50">
                         <div>CRFT Lookup</div>
                         <svg xmlns="http://www.w3.org/2000/svg" class="fill-neutral-300 h-[20px] w-auto" viewBox="0 -960 960 960" width="24px"><path d="m517.85-480-184-184L376-706.15 602.15-480 376-253.85 333.85-296l184-184Z"/></svg>
                         <div>{url}</div>
                         <div class="aspect-square h-[5px] rounded-xl bg-neutral-300 mx-2"></div>
                         <div>Generated on Dec 7, 2024, 6:01:34 PM </div>
                     </div>
-                    <div class="grid grid-cols-[0.15fr_1fr] gap-8">
+                    <div class="grid grid-cols-[0.15fr_1fr] gap-5">
                         <div class="h-full">
                             <div class="sticky top-32">
                                 <div class="square-card pt-3">
@@ -194,6 +205,38 @@ if (url) {
                                 This is a scan of <span>{url}</span> to determine what technologies it was made with. From analytics tools,
                                 to hosting provider, frameworks and more, here's what we found.
                                 </div>
+                                <div class="flex flex-col gap-8">
+                                  {Object.entries(techByCategory).map(([category, techs]) => (
+                                    <div>
+                                        <h3 class="text-xl font-medium mb-4">{category}</h3>
+                                        <div class="grid grid-cols-2 gap-4">
+                                            {techs.map((tech) => (
+                                                <a href={tech.website} target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all">
+                                                    <div class="flex flex-row gap-2 items-center">
+                                                        <img src={`/icons/${tech.icon}`} class="w-5 h-5" alt=""></img>
+                                                        <div>{tech.name}</div>
+                                                    </div>
+                                                    <div class="text-pretty">{tech.description}</div>
+                                                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
+                                                </a>
+                                            ))}
+                                        </div>
+                                    </div>
+                                  ))}
+                                </div>
+                                <!-- <Wappalyzer server:defer url={url}>
+                                    <div slot="fallback" class="flex flex-row gap-4 justify-start text-neutral-300">
+                                        <div role="status">
+                                            <svg aria-hidden="true" class="w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-orange-300" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                                                <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                                            </svg>
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+
+                                        <div>Fetching tech stack...</div>
+                                    </div>
+                                </Wappalyzer> -->
                             </div>
                             <!-- <div class="mt-28">
                                 <h2 class="text-2xl font-medium mb-2">Heat Map</h2>
