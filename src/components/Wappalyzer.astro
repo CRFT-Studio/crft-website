@@ -1,0 +1,37 @@
+---
+export const prerender = false;
+const url = Astro.props;
+
+const technologies = techStack.technologies;
+import techStack from "../data/techstack.json";
+
+
+const techByCategory = technologies.reduce((acc, tech) => {
+  tech.categories.forEach(cat => {
+    if (!acc[cat.name]) {
+      acc[cat.name] = [];
+    }
+    acc[cat.name].push(tech);
+  });
+  return acc;
+}, {});
+---
+<div class="flex flex-col gap-8">
+  {Object.entries(techByCategory).map(([category, techs]) => (
+    <div>
+        <h3 class="text-xl font-medium mb-4">{category}</h3>
+        <div class="grid grid-cols-2 gap-4">
+            {techs.map((tech) => (
+                <a href={tech.website} target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all">
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src={`/icons/${tech.icon}`} class="w-5 h-5" alt=""></img>
+                        <div>{tech.name}</div>
+                    </div>
+                    <div class="text-pretty">{tech.description}</div>
+                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
+                </a>
+            ))}
+        </div>
+    </div>
+  ))}
+</div>

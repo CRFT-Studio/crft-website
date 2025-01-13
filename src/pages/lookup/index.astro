@@ -5,11 +5,9 @@ import HeadScripts from "../../components/HeadScripts.astro";
 import Navigation from "../../components/Navigation.astro";
 import Footer from "../../components/Footer.astro";
 import Lighthouse from "../../components/Lighthouse.astro";
-// import Wappalyzer from "../../components/Wappalyzer.astro";
-import techStack from "../../data/techstack.json";
+import Wappalyzer from "../../components/Wappalyzer.astro";
 
 const url = Astro.url.searchParams.get("url");
-const technologies = techStack.technologies;
 
 import ogs from 'open-graph-scraper';
 let ogTitle, ogImageUrl, ogDescription;
@@ -20,16 +18,6 @@ if (url) {
     ogImageUrl = result.ogImage?.[0]?.url;
     ogDescription = result.ogDescription;
 }
-
-const techByCategory = technologies.reduce((acc, tech) => {
-  tech.categories.forEach(cat => {
-    if (!acc[cat.name]) {
-      acc[cat.name] = [];
-    }
-    acc[cat.name].push(tech);
-  });
-  return acc;
-}, {});
 ---
 <html lang="en">
     <head>
@@ -205,26 +193,7 @@ const techByCategory = technologies.reduce((acc, tech) => {
                                 This is a scan of <span>{url}</span> to determine what technologies it was made with. From analytics tools,
                                 to hosting provider, frameworks and more, here's what we found.
                                 </div>
-                                <div class="flex flex-col gap-8">
-                                  {Object.entries(techByCategory).map(([category, techs]) => (
-                                    <div>
-                                        <h3 class="text-xl font-medium mb-4">{category}</h3>
-                                        <div class="grid grid-cols-2 gap-4">
-                                            {techs.map((tech) => (
-                                                <a href={tech.website} target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all">
-                                                    <div class="flex flex-row gap-2 items-center">
-                                                        <img src={`/icons/${tech.icon}`} class="w-5 h-5" alt=""></img>
-                                                        <div>{tech.name}</div>
-                                                    </div>
-                                                    <div class="text-pretty">{tech.description}</div>
-                                                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
-                                                </a>
-                                            ))}
-                                        </div>
-                                    </div>
-                                  ))}
-                                </div>
-                                <!-- <Wappalyzer server:defer url={url}>
+                                <Wappalyzer server:defer url={url}>
                                     <div slot="fallback" class="flex flex-row gap-4 justify-start text-neutral-300">
                                         <div role="status">
                                             <svg aria-hidden="true" class="w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-orange-300" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -236,7 +205,7 @@ const techByCategory = technologies.reduce((acc, tech) => {
 
                                         <div>Fetching tech stack...</div>
                                     </div>
-                                </Wappalyzer> -->
+                                </Wappalyzer>
                             </div>
                             <!-- <div class="mt-28">
                                 <h2 class="text-2xl font-medium mb-2">Heat Map</h2>
