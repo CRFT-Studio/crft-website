@@ -1,37 +1,79 @@
 ---
 export const prerender = false;
-const url = Astro.props;
+const { url } = Astro.props;
 
-const technologies = techStack.technologies;
-import techStack from "../data/techstack.json";
+console.log("Wappalyzer component is being executed");
+console.log("URL received in Wappalyzer component:", url);
 
+let techByCategory = {};
 
-const techByCategory = technologies.reduce((acc, tech) => {
-  tech.categories.forEach(cat => {
-    if (!acc[cat.name]) {
-      acc[cat.name] = [];
+if (!url) {
+  console.log("No URL provided to Wappalyzer component");
+} else {
+  try {
+    // Use the full URL for the fetch request
+    const currentUrl = new URL(Astro.request.url);
+    const apiUrl = new URL('/api/analyze', currentUrl.origin);
+    apiUrl.searchParams.set('url', url);
+
+    console.log("Making request to:", apiUrl.toString());
+
+    const response = await fetch(apiUrl, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    console.log("Response status:", response.status);
+    const results = await response.json();
+    console.log("Raw results from API:", results);
+
+    if (results && results.technologies) {
+      techByCategory = results.technologies.reduce((acc, tech) => {
+        if (tech.categories) {
+          tech.categories.forEach(cat => {
+            if (!acc[cat.name]) {
+              acc[cat.name] = [];
+            }
+            acc[cat.name].push({
+              name: tech.name,
+              description: tech.description,
+              website: tech.website,
+              icon: tech.icon,
+            });
+          });
+        }
+        return acc;
+      }, {});
+    } else {
+      console.log("No technologies found in results");
     }
-    acc[cat.name].push(tech);
-  });
-  return acc;
-}, {});
+  } catch (error) {
+    console.error('Error analyzing website:', error);
+  }
+}
 ---
 <div class="flex flex-col gap-8">
-  {Object.entries(techByCategory).map(([category, techs]) => (
-    <div>
-        <h3 class="text-xl font-medium mb-4">{category}</h3>
-        <div class="grid grid-cols-2 gap-4">
-            {techs.map((tech) => (
-                <a href={tech.website} target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all">
-                    <div class="flex flex-row gap-2 items-center">
-                        <img src={`/icons/${tech.icon}`} class="w-5 h-5" alt=""></img>
-                        <div>{tech.name}</div>
-                    </div>
-                    <div class="text-pretty">{tech.description}</div>
-                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
-                </a>
-            ))}
-        </div>
-    </div>
-  ))}
+  {Object.entries(techByCategory).length > 0 ? (
+    Object.entries(techByCategory).map(([category, techs]) => (
+      <div>
+          <h3 class="text-xl font-medium mb-4">{category}</h3>
+          <div class="grid grid-cols-2 gap-4">
+              {techs.map((tech) => (
+                  <a href={tech.website} target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all">
+                      <div class="flex flex-row gap-2 items-center">
+                          <img src={`/icons/${tech.icon}`} class="w-5 h-5" alt=""></img>
+                          <div>{tech.name}</div>
+                      </div>
+                      <div class="text-pretty">{tech.description}</div>
+                      <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
+                  </a>
+              ))}
+          </div>
+      </div>
+    ))
+  ) : (
+    <div class="text-neutral-300">No technology data available</div>
+  )}
 </div>
