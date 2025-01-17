@@ -1,6 +1,6 @@
 ---
 export const prerender = false;
-const { url } = Astro.props;
+const { url, variant = 'default' } = Astro.props;
 
 console.log("Wappalyzer component is being executed");
 console.log("URL received in Wappalyzer component:", url);
@@ -46,34 +46,61 @@ if (!url) {
         }
         return acc;
       }, {});
-    } else {
-      console.log("No technologies found in results");
     }
   } catch (error) {
-    console.error('Error analyzing website:', error);
+    console.error("Error in Wappalyzer component:", error);
   }
 }
 ---
-<div class="flex flex-col gap-8">
-  {Object.entries(techByCategory).length > 0 ? (
-    Object.entries(techByCategory).map(([category, techs]) => (
-      <div>
-          <h3 class="text-xl font-medium mb-4">{category}</h3>
-          <div class="grid grid-cols-2 gap-4">
-              {techs.map((tech) => (
-                  <a href={tech.website} target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all">
-                      <div class="flex flex-row gap-2 items-center">
-                          <img src={`/icons/${tech.icon}`} class="w-5 h-5" alt=""></img>
-                          <div>{tech.name}</div>
-                      </div>
-                      <div class="text-pretty">{tech.description}</div>
-                      <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
-                  </a>
-              ))}
-          </div>
-      </div>
-    ))
-  ) : (
-    <div class="text-neutral-300">No technology data available</div>
-  )}
-</div>
+
+{variant === 'default' && (
+    <div class="flex flex-col gap-8">
+        {Object.entries(techByCategory).length > 0 ? (
+            Object.entries(techByCategory).map(([category, techs]) => (
+                <div>
+                    <h3 class="text-xl font-medium mb-4">{category}</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        {techs.map((tech) => (
+                            <a href={tech.website} target="_blank" id={tech.categories?.[0]?.slug} class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all">
+                                <div id={tech.slug} class="flex flex-row gap-2 items-center">
+                                    <img src={`/icons/${tech.icon}`} class="w-5 h-5" alt="" />
+                                    <div>{tech.name}</div>
+                                </div>
+                                <div class="text-pretty">{tech.description}</div>
+                                <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            ))
+        ) : (
+            <div class="text-neutral-300">No technology data available</div>
+        )}
+    </div>
+)}
+
+{variant === 'overview' && (
+    <div class="flex flex-row gap-8">
+        {Object.entries(techByCategory).length > 0 ? (
+            Object.entries(techByCategory)
+                .filter(([category]) => ['CDN', 'Framework', 'CMS'].includes(category))
+                .map(([category, techs]) => (
+                    <div class="flex flex-row flex-wrap gap-4">
+                        <div class="flex flex-col gap-2">
+                            <h3 class="font-medium mb-4">{category}</h3>
+                            <div class="flex flex-col gap-4">
+                                {techs.map((tech) => (
+                                    <div class="flex flex-row gap-2">
+                                        <img src={`/icons/${tech.icon}`} class="w-5 h-5" alt="" />
+                                        <div>{tech.name}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                ))
+        ) : (
+            <div class="text-neutral-300">No technology data available</div>
+        )}
+    </div>
+)}
