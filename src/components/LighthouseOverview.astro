@@ -1,0 +1,36 @@
+---
+const { session } = Astro.locals.runtime;
+const currentUrl = Astro.url.searchParams.get('url');
+
+const reportData = session.get('lighthouse_report');
+const report = reportData?.url === currentUrl ? reportData.data : null;
+
+function getColorClasses(score) {
+    if (score >= 90) return { bg: 'bg-green-600', text: 'text-green-600', lightBg: 'bg-green-300' };
+    if (score >= 50) return { bg: 'bg-yellow-600', text: 'text-yellow-600', lightBg: 'bg-yellow-300' };
+    return { bg: 'bg-red-600', text: 'text-red-600', lightBg: 'bg-red-300' };
+}
+
+const metrics = [
+    { key: 'performance', label: 'Performance' },
+    { key: 'accessibility', label: 'Accessibility' },
+    { key: 'best-practices', label: 'Best Practices' },
+    { key: 'seo', label: 'SEO' }
+];
+---
+
+<div class="square-card p-2 flex flex-col gap-4">
+    {metrics.map(metric => {
+        const score = Math.round(report?.categories[metric.key]?.score * 100);
+        const colors = getColorClasses(score);
+
+        return (
+            <div class="square-card p-0">
+                <div class={`${colors.bg} text-center`}>{metric.label}</div>
+                <div class={`text-center text-3xl ${colors.lightBg} ${colors.text} font-medium`}>
+                    {score}
+                </div>
+            </div>
+        );
+    })}
+</div>
