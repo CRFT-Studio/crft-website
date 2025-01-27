@@ -1,9 +1,5 @@
 ---
-const { session } = Astro.locals.runtime;
-const currentUrl = Astro.url.searchParams.get('url');
-
-const reportData = session.get('lighthouse_report');
-const report = reportData?.url === currentUrl ? reportData.data : null;
+const { report } = Astro.props;
 
 function getColorClasses(score) {
     if (score >= 90) return { bg: 'bg-green-600', text: 'text-green-600', lightBg: 'bg-green-300' };

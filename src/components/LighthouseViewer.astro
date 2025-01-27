@@ -1,9 +1,5 @@
 ---
-const { session } = Astro.locals.runtime;
-const currentUrl = Astro.url.searchParams.get('url');
-
-const reportData = session.get('lighthouse_report');
-const report = reportData?.url === currentUrl ? reportData.data : null;
+const { report } = Astro.props;
 ---
 
 <div id="lighthouse-viewer-element" class="lighthouse-viewer square-card p-0"></div>
