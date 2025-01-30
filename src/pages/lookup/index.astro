@@ -95,7 +95,88 @@ if (url) {
                 childList: true,
                 subtree: true
             });
+
+            //toc stuff below
+
+            function initTOC() {
+                const sections = ['overview', 'lighthouse', 'tech-stack', 'meta-tags'];
+
+                // Intersection Observer options
+                const options = {
+                    root: null,
+                    rootMargin: "-20% 0px -70% 0px", // Adjust these values to control when sections become "active"
+                    threshold: [0]
+                };
+
+                // Callback when intersection changes
+                const callback = (entries) => {
+                    entries.forEach(entry => {
+                        const id = entry.target.getAttribute('id');
+                        const menuItem = document.querySelector(`.toc-link[href="#${id}"]`);
+
+                        if (entry.isIntersecting) {
+                            document.querySelectorAll('.toc-link').forEach(link => {
+                                link.classList.remove('toc-current');
+                            });
+                            menuItem?.classList.add('toc-current');
+                        }
+                    });
+                };
+
+                // Create observer
+                const observer = new IntersectionObserver(callback, options);
+
+                // Observe all sections
+                sections.forEach(sectionId => {
+                    const element = document.getElementById(sectionId);
+                    if (element) {
+                        observer.observe(element);
+                    }
+                });
+
+                // Add smooth scrolling
+                document.querySelectorAll('.toc-link').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const targetId = link.getAttribute('href');
+                        document.querySelector(targetId)?.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    });
+                });
+            }
+
+            // Initialize on page load
+            if (document.readyState === 'complete') {
+                initTOC();
+            } else {
+                window.addEventListener('load', initTOC);
+            }
+
+            // Initialize on view transitions
+            document.addEventListener('astro:after-swap', initTOC);
         </script>
+
+        <style>
+            .toc-current {
+                @apply text-orange-300;
+            }
+
+            #overview,
+            #lighthouse,
+            #tech-stack,
+            #meta-tags {
+                scroll-margin-top: 8rem;
+            }
+
+            .toc-link {
+                transition: color 0.2s ease-in-out;
+            }
+
+            .toc-link:hover {
+                @apply text-orange-300;
+            }
+        </style>
     </head>
 
     <body>
@@ -137,16 +218,15 @@ if (url) {
                     <div class="grid grid-cols-[0.15fr_1fr] gap-5">
                         <div class="h-full">
                             <div class="sticky top-32">
-                                <div class="square-card pt-3">
-                                    <div class="mb-3 text-neutral-400">On this report</div>
-                                    <div class="flex flex-col gap-1 text-neutral-200">
-                                        <div class="text-orange-300">Overview</div>
-                                        <div>Lighthouse</div>
-                                        <div>Tech Stack</div>
-                                        <!-- <div>Heat Map</div> -->
-                                        <div>Meta Tags</div>
-                                    </div>
+                            <div class="square-card pt-3">
+                                <div class="mb-3 text-neutral-400">On this report</div>
+                                <div class="flex flex-col gap-1 text-neutral-200">
+                                    <a href="#overview" class="toc-link transition hover:text-orange-300">Overview</a>
+                                    <a href="#lighthouse" class="toc-link transition hover:text-orange-300">Lighthouse</a>
+                                    <a href="#tech-stack" class="toc-link transition hover:text-orange-300">Tech Stack</a>
+                                    <a href="#meta-tags" class="toc-link transition hover:text-orange-300">Meta Tags</a>
                                 </div>
+                            </div>
                                 <!-- <div class="p-3 px-4 rounded-sm border border-neutral-700 shadow-md mt-4">
                                     <div class="text-sm mb-1 font-medium text-neutral-50">Want a new website?</div>
                                     <div class="text-sm text-neutral-300 mb-2">We design and develop beautiful, performant, and maintainable sites for the best marketing teams.</div>
@@ -155,7 +235,7 @@ if (url) {
                             </div>
                         </div>
                         <div>
-                            <div class="grid grid-cols-[1fr_0.15fr] gap-4">
+                            <div class="grid grid-cols-[1fr_0.15fr] gap-4" id="overview">
                                 <div>
                                     <div class="square-card p-0 mb-6">
                                         <img class="h-full w-full object-cover object-center" src={ogImageUrl} alt={`Open Graph Image of ${url}`}>
@@ -300,7 +380,7 @@ if (url) {
                                 </div>
                             </div>
                             <div class="mt-28">
-                                <h2 class="text-2xl font-medium mb-2">Lighthouse</h2>
+                                <h2 class="text-2xl font-medium mb-2" id="lighthouse">Lighthouse</h2>
                                 <div class="text-lg text-neutral-300 text-pretty mb-8 max-w-[700px]">A Lighthouse Score is a comprehensive performance metric generated by Google’s open-source tool, Lighthouse, which analyzes web pages and provides scores across multiple categories to help developers improve their websites’ quality.</div>
                                 <Lighthouse server:defer url={url}>
                                     <div slot="fallback" class="flex flex-row gap-4 justify-start text-neutral-300">
@@ -317,7 +397,7 @@ if (url) {
                                 </Lighthouse>
                             </div>
                             <div class="mt-28">
-                                <h2 class="text-2xl font-medium mb-2">Tech Stack</h2>
+                                <h2 class="text-2xl font-medium mb-2" id="tech-stack">Tech Stack</h2>
                                 <div class="text-lg text-neutral-300 text-pretty mb-8 max-w-[700px]">
                                 This is a scan of <span>{url}</span> to determine what technologies it was made with. From analytics tools,
                                 to hosting provider, frameworks and more, here's what we found.
@@ -348,7 +428,7 @@ if (url) {
                                 </div>
                             </div> -->
                             <div class="mt-28">
-                                <h2 class="text-2xl font-medium mb-2">Meta Tags</h2>
+                                <h2 class="text-2xl font-medium mb-2" id="meta-tags">Meta Tags</h2>
                                 <div class="text-lg text-neutral-300 text-pretty mb-4 max-w-[700px]">
                                 This is what <span>{url}</span> will look like when seen on search engines and shared online through various social media services
                                 and messaging platforms.
