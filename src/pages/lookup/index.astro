@@ -125,7 +125,14 @@ if (url) {
                         <svg xmlns="http://www.w3.org/2000/svg" class="fill-neutral-300 h-[20px] w-auto" viewBox="0 -960 960 960" width="24px"><path d="m517.85-480-184-184L376-706.15 602.15-480 376-253.85 333.85-296l184-184Z"/></svg>
                         <div>{url}</div>
                         <div class="aspect-square h-[5px] rounded-xl bg-neutral-300 mx-2"></div>
-                        <div>Generated on Dec 7, 2024, 6:01:34 PM </div>
+                        <div>Generated on {new Date(Astro.url.searchParams.get("datetime").replace(/-(\d{2})$/, ":$1")).toLocaleString('en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric',
+                            hour: 'numeric',
+                            minute: '2-digit',
+                            hour12: true
+                        }).replace(',', ' at')}</div>
                     </div>
                     <div class="grid grid-cols-[0.15fr_1fr] gap-5">
                         <div class="h-full">
