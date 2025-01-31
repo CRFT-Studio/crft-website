@@ -48,7 +48,32 @@ if (url) {
                     }
                 }
                 lhStyles();
+
+                let userHasTyped = false;
+
+                $("#search").on("focus", function() {
+                    if (!$(this).val()) {
+                        $(this).val("https://");
+                    }
+                }).on("blur", function() {
+                    if ($(this).val() === "https://") {
+                        $(this).val("");
+                    }
+                });
             });
+
+            const moveTocOnMobile = () => {
+                if ($(window).width() < 1024) {
+                    $("#toc").prependTo("#result");
+                    $("#lighthouse-overview").prependTo("#mobile-lighthouse");
+                } else {
+                    $("#toc").appendTo("#sidebar");
+                    $("#lighthouse-overview").prependTo("#right-sidebar");
+                }
+            };
+
+            $(document).ready(moveTocOnMobile);
+            $(window).resize(moveTocOnMobile);
 
             function getColorClasses(score) {
                 if (score >= 90) return { bg: 'bg-green-600', text: 'text-green-600', lightBg: 'bg-green-300' };
@@ -200,33 +225,34 @@ if (url) {
                     </form>
                 </div>
             :
-                <div class="container">
-                    <div class="inline-flex flex-row gap-3 square-card px-2 py-[3px] items-center text-neutral-300 mb-5 sticky top-20 z-50">
-                        <a href="/lookup" class="hover:underline">CRFT Lookup</a>
+                <div id="result" class="sticky top-16 lg:mt-6 -mt-20 z-20"></div>
+                <div class="container lg:mt-5 mt-5">
+                    <div class="lg:inline-flex hidden flex-row flex-nowrap max-w-[80vw] overflow-x-auto gap-3 square-card px-2 py-[3px] items-center text-neutral-300 mb-5 sticky top-20 z-50">
+                        <a href="/lookup" class="hover:underline text-nowrap">CRFT Lookup</a>
                         <svg xmlns="http://www.w3.org/2000/svg" class="fill-neutral-300 h-[20px] w-auto" viewBox="0 -960 960 960" width="24px"><path d="m517.85-480-184-184L376-706.15 602.15-480 376-253.85 333.85-296l184-184Z"/></svg>
-                        <div>{url}</div>
-                        <div class="aspect-square h-[5px] rounded-xl bg-neutral-300 mx-2"></div>
-                        <div>Generated on {new Date(Astro.url.searchParams.get("datetime").replace(/-(\d{2})$/, ":$1")).toLocaleString('en-US', {
+                        <div class="text-nowrap">{url}</div>
+                        <div class="aspect-square h-[5px] rounded-xl bg-neutral-300 mx-2 text-nowrap"></div>
+                        <div class="text-nowrap">Generated on {new Date(Astro.url.searchParams.get("datetime").replace(/-(\d{2})$/, ":$1")).toLocaleString('en-US', {
                             month: 'short',
                             day: 'numeric',
                             year: 'numeric',
                             hour: 'numeric',
                             minute: '2-digit',
                             hour12: true
-                        }).replace(',', ' at')}</div>
+                        }).replace(',', ' at')} UTC</div>
                     </div>
-                    <div class="grid grid-cols-[0.15fr_1fr] gap-5">
+                    <div class="grid lg:grid-cols-[0.15fr_1fr] gap-5 lg:mt-0 mt-5">
                         <div class="h-full">
-                            <div class="sticky top-32">
-                            <div class="square-card pt-3">
-                                <div class="mb-3 text-neutral-400">On this report</div>
-                                <div class="flex flex-col gap-1 text-neutral-200">
-                                    <a href="#overview" class="toc-link transition hover:text-orange-300">Overview</a>
-                                    <a href="#lighthouse" class="toc-link transition hover:text-orange-300">Lighthouse</a>
-                                    <a href="#tech-stack" class="toc-link transition hover:text-orange-300">Tech Stack</a>
-                                    <a href="#meta-tags" class="toc-link transition hover:text-orange-300">Meta Tags</a>
+                            <div id="sidebar" class="sticky top-32">
+                                <div id="toc" class="square-card lg:static sticky top-16 lg:w-auto w-full lg:p-4 px-2 py-1 lg:pt-3 lg:block flex flex-row overflow-x-auto z-10">
+                                    <div class="lg:mb-3 text-neutral-400 text-nowrap mr-3">On this report</div>
+                                    <div class="flex lg:flex-col flex-row lg:gap-1 gap-3 text-neutral-200">
+                                        <a href="#overview" class="toc-link transition hover:text-orange-300">Overview</a>
+                                        <a href="#lighthouse" class="toc-link transition hover:text-orange-300">Lighthouse</a>
+                                        <a href="#tech-stack" class="toc-link transition hover:text-orange-300 text-nowrap">Tech Stack</a>
+                                        <a href="#meta-tags" class="toc-link transition hover:text-orange-300 text-nowrap">Meta Tags</a>
+                                    </div>
                                 </div>
-                            </div>
                                 <!-- <div class="p-3 px-4 rounded-sm border border-neutral-700 shadow-md mt-4">
                                     <div class="text-sm mb-1 font-medium text-neutral-50">Want a new website?</div>
                                     <div class="text-sm text-neutral-300 mb-2">We design and develop beautiful, performant, and maintainable sites for the best marketing teams.</div>
@@ -235,16 +261,17 @@ if (url) {
                             </div>
                         </div>
                         <div>
-                            <div class="grid grid-cols-[1fr_0.15fr] gap-4" id="overview">
+                            <div class="grid lg:grid-cols-[1fr_0.15fr] gap-4" id="overview">
                                 <div>
                                     <div class="square-card p-0 mb-6">
                                         <img class="h-full w-full object-cover object-center" src={ogImageUrl} alt={`Open Graph Image of ${url}`}>
                                     </div>
-                                    <div class="flex flex-row justify-between gap-16">
-                                        <div class="max-w-[400px]">
+                                    <div class="lg:flex lg:flex-row lg:justify-between gap-16">
+                                        <div class="lg:max-w-[400px] mb-7">
                                             <div class="text-xl font-medium mb-1 text-pretty">{ogTitle}</div>
                                             <div class="text-lg text-neutral-300 text-pretty">{ogDescription}</div>
                                         </div>
+                                        <div id="mobile-lighthouse"></div>
                                         <Wappalyzer server:defer url={url} variant="overview">
                                             <div slot="fallback" class="flex flex-row gap-4 justify-start text-neutral-300">
                                                 <div role="status">
@@ -258,40 +285,10 @@ if (url) {
                                                 <div>Fetching tech stack...</div>
                                             </div>
                                         </Wappalyzer>
-                                        <!-- <div class="flex flex-row gap-8 flex-wrap framework-container">
-                                            <div class="flex flex-col gap-2">
-                                                <div class="text-neutral-300">Framework</div>
-                                                <div class="flex flex-col gap-1">
-                                                    <div class="flex flex-row gap-2 items-center">
-                                                        <svg class="h-5" viewBox="0 0 256 366" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><path fill="#fff" d="M182.022 9.147c2.982 3.702 4.502 8.697 7.543 18.687L256 246.074a276.467 276.467 0 0 0-79.426-26.891L133.318 73.008a5.63 5.63 0 0 0-10.802.017L79.784 219.11A276.453 276.453 0 0 0 0 246.04L66.76 27.783c3.051-9.972 4.577-14.959 7.559-18.654a24.541 24.541 0 0 1 9.946-7.358C88.67 0 93.885 0 104.314 0h47.683c10.443 0 15.664 0 20.074 1.774a24.545 24.545 0 0 1 9.95 7.373Z"/><path fill="#FF5D01" d="M189.972 256.46c-10.952 9.364-32.812 15.751-57.992 15.751-30.904 0-56.807-9.621-63.68-22.56-2.458 7.415-3.009 15.903-3.009 21.324 0 0-1.619 26.623 16.898 45.14 0-9.615 7.795-17.41 17.41-17.41 16.48 0 16.46 14.378 16.446 26.043l-.001 1.041c0 17.705 10.82 32.883 26.21 39.28a35.685 35.685 0 0 1-3.588-15.647c0-16.886 9.913-23.173 21.435-30.48 9.167-5.814 19.353-12.274 26.372-25.232a47.588 47.588 0 0 0 5.742-22.735c0-5.06-.786-9.938-2.243-14.516Z"/></svg>
-                                                        <div>Astro</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="flex flex-col gap-2">
-                                                <div class="text-neutral-300">CDN</div>
-                                                <div class="flex flex-col gap-1">
-                                                    <div class="flex flex-row gap-2 items-center">
-                                                        <svg viewBox="0 0 256 116" class="h-3" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><path fill="#FFF" d="m202.357 49.394-5.311-2.124C172.085 103.434 72.786 69.289 66.81 85.997c-.996 11.286 54.227 2.146 93.706 4.059 12.039.583 18.076 9.671 12.964 24.484l10.069.031c11.615-36.209 48.683-17.73 50.232-29.68-2.545-7.857-42.601 0-31.425-35.497Z"/><path fill="#F4811F" d="M176.332 108.348c1.593-5.31 1.062-10.622-1.593-13.809-2.656-3.187-6.374-5.31-11.154-5.842L71.17 87.634c-.531 0-1.062-.53-1.593-.53-.531-.532-.531-1.063 0-1.594.531-1.062 1.062-1.594 2.124-1.594l92.946-1.062c11.154-.53 22.839-9.56 27.087-20.182l5.312-13.809c0-.532.531-1.063 0-1.594C191.203 20.182 166.772 0 138.091 0 111.535 0 88.697 16.995 80.73 40.896c-5.311-3.718-11.684-5.843-19.12-5.31-12.747 1.061-22.838 11.683-24.432 24.43-.531 3.187 0 6.374.532 9.56C16.996 70.107 0 87.103 0 108.348c0 2.124 0 3.718.531 5.842 0 1.063 1.062 1.594 1.594 1.594h170.489c1.062 0 2.125-.53 2.125-1.594l1.593-5.842Z"/><path fill="#FAAD3F" d="M205.544 48.863h-2.656c-.531 0-1.062.53-1.593 1.062l-3.718 12.747c-1.593 5.31-1.062 10.623 1.594 13.809 2.655 3.187 6.373 5.31 11.153 5.843l19.652 1.062c.53 0 1.062.53 1.593.53.53.532.53 1.063 0 1.594-.531 1.063-1.062 1.594-2.125 1.594l-20.182 1.062c-11.154.53-22.838 9.56-27.087 20.182l-1.063 4.78c-.531.532 0 1.594 1.063 1.594h70.108c1.062 0 1.593-.531 1.593-1.593 1.062-4.25 2.124-9.03 2.124-13.81 0-27.618-22.838-50.456-50.456-50.456"/></svg>
-                                                        <div>Cloudflare</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="flex flex-col gap-2">
-                                                <div class="text-neutral-300">CMS</div>
-                                                <div class="flex flex-col gap-1">
-                                                    <div class="flex flex-row gap-2 items-center">
-                                                        <svg viewBox="0 0 256 305" class="h-5" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><path fill="#fff" d="M116.204 0 256 84.031v159.5l-105.265 60.896v-159.5L10.772 61.008 116.204 0ZM105.49 171.121v124.463L0 232.13l105.489-61.008Z"/></svg>
-                                                        <div>Payload</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> -->
                                     </div>
                                 </div>
-                                <div>
-                                    <!-- <LighthouseData server:defer url={url} /> -->
-                                    <div id="lighthouse-overview" class="square-card p-2 flex flex-col gap-4">
+                                <div id="right-sidebar">
+                                    <div id="lighthouse-overview" class="square-card p-2 lg:flex lg:flex-col grid md:grid-cols-4 grid-cols-2 lg:gap-4 gap-2 mt-6 lg:mt-0 lg:mb-0 mb-8">
                                         <div class="square-card p-0">
                                             <div class="bg-neutral-600 text-center">Performance</div>
                                             <div class="text-center text-3xl bg-neutral-300 text-neutral-600 font-medium">
@@ -337,46 +334,6 @@ if (url) {
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <LighthouseOverview server:defer>
-                                        <div slot="fallback" class="square-card p-2 flex flex-col gap-4">
-                                            <div class="square-card p-0">
-                                                <div class="bg-green-600 text-center">Performance</div>
-                                                <div class="text-center text-3xl bg-green-300 text-green-600 font-medium">
-                                                    <svg aria-hidden="true" class="w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-orange-300" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-                                                        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div class="square-card p-0">
-                                                <div class="bg-green-600 text-center">Accessibility</div>
-                                                <div class="text-center text-3xl bg-green-300 text-green-600 font-medium">
-                                                    <svg aria-hidden="true" class="w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-orange-300" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-                                                        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div class="square-card p-0">
-                                                <div class="bg-green-600 text-center">Best Practices</div>
-                                                <div class="text-center text-3xl bg-green-300 text-green-600 font-medium">
-                                                    <svg aria-hidden="true" class="w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-orange-300" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-                                                        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                            <div class="square-card p-0">
-                                                <div class="bg-green-600 text-center">SEO</div>
-                                                <div class="text-center text-3xl bg-green-300 text-green-600 font-medium">
-                                                    <svg aria-hidden="true" class="w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-orange-300" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-                                                        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-                                                    </svg>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </LighthouseOverview> -->
                                 </div>
                             </div>
                             <div class="mt-28">
@@ -433,7 +390,7 @@ if (url) {
                                 This is what <span>{url}</span> will look like when seen on search engines and shared online through various social media services
                                 and messaging platforms.
                                 </div>
-                                <div class="grid grid-cols-[1fr_1fr] mt-9 gap-14">
+                                <div class="grid lg:grid-cols-[1fr_1fr] mt-9 gap-14">
                                     <div>
                                         <div class="square-card flex flex-col gap-5 sticky top-32">
                                             <div>
