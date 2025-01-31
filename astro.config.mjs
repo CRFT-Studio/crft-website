@@ -15,5 +15,10 @@ export default defineConfig({
   site: 'https://crft.studio',
   integrations: [tailwind(), sitemap(), mdx(), robotsTxt()],
   output: "static",
-  adapter: cloudflare()
+  adapter: cloudflare(),
+  vite: {
+    ssr: {
+      noExternal: ['module'] // Explicitly exclude problematic module
+    }
+  }
 });
