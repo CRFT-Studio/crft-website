@@ -59,7 +59,7 @@ if (!url) {
             Object.entries(techByCategory).map(([category, techs]) => (
                 <div>
                     <h3 class="text-xl font-medium mb-4">{category}</h3>
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="grid lg:grid-cols-2 gap-4">
                         {techs.map((tech) => (
                             <a href={tech.website} target="_blank" id={tech.categories?.[0]?.slug} class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all">
                                 <div id={tech.slug} class="flex flex-row gap-2 items-center">
@@ -83,7 +83,7 @@ if (!url) {
     <div class="flex flex-row gap-8">
         {Object.entries(techByCategory).length > 0 ? (
             Object.entries(techByCategory)
-                .filter(([category]) => ['CDN', 'Web frameworks', 'CMS'].includes(category))
+                .filter(([category]) => ['CDN', 'JavaScript frameworks', 'CMS', 'Page builders'].includes(category))
                 .map(([category, techs]) => (
                     <div class="flex flex-row flex-wrap gap-4">
                         <div class="flex flex-col gap-2">
