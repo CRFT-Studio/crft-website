@@ -1,7 +1,7 @@
 ---
 export const prerender = false;
 // const { env } = Astro.locals.runtime;
-const PAGESPEED_API = env.PAGESPEED_API ?? import.meta.env.PAGESPEED_API;
+const PAGESPEED_API = import.meta.env.PAGESPEED_API;
 
 const {url} = Astro.props;
 
