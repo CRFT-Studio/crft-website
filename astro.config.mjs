@@ -17,10 +17,5 @@ export default defineConfig({
   site: 'https://crft.studio',
   integrations: [tailwind(), sitemap(), mdx(), robotsTxt()],
   output: "static",
-  adapter: cloudflare(),
-  vite: {
-        ssr: {
-        noExternal: ['!wappalyzer-rm'],
-        }
-    }
+  adapter: vercel(),
 });
