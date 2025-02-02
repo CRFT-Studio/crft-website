@@ -1,6 +1,6 @@
 {
   "functions": {
-    "api/**/*": {
+      "api/analyze.js": {
         "runtime": "nodejs@18.17.1"
     }
   }
