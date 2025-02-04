@@ -1,5 +1,9 @@
 export const prerender = false;
 
+export const config = {
+  runtime: 'nodejs',
+};
+
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const Wappalyzer = require('wappalyzer-rm');
