@@ -2,12 +2,6 @@
     "name": "users-jeremyvejgman-desktop-business-crft-crft-website",
     "type": "module",
     "version": "0.0.1",
-    "exports": {
-        "./src/pages/api/analyze.js": {
-            "require": "./src/pages/api/analyze.js",
-            "type": "commonjs"
-        }
-    },
     "scripts": {
         "dev": "astro dev",
         "start": "astro dev",
