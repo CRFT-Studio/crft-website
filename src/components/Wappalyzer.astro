@@ -13,7 +13,7 @@ if (!url) {
   try {
     // Use the full URL for the fetch request
     const currentUrl = new URL(Astro.request.url);
-    const apiUrl = new URL('/api/analyze', currentUrl.origin);
+    const apiUrl = new URL('/endpoints/analyze', currentUrl.origin);
     apiUrl.searchParams.set('url', url);
 
     console.log("Making request to:", apiUrl.toString());

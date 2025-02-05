@@ -1,8 +1,8 @@
 {
   "routes": [
     {
-      "src": "/api/analyze",
-      "dest": "/api/analyze.js"
+      "src": "/endpoints/analyze",
+      "dest": "/endpoints/analyze.js"
     }
   ],
   "functions": {
