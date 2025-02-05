@@ -6,7 +6,7 @@
     }
   ],
   "functions": {
-    "api/analyze.js": {
+    "endpoints/analyze.js": {
       "includeFiles": "node_modules/wappalyzer-rm/**"
     }
   }
