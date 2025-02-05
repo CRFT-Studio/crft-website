@@ -4,9 +4,12 @@ export const config = {
   runtime: 'nodejs',
 };
 
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
-const Wappalyzer = require('wappalyzer-rm');
+// commonjs import, that only works locally:
+// import { createRequire } from 'module';
+// const require = createRequire(import.meta.url);
+// const Wappalyzer = require('wappalyzer-rm');
+
+import Wappalyzer from 'wappalyzer-rm';
 
 export async function GET({ request }) {
   const url = new URL(request.url);

@@ -1,12 +1,12 @@
 {
   "routes": [
     {
-      "src": "/analyze",
-      "dest": "/analyze.js"
+      "src": "/api/analyze",
+      "dest": "/api/analyze.js"
     }
   ],
   "functions": {
-    "analyze.js": {
+    "api/analyze.js": {
       "includeFiles": "node_modules/wappalyzer-rm/**"
     }
   }
