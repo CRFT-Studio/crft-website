@@ -1,16 +1,40 @@
+// commonjs import, that only works locally:
+// import { createRequire } from 'module';
+// const require = createRequire(import.meta.url);
+// const Wappalyzer = require('wappalyzer-rm');
+
 export const prerender = false;
 
 export const config = {
   runtime: 'nodejs',
 };
 
-// commonjs import, that only works locally:
-// import { createRequire } from 'module';
-// const require = createRequire(import.meta.url);
-// const Wappalyzer = require('wappalyzer-rm');
-
 import chromium from '@sparticuz/chromium';
 import Wappalyzer from 'wappalyzer-rm';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+const WappalyzerDriver = require('wappalyzer-rm/driver.js');
+
+// Create a custom driver that overrides the init method
+class CustomDriver extends WappalyzerDriver {
+  async init() {
+    // Override the default puppeteer launch configuration
+    const puppeteer = await import('puppeteer');
+    this.options.puppeteer = puppeteer;
+
+    // Use @sparticuz/chromium configuration
+    this.browser = await puppeteer.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath(),
+      headless: chromium.headless,
+      ignoreHTTPSErrors: true
+    });
+
+    this.pages = [];
+  }
+}
 
 export async function GET({ request }) {
   const url = new URL(request.url);
@@ -29,7 +53,7 @@ export async function GET({ request }) {
   }
 
   const options = {
-    debug: false,
+    debug: true,
     delay: 500,
     headers: {},
     maxDepth: 3,
@@ -41,22 +65,23 @@ export async function GET({ request }) {
     userAgent: 'Wappalyzer',
     htmlMaxCols: 2000,
     htmlMaxRows: 2000,
-    puppeteer: {
-        executablePath: await chromium.executablePath(),
-        args: chromium.args,
-        defaultViewport: chromium.defaultViewport,
-        headless: chromium.headless,
-    }
+    Driver: CustomDriver // Use our custom driver
   };
 
   try {
+    console.log("Initializing Wappalyzer with custom driver");
     const wappalyzer = new Wappalyzer(options);
+
+    console.log("Calling wappalyzer.init()");
     await wappalyzer.init();
 
+    console.log("Opening site:", targetUrl);
     const site = await wappalyzer.open(targetUrl);
+
+    console.log("Analyzing site");
     const results = await site.analyze();
 
-    console.log("Wappalyzer results:", results);
+    console.log("Analysis complete. Results:", results);
 
     await wappalyzer.destroy();
 
@@ -68,7 +93,12 @@ export async function GET({ request }) {
     });
   } catch (error) {
     console.error("API Error:", error);
-    return new Response(JSON.stringify({ error: error.message }), {
+    console.error("Error stack:", error.stack);
+    return new Response(JSON.stringify({
+      error: error.message,
+      stack: error.stack,
+      details: 'Check server logs for more information'
+    }), {
       status: 500,
       headers: {
         'Content-Type': 'application/json'
