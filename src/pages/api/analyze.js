@@ -16,14 +16,17 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const WappalyzerDriver = require('wappalyzer-rm/driver.js');
 
-// Create a custom driver that overrides the init method
-class CustomDriver extends WappalyzerDriver {
-  async init() {
-    // Override the default puppeteer launch configuration
-    const puppeteer = await import('puppeteer');
-    this.options.puppeteer = puppeteer;
+class CustomDriver {
+  constructor(options) {
+    this.options = options;
+    this.pages = [];
+  }
 
-    // Use @sparticuz/chromium configuration
+  async init() {
+    console.log("CustomDriver init called");
+    const puppeteer = await import('puppeteer');
+
+    console.log("Launching browser with chromium config");
     this.browser = await puppeteer.launch({
       args: chromium.args,
       defaultViewport: chromium.defaultViewport,
@@ -32,8 +35,29 @@ class CustomDriver extends WappalyzerDriver {
       ignoreHTTPSErrors: true
     });
 
-    this.pages = [];
+    console.log("Browser launched successfully");
   }
+
+  async goto(url) {
+    const page = await this.browser.newPage();
+    this.pages.push(page);
+    await page.goto(url);
+    return page;
+  }
+
+  async destroy() {
+    console.log("Cleaning up CustomDriver resources");
+    for (const page of this.pages) {
+      await page.close();
+    }
+    if (this.browser) {
+      await this.browser.close();
+    }
+  }
+
+  // Implement other required methods from WappalyzerDriver
+  async waitForElement() { /* ... */ }
+  async wait() { /* ... */ }
 }
 
 export async function GET({ request }) {
@@ -65,7 +89,7 @@ export async function GET({ request }) {
     userAgent: 'Wappalyzer',
     htmlMaxCols: 2000,
     htmlMaxRows: 2000,
-    Driver: CustomDriver // Use our custom driver
+    Driver: CustomDriver
   };
 
   try {
