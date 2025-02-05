@@ -9,6 +9,7 @@ export const config = {
 // const require = createRequire(import.meta.url);
 // const Wappalyzer = require('wappalyzer-rm');
 
+import chromium from '@sparticuz/chromium';
 import Wappalyzer from 'wappalyzer-rm';
 
 export async function GET({ request }) {
@@ -40,6 +41,12 @@ export async function GET({ request }) {
     userAgent: 'Wappalyzer',
     htmlMaxCols: 2000,
     htmlMaxRows: 2000,
+    puppeteer: {
+        executablePath: await chromium.executablePath(),
+        args: chromium.args,
+        defaultViewport: chromium.defaultViewport,
+        headless: chromium.headless,
+    }
   };
 
   try {
