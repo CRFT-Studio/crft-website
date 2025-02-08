@@ -1,8 +1,4 @@
 {
-  "builds": [{
-    "src": "*.js",
-    "use": "@vercel/node"
-  }],
   "env": {
     "CHROME_EXECUTABLE_PATH": "/tmp/chromium"
   }
