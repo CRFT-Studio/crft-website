@@ -1,64 +1,16 @@
-// commonjs import, that only works locally:
-// import { createRequire } from 'module';
-// const require = createRequire(import.meta.url);
-// const Wappalyzer = require('wappalyzer-rm');
-
 export const prerender = false;
 
 export const config = {
   runtime: 'nodejs',
 };
 
+// commonjs import, that only works locally:
+// import { createRequire } from 'module';
+// const require = createRequire(import.meta.url);
+// const Wappalyzer = require('wappalyzer-rm');
+
 import chromium from '@sparticuz/chromium';
 import Wappalyzer from 'wappalyzer-rm';
-import { createRequire } from 'module';
-
-const require = createRequire(import.meta.url);
-const WappalyzerDriver = require('wappalyzer-rm/driver.js');
-
-class CustomDriver {
-  constructor(options) {
-    this.options = options;
-    this.pages = [];
-  }
-
-  async init() {
-    console.log("CustomDriver init called");
-    const puppeteer = await import('puppeteer');
-
-    console.log("Launching browser with chromium config");
-    this.browser = await puppeteer.launch({
-      args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath(),
-      headless: chromium.headless,
-      ignoreHTTPSErrors: true
-    });
-
-    console.log("Browser launched successfully");
-  }
-
-  async goto(url) {
-    const page = await this.browser.newPage();
-    this.pages.push(page);
-    await page.goto(url);
-    return page;
-  }
-
-  async destroy() {
-    console.log("Cleaning up CustomDriver resources");
-    for (const page of this.pages) {
-      await page.close();
-    }
-    if (this.browser) {
-      await this.browser.close();
-    }
-  }
-
-  // Implement other required methods from WappalyzerDriver
-  async waitForElement() { /* ... */ }
-  async wait() { /* ... */ }
-}
 
 export async function GET({ request }) {
   const url = new URL(request.url);
@@ -77,7 +29,7 @@ export async function GET({ request }) {
   }
 
   const options = {
-    debug: true,
+    debug: false,
     delay: 500,
     headers: {},
     maxDepth: 3,
@@ -89,23 +41,22 @@ export async function GET({ request }) {
     userAgent: 'Wappalyzer',
     htmlMaxCols: 2000,
     htmlMaxRows: 2000,
-    Driver: CustomDriver
+    puppeteer: {
+        executablePath: await chromium.executablePath(),
+        args: chromium.args,
+        defaultViewport: chromium.defaultViewport,
+        headless: chromium.headless,
+    }
   };
 
   try {
-    console.log("Initializing Wappalyzer with custom driver");
     const wappalyzer = new Wappalyzer(options);
-
-    console.log("Calling wappalyzer.init()");
     await wappalyzer.init();
 
-    console.log("Opening site:", targetUrl);
     const site = await wappalyzer.open(targetUrl);
-
-    console.log("Analyzing site");
     const results = await site.analyze();
 
-    console.log("Analysis complete. Results:", results);
+    console.log("Wappalyzer results:", results);
 
     await wappalyzer.destroy();
 
@@ -117,12 +68,7 @@ export async function GET({ request }) {
     });
   } catch (error) {
     console.error("API Error:", error);
-    console.error("Error stack:", error.stack);
-    return new Response(JSON.stringify({
-      error: error.message,
-      stack: error.stack,
-      details: 'Check server logs for more information'
-    }), {
+    return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: {
         'Content-Type': 'application/json'

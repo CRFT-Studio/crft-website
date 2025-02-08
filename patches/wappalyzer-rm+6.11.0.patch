@@ -1,0 +1,42 @@
+diff --git a/node_modules/wappalyzer-rm/driver.js b/node_modules/wappalyzer-rm/driver.js
+index 9b615f2..d6eb249 100644
+--- a/node_modules/wappalyzer-rm/driver.js
++++ b/node_modules/wappalyzer-rm/driver.js
+@@ -3,8 +3,9 @@ const dns = require("dns").promises;
+ const path = require("path");
+ const http = require("http");
+ const https = require("https");
+-const puppeteer = require("puppeteer");
+ const Wappalyzer = require("./wappalyzer");
++const chromium = require('@sparticuz/chromium-min');
++const puppeteer = require('puppeteer-core');
+ 
+ const { setTechnologies, setCategories, analyze, analyzeManyToMany, resolve } =
+   Wappalyzer;
+@@ -374,13 +375,19 @@ class Driver {
+             browserWSEndpoint: CHROMIUM_WEBSOCKET,
+           });
+         } else {
+-          this.browser = await puppeteer.launch({
+-            headless: "old",
+-            ignoreHTTPSErrors: true,
+-            args: chromiumArgs,
+-            executablePath: CHROMIUM_BIN,
+-            timeout: 10000,
+-          });
++            this.browser = await puppeteer.launch({
++                args: [
++                  ...chromiumArgs,
++                  ...chromium.args,
++                  '--disable-gpu',
++                  '--disable-dev-shm-usage',
++                ],
++              defaultViewport: chromium.defaultViewport,
++              executablePath: process.env.CHROME_EXECUTABLE_PATH || await chromium.executablePath('https://github.com/Sparticuz/chromium/releases/download/v119.0.2/chromium-v119.0.2-pack.tar'),
++              headless: chromium.headless,
++              ignoreHTTPSErrors: true,
++              timeout: 10000,
++            });
+         }
+ 
+         break;
