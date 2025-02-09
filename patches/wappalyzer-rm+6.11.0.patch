@@ -1,5 +1,5 @@
 diff --git a/node_modules/wappalyzer-rm/driver.js b/node_modules/wappalyzer-rm/driver.js
-index 9b615f2..ee72a2b 100644
+index 9b615f2..75babf8 100644
 --- a/node_modules/wappalyzer-rm/driver.js
 +++ b/node_modules/wappalyzer-rm/driver.js
 @@ -3,8 +3,9 @@ const dns = require("dns").promises;
@@ -8,7 +8,7 @@ index 9b615f2..ee72a2b 100644
  const https = require("https");
 -const puppeteer = require("puppeteer");
  const Wappalyzer = require("./wappalyzer");
-+const chromium = require('@sparticuz/chromium-min');
++const chromium = require('@sparticuz/chromium');
 +const puppeteer = require('puppeteer-core');
  
  const { setTechnologies, setCategories, analyze, analyzeManyToMany, resolve } =
