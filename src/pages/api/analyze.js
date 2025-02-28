@@ -4,14 +4,7 @@ export const config = {
   runtime: 'nodejs',
 };
 
-// commonjs import, that only works locally:
-// import { createRequire } from 'module';
-// const require = createRequire(import.meta.url);
-// const Wappalyzer = require('wappalyzer-rm');
-
-import chromium from '@sparticuz/chromium';
-import Wappalyzer from 'wappalyzer-rm';
-
+// Replace the direct Wappalyzer-RM import with a fetch-based API call
 export async function GET({ request }) {
   const url = new URL(request.url);
   const targetUrl = url.searchParams.get('url');
@@ -28,37 +21,40 @@ export async function GET({ request }) {
     });
   }
 
+  // Define your API settings
+  const WAPPALYZER_API_URL = process.env.WAPPALYZER_API_URL ;
+  const WAPPALYZER_API_KEY = process.env.WAPPALYZER_API_KEY ;
+
+  // Options to pass to the API (most of these will be handled server-side now)
   const options = {
-    debug: false,
-    delay: 500,
-    headers: {},
-    maxDepth: 3,
-    maxUrls: 10,
-    maxWait: 5000,
     recursive: true,
     probe: true,
-    proxy: false,
-    userAgent: 'Wappalyzer',
-    htmlMaxCols: 2000,
-    htmlMaxRows: 2000,
-    puppeteer: {
-        executablePath: await chromium.executablePath(),
-        args: chromium.args,
-        defaultViewport: chromium.defaultViewport,
-        headless: chromium.headless,
-    }
+    maxUrls: 10
   };
 
   try {
-    const wappalyzer = new Wappalyzer(options);
-    await wappalyzer.init();
+    console.log(`Sending request to Wappalyzer API at ${WAPPALYZER_API_URL}`);
 
-    const site = await wappalyzer.open(targetUrl);
-    const results = await site.analyze();
+    // Make request to your Wappalyzer-RM API service
+    const response = await fetch(WAPPALYZER_API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-API-Key': WAPPALYZER_API_KEY
+      },
+      body: JSON.stringify({
+        url: targetUrl,
+        options
+      })
+    });
 
-    console.log("Wappalyzer results:", results);
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || `API returned status ${response.status}`);
+    }
 
-    await wappalyzer.destroy();
+    const results = await response.json();
+    console.log("Wappalyzer API results received");
 
     return new Response(JSON.stringify(results), {
       status: 200,
