@@ -1,0 +1,42 @@
+---
+const {url, img, metaTitle, performance, accessibility, bestPractices, seo} = Astro.props;
+---
+<div class="square-card relative">
+    <div class="absolute left-4 top-0 square-card py-0 px-1 text-sm border-t-0">{url}</div>
+    <div class="relative overflow-hidden border border-neutral-600 my-4">
+        <img src={`${img}`} class="aspect-video bg-neutral-500"></img>
+        <div class="square-card border-0 py-0 px-1 text-sm text-nowrap">{metaTitle}</div>
+    </div>
+    <div id="fucko" class="grid grid-cols-4 gap-2 my-4">
+        <div class="square-card p-0 overflow-hidden">
+            <div class="bg-neutral-600 text-center text-nowrap">Performance</div>
+            <div class="text-center text-3xl bg-neutral-300 text-neutral-600 font-medium">
+            {performance}
+            </div>
+        </div>
+        <div class="square-card p-0 overflow-hidden">
+            <div class="bg-neutral-600 text-center text-nowrap">Accessibility</div>
+            <div class="text-center text-3xl bg-neutral-300 text-neutral-600 font-medium">
+            {accessibility}
+            </div>
+        </div>
+        <div class="square-card p-0 overflow-hidden">
+            <div class="bg-neutral-600 text-center text-nowrap">Best Practices</div>
+            <div class="text-center text-3xl bg-neutral-300 text-neutral-600 font-medium">
+            {bestPractices}
+            </div>
+        </div>
+        <div class="square-card p-0 overflow-hidden">
+            <div class="bg-neutral-600 text-center text-nowrap">SEO</div>
+            <div class="text-center text-3xl bg-neutral-300 text-neutral-600 font-medium">
+            {seo}
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-col gap-2 flex-wrap">
+        <div class="flex flex-row gap-2 items-center">
+            <div class="w-4 h-4 bg-neutral-500 shrink-0"></div>
+            <div>React</div>
+        </div>
+    </div>
+</div>
