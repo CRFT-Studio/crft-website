@@ -22,8 +22,8 @@ export async function GET({ request }) {
   }
 
   // Define your API settings
-  const WAPPALYZER_API_URL = process.env.WAPPALYZER_API_URL ;
-  const WAPPALYZER_API_KEY = process.env.WAPPALYZER_API_KEY ;
+  const WAPPALYZER_URL = process.env.WAPPALYZER_URL || 'https://wappalyzer-rm.fly.dev/analyze';
+  const WAPPALYZER_API = process.env.WAPPALYZER_API || 'your-secret-api-key';
 
   // Options to pass to the API (most of these will be handled server-side now)
   const options = {
@@ -33,14 +33,14 @@ export async function GET({ request }) {
   };
 
   try {
-    console.log(`Sending request to Wappalyzer API at ${WAPPALYZER_API_URL}`);
+    console.log(`Sending request to Wappalyzer API at ${WAPPALYZER_URL}`);
 
     // Make request to your Wappalyzer-RM API service
-    const response = await fetch(WAPPALYZER_API_URL, {
+    const response = await fetch(WAPPALYZER_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-API-Key': WAPPALYZER_API_KEY
+        'X-API-Key': WAPPALYZER_API
       },
       body: JSON.stringify({
         url: targetUrl,
