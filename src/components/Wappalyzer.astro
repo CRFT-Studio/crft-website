@@ -11,23 +11,45 @@ if (!url) {
   console.log("No URL provided to Wappalyzer component");
 } else {
   try {
-    // Use the full URL for the fetch request
-    const currentUrl = new URL(Astro.request.url);
-    const apiUrl = new URL('/api/analyze', currentUrl.origin);
-    apiUrl.searchParams.set('url', url);
+    // Use your external Wappalyzer service
+    const wappalyzerServiceUrl = process.env.WAPPALYZER_URL || "https://wappalyzer-rm.fly.dev/analyze";
 
-    console.log("Making request to:", apiUrl.toString());
+    // Get the API key from environment variables
+    const apiKey = process.env.WAPPALYZER_API || "your-secret-api-key";
 
-    const response = await fetch(apiUrl, {
-      method: 'GET',
+    if (!apiKey) {
+      console.error("No API key found in environment variables");
+    }
+
+    console.log("Making request to external Wappalyzer service:", wappalyzerServiceUrl);
+
+    const response = await fetch(wappalyzerServiceUrl, {
+      method: 'POST',
       headers: {
-        'Accept': 'application/json'
-      }
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'X-API-Key': apiKey // Add API key header as required by your server
+      },
+      body: JSON.stringify({
+        url,
+        options: {
+          // You can add any optional Wappalyzer options here
+          // For example:
+          // delay: 500,
+          // maxWait: 30000
+        }
+      })
     });
 
     console.log("Response status:", response.status);
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Error from Wappalyzer service: ${response.status} - ${errorText}`);
+    }
+
     const results = await response.json();
-    console.log("Raw results from API:", results);
+    console.log("Raw results from external Wappalyzer service:", results);
 
     if (results && results.technologies) {
       techByCategory = results.technologies.reduce((acc, tech) => {
