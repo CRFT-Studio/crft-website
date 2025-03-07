@@ -1,0 +1,21 @@
+---
+const { report } = Astro.props;
+---
+
+<div id="lighthouse-viewer-element" class="lighthouse-viewer square-card p-0"></div>
+
+{report && <span id="lighthouse-report-data" hidden>{JSON.stringify(report)}</span>}
+
+<script>
+    import $ from 'jquery';
+    import { renderReport } from 'lighthouse-viewer';
+
+    const dataElement = document.getElementById('lighthouse-report-data');
+    if (dataElement) {
+        const report = JSON.parse(dataElement.textContent);
+        const app = document.querySelector('#lighthouse-viewer-element');
+        const reportHtml = renderReport(report, {});
+        app.innerHTML = '';
+        app.appendChild(reportHtml);
+    }
+</script>

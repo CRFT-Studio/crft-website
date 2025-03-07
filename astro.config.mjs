@@ -14,6 +14,6 @@ import robotsTxt from "astro-robots-txt";
 export default defineConfig({
   site: 'https://crft.studio',
   integrations: [tailwind(), sitemap(), mdx(), robotsTxt()],
-  output: "hybrid",
-  adapter: cloudflare()
+  output: "static",
+  adapter: cloudflare(),
 });

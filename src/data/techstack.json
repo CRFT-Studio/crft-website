@@ -1,0 +1,358 @@
+{
+  "urls": {
+    "https://mobiloud.com/": {
+      "status": 301
+    },
+    "https://www.mobiloud.com/": {
+      "status": 200
+    }
+  },
+  "technologies": [
+    {
+      "slug": "webflow",
+      "name": "Webflow",
+      "description": "Webflow is Software-as-a-Service (SaaS) for website building and hosting.",
+      "confidence": 100,
+      "version": null,
+      "icon": "webflow.svg",
+      "website": "https://webflow.com",
+      "cpe": null,
+      "categories": [
+        {
+          "id": 51,
+          "slug": "page-builders",
+          "name": "Page builders"
+        }
+      ],
+      "rootPath": true
+    },
+    {
+      "slug": "sentry",
+      "name": "Sentry",
+      "description": "Sentry is an open-source platform for workflow productivity, aggregating errors from across the stack in real time.",
+      "confidence": 100,
+      "version": "7.120.2",
+      "icon": "Sentry.svg",
+      "website": "https://sentry.io/",
+      "cpe": null,
+      "categories": [
+        {
+          "id": 13,
+          "slug": "issue-trackers",
+          "name": "Issue trackers"
+        }
+      ],
+      "rootPath": true
+    },
+    {
+      "slug": "wistia",
+      "name": "Wistia",
+      "description": "Wistia is designed exclusively to serve companies using video on their websites for marketing, support, and sales.",
+      "confidence": 100,
+      "version": null,
+      "icon": "Wistia.svg",
+      "website": "https://wistia.com",
+      "cpe": null,
+      "categories": [
+        {
+          "id": 14,
+          "slug": "video-players",
+          "name": "Video players"
+        }
+      ],
+      "rootPath": true
+    },
+    {
+      "slug": "amazon-web-services",
+      "name": "Amazon Web Services",
+      "description": "Amazon Web Services (AWS) is a comprehensive cloud services platform offering compute power, database storage, content delivery and other functionality.",
+      "confidence": 100,
+      "version": null,
+      "icon": "Amazon Web Services.svg",
+      "website": "https://aws.amazon.com/",
+      "cpe": null,
+      "categories": [
+        {
+          "id": 62,
+          "slug": "paas",
+          "name": "PaaS"
+        }
+      ]
+    },
+    {
+      "slug": "jsdelivr",
+      "name": "jsDelivr",
+      "description": "JSDelivr is a free public CDN for open-source projects. It can serve web files directly from the npm registry and GitHub repositories without any configuration.",
+      "confidence": 100,
+      "version": null,
+      "icon": "jsdelivr-icon.svg",
+      "website": "https://www.jsdelivr.com/",
+      "cpe": null,
+      "categories": [
+        {
+          "id": 31,
+          "slug": "cdn",
+          "name": "CDN"
+        }
+      ],
+      "rootPath": true
+    },
+    {
+      "slug": "google-tag-manager",
+      "name": "Google Tag Manager",
+      "description": "Google Tag Manager is a tag management system (TMS) that allows you to quickly and easily update measurement codes and related code fragments collectively known as tags on your website or mobile app.",
+      "confidence": 100,
+      "version": null,
+      "icon": "Google Tag Manager.svg",
+      "website": "https://www.google.com/tagmanager",
+      "cpe": null,
+      "categories": [
+        {
+          "id": 42,
+          "slug": "tag-managers",
+          "name": "Tag managers"
+        }
+      ],
+      "rootPath": true
+    },
+    {
+      "slug": "cookieyes",
+      "name": "CookieYes",
+      "description": null,
+      "confidence": 100,
+      "version": null,
+      "icon": "cookieyes.svg",
+      "website": "https://www.cookieyes.com/",
+      "cpe": null,
+      "categories": [
+        {
+          "id": 67,
+          "slug": "cookie-compliance",
+          "name": "Cookie compliance"
+        }
+      ],
+      "rootPath": true
+    },
+    {
+      "slug": "amazon-s3",
+      "name": "Amazon S3",
+      "description": "Amazon S3 or Amazon Simple Storage Service is a service offered by Amazon Web Services (AWS) that provides object storage through a web service interface.",
+      "confidence": 100,
+      "version": null,
+      "icon": "Amazon S3.svg",
+      "website": "https://aws.amazon.com/s3/",
+      "cpe": null,
+      "categories": [
+        {
+          "id": 31,
+          "slug": "cdn",
+          "name": "CDN"
+        }
+      ],
+      "rootPath": true
+    },
+    {
+      "slug": "profitwell",
+      "name": "Profitwell",
+      "description": null,
+      "confidence": 100,
+      "version": null,
+      "icon": "Profitwell.svg",
+      "website": "https://www.profitwell.com/",
+      "cpe": null,
+      "categories": [
+        {
+          "id": 10,
+          "slug": "analytics",
+          "name": "Analytics"
+        }
+      ],
+      "rootPath": true
+    },
+    {
+      "slug": "posthog",
+      "name": "PostHog",
+      "description": "PostHog is the open-source, all-in-one product analytics platform.",
+      "confidence": 100,
+      "version": null,
+      "icon": "PostHog.svg",
+      "website": "https://posthog.com",
+      "cpe": null,
+      "categories": [
+        {
+          "id": 10,
+          "slug": "analytics",
+          "name": "Analytics"
+        }
+      ],
+      "rootPath": true
+    },
+    {
+      "slug": "jquery",
+      "name": "jQuery",
+      "description": "jQuery is a JavaScript library which is a free, open-source software designed to simplify HTML DOM tree traversal and manipulation, as well as event handling, CSS animation, and Ajax.",
+      "confidence": 100,
+      "version": "3.5.1",
+      "icon": "jQuery.svg",
+      "website": "https://jquery.com",
+      "cpe": "cpe:2.3:a:jquery:jquery:*:*:*:*:*:*:*:*",
+      "categories": [
+        {
+          "id": 59,
+          "slug": "javascript-libraries",
+          "name": "JavaScript libraries"
+        }
+      ],
+      "rootPath": true
+    },
+    {
+      "slug": "google-analytics",
+      "name": "Google Analytics",
+      "description": "Google Analytics is a free web analytics service that tracks and reports website traffic.",
+      "confidence": 100,
+      "version": null,
+      "icon": "Google Analytics.svg",
+      "website": "https://google.com/analytics",
+      "cpe": null,
+      "categories": [
+        {
+          "id": 10,
+          "slug": "analytics",
+          "name": "Analytics"
+        }
+      ],
+      "rootPath": true
+    },
+    {
+      "slug": "core-js",
+      "name": "core-js",
+      "description": "core-js is a modular standard library for JavaScript, with polyfills for cutting-edge ECMAScript features.",
+      "confidence": 100,
+      "version": "3.36.1",
+      "icon": "core-js.png",
+      "website": "https://github.com/zloirock/core-js",
+      "cpe": null,
+      "categories": [
+        {
+          "id": 59,
+          "slug": "javascript-libraries",
+          "name": "JavaScript libraries"
+        }
+      ],
+      "rootPath": true
+    },
+    {
+      "slug": "sendinblue",
+      "name": "Sendinblue",
+      "description": "Sendinblue is an email marketing solution for small and medium-sized businesses that want to send and automate email marketing campaigns.",
+      "confidence": 100,
+      "version": null,
+      "icon": "Sendinblue.svg",
+      "website": "https://www.sendinblue.com",
+      "cpe": null,
+      "categories": [
+        {
+          "id": 32,
+          "slug": "marketing-automation",
+          "name": "Marketing automation"
+        },
+        {
+          "id": 75,
+          "slug": "email",
+          "name": "Email"
+        }
+      ],
+      "rootPath": true
+    },
+    {
+      "slug": "hsts",
+      "name": "HSTS",
+      "description": "HTTP Strict Transport Security (HSTS) informs browsers that the site should only be accessed using HTTPS.",
+      "confidence": 100,
+      "version": null,
+      "icon": "default.svg",
+      "website": "https://www.rfc-editor.org/rfc/rfc6797#section-6.1",
+      "cpe": null,
+      "categories": [
+        {
+          "id": 16,
+          "slug": "security",
+          "name": "Security"
+        }
+      ],
+      "rootPath": true
+    },
+    {
+      "slug": "cloudflare",
+      "name": "Cloudflare",
+      "description": "Cloudflare is a web-infrastructure and website-security company, providing content-delivery-network services, DDoS mitigation, Internet security, and distributed domain-name-server services.",
+      "confidence": 100,
+      "version": null,
+      "icon": "CloudFlare.svg",
+      "website": "https://www.cloudflare.com",
+      "cpe": null,
+      "categories": [
+        {
+          "id": 31,
+          "slug": "cdn",
+          "name": "CDN"
+        }
+      ],
+      "rootPath": true
+    },
+    {
+      "slug": "product-hunt",
+      "name": "Product Hunt",
+      "description": "Product Hunt is a community-based website that allows makers and marketers to launch their products or services and get in touch with their first real users.",
+      "confidence": 100,
+      "version": null,
+      "icon": "Product Hunt.svg",
+      "website": "https://www.producthunt.com",
+      "cpe": null,
+      "categories": [
+        {
+          "id": 19,
+          "slug": "miscellaneous",
+          "name": "Miscellaneous"
+        }
+      ],
+      "rootPath": true
+    },
+    {
+      "slug": "open-graph",
+      "name": "Open Graph",
+      "description": "Open Graph is a protocol that is used to integrate any web page into the social graph.",
+      "confidence": 100,
+      "version": null,
+      "icon": "Open Graph.png",
+      "website": "https://ogp.me",
+      "cpe": null,
+      "categories": [
+        {
+          "id": 19,
+          "slug": "miscellaneous",
+          "name": "Miscellaneous"
+        }
+      ],
+      "rootPath": true
+    },
+    {
+      "slug": "http-3",
+      "name": "HTTP/3",
+      "description": "HTTP/3 is the third major version of the Hypertext Transfer Protocol used to exchange information on the World Wide Web.",
+      "confidence": 100,
+      "version": null,
+      "icon": "HTTP3.svg",
+      "website": "https://httpwg.org/",
+      "cpe": null,
+      "categories": [
+        {
+          "id": 19,
+          "slug": "miscellaneous",
+          "name": "Miscellaneous"
+        }
+      ],
+      "rootPath": true
+    }
+  ]
+}
