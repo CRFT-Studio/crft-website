@@ -12,6 +12,7 @@
     "dependencies": {
         "@astrojs/cloudflare": "^12.2.3",
         "@astrojs/mdx": "^4.0.7",
+        "@astrojs/node": "^9.1.2",
         "@astrojs/sitemap": "^3.2.1",
         "@astrojs/tailwind": "^5.1.5",
         "@sparticuz/chromium": "^121.0.0",
