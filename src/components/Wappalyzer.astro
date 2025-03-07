@@ -14,6 +14,8 @@ if (!url) {
     const wappalyzerServiceUrl = process.env.WAPPALYZER_URL || import.meta.env.WAPPALYZER_URL;
     const apiKey = process.env.WAPPALYZER_API || import.meta.env.WAPPALYZER_API;
 
+    console.log("Request url:", wappalyzerServiceUrl);
+    console.log("API Key:", apiKey);
 
     if (!apiKey) {
       console.error("No API key found in environment variables");
