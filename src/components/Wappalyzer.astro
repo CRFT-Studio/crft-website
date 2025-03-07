@@ -11,8 +11,9 @@ if (!url) {
   console.log("No URL provided to Wappalyzer component");
 } else {
   try {
-    const wappalyzerServiceUrl = process.env.WAPPALYZER_URL || import.meta.env.WAPPALYZER_URL;
-    const apiKey = process.env.WAPPALYZER_API || import.meta.env.WAPPALYZER_API;
+    const { env } = Astro.locals.runtime;
+    const wappalyzerServiceUrl = env.WAPPALYZER_URL ?? import.meta.env.WAPPALYZER_URL;
+    const apiKey = env.WAPPALYZER_API ?? import.meta.env.WAPPALYZER_API;
 
     console.log("Request url:", wappalyzerServiceUrl);
     console.log("API Key:", apiKey);
