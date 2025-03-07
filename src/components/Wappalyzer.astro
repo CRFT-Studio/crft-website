@@ -11,11 +11,9 @@ if (!url) {
   console.log("No URL provided to Wappalyzer component");
 } else {
   try {
-    // Use your external Wappalyzer service
-    const wappalyzerServiceUrl = process.env.WAPPALYZER_URL || "https://wappalyzer-rm.fly.dev/analyze";
+    const wappalyzerServiceUrl = process.env.WAPPALYZER_URL || import.meta.env.WAPPALYZER_URL;
+    const apiKey = process.env.WAPPALYZER_API || import.meta.env.WAPPALYZER_API;
 
-    // Get the API key from environment variables
-    const apiKey = process.env.WAPPALYZER_API || "your-secret-api-key";
 
     if (!apiKey) {
       console.error("No API key found in environment variables");
