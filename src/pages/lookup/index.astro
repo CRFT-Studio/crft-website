@@ -10,14 +10,19 @@ import LookupCard from "../../components/LookupCard.astro";
 
 const url = Astro.url.searchParams.get("url");
 
-import ogs from 'open-graph-scraper';
+import { unfurl } from 'unfurl.js';
+
 let ogTitle, ogImageUrl, ogDescription;
 
 if (url) {
-    const {result} = await ogs({url: url});
-    ogTitle = result.ogTitle;
-    ogImageUrl = result.ogImage?.[0]?.url;
-    ogDescription = result.ogDescription;
+    try {
+        const result = await unfurl(url);
+        ogTitle = result.open_graph?.title || result.title;
+        ogImageUrl = result.open_graph?.images?.[0]?.url;
+        ogDescription = result.open_graph?.description || result.description;
+    } catch (error) {
+        console.error("Error fetching metadata:", error);
+    }
 }
 ---
 <html lang="en">

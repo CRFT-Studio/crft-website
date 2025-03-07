@@ -21,12 +21,12 @@
         "gsap": "^3.12.5",
         "jquery": "^3.7.1",
         "lighthouse-viewer": "^0.1.235",
-        "open-graph-scraper": "^6.8.3",
         "patch-package": "^8.0.0",
         "puppeteer-core": "^21.6.1",
         "resend": "^4.0.1-alpha.0",
         "stripe": "^17.2.1",
         "tailwindcss": "^3.4.10",
+        "unfurl.js": "^6.4.0",
         "wappalyzer-rm": "github:JDV8/wappalyzer-rm"
     },
     "devDependencies": {
