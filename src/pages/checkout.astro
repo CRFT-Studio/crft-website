@@ -9,9 +9,9 @@ import HeadScripts from "../components/HeadScripts.astro";
 const plan = Astro.url.searchParams.get("plan");
 if (!plan) return Astro.redirect("/pricing");
 
-const { env } = Astro.locals.runtime;
-const STRIPE_API = env.STRIPE_API ?? import.meta.env.STRIPE_API;
-const PUBLIC_STRIPE_API = env.PUBLIC_STRIPE_API ?? import.meta.env.PUBLIC_STRIPE_API;
+// const { env } = Astro.locals.runtime;
+const STRIPE_API = import.meta.env.STRIPE_API;
+const PUBLIC_STRIPE_API = import.meta.env.PUBLIC_STRIPE_API;
 const stripe = new Stripe(STRIPE_API);
 const price = (await stripe.prices.list({ lookup_keys: [plan] })).data[0];
 const checkoutSession = await stripe.checkout.sessions.create({

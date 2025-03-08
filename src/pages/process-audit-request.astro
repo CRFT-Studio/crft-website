@@ -16,7 +16,7 @@ if (!fields.filter(field => field !== "Notes").every(field => params[field])) re
 */
 
 import { Resend } from 'resend';
-const resend = new Resend(Astro.locals.runtime.env.RESEND_API ?? import.meta.env.RESEND_API);
+const resend = new Resend(import.meta.env.RESEND_API);
 await resend.batch.send([
   {
     from: 'audit@crft.studio',

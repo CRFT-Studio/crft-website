@@ -9,7 +9,7 @@ import HeadScripts from "../components/HeadScripts.astro";
 const sessionId = Astro.url.searchParams.get("session_id");
 if (!sessionId) return Astro.redirect("/pricing");
 
-const STRIPE_API = Astro.locals.runtime.env.STRIPE_API ?? import.meta.env.STRIPE_API;
+const STRIPE_API = import.meta.env.STRIPE_API;
 const stripe = new Stripe(STRIPE_API);
 const checkoutSession = await stripe.checkout.sessions.retrieve(sessionId);
 const websiteUrl = checkoutSession.custom_fields.find(field => field.key === "Website").text.value;
