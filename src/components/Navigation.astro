@@ -9,13 +9,25 @@ import '../../src/styles/global.css';
                 <a href="/" class="nav-link"><svg width="110" height="23" viewBox="0 0 132 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6.47615 11.5709C6.47615 7.67882 8.42219 5.8923 16.6211 5.8923C21.6297 5.8923 26.8298 6.78556 30.5623 7.51931L31.7108 2.12783C27.2764 1.10696 21.6616 0.341309 16.3977 0.341309C4.46631 0.341309 0 4.26528 0 11.5709C0 18.8765 4.46631 22.8324 16.3977 22.8324C21.6616 22.8324 27.2764 22.0667 31.7108 21.0459L30.5623 15.6544C26.8298 16.3881 21.6297 17.2814 16.6211 17.2814C8.42219 17.2814 6.47615 15.4949 6.47615 11.5709ZM40.6676 22.4176V16.101H48.9303L56.7463 22.4176H64.8814L57.7353 16.8029L56.0125 15.7501L57.4162 15.7182C62.2335 15.3354 65.0728 13.0384 65.0728 8.25306C65.0728 2.54256 61.3402 0.66033 55.9806 0.66033H34.1914V22.4176H40.6676ZM40.6676 6.21132H55.3426C57.48 6.21132 58.3733 6.81746 58.3733 8.7635C58.3733 10.55 57.48 11.2519 55.3426 11.2519H40.6676V6.21132ZM74.3768 22.4176V15.3035H96.3257V10.1991H74.3768V6.21132H96.9319V0.66033H67.9006V22.4176H74.3768ZM111.951 6.21132V22.4176H118.427V6.21132H131.316V0.66033H99.0305V6.21132H111.951Z" fill="white"/>
                 </svg></a>
-                <div class="hidden lg:block">
+                <div class="hidden lg:flex lg:flex-row">
                     <a href="/#services" class="nav-link px-5">Services</a>
                     <a href="/customers" class="nav-link px-5">Customers</a>
                     <a href="/about-us" class="nav-link px-5">About Us</a>
                     <a href="/pricing" class="nav-link px-5">Pricing</a>
-                    <a href="/blog" class="nav-link px-5">Blog</a>
-                    <a href="/glossary" class="nav-link px-5">Glossary</a>
+                    <div id="navDropdown" class="nav-link px-5 flex flex-col relative group">
+                        <div class="flex flex-row gap-2 items-center">
+                            <div>Resources</div>
+                            <svg id="dropdownArrow" class="translate-y-[2px] group-hover:rotate-180 transition-transform" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M480-357.85 253.85-584 296-626.15l184 184 184-184L706.15-584 480-357.85Z"/></svg>
+                        </div>
+                        <div id="dropdownCard" class="square-card p-2 px-3 flex flex-col gap-2 absolute top-9 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all">
+                            <a href="/blog" class="nav-link">Blog</a>
+                            <a href="/glossary" class="nav-link">Glossary</a>
+                            <a href="/lookup" class="flex flex-row gap-2 items-center">
+                                <div class="nav-link">Lookup</div>
+                                <div class="square-card px-2 py-0 bg-neutral-700 text-sm">New</div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -33,7 +45,7 @@ import '../../src/styles/global.css';
     </div>
 </nav>
 
-<div id="mobileNav" class="card p-6 fixed bottom-0 w-full z-[99] rounded-b-none border-b-0 transition-all duration-[250ms] translate-y-[35rem]">
+<div id="mobileNav" class="card p-6 fixed bottom-0 w-full z-[99] rounded-b-none border-b-0 transition-all duration-[250ms] translate-y-[40rem]">
     <div class="flex flex-col gap-2 font-normal">
         <a href="/" class="flex flex-row justify-between items-center">
             <div class="text-lg">Go home</div>
@@ -60,6 +72,13 @@ import '../../src/styles/global.css';
             <div class="text-lg">Glossary</div>
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m517.85-480-184-184L376-706.15 602.15-480 376-253.85 333.85-296l184-184Z"/></svg>
         </a>
+        <a href="/lookup" class="flex flex-row justify-between items-center">
+            <div class="flex flex-row gap-2 items-center">
+                <div class="text-lg">Lookup</div>
+                <div class="square-card px-2 py-0 bg-neutral-700">New</div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m517.85-480-184-184L376-706.15 602.15-480 376-253.85 333.85-296l184-184Z"/></svg>
+        </a>
         <div class="h-[1px] w-full bg-neutral-700 my-3"></div>
         <a href="/#faq" class="flex flex-row justify-between items-center">
             <div class="text-lg">FAQ</div>
@@ -83,7 +102,7 @@ import '../../src/styles/global.css';
     $(() => {
         $("#mobileNavBtn, #bgOverlay").click(() => {
             $("#bgOverlay").toggleClass("opacity-0 pointer-events-none");
-            $("#mobileNav").toggleClass("translate-y-[35rem]");
+            $("#mobileNav").toggleClass("translate-y-[40rem]");
             $("body").toggleClass("overflow-y-hidden");
         });
     });
