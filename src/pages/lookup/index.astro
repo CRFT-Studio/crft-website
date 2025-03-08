@@ -12,14 +12,29 @@ const url = Astro.url.searchParams.get("url");
 
 import { unfurl } from 'unfurl.js';
 
-let ogTitle, ogImageUrl, ogDescription;
+let ogTitle = '', ogImageUrl = '', ogDescription = '';
 
 if (url) {
     try {
         const result = await unfurl(url);
-        ogTitle = result.open_graph?.title || result.title;
-        ogImageUrl = result.open_graph?.images?.[0]?.url;
-        ogDescription = result.open_graph?.description || result.description;
+
+        ogTitle = result.open_graph?.title ||
+                  result.title ||
+                  result.meta?.["twitter:title"] ||
+                  result.meta?.title ||
+                  '';
+
+        ogDescription = result.open_graph?.description ||
+                         result.description ||
+                         result.meta?.["twitter:description"] ||
+                         result.meta?.description ||
+                         '';
+
+        // For images, try multiple sources
+        ogImageUrl = result.open_graph?.images?.[0]?.url ||
+                     result.meta?.["twitter:image"] ||
+                     result.meta?.["image"] ||
+                     '';
     } catch (error) {
         console.error("Error fetching metadata:", error);
     }
