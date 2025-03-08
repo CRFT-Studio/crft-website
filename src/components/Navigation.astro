@@ -19,13 +19,15 @@ import '../../src/styles/global.css';
                             <div>Resources</div>
                             <svg id="dropdownArrow" class="translate-y-[2px] group-hover:rotate-180 transition-transform" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M480-357.85 253.85-584 296-626.15l184 184 184-184L706.15-584 480-357.85Z"/></svg>
                         </div>
-                        <div id="dropdownCard" class="square-card p-2 px-3 flex flex-col gap-2 absolute top-9 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all">
-                            <a href="/blog" class="nav-link">Blog</a>
-                            <a href="/glossary" class="nav-link">Glossary</a>
-                            <a href="/lookup" class="flex flex-row gap-2 items-center">
-                                <div class="nav-link">Lookup</div>
-                                <div class="square-card px-2 py-0 bg-neutral-700 text-sm">New</div>
-                            </a>
+                        <div class="absolute">
+                            <div id="dropdownCard" class="square-card translate-y-10 p-2 px-3 flex flex-col gap-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all">
+                                <a href="/blog" class="nav-link">Blog</a>
+                                <a href="/glossary" class="nav-link">Glossary</a>
+                                <a href="/lookup" class="flex flex-row gap-2 items-center">
+                                    <div class="nav-link">Lookup</div>
+                                    <div class="square-card px-2 py-0 bg-neutral-700 text-sm">New</div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
