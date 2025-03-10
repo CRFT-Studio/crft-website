@@ -30,6 +30,11 @@ if (url) {
             const app = document.querySelector('#lighthouse-viewer-element');
             const reportHtml = renderReport(reportData, {});
             app.appendChild(reportHtml);
+
+            setTimeout(() => {
+                $(".lh-sticky-header").css("position", "static");
+                $(".lh-topbar").css("position", "static");
+            }, 100);
         }
     });
 </script>
