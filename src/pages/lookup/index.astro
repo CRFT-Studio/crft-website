@@ -69,16 +69,6 @@ if (url) {
                     $(".meta-description-preview").text($("#metaDescription").val());
                 });
 
-                function lhStyles() {
-                    if ($("#lighthouse-viewer-element")[0]) {
-                        $(".lh-sticky-header").css("position", "static");
-                        $(".lh-topbar").css("position", "static");
-                    } else {
-                        setTimeout(lhStyles, 10000);
-                    }
-                }
-                lhStyles();
-
                 let userHasTyped = false;
 
                 $("#search").on("focus", function() {
