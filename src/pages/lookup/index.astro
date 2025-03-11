@@ -80,6 +80,26 @@ if (url) {
                         $(this).val("");
                     }
                 });
+
+                $("#share").on("click", function() {
+                    // Copy current URL to clipboard
+                    navigator.clipboard.writeText(window.location.href)
+                        .then(function() {
+                            // Hide link icon, show check icon
+                            $("#link-icon").addClass("hidden");
+                            $("#check-icon").removeClass("hidden");
+
+                            // Set timeout to revert changes after 2 seconds
+                            setTimeout(function() {
+                                $("#link-icon").removeClass("hidden");
+                                $("#check-icon").addClass("hidden");
+                                $("#share").find("div:last").text("Copy Link");
+                            }, 2000);
+                        })
+                        .catch(function(err) {
+                            console.error('Could not copy text: ', err);
+                        });
+                });
             });
 
             const moveTocOnMobile = () => {
@@ -451,19 +471,28 @@ if (url) {
             :
                 <div id="result" class="sticky top-16 lg:mt-6 -mt-20 z-20"></div>
                 <div class="container lg:mt-5 mt-5">
-                    <div class="lg:inline-flex hidden flex-row flex-nowrap max-w-[80vw] overflow-x-auto gap-3 square-card px-2 py-[3px] items-center text-neutral-300 mb-5 sticky top-20 z-50">
-                        <a href="/lookup" class="hover:underline text-nowrap">CRFT Lookup</a>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="fill-neutral-300 h-[20px] w-auto" viewBox="0 -960 960 960" width="24px"><path d="m517.85-480-184-184L376-706.15 602.15-480 376-253.85 333.85-296l184-184Z"/></svg>
-                        <div class="text-nowrap">{url}</div>
-                        <div class="aspect-square h-[5px] rounded-xl bg-neutral-300 mx-2 text-nowrap"></div>
-                        <div class="text-nowrap">Generated on {new Date(Astro.url.searchParams.get("datetime").replace(/-(\d{2})$/, ":$1")).toLocaleString('en-US', {
-                            month: 'short',
-                            day: 'numeric',
-                            year: 'numeric',
-                            hour: 'numeric',
-                            minute: '2-digit',
-                            hour12: true
-                        }).replace(',', ' at')} UTC</div>
+                    <div class="flex flex-row gap-2 items-center mb-5 sticky top-20 z-50">
+                        <div class="lg:inline-flex hidden flex-row flex-nowrap max-w-[80vw] overflow-x-auto gap-3 square-card px-2 py-[3px] items-center text-neutral-300">
+                            <a href="/lookup" class="hover:underline text-nowrap">CRFT Lookup</a>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="fill-neutral-300 h-[20px] w-auto" viewBox="0 -960 960 960" width="24px"><path d="m517.85-480-184-184L376-706.15 602.15-480 376-253.85 333.85-296l184-184Z"/></svg>
+                            <div class="text-nowrap">{url}</div>
+                            <div class="aspect-square h-[5px] rounded-xl bg-neutral-300 mx-2 text-nowrap"></div>
+                            <div class="text-nowrap">Generated on {new Date(Astro.url.searchParams.get("datetime").replace(/-(\d{2})$/, ":$1")).toLocaleString('en-US', {
+                                month: 'short',
+                                day: 'numeric',
+                                year: 'numeric',
+                                hour: 'numeric',
+                                minute: '2-digit',
+                                hour12: true
+                            }).replace(',', ' at')} UTC</div>
+                        </div>
+                        <button id="share" class="square-card px-1 pr-2 py-[3px] flex flex-row gap-1 text-neutral-300 items-center transition-all hover:bg-neutral-700">
+                            <div class="w-[24px] flex flex-row gap-1">
+                                <svg id="link-icon" class="inline-block fill-neutral-300" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"/></svg>
+                                <svg id="check-icon" class="hidden fill-neutral-300" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
+                            </div>
+                            <div>Copy Link</div>
+                        </button>
                     </div>
                     <div class="grid lg:grid-cols-[0.15fr_1fr] gap-5 lg:mt-0 mt-5">
                         <div class="h-full">
