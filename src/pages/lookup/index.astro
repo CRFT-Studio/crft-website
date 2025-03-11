@@ -65,7 +65,7 @@ if (url) {
                 // First fade out the loading overlay
                 $("#loadingOverlay").fadeOut(500, function() {
                     // After fade completes, re-enable scrolling
-                    $('body').toggleClass("overflow-y-hidden h-full");
+                    $('body').toggleClass("overflow-hidden h-full");
                 });
             });
 
@@ -351,7 +351,7 @@ if (url) {
         </style>
     </head>
 
-    <body class="overflow-y-hidden h-full">
+    <body class="overflow-hidden h-full">
         <Navigation/>
         <section class="my-20">
             {!url ?
