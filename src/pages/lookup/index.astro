@@ -13,7 +13,8 @@ const datetime = Astro.url.searchParams.get("datetime");
 
 // Set cache headers based on parameters
 if (url && datetime) {
-  Astro.response.headers.set('Cache-Control', 'public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400');
+  Astro.response.headers.set('Cache-Control', 'public, max-age=2592000, stale-while-revalidate=86400');
+  Astro.response.headers.set('Vercel-CDN-Cache-Control', 'max-age=2592000');
 } else {
   Astro.response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate');
 }
