@@ -10,7 +10,7 @@ if (url) {
     try {
         const encodedUrl = encodeURIComponent(url);
         const response = await fetch(
-            `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodedUrl}&category=performance&category=best-practices&category=seo&category=accessibility&strategy=desktop&key=${PAGESPEED_API}`
+            `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodedUrl}&category=performance&category=best-practices&category=seo&category=accessibility&strategy=desktop&locale=en&key=${PAGESPEED_API}`
         );
         report = await response.json();
     } catch (error) {
