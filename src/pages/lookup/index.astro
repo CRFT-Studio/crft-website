@@ -74,6 +74,19 @@ if (url) {
                 });
             });
 
+            const moveTocOnMobile = () => {
+                if ($(window).width() < 1024) {
+                    $("#toc").prependTo("#result");
+                    $("#lighthouse-overview").prependTo("#mobile-lighthouse");
+                } else {
+                    $("#toc").appendTo("#sidebar");
+                    $("#lighthouse-overview").prependTo("#right-sidebar");
+                }
+            };
+
+            $(document).ready(moveTocOnMobile);
+            $(window).resize(moveTocOnMobile);
+
             $(document).ready(function () {
                 $("#metaTitle").on("input", () => {
                     $("#titleLength").text($("#metaTitle").val().length);
@@ -116,19 +129,6 @@ if (url) {
                         });
                 });
             });
-
-            const moveTocOnMobile = () => {
-                if ($(window).width() < 1024) {
-                    $("#toc").prependTo("#result");
-                    $("#lighthouse-overview").prependTo("#mobile-lighthouse");
-                } else {
-                    $("#toc").appendTo("#sidebar");
-                    $("#lighthouse-overview").prependTo("#right-sidebar");
-                }
-            };
-
-            $(document).ready(moveTocOnMobile);
-            $(window).resize(moveTocOnMobile);
 
             function getColorClasses(score) {
                 if (score >= 90) return { bg: 'bg-green-600', text: 'text-green-600', lightBg: 'bg-green-300' };
