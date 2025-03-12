@@ -77,7 +77,7 @@ if (url) {
             const moveTocOnMobile = () => {
                 if ($(window).width() < 1024) {
                     $("#toc").prependTo("#result");
-                    $("toc").toggleClass("hidden flex");
+                    $("#toc").toggleClass("hidden flex");
                     $("#lighthouse-overview").prependTo("#mobile-lighthouse");
                 } else {
                     $("#toc").prependTo("#sidebar");
