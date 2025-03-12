@@ -62,9 +62,14 @@ if (url) {
 
             // When window fully loads, enable scrolling and fade out overlay
             $(window).on("load", function() {
-                // First fade out the loading overlay
-                $("#loadingOverlay").fadeOut(500, function() {
-                    // After fade completes, re-enable scrolling
+                const { url, datetime } = Object.fromEntries(new URLSearchParams(window.location.search));
+
+                if (!url || !datetime) {
+                    $('body').removeClass("overflow-hidden h-full");
+                    return;
+                }
+
+                $("#loadingOverlay").fadeOut(500, () => {
                     $('body').toggleClass("overflow-hidden h-full");
                 });
             });
