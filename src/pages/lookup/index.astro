@@ -306,7 +306,7 @@ if (url) {
 
                             // Add icon
                             const imgElement = document.createElement('img');
-                            imgElement.src = `/icons/${techIcon}`;
+                            imgElement.src = `/public/icons/${techIcon}`;
                             imgElement.className = 'w-5 h-5';
                             imgElement.alt = '';
                             techDiv.appendChild(imgElement);
@@ -378,6 +378,7 @@ if (url) {
                                 </div>
                                 <button class="lg:w-auto w-full px-2 py-1 rounded-md border border-neutral-600 bg-neutral-800 hover:bg-neutral-700 transition-all text-nowrap">Generate report</button>
                             </form>
+                            <!-- <div class="lg:mt-2 mt-3 lg:text-left text-center inline-block w-fit text-neutral-300">Don't have a site in mind? <span class="underline"><a href="">Generate random report.</a></span></div> -->
                             <div class="flex flex-col gap-2 text-neutral-300 text-lg mt-7">
                                 <div class="flex flex-row gap-2 items-start">
                                     <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
@@ -405,17 +406,17 @@ if (url) {
                                 </div>
                             </div>
                         </div>
-                        <div class="max-w-full lg:overflow-visible overflow-hidden relative">
-                            <div class="lg:hidden absolute h-full w-full bg-gradient-to-r from-transparent to-neutral-900 z-10 pointer-events-none"></div>
+                        <div class="max-w-full overflow-hidden relative">
+                            <div class="absolute h-full w-full bg-gradient-to-r from-transparent to-neutral-900 z-10 pointer-events-none"></div>
                             <div class="lg:grid lg:grid-cols-3 flex flex-row lg:min-w-[150%] overflow-x-auto gap-4" style="-webkit-scrollbar { display: none; } -ms-overflow-style: none; scrollbar-width: none;">
                                 <LookupCard url="tailwindcss.com" img="https://tailwindcss.com/opengraph-image.jpg?22502194f1a254bc" metaTitle="Tailwind CSS - Rapidly build modern websites without ever leaving your HTML" performance="75" accessibility="86" bestPractices="96" seo="91">
                                     <div class="flex flex-row gap-4 flex-wrap">
                                         <div class="flex flex-row gap-2 items-center">
-                                            <img src="/icons/react.svg" class="w-4 h-4 shrink-0"></img>
+                                            <img src="/public/icons/react.svg" class="w-4 h-4 shrink-0"></img>
                                             <div>React</div>
                                         </div>
                                         <div class="flex flex-row gap-2 items-center">
-                                            <img src="/icons/next.js.svg" class="w-4 h-4 shrink-0"></img>
+                                            <img src="/public/icons/next.js.svg" class="w-4 h-4 shrink-0"></img>
                                             <div>NextJS</div>
                                         </div>
                                     </div>
@@ -423,15 +424,15 @@ if (url) {
                                 <LookupCard url="linear.app" img="https://linear.app/static/og/homepage-2024.jpg" metaTitle="Linear – Plan and build products" performance="84" accessibility="84" bestPractices="100" seo="92">
                                     <div class="flex flex-row gap-4 flex-wrap">
                                         <div class="flex flex-row gap-2 items-center">
-                                            <img src="/icons/react.svg" class="w-4 h-4 shrink-0" />
+                                            <img src="/public/icons/react.svg" class="w-4 h-4 shrink-0" />
                                             <div>React</div>
                                         </div>
                                         <div class="flex flex-row gap-2 items-center">
-                                            <img src="/icons/next.js.svg" class="w-4 h-4 shrink-0" />
+                                            <img src="/public/icons/next.js.svg" class="w-4 h-4 shrink-0" />
                                             <div>NextJS</div>
                                         </div>
                                         <div class="flex flex-row gap-2 items-center">
-                                            <img src="/icons/sanity.svg" class="w-4 h-4 shrink-0" />
+                                            <img src="/public/icons/sanity.svg" class="w-4 h-4 shrink-0" />
                                             <div>Sanity</div>
                                         </div>
                                     </div>
@@ -439,7 +440,7 @@ if (url) {
                                 <LookupCard url="basecamp.com" img="https://basecamp.com/assets/images/opengraph/basecamp.png?1740691981" metaTitle="Basecamp: Project management software, online collaboration" performance="93" accessibility="100" bestPractices="100" seo="100">
                                     <div class="flex flex-row gap-4 flex-wrap">
                                         <div class="flex flex-row gap-2 items-center">
-                                            <img src="/icons/cloudflare.svg" class="w-4 h-4 shrink-0"></img>
+                                            <img src="/public/icons/cloudflare.svg" class="w-4 h-4 shrink-0"></img>
                                             <div>Cloudflare</div>
                                         </div>
                                     </div>
@@ -447,11 +448,11 @@ if (url) {
                                 <LookupCard url="github.com" img="https://github.githubassets.com/assets/home24-5939032587c9.jpg" metaTitle="GitHub · Build and ship software on a single, collaborative platform · GitHub" performance="64" accessibility="100" bestPractices="100" seo="92">
                                     <div class="flex flex-row gap-4 flex-wrap">
                                         <div class="flex flex-row gap-2 items-center">
-                                            <img src="/icons/react.svg" class="w-4 h-4 shrink-0"></img>
+                                            <img src="/public/icons/react.svg" class="w-4 h-4 shrink-0"></img>
                                             <div>React</div>
                                         </div>
                                         <div class="flex flex-row gap-2 items-center">
-                                            <img src="/icons/amazon web services.svg" class="w-4 h-4 shrink-0"></img>
+                                            <img src="/public/icons/amazon web services.svg" class="w-4 h-4 shrink-0"></img>
                                             <div>AWS</div>
                                         </div>
                                     </div>
@@ -459,11 +460,11 @@ if (url) {
                                 <LookupCard url="stripe.com" img="https://images.stripeassets.com/fzn2n1nzq965/3AGidihOJl4nH9D1vDjM84/9540155d584be52fc54c443b6efa4ae6/homepage.png?q=80" metaTitle="Stripe | Financial Infrastructure to Grow Your Revenue" performance="72" accessibility="93" bestPractices="74" seo="100">
                                     <div class="flex flex-row gap-4 flex-wrap">
                                         <div class="flex flex-row gap-2 items-center">
-                                            <img src="/icons/react.svg" class="w-4 h-4 shrink-0"></img>
+                                            <img src="/public/icons/react.svg" class="w-4 h-4 shrink-0"></img>
                                             <div>React</div>
                                         </div>
                                         <div class="flex flex-row gap-2 items-center">
-                                            <img src="/icons/contentful.svg" class="w-4 h-4 shrink-0"></img>
+                                            <img src="/public/icons/contentful.svg" class="w-4 h-4 shrink-0"></img>
                                             <div>Contentful</div>
                                         </div>
                                     </div>
@@ -471,11 +472,11 @@ if (url) {
                                 <LookupCard url="posthog.com" img="https://posthog.com/images/home.png" metaTitle="PostHog - How developers build successful products" performance="59" accessibility="69" bestPractices="74" seo="83">
                                     <div class="flex flex-row gap-4 flex-wrap">
                                         <div class="flex flex-row gap-2 items-center">
-                                            <img src="/icons/gatsby.svg" class="w-4 h-4 shrink-0"></img>
+                                            <img src="/public/icons/gatsby.svg" class="w-4 h-4 shrink-0"></img>
                                             <div>Gatsby</div>
                                         </div>
                                         <div class="flex flex-row gap-2 items-center">
-                                            <img src="/icons/cloudflare.svg" class="w-4 h-4 shrink-0"></img>
+                                            <img src="/public/icons/cloudflare.svg" class="w-4 h-4 shrink-0"></img>
                                             <div>Cloudflare</div>
                                         </div>
                                     </div>
@@ -485,7 +486,7 @@ if (url) {
                     </div>
                 </div>
             :
-                <div id="result" class="sticky top-16 lg:mt-6 -mt-20 z-20"></div>
+                <div id="result" class="sticky top-[107px] lg:mt-6 -mt-20 z-20"></div>
                 <div id="loadingOverlay" class="z-50 fixed bottom-0 h-[60vh] w-[100vw] bg-gradient-to-t from-black to-transparent transition-all flex flex-col items-center justify-end gap-5 pb-16">
                     <svg aria-hidden="true" class="w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-orange-300" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
