@@ -77,10 +77,11 @@ if (url) {
             const moveTocOnMobile = () => {
                 if ($(window).width() < 1024) {
                     $("#toc").prependTo("#result");
-                    $("#toc").toggleClass("hidden flex");
+                    $("#toc").removeClass("hidden sticky").addClass("flex");
                     $("#lighthouse-overview").prependTo("#mobile-lighthouse");
                 } else {
                     $("#toc").prependTo("#sidebar");
+                    $("#toc").removeClass("flex").addClass("hidden sticky");
                     $("#lighthouse-overview").prependTo("#right-sidebar");
                 }
             };
