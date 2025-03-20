@@ -541,13 +541,29 @@ if (url) {
                         <div>
                             <div class="grid lg:grid-cols-[1fr_0.15fr] gap-4" id="overview">
                                 <div>
-                                    <div class="square-card p-0 mb-6">
-                                        <img class="h-full w-full aspect-video object-cover object-center" src={ogImageUrl} alt={`Open Graph Image of ${url}`}>
+                                    <div class="square-card p-0 mb-6 w-full aspect-video">
+                                        {ogImageUrl ?
+                                            <img class="h-full w-full aspect-video object-cover object-center" src={ogImageUrl} alt={`Open Graph Image of ${url}`}>
+                                        :
+                                            <div class="flex flex-col gap-3 h-full w-full items-center text-center text-pretty justify-center lg:text-lg text-sm font-medium">
+                                                <svg class="w-8 h-8 fill-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-290.77q13.73 0 23.02-9.29t9.29-23.02q0-13.73-9.29-23.02-9.29-9.28-23.02-9.28t-23.02 9.28q-9.29 9.29-9.29 23.02t9.29 23.02q9.29 9.29 23.02 9.29Zm-30-146.15h60v-240h-60v240ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Zm-.07-60q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+                                                <div>This URL doesn't have an Open Graph Image set</div>
+                                                <a target="_blank" href="https://www.freecodecamp.org/news/what-is-open-graph-and-how-can-i-use-it-for-my-website/" class="secondary-cta rounded-none py-0 px-2 mt-2">Learn more</a>
+                                            </div>
+                                        }
                                     </div>
                                     <div class="lg:flex lg:flex-row lg:justify-between gap-16">
                                         <div class="lg:max-w-[400px] mb-7">
-                                            <div class="text-xl font-medium mb-1 text-pretty">{ogTitle}</div>
-                                            <div class="text-lg text-neutral-300 text-pretty">{ogDescription}</div>
+                                            {ogTitle ?
+                                                <div class="text-xl font-medium mb-1 text-pretty">{ogTitle}</div>
+                                            :
+                                                <div class="text-xl font-medium mb-1 text-pretty text-red-500">Missing meta title</div>
+                                            }
+                                            { ogDescription ?
+                                                <div class="text-lg text-neutral-300 text-pretty">{ogDescription}</div>
+                                            :
+                                                <div class="text-lg text-red-600 text-pretty">Missing meta description</div>
+                                            }
                                         </div>
                                         <div id="mobile-lighthouse"></div>
                                         <div id="tech-overview-container" class="flex flex-row gap-4 justify-start text-neutral-300">
@@ -663,13 +679,21 @@ if (url) {
                                             </div>
                                             <div>
                                                 <div class="mb-2">Description</div>
-                                                <textarea id="metaDescription" rows="3" cols="33" class="square-card rounded-none p-2 text-neutral-300 mb-1" placeholder="seo meta description">{ogDescription}</textarea>
+                                                <textarea id="metaDescription" rows="3" cols="33" class="square-card rounded-none p-2 text-neutral-300 mb-1" placeholder="Your SEO meta description here">{ogDescription}</textarea>
                                                 <div><span id="descriptionLength">{ogDescription.length}</span> / 155 characters</div>
                                             </div>
                                             <div>
                                                 <div class="mb-2">Image</div>
-                                                <div class="square-card p-0">
-                                                    <img class="h-full w-full aspect-video object-cover object-center" src={ogImageUrl} alt={`Open Graph Image of ${url}`}>
+                                                <div class="square-card p-0 w-full aspect-video">
+                                                    {ogImageUrl ?
+                                                        <img class="h-full w-full aspect-video object-cover object-center" src={ogImageUrl} alt={`Open Graph Image of ${url}`}>
+                                                    :
+                                                        <div class="flex flex-col gap-3 h-full w-full text-center text-pretty items-center justify-center text-lg font-medium">
+                                                            <svg class="w-8 h-8 fill-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-290.77q13.73 0 23.02-9.29t9.29-23.02q0-13.73-9.29-23.02-9.29-9.28-23.02-9.28t-23.02 9.28q-9.29 9.29-9.29 23.02t9.29 23.02q9.29 9.29 23.02 9.29Zm-30-146.15h60v-240h-60v240ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Zm-.07-60q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+                                                            <div>This URL doesn't have an Open Graph Image set</div>
+                                                            <a target="_blank" href="https://www.freecodecamp.org/news/what-is-open-graph-and-how-can-i-use-it-for-my-website/" class="secondary-cta rounded-none py-0 px-2 mt-2">Learn more</a>
+                                                        </div>
+                                                    }
                                                 </div>
                                             </div>
                                         </div>
@@ -690,7 +714,7 @@ if (url) {
                                                 <div>
                                                     <h4 class="text-lg mb-3 font-medium">Instagram DM</h4>
                                                     <div class="rounded-2xl rounded-br-md bg-neutral-800 max-w-[300px] overflow-hidden">
-                                                        <img class="aspect-video object-cover object-center" src={ogImageUrl} alt="">
+                                                        <img class="aspect-video w-full bg-neutral-500 object-cover object-center" src={ogImageUrl} alt="">
                                                         <div class="p-3">
                                                             <div class="font-medium text-lg leading-tight mb-[6px] meta-title-preview">{ogTitle}</div>
                                                             <div class="text-neutral-300 leading-tight meta-description-preview">{ogDescription}</div>
@@ -700,14 +724,14 @@ if (url) {
                                                 <div>
                                                     <h4 class="text-lg mb-3 font-medium">X (formerly Twitter)</h4>
                                                     <div class="rounded-xl border border-neutral-700 relative overflow-hidden">
-                                                        <img class="aspect-video object-cover object-center" src={ogImageUrl} alt="">
+                                                        <img class="aspect-video w-full bg-neutral-500 object-cover object-center" src={ogImageUrl} alt="">
                                                         <div class="p-1 px-2 text-sm bg-neutral-950 bg-opacity-80 inline-block absolute bottom-0 mb-2 ml-2 rounded-md meta-title-preview">{ogTitle}</div>
                                                     </div>
                                                 </div>
                                                 <div>
                                                     <h4 class="text-lg mb-3 font-medium">Facebook</h4>
                                                     <div class="bg-[#333334] overflow-hidden">
-                                                        <img class="aspect-video object-cover object-center" src={ogImageUrl} alt="">
+                                                        <img class="aspect-video w-full bg-neutral-500 object-cover object-center" src={ogImageUrl} alt="">
                                                         <div class="p-3 relative">
                                                             <div class="w-7 h-7 flex flex-row items-center justify-center rounded-full bg-neutral-800 border border-neutral-700 absolute -top-[15px] right-0 mr-6 text-xl">𝒊</div>
                                                             <div class="text-neutral-300 leading-tight mb-[6px] uppercase">{url.replace(/^https?:\/\//i, '').split('/')[0]}</div>
@@ -719,7 +743,7 @@ if (url) {
                                                 <div>
                                                     <h4 class="text-lg mb-3 font-medium">LinkedIn</h4>
                                                     <div class="bg-[#2A3138] overflow-hidden border-0">
-                                                        <img class="aspect-video object-cover object-center" src={ogImageUrl} class="w-full" alt="">
+                                                        <img class="aspect-video w-full bg-neutral-500 object-cover object-center" src={ogImageUrl} class="w-full" alt="">
                                                         <div class="p-3 relative">
                                                             <div class="font-semibold leading-tight mb-[6px] meta-title-preview">{ogTitle}</div>
                                                             <div class="leading-tight text-neutral-400">{url.replace(/^https?:\/\//i, '').split('/')[0]}</div>
@@ -733,7 +757,7 @@ if (url) {
                                                     <h4 class="text-lg mb-3 font-medium">WhatsApp</h4>
                                                     <div class="rounded-xl rounded-tr-[0px] p-1 bg-[#154E38] max-w-[400px] relative">
                                                         <div class="rounded-lg bg-[#124332] overflow-hidden">
-                                                            <img class="aspect-video object-cover object-center" src={ogImageUrl} alt="">
+                                                            <img class="aspect-video w-full bg-neutral-500 object-cover object-center" src={ogImageUrl} alt="">
                                                             <div class="p-4 pt-3">
                                                                 <div class="text-lg font-medium leading-tight mb-[6px] meta-title-preview">{ogTitle}</div>
                                                                 <div class="text-neutral-300 leading-tight meta-description-preview">{ogDescription}</div>
@@ -760,7 +784,7 @@ if (url) {
                                                                 <div class="font-semibold">{url.replace(/^https?:\/\//i, '').split('/')[0]}</div>
                                                                 <div class="font-semibold meta-title-preview">{ogTitle}</div>
                                                                 <div class="text-neutral-100 leading-snug font-medium meta-description-preview">{ogDescription}</div>
-                                                                <img class="aspect-video object-cover object-center" src={ogImageUrl} class="rounded-xl overflow-hidden mt-3" alt="">
+                                                                <img class="aspect-video w-full bg-neutral-500 object-cover object-center" src={ogImageUrl} class="rounded-xl overflow-hidden mt-3" alt="">
                                                             </div>
                                                         </div>
                                                         <div class="flex flex-row gap-2 items-center justify-end">
@@ -779,7 +803,7 @@ if (url) {
                                                 <div>
                                                     <h4 class="text-lg mb-3 font-medium">Signal</h4>
                                                     <div class="rounded-2xl rounded-br-sm bg-[#2E2E2E] max-w-[300px] overflow-hidden">
-                                                        <img class="aspect-video object-cover object-center" src={ogImageUrl} alt="">
+                                                        <img class="aspect-video w-full bg-neutral-500 object-cover object-center" src={ogImageUrl} alt="">
                                                         <div class="p-3">
                                                             <div class="text-sm font-medium leading-tight mb-[6px] meta-title-preview">{ogTitle}</div>
                                                             <div class="text-sm text-neutral-300 leading-tight meta-description-preview">{ogDescription}</div>
@@ -796,7 +820,7 @@ if (url) {
                                                         <div class="border-l-4 border-neutral-600 bg-[#2B2D31] rounded-md p-3">
                                                             <div class="text-blue-300 font-medium mb-2 meta-title-preview">{ogTitle}</div>
                                                             <div class="text-neutral-300 leading-snug meta-description-preview">{ogDescription}</div>
-                                                            <img class="aspect-video object-cover object-center" src={ogImageUrl} class="rounded-md overflow-hidden mt-3" alt="">
+                                                            <img class="aspect-video w-full bg-neutral-500 object-cover object-center" src={ogImageUrl} class="rounded-md overflow-hidden mt-3" alt="">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -809,7 +833,7 @@ if (url) {
                                                             <div class="font-semibold mb-1">{url.replace(/^https?:\/\//i, '').split('/')[0]}</div>
                                                             <div class="text-[#1D9BD1] font-medium mb-1 meta-title-preview">{ogTitle}</div>
                                                             <div class="text-neutral-300 leading-snug meta-description-preview">{ogDescription}</div>
-                                                            <img class="aspect-video object-cover object-center" src={ogImageUrl} class="rounded-md overflow-hidden mt-3" alt="">
+                                                            <img class="aspect-video w-full bg-neutral-500 object-cover object-center" src={ogImageUrl} class="rounded-md overflow-hidden mt-3" alt="">
                                                         </div>
                                                     </div>
                                                 </div>
