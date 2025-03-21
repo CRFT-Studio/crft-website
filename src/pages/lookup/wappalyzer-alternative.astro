@@ -1,0 +1,606 @@
+---
+import HeadScripts from "../../components/HeadScripts.astro";
+import Navigation from "../../components/Navigation.astro";
+import Footer from "../../components/Footer.astro";
+import FAQItem from "../../components/FAQItem.astro";
+import LookupCard from "../../components/LookupCard.astro";
+import { Image } from 'astro:assets';
+import LookupOverview from "../../images/lookup-overview.png";
+import LighthouseExample from "../../images/tailwind-lh-screenshot.png";
+---
+<html lang="en">
+    <head>
+        <HeadScripts
+            title="CRFT Lookup - Free Wappalyzer Alternative"
+            description="The CRFT Lookup is the free alternative to Wappalyzer for up-to-date website technology detection, with added performance benchmarks and meta tag previews."
+        />
+    </head>
+    <body>
+        <Navigation/>
+        <section class="mt-20">
+            <div class="container flex flex-col items-center">
+                <div class="text-center text-orange-300 font-normal text-lg mb-3">Wappalyzer Alternative</div>
+                <h1 class="lg:text-5xl text-4xl text-center text-balance font-semibold lg:leading-snug leading-normal"><span class="card p-2 inline-block translate-y-2"><svg class="lg:w-[140px] w-[100px]" viewBox="0 0 132 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.47615 11.5709C6.47615 7.67882 8.42219 5.8923 16.6211 5.8923C21.6297 5.8923 26.8298 6.78556 30.5623 7.51931L31.7108 2.12783C27.2764 1.10696 21.6616 0.341309 16.3977 0.341309C4.46631 0.341309 0 4.26528 0 11.5709C0 18.8765 4.46631 22.8324 16.3977 22.8324C21.6616 22.8324 27.2764 22.0667 31.7108 21.0459L30.5623 15.6544C26.8298 16.3881 21.6297 17.2814 16.6211 17.2814C8.42219 17.2814 6.47615 15.4949 6.47615 11.5709ZM40.6676 22.4176V16.101H48.9303L56.7463 22.4176H64.8814L57.7353 16.8029L56.0125 15.7501L57.4162 15.7182C62.2335 15.3354 65.0728 13.0384 65.0728 8.25306C65.0728 2.54256 61.3402 0.66033 55.9806 0.66033H34.1914V22.4176H40.6676ZM40.6676 6.21132H55.3426C57.48 6.21132 58.3733 6.81746 58.3733 8.7635C58.3733 10.55 57.48 11.2519 55.3426 11.2519H40.6676V6.21132ZM74.3768 22.4176V15.3035H96.3257V10.1991H74.3768V6.21132H96.9319V0.66033H67.9006V22.4176H74.3768ZM111.951 6.21132V22.4176H118.427V6.21132H131.316V0.66033H99.0305V6.21132H111.951Z" fill="white"/>
+                </svg></span> Lookup, a free Wappalyzer technology detection alternative</h1>
+                <p class="text-center text-pretty lg:text-xl text-lg mt-5 text-neutral-300 mb-7 max-w-[44ch]">The CRFT Lookup is the free alternative to Wappalyzer for up-to-date website technology detection, with added performance benchmarks and meta tag previews.</p>
+                <div class="flex flex-row gap-3 mb-10">
+                    <a href="/lookup" class="primary-cta">Scan a website</a>
+                    <!-- <a href="/audit" class="secondary-cta">See example report</a> -->
+                </div>
+                <Image src={LookupOverview} alt="Screenshot of CRFT Lookup report on TailwindCSS" class="rounded-xl shadow-2xl"/>
+            </div>
+            <style>
+                @keyframes marquee {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-50%); }
+                }
+                .marquee-container {
+                    display: flex;
+                    overflow: hidden;
+                    white-space: nowrap;
+                }
+                .animate-marquee {
+                    display: flex;
+                    gap: 2.5rem;
+                    animation: marquee 40s linear infinite;
+                }
+                .animate-marquee > * {
+                    flex-shrink: 0;
+                }
+            </style>
+
+            <div class="h-12 w-full bg-neutral-700 -rotate-1 my-24 marquee-container">
+                <div class="animate-marquee">
+                    <!-- First set -->
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">Technology Checker</div>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">Performance Scores</div>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">Meta Preview</div>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">SEO Analysis</div>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">Accessibility Check</div>
+                    </div>
+
+                    <!-- Duplicate set -->
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">Technology Checker</div>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">Performance Scores</div>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">Meta Preview</div>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">SEO Analysis</div>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">Accessibility Check</div>
+                    </div>
+                    <!-- Duplicate set -->
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">Technology Checker</div>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">Performance Scores</div>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">Meta Preview</div>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">SEO Analysis</div>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">Accessibility Check</div>
+                    </div>
+                    <!-- Duplicate set -->
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">Technology Checker</div>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">Performance Scores</div>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">Meta Preview</div>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">SEO Analysis</div>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">Accessibility Check</div>
+                    </div>
+                    <!-- Duplicate set -->
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">Technology Checker</div>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">Performance Scores</div>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">Meta Preview</div>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">SEO Analysis</div>
+                    </div>
+                    <div class="flex flex-row gap-2 items-center">
+                        <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        <div class="font-medium">Accessibility Check</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container flex flex-col gap-28">
+                <div class="grid lg:grid-cols-2 lg:gap-14 gap-8">
+                    <div class="flex flex-col justify-center items-start lg:order-first order-last">
+                        <h2 class="lg:text-4xl text-3xl text-balance font-medium text-neutral-200 lg:leading-snug leading-normal">Comprehensive tech stack detection</h2>
+                        <p class="text-pretty text-lg mt-3 text-neutral-300 mb-7">Identify frameworks, CMS platforms, analytics tools, and more with our powerful technology detection engine. Get detailed insights about the tools and services powering any website.</p>
+                        <a href="/lookup" class="primary-cta">Scan a website</a>
+                        <div class="flex flex-col gap-2 text-neutral-300 text-lg mt-7">
+                            <div class="flex flex-row gap-2 items-start">
+                                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                <div class="flex flex-col gap-2">
+                                    <div class="font-medium">Frameworks and libraries</div>
+                                </div>
+                            </div>
+                            <div class="flex flex-row gap-2 items-start">
+                                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                <div class="flex flex-col gap-2">
+                                    <div class="font-medium">CMS and hosting</div>
+                                </div>
+                            </div>
+                            <div class="flex flex-row gap-2 items-start">
+                                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                <div class="flex flex-col gap-2">
+                                    <div class="font-medium">Analytics and marketing tools</div>
+                                </div>
+                            </div>
+                            <div class="flex flex-row gap-2 items-start">
+                                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                <div class="flex flex-col gap-2">
+                                    <div class="font-medium">Infrastructure and more</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="w-full aspect-square square-card overflow-hidden relative">
+                            <div class="absolute h-full w-full z-10 bg-gradient-to-t from-neutral-800 to-transparent pointer-events-none"></div>
+                            <div class="flex flex-col gap-4"> <a href="https://reactjs.org" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="React" data-tech-icon="React.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/React.svg" class="w-5 h-5" alt=""> <div>React</div> </div> <div class="text-pretty">React is an open-source JavaScript library for building user interfaces or UI components.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://nextjs.org" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Next.js" data-tech-icon="Next.js.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Next.js.svg" class="w-5 h-5" alt=""> <div>Next.js</div> </div> <div class="text-pretty">Next.js is a React framework for developing single page Javascript applications.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> <a href="https://business.linkedin.com/marketing-solutions/insight-tag" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Linkedin Insight Tag" data-tech-icon="Linkedin.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Linkedin.svg" class="w-5 h-5" alt=""> <div>Linkedin Insight Tag</div> </div> <div class="text-pretty">LinkedIn Insight Tag is a lightweight JavaScript tag that powers conversion tracking, website audiences, and website demographics.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://www.hotjar.com" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Hotjar" data-tech-icon="Hotjar.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Hotjar.svg" class="w-5 h-5" alt=""> <div>Hotjar</div> </div> <div class="text-pretty">Hotjar is a suite of analytic tools to assist in the gathering of qualitative data, providing feedback through tools such as heatmaps, session recordings, and surveys.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://google.com/analytics" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Google Analytics" data-tech-icon="Google Analytics.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Google Analytics.svg" class="w-5 h-5" alt=""> <div>Google Analytics</div> </div> <div class="text-pretty">Google Analytics is a free web analytics service that tracks and reports website traffic.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://facebook.com" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Facebook Pixel" data-tech-icon="Facebook.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Facebook.svg" class="w-5 h-5" alt=""> <div>Facebook Pixel</div> </div> <div class="text-pretty">Facebook pixel is an analytics tool that allows you to measure the effectiveness of your advertising.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-2 lg:gap-14 gap-8">
+                    <div class="flex flex-col justify-center items-start order-2">
+                        <h2 class="lg:text-4xl text-3xl text-balance font-medium text-neutral-200 lg:leading-snug leading-normal">Performance benchmarks with Lighthouse</h2>
+                        <p class="text-pretty text-lg mt-3 text-neutral-300 mb-7">Go beyond tech detection with integrated Google Lighthouse scoring. Analyze performance, accessibility, SEO, and best practices to understand how well a website is built using its detected technologies.</p>
+                        <a href="/lookup" class="primary-cta">Scan a website</a>
+                        <div class="flex flex-col gap-2 text-neutral-300 text-lg mt-7">
+                            <div class="flex flex-row gap-2 items-start">
+                                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                <div class="flex flex-col gap-2">
+                                    <div class="font-medium">Performance and loading speed</div>
+                                </div>
+                            </div>
+                            <div class="flex flex-row gap-2 items-start">
+                                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                <div class="flex flex-col gap-2">
+                                    <div class="font-medium">Accessibility standards</div>
+                                </div>
+                            </div>
+                            <div class="flex flex-row gap-2 items-start">
+                                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                <div class="flex flex-col gap-2">
+                                    <div class="font-medium">SEO score</div>
+                                </div>
+                            </div>
+                            <div class="flex flex-row gap-2 items-start">
+                                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                <div class="flex flex-col gap-2">
+                                    <div class="font-medium">Best practices compliance</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full aspect-square square-card overflow-hidden relative">
+                        <div class="absolute h-full w-full z-10 bg-gradient-to-t from-neutral-800 to-transparent pointer-events-none"></div>
+                        <div class="square-card p-0">
+                            <Image src={LighthouseExample} alt="TailwindCSS Lighthouse Report"></Image>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-2 lg:gap-14 gap-8">
+                    <div class="flex flex-col justify-center items-start lg:order-first order-last">
+                        <h2 class="lg:text-4xl text-3xl text-balance font-medium text-neutral-200 lg:leading-snug leading-normal">Preview meta tags across platforms</h2>
+                        <p class="text-pretty text-lg mt-3 text-neutral-300 mb-7">See how websites appear when shared on search engines, social media, and messaging apps. Test and preview meta tags to ensure optimal presentation across all platforms.</p>
+                        <a href="/lookup" class="primary-cta">Scan a website</a>
+                        <div class="flex flex-col gap-2 text-neutral-300 text-lg mt-7">
+                            <div class="flex flex-row gap-2 items-start">
+                                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                <div class="flex flex-col gap-2">
+                                    <div class="font-medium">Search engine previews</div>
+                                </div>
+                            </div>
+                            <div class="flex flex-row gap-2 items-start">
+                                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                <div class="flex flex-col gap-2">
+                                    <div class="font-medium">Social media card displays</div>
+                                </div>
+                            </div>
+                            <div class="flex flex-row gap-2 items-start">
+                                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                <div class="flex flex-col gap-2">
+                                    <div class="font-medium">Messaging app previews</div>
+                                </div>
+                            </div>
+                            <div class="flex flex-row gap-2 items-start">
+                                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                <div class="flex flex-col gap-2">
+                                    <div class="font-medium">Live preview editor</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="w-full aspect-square square-card overflow-hidden relative">
+                            <div class="absolute h-full w-full z-10 bg-gradient-to-t from-neutral-800 to-transparent pointer-events-none"></div>
+                            <div class="square-card flex flex-col gap-5 sticky top-44" data-astro-cid-66dgfmvl=""> <div data-astro-cid-66dgfmvl=""> <div class="mb-2" data-astro-cid-66dgfmvl="">Title</div> <input id="metaTitle" class="square-card rounded-none p-2 text-neutral-300 mb-2" type="text" value="Tailwind CSS - Rapidly build modern websites without ever leaving your HTML." data-astro-cid-66dgfmvl=""> <div data-astro-cid-66dgfmvl=""><span id="titleLength" data-astro-cid-66dgfmvl="">76</span> / 60 characters</div> </div> <div data-astro-cid-66dgfmvl=""> <div class="mb-2" data-astro-cid-66dgfmvl="">Description</div> <textarea id="metaDescription" rows="3" cols="33" class="square-card rounded-none p-2 text-neutral-300 mb-1" placeholder="seo meta description" data-astro-cid-66dgfmvl="">Tailwind CSS is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML.</textarea> <div data-astro-cid-66dgfmvl=""><span id="descriptionLength" data-astro-cid-66dgfmvl="">114</span> / 155 characters</div> </div> <div data-astro-cid-66dgfmvl=""> <div class="mb-2" data-astro-cid-66dgfmvl="">Image</div> <div class="square-card p-0" data-astro-cid-66dgfmvl=""> <img class="h-full w-full aspect-video object-cover object-center" src="https://tailwindcss.com/opengraph-image.jpg?22502194f1a254bc" alt="Open Graph Image of https://tailwindcss.com" data-astro-cid-66dgfmvl=""> </div> </div> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container">
+                <h2 class="lg:text-4xl text-3xl text-balance text-center font-medium text-neutral-200 lg:leading-snug leading-normal">How we stack up</h2>
+                <p class="text-pretty text-lg text-center mt-3 text-neutral-300 mb-6 max-w-[800px] mx-auto">See how CRFT Lookup compares to Wappalyzer in features and capabilities. Both tools detect technologies, but we go beyond with performance analysis and meta tag previews.</p>
+                <div class="max-w-[800px] mx-auto font-medium lg:text-lg text-sm mt-12">
+                    <div class="grid grid-cols-[1fr_0.3fr_0.4fr] gap-x-3">
+                        <div></div>
+                        <div class="flex flex-row items-center justify-center pb-7">
+                            <div class="square-card border-purple-800 p-1 aspect-square w-10 h-10 object-contain flex items-center justify-center bg-[#460FAD]">
+                                <svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M63.9994 93.9355L7.33824 64.5078L0.00224445 69.7704L0 72.9895L63.9994 118.91L127.996 72.9918L128 69.7738L120.661 64.5078L63.9994 93.9355Z" fill="white" fill-opacity="0.5"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.00336668 56.0236L63.9994 10.1053L127.999 56.0258L127.995 59.2449L63.9994 105.164L0 59.2427L0.00336668 56.0236ZM64.5695 44.6585L72.3724 55.424L72.2882 55.4858L57.9159 49.5281L52.665 53.3715L60.8033 63.863L60.7203 63.9248L46.055 58.2108L39.3812 63.0973L67.4357 73.2519L73.021 69.1627L64.5269 58.2883L64.5909 58.2422L79.5064 64.4154L85.0917 60.3251L71.2221 39.7878L64.5695 44.6585Z" fill="white"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="flex md:flex-row flex-col items-center justify-center pb-7 gap-2 bg-green-400 bg-opacity-15 rounded-t-lg">
+                            <span class="card p-1 inline-block translate-y-[2px]"><svg class="lg:w-[70px] w-[60px]" viewBox="0 0 132 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.47615 11.5709C6.47615 7.67882 8.42219 5.8923 16.6211 5.8923C21.6297 5.8923 26.8298 6.78556 30.5623 7.51931L31.7108 2.12783C27.2764 1.10696 21.6616 0.341309 16.3977 0.341309C4.46631 0.341309 0 4.26528 0 11.5709C0 18.8765 4.46631 22.8324 16.3977 22.8324C21.6616 22.8324 27.2764 22.0667 31.7108 21.0459L30.5623 15.6544C26.8298 16.3881 21.6297 17.2814 16.6211 17.2814C8.42219 17.2814 6.47615 15.4949 6.47615 11.5709ZM40.6676 22.4176V16.101H48.9303L56.7463 22.4176H64.8814L57.7353 16.8029L56.0125 15.7501L57.4162 15.7182C62.2335 15.3354 65.0728 13.0384 65.0728 8.25306C65.0728 2.54256 61.3402 0.66033 55.9806 0.66033H34.1914V22.4176H40.6676ZM40.6676 6.21132H55.3426C57.48 6.21132 58.3733 6.81746 58.3733 8.7635C58.3733 10.55 57.48 11.2519 55.3426 11.2519H40.6676V6.21132ZM74.3768 22.4176V15.3035H96.3257V10.1991H74.3768V6.21132H96.9319V0.66033H67.9006V22.4176H74.3768ZM111.951 6.21132V22.4176H118.427V6.21132H131.316V0.66033H99.0305V6.21132H111.951Z" fill="white"/>
+                            </svg></span>
+                            <div>Lookup</div>
+                        </div>
+                        <div class="py-3">Technology Detection</div>
+                        <div class="flex flex-row items-center justify-center">
+                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        </div>
+                        <div class="flex flex-row items-center justify-center bg-green-400 bg-opacity-15">
+                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        </div>
+                    </div>
+                    <div class="w-full h-[2px] bg-neutral-600"></div>
+                    <div class="grid grid-cols-[1fr_0.3fr_0.4fr] gap-x-3">
+                        <div class="py-3">Lighthouse Analysis</div>
+                        <div class="flex flex-row items-center justify-center">
+                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="m336-293.85 144-144 144 144L666.15-336l-144-144 144-144L624-666.15l-144 144-144-144L293.85-624l144 144-144 144L336-293.85ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Z"/></svg>
+                        </div>
+                        <div class="flex flex-row items-center justify-center bg-green-400 bg-opacity-15">
+                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        </div>
+                    </div>
+                    <div class="w-full h-[2px] bg-neutral-600"></div>
+                    <div class="grid grid-cols-[1fr_0.3fr_0.4fr] gap-x-3">
+                        <div class="py-3">Meta Tag Previews</div>
+                        <div class="flex flex-row items-center justify-center">
+                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="m336-293.85 144-144 144 144L666.15-336l-144-144 144-144L624-666.15l-144 144-144-144L293.85-624l144 144-144 144L336-293.85ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Z"/></svg>
+                        </div>
+                        <div class="flex flex-row items-center justify-center bg-green-400 bg-opacity-15">
+                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        </div>
+                    </div>
+                    <div class="w-full h-[2px] bg-neutral-600"></div>
+                    <div class="grid grid-cols-[1fr_0.3fr_0.4fr] gap-x-3">
+                        <div class="py-3">Free, Unlimited Usage</div>
+                        <div class="flex flex-row items-center justify-center">
+                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="m336-293.85 144-144 144 144L666.15-336l-144-144 144-144L624-666.15l-144 144-144-144L293.85-624l144 144-144 144L336-293.85ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Z"/></svg>
+                        </div>
+                        <div class="flex flex-row items-center justify-center bg-green-400 bg-opacity-15 rounded-b-lg">
+                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="container max-w-[800px] flex flex-col justify-center items-center">
+            <h2 class="lg:text-4xl text-3xl text-balance text-center font-medium text-neutral-200 lg:leading-snug leading-normal">See the tech stack of some of your favorite sites</h2>
+            <p class="text-pretty text-lg text-center mt-3 text-neutral-300 mb-6">Check out detailed scans of well-known tech companies and SaaS products to see which technologies they use and how they perform. Compare your tech stack against industry leaders.</p>
+                <a href="/lookup" class="primary-cta">Scan a website</a>
+            </div>
+            <div class="container lg:overflow-x-hidden overflow-auto relative flex flex-row gap-4 mt-10">
+                <div class="absolute lg:block hidden z-10 w-full h-full bg-gradient-to-r from-neutral-900 via-transparent to-neutral-900 pointer-events-none"></div>
+                <div class="w-[300px]">
+                    <LookupCard url="tailwindcss.com" img="https://tailwindcss.com/opengraph-image.jpg?22502194f1a254bc" metaTitle="Tailwind CSS - Rapidly build modern websites without ever leaving your HTML" performance="75" accessibility="86" bestPractices="96" seo="91">
+                        <div class="flex flex-row gap-4 flex-wrap">
+                            <div class="flex flex-row gap-2 items-center">
+                                <img src="/icons/react.svg" class="w-4 h-4 shrink-0"></img>
+                                <div>React</div>
+                            </div>
+                            <div class="flex flex-row gap-2 items-center">
+                                <img src="/icons/next.js.svg" class="w-4 h-4 shrink-0"></img>
+                                <div>NextJS</div>
+                            </div>
+                        </div>
+                    </LookupCard>
+                </div>
+                <!-- <div class="w-[300px]">
+                    <LookupCard url="linear.app" img="https://linear.app/static/og/homepage-2024.jpg" metaTitle="Linear – Plan and build products" performance="84" accessibility="84" bestPractices="100" seo="92">
+                        <div class="flex flex-row gap-4 flex-wrap">
+                            <div class="flex flex-row gap-2 items-center">
+                                <img src="/icons/react.svg" class="w-4 h-4 shrink-0" />
+                                <div>React</div>
+                            </div>
+                            <div class="flex flex-row gap-2 items-center">
+                                <img src="/icons/next.js.svg" class="w-4 h-4 shrink-0" />
+                                <div>NextJS</div>
+                            </div>
+                            <div class="flex flex-row gap-2 items-center">
+                                <img src="/icons/sanity.svg" class="w-4 h-4 shrink-0" />
+                                <div>Sanity</div>
+                            </div>
+                        </div>
+                    </LookupCard>
+                </div> -->
+                <div class="w-[300px]">
+                    <LookupCard url="basecamp.com" img="https://basecamp.com/assets/images/opengraph/basecamp.png?1740691981" metaTitle="Basecamp: Project management software, online collaboration" performance="93" accessibility="100" bestPractices="100" seo="100">
+                        <div class="flex flex-row gap-4 flex-wrap">
+                            <div class="flex flex-row gap-2 items-center">
+                                <img src="/icons/cloudflare.svg" class="w-4 h-4 shrink-0" />
+                                <div>Cloudflare</div>
+                            </div>
+                        </div>
+                    </LookupCard>
+                </div>
+                <div class="w-[300px]">
+                    <LookupCard url="github.com" img="https://github.githubassets.com/assets/home24-5939032587c9.jpg" metaTitle="GitHub · Build and ship software on a single, collaborative platform · GitHub" performance="64" accessibility="100" bestPractices="100" seo="92">
+                        <div class="flex flex-row gap-4 flex-wrap">
+                            <div class="flex flex-row gap-2 items-center">
+                                <img src="/icons/react.svg" class="w-4 h-4 shrink-0" />
+                                <div>React</div>
+                            </div>
+                            <div class="flex flex-row gap-2 items-center">
+                                <img src="/icons/amazon web services.svg" class="w-4 h-4 shrink-0" />
+                                <div>AWS</div>
+                            </div>
+                        </div>
+                    </LookupCard>
+                </div>
+                <div class="w-[300px]">
+                    <LookupCard url="stripe.com" img="https://images.stripeassets.com/fzn2n1nzq965/3AGidihOJl4nH9D1vDjM84/9540155d584be52fc54c443b6efa4ae6/homepage.png?q=80" metaTitle="Stripe | Financial Infrastructure to Grow Your Revenue" performance="72" accessibility="93" bestPractices="74" seo="100">
+                        <div class="flex flex-row gap-4 flex-wrap">
+                            <div class="flex flex-row gap-2 items-center">
+                                <img src="/icons/react.svg" class="w-4 h-4 shrink-0" />
+                                <div>React</div>
+                            </div>
+                            <div class="flex flex-row gap-2 items-center">
+                                <img src="/icons/contentful.svg" class="w-4 h-4 shrink-0" />
+                                <div>Contentful</div>
+                            </div>
+                        </div>
+                    </LookupCard>
+                </div>
+                <div class="w-[300px]">
+                    <LookupCard url="posthog.com" img="https://posthog.com/images/home.png" metaTitle="PostHog - How developers build successful products" performance="59" accessibility="69" bestPractices="74" seo="83">
+                        <div class="flex flex-row gap-4 flex-wrap">
+                            <div class="flex flex-row gap-2 items-center">
+                                <img src="/icons/gatsby.svg" class="w-4 h-4 shrink-0" />
+                                <div>Gatsby</div>
+                            </div>
+                            <div class="flex flex-row gap-2 items-center">
+                                <img src="/icons/cloudflare.svg" class="w-4 h-4 shrink-0" />
+                                <div>Cloudflare</div>
+                            </div>
+                        </div>
+                    </LookupCard>
+                </div>
+            </div>
+        </section>
+        <!-- <section id="reviews">
+            <div class="container">
+                <h2 class="text-3xl lg:text-4xl font-semibold text-center leading-tight mb-4 text-neutral-300">What the people are saying</h2>
+                <p class="text-pretty text-lg text-center mt-3 text-neutral-300 mb-10 max-w-[800px] mx-auto">Here's what tech enthusiasts and developers alike are saying about the CRFT Lookup.</p>
+                <div class="grid lg:grid-cols-4 md:grid-cols-3 gap-4">
+                    <div class="square-card">
+                        <svg class="fill-neutral-500 w-8 rotate-180 mb-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m245.69-253.85 93.93-163.46q-3.46 1.92-8.08 2.69t-9.23.77q-61 0-103.58-42.96-42.57-42.96-42.57-103.19 0-61 42.57-103.58 42.58-42.57 103.58-42.57 60.23 0 103.19 42.57Q468.46-621 468.46-560q0 21.08-5.11 39.23-5.12 18.15-14.97 34.62l-133.77 232.3h-68.92Zm355.39 0L695-417.31q-3.46 1.92-8.08 2.69-4.61.77-9.23.77-61 0-103.57-42.96-42.58-42.96-42.58-103.19 0-61.38 42.58-103.77 42.57-42.38 103.57-42.38 60.23 0 103.19 42.57Q823.84-621 823.84-560q0 21.08-5.11 39.23-5.12 18.15-14.96 34.62L670-253.85h-68.92Z"></path></svg>
+                        <p class="text-pretty text-lg text-neutral-300">Wow so cool!</p>
+                        <div class="flex flex-row gap-2 items-center mt-5">
+                            <div class="w-9 aspect-square rounded-full bg-neutral-600"></div>
+                            <div>Josh B.</div>
+                        </div>
+                    </div>
+                    <div class="square-card">
+                        <svg class="fill-neutral-500 w-8 rotate-180 mb-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m245.69-253.85 93.93-163.46q-3.46 1.92-8.08 2.69t-9.23.77q-61 0-103.58-42.96-42.57-42.96-42.57-103.19 0-61 42.57-103.58 42.58-42.57 103.58-42.57 60.23 0 103.19 42.57Q468.46-621 468.46-560q0 21.08-5.11 39.23-5.12 18.15-14.97 34.62l-133.77 232.3h-68.92Zm355.39 0L695-417.31q-3.46 1.92-8.08 2.69-4.61.77-9.23.77-61 0-103.57-42.96-42.58-42.96-42.58-103.19 0-61.38 42.58-103.77 42.57-42.38 103.57-42.38 60.23 0 103.19 42.57Q823.84-621 823.84-560q0 21.08-5.11 39.23-5.12 18.15-14.96 34.62L670-253.85h-68.92Z"></path></svg>
+                        <p class="text-pretty text-lg text-neutral-300">Wow so cool!</p>
+                        <div class="flex flex-row gap-2 items-center mt-5">
+                            <div class="w-9 aspect-square rounded-full bg-neutral-600"></div>
+                            <div>Bernard M.</div>
+                        </div>
+                    </div>
+                    <div class="square-card">
+                        <svg class="fill-neutral-500 w-8 rotate-180 mb-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m245.69-253.85 93.93-163.46q-3.46 1.92-8.08 2.69t-9.23.77q-61 0-103.58-42.96-42.57-42.96-42.57-103.19 0-61 42.57-103.58 42.58-42.57 103.58-42.57 60.23 0 103.19 42.57Q468.46-621 468.46-560q0 21.08-5.11 39.23-5.12 18.15-14.97 34.62l-133.77 232.3h-68.92Zm355.39 0L695-417.31q-3.46 1.92-8.08 2.69-4.61.77-9.23.77-61 0-103.57-42.96-42.58-42.96-42.58-103.19 0-61.38 42.58-103.77 42.57-42.38 103.57-42.38 60.23 0 103.19 42.57Q823.84-621 823.84-560q0 21.08-5.11 39.23-5.12 18.15-14.96 34.62L670-253.85h-68.92Z"></path></svg>
+                        <p class="text-pretty text-lg text-neutral-300">I've sometimes wondered what some really nice websites are made with, and now I can find out! And the performance scores help me understand if certain tools are worth learning and using.</p>
+                        <div class="flex flex-row gap-2 items-center mt-5">
+                            <img class="w-9 aspect-square rounded-full bg-neutral-600 object-cover" src="https://media.licdn.com/dms/image/v2/D5603AQHxdIAmxLMayA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1670345889715?e=2147483647&v=beta&t=ji1vN1QGdxB4oNfwFiHJmTzs2fE6Dr-yw9Ob1opIfvk"/>
+                            <div>Nikita Singh</div>
+                        </div>
+                    </div>
+                    <div class="square-card flex flex-col justify-between">
+                        <div>
+                            <svg class="fill-neutral-500 w-8 rotate-180 mb-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m245.69-253.85 93.93-163.46q-3.46 1.92-8.08 2.69t-9.23.77q-61 0-103.58-42.96-42.57-42.96-42.57-103.19 0-61 42.57-103.58 42.58-42.57 103.58-42.57 60.23 0 103.19 42.57Q468.46-621 468.46-560q0 21.08-5.11 39.23-5.12 18.15-14.97 34.62l-133.77 232.3h-68.92Zm355.39 0L695-417.31q-3.46 1.92-8.08 2.69-4.61.77-9.23.77-61 0-103.57-42.96-42.58-42.96-42.58-103.19 0-61.38 42.58-103.77 42.57-42.38 103.57-42.38 60.23 0 103.19 42.57Q823.84-621 823.84-560q0 21.08-5.11 39.23-5.12 18.15-14.96 34.62L670-253.85h-68.92Z"></path></svg>
+                            <p class="text-pretty text-lg text-neutral-300">This did a great job giving me insight into how some of my favorite sites are created and have inspired me to use them as templates!</p>
+                        </div>
+                        <div class="flex flex-row gap-2 items-center mt-5">
+                            <img class="w-9 aspect-square rounded-full bg-neutral-600 object-cover" src="https://media.licdn.com/dms/image/v2/C4E03AQGoOqC90QjUyQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1651855081208?e=2147483647&v=beta&t=3lOi2HsbMfvwtsJhtPxOvXgRanVwZseBoKqRPT-4-Bw"/>
+                            <div>Nick Hoban</div>
+                        </div>
+                    </div>
+                    <div class="square-card">
+                        <svg class="fill-neutral-500 w-8 rotate-180 mb-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m245.69-253.85 93.93-163.46q-3.46 1.92-8.08 2.69t-9.23.77q-61 0-103.58-42.96-42.57-42.96-42.57-103.19 0-61 42.57-103.58 42.58-42.57 103.58-42.57 60.23 0 103.19 42.57Q468.46-621 468.46-560q0 21.08-5.11 39.23-5.12 18.15-14.97 34.62l-133.77 232.3h-68.92Zm355.39 0L695-417.31q-3.46 1.92-8.08 2.69-4.61.77-9.23.77-61 0-103.57-42.96-42.58-42.96-42.58-103.19 0-61.38 42.58-103.77 42.57-42.38 103.57-42.38 60.23 0 103.19 42.57Q823.84-621 823.84-560q0 21.08-5.11 39.23-5.12 18.15-14.96 34.62L670-253.85h-68.92Z"></path></svg>
+                        <p class="text-pretty text-lg text-neutral-300">Wow so cool!</p>
+                        <div class="flex flex-row gap-2 items-center mt-5">
+                            <div class="w-9 aspect-square rounded-full bg-neutral-600"></div>
+                            <div>Bhavishya P.</div>
+                        </div>
+                    </div>
+                    <div class="square-card">
+                        <svg class="fill-neutral-500 w-8 rotate-180 mb-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m245.69-253.85 93.93-163.46q-3.46 1.92-8.08 2.69t-9.23.77q-61 0-103.58-42.96-42.57-42.96-42.57-103.19 0-61 42.57-103.58 42.58-42.57 103.58-42.57 60.23 0 103.19 42.57Q468.46-621 468.46-560q0 21.08-5.11 39.23-5.12 18.15-14.97 34.62l-133.77 232.3h-68.92Zm355.39 0L695-417.31q-3.46 1.92-8.08 2.69-4.61.77-9.23.77-61 0-103.57-42.96-42.58-42.96-42.58-103.19 0-61.38 42.58-103.77 42.57-42.38 103.57-42.38 60.23 0 103.19 42.57Q823.84-621 823.84-560q0 21.08-5.11 39.23-5.12 18.15-14.96 34.62L670-253.85h-68.92Z"></path></svg>
+                        <p class="text-pretty text-lg text-neutral-300">Wow so cool!</p>
+                        <div class="flex flex-row gap-2 items-center mt-5">
+                            <div class="w-9 aspect-square rounded-full bg-neutral-600"></div>
+                            <div>Scott B.</div>
+                        </div>
+                    </div>
+                    <div class="square-card">
+                        <svg class="fill-neutral-500 w-8 rotate-180 mb-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m245.69-253.85 93.93-163.46q-3.46 1.92-8.08 2.69t-9.23.77q-61 0-103.58-42.96-42.57-42.96-42.57-103.19 0-61 42.57-103.58 42.58-42.57 103.58-42.57 60.23 0 103.19 42.57Q468.46-621 468.46-560q0 21.08-5.11 39.23-5.12 18.15-14.97 34.62l-133.77 232.3h-68.92Zm355.39 0L695-417.31q-3.46 1.92-8.08 2.69-4.61.77-9.23.77-61 0-103.57-42.96-42.58-42.96-42.58-103.19 0-61.38 42.58-103.77 42.57-42.38 103.57-42.38 60.23 0 103.19 42.57Q823.84-621 823.84-560q0 21.08-5.11 39.23-5.12 18.15-14.96 34.62L670-253.85h-68.92Z"></path></svg>
+                        <p class="text-pretty text-lg text-neutral-300">Wow so cool!</p>
+                        <div class="flex flex-row gap-2 items-center mt-5">
+                            <div class="w-9 aspect-square rounded-full bg-neutral-600"></div>
+                            <div>Andrea B.</div>
+                        </div>
+                    </div>
+                    <div class="square-card">
+                        <svg class="fill-neutral-500 w-8 rotate-180 mb-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m245.69-253.85 93.93-163.46q-3.46 1.92-8.08 2.69t-9.23.77q-61 0-103.58-42.96-42.57-42.96-42.57-103.19 0-61 42.57-103.58 42.58-42.57 103.58-42.57 60.23 0 103.19 42.57Q468.46-621 468.46-560q0 21.08-5.11 39.23-5.12 18.15-14.97 34.62l-133.77 232.3h-68.92Zm355.39 0L695-417.31q-3.46 1.92-8.08 2.69-4.61.77-9.23.77-61 0-103.57-42.96-42.58-42.96-42.58-103.19 0-61.38 42.58-103.77 42.57-42.38 103.57-42.38 60.23 0 103.19 42.57Q823.84-621 823.84-560q0 21.08-5.11 39.23-5.12 18.15-14.96 34.62L670-253.85h-68.92Z"></path></svg>
+                        <p class="text-pretty text-lg text-neutral-300">Wow so cool!</p>
+                        <div class="flex flex-row gap-2 items-center mt-5">
+                            <div class="w-9 aspect-square rounded-full bg-neutral-600"></div>
+                            <div>Usama</div>
+                        </div>
+                    </div>
+                    <div class="square-card">
+                        <svg class="fill-neutral-500 w-8 rotate-180 mb-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m245.69-253.85 93.93-163.46q-3.46 1.92-8.08 2.69t-9.23.77q-61 0-103.58-42.96-42.57-42.96-42.57-103.19 0-61 42.57-103.58 42.58-42.57 103.58-42.57 60.23 0 103.19 42.57Q468.46-621 468.46-560q0 21.08-5.11 39.23-5.12 18.15-14.97 34.62l-133.77 232.3h-68.92Zm355.39 0L695-417.31q-3.46 1.92-8.08 2.69-4.61.77-9.23.77-61 0-103.57-42.96-42.58-42.96-42.58-103.19 0-61.38 42.58-103.77 42.57-42.38 103.57-42.38 60.23 0 103.19 42.57Q823.84-621 823.84-560q0 21.08-5.11 39.23-5.12 18.15-14.96 34.62L670-253.85h-68.92Z"></path></svg>
+                        <p class="text-pretty text-lg text-neutral-300">Wow so cool!</p>
+                        <div class="flex flex-row gap-2 items-center mt-5">
+                            <div class="w-9 aspect-square rounded-full bg-neutral-600"></div>
+                            <div>Greg P.</div>
+                        </div>
+                    </div>
+                    <div class="square-card">
+                        <svg class="fill-neutral-500 w-8 rotate-180 mb-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m245.69-253.85 93.93-163.46q-3.46 1.92-8.08 2.69t-9.23.77q-61 0-103.58-42.96-42.57-42.96-42.57-103.19 0-61 42.57-103.58 42.58-42.57 103.58-42.57 60.23 0 103.19 42.57Q468.46-621 468.46-560q0 21.08-5.11 39.23-5.12 18.15-14.97 34.62l-133.77 232.3h-68.92Zm355.39 0L695-417.31q-3.46 1.92-8.08 2.69-4.61.77-9.23.77-61 0-103.57-42.96-42.58-42.96-42.58-103.19 0-61.38 42.58-103.77 42.57-42.38 103.57-42.38 60.23 0 103.19 42.57Q823.84-621 823.84-560q0 21.08-5.11 39.23-5.12 18.15-14.96 34.62L670-253.85h-68.92Z"></path></svg>
+                        <p class="text-pretty text-lg text-neutral-300">Wow so cool!</p>
+                        <div class="flex flex-row gap-2 items-center mt-5">
+                            <div class="w-9 aspect-square rounded-full bg-neutral-600"></div>
+                            <div>Pietro S.</div>
+                        </div>
+                    </div>
+                    <div class="square-card">
+                        <svg class="fill-neutral-500 w-8 rotate-180 mb-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m245.69-253.85 93.93-163.46q-3.46 1.92-8.08 2.69t-9.23.77q-61 0-103.58-42.96-42.57-42.96-42.57-103.19 0-61 42.57-103.58 42.58-42.57 103.58-42.57 60.23 0 103.19 42.57Q468.46-621 468.46-560q0 21.08-5.11 39.23-5.12 18.15-14.97 34.62l-133.77 232.3h-68.92Zm355.39 0L695-417.31q-3.46 1.92-8.08 2.69-4.61.77-9.23.77-61 0-103.57-42.96-42.58-42.96-42.58-103.19 0-61.38 42.58-103.77 42.57-42.38 103.57-42.38 60.23 0 103.19 42.57Q823.84-621 823.84-560q0 21.08-5.11 39.23-5.12 18.15-14.96 34.62L670-253.85h-68.92Z"></path></svg>
+                        <p class="text-pretty text-lg text-neutral-300">Wow so cool!</p>
+                        <div class="flex flex-row gap-2 items-center mt-5">
+                            <div class="w-9 aspect-square rounded-full bg-neutral-600"></div>
+                            <div>Nihal M.</div>
+                        </div>
+                    </div>
+                    <div class="square-card">
+                        <svg class="fill-neutral-500 w-8 rotate-180 mb-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m245.69-253.85 93.93-163.46q-3.46 1.92-8.08 2.69t-9.23.77q-61 0-103.58-42.96-42.57-42.96-42.57-103.19 0-61 42.57-103.58 42.58-42.57 103.58-42.57 60.23 0 103.19 42.57Q468.46-621 468.46-560q0 21.08-5.11 39.23-5.12 18.15-14.97 34.62l-133.77 232.3h-68.92Zm355.39 0L695-417.31q-3.46 1.92-8.08 2.69-4.61.77-9.23.77-61 0-103.57-42.96-42.58-42.96-42.58-103.19 0-61.38 42.58-103.77 42.57-42.38 103.57-42.38 60.23 0 103.19 42.57Q823.84-621 823.84-560q0 21.08-5.11 39.23-5.12 18.15-14.96 34.62L670-253.85h-68.92Z"></path></svg>
+                        <p class="text-pretty text-lg text-neutral-300">Wow so cool!</p>
+                        <div class="flex flex-row gap-2 items-center mt-5">
+                            <div class="w-9 aspect-square rounded-full bg-neutral-600"></div>
+                            <div>Ian</div>
+                        </div>
+                    </div>
+                    <div class="square-card">
+                        <svg class="fill-neutral-500 w-8 rotate-180 mb-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m245.69-253.85 93.93-163.46q-3.46 1.92-8.08 2.69t-9.23.77q-61 0-103.58-42.96-42.57-42.96-42.57-103.19 0-61 42.57-103.58 42.58-42.57 103.58-42.57 60.23 0 103.19 42.57Q468.46-621 468.46-560q0 21.08-5.11 39.23-5.12 18.15-14.97 34.62l-133.77 232.3h-68.92Zm355.39 0L695-417.31q-3.46 1.92-8.08 2.69-4.61.77-9.23.77-61 0-103.57-42.96-42.58-42.96-42.58-103.19 0-61.38 42.58-103.77 42.57-42.38 103.57-42.38 60.23 0 103.19 42.57Q823.84-621 823.84-560q0 21.08-5.11 39.23-5.12 18.15-14.96 34.62L670-253.85h-68.92Z"></path></svg>
+                        <p class="text-pretty text-lg text-neutral-300">Wow so cool!</p>
+                        <div class="flex flex-row gap-2 items-center mt-5">
+                            <div class="w-9 aspect-square rounded-full bg-neutral-600"></div>
+                            <div>Samuel Kambaji Ntambwe</div>
+                        </div>
+                    </div>
+                    <div class="square-card">
+                        <svg class="fill-neutral-500 w-8 rotate-180 mb-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m245.69-253.85 93.93-163.46q-3.46 1.92-8.08 2.69t-9.23.77q-61 0-103.58-42.96-42.57-42.96-42.57-103.19 0-61 42.57-103.58 42.58-42.57 103.58-42.57 60.23 0 103.19 42.57Q468.46-621 468.46-560q0 21.08-5.11 39.23-5.12 18.15-14.97 34.62l-133.77 232.3h-68.92Zm355.39 0L695-417.31q-3.46 1.92-8.08 2.69-4.61.77-9.23.77-61 0-103.57-42.96-42.58-42.96-42.58-103.19 0-61.38 42.58-103.77 42.57-42.38 103.57-42.38 60.23 0 103.19 42.57Q823.84-621 823.84-560q0 21.08-5.11 39.23-5.12 18.15-14.96 34.62L670-253.85h-68.92Z"></path></svg>
+                        <p class="text-pretty text-lg text-neutral-300">Wow so cool!</p>
+                        <div class="flex flex-row gap-2 items-center mt-5">
+                            <div class="w-9 aspect-square rounded-full bg-neutral-600"></div>
+                            <div>Ryan H.</div>
+                        </div>
+                    </div>
+                    <div class="square-card">
+                        <svg class="fill-neutral-500 w-8 rotate-180 mb-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m245.69-253.85 93.93-163.46q-3.46 1.92-8.08 2.69t-9.23.77q-61 0-103.58-42.96-42.57-42.96-42.57-103.19 0-61 42.57-103.58 42.58-42.57 103.58-42.57 60.23 0 103.19 42.57Q468.46-621 468.46-560q0 21.08-5.11 39.23-5.12 18.15-14.97 34.62l-133.77 232.3h-68.92Zm355.39 0L695-417.31q-3.46 1.92-8.08 2.69-4.61.77-9.23.77-61 0-103.57-42.96-42.58-42.96-42.58-103.19 0-61.38 42.58-103.77 42.57-42.38 103.57-42.38 60.23 0 103.19 42.57Q823.84-621 823.84-560q0 21.08-5.11 39.23-5.12 18.15-14.96 34.62L670-253.85h-68.92Z"></path></svg>
+                        <p class="text-pretty text-lg text-neutral-300">Wow so cool!</p>
+                        <div class="flex flex-row gap-2 items-center mt-5">
+                            <div class="w-9 aspect-square rounded-full bg-neutral-600"></div>
+                            <div>Navjot S.</div>
+                        </div>
+                    </div>
+                    <div class="square-card">
+                        <svg class="fill-neutral-500 w-8 rotate-180 mb-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m245.69-253.85 93.93-163.46q-3.46 1.92-8.08 2.69t-9.23.77q-61 0-103.58-42.96-42.57-42.96-42.57-103.19 0-61 42.57-103.58 42.58-42.57 103.58-42.57 60.23 0 103.19 42.57Q468.46-621 468.46-560q0 21.08-5.11 39.23-5.12 18.15-14.97 34.62l-133.77 232.3h-68.92Zm355.39 0L695-417.31q-3.46 1.92-8.08 2.69-4.61.77-9.23.77-61 0-103.57-42.96-42.58-42.96-42.58-103.19 0-61.38 42.58-103.77 42.57-42.38 103.57-42.38 60.23 0 103.19 42.57Q823.84-621 823.84-560q0 21.08-5.11 39.23-5.12 18.15-14.96 34.62L670-253.85h-68.92Z"></path></svg>
+                        <p class="text-pretty text-lg text-neutral-300">Wow so cool!</p>
+                        <div class="flex flex-row gap-2 items-center mt-5">
+                            <div class="w-9 aspect-square rounded-full bg-neutral-600"></div>
+                            <div>Lis K.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <section>
+            <div class="container max-w-[800px]">
+                <h2 class="text-3xl lg:text-4xl font-semibold text-center leading-tight mb-10 text-neutral-300">Your questions, answered</h2>
+                <FAQItem
+                    question="How does the CRFT Lookup compare to Wappalyzer?"
+                    answer="While Wappalyzer focuses purely on technology detection, CRFT Lookup provides a more comprehensive analysis by including Google Lighthouse performance metrics and meta tag previews. Our platform offers these additional features while maintaining accurate technology detection capabilities, all available for free."
+                />
+                <FAQItem
+                    question="Is the CRFT Lookup really free?"
+                    answer="Yes, the CRFT Lookup is completely free to use. You can perform unlimited scans and access all features including technology detection, performance analysis, and meta tag previews without any cost to you. So how do we make money? We sell web design and development services."
+                />
+                <FAQItem
+                    question="How accurate is the technology detection?"
+                    answer="Fairly accurate, because it's based off a fork of the formerly open-source Wappalyzer. When you input a URL, we spin up a headless instance of Chromium, visit the website and analyze its HTML, JavaScript variables, response headers and more. Then, we compare them against our database of over 2,500 technology fingerprints to identify frameworks, CMS platforms, analytics tools, and infrastructure technologies. Our detection engine is regularly updated to stay current with new versions and emerging technologies. While no detection system is perfect due to obfuscation and custom implementations, we maintain high accuracy by using multiple detection methods and continuous updates to our pattern matching algorithms."
+                />
+                <FAQItem
+                    question="Can I save or share my reports?"
+                    answer="Yes, all reports generated by the CRFT Lookup are automatically saved and shareable via a unique URL. Reports are retained for 30 days and include all analysis data: detected technologies, Lighthouse performance scores, and meta tag previews. This makes it easy to share reports with a friend, teammate, or client."
+                />
+                <FAQItem
+                    question="What information does the CRFT Lookup provide that Wappalyzer doesn't?"
+                    answer="Unlike Wappalyzer, CRFT Lookup includes integrated Google Lighthouse scoring to analyze performance, accessibility, SEO, and best practices. We also provide comprehensive meta tag previews showing how your site appears across search engines, social media, and messaging platforms. This gives you a more complete picture of your website's technical profile."
+                />
+            </div>
+        </section>
+        <Footer/>
+    </body>
+</html>
