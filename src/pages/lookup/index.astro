@@ -389,14 +389,13 @@ if (url) {
                 <div class="overflow-x-hidden" id="hero">
                     <div class="container grid lg:grid-cols-2 gap-14">
                         <div class="flex flex-col justify-center">
-                            <div class="mb-7 flex flex-row gap-5 lg:items-center items-start">
+                            <div class="mb-7 lg:flex flex-row gap-5 lg:items-center items-start hidden">
                                 <div class="relative shrink-0">
                                     <Image src={NickPFP} alt='Nick profile pic' class='w-24 relative'></Image>
                                     <div class="absolute w-full h-full top-0 bg-gradient-to-t from-neutral-900 via-50% via-transparent to-transparent"></div>
                                 </div>
                                 <div class="card inline-block py-2 px-3 rounded-tl-none md:text-base text-sm">
-                                    <div class="mb-1 hidden lg:block">"This did a great job at giving me insight into how some of my favorite sites are created, and has inspired me to build."</div>
-                                    <div class="mb-1 lg:hidden block">"This did a great job at giving me insight into how some of my favorite sites are created."</div>
+                                    <div class="mb-1">"This did a great job at giving me insight into how some of my favorite sites are created, and has inspired me to build."</div>
                                     <div class="text-neutral-400 text-pretty"> - Nick Hoban, Web Developer 🇨🇦</div>
                                 </div>
                             </div>
@@ -442,7 +441,7 @@ if (url) {
                                 </div>
                             </div>
                         </div>
-                        <div class="max-w-full overflow-hidden relative">
+                        <div class="max-w-full overflow-hidden relative lg:order-last order-first">
                             <div class="absolute h-full w-full bg-gradient-to-r from-transparent to-neutral-900 z-10 pointer-events-none"></div>
                             <div class="lg:grid lg:grid-cols-3 flex flex-row lg:min-w-[150%] overflow-x-auto gap-4" style="-webkit-scrollbar { display: none; } -ms-overflow-style: none; scrollbar-width: none;">
                                 <LookupCard url="tailwindcss.com" img="https://tailwindcss.com/opengraph-image.jpg?22502194f1a254bc" metaTitle="Tailwind CSS - Rapidly build modern websites without ever leaving your HTML" performance="75" accessibility="86" bestPractices="96" seo="91">
@@ -517,6 +516,16 @@ if (url) {
                                         </div>
                                     </div>
                                 </LookupCard>
+                            </div>
+                        </div>
+                        <div class="lg:hidden flex flex-col gap-2 items-start">
+                            <div class="relative shrink-0">
+                                <Image src={NickPFP} alt='Nick profile pic' class='w-24 relative'></Image>
+                                <div class="absolute w-full h-full top-0 bg-gradient-to-t from-neutral-900 via-50% via-transparent to-transparent"></div>
+                            </div>
+                            <div class="card inline-block py-2 px-3 rounded-tl-none md:text-base text-sm">
+                                <div class="mb-1">"This did a great job at giving me insight into how some of my favorite sites are created, and has inspired me to build."</div>
+                                <div class="text-neutral-400 text-pretty"> - Nick Hoban, Web Developer 🇨🇦</div>
                             </div>
                         </div>
                     </div>
