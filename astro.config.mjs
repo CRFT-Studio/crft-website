@@ -14,7 +14,7 @@ import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://crft.studio',
+  site: 'https://www.crft.studio',
   integrations: [tailwind(), sitemap(), mdx(), robotsTxt()],
   output: "static",
   adapter: vercel(),
