@@ -16,4 +16,5 @@ export default defineConfig({
   integrations: [tailwind(), sitemap(), mdx(), robotsTxt()],
   output: "static",
   adapter: vercel(),
+  trailingSlash: "never"
 });
