@@ -18,7 +18,7 @@ if (url) {
     }
 };
 ---
-<div id="lighthouse-viewer-element" class="lighthouse-viewer square-card p-0"></div>
+<div id="lighthouse-viewer-element" class="lighthouse-viewer"></div>
 
 {report && <span id="report" hidden>{JSON.stringify(report.lighthouseResult)}</span>}
 <script>
@@ -34,6 +34,7 @@ if (url) {
             setTimeout(() => {
                 $(".lh-sticky-header").css("position", "static");
                 $(".lh-topbar").css("position", "static");
+                $(".lh-filmstrip").css("overflow", "hidden");
             }, 100);
         }
     });
