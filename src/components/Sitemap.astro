@@ -1,0 +1,266 @@
+---
+const { url } = Astro.props;
+---
+
+<div id="sitemap-container" class="square-card p-4">
+  <div id="sitemap-viz"></div>
+</div>
+
+<script type="module" define:vars={{ url }}>
+
+import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+
+console.log('Sitemap component initialized with URL:', url);
+
+const COMMON_SITEMAP_PATHS = [
+  '/sitemap.xml',
+  '/sitemap_index.xml',
+  '/sitemap-index.xml',
+  '/sitemap/sitemap.xml',
+  '/sitemap-0.xml',
+  '/sitemap.php',
+  '/sitemap/index.xml'
+]
+
+async function findSitemapUrls(baseUrl) {
+  console.log('Starting sitemap URL discovery for:', baseUrl);
+  const allUrls = new Set();
+
+  // First try to get sitemap location from robots.txt
+  try {
+    console.log('Attempting to fetch robots.txt from:', `${baseUrl}/robots.txt`);
+    const robotsResponse = await fetch(`${baseUrl}/robots.txt`);
+    if (robotsResponse.ok) {
+      const robotsText = await robotsResponse.text();
+      console.log('robots.txt content:', robotsText);
+      const sitemapMatches = robotsText.matchAll(/Sitemap:\s*(.+)/gi);
+
+      for (const match of sitemapMatches) {
+        const sitemapUrl = match[1].trim();
+        console.log('Found sitemap URL in robots.txt:', sitemapUrl);
+        await processSitemap(sitemapUrl, allUrls);
+      }
+    }
+  } catch (error) {
+    console.log('Error fetching robots.txt:', error);
+    console.log('Falling back to common sitemap paths...');
+  }
+
+  // If no URLs found yet, try common sitemap paths
+  if (allUrls.size === 0) {
+    console.log('No URLs found in robots.txt, trying common paths...');
+    for (const path of COMMON_SITEMAP_PATHS) {
+      try {
+        const fullPath = `${baseUrl}${path}`;
+        console.log('Trying sitemap path:', fullPath);
+        await processSitemap(fullPath, allUrls);
+        if (allUrls.size > 0) {
+          console.log('Found URLs in sitemap:', path);
+          break;
+        }
+      } catch (error) {
+        console.log('Failed to fetch sitemap at:', path, error);
+        continue;
+      }
+    }
+  }
+
+  console.log('Total URLs found:', allUrls.size);
+  return Array.from(allUrls);
+}
+
+async function processSitemap(url, urlSet) {
+  console.log('Processing sitemap:', url);
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      console.log('Failed to fetch sitemap:', response.status, response.statusText);
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const text = await response.text();
+    console.log('Sitemap content length:', text.length);
+
+    const parser = new DOMParser();
+    const xmlDoc = parser.parseFromString(text, "text/xml");
+    console.log('XML parsed successfully');
+
+    // Check if this is a sitemap index
+    const sitemapTags = xmlDoc.getElementsByTagName('sitemap');
+    if (sitemapTags.length > 0) {
+      console.log('Found sitemap index with', sitemapTags.length, 'sitemaps');
+      // This is a sitemap index, process each sitemap
+      for (const sitemap of sitemapTags) {
+        const locTag = sitemap.getElementsByTagName('loc')[0];
+        if (locTag) {
+          console.log('Processing sub-sitemap:', locTag.textContent);
+          await processSitemap(locTag.textContent, urlSet);
+        }
+      }
+    } else {
+      // This is a regular sitemap, extract URLs
+      const urlTags = xmlDoc.getElementsByTagName('url');
+      console.log('Found', urlTags.length, 'URLs in sitemap');
+      for (const urlTag of urlTags) {
+        const locTag = urlTag.getElementsByTagName('loc')[0];
+        if (locTag) {
+          urlSet.add(locTag.textContent);
+        }
+      }
+    }
+  } catch (error) {
+    console.error(`Error processing sitemap ${url}:`, error);
+    throw error;
+  }
+}
+
+function transformToHierarchy(urls, baseUrl) {
+  console.log('Transforming URLs to hierarchy. Base URL:', baseUrl);
+  console.log('URLs to transform:', urls);
+
+  const root = {
+    name: baseUrl,
+    children: []
+  };
+
+  urls.forEach(url => {
+    // Remove protocol and domain
+    let path = url.replace(/^https?:\/\/[^/]+/, '');
+    console.log('Processing URL path:', path);
+
+    // Split path into segments and remove empty ones
+    const segments = path.split('/').filter(Boolean);
+    console.log('Path segments:', segments);
+
+    let current = root;
+    segments.forEach(segment => {
+      let child = current.children.find(c => c.name === segment);
+      if (!child) {
+        child = { name: segment, children: [] };
+        current.children.push(child);
+        console.log('Added new node:', segment);
+      }
+      current = child;
+    });
+  });
+
+  console.log('Final hierarchy:', root);
+  return root;
+}
+
+function visualizeSitemap(data) {
+  console.log('Starting visualization with data:', data);
+
+  const width = 800;
+  const height = Math.max(600, data.children?.length * 30 || 600);
+  console.log('Visualization dimensions:', { width, height });
+
+  const margin = { top: 20, right: 120, bottom: 30, left: 120 };
+  const treeLayout = d3.tree()
+    .size([height - margin.top - margin.bottom, width - margin.left - margin.right]);
+
+  const root = d3.hierarchy(data);
+  console.log('D3 hierarchy created:', root);
+
+  const treeData = treeLayout(root);
+  console.log('Tree layout computed:', treeData);
+
+  const svg = d3.select('#sitemap-viz')
+    .append('svg')
+    .attr('width', width)
+    .attr('height', height)
+    .append('g')
+    .attr('transform', `translate(${margin.left},${margin.top})`);
+
+  console.log('SVG container created');
+
+  // Add links
+  const links = svg.selectAll('.link')
+    .data(treeData.links())
+    .enter()
+    .append('path')
+    .attr('class', 'link')
+    .attr('d', d3.linkHorizontal()
+      .x(d => d.y)
+      .y(d => d.x));
+
+  console.log('Links added:', treeData.links().length);
+
+  // Add nodes
+  const nodes = svg.selectAll('.node')
+    .data(treeData.descendants())
+    .enter()
+    .append('g')
+    .attr('class', 'node')
+    .attr('transform', d => `translate(${d.y},${d.x})`);
+
+  console.log('Nodes added:', treeData.descendants().length);
+
+  // Add circles to nodes
+  nodes.append('circle')
+    .attr('r', 4);
+
+  // Add labels to nodes with tooltips
+  nodes.append('text')
+    .attr('dy', '.31em')
+    .attr('x', d => d.children ? -8 : 8)
+    .attr('text-anchor', d => d.children ? 'end' : 'start')
+    .text(d => d.data.name)
+    .append('title')
+    .text(d => {
+      let path = [];
+      let current = d;
+      while (current) {
+        path.unshift(current.data.name);
+        current = current.parent;
+      }
+      return path.join('/');
+    });
+
+  console.log('Visualization complete');
+}
+
+if (url) {
+  console.log('Starting sitemap processing for URL:', url);
+  const baseUrl = new URL(url).origin;
+  console.log('Base URL:', baseUrl);
+
+  findSitemapUrls(baseUrl).then(urls => {
+    console.log('URLs found:', urls);
+    if (urls.length > 0) {
+      const hierarchyData = transformToHierarchy(urls, baseUrl);
+      console.log('Hierarchy data created:', hierarchyData);
+      visualizeSitemap(hierarchyData);
+    } else {
+      console.log('No URLs found in sitemap');
+      document.getElementById('sitemap-viz').innerHTML =
+        '<div class="text-neutral-300">No sitemap found or sitemap is empty</div>';
+    }
+  }).catch(error => {
+    console.error('Error in sitemap processing:', error);
+    document.getElementById('sitemap-viz').innerHTML =
+      '<div class="text-neutral-300">Error loading sitemap</div>';
+  });
+} else {
+  console.log('No URL provided to Sitemap component');
+}
+</script>
+
+<style>
+.node circle {
+  fill: #f97316;
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.node text {
+  font: 10px sans-serif;
+  fill: #fff;
+}
+
+.link {
+  fill: none;
+  stroke: #666;
+  stroke-width: 1.5px;
+}
+</style>

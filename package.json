@@ -19,6 +19,8 @@
         "@stripe/stripe-js": "^4.9.0",
         "astro": "^5.1.8",
         "astro-robots-txt": "^1.0.0",
+        "d3": "^7.9.0",
+        "d3-hierarchy": "^3.1.2",
         "gsap": "^3.12.5",
         "jquery": "^3.7.1",
         "lighthouse-viewer": "^0.1.235",
