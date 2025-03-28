@@ -30,7 +30,8 @@
         "stripe": "^17.2.1",
         "tailwindcss": "^3.4.10",
         "unfurl.js": "^6.4.0",
-        "wappalyzer-rm": "github:JDV8/wappalyzer-rm"
+        "wappalyzer-rm": "github:JDV8/wappalyzer-rm",
+        "xml2js": "^0.6.2"
     },
     "devDependencies": {
         "@tailwindcss/typography": "^0.5.15"
