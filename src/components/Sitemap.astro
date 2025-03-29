@@ -4,63 +4,129 @@ import { parseStringPromise } from 'xml2js';
 const { url } = Astro.props;
 
 let sitemapUrls: string[] = [];
+let error: string | null = null;
 
 if (url) {
+  console.log(`[Sitemap] Starting sitemap fetch for ${url}`);
   const baseUrl = new URL(url).origin;
 
-  // Helper function to fetch and parse sitemap
   async function processSitemap(url: string): Promise<string[]> {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-    const text = await response.text();
-    const urls = new Set<string>();
-
+    console.log(`[Sitemap] Attempting to fetch sitemap from ${url}`);
     try {
-      const result = await parseStringPromise(text);
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => {
+        controller.abort();
+        console.log(`[Sitemap] Timeout reached for ${url}`);
+      }, 10000);
 
-      // Handle sitemap index
-      if (result.sitemapindex) {
-        const sitemaps = result.sitemapindex.sitemap || [];
-        for (const sitemap of sitemaps) {
-          if (sitemap.loc && sitemap.loc[0]) {
-            const subSitemapUrls = await processSitemap(sitemap.loc[0]);
-            subSitemapUrls.forEach(url => urls.add(url));
-          }
+      console.log(`[Sitemap] Initiating fetch for ${url}`);
+      const response = await fetch(url, {
+        signal: controller.signal,
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (compatible; SitemapCrawler/1.0)'
+        }
+      });
+      console.log(`[Sitemap] Received response from ${url}: ${response.status}`);
+
+      clearTimeout(timeoutId);
+
+      if (!response.ok) {
+        if (response.status === 403) {
+          throw new Error('Access forbidden - This site may block automated access');
+        } else if (response.status === 404) {
+          throw new Error('No sitemap found at this location');
+        } else if (response.status === 429) {
+          throw new Error('Too many requests - Please try again later');
+        } else {
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
       }
-      // Handle regular sitemap
-      else if (result.urlset) {
-        const urlElements = result.urlset.url || [];
-        for (const urlElement of urlElements) {
-          if (urlElement.loc && urlElement.loc[0]) {
-            urls.add(urlElement.loc[0]);
+
+      const text = await response.text();
+      console.log(`[Sitemap] Successfully retrieved content from ${url}`);
+      const urls = new Set<string>();
+
+      try {
+        const result = await parseStringPromise(text);
+        console.log(`[Sitemap] Successfully parsed XML from ${url}`);
+
+        if (result.sitemapindex) {
+          console.log(`[Sitemap] Found sitemap index at ${url}`);
+          const sitemaps = result.sitemapindex.sitemap || [];
+          for (const sitemap of sitemaps) {
+            if (sitemap.loc && sitemap.loc[0]) {
+              console.log(`[Sitemap] Processing sub-sitemap: ${sitemap.loc[0]}`);
+              const subSitemapUrls = await processSitemap(sitemap.loc[0]);
+              subSitemapUrls.forEach(url => urls.add(url));
+            }
           }
         }
+        else if (result.urlset) {
+          console.log(`[Sitemap] Found urlset at ${url}`);
+          const urlElements = result.urlset.url || [];
+          for (const urlElement of urlElements) {
+            if (urlElement.loc && urlElement.loc[0]) {
+              urls.add(urlElement.loc[0]);
+            }
+          }
+          console.log(`[Sitemap] Extracted ${urls.size} URLs from ${url}`);
+        }
+      } catch (error) {
+        console.error(`[Sitemap] XML parsing error for ${url}:`, error);
+        throw new Error('Error parsing sitemap XML');
       }
+
+      return Array.from(urls);
     } catch (error) {
-      console.error('Error parsing XML:', error);
+      console.error(`[Sitemap] Error processing ${url}:`, error);
+      if (error.name === 'AbortError') {
+        throw new Error('Request timed out - The site took too long to respond');
+      }
+      if (error.name === 'TypeError' && error.message.includes('CORS')) {
+        throw new Error('Cannot access sitemap due to CORS restrictions');
+      }
+      if (error.message.includes('NetworkError')) {
+        throw new Error('Site is blocking automated access - try visiting the site directly');
+      }
+      throw error;
     }
-
-    return Array.from(urls);
   }
 
   try {
-    // First try robots.txt
-    const robotsResponse = await fetch(`${baseUrl}/robots.txt`);
+    console.log(`[Sitemap] Attempting to fetch robots.txt from ${baseUrl}`);
+    const robotsController = new AbortController();
+    const robotsTimeout = setTimeout(() => {
+      robotsController.abort();
+      console.log(`[Sitemap] Robots.txt timeout reached for ${baseUrl}`);
+    }, 5000);
+
+    const robotsResponse = await fetch(`${baseUrl}/robots.txt`, {
+      signal: robotsController.signal,
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; SitemapCrawler/1.0)'
+      }
+    });
+
+    clearTimeout(robotsTimeout);
+    console.log(`[Sitemap] Robots.txt response status: ${robotsResponse.status}`);
+
     if (robotsResponse.ok) {
       const robotsText = await robotsResponse.text();
       const sitemapMatches = robotsText.matchAll(/Sitemap:\s*(.+)/gi);
+      console.log(`[Sitemap] Successfully retrieved robots.txt from ${baseUrl}`);
 
       for (const match of sitemapMatches) {
         const sitemapUrl = match[1].trim();
+        console.log(`[Sitemap] Found sitemap URL in robots.txt: ${sitemapUrl}`);
         const urls = await processSitemap(sitemapUrl);
         sitemapUrls = [...sitemapUrls, ...urls];
       }
     }
 
-    // If no URLs found, try common paths
     if (sitemapUrls.length === 0) {
+      console.log(`[Sitemap] No sitemaps found in robots.txt, trying common paths`);
+      let lastError = null;
+
       const COMMON_SITEMAP_PATHS = [
         '/sitemap.xml',
         '/sitemap_index.xml',
@@ -73,18 +139,35 @@ if (url) {
 
       for (const path of COMMON_SITEMAP_PATHS) {
         try {
+          console.log(`[Sitemap] Trying common path: ${baseUrl}${path}`);
           const urls = await processSitemap(`${baseUrl}${path}`);
           if (urls.length > 0) {
+            console.log(`[Sitemap] Successfully found sitemap at ${path}`);
             sitemapUrls = urls;
             break;
           }
-        } catch (error) {
+        } catch (e) {
+          lastError = e;
+          console.log(`[Sitemap] Failed to fetch from ${path}:`, e.message);
           continue;
         }
       }
+
+      if (sitemapUrls.length === 0 && lastError) {
+        console.log(`[Sitemap] All common paths failed, throwing last error`);
+        throw lastError;
+      }
     }
-  } catch (error) {
-    console.error('Error fetching sitemap:', error);
+
+    if (sitemapUrls.length === 0) {
+      console.log(`[Sitemap] No URLs found for ${baseUrl}`);
+      error = 'No sitemap found or sitemap is empty';
+    } else {
+      console.log(`[Sitemap] Successfully found ${sitemapUrls.length} URLs for ${baseUrl}`);
+    }
+  } catch (e) {
+    error = e.message || 'Failed to access site';
+    console.error(`[Sitemap] Final error for ${baseUrl}:`, e);
   }
 }
 ---
@@ -92,7 +175,14 @@ if (url) {
   <button id="reset-view" class="square-card absolute top-4 right-4 px-3 py-1 z-10">
     Reset position
   </button>
-  <div id="sitemap-viz" class="w-full h-[600px] overflow-hidden"></div>
+  <div id="sitemap-viz" class="w-full h-[600px] overflow-hidden">
+    {error ? (
+      <div class="text-red-400 flex flex-col items-center justify-center h-full p-4 text-center">
+        <span class="font-semibold mb-2">Unable to fetch sitemap</span>
+        <span>{error}</span>
+      </div>
+    ) : null}
+  </div>
 </div>
 
 <script type="module" define:vars={{ url, sitemapUrls }}>
