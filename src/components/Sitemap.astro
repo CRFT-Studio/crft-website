@@ -60,17 +60,33 @@ if (url) {
                 if (result.sitemapindex) {
                     console.log(`[Sitemap] Found sitemap index at ${url}`);
                     const sitemaps = result.sitemapindex.sitemap || [];
+                    const errors = [];
+                    const allUrls = new Set();
+
                     for (const sitemap of sitemaps) {
                         if (sitemap.loc && sitemap.loc[0]) {
-                            console.log(
-                                `[Sitemap] Processing sub-sitemap: ${sitemap.loc[0]}`,
-                            );
-                            const subSitemapUrls = await processSitemap(
-                                sitemap.loc[0],
-                            );
-                            subSitemapUrls.forEach((url) => urls.add(url));
+                            try {
+                                console.log(
+                                    `[Sitemap] Processing sub-sitemap: ${sitemap.loc[0]}`,
+                                );
+                                const subSitemapUrls = await processSitemap(
+                                    sitemap.loc[0],
+                                );
+                                subSitemapUrls.forEach(url => allUrls.add(url));
+                            } catch (error) {
+                                console.log(`[Sitemap] Error in sub-sitemap ${sitemap.loc[0]}: ${error.message}`);
+                                errors.push(error);
+                                continue; // Continue processing other sitemaps
+                            }
                         }
                     }
+
+                    // Only throw if ALL sub-sitemaps failed
+                    if (errors.length === sitemaps.length) {
+                        throw new Error("All sub-sitemaps failed to process");
+                    }
+
+                    return Array.from(allUrls);
                 } else if (result.urlset) {
                     console.log(`[Sitemap] Found urlset at ${url}`);
                     const urlElements = result.urlset.url || [];
@@ -137,13 +153,25 @@ if (url) {
                 `[Sitemap] Successfully retrieved robots.txt from ${baseUrl}`,
             );
 
+            const allUrls = new Set();
+
             for (const match of sitemapMatches) {
                 const sitemapUrl = match[1].trim();
-                console.log(
-                    `[Sitemap] Found sitemap URL in robots.txt: ${sitemapUrl}`,
-                );
-                const urls = await processSitemap(sitemapUrl);
-                sitemapUrls = [...sitemapUrls, ...urls];
+                try {
+                    console.log(
+                        `[Sitemap] Found sitemap URL in robots.txt: ${sitemapUrl}`,
+                    );
+                    const urls = await processSitemap(sitemapUrl);
+                    urls.forEach(url => allUrls.add(url));
+                } catch (error) {
+                    console.log(`[Sitemap] Error processing ${sitemapUrl}: ${error.message}`);
+                    continue;
+                }
+            }
+
+            if (allUrls.size > 0) {
+                sitemapUrls = Array.from(allUrls);
+                console.log(`[Sitemap] Successfully found ${sitemapUrls.length} URLs from robots.txt`);
             }
         }
 
