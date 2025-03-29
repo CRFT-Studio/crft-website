@@ -1,0 +1,520 @@
+---
+import { parseStringPromise } from "xml2js";
+
+const { url } = Astro.props;
+
+let sitemapUrls: string[] = [];
+let error: string | null = null;
+
+if (url) {
+    console.log(`[Sitemap] Starting sitemap fetch for ${url}`);
+    const baseUrl = new URL(url).origin;
+
+    async function processSitemap(url: string): Promise<string[]> {
+        console.log(`[Sitemap] Attempting to fetch sitemap from ${url}`);
+        try {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => {
+                controller.abort();
+                console.log(`[Sitemap] Timeout reached for ${url}`);
+            }, 10000);
+
+            console.log(`[Sitemap] Initiating fetch for ${url}`);
+            const response = await fetch(url, {
+                signal: controller.signal,
+                headers: {
+                    "User-Agent":
+                        "Mozilla/5.0 (compatible; SitemapCrawler/1.0)",
+                },
+            });
+            console.log(
+                `[Sitemap] Received response from ${url}: ${response.status}`,
+            );
+
+            clearTimeout(timeoutId);
+
+            if (!response.ok) {
+                if (response.status === 403) {
+                    throw new Error(
+                        "Access forbidden - This site may block automated access",
+                    );
+                } else if (response.status === 404) {
+                    throw new Error("No sitemap found at this location");
+                } else if (response.status === 429) {
+                    throw new Error(
+                        "Too many requests - Please try again later",
+                    );
+                } else {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+            }
+
+            const text = await response.text();
+            console.log(`[Sitemap] Successfully retrieved content from ${url}`);
+            const urls = new Set<string>();
+
+            try {
+                const result = await parseStringPromise(text);
+                console.log(`[Sitemap] Successfully parsed XML from ${url}`);
+
+                if (result.sitemapindex) {
+                    console.log(`[Sitemap] Found sitemap index at ${url}`);
+                    const sitemaps = result.sitemapindex.sitemap || [];
+                    for (const sitemap of sitemaps) {
+                        if (sitemap.loc && sitemap.loc[0]) {
+                            console.log(
+                                `[Sitemap] Processing sub-sitemap: ${sitemap.loc[0]}`,
+                            );
+                            const subSitemapUrls = await processSitemap(
+                                sitemap.loc[0],
+                            );
+                            subSitemapUrls.forEach((url) => urls.add(url));
+                        }
+                    }
+                } else if (result.urlset) {
+                    console.log(`[Sitemap] Found urlset at ${url}`);
+                    const urlElements = result.urlset.url || [];
+                    for (const urlElement of urlElements) {
+                        if (urlElement.loc && urlElement.loc[0]) {
+                            urls.add(urlElement.loc[0]);
+                        }
+                    }
+                    console.log(
+                        `[Sitemap] Extracted ${urls.size} URLs from ${url}`,
+                    );
+                }
+            } catch (error) {
+                console.error(`[Sitemap] XML parsing error for ${url}:`, error);
+                throw new Error("Error parsing sitemap XML");
+            }
+
+            return Array.from(urls);
+        } catch (error) {
+            console.error(`[Sitemap] Error processing ${url}:`, error);
+            if (error.name === "AbortError") {
+                throw new Error(
+                    "Request timed out - The site took too long to respond",
+                );
+            }
+            if (error.name === "TypeError" && error.message.includes("CORS")) {
+                throw new Error(
+                    "Cannot access sitemap due to CORS restrictions",
+                );
+            }
+            if (error.message.includes("NetworkError")) {
+                throw new Error(
+                    "Site is blocking automated access - try visiting the site directly",
+                );
+            }
+            throw error;
+        }
+    }
+
+    try {
+        console.log(`[Sitemap] Attempting to fetch robots.txt from ${baseUrl}`);
+        const robotsController = new AbortController();
+        const robotsTimeout = setTimeout(() => {
+            robotsController.abort();
+            console.log(`[Sitemap] Robots.txt timeout reached for ${baseUrl}`);
+        }, 5000);
+
+        const robotsResponse = await fetch(`${baseUrl}/robots.txt`, {
+            signal: robotsController.signal,
+            headers: {
+                "User-Agent": "Mozilla/5.0 (compatible; SitemapCrawler/1.0)",
+            },
+        });
+
+        clearTimeout(robotsTimeout);
+        console.log(
+            `[Sitemap] Robots.txt response status: ${robotsResponse.status}`,
+        );
+
+        if (robotsResponse.ok) {
+            const robotsText = await robotsResponse.text();
+            const sitemapMatches = robotsText.matchAll(/Sitemap:\s*(.+)/gi);
+            console.log(
+                `[Sitemap] Successfully retrieved robots.txt from ${baseUrl}`,
+            );
+
+            for (const match of sitemapMatches) {
+                const sitemapUrl = match[1].trim();
+                console.log(
+                    `[Sitemap] Found sitemap URL in robots.txt: ${sitemapUrl}`,
+                );
+                const urls = await processSitemap(sitemapUrl);
+                sitemapUrls = [...sitemapUrls, ...urls];
+            }
+        }
+
+        if (sitemapUrls.length === 0) {
+            console.log(
+                `[Sitemap] No sitemaps found in robots.txt, trying common paths`,
+            );
+            let lastError = null;
+
+            const COMMON_SITEMAP_PATHS = [
+                "/sitemap.xml",
+                "/sitemap_index.xml",
+                "/sitemap-index.xml",
+                "/sitemap/sitemap.xml",
+                "/sitemap-0.xml",
+                "/sitemap.php",
+                "/sitemap/index.xml",
+            ];
+
+            for (const path of COMMON_SITEMAP_PATHS) {
+                try {
+                    console.log(
+                        `[Sitemap] Trying common path: ${baseUrl}${path}`,
+                    );
+                    const urls = await processSitemap(`${baseUrl}${path}`);
+                    if (urls.length > 0) {
+                        console.log(
+                            `[Sitemap] Successfully found sitemap at ${path}`,
+                        );
+                        sitemapUrls = urls;
+                        break;
+                    }
+                } catch (e) {
+                    lastError = e;
+                    console.log(
+                        `[Sitemap] Failed to fetch from ${path}:`,
+                        e.message,
+                    );
+                    continue;
+                }
+            }
+
+            if (sitemapUrls.length === 0 && lastError) {
+                console.log(
+                    `[Sitemap] All common paths failed, throwing last error`,
+                );
+                throw lastError;
+            }
+        }
+
+        if (sitemapUrls.length === 0) {
+            console.log(`[Sitemap] No URLs found for ${baseUrl}`);
+            error = "No sitemap found or sitemap is empty";
+        } else {
+            console.log(
+                `[Sitemap] Successfully found ${sitemapUrls.length} URLs for ${baseUrl}`,
+            );
+        }
+    } catch (e) {
+        error = e.message || "Failed to access site";
+        console.error(`[Sitemap] Final error for ${baseUrl}:`, e);
+    }
+}
+---
+<div id="sitemap-container" class="square-card relative">
+  <button id="reset-view" class="square-card absolute top-4 right-4 px-3 py-1 z-10">
+    Reset position
+  </button>
+  <div id="sitemap-viz" class="w-full h-[600px] overflow-hidden">
+    {error ? (
+      <div class="text-red-400 flex flex-col items-center justify-center h-full p-4 text-center">
+        <span class="font-semibold mb-2">Unable to fetch sitemap</span>
+        <span>{error}</span>
+      </div>
+    ) : null}
+  </div>
+</div>
+
+<script type="module" define:vars={{ url, sitemapUrls }}>
+import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+
+document.addEventListener('DOMContentLoaded', () => {
+  function transformToHierarchy(urls, baseUrl) {
+    const root = {
+      name: baseUrl,
+      children: [],
+      collapsed: false,
+      childCount: 0
+    };
+
+    urls.forEach(url => {
+      let path = url.replace(/^https?:\/\/[^/]+/, '');
+      const segments = path.split('/').filter(Boolean);
+
+      let current = root;
+      segments.forEach(segment => {
+        let child = current.children.find(c => c.name === segment);
+        if (!child) {
+          child = {
+            name: segment,
+            children: [],
+            collapsed: false,
+            childCount: 0
+          };
+          current.children.push(child);
+        }
+        current = child;
+      });
+    });
+
+    function processNode(node) {
+      if (node.children.length > 0) {
+        node.childCount = node.children.length;
+        if (node.name !== baseUrl && node.children.length > 10) {
+          node.collapsed = true;
+        }
+        node.children.forEach(processNode);
+      }
+      return node;
+    }
+
+    return processNode(root);
+  }
+
+  function visualizeSitemap(data) {
+    const isDesktop = () => window.innerWidth >= 1024;
+    const nodeStates = new Map();
+    let currentTransform = null;
+
+    function updateVisualization() {
+      const oldTransform = currentTransform;
+      d3.select('#sitemap-viz').html('');
+
+      const container = document.getElementById('sitemap-viz');
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+
+      const svg = d3.select('#sitemap-viz')
+        .append('svg')
+        .attr('width', '100%')
+        .attr('height', '100%')
+        .style('cursor', 'grab');
+
+      const g = svg.append('g');
+
+      const zoom = d3.zoom()
+        .scaleExtent([0.1, 4])
+        .on('zoom', (event) => {
+          g.attr('transform', event.transform);
+        });
+
+      svg.call(zoom);
+
+      function toggleNode(d) {
+        if (d.data.name === new URL(url).origin) return;
+
+        currentTransform = d3.zoomTransform(svg.node());
+        const newState = !d.data.collapsed;
+        nodeStates.set(d.data.name, newState);
+        d.data.collapsed = newState;
+
+        updateVisualization();
+      }
+
+      function filterVisible(node) {
+        const collapsed = nodeStates.get(node.name) ?? node.collapsed;
+        return {
+          ...node,
+          collapsed,
+          children: collapsed ? [] :
+            (node.children || []).map(filterVisible)
+        };
+      }
+
+      // Increased node sizing to prevent overlaps
+      const treeLayout = d3.tree()
+        .nodeSize(isDesktop() ? [100, 220] : [140, 150]) // [vertical, horizontal] spacing
+        .separation((a, b) => {
+          const tempA = document.createElement('span');
+          tempA.textContent = a.data.childCount > 0 && a.data.collapsed ?
+            `${a.data.name} (${a.data.childCount})` :
+            a.data.name;
+          const tempB = document.createElement('span');
+          tempB.textContent = b.data.childCount > 0 && b.data.collapsed ?
+            `${b.data.name} (${b.data.childCount})` :
+            b.data.name;
+          document.body.appendChild(tempA);
+          document.body.appendChild(tempB);
+
+          const widthA = tempA.offsetWidth;
+          const widthB = tempB.offsetWidth;
+          document.body.removeChild(tempA);
+          document.body.removeChild(tempB);
+
+          // Increased base spacing for better readability
+          const baseSpacing = Math.max(widthA, widthB) / 40;
+
+          if (!isDesktop()) {
+            return a.parent === b.parent ?
+              Math.max(1.4, baseSpacing) : // Increased sibling separation
+              Math.max(2.8, baseSpacing * 1.8); // Increased different-parent separation
+          } else {
+            return a.parent === b.parent ?
+              Math.max(1.2, baseSpacing) :
+              Math.max(1.4, baseSpacing * 1.5);
+          }
+        });
+
+      const visibleData = filterVisible(data);
+      const root = d3.hierarchy(visibleData);
+      const treeData = treeLayout(root);
+
+      let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+
+      root.each(d => {
+        if (!isDesktop()) {
+          const temp = d.x;
+          d.x = d.y;
+          d.y = temp;
+        }
+        minX = Math.min(minX, d.x);
+        maxX = Math.max(maxX, d.x);
+        minY = Math.min(minY, d.y);
+        maxY = Math.max(maxY, d.y);
+      });
+
+      g.selectAll('.link')
+        .data(treeData.links())
+        .enter()
+        .append('path')
+        .attr('class', 'link')
+        .attr('stroke', '#ffffff')
+        .attr('stroke-width', '1.5px')
+        .attr('fill', 'none')
+        .attr('opacity', '0.4')
+        .attr('d', d => {
+          if (isDesktop()) {
+            return `M${d.source.x},${d.source.y}
+                    C${d.source.x},${(d.source.y + d.target.y) / 2}
+                     ${d.target.x},${(d.source.y + d.target.y) / 2}
+                     ${d.target.x},${d.target.y}`;
+          } else {
+            return `M${d.source.x},${d.source.y}
+                    C${(d.source.x + d.target.x) / 2},${d.source.y}
+                     ${(d.source.x + d.target.x) / 2},${d.target.y}
+                     ${d.target.x},${d.target.y}`;
+          }
+        });
+
+      const nodeGroups = g.selectAll('.node')
+        .data(treeData.descendants())
+        .enter()
+        .append('g')
+        .attr('class', 'node')
+        .attr('transform', d => `translate(${d.x},${d.y})`)
+        .style('cursor', d => d.data.childCount > 0 && d.data.name !== new URL(url).origin ? 'pointer' : 'default');
+
+      nodeGroups.append('circle')
+        .attr('r', 6)
+        .attr('fill', '#f97316')
+        .attr('stroke', '#ffffff')
+        .attr('stroke-width', '2px');
+
+      // Adjusted foreignObject positioning and dimensions
+      const foreignObjects = nodeGroups.append('foreignObject')
+        .attr('x', d => isDesktop() ? 8 : -80) // Increased offset for mobile
+        .attr('y', d => isDesktop() ? -20 : 12) // Adjusted vertical positioning
+        .attr('width', d => {
+          const temp = document.createElement('span');
+          temp.className = 'square-card px-2 py-1';
+          const text = d.data.childCount > 0 && d.data.collapsed ?
+            `${d.data.name} (${d.data.childCount})` :
+            d.data.name;
+          temp.textContent = text;
+          document.body.appendChild(temp);
+          const width = temp.offsetWidth;
+          document.body.removeChild(temp);
+          return width + 32; // Increased padding
+        })
+        .attr('height', d => d.data.childCount > 0 ? 52 : 40); // Increased heights
+
+      foreignObjects.append('xhtml:div')
+        .attr('class', 'square-card px-2 py-1')
+        .style('color', '#ffffff')
+        .style('background', '#262626')
+        .style('border-radius', '4px')
+        .style('display', 'inline-block')
+        .style('padding', '8px 12px') // Increased padding
+        .html(d => {
+          const text = d.data.name;
+          if (d.data.childCount > 0 && d.data.collapsed) {
+            return `${text}<br><span style="font-size: 0.8em; opacity: 0.7; margin-top: 4px; display: block">${d.data.childCount} items</span>`;
+          }
+          return text;
+        });
+
+      nodeGroups.on('click', function(event, d) {
+        event.stopPropagation();
+        if (d.data.childCount > 0 && d.data.name !== new URL(url).origin) {
+          toggleNode(d);
+        }
+      });
+
+      const transform = oldTransform || d3.zoomIdentity
+        .translate(
+          isDesktop() ? width * 0.2 : width / 2,
+          isDesktop() ? height / 2 : height * 0.2
+        )
+        .scale(isDesktop() ? 0.8 : 0.4);
+
+      currentTransform = transform;
+      svg.call(zoom.transform, transform);
+
+      document.getElementById('reset-view').onclick = () => {
+        const initialTransform = d3.zoomIdentity
+          .translate(
+            isDesktop() ? width * 0.2 : width / 2,
+            isDesktop() ? height / 2 : height * 0.2
+          )
+          .scale(isDesktop() ? 0.8 : 0.4);
+
+        currentTransform = initialTransform;
+        svg.transition()
+          .duration(750)
+          .call(zoom.transform, initialTransform);
+      };
+
+      svg.on('dblclick.zoom', null);
+    }
+
+    updateVisualization();
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        updateVisualization();
+      }, 250);
+    });
+  }
+
+  if (url && sitemapUrls.length > 0) {
+    const baseUrl = new URL(url).origin;
+    const hierarchyData = transformToHierarchy(sitemapUrls, baseUrl);
+    visualizeSitemap(hierarchyData);
+  } else {
+    document.getElementById('sitemap-viz').innerHTML =
+      '<div class="text-neutral-300 flex items-center justify-center h-full">No sitemap found or sitemap is empty</div>';
+  }
+});
+</script>
+
+<style>
+#sitemap-viz {
+  background: #1c1c1c;
+  border-radius: 4px;
+}
+
+#sitemap-viz svg {
+  display: block;
+}
+
+#reset-view {
+  color: #ffffff;
+  background: #262626;
+  transition: background-color 0.2s;
+  font-size: 14px;
+  border: 1px solid #404040;
+}
+
+#reset-view:hover {
+  background: #404040;
+}
+</style>
