@@ -1,0 +1,163 @@
+---
+import { Image } from 'astro:assets';
+import SitemapExample from "../images/sitemap-tree-example.png";
+import LighthouseExample from "../images/tailwind-lh-screenshot.png";
+---
+<div class="container flex flex-col gap-28">
+    <div class="grid lg:grid-cols-2 lg:gap-14 gap-8">
+        <div class="flex flex-col justify-center items-start lg:order-first order-last">
+            <h2 class="lg:text-4xl text-3xl text-balance font-medium text-neutral-200 lg:leading-snug leading-normal">Comprehensive tech stack detection</h2>
+            <p class="text-pretty text-lg mt-3 text-neutral-300 mb-7">Identify frameworks, CMS platforms, analytics tools, and more with our powerful technology detection engine. Get detailed insights about the tools and services powering any website.</p>
+            <a href="#hero" class="primary-cta">Scan a website</a>
+            <div class="flex flex-col gap-2 text-neutral-300 text-lg mt-7">
+                <div class="flex flex-row gap-2 items-start">
+                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                    <div class="flex flex-col gap-2">
+                        <div class="font-medium">Frameworks and libraries</div>
+                    </div>
+                </div>
+                <div class="flex flex-row gap-2 items-start">
+                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                    <div class="flex flex-col gap-2">
+                        <div class="font-medium">CMS and hosting</div>
+                    </div>
+                </div>
+                <div class="flex flex-row gap-2 items-start">
+                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                    <div class="flex flex-col gap-2">
+                        <div class="font-medium">Analytics and marketing tools</div>
+                    </div>
+                </div>
+                <div class="flex flex-row gap-2 items-start">
+                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                    <div class="flex flex-col gap-2">
+                        <div class="font-medium">Infrastructure and more</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="w-full aspect-square square-card overflow-hidden relative">
+                <div class="absolute h-full w-full z-10 bg-gradient-to-t from-neutral-800 to-transparent pointer-events-none"></div>
+                <div class="flex flex-col gap-4"> <a href="https://reactjs.org" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="React" data-tech-icon="React.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/React.svg" class="w-5 h-5" alt=""> <div>React</div> </div> <div class="text-pretty">React is an open-source JavaScript library for building user interfaces or UI components.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://nextjs.org" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Next.js" data-tech-icon="Next.js.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Next.js.svg" class="w-5 h-5" alt=""> <div>Next.js</div> </div> <div class="text-pretty">Next.js is a React framework for developing single page Javascript applications.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> <a href="https://business.linkedin.com/marketing-solutions/insight-tag" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Linkedin Insight Tag" data-tech-icon="Linkedin.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Linkedin.svg" class="w-5 h-5" alt=""> <div>Linkedin Insight Tag</div> </div> <div class="text-pretty">LinkedIn Insight Tag is a lightweight JavaScript tag that powers conversion tracking, website audiences, and website demographics.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://www.hotjar.com" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Hotjar" data-tech-icon="Hotjar.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Hotjar.svg" class="w-5 h-5" alt=""> <div>Hotjar</div> </div> <div class="text-pretty">Hotjar is a suite of analytic tools to assist in the gathering of qualitative data, providing feedback through tools such as heatmaps, session recordings, and surveys.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://google.com/analytics" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Google Analytics" data-tech-icon="Google Analytics.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Google Analytics.svg" class="w-5 h-5" alt=""> <div>Google Analytics</div> </div> <div class="text-pretty">Google Analytics is a free web analytics service that tracks and reports website traffic.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://facebook.com" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Facebook Pixel" data-tech-icon="Facebook.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Facebook.svg" class="w-5 h-5" alt=""> <div>Facebook Pixel</div> </div> <div class="text-pretty">Facebook pixel is an analytics tool that allows you to measure the effectiveness of your advertising.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div>
+            </div>
+        </div>
+    </div>
+    <div class="grid lg:grid-cols-2 lg:gap-14 gap-8">
+        <div class="flex flex-col justify-center items-start order-2">
+            <h2 class="lg:text-4xl text-3xl text-balance font-medium text-neutral-200 lg:leading-snug leading-normal">Performance benchmarks with Lighthouse</h2>
+            <p class="text-pretty text-lg mt-3 text-neutral-300 mb-7">Go beyond tech detection with integrated Google Lighthouse scoring. Analyze performance, accessibility, SEO, and best practices to understand how well a website is built using its detected technologies.</p>
+            <a href="#hero" class="primary-cta">Scan a website</a>
+            <div class="flex flex-col gap-2 text-neutral-300 text-lg mt-7">
+                <div class="flex flex-row gap-2 items-start">
+                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                    <div class="flex flex-col gap-2">
+                        <div class="font-medium">Performance and loading speed</div>
+                    </div>
+                </div>
+                <div class="flex flex-row gap-2 items-start">
+                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                    <div class="flex flex-col gap-2">
+                        <div class="font-medium">Accessibility standards</div>
+                    </div>
+                </div>
+                <div class="flex flex-row gap-2 items-start">
+                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                    <div class="flex flex-col gap-2">
+                        <div class="font-medium">SEO score</div>
+                    </div>
+                </div>
+                <div class="flex flex-row gap-2 items-start">
+                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                    <div class="flex flex-col gap-2">
+                        <div class="font-medium">Best practices compliance</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full aspect-square square-card overflow-hidden relative">
+            <div class="absolute h-full w-full z-10 bg-gradient-to-t from-neutral-800 to-transparent pointer-events-none"></div>
+            <div class="square-card p-0">
+                <Image src={LighthouseExample} alt="TailwindCSS Lighthouse Report"></Image>
+            </div>
+        </div>
+    </div>
+    <div class="grid lg:grid-cols-2 lg:gap-14 gap-8">
+        <div class="flex flex-col justify-center items-start lg:order-first order-last">
+            <h2 class="lg:text-4xl text-3xl text-balance font-medium text-neutral-200 lg:leading-snug leading-normal">Preview meta tags across platforms</h2>
+            <p class="text-pretty text-lg mt-3 text-neutral-300 mb-7">See how websites appear when shared on search engines, social media, and messaging apps. Test and preview meta tags to ensure optimal presentation across all platforms.</p>
+            <a href="#hero" class="primary-cta">Scan a website</a>
+            <div class="flex flex-col gap-2 text-neutral-300 text-lg mt-7">
+                <div class="flex flex-row gap-2 items-start">
+                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                    <div class="flex flex-col gap-2">
+                        <div class="font-medium">Search engine previews</div>
+                    </div>
+                </div>
+                <div class="flex flex-row gap-2 items-start">
+                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                    <div class="flex flex-col gap-2">
+                        <div class="font-medium">Social media card displays</div>
+                    </div>
+                </div>
+                <div class="flex flex-row gap-2 items-start">
+                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                    <div class="flex flex-col gap-2">
+                        <div class="font-medium">Messaging app previews</div>
+                    </div>
+                </div>
+                <div class="flex flex-row gap-2 items-start">
+                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                    <div class="flex flex-col gap-2">
+                        <div class="font-medium">Live preview editor</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="w-full aspect-square square-card overflow-hidden relative">
+                <div class="absolute h-full w-full z-10 bg-gradient-to-t from-neutral-800 to-transparent pointer-events-none"></div>
+                <div class="square-card flex flex-col gap-5 sticky top-44" data-astro-cid-66dgfmvl=""> <div data-astro-cid-66dgfmvl=""> <div class="mb-2" data-astro-cid-66dgfmvl="">Title</div> <input id="metaTitle" class="square-card rounded-none p-2 text-neutral-300 mb-2" type="text" value="Tailwind CSS - Rapidly build modern websites without ever leaving your HTML." data-astro-cid-66dgfmvl=""> <div data-astro-cid-66dgfmvl=""><span id="titleLength" data-astro-cid-66dgfmvl="">76</span> / 60 characters</div> </div> <div data-astro-cid-66dgfmvl=""> <div class="mb-2" data-astro-cid-66dgfmvl="">Description</div> <textarea id="metaDescription" rows="3" cols="33" class="square-card rounded-none p-2 text-neutral-300 mb-1" placeholder="seo meta description" data-astro-cid-66dgfmvl="">Tailwind CSS is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML.</textarea> <div data-astro-cid-66dgfmvl=""><span id="descriptionLength" data-astro-cid-66dgfmvl="">114</span> / 155 characters</div> </div> <div data-astro-cid-66dgfmvl=""> <div class="mb-2" data-astro-cid-66dgfmvl="">Image</div> <div class="square-card p-0" data-astro-cid-66dgfmvl=""> <img class="h-full w-full aspect-video object-cover object-center" src="https://tailwindcss.com/opengraph-image.jpg?22502194f1a254bc" alt="Open Graph Image of https://tailwindcss.com" data-astro-cid-66dgfmvl=""> </div> </div> </div>
+            </div>
+        </div>
+    </div>
+    <div class="grid lg:grid-cols-2 lg:gap-14 gap-8">
+        <div class="flex flex-col justify-center items-start order-2">
+            <h2 class="lg:text-4xl text-3xl text-balance font-medium text-neutral-200 lg:leading-snug leading-normal">Interactive sitemap visualization</h2>
+            <p class="text-pretty text-lg mt-3 text-neutral-300 mb-7">Explore website structure through an interactive tree visualization. Get a clear understanding of page hierarchy, navigation paths, and content organization through an intuitive visual interface.</p>
+            <a href="#hero" class="primary-cta">Scan a website</a>
+            <div class="flex flex-col gap-2 text-neutral-300 text-lg mt-7">
+                <div class="flex flex-row gap-2 items-start">
+                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                    <div class="flex flex-col gap-2">
+                        <div class="font-medium">Hierarchical tree view</div>
+                    </div>
+                </div>
+                <div class="flex flex-row gap-2 items-start">
+                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                    <div class="flex flex-col gap-2">
+                        <div class="font-medium">Interactive navigation</div>
+                    </div>
+                </div>
+                <div class="flex flex-row gap-2 items-start">
+                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                    <div class="flex flex-col gap-2">
+                        <div class="font-medium">Collapsible sections</div>
+                    </div>
+                </div>
+                <div class="flex flex-row gap-2 items-start">
+                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                    <div class="flex flex-col gap-2">
+                        <div class="font-medium">Page count insights</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full aspect-square square-card overflow-hidden relative">
+            <div class="absolute h-full w-full z-10 bg-gradient-to-t from-neutral-800 to-transparent pointer-events-none"></div>
+            <div class="square-card p-0 overflow-hidden h-full">
+                <Image src={SitemapExample} class="h-full object-cover" alt="CRFT Studio sitemap example"></Image>
+            </div>
+        </div>
+    </div>
+</div>
