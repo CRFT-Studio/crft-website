@@ -6,11 +6,14 @@ const { url } = Astro.props;
 let sitemapUrls: string[] = [];
 let error: string | null = null;
 
+const MAX_URLS_PER_SITEMAP = 1000;
+const MAX_TOTAL_URLS = 5000;
+
 if (url) {
     console.log(`[Sitemap] Starting sitemap fetch for ${url}`);
     const baseUrl = new URL(url).origin;
 
-    async function processSitemap(url: string): Promise<string[]> {
+    async function processSitemap(url: string, currentTotal: number = 0): Promise<[string[], number]> {
         console.log(`[Sitemap] Attempting to fetch sitemap from ${url}`);
         try {
             const controller = new AbortController();
@@ -51,60 +54,64 @@ if (url) {
 
             const text = await response.text();
             console.log(`[Sitemap] Successfully retrieved content from ${url}`);
-            const urls = new Set<string>();
 
             try {
                 const result = await parseStringPromise(text);
-                console.log(`[Sitemap] Successfully parsed XML from ${url}`);
 
                 if (result.sitemapindex) {
-                    console.log(`[Sitemap] Found sitemap index at ${url}`);
                     const sitemaps = result.sitemapindex.sitemap || [];
                     const errors = [];
                     const allUrls = new Set();
+                    let totalUrls = currentTotal;
 
                     for (const sitemap of sitemaps) {
+                        if (totalUrls >= MAX_TOTAL_URLS) {
+                            console.log(`[Sitemap] Reached total limit of ${MAX_TOTAL_URLS} URLs during index processing`);
+                            break;
+                        }
+
                         if (sitemap.loc && sitemap.loc[0]) {
                             try {
-                                console.log(
-                                    `[Sitemap] Processing sub-sitemap: ${sitemap.loc[0]}`,
-                                );
-                                const subSitemapUrls = await processSitemap(
-                                    sitemap.loc[0],
-                                );
+                                const [subSitemapUrls, newTotal] = await processSitemap(sitemap.loc[0], totalUrls);
+                                totalUrls = newTotal;
                                 subSitemapUrls.forEach(url => allUrls.add(url));
                             } catch (error) {
-                                console.log(`[Sitemap] Error in sub-sitemap ${sitemap.loc[0]}: ${error.message}`);
                                 errors.push(error);
-                                continue; // Continue processing other sitemaps
+                                continue;
                             }
                         }
                     }
 
-                    // Only throw if ALL sub-sitemaps failed
-                    if (errors.length === sitemaps.length) {
-                        throw new Error("All sub-sitemaps failed to process");
-                    }
-
-                    return Array.from(allUrls);
+                    return [Array.from(allUrls), totalUrls];
                 } else if (result.urlset) {
-                    console.log(`[Sitemap] Found urlset at ${url}`);
                     const urlElements = result.urlset.url || [];
+                    let count = 0;
+                    const urls = new Set<string>();
+
                     for (const urlElement of urlElements) {
+                        if (currentTotal + count >= MAX_TOTAL_URLS) {
+                            console.log(`[Sitemap] Reached total limit of ${MAX_TOTAL_URLS} URLs`);
+                            break;
+                        }
+                        if (count >= MAX_URLS_PER_SITEMAP) {
+                            console.log(`[Sitemap] Reached per-sitemap limit of ${MAX_URLS_PER_SITEMAP} URLs for ${url}`);
+                            break;
+                        }
+
                         if (urlElement.loc && urlElement.loc[0]) {
                             urls.add(urlElement.loc[0]);
+                            count++;
                         }
                     }
-                    console.log(
-                        `[Sitemap] Extracted ${urls.size} URLs from ${url}`,
-                    );
+
+                    return [Array.from(urls), currentTotal + count];
                 }
+
+                return [[], currentTotal];
             } catch (error) {
                 console.error(`[Sitemap] XML parsing error for ${url}:`, error);
                 throw new Error("Error parsing sitemap XML");
             }
-
-            return Array.from(urls);
         } catch (error) {
             console.error(`[Sitemap] Error processing ${url}:`, error);
             if (error.name === "AbortError") {
@@ -149,19 +156,20 @@ if (url) {
         if (robotsResponse.ok) {
             const robotsText = await robotsResponse.text();
             const sitemapMatches = robotsText.matchAll(/Sitemap:\s*(.+)/gi);
-            console.log(
-                `[Sitemap] Successfully retrieved robots.txt from ${baseUrl}`,
-            );
 
             const allUrls = new Set();
+            let totalUrls = 0;
 
             for (const match of sitemapMatches) {
+                if (totalUrls >= MAX_TOTAL_URLS) {
+                    console.log(`[Sitemap] Reached total limit of ${MAX_TOTAL_URLS} URLs`);
+                    break;
+                }
+
                 const sitemapUrl = match[1].trim();
                 try {
-                    console.log(
-                        `[Sitemap] Found sitemap URL in robots.txt: ${sitemapUrl}`,
-                    );
-                    const urls = await processSitemap(sitemapUrl);
+                    const [urls, newTotal] = await processSitemap(sitemapUrl, totalUrls);
+                    totalUrls = newTotal;
                     urls.forEach(url => allUrls.add(url));
                 } catch (error) {
                     console.log(`[Sitemap] Error processing ${sitemapUrl}: ${error.message}`);
@@ -171,7 +179,7 @@ if (url) {
 
             if (allUrls.size > 0) {
                 sitemapUrls = Array.from(allUrls);
-                console.log(`[Sitemap] Successfully found ${sitemapUrls.length} URLs from robots.txt`);
+                console.log(`[Sitemap] Successfully found ${sitemapUrls.length} URLs from robots.txt (limited to ${MAX_TOTAL_URLS})`);
             }
         }
 
@@ -196,7 +204,7 @@ if (url) {
                     console.log(
                         `[Sitemap] Trying common path: ${baseUrl}${path}`,
                     );
-                    const urls = await processSitemap(`${baseUrl}${path}`);
+                    const [urls, _] = await processSitemap(`${baseUrl}${path}`);
                     if (urls.length > 0) {
                         console.log(
                             `[Sitemap] Successfully found sitemap at ${path}`,
