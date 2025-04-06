@@ -1,12 +1,13 @@
 ---
 import { Image } from 'astro:assets';
 import LookupOverview from "../images/lookup-overview.png";
+const {subtitle, step1, step2, step3} = Astro.props;
 ---
 <div class="container text-center">
     <div class="mb-10">
         <div class="text-center text-orange-300 font-normal text-lg mb-3">How it works</div>
         <h2 class="lg:text-4xl text-3xl text-balance text-center font-medium text-neutral-200 lg:leading-snug leading-normal">Three simple steps to analyze any website</h2>
-        <p class="text-pretty text-lg text-center mt-3 text-neutral-300 mb-8 max-w-[800px] mx-auto">CRFT Lookup makes it easy to discover the technologies and tools behind your favorite websites. Just enter a URL, wait for our analysis, and get detailed insights in seconds.</p>
+        <p class="text-pretty text-lg text-center mt-3 text-neutral-300 mb-8 max-w-[800px] mx-auto">{subtitle}</p>
         <a href="/lookup#hero" class="primary-cta">Scan a website</a>
     </div>
     <Image src={LookupOverview} alt="Screenshot of CRFT Lookup report on TailwindCSS" class="rounded-xl shadow-2xl"/>
@@ -14,17 +15,17 @@ import LookupOverview from "../images/lookup-overview.png";
         <div class="flex flex-col items-center">
             <div class="square-card aspect-square text-2xl font-semibold font-mono p-1 mb-4">1</div>
             <div class="text-lg font-medium mb-1">Enter a URL</div>
-            <div class="font-normal text-pretty text-neutral-300">Enter the URL of a website you're curious about, or get a random wbesite selected for you at the click of a button</div>
+            <div class="font-normal text-pretty text-neutral-300">Enter the URL of a website you're curious about, or get a random website selected for you at the click of a button</div>
         </div>
         <div class="flex flex-col items-center">
             <div class="square-card aspect-square text-2xl font-semibold font-mono p-1 mb-4">2</div>
             <div class="text-lg font-medium mb-1">We scan it</div>
-            <div class="font-normal text-pretty text-neutral-300">We visit the URL and analyze its HTML, JS, response headers, and more. Then, we compare them against our database of over 2,500 technology fingerprints to identify the technologies behind the website.</div>
+            <div class="font-normal text-pretty text-neutral-300">{step2}</div>
         </div>
         <div class="flex flex-col items-center">
             <div class="square-card aspect-square text-2xl font-semibold font-mono p-1 mb-4">3</div>
             <div class="text-lg font-medium mb-1">See the results</div>
-            <div class="font-normal text-pretty text-neutral-300">After ~15 seconds, get an organized breakdown of all the technologies powering the website, including frameworks, analytics tools, marketing pixels, and more. Click any result to learn more about that technology.</div>
+            <div class="font-normal text-pretty text-neutral-300">{step3}</div>
         </div>
     </div>
 </div>
