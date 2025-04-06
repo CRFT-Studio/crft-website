@@ -6,13 +6,13 @@ import FAQItem from "../../components/FAQItem.astro";
 import LookupCard from "../../components/LookupCard.astro";
 import LookupCTA from "../../components/LookupCTA.astro";
 import { Image } from 'astro:assets';
-import NickPFP from '../../images/nick-pfp-new.png';
 import SitemapExample from "../../images/sitemap-tree-example.png";
 import LighthouseExample from "../../images/tailwind-lh-screenshot.png";
-import LookupOverview from "../../images/lookup-overview.png";
 import SitemapScreenshot from "../../images/crft-sitemap-screenshot.png";
 import LookupMarquee from "../../components/LookupMarquee.astro";
+import HowItWorks from "../../components/HowItWorks.astro";
 import LookupFeatures from "../../components/LookupFeatures.astro";
+import LookupTestimonial from "../../components/LookupTestimonial.astro";
 ---
 <html lang="en">
     <head>
@@ -28,7 +28,7 @@ import LookupFeatures from "../../components/LookupFeatures.astro";
                 <div class="grid lg:grid-cols-2 items-center gap-10">
                     <div>
                         <div class="font-normal text-lg mb-3 flex flex-row gap-2 items-center">
-                            <div>CRFT Lookup</div>
+                            <a href="/lookup" class="underline text-neutral-400">CRFT Lookup</a>
                             <div>/</div>
                             <div class="text-orange-300">Technology Detection</div>
                         </div>
@@ -73,44 +73,11 @@ import LookupFeatures from "../../components/LookupFeatures.astro";
             <LookupMarquee/>
         </section>
         <section>
-            <div class="container">
-                <div class="text-center text-orange-300 font-normal text-lg mb-3">How it works</div>
-                <h2 class="lg:text-4xl text-3xl text-balance text-center font-medium text-neutral-200 lg:leading-snug leading-normal">Three simple steps to analyze any website</h2>
-                <p class="text-pretty text-lg text-center mt-3 text-neutral-300 mb-8 max-w-[800px] mx-auto">CRFT Lookup makes it easy to discover the technologies and tools behind your favorite websites. Just enter a URL, wait for our analysis, and get detailed insights in seconds.</p>
-                <Image src={LookupOverview} alt="Screenshot of CRFT Lookup report on TailwindCSS" class="rounded-xl shadow-2xl"/>
-                <div class="grid lg:grid-cols-3 gap-10 text-center mt-10">
-                    <div class="flex flex-col items-center">
-                        <div class="square-card aspect-square text-2xl font-semibold font-mono p-1 mb-4">1</div>
-                        <div class="text-lg font-medium mb-1">Enter a URL</div>
-                        <div class="font-normal text-pretty text-neutral-300">Enter the URL of a website you're curious about, or get a random wbesite selected for you at the click of a button</div>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="square-card aspect-square text-2xl font-semibold font-mono p-1 mb-4">2</div>
-                        <div class="text-lg font-medium mb-1">We scan it</div>
-                        <div class="font-normal text-pretty text-neutral-300">We visit the URL and analyze its HTML, JS, response headers, and more. Then, we compare them against our database of over 2,500 technology fingerprints to identify the technologies behind the website.</div>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="square-card aspect-square text-2xl font-semibold font-mono p-1 mb-4">3</div>
-                        <div class="text-lg font-medium mb-1">See the results</div>
-                        <div class="font-normal text-pretty text-neutral-300">After ~15 seconds, get an organized breakdown of all the technologies powering the website, including frameworks, analytics tools, marketing pixels, and more. Click any result to learn more about that technology.</div>
-                    </div>
-                </div>
-            </div>
+            <HowItWorks/>
         </section>
-        <!-- <section>
-            <div class="container">
-                <div class="mb-7 lg:flex flex-col gap-5 items-start hidden max-w-[600px] mx-auto">
-                    <div class="relative shrink-0">
-                        <Image src={NickPFP} alt='Nick profile pic' class='w-24 relative'></Image>
-                        <div class="absolute w-full h-full top-0 bg-gradient-to-t from-neutral-900 via-50% via-transparent to-transparent"></div>
-                    </div>
-                    <div class="card inline-block py-2 px-3 rounded-tl-none text-lg">
-                        <div class="mb-1">"This did a great job at giving me insight into how some of my favorite sites are created, and has inspired me to build."</div>
-                        <div class="text-neutral-400 text-pretty"> - Nick Hoban, Web Developer 🇨🇦</div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
+        <section>
+            <LookupTestimonial/>
+        </section>
         <section>
             <div class="container">
                 <div class="text-center text-orange-300 font-normal text-lg mb-3">How we stack up</div>
@@ -120,11 +87,8 @@ import LookupFeatures from "../../components/LookupFeatures.astro";
                     <div class="grid grid-cols-[1fr_0.3fr_0.4fr] gap-x-3">
                         <div></div>
                         <div class="flex flex-row items-center justify-center pb-7">
-                            <div class="square-card border-purple-800 p-1 aspect-square w-10 h-10 object-contain flex items-center justify-center bg-[#460FAD]">
-                                <svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M63.9994 93.9355L7.33824 64.5078L0.00224445 69.7704L0 72.9895L63.9994 118.91L127.996 72.9918L128 69.7738L120.661 64.5078L63.9994 93.9355Z" fill="white" fill-opacity="0.5"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.00336668 56.0236L63.9994 10.1053L127.999 56.0258L127.995 59.2449L63.9994 105.164L0 59.2427L0.00336668 56.0236ZM64.5695 44.6585L72.3724 55.424L72.2882 55.4858L57.9159 49.5281L52.665 53.3715L60.8033 63.863L60.7203 63.9248L46.055 58.2108L39.3812 63.0973L67.4357 73.2519L73.021 69.1627L64.5269 58.2883L64.5909 58.2422L79.5064 64.4154L85.0917 60.3251L71.2221 39.7878L64.5695 44.6585Z" fill="white"/>
-                                </svg>
+                            <div class="object-contain flex items-center justify-center">
+                            Others
                             </div>
                         </div>
                         <div class="flex md:flex-row flex-col items-center justify-center pb-7 gap-2 bg-green-400 bg-opacity-15 rounded-t-lg">
