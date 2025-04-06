@@ -30,41 +30,43 @@ import LookupTestimonial from "../../components/LookupTestimonial.astro";
                         <div class="font-normal text-lg mb-3 flex flex-row gap-2 items-center">
                             <a href="/lookup" class="underline text-neutral-400">CRFT Lookup</a>
                             <div>/</div>
-                            <div class="text-orange-300">Technology Detection</div>
+                            <div class="text-orange-300">Meta Tag Previewer</div>
                         </div>
-                        <h1 class="lg:text-5xl text-4xl text-balance font-semibold lg:leading-snug leading-normal">See your favorite website's tech stack</h1>
-                        <p class="text-pretty text-lg mt-3 text-neutral-300 mb-7">Identify frameworks, CMS platforms, analytics tools, and more with our powerful technology detection engine. Get detailed insights about the tools and services powering any website.</p>
+                        <h1 class="lg:text-5xl text-4xl text-balance font-semibold lg:leading-snug leading-normal">Preview your favorite website's meta tags</h1>
+                        <p class="text-pretty text-lg mt-3 text-neutral-300 mb-7">See how websites appear when shared on search engines, social media, and messaging apps. Test and preview meta tags to ensure optimal presentation across all platforms.</p>
                         <a href="/lookup#hero" class="primary-cta">Scan a website</a>
                         <div class="flex flex-col gap-2 text-neutral-300 text-lg mt-7">
                             <div class="flex flex-row gap-2 items-start">
                                 <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
                                 <div class="flex flex-col gap-2">
-                                    <div class="font-medium">Frameworks and libraries</div>
+                                    <div class="font-medium">Search engine previews</div>
                                 </div>
                             </div>
                             <div class="flex flex-row gap-2 items-start">
                                 <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
                                 <div class="flex flex-col gap-2">
-                                    <div class="font-medium">CMS and hosting</div>
+                                    <div class="font-medium">Social media card displays</div>
                                 </div>
                             </div>
                             <div class="flex flex-row gap-2 items-start">
                                 <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
                                 <div class="flex flex-col gap-2">
-                                    <div class="font-medium">Analytics and marketing tools</div>
+                                    <div class="font-medium">Messaging app previews</div>
                                 </div>
                             </div>
                             <div class="flex flex-row gap-2 items-start">
                                 <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
                                 <div class="flex flex-col gap-2">
-                                    <div class="font-medium">Infrastructure and more</div>
+                                    <div class="font-medium">Live preview editor</div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="w-full aspect-square square-card overflow-hidden relative">
-                        <div class="absolute h-full w-full z-10 bg-gradient-to-t from-neutral-800 to-transparent pointer-events-none"></div>
-                        <div class="flex flex-col gap-4"> <a href="https://reactjs.org" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="React" data-tech-icon="React.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/React.svg" class="w-5 h-5" alt=""> <div>React</div> </div> <div class="text-pretty">React is an open-source JavaScript library for building user interfaces or UI components.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://nextjs.org" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Next.js" data-tech-icon="Next.js.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Next.js.svg" class="w-5 h-5" alt=""> <div>Next.js</div> </div> <div class="text-pretty">Next.js is a React framework for developing single page Javascript applications.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> <a href="https://business.linkedin.com/marketing-solutions/insight-tag" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Linkedin Insight Tag" data-tech-icon="Linkedin.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Linkedin.svg" class="w-5 h-5" alt=""> <div>Linkedin Insight Tag</div> </div> <div class="text-pretty">LinkedIn Insight Tag is a lightweight JavaScript tag that powers conversion tracking, website audiences, and website demographics.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://www.hotjar.com" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Hotjar" data-tech-icon="Hotjar.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Hotjar.svg" class="w-5 h-5" alt=""> <div>Hotjar</div> </div> <div class="text-pretty">Hotjar is a suite of analytic tools to assist in the gathering of qualitative data, providing feedback through tools such as heatmaps, session recordings, and surveys.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://google.com/analytics" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Google Analytics" data-tech-icon="Google Analytics.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Google Analytics.svg" class="w-5 h-5" alt=""> <div>Google Analytics</div> </div> <div class="text-pretty">Google Analytics is a free web analytics service that tracks and reports website traffic.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://facebook.com" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Facebook Pixel" data-tech-icon="Facebook.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Facebook.svg" class="w-5 h-5" alt=""> <div>Facebook Pixel</div> </div> <div class="text-pretty">Facebook pixel is an analytics tool that allows you to measure the effectiveness of your advertising.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div>
+                    <div>
+                        <div class="w-full aspect-square square-card overflow-hidden relative">
+                            <div class="absolute h-full w-full z-10 bg-gradient-to-t from-neutral-800 to-transparent pointer-events-none"></div>
+                            <div class="square-card flex flex-col gap-5 sticky top-44" data-astro-cid-66dgfmvl=""> <div data-astro-cid-66dgfmvl=""> <div class="mb-2" data-astro-cid-66dgfmvl="">Title</div> <input id="metaTitle" class="square-card rounded-none p-2 text-neutral-300 mb-2" type="text" value="Tailwind CSS - Rapidly build modern websites without ever leaving your HTML." data-astro-cid-66dgfmvl=""> <div data-astro-cid-66dgfmvl=""><span id="titleLength" data-astro-cid-66dgfmvl="">76</span> / 60 characters</div> </div> <div data-astro-cid-66dgfmvl=""> <div class="mb-2" data-astro-cid-66dgfmvl="">Description</div> <textarea id="metaDescription" rows="3" cols="33" class="square-card rounded-none p-2 text-neutral-300 mb-1" placeholder="seo meta description" data-astro-cid-66dgfmvl="">Tailwind CSS is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML.</textarea> <div data-astro-cid-66dgfmvl=""><span id="descriptionLength" data-astro-cid-66dgfmvl="">114</span> / 155 characters</div> </div> <div data-astro-cid-66dgfmvl=""> <div class="mb-2" data-astro-cid-66dgfmvl="">Image</div> <div class="square-card p-0" data-astro-cid-66dgfmvl=""> <img class="h-full w-full aspect-video object-cover object-center" src="https://tailwindcss.com/opengraph-image.jpg?22502194f1a254bc" alt="Open Graph Image of https://tailwindcss.com" data-astro-cid-66dgfmvl=""> </div> </div> </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -74,9 +76,9 @@ import LookupTestimonial from "../../components/LookupTestimonial.astro";
         </section>
         <section>
             <HowItWorks
-            subtitle="CRFT Lookup makes it easy to discover the technologies and tools behind your favorite websites. Just enter a URL, wait for our analysis, and get detailed insights in seconds."
-            step2="We visit the URL and analyze its HTML, JS, response headers, and more. Then, we compare them against our database of over 2,500 technology fingerprints to identify the technologies behind the website."
-            step3="After ~15 seconds, get an organized breakdown of all the technologies powering the website, including frameworks, analytics tools, marketing pixels, and more. Click any result to learn more about that technology."
+            subtitle="CRFT Lookup analyzes any website's meta tags and previews how they appear across search engines, social media, and messaging apps. Just enter a URL to see how your site looks when shared online."
+            step2="We analyze the website's meta tags, including standard HTML meta tags, Open Graph tags for social media, and Twitter Cards. Our preview engine shows exactly how your content appears on different platforms."
+            step3="After scanning, get instant previews of your meta tags across platforms. See how titles, descriptions and images render in search results, social feeds, and messaging apps to optimize your site's appearance."
             />
         </section>
         <section>
@@ -85,8 +87,8 @@ import LookupTestimonial from "../../components/LookupTestimonial.astro";
         <section>
             <div class="container">
                 <div class="text-center text-orange-300 font-normal text-lg mb-3">How we stack up</div>
-                <h2 class="lg:text-4xl text-3xl text-balance text-center font-medium text-neutral-200 lg:leading-snug leading-normal">More than just technology detection</h2>
-                <p class="text-pretty text-lg text-center mt-3 text-neutral-300 mb-6 max-w-[800px] mx-auto">See how CRFT Lookup compares to other tools in features and capabilities. Some also detect technologies, but we go beyond with performance analysis, meta tag previews and sitemap visualization too.</p>
+                <h2 class="lg:text-4xl text-3xl text-balance text-center font-medium text-neutral-200 lg:leading-snug leading-normal">More than just meta tag previews</h2>
+                <p class="text-pretty text-lg text-center mt-3 text-neutral-300 mb-6 max-w-[800px] mx-auto">See how CRFT Lookup compares to other tools in features and capabilities. Some also provide meta tag previews, but we go beyond with Lighthouse scores, technology detection, and sitemap visualization too.</p>
                 <div class="max-w-[800px] mx-auto font-medium lg:text-lg text-sm mt-12">
                     <div class="grid grid-cols-[1fr_0.3fr_0.4fr] gap-x-3">
                         <div></div>
@@ -103,7 +105,7 @@ import LookupTestimonial from "../../components/LookupTestimonial.astro";
                         </div>
                         <div class="py-3">Technology Detection</div>
                         <div class="flex flex-row items-center justify-center">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="m336-293.85 144-144 144 144L666.15-336l-144-144 144-144L624-666.15l-144 144-144-144L293.85-624l144 144-144 144L336-293.85ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Z"/></svg>
                         </div>
                         <div class="flex flex-row items-center justify-center bg-green-400 bg-opacity-15">
                             <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
@@ -123,7 +125,7 @@ import LookupTestimonial from "../../components/LookupTestimonial.astro";
                     <div class="grid grid-cols-[1fr_0.3fr_0.4fr] gap-x-3">
                         <div class="py-3">Meta Tag Previews</div>
                         <div class="flex flex-row items-center justify-center">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="m336-293.85 144-144 144 144L666.15-336l-144-144 144-144L624-666.15l-144 144-144-144L293.85-624l144 144-144 144L336-293.85ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Z"/></svg>
+                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
                         </div>
                         <div class="flex flex-row items-center justify-center bg-green-400 bg-opacity-15">
                             <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
@@ -159,6 +161,21 @@ import LookupTestimonial from "../../components/LookupTestimonial.astro";
                 <div class="grid md:grid-cols-3 gap-4">
                     <a href="/lookup" class="square-card hover:-translate-y-2 transition-all flex flex-col justify-between">
                         <div>
+                            <div class="mb-5 relative">
+                                <div class="absolute h-full w-full z-10 bg-gradient-to-t from-neutral-800 to-transparent pointer-events-none"></div>
+                                <div class="w-full aspect-square overflow-hidden">
+                                    <div class="flex flex-col gap-4"> <div class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="React" data-tech-icon="React.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/React.svg" class="w-5 h-5" alt=""> <div>React</div> </div> <div class="text-pretty">React is an open-source JavaScript library for building user interfaces or UI components.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </div><div class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Next.js" data-tech-icon="Next.js.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Next.js.svg" class="w-5 h-5" alt=""> <div>Next.js</div> </div> <div class="text-pretty">Next.js is a React framework for developing single page Javascript applications.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </div> <div class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Linkedin Insight Tag" data-tech-icon="Linkedin.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Linkedin.svg" class="w-5 h-5" alt=""> <div>Linkedin Insight Tag</div> </div> <div class="text-pretty">LinkedIn Insight Tag is a lightweight JavaScript tag that powers conversion tracking, website audiences, and website demographics.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </div><div class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Hotjar" data-tech-icon="Hotjar.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Hotjar.svg" class="w-5 h-5" alt=""> <div>Hotjar</div> </div> <div class="text-pretty">Hotjar is a suite of analytic tools to assist in the gathering of qualitative data, providing feedback through tools such as heatmaps, session recordings, and surveys.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </div><div class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Google Analytics" data-tech-icon="Google Analytics.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Google Analytics.svg" class="w-5 h-5" alt=""> <div>Google Analytics</div> </div> <div class="text-pretty">Google Analytics is a free web analytics service that tracks and reports website traffic.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </div><div class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Facebook Pixel" data-tech-icon="Facebook.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Facebook.svg" class="w-5 h-5" alt=""> <div>Facebook Pixel</div> </div> <div class="text-pretty">Facebook pixel is an analytics tool that allows you to measure the effectiveness of your advertising.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </div> </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text-2xl text-pretty font-medium text-neutral-200">Comprehensive tech stack detection</div>
+                                <p class="text-pretty text-lg mt-3 text-neutral-300 mb-4">Identify frameworks, CMS platforms, analytics tools, and more with our powerful technology detection engine. Get detailed insights about the tools and services powering any website.</p>
+                            </div>
+                        </div>
+                        <div class="text-orange-300 text-lg">Learn more →</div>
+                    </a>
+                    <a href="/lookup" class="square-card hover:-translate-y-2 transition-all flex flex-col justify-between">
+                        <div>
                             <div class="w-full aspect-square overflow-hidden relative mb-5">
                                 <div class="absolute h-full w-full z-10 bg-gradient-to-t from-neutral-800 to-transparent pointer-events-none"></div>
                                 <div class="square-card p-0">
@@ -168,19 +185,6 @@ import LookupTestimonial from "../../components/LookupTestimonial.astro";
                             <div>
                                 <div class="text-2xl text-pretty font-medium text-neutral-200">Benchmarks with Lighthouse</div>
                                 <p class="text-pretty text-lg mt-3 text-neutral-300 mb-4">Go beyond tech detection with integrated Google Lighthouse scoring. Analyze performance, accessibility, SEO, and best practices to understand how well a website is built using its detected technologies.</p>
-                            </div>
-                        </div>
-                        <div class="text-orange-300 text-lg">Learn more →</div>
-                    </a>
-                    <a href="/lookup" class="square-card hover:-translate-y-2 transition-all flex flex-col justify-between">
-                        <div>
-                            <div class="w-full aspect-square overflow-hidden relative mb-5">
-                                <div class="absolute h-full w-full z-10 bg-gradient-to-t from-neutral-800 to-transparent pointer-events-none"></div>
-                                <div class="square-card flex flex-col gap-5 sticky top-44" data-astro-cid-66dgfmvl=""> <div data-astro-cid-66dgfmvl=""> <div class="mb-2" data-astro-cid-66dgfmvl="">Title</div> <input id="metaTitle" class="square-card rounded-none p-2 text-neutral-300 mb-2" type="text" value="Tailwind CSS - Rapidly build modern websites without ever leaving your HTML." data-astro-cid-66dgfmvl=""> <div data-astro-cid-66dgfmvl=""><span id="titleLength" data-astro-cid-66dgfmvl="">76</span> / 60 characters</div> </div> <div data-astro-cid-66dgfmvl=""> <div class="mb-2" data-astro-cid-66dgfmvl="">Description</div> <textarea id="metaDescription" rows="3" cols="33" class="square-card rounded-none p-2 text-neutral-300 mb-1" placeholder="seo meta description" data-astro-cid-66dgfmvl="">Tailwind CSS is a utility-first CSS framework for rapidly building modern websites without ever leaving your HTML.</textarea> <div data-astro-cid-66dgfmvl=""><span id="descriptionLength" data-astro-cid-66dgfmvl="">114</span> / 155 characters</div> </div> <div data-astro-cid-66dgfmvl=""> <div class="mb-2" data-astro-cid-66dgfmvl="">Image</div> <div class="square-card p-0" data-astro-cid-66dgfmvl=""> <img class="h-full w-full aspect-video object-cover object-center" src="https://tailwindcss.com/opengraph-image.jpg?22502194f1a254bc" alt="Open Graph Image of https://tailwindcss.com" data-astro-cid-66dgfmvl=""> </div> </div> </div>
-                            </div>
-                            <div>
-                                <div class="text-2xl text-pretty font-medium text-neutral-200">Preview meta tags across platforms</div>
-                                <p class="text-pretty text-lg mt-3 text-neutral-300 mb-4">See how websites appear when shared on search engines, social media, and messaging apps. Test and preview meta tags to ensure optimal presentation across all platforms.</p>
                             </div>
                         </div>
                         <div class="text-orange-300 text-lg">Learn more →</div>
@@ -207,24 +211,24 @@ import LookupTestimonial from "../../components/LookupTestimonial.astro";
             <div class="container max-w-[800px]">
                 <h2 class="text-3xl lg:text-4xl font-semibold text-center leading-tight mb-10 text-neutral-300">Your questions, answered</h2>
                 <FAQItem
-                    question="How does CRFT Lookup's technology detection work?"
-                    answer="CRFT Lookup uses a community-maintained fork of Wappalyzer's detection engine to identify technologies. When you input a URL, we analyze the site's HTML, JavaScript variables, response headers, and other indicators against a database of over 2,500 technology fingerprints to accurately identify frameworks, CMS platforms, analytics tools, and infrastructure technologies."
+                    question="How does CRFT Lookup's meta tag preview work?"
+                    answer="CRFT Lookup analyzes the meta tags and social cards on any website. When you input a URL, we fetch and parse the HTML to extract titles, descriptions, images and other meta information. You can then see how the site appears when shared on search engines, social media, and messaging apps."
                 />
                 <FAQItem
-                    question="How accurate is the technology detection?"
-                    answer="Our technology detection is highly reliable as it's built on Wappalyzer's battle-tested detection engine. We use multiple detection methods including HTML pattern matching, JavaScript variable analysis, and header inspection to ensure accuracy. While no detection system is perfect due to obfuscation and custom implementations, our multi-layered approach maintains high accuracy rates."
+                    question="What types of meta tags are analyzed?"
+                    answer="Our tool checks standard HTML meta tags (title, description), Open Graph tags for social media (og:title, og:description, og:image), Twitter Cards (twitter:title, twitter:description, twitter:image), and other key meta information used for site previews across platforms."
                 />
                 <FAQItem
-                    question="What types of technologies can be detected?"
-                    answer="CRFT Lookup can identify a wide range of web technologies including frontend frameworks (React, Vue, Angular), backend technologies (Node.js, PHP, Ruby), CMS platforms (WordPress, Shopify), analytics tools (Google Analytics, Hotjar), marketing tools (Facebook Pixel, Google Ads), hosting providers, security solutions, and much more."
+                    question="How can I test different meta tag variations?"
+                    answer="CRFT Lookup includes a live preview editor where you can modify meta tag content and instantly see how it affects the site's appearance across platforms. This helps you optimize your meta tags for better visibility and engagement before implementing changes."
                 />
                 <FAQItem
-                    question="Is the detection process real-time?"
-                    answer="Yes, we perform live scans using a headless browser instance for each URL submitted. This ensures you get current, accurate results reflecting the latest version of the site and its technologies. The entire scan typically completes in under 30 seconds."
+                    question="Are the previews accurate?"
+                    answer="Yes, our previews accurately reflect how your site will appear when shared. We follow the same parsing rules used by major platforms like Google, Facebook, Twitter and others to ensure the previews match real-world behavior."
                 />
                 <FAQItem
-                    question="How often is the technology database updated?"
-                    answer="Our technology fingerprint database is continuously updated through our connection with the open source community. As new technologies emerge or existing ones evolve, our detection patterns are updated to maintain accuracy. This community-driven approach ensures we stay current with the latest web technologies."
+                    question="Why are meta tags important?"
+                    answer="Meta tags control how your site appears when shared or discovered. Well-optimized meta tags improve click-through rates in search results and social feeds by showing compelling titles, descriptions and images that accurately represent your content."
                 />
             </div>
         </section>
