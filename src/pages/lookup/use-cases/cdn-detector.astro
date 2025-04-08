@@ -1,0 +1,163 @@
+---
+import LookupUseCase from "../../../layouts/LookupUseCase.astro";
+import FAQItem from "../../../components/FAQItem.astro";
+---
+<LookupUseCase
+h1="Identify any website's CDN provider"
+subtitle="Detect Content Delivery Networks, edge networks, and caching solutions with our powerful CDN detection engine. Get detailed insights about the delivery infrastructure powering any website."
+metaTitle="CDN Provider Detector"
+metaDescription="Identify Content Delivery Networks, edge networks, and caching solutions with our powerful CDN detection engine. Get detailed insights about the delivery infrastructure powering any website."
+techCategory="CDN"
+>
+
+    <div slot="hero-image">
+        <div class="w-full aspect-square overflow-hidden relative">
+            <div class="absolute h-full w-full z-10 bg-gradient-to-t from-neutral-900 to-transparent pointer-events-none"></div>
+            <div class="flex flex-col gap-4">
+                <a href="https://cloudflare.com" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Cloudflare" data-tech-icon="Cloudflare.svg">
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/CloudFlare.svg" class="w-5 h-5" alt="">
+                        <div>Cloudflare</div>
+                    </div>
+                    <div class="text-pretty">Global edge network providing CDN, security, and performance optimization services.</div>
+                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg>
+                </a>
+                <a href="https://aws.amazon.com/cloudfront" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Amazon CloudFront" data-tech-icon="CloudFront.svg">
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/Amazon Cloudfront.svg" class="w-5 h-5" alt="">
+                        <div>Amazon CloudFront</div>
+                    </div>
+                    <div class="text-pretty">Amazon's fast content delivery network with global edge locations and AWS integration.</div>
+                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg>
+                </a>
+                <a href="https://www.fastly.com" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Fastly" data-tech-icon="Fastly.svg">
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/Fastly.svg" class="w-5 h-5" alt="">
+                        <div>Fastly</div>
+                    </div>
+                    <div class="text-pretty">Edge cloud platform delivering fast, secure, and scalable digital experiences.</div>
+                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg>
+                </a>
+                <a href="https://www.akamai.com" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Akamai" data-tech-icon="Akamai.svg">
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/Akamai.svg" class="w-5 h-5" alt="">
+                        <div>Akamai</div>
+                    </div>
+                    <div class="text-pretty">One of the world's largest CDN providers with extensive global infrastructure.</div>
+                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg>
+                </a>
+                <a href="https://www.bunny.net" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="BunnyCDN" data-tech-icon="BunnyCDN.svg">
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/Bunny.svg" class="w-5 h-5" alt="">
+                        <div>BunnyCDN</div>
+                    </div>
+                    <div class="text-pretty">Cost-effective global CDN with powerful features and simple implementation.</div>
+                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg>
+                </a>
+                <a href="https://www.stackpath.com" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="StackPath" data-tech-icon="StackPath.svg">
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/StackPath.svg" class="w-5 h-5" alt="">
+                        <div>StackPath</div>
+                    </div>
+                    <div class="text-pretty">Edge computing platform offering CDN, security, and serverless capabilities.</div>
+                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div slot="hero-list">
+        <div class="flex flex-col gap-2 text-neutral-300 text-lg mt-7">
+            <div class="flex flex-row gap-2 items-start">
+                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                <div class="flex flex-col gap-2">
+                    <div class="font-medium">Global Edge Networks</div>
+                </div>
+            </div>
+            <div class="flex flex-row gap-2 items-start">
+                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                <div class="flex flex-col gap-2">
+                    <div class="font-medium">Security Features</div>
+                </div>
+            </div>
+            <div class="flex flex-row gap-2 items-start">
+                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                <div class="flex flex-col gap-2">
+                    <div class="font-medium">Caching Solutions</div>
+                </div>
+            </div>
+            <div class="flex flex-row gap-2 items-start">
+                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                <div class="flex flex-col gap-2">
+                    <div class="font-medium">DDoS Protection</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div slot="article">
+        <p>In today's high-performance web ecosystem, understanding which Content Delivery Network (CDN) powers a website can provide valuable insights for businesses, developers, and technical teams. The CRFT Lookup serves as a sophisticated CDN detector, enabling users to discover the delivery infrastructure behind any website instantly.</p>
+
+        <p>With numerous CDN providers available, from industry giants like Cloudflare and Akamai to specialized solutions like BunnyCDN, identifying the specific provider a website uses has traditionally required technical expertise—until now.</p>
+
+        <h2>Why Detecting CDN Providers Matters</h2>
+
+        <p>Understanding which CDN a website uses is valuable for multiple reasons: It helps developers evaluate performance requirements, enables teams to understand infrastructure decisions, and assists businesses in making informed choices about their content delivery strategy.</p>
+
+        <p>The CRFT Lookup eliminates guesswork by providing concrete data about the CDN and related technologies powering any website.</p>
+
+        <h2>How The CRFT Lookup Detects CDN Providers</h2>
+
+        <p>The CRFT Lookup employs advanced network analysis capabilities to identify CDN providers and related infrastructure. It analyzes DNS records, HTTP headers, and technical signatures that different CDN providers leave in their implementations.</p>
+
+        <p>When you enter a URL into the CRFT Lookup, it performs a comprehensive scan that can detect popular CDNs like Cloudflare, Amazon CloudFront, Fastly, and many others. The tool categorizes these findings and presents them in an easy-to-understand format.</p>
+
+        <h2>Key CDN Features We Detect</h2>
+
+        <p>Our detection covers all major CDN capabilities including:</p>
+        <ul>
+            <li>Global Edge Networks and PoP Locations</li>
+            <li>Security Features and DDoS Protection</li>
+            <li>Caching and Performance Optimization</li>
+            <li>SSL/TLS Management</li>
+            <li>Image Optimization</li>
+            <li>Edge Computing Capabilities</li>
+        </ul>
+
+        <h2>Beyond Basic CDN Detection</h2>
+
+        <p>The CRFT Lookup doesn't just identify CDN providers—it provides context about their capabilities, global presence, and technical features. For each detected provider, users can access information about its infrastructure, performance characteristics, and typical use cases.</p>
+
+        <p>This contextual information transforms raw detection data into actionable intelligence, helping users make informed decisions about their own content delivery strategy.</p>
+
+        <h2>Privacy and Ethical Considerations</h2>
+
+        <p>The CRFT Lookup only detects information that is publicly visible in a website's infrastructure. It doesn't access private areas or reveal sensitive configurations.</p>
+
+        <p>For developers, system administrators, and technical professionals looking to gain deeper insights into website delivery infrastructure, the CRFT Lookup's CDN detection capabilities provide a valuable window into the networks powering modern web experiences.</p>
+    </div>
+
+    <div slot="faqs">
+        <FAQItem
+            question="How does CRFT Lookup detect CDN providers?"
+            answer="CRFT Lookup uses advanced network analysis capabilities to analyze DNS records, HTTP headers, and technical signatures that CDN providers leave behind. When you input a URL, it performs a comprehensive scan to detect popular providers like Cloudflare, Amazon CloudFront, Fastly, and more."
+        />
+        <FAQItem
+            question="What types of CDN features can be detected?"
+            answer="The tool can detect global edge networks, security features, caching solutions, DDoS protection, and other CDN capabilities. It identifies providers and features that leave visible signatures in publicly accessible infrastructure."
+        />
+        <FAQItem
+            question="How accurate is the CDN detection?"
+            answer="CRFT Lookup provides highly accurate results by analyzing multiple technical indicators that CDN providers leave in their infrastructure. However, it only detects providers with public-facing components - custom or private implementations may not be detectable."
+        />
+        <FAQItem
+            question="What information is provided about detected CDNs?"
+            answer="For each detected CDN provider, CRFT Lookup provides context about its capabilities, global presence, performance characteristics, and typical use cases. This helps users understand not just which provider is present, but its strengths and features."
+        />
+        <FAQItem
+            question="How can I use the CDN detection data?"
+            answer="The CDN detection data can be used for technical research, infrastructure planning, performance optimization, security analysis, and understanding technology trends in your industry. It's valuable for developers, system administrators, and technical professionals."
+        />
+    </div>
+
+</LookupUseCase>

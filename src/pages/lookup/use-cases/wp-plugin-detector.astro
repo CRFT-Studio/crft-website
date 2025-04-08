@@ -1,0 +1,163 @@
+---
+import LookupUseCase from "../../../layouts/LookupUseCase.astro";
+import FAQItem from "../../../components/FAQItem.astro";
+---
+<LookupUseCase
+h1="See the WordPress plugins any site is using"
+subtitle="Identify WordPress plugins, themes, and technical configurations with our powerful plugin detection engine. Get detailed insights about the tools and features powering any WordPress website."
+metaTitle="WordPress Plugin Detector"
+metaDescription="Identify WordPress plugins, themes, and technical configurations with our powerful plugin detection engine. Get detailed insights about the tools and features powering any WordPress website."
+techCategory="WordPress"
+>
+
+    <div slot="hero-image">
+        <div class="w-full aspect-square overflow-hidden relative">
+            <div class="absolute h-full w-full z-10 bg-gradient-to-t from-neutral-900 to-transparent pointer-events-none"></div>
+            <div class="flex flex-col gap-4">
+                <a href="https://wordpress.org" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="WordPress" data-tech-icon="WordPress.svg">
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/WordPress.svg" class="w-5 h-5" alt="">
+                        <div>WordPress</div>
+                    </div>
+                    <div class="text-pretty">WordPress powers over 40% of all websites, making it the world's most popular website platform.</div>
+                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg>
+                </a>
+                <a href="https://yoast.com" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Yoast SEO" data-tech-icon="Yoast.svg">
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/Yoast SEO.png" class="w-5 h-5" alt="">
+                        <div>Yoast SEO</div>
+                    </div>
+                    <div class="text-pretty">The most popular WordPress SEO plugin, helping millions optimize their content for search engines.</div>
+                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg>
+                </a>
+                <a href="https://www.elementor.com" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Elementor" data-tech-icon="Elementor.svg">
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/Elementor.svg" class="w-5 h-5" alt="">
+                        <div>Elementor</div>
+                    </div>
+                    <div class="text-pretty">Leading WordPress page builder used by millions to create stunning websites with drag-and-drop ease.</div>
+                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg>
+                </a>
+                <a href="https://woocommerce.com" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="WooCommerce" data-tech-icon="WooCommerce.svg">
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/WooCommerce.svg" class="w-5 h-5" alt="">
+                        <div>WooCommerce</div>
+                    </div>
+                    <div class="text-pretty">The most popular e-commerce plugin for WordPress, powering millions of online stores worldwide.</div>
+                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg>
+                </a>
+                <a href="https://wpforms.com" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="WPForms" data-tech-icon="WPForms.svg">
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/WPForms.svg" class="w-5 h-5" alt="">
+                        <div>WPForms</div>
+                    </div>
+                    <div class="text-pretty">The most beginner-friendly WordPress form builder for creating contact forms and surveys.</div>
+                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg>
+                </a>
+                <a href="https://wordpress.org/plugins/wordfence/" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Wordfence" data-tech-icon="Wordfence.svg">
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/Wordfence.svg" class="w-5 h-5" alt="">
+                        <div>Wordfence</div>
+                    </div>
+                    <div class="text-pretty">Leading WordPress security plugin providing firewall and malware scanning protection.</div>
+                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div slot="hero-list">
+        <div class="flex flex-col gap-2 text-neutral-300 text-lg mt-7">
+            <div class="flex flex-row gap-2 items-start">
+                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                <div class="flex flex-col gap-2">
+                    <div class="font-medium">SEO and Marketing Plugins</div>
+                </div>
+            </div>
+            <div class="flex flex-row gap-2 items-start">
+                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                <div class="flex flex-col gap-2">
+                    <div class="font-medium">Page Builders</div>
+                </div>
+            </div>
+            <div class="flex flex-row gap-2 items-start">
+                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                <div class="flex flex-col gap-2">
+                    <div class="font-medium">E-commerce Solutions</div>
+                </div>
+            </div>
+            <div class="flex flex-row gap-2 items-start">
+                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                <div class="flex flex-col gap-2">
+                    <div class="font-medium">Security and Performance</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div slot="article">
+        <p>In the vast WordPress ecosystem, understanding which plugins power successful websites can provide valuable insights for site owners, developers, and marketers. The CRFT Lookup serves as a sophisticated WordPress plugin detector, enabling users to discover the exact tools and features powering any WordPress website.</p>
+
+        <p>With over 60,000 plugins available in the WordPress repository alone, identifying the specific plugins a website uses has traditionally required technical expertise—until now.</p>
+
+        <h2>Why Detecting WordPress Plugins Matters</h2>
+
+        <p>Understanding which plugins a WordPress site uses is valuable for multiple reasons: It helps developers evaluate technical requirements for similar projects, enables site owners to understand how competitors achieve certain functionalities, and assists businesses in making informed decisions about their own WordPress setup.</p>
+
+        <p>The CRFT Lookup eliminates guesswork by providing concrete data about the plugins and features powering any WordPress website.</p>
+
+        <h2>How The CRFT Lookup Detects WordPress Plugins</h2>
+
+        <p>The CRFT Lookup employs advanced scanning capabilities to identify WordPress plugins and related technologies. It analyzes a site's code, asset files, and technical signatures that different plugins leave in their implementations.</p>
+
+        <p>When you enter a URL into the CRFT Lookup, it performs a comprehensive scan that can detect popular plugins like Yoast SEO, WooCommerce, Elementor, and hundreds of others. The tool categorizes these findings and presents them in an easy-to-understand format.</p>
+
+        <h2>Common Plugin Categories We Detect</h2>
+
+        <p>Our detection covers all major plugin categories including:</p>
+        <ul>
+            <li>SEO and Marketing Tools</li>
+            <li>Page Builders and Theme Frameworks</li>
+            <li>E-commerce Solutions</li>
+            <li>Security and Performance Optimization</li>
+            <li>Forms and Lead Generation</li>
+            <li>Backup and Maintenance Tools</li>
+        </ul>
+
+        <h2>Beyond Basic Plugin Detection</h2>
+
+        <p>The CRFT Lookup doesn't just identify plugins—it provides context about their capabilities, typical use cases, and technical requirements. For each detected plugin, users can access information about its features, performance impact, and compatibility considerations.</p>
+
+        <p>This contextual information transforms raw detection data into actionable intelligence, helping users make informed decisions about their own WordPress implementations.</p>
+
+        <h2>Privacy and Ethical Considerations</h2>
+
+        <p>The CRFT Lookup only detects information that is publicly visible in a website's code. It doesn't access private areas or reveal sensitive configurations.</p>
+
+        <p>For developers, marketers, and WordPress professionals looking to gain deeper insights into successful websites, the CRFT Lookup's plugin detection capabilities provide a valuable window into the tools driving modern WordPress experiences.</p>
+    </div>
+
+    <div slot="faqs">
+        <FAQItem
+            question="How does CRFT Lookup detect WordPress plugins?"
+            answer="CRFT Lookup uses advanced scanning capabilities to analyze a site's code, asset files, and technical signatures that plugins leave behind. When you input a URL, it performs a comprehensive scan to detect hundreds of popular WordPress plugins and their configurations."
+        />
+        <FAQItem
+            question="What types of plugins can be detected?"
+            answer="The tool can detect a wide range of WordPress plugins including SEO tools, page builders, e-commerce solutions, security plugins, and performance optimization tools. It identifies plugins that leave visible signatures in publicly accessible code."
+        />
+        <FAQItem
+            question="How accurate is the plugin detection?"
+            answer="CRFT Lookup provides highly accurate results by analyzing multiple technical indicators that plugins leave in a site's code. However, it only detects plugins with public-facing components - heavily modified or private plugins may not be detectable."
+        />
+        <FAQItem
+            question="What information is provided about detected plugins?"
+            answer="For each detected plugin, CRFT Lookup provides context about its capabilities, typical use cases, performance impact, and compatibility considerations. This helps users understand not just which plugins are present, but their purpose and value."
+        />
+        <FAQItem
+            question="How can I use the plugin detection data?"
+            answer="The plugin detection data can be used for technical research, evaluating potential solutions, competitive analysis, and understanding technology trends in your industry. It's valuable for developers, site owners, and WordPress professionals."
+        />
+    </div>
+
+</LookupUseCase>
