@@ -3,21 +3,21 @@
 @tailwind utilities;
 
 @layer base {
-    
+
     * {
       font-synthesis: none;
     }
-    
+
     @font-face {
         font-family: 'Satoshi';
         src: url('/Fonts/Satoshi-Variable.ttf') format('truetype');
     }
-    
+
     @font-face {
         font-family: 'Inter';
         src: url('/Fonts/Inter-VariableFont_slnt,wght.ttf') format('truetype');
     }
-    
+
     @font-face {
         font-family: 'Playfair Display';
         src: url('/Fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
@@ -74,7 +74,20 @@
             linear-gradient(to bottom, #FFD2B4, #9F4000) border-box;
         border: 0.5px solid transparent;
         position: relative;
-        z-index: 0;
+        isolation: isolate;
+        display: inline-block; /* Add this */
+        transform: translateZ(0); /* Add this to create a new stacking context */
+    }
+
+    .primary-cta::before {
+        content: "";
+        position: absolute;
+        inset: 0.5px;
+        background: #554032;
+        border-radius: 11px;
+        z-index: -1;
+        pointer-events: none;
+        transform: translateZ(-1px); /* Add this to ensure proper stacking */
     }
 
     .card {
@@ -87,18 +100,9 @@
         background-origin: border-box;
         background-clip: padding-box, border-box;
     }
-    
+
     .square-card {
         @apply bg-neutral-800 border border-neutral-600 p-4
-    }
-
-    .primary-cta::before {
-        content: "";
-        position: absolute;
-        inset: 0.5px; /* Adjust this value to match your border width */
-        background: #554032;
-        border-radius: 11px; /* Slightly less than the outer border-radius */
-        z-index: -1;
     }
 
     .secondary-cta {
@@ -112,25 +116,25 @@
     }
 
     .tag {
-        @apply px-2 py-0 inline-block bg-orange-400 bg-opacity-25 font-normal text-base 
+        @apply px-2 py-0 inline-block bg-orange-400 bg-opacity-25 font-normal text-base
         text-orange-300 rounded-lg border border-orange-400 border-opacity-50
     }
-    
+
     input:where([type="text"], [type="email"], [type="url"]), textarea {
-        @apply w-full text-base text-neutral-300 bg-neutral-600 px-2 py-[6px] 
+        @apply w-full text-base text-neutral-300 bg-neutral-600 px-2 py-[6px]
         rounded-md border border-neutral-500 focus:outline outline-neutral-300
     }
-    
+
     label {
         @apply block text-base text-neutral-300 font-normal mb-2
     }
-    
+
     .blog-content {
-        @apply prose prose-lg text-pretty text-neutral-300 leading-normal 
-        prose-h2:text-2xl prose-h2:font-medium prose-h2:mt-4 prose-h2:mb-4 
+        @apply prose prose-lg text-pretty text-neutral-300 leading-normal
+        prose-h2:text-2xl prose-h2:font-medium prose-h2:mt-4 prose-h2:mb-4
         prose-h3:text-xl prose-h3:mb-2
-        prose-a:text-orange-300 prose-code:text-orange-300 
-        prose-headings:text-neutral-200 prose-strong:text-neutral-300 prose-blockquote:text-neutral-300 
+        prose-a:text-orange-300 prose-code:text-orange-300
+        prose-headings:text-neutral-200 prose-strong:text-neutral-300 prose-blockquote:text-neutral-300
         prose-blockquote:font-normal prose-blockquote:border-l-2 prose-blockquote:border-neutral-500
     }
 
