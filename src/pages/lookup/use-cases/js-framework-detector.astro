@@ -1,0 +1,163 @@
+---
+import LookupUseCase from "../../../layouts/LookupUseCase.astro";
+import FAQItem from "../../../components/FAQItem.astro";
+---
+<LookupUseCase
+h1="Identify any website's JavaScript framework"
+subtitle="Detect JavaScript frameworks, libraries, and UI tools with our powerful framework detection engine. Get detailed insights about the frontend technologies powering any website."
+metaTitle="JavaScript Framework Detector"
+metaDescription="Identify JavaScript frameworks, libraries, and UI tools with our powerful framework detection engine. Get detailed insights about the frontend technologies powering any website."
+techCategory="JavaScript"
+>
+
+    <div slot="hero-image">
+        <div class="w-full aspect-square overflow-hidden relative">
+            <div class="absolute h-full w-full z-10 bg-gradient-to-t from-neutral-900 to-transparent pointer-events-none"></div>
+            <div class="flex flex-col gap-4">
+                <a href="https://react.dev" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="React" data-tech-icon="React.svg">
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/React.svg" class="w-5 h-5" alt="">
+                        <div>React</div>
+                    </div>
+                    <div class="text-pretty">Meta's popular JavaScript library for building user interfaces and single-page applications.</div>
+                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg>
+                </a>
+                <a href="https://angular.io" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Angular" data-tech-icon="Angular.svg">
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/Angular.svg" class="w-5 h-5" alt="">
+                        <div>Angular</div>
+                    </div>
+                    <div class="text-pretty">Google's comprehensive framework for building large-scale enterprise applications.</div>
+                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg>
+                </a>
+                <a href="https://vuejs.org" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Vue" data-tech-icon="Vue.svg">
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/vue.svg" class="w-5 h-5" alt="">
+                        <div>Vue.js</div>
+                    </div>
+                    <div class="text-pretty">Progressive JavaScript framework known for its gentle learning curve and flexibility.</div>
+                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg>
+                </a>
+                <a href="https://svelte.dev" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Svelte" data-tech-icon="Svelte.svg">
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/Svelte.svg" class="w-5 h-5" alt="">
+                        <div>Svelte</div>
+                    </div>
+                    <div class="text-pretty">Innovative framework that compiles components to highly efficient vanilla JavaScript.</div>
+                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg>
+                </a>
+                <a href="https://nextjs.org" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Next.js" data-tech-icon="Next.js.svg">
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/Next.js.svg" class="w-5 h-5" alt="">
+                        <div>Next.js</div>
+                    </div>
+                    <div class="text-pretty">React-based framework for production-grade applications with server-side rendering.</div>
+                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg>
+                </a>
+                <a href="https://nuxtjs.org" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Nuxt.js" data-tech-icon="Nuxt.js.svg">
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/Nuxt.js.svg" class="w-5 h-5" alt="">
+                        <div>Nuxt.js</div>
+                    </div>
+                    <div class="text-pretty">Vue-based framework offering server-side rendering and static site generation.</div>
+                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div slot="hero-list">
+        <div class="flex flex-col gap-2 text-neutral-300 text-lg mt-7">
+            <div class="flex flex-row gap-2 items-start">
+                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                <div class="flex flex-col gap-2">
+                    <div class="font-medium">Frontend Frameworks</div>
+                </div>
+            </div>
+            <div class="flex flex-row gap-2 items-start">
+                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                <div class="flex flex-col gap-2">
+                    <div class="font-medium">Meta Frameworks</div>
+                </div>
+            </div>
+            <div class="flex flex-row gap-2 items-start">
+                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                <div class="flex flex-col gap-2">
+                    <div class="font-medium">UI Libraries</div>
+                </div>
+            </div>
+            <div class="flex flex-row gap-2 items-start">
+                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                <div class="flex flex-col gap-2">
+                    <div class="font-medium">Build Tools</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div slot="article">
+        <p>In today's modern web development landscape, understanding which JavaScript framework powers a website can provide valuable insights for developers, teams, and businesses. The CRFT Lookup serves as a sophisticated framework detector, enabling users to discover the frontend technologies behind any website instantly.</p>
+
+        <p>With numerous JavaScript frameworks available, from established solutions like React and Angular to newer innovations like Svelte, identifying the specific framework a website uses has traditionally required technical expertise—until now.</p>
+
+        <h2>Why Detecting JavaScript Frameworks Matters</h2>
+
+        <p>Understanding which JavaScript framework a website uses is valuable for multiple reasons: It helps developers evaluate technical requirements for similar projects, enables teams to understand architectural decisions, and assists businesses in making informed choices about their technology stack.</p>
+
+        <p>The CRFT Lookup eliminates guesswork by providing concrete data about the frameworks and related technologies powering any website.</p>
+
+        <h2>How The CRFT Lookup Detects JavaScript Frameworks</h2>
+
+        <p>The CRFT Lookup employs advanced code analysis capabilities to identify JavaScript frameworks and related technologies. It analyzes bundle signatures, DOM structures, and technical patterns that different frameworks leave in their implementations.</p>
+
+        <p>When you enter a URL into the CRFT Lookup, it performs a comprehensive scan that can detect popular frameworks like React, Vue, Angular, and many others. The tool categorizes these findings and presents them in an easy-to-understand format.</p>
+
+        <h2>Key Framework Features We Detect</h2>
+
+        <p>Our detection covers all major framework aspects including:</p>
+        <ul>
+            <li>Core Frameworks (React, Vue, Angular)</li>
+            <li>Meta Frameworks (Next.js, Nuxt, Remix)</li>
+            <li>State Management Solutions</li>
+            <li>UI Component Libraries</li>
+            <li>Build Tools and Bundlers</li>
+            <li>Development Frameworks</li>
+        </ul>
+
+        <h2>Beyond Basic Framework Detection</h2>
+
+        <p>The CRFT Lookup doesn't just identify frameworks—it provides context about their capabilities, ecosystem, and technical features. For each detected framework, users can access information about its architecture, performance characteristics, and typical use cases.</p>
+
+        <p>This contextual information transforms raw detection data into actionable intelligence, helping users make informed decisions about their own frontend technology choices.</p>
+
+        <h2>Privacy and Ethical Considerations</h2>
+
+        <p>The CRFT Lookup only detects information that is publicly visible in a website's frontend code. It doesn't access private areas or reveal sensitive configurations.</p>
+
+        <p>For developers, architects, and technical professionals looking to gain deeper insights into frontend technology stacks, the CRFT Lookup's framework detection capabilities provide a valuable window into the technologies powering modern web experiences.</p>
+    </div>
+
+    <div slot="faqs">
+        <FAQItem
+            question="How does CRFT Lookup detect JavaScript frameworks?"
+            answer="CRFT Lookup uses advanced code analysis capabilities to analyze bundle signatures, DOM structures, and technical patterns that frameworks leave behind. When you input a URL, it performs a comprehensive scan to detect popular frameworks like React, Vue, Angular, and more."
+        />
+        <FAQItem
+            question="What types of frontend technologies can be detected?"
+            answer="The tool can detect core frameworks, meta frameworks, UI libraries, state management solutions, and build tools. It identifies technologies that leave visible signatures in publicly accessible frontend code."
+        />
+        <FAQItem
+            question="How accurate is the framework detection?"
+            answer="CRFT Lookup provides highly accurate results by analyzing multiple technical indicators that frameworks leave in their implementation. However, it only detects frameworks with public-facing components - heavily optimized or custom builds may not be detectable."
+        />
+        <FAQItem
+            question="What information is provided about detected frameworks?"
+            answer="For each detected framework, CRFT Lookup provides context about its capabilities, ecosystem, architecture, and typical use cases. This helps users understand not just which framework is present, but its strengths and features."
+        />
+        <FAQItem
+            question="How can I use the framework detection data?"
+            answer="The framework detection data can be used for technical research, architecture planning, performance optimization, team training, and understanding technology trends in your industry. It's valuable for developers, architects, and technical professionals."
+        />
+    </div>
+
+</LookupUseCase>
