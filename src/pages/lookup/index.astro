@@ -1079,12 +1079,12 @@ if (url) {
                                             <div>
                                                 <div class="mb-2">Title</div>
                                                 <input id="metaTitle" class="square-card rounded-none p-2 text-neutral-300 mb-2" type="text" value={ogTitle}>
-                                                <div><span id="titleLength">{ogTitle.length}</span> / 60 characters</div>
+                                                <div><span id="titleLength">{ogTitle?.length || 0}</span> / 60 characters</div>
                                             </div>
                                             <div>
                                                 <div class="mb-2">Description</div>
                                                 <textarea id="metaDescription" rows="3" cols="33" class="square-card rounded-none p-2 text-neutral-300 mb-1" placeholder="Your SEO meta description here">{ogDescription}</textarea>
-                                                <div><span id="descriptionLength">{ogDescription.length}</span> / 155 characters</div>
+                                                <div><span id="descriptionLength">{ogDescription?.length || 0}</span> / 155 characters</div>
                                             </div>
                                             <div>
                                                 <div class="mb-2">Image</div>
