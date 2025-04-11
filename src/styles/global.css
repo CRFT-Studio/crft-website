@@ -117,7 +117,7 @@
 
     .tag {
         @apply px-2 py-0 inline-block bg-orange-400 bg-opacity-25 font-normal text-base
-        text-orange-300 rounded-lg border border-orange-400 border-opacity-50
+        text-orange-300 border border-orange-400 border-opacity-50
     }
 
     input:where([type="text"], [type="email"], [type="url"]), textarea {
