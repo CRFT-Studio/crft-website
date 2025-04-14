@@ -28,3 +28,10 @@ const {title, description, ogImageUrl} = Astro.props;
     posthog.init('phc_x34SN0ukiRxgJa7pGKZa7T7O8qOHccXMqxrgszWyGWF',{api_host:'https://us.i.posthog.com', person_profiles: 'identified_only' // or 'always' to create profiles for anonymous users as well
         })
 </script>
+
+<script is:inline>
+    function initApollo(){var n=Math.random().toString(36).substring(7),o=document.createElement("script");
+    o.src="https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache="+n,o.async=!0,o.defer=!0,
+    o.onload=function(){window.trackingFunctions.onLoad({appId:"67fc1dc7e782c3000d8b0802"})},
+    document.head.appendChild(o)}initApollo();
+</script>
