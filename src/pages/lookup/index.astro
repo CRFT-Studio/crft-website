@@ -103,6 +103,12 @@ if (url) {
                     if ($(this).val() === "https://") {
                         $(this).val("");
                     }
+                }).on("input", function() {
+                    let value = $(this).val();
+                    if (value.toLowerCase().startsWith("https://https://")) {
+                        value = value.replace(/^https:\/\/https:\/\//i, "https://");
+                        $(this).val(value);
+                    }
                 });
 
                 const sampleUrls = [
