@@ -2,43 +2,254 @@
 import LookupUseCase from "../../../layouts/LookupUseCase.astro";
 import FAQItem from "../../../components/FAQItem.astro";
 ---
-<LookupUseCase
-h1="Identify any website's CMS platform"
-subtitle="Detect Content Management Systems, frameworks, hosting platforms, and more with our powerful technology detection engine. Get detailed insights about the core systems powering any website."
-metaTitle="CMS Platform Detector"
-metaDescription="Identify Content Management Systems, frameworks, hosting platforms, and more with our powerful technology detection engine. Get detailed insights about the core systems powering any website."
-techCategory="CMS"
->
 
+<LookupUseCase
+    h1="Identify any website's CMS platform"
+    subtitle="Detect Content Management Systems, frameworks, hosting platforms, and more with our powerful technology detection engine. Get detailed insights about the core systems powering any website."
+    metaTitle="CMS Platform Detector"
+    metaDescription="Identify Content Management Systems, frameworks, hosting platforms, and more with our powerful technology detection engine. Get detailed insights about the core systems powering any website."
+    techCategory="CMS"
+>
     <div slot="hero-image">
         <div class="w-full aspect-square overflow-hidden relative">
-            <div class="absolute h-full w-full z-10 bg-gradient-to-t from-neutral-900 to-transparent pointer-events-none"></div>
-            <div class="flex flex-col gap-4"> <a href="https://wordpress.org" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="WordPress" data-tech-icon="WordPress.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/WordPress.svg" class="w-5 h-5" alt=""> <div>WordPress</div> </div> <div class="text-pretty">WordPress is the world's most popular content management system, powering over 40% of all websites.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://drupal.org" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Drupal" data-tech-icon="Drupal.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Drupal.svg" class="w-5 h-5" alt=""> <div>Drupal</div> </div> <div class="text-pretty">Drupal is an enterprise-grade CMS platform known for its flexibility and robust security features.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> <a href="https://webflow.com" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Webflow" data-tech-icon="Webflow.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/webflow.svg" class="w-5 h-5" alt=""> <div>Webflow</div> </div> <div class="text-pretty">Webflow is a visual web design platform that combines CMS capabilities with powerful design tools.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://wix.com" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Wix" data-tech-icon="Wix.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Wix.svg" class="w-5 h-5" alt=""> <div>Wix</div> </div> <div class="text-pretty">Wix is a cloud-based website builder with integrated CMS features for businesses and creators.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://ghost.org" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Ghost" data-tech-icon="Ghost.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Ghost.svg" class="w-5 h-5" alt=""> <div>Ghost</div> </div> <div class="text-pretty">Ghost is a modern publishing platform designed specifically for professional bloggers and content creators.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://contentful.com" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Contentful" data-tech-icon="Contentful.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Contentful.svg" class="w-5 h-5" alt=""> <div>Contentful</div> </div> <div class="text-pretty">Contentful is a headless CMS that provides content infrastructure for modern digital experiences.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div>
+            <div
+                class="absolute h-full w-full z-10 bg-gradient-to-t from-neutral-900 to-transparent pointer-events-none"
+            >
+            </div>
+            <div class="flex flex-col gap-4">
+                <a
+                    href="https://wordpress.org?ref=crftlookup"
+                    target="_blank"
+                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                    data-tech-name="WordPress"
+                    data-tech-icon="WordPress.svg"
+                >
+                    <div class="flex flex-row gap-2 items-center">
+                        <img
+                            src="/icons/WordPress.svg"
+                            class="w-5 h-5"
+                            alt=""
+                        />
+                        <div>WordPress</div>
+                    </div>
+                    <div class="text-pretty">
+                        WordPress is the world's most popular content management
+                        system, powering over 40% of all websites.
+                    </div>
+                    <svg
+                        class="absolute top-0 right-0 mt-3 mr-3"
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24px"
+                        viewBox="0 -960 960 960"
+                        width="24px"
+                        fill="#e8eaed"
+                        ><path
+                            d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"
+                        ></path></svg
+                    >
+                </a><a
+                    href="https://drupal.org?ref=crftlookup"
+                    target="_blank"
+                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                    data-tech-name="Drupal"
+                    data-tech-icon="Drupal.svg"
+                >
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/Drupal.svg" class="w-5 h-5" alt="" />
+                        <div>Drupal</div>
+                    </div>
+                    <div class="text-pretty">
+                        Drupal is an enterprise-grade CMS platform known for its
+                        flexibility and robust security features.
+                    </div>
+                    <svg
+                        class="absolute top-0 right-0 mt-3 mr-3"
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24px"
+                        viewBox="0 -960 960 960"
+                        width="24px"
+                        fill="#e8eaed"
+                        ><path
+                            d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"
+                        ></path></svg
+                    >
+                </a>
+                <a
+                    href="https://webflow.com?ref=crftlookup"
+                    target="_blank"
+                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                    data-tech-name="Webflow"
+                    data-tech-icon="Webflow.svg"
+                >
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/webflow.svg" class="w-5 h-5" alt="" />
+                        <div>Webflow</div>
+                    </div>
+                    <div class="text-pretty">
+                        Webflow is a visual web design platform that combines
+                        CMS capabilities with powerful design tools.
+                    </div>
+                    <svg
+                        class="absolute top-0 right-0 mt-3 mr-3"
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24px"
+                        viewBox="0 -960 960 960"
+                        width="24px"
+                        fill="#e8eaed"
+                        ><path
+                            d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"
+                        ></path></svg
+                    >
+                </a><a
+                    href="https://wix.com?ref=crftlookup"
+                    target="_blank"
+                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                    data-tech-name="Wix"
+                    data-tech-icon="Wix.svg"
+                >
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/Wix.svg" class="w-5 h-5" alt="" />
+                        <div>Wix</div>
+                    </div>
+                    <div class="text-pretty">
+                        Wix is a cloud-based website builder with integrated CMS
+                        features for businesses and creators.
+                    </div>
+                    <svg
+                        class="absolute top-0 right-0 mt-3 mr-3"
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24px"
+                        viewBox="0 -960 960 960"
+                        width="24px"
+                        fill="#e8eaed"
+                        ><path
+                            d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"
+                        ></path></svg
+                    >
+                </a><a
+                    href="https://ghost.org?ref=crftlookup"
+                    target="_blank"
+                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                    data-tech-name="Ghost"
+                    data-tech-icon="Ghost.svg"
+                >
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/Ghost.svg" class="w-5 h-5" alt="" />
+                        <div>Ghost</div>
+                    </div>
+                    <div class="text-pretty">
+                        Ghost is a modern publishing platform designed
+                        specifically for professional bloggers and content
+                        creators.
+                    </div>
+                    <svg
+                        class="absolute top-0 right-0 mt-3 mr-3"
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24px"
+                        viewBox="0 -960 960 960"
+                        width="24px"
+                        fill="#e8eaed"
+                        ><path
+                            d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"
+                        ></path></svg
+                    >
+                </a><a
+                    href="https://contentful.com?ref=crftlookup"
+                    target="_blank"
+                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                    data-tech-name="Contentful"
+                    data-tech-icon="Contentful.svg"
+                >
+                    <div class="flex flex-row gap-2 items-center">
+                        <img
+                            src="/icons/Contentful.svg"
+                            class="w-5 h-5"
+                            alt=""
+                        />
+                        <div>Contentful</div>
+                    </div>
+                    <div class="text-pretty">
+                        Contentful is a headless CMS that provides content
+                        infrastructure for modern digital experiences.
+                    </div>
+                    <svg
+                        class="absolute top-0 right-0 mt-3 mr-3"
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24px"
+                        viewBox="0 -960 960 960"
+                        width="24px"
+                        fill="#e8eaed"
+                        ><path
+                            d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"
+                        ></path></svg
+                    >
+                </a>
+            </div>
         </div>
     </div>
 
     <div slot="hero-list">
         <div class="flex flex-col gap-2 text-neutral-300 text-lg mt-7">
             <div class="flex flex-row gap-2 items-start">
-                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                <svg
+                    class="flex-shrink-0 translate-y-[2px]"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#4ade80"
+                    ><path
+                        d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"
+                    ></path></svg
+                >
                 <div class="flex flex-col gap-2">
                     <div class="font-medium">Traditional CMS Platforms</div>
                 </div>
             </div>
             <div class="flex flex-row gap-2 items-start">
-                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                <svg
+                    class="flex-shrink-0 translate-y-[2px]"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#4ade80"
+                    ><path
+                        d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"
+                    ></path></svg
+                >
                 <div class="flex flex-col gap-2">
                     <div class="font-medium">Headless CMS Solutions</div>
                 </div>
             </div>
             <div class="flex flex-row gap-2 items-start">
-                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                <svg
+                    class="flex-shrink-0 translate-y-[2px]"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#4ade80"
+                    ><path
+                        d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"
+                    ></path></svg
+                >
                 <div class="flex flex-col gap-2">
                     <div class="font-medium">Website Builders</div>
                 </div>
             </div>
             <div class="flex flex-row gap-2 items-start">
-                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                <svg
+                    class="flex-shrink-0 translate-y-[2px]"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#4ade80"
+                    ><path
+                        d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"
+                    ></path></svg
+                >
                 <div class="flex flex-col gap-2">
                     <div class="font-medium">E-commerce Platforms</div>
                 </div>
@@ -47,41 +258,102 @@ techCategory="CMS"
     </div>
 
     <div slot="article">
-        <p>In today's digital landscape, understanding which Content Management System (CMS) powers a website can provide valuable insights for businesses, developers, and marketers. The CRFT Lookup serves as a sophisticated CMS detector, enabling users to discover the underlying technology stack of any website instantly.</p>
+        <p>
+            In today's digital landscape, understanding which Content Management
+            System (CMS) powers a website can provide valuable insights for
+            businesses, developers, and marketers. The CRFT Lookup serves as a
+            sophisticated CMS detector, enabling users to discover the
+            underlying technology stack of any website instantly.
+        </p>
 
-        <p>With hundreds of CMS platforms available, from traditional systems like WordPress to modern headless solutions like Contentful, identifying the specific platform a website uses has traditionally required technical expertise—until now.</p>
+        <p>
+            With hundreds of CMS platforms available, from traditional systems
+            like WordPress to modern headless solutions like Contentful,
+            identifying the specific platform a website uses has traditionally
+            required technical expertise—until now.
+        </p>
 
         <h2>Why Detecting CMS Platforms Matters</h2>
 
-        <p>Understanding which CMS a website uses is valuable for multiple reasons: It helps developers evaluate technical requirements for similar projects, enables marketers to understand platform limitations and capabilities, and assists businesses in making informed decisions about their own technology choices.</p>
+        <p>
+            Understanding which CMS a website uses is valuable for multiple
+            reasons: It helps developers evaluate technical requirements for
+            similar projects, enables marketers to understand platform
+            limitations and capabilities, and assists businesses in making
+            informed decisions about their own technology choices.
+        </p>
 
-        <p>The CRFT Lookup eliminates guesswork by providing concrete data about the CMS and related technologies powering any website.</p>
+        <p>
+            The CRFT Lookup eliminates guesswork by providing concrete data
+            about the CMS and related technologies powering any website.
+        </p>
 
         <h2>How The CRFT Lookup Detects CMS Platforms</h2>
 
-        <p>The CRFT Lookup employs advanced technology scanning capabilities to identify CMS platforms and related technologies. It analyzes a site's code, meta information, and technical signatures that different CMS platforms leave in their implementations.</p>
+        <p>
+            The CRFT Lookup employs advanced technology scanning capabilities to
+            identify CMS platforms and related technologies. It analyzes a
+            site's code, meta information, and technical signatures that
+            different CMS platforms leave in their implementations.
+        </p>
 
-        <p>When you enter a URL into the CRFT Lookup, it performs a comprehensive scan that can detect popular platforms like WordPress, Drupal, Webflow, and hundreds of others. The tool categorizes these findings and presents them in an easy-to-understand format.</p>
+        <p>
+            When you enter a URL into the CRFT Lookup, it performs a
+            comprehensive scan that can detect popular platforms like WordPress,
+            Drupal, Webflow, and hundreds of others. The tool categorizes these
+            findings and presents them in an easy-to-understand format.
+        </p>
 
         <h2>Practical Applications of CMS Detection</h2>
 
-        <p>CMS detection capabilities open numerous strategic opportunities: Developers can understand technology stacks for inspiration, businesses can evaluate potential migration paths, and marketers can better understand platform limitations and capabilities.</p>
+        <p>
+            CMS detection capabilities open numerous strategic opportunities:
+            Developers can understand technology stacks for inspiration,
+            businesses can evaluate potential migration paths, and marketers can
+            better understand platform limitations and capabilities.
+        </p>
 
-        <p>Additionally, agencies can better scope projects by understanding client technology requirements, while researchers can analyze CMS market share and trends in specific industries.</p>
+        <p>
+            Additionally, agencies can better scope projects by understanding
+            client technology requirements, while researchers can analyze CMS
+            market share and trends in specific industries.
+        </p>
 
         <h2>Beyond Basic CMS Detection</h2>
 
-        <p>The CRFT Lookup doesn't just identify CMS platforms—it provides context about their capabilities, typical use cases, and technical requirements. For each detected platform, users can access information about its features, limitations, and ecosystem.</p>
+        <p>
+            The CRFT Lookup doesn't just identify CMS platforms—it provides
+            context about their capabilities, typical use cases, and technical
+            requirements. For each detected platform, users can access
+            information about its features, limitations, and ecosystem.
+        </p>
 
-        <p>This contextual information transforms raw detection data into actionable intelligence, helping users make informed decisions about their own CMS choices.</p>
+        <p>
+            This contextual information transforms raw detection data into
+            actionable intelligence, helping users make informed decisions about
+            their own CMS choices.
+        </p>
 
         <h2>Privacy and Ethical Considerations</h2>
 
-        <p>The CRFT Lookup only detects information that is publicly visible in a website's code. It doesn't access private areas or reveal sensitive configurations.</p>
+        <p>
+            The CRFT Lookup only detects information that is publicly visible in
+            a website's code. It doesn't access private areas or reveal
+            sensitive configurations.
+        </p>
 
-        <p>The tool is designed for legitimate technical research and educational purposes, providing transparency into the publicly visible aspects of websites' technical infrastructure.</p>
+        <p>
+            The tool is designed for legitimate technical research and
+            educational purposes, providing transparency into the publicly
+            visible aspects of websites' technical infrastructure.
+        </p>
 
-        <p>For developers, marketers, and business professionals looking to gain deeper insights into website technology stacks, the CRFT Lookup's CMS detection capabilities provide a valuable window into the platforms driving digital experiences.</p>
+        <p>
+            For developers, marketers, and business professionals looking to
+            gain deeper insights into website technology stacks, the CRFT
+            Lookup's CMS detection capabilities provide a valuable window into
+            the platforms driving digital experiences.
+        </p>
     </div>
 
     <div slot="faqs">
@@ -106,5 +378,4 @@ techCategory="CMS"
             answer="The CMS detection data can be used for technical research, platform evaluation, migration planning, competitor analysis, and understanding technology trends in your industry. It's valuable for developers, marketers, and business professionals."
         />
     </div>
-
 </LookupUseCase>

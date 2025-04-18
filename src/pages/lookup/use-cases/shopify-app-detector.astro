@@ -2,43 +2,245 @@
 import LookupUseCase from "../../../layouts/LookupUseCase.astro";
 import FAQItem from "../../../components/FAQItem.astro";
 ---
-<LookupUseCase
-h1="See the Shopify apps any store is using"
-subtitle="Identify frameworks, CMS platforms, analytics tools, and more with our powerful technology detection engine. Get detailed insights about the tools and services powering any website."
-metaTitle="Shopify App Detector"
-metaDescription="Identify frameworks, CMS platforms, analytics tools, and more with our powerful technology detection engine. Get detailed insights about the tools and services powering any website."
-techCategory="Shopify"
->
 
+<LookupUseCase
+    h1="See the Shopify apps any store is using"
+    subtitle="Identify frameworks, CMS platforms, analytics tools, and more with our powerful technology detection engine. Get detailed insights about the tools and services powering any website."
+    metaTitle="Shopify App Detector"
+    metaDescription="Identify frameworks, CMS platforms, analytics tools, and more with our powerful technology detection engine. Get detailed insights about the tools and services powering any website."
+    techCategory="Shopify"
+>
     <div slot="hero-image">
         <div class="w-full aspect-square overflow-hidden relative">
-            <div class="absolute h-full w-full z-10 bg-gradient-to-t from-neutral-900 to-transparent pointer-events-none"></div>
-            <div class="flex flex-col gap-4"> <a href="https://shopify.com" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Shopify" data-tech-icon="Shopify.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Shopify.svg" class="w-5 h-5" alt=""> <div>Shopify</div> </div> <div class="text-pretty">Shopify is an e-commerce platform for online stores and retail point-of-sale systems.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://apps.shopify.com/privy" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Privy" data-tech-icon="Privy.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Privy.svg" class="w-5 h-5" alt=""> <div>Privy</div> </div> <div class="text-pretty">Privy is a popular Shopify app for email pop-ups, exit intent, and email marketing automation.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> <a href="https://apps.shopify.com/klaviyo" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Klaviyo" data-tech-icon="Klaviyo.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Klaviyo.svg" class="w-5 h-5" alt=""> <div>Klaviyo</div> </div> <div class="text-pretty">Klaviyo is an email marketing platform built for e-commerce businesses.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://apps.shopify.com/judge-me" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Judge.me" data-tech-icon="Judge.me.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Judge.svg" class="w-5 h-5" alt=""> <div>Judge.me</div> </div> <div class="text-pretty">Judge.me is a product review app for Shopify stores to collect and display customer reviews.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://apps.shopify.com/recharge" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="ReCharge" data-tech-icon="Recharge.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Recharge.svg" class="w-5 h-5" alt=""> <div>ReCharge</div> </div> <div class="text-pretty">ReCharge is a subscription payments app for Shopify that helps merchants sell subscription products.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://apps.shopify.com/smile-io" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Smile.io" data-tech-icon="Smile.io.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Smile.io.svg" class="w-5 h-5" alt=""> <div>Smile.io</div> </div> <div class="text-pretty">Smile.io is a loyalty rewards program app for Shopify stores to create points and referral programs.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div>
+            <div
+                class="absolute h-full w-full z-10 bg-gradient-to-t from-neutral-900 to-transparent pointer-events-none"
+            >
+            </div>
+            <div class="flex flex-col gap-4">
+                <a
+                    href="https://shopify.com?ref=crftlookup"
+                    target="_blank"
+                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                    data-tech-name="Shopify"
+                    data-tech-icon="Shopify.svg"
+                >
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/Shopify.svg" class="w-5 h-5" alt="" />
+                        <div>Shopify</div>
+                    </div>
+                    <div class="text-pretty">
+                        Shopify is an e-commerce platform for online stores and
+                        retail point-of-sale systems.
+                    </div>
+                    <svg
+                        class="absolute top-0 right-0 mt-3 mr-3"
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24px"
+                        viewBox="0 -960 960 960"
+                        width="24px"
+                        fill="#e8eaed"
+                        ><path
+                            d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"
+                        ></path></svg
+                    >
+                </a><a
+                    href="https://apps.shopify.com/privy?ref=crftlookup"
+                    target="_blank"
+                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                    data-tech-name="Privy"
+                    data-tech-icon="Privy.svg"
+                >
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/Privy.svg" class="w-5 h-5" alt="" />
+                        <div>Privy</div>
+                    </div>
+                    <div class="text-pretty">
+                        Privy is a popular Shopify app for email pop-ups, exit
+                        intent, and email marketing automation.
+                    </div>
+                    <svg
+                        class="absolute top-0 right-0 mt-3 mr-3"
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24px"
+                        viewBox="0 -960 960 960"
+                        width="24px"
+                        fill="#e8eaed"
+                        ><path
+                            d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"
+                        ></path></svg
+                    >
+                </a>
+                <a
+                    href="https://apps.shopify.com/klaviyo?ref=crftlookup"
+                    target="_blank"
+                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                    data-tech-name="Klaviyo"
+                    data-tech-icon="Klaviyo.svg"
+                >
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/Klaviyo.svg" class="w-5 h-5" alt="" />
+                        <div>Klaviyo</div>
+                    </div>
+                    <div class="text-pretty">
+                        Klaviyo is an email marketing platform built for
+                        e-commerce businesses.
+                    </div>
+                    <svg
+                        class="absolute top-0 right-0 mt-3 mr-3"
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24px"
+                        viewBox="0 -960 960 960"
+                        width="24px"
+                        fill="#e8eaed"
+                        ><path
+                            d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"
+                        ></path></svg
+                    >
+                </a><a
+                    href="https://apps.shopify.com/judge-me?ref=crftlookup"
+                    target="_blank"
+                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                    data-tech-name="Judge.me"
+                    data-tech-icon="Judge.me.svg"
+                >
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/Judge.svg" class="w-5 h-5" alt="" />
+                        <div>Judge.me</div>
+                    </div>
+                    <div class="text-pretty">
+                        Judge.me is a product review app for Shopify stores to
+                        collect and display customer reviews.
+                    </div>
+                    <svg
+                        class="absolute top-0 right-0 mt-3 mr-3"
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24px"
+                        viewBox="0 -960 960 960"
+                        width="24px"
+                        fill="#e8eaed"
+                        ><path
+                            d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"
+                        ></path></svg
+                    >
+                </a><a
+                    href="https://apps.shopify.com/recharge?ref=crftlookup"
+                    target="_blank"
+                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                    data-tech-name="ReCharge"
+                    data-tech-icon="Recharge.svg"
+                >
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/Recharge.svg" class="w-5 h-5" alt="" />
+                        <div>ReCharge</div>
+                    </div>
+                    <div class="text-pretty">
+                        ReCharge is a subscription payments app for Shopify that
+                        helps merchants sell subscription products.
+                    </div>
+                    <svg
+                        class="absolute top-0 right-0 mt-3 mr-3"
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24px"
+                        viewBox="0 -960 960 960"
+                        width="24px"
+                        fill="#e8eaed"
+                        ><path
+                            d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"
+                        ></path></svg
+                    >
+                </a><a
+                    href="https://apps.shopify.com/smile-io?ref=crftlookup"
+                    target="_blank"
+                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                    data-tech-name="Smile.io"
+                    data-tech-icon="Smile.io.svg"
+                >
+                    <div class="flex flex-row gap-2 items-center">
+                        <img src="/icons/Smile.io.svg" class="w-5 h-5" alt="" />
+                        <div>Smile.io</div>
+                    </div>
+                    <div class="text-pretty">
+                        Smile.io is a loyalty rewards program app for Shopify
+                        stores to create points and referral programs.
+                    </div>
+                    <svg
+                        class="absolute top-0 right-0 mt-3 mr-3"
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="24px"
+                        viewBox="0 -960 960 960"
+                        width="24px"
+                        fill="#e8eaed"
+                        ><path
+                            d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"
+                        ></path></svg
+                    >
+                </a>
+            </div>
         </div>
     </div>
 
     <div slot="hero-list">
         <div class="flex flex-col gap-2 text-neutral-300 text-lg mt-7">
             <div class="flex flex-row gap-2 items-start">
-                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                <svg
+                    class="flex-shrink-0 translate-y-[2px]"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#4ade80"
+                    ><path
+                        d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"
+                    ></path></svg
+                >
                 <div class="flex flex-col gap-2">
                     <div class="font-medium">Marketing and Email Tools</div>
                 </div>
             </div>
             <div class="flex flex-row gap-2 items-start">
-                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                <svg
+                    class="flex-shrink-0 translate-y-[2px]"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#4ade80"
+                    ><path
+                        d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"
+                    ></path></svg
+                >
                 <div class="flex flex-col gap-2">
                     <div class="font-medium">Reviews and Social Proof</div>
                 </div>
             </div>
             <div class="flex flex-row gap-2 items-start">
-                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                <svg
+                    class="flex-shrink-0 translate-y-[2px]"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#4ade80"
+                    ><path
+                        d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"
+                    ></path></svg
+                >
                 <div class="flex flex-col gap-2">
                     <div class="font-medium">Subscriptions and Payments</div>
                 </div>
             </div>
             <div class="flex flex-row gap-2 items-start">
-                <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                <svg
+                    class="flex-shrink-0 translate-y-[2px]"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#4ade80"
+                    ><path
+                        d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"
+                    ></path></svg
+                >
                 <div class="flex flex-col gap-2">
                     <div class="font-medium">Loyalty and Rewards</div>
                 </div>
@@ -47,7 +249,105 @@ techCategory="Shopify"
     </div>
 
     <div slot="article">
-        <p>In the competitive e-commerce landscape, understanding which apps power successful Shopify stores can provide valuable insights for merchants looking to optimize their own storefronts. The CRFT Lookup serves as a powerful Shopify app detector, allowing users to uncover the technology stack behind any Shopify store with just a few clicks.</p> <p>Shopify's app ecosystem now includes over 8,000 applications that enhance store functionality, from email marketing and customer service to inventory management and upselling features. However, determining which apps a competitor or inspiration store is using has traditionally been challenging—until now.</p> <h2>Why Detecting Shopify Apps Matters</h2> <p>Before diving into how the CRFT Lookup works as a Shopify app detector, it's worth understanding why this capability is valuable:</p> <p>When researching competitors, identifying their app stack reveals their technical strategy and investment priorities. For new store owners, discovering which apps power successful stores in their niche provides a roadmap for essential functionality. Additionally, for agencies and developers, understanding prevalent app usage helps in making informed recommendations to clients.</p> <p>The CRFT Lookup eliminates guesswork by providing concrete data on exactly which Shopify apps are operating on any given store.</p> <h2>How The CRFT Lookup Detects Shopify Apps</h2> <p>The CRFT Lookup utilizes advanced technology scanning capabilities to identify Shopify apps installed on websites. The tool works by analyzing a site's code, network requests, and other technical signatures that apps leave behind when integrated into a Shopify store.</p> <p>When you enter a Shopify store URL into the CRFT Lookup, it performs a comprehensive scan that can detect popular apps such as Klaviyo, Judge.me, Privy, ReCharge, and hundreds of others. The tool categorizes these findings and presents them in an easy-to-understand format, allowing you to quickly see which apps are handling specific functions like marketing automation, reviews, upselling, or subscription management.</p> <h2>Practical Applications of a Shopify App Detector</h2> <p>The ability to detect Shopify apps opens numerous strategic opportunities:</p> <p>E-commerce managers can benchmark their technology stack against industry leaders, identifying potential gaps or opportunities for optimization. Digital marketers gain insights into which marketing tools drive success for comparable stores, informing their own app selection process. Developers can better understand integration patterns and common app pairings to create more effective solutions.</p> <p>Furthermore, investors conducting due diligence can evaluate a store's technical sophistication based on its app selection, while consultants can provide more targeted recommendations by understanding which apps are already working well in specific niches.</p> <h2>Going Beyond Basic Detection</h2> <p>The CRFT Lookup doesn't just identify apps—it provides context about their functionality and purpose. For each detected Shopify app, users can access information about what the app does, its typical cost range, and its category within the Shopify ecosystem.</p> <p>This contextual information transforms raw detection data into actionable intelligence, helping users make informed decisions about which apps might benefit their own Shopify operations.</p> <h2>Privacy and Ethical Considerations</h2> <p>It's important to note that the CRFT Lookup only detects apps that leave visible signatures in publicly accessible code. It doesn't access private areas of websites or reveal sensitive information like pricing plans or custom configurations.</p> <p>The tool is designed for legitimate competitive research and educational purposes, providing transparency into the publicly visible aspects of Shopify stores' technical infrastructure.</p> <p>For merchants, developers, marketers, and e-commerce professionals looking to gain deeper insights into successful Shopify stores, the CRFT Lookup's Shopify app detection capabilities provide a valuable window into the technology choices driving e-commerce success.</p>
+        <p>
+            In the competitive e-commerce landscape, understanding which apps
+            power successful Shopify stores can provide valuable insights for
+            merchants looking to optimize their own storefronts. The CRFT Lookup
+            serves as a powerful Shopify app detector, allowing users to uncover
+            the technology stack behind any Shopify store with just a few
+            clicks.
+        </p>
+        <p>
+            Shopify's app ecosystem now includes over 8,000 applications that
+            enhance store functionality, from email marketing and customer
+            service to inventory management and upselling features. However,
+            determining which apps a competitor or inspiration store is using
+            has traditionally been challenging—until now.
+        </p>
+        <h2>Why Detecting Shopify Apps Matters</h2>
+        <p>
+            Before diving into how the CRFT Lookup works as a Shopify app
+            detector, it's worth understanding why this capability is valuable:
+        </p>
+        <p>
+            When researching competitors, identifying their app stack reveals
+            their technical strategy and investment priorities. For new store
+            owners, discovering which apps power successful stores in their
+            niche provides a roadmap for essential functionality. Additionally,
+            for agencies and developers, understanding prevalent app usage helps
+            in making informed recommendations to clients.
+        </p>
+        <p>
+            The CRFT Lookup eliminates guesswork by providing concrete data on
+            exactly which Shopify apps are operating on any given store.
+        </p>
+        <h2>How The CRFT Lookup Detects Shopify Apps</h2>
+        <p>
+            The CRFT Lookup utilizes advanced technology scanning capabilities
+            to identify Shopify apps installed on websites. The tool works by
+            analyzing a site's code, network requests, and other technical
+            signatures that apps leave behind when integrated into a Shopify
+            store.
+        </p>
+        <p>
+            When you enter a Shopify store URL into the CRFT Lookup, it performs
+            a comprehensive scan that can detect popular apps such as Klaviyo,
+            Judge.me, Privy, ReCharge, and hundreds of others. The tool
+            categorizes these findings and presents them in an
+            easy-to-understand format, allowing you to quickly see which apps
+            are handling specific functions like marketing automation, reviews,
+            upselling, or subscription management.
+        </p>
+        <h2>Practical Applications of a Shopify App Detector</h2>
+        <p>
+            The ability to detect Shopify apps opens numerous strategic
+            opportunities:
+        </p>
+        <p>
+            E-commerce managers can benchmark their technology stack against
+            industry leaders, identifying potential gaps or opportunities for
+            optimization. Digital marketers gain insights into which marketing
+            tools drive success for comparable stores, informing their own app
+            selection process. Developers can better understand integration
+            patterns and common app pairings to create more effective solutions.
+        </p>
+        <p>
+            Furthermore, investors conducting due diligence can evaluate a
+            store's technical sophistication based on its app selection, while
+            consultants can provide more targeted recommendations by
+            understanding which apps are already working well in specific
+            niches.
+        </p>
+        <h2>Going Beyond Basic Detection</h2>
+        <p>
+            The CRFT Lookup doesn't just identify apps—it provides context about
+            their functionality and purpose. For each detected Shopify app,
+            users can access information about what the app does, its typical
+            cost range, and its category within the Shopify ecosystem.
+        </p>
+        <p>
+            This contextual information transforms raw detection data into
+            actionable intelligence, helping users make informed decisions about
+            which apps might benefit their own Shopify operations.
+        </p>
+        <h2>Privacy and Ethical Considerations</h2>
+        <p>
+            It's important to note that the CRFT Lookup only detects apps that
+            leave visible signatures in publicly accessible code. It doesn't
+            access private areas of websites or reveal sensitive information
+            like pricing plans or custom configurations.
+        </p>
+        <p>
+            The tool is designed for legitimate competitive research and
+            educational purposes, providing transparency into the publicly
+            visible aspects of Shopify stores' technical infrastructure.
+        </p>
+        <p>
+            For merchants, developers, marketers, and e-commerce professionals
+            looking to gain deeper insights into successful Shopify stores, the
+            CRFT Lookup's Shopify app detection capabilities provide a valuable
+            window into the technology choices driving e-commerce success.
+        </p>
     </div>
 
     <div slot="faqs">
@@ -72,5 +372,4 @@ techCategory="Shopify"
             answer="The app detection data can be used for competitive research, benchmarking technology stacks, identifying gaps in your own setup, making informed app selections, and understanding which tools drive success in your niche. It's valuable for merchants, developers, marketers and e-commerce professionals."
         />
     </div>
-
 </LookupUseCase>
