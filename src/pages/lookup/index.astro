@@ -36,6 +36,9 @@ if (url) {
         const {result} = await ogs({url: url});
         ogTitle = result.ogTitle;
         ogImageUrl = result.ogImage?.[0]?.url;
+        if (ogImageUrl?.startsWith('/')) {
+            ogImageUrl = new URL(ogImageUrl, url).toString();
+        }
         ogDescription = result.ogDescription;
 
     } catch (error) {
