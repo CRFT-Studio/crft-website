@@ -43,15 +43,15 @@ if (url) {
     }
 };
 ---
-<div class="square-card p-0 bg-[#212121] overflow-x-auto max-sm:w-[calc(100vw-60px)]">
+<div>
     <div class="flex justify-start mb-4">
-        <div id="lighthouse-tabs" class="inline-flex flex-row card p-[2px] rounded-lg border-[1px] gap-2 text-sm text-nowrap">
-            <div id="desktop-tab" class="tab-active border-[1px] rounded-[4px] px-2 py-1 hover:cursor-pointer transition-all">Desktop</div>
-            <div id="mobile-tab" class="px-2 py-1 rounded-[4px] border-[1px] hover:cursor-pointer transition-all">Mobile</div>
+        <div id="lighthouse-tabs" class="inline-flex flex-row square-card p-[2px] border-[1px] gap-2 text-sm text-nowrap">
+            <div id="desktop-tab" class="tab-active border-[1px] px-2 py-1 hover:cursor-pointer transition-all">Desktop</div>
+            <div id="mobile-tab" class="px-2 py-1 border-[1px] hover:cursor-pointer transition-all">Mobile</div>
         </div>
     </div>
 
-    <div id="lighthouse-viewer-desktop" class="lighthouse-viewer">
+    <div id="lighthouse-viewer-desktop" class="lighthouse-viewer square-card p-0 bg-[#212121] overflow-x-auto max-sm:w-[calc(100vw-60px)]">
         {!desktopReport &&
             <div class="flex flex-row gap-4 justify-start text-neutral-300">
                 <div role="status">
@@ -66,7 +66,7 @@ if (url) {
         }
     </div>
 
-    <div id="lighthouse-viewer-mobile" class="lighthouse-viewer" hidden>
+    <div id="lighthouse-viewer-mobile" class="lighthouse-viewer square-card p-0 bg-[#212121] overflow-x-auto max-sm:w-[calc(100vw-60px)]" hidden>
         {!mobileReport &&
             <div class="flex flex-row gap-4 justify-start text-neutral-300">
                 <div role="status">
