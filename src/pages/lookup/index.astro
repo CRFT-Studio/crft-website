@@ -150,6 +150,20 @@ if (url) {
                             console.error('Could not copy text: ', err);
                         });
                 });
+
+                // Tab switching for lighthouse overview
+                $("#overview-tabs div").click(function() {
+                    if ($(this).hasClass("tab-active")) return;
+                    $(".tab-active").add(this).toggleClass("tab-active");
+                    const tabId = $(this).attr("id");
+                    if (tabId === "desktop-overview-tab") {
+                        $("#lighthouse-overview-desktop").removeAttr("hidden");
+                        $("#lighthouse-overview-mobile").attr("hidden", true);
+                    } else {
+                        $("#lighthouse-overview-mobile").removeAttr("hidden");
+                        $("#lighthouse-overview-desktop").attr("hidden", true);
+                    }
+                });
             });
 
             function getColorClasses(score) {
@@ -165,29 +179,68 @@ if (url) {
                 { key: 'seo', label: 'SEO' }
             ];
 
-            function updateOverview(report) {
-                const overview = $('#lighthouse-overview');
-                const cards = overview.find('.square-card');
+            function updateOverview(report, viewerId) {
+                try {
+                    const overview = $(`#${viewerId}`);
+                    const cards = overview.find('.square-card');
 
-                metrics.forEach((metric, index) => {
-                    const score = Math.round(report.categories[metric.key].score * 100);
-                    const colors = getColorClasses(score);
+                    metrics.forEach((metric, index) => {
+                        const score = Math.round(report.categories[metric.key].score * 100);
+                        const colors = getColorClasses(score);
 
-                    const card = $(cards[index]);
-                    card.find('div:first').removeClass().addClass(`${colors.bg} text-center`).text(metric.label);
-                    card.find('div:last').removeClass().addClass(`text-center text-3xl ${colors.lightBg} ${colors.text} font-medium`).text(score);
-                });
+                        const card = $(cards[index]);
+                        card.find('div:first').removeClass().addClass(`${colors.bg} text-center`).text(metric.label);
+                        card.find('div:last').removeClass().addClass(`text-center text-3xl ${colors.lightBg} ${colors.text} font-medium`).text(score);
+                    });
+                    console.log(`Updated ${viewerId} overview successfully`);
+                } catch (error) {
+                    console.error(`Error updating ${viewerId} overview:`, error);
+                    const overview = $(`#${viewerId}`);
+                    overview.html('<div class="text-neutral-300">Failed to update overview.</div>');
+                }
             }
 
-            // Watch for the Lighthouse report to be available
+            // Track which reports have been processed
+            const processedReports = {
+                desktop: false,
+                mobile: false
+            };
+
+            // Watch for the Lighthouse reports to be available
             const observer = new MutationObserver((mutations) => {
                 mutations.forEach((mutation) => {
                     if (mutation.type === 'childList') {
-                        const reportElement = $('#report');
-                        if (reportElement.length) {
-                            const reportData = JSON.parse(reportElement.text());
-                            updateOverview(reportData);
+                        if ($('#desktop-report').length && !processedReports.desktop) {
+                            try {
+                                const desktopData = JSON.parse($('#desktop-report').text());
+                                updateOverview(desktopData, 'lighthouse-overview-desktop');
+                                processedReports.desktop = true;
+                                console.log('Desktop report processed');
+                            } catch (parseError) {
+                                console.error("Error parsing desktop report data in observer:", parseError);
+                            }
+                        }
+                        if ($('#mobile-report').length && !processedReports.mobile) {
+                            try {
+                                const mobileData = JSON.parse($('#mobile-report').text());
+                                updateOverview(mobileData, 'lighthouse-overview-mobile');
+                                processedReports.mobile = true;
+                                console.log('Mobile report processed');
+                            } catch (parseError) {
+                                console.error("Error parsing mobile report data in observer:", parseError);
+                            }
+                        }
+
+                        // Disconnect observer once both reports are processed
+                        if (processedReports.desktop && processedReports.mobile) {
                             observer.disconnect();
+                            console.log('MutationObserver disconnected');
+
+                            // Fade out the loading overlay once both reports are processed
+                            console.log('Fading out overlay after Lighthouse overview updates');
+                            $("#loadingOverlay").fadeOut(500, () => {
+                                $('body').toggleClass("overflow-hidden h-full");
+                            });
                         }
                     }
                 });
@@ -375,6 +428,14 @@ if (url) {
 
             .toc-link:hover {
                 @apply text-orange-300;
+            }
+
+            #overview-tabs div {
+                @apply border-transparent;
+            }
+            .tab-active {
+                @apply border-neutral-600 !important;
+                @apply bg-neutral-700;
             }
         </style>
     </head>
@@ -992,29 +1053,63 @@ if (url) {
                                     </div>
                                 </div>
                                 <div id="right-sidebar">
-                                    <div id="lighthouse-overview" class="square-card p-2 lg:flex lg:flex-col grid md:grid-cols-4 grid-cols-2 lg:gap-4 gap-2 mt-6 lg:mt-0 lg:mb-0 mb-8">
-                                        <div class="square-card p-0">
-                                            <div class="bg-neutral-600 text-center">Performance</div>
-                                            <div class="text-center text-3xl font-medium">
-                                                <div class="w-20 h-7 bg-neutral-600 my-2 mx-auto"></div>
+                                    <div id="lighthouse-overview" class="square-card p-2 flex flex-col gap-4 mt-6 lg:mt-0 lg:mb-0 mb-8">
+                                        <div class="flex justify-start mb-4">
+                                            <div id="overview-tabs" class="inline-flex flex-row card p-[2px] rounded-lg border-[1px] gap-2 text-sm text-nowrap">
+                                                <div id="desktop-overview-tab" class="tab-active border-[1px] rounded-[4px] px-2 py-1 hover:cursor-pointer transition-all">Desktop</div>
+                                                <div id="mobile-overview-tab" class="px-2 py-1 rounded-[4px] border-[1px] hover:cursor-pointer transition-all">Mobile</div>
                                             </div>
                                         </div>
-                                        <div class="square-card p-0">
-                                            <div class="bg-neutral-600 text-center">Accessibility</div>
-                                            <div class="text-center text-3xl font-medium">
-                                                <div class="w-20 h-7 bg-neutral-600 my-2 mx-auto"></div>
+                                        <div id="lighthouse-overview-desktop" class="flex flex-col gap-2">
+                                            <div class="square-card p-0">
+                                                <div class="bg-neutral-600 text-center">Performance</div>
+                                                <div class="text-center text-3xl font-medium">
+                                                    <div class="w-20 h-7 bg-neutral-600 my-2 mx-auto"></div>
+                                                </div>
+                                            </div>
+                                            <div class="square-card p-0">
+                                                <div class="bg-neutral-600 text-center">Accessibility</div>
+                                                <div class="text-center text-3xl font-medium">
+                                                    <div class="w-20 h-7 bg-neutral-600 my-2 mx-auto"></div>
+                                                </div>
+                                            </div>
+                                            <div class="square-card p-0">
+                                                <div class="bg-neutral-600 text-center">Best Practices</div>
+                                                <div class="text-center text-3xl font-medium">
+                                                    <div class="w-20 h-7 bg-neutral-600 my-2 mx-auto"></div>
+                                                </div>
+                                            </div>
+                                            <div class="square-card p-0">
+                                                <div class="bg-neutral-600 text-center">SEO</div>
+                                                <div class="text-center text-3xl font-medium">
+                                                    <div class="w-20 h-7 bg-neutral-600 my-2 mx-auto"></div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="square-card p-0">
-                                            <div class="bg-neutral-600 text-center">Best Practices</div>
-                                            <div class="text-center text-3xl font-medium">
-                                                <div class="w-20 h-7 bg-neutral-600 my-2 mx-auto"></div>
+                                        <div id="lighthouse-overview-mobile" class="flex flex-col gap-2" hidden>
+                                            <div class="square-card p-0">
+                                                <div class="bg-neutral-600 text-center">Performance</div>
+                                                <div class="text-center text-3xl font-medium">
+                                                    <div class="w-20 h-7 bg-neutral-600 my-2 mx-auto"></div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="square-card p-0">
-                                            <div class="bg-neutral-600 text-center">SEO</div>
-                                            <div class="text-center text-3xl font-medium">
-                                                <div class="w-20 h-7 bg-neutral-600 my-2 mx-auto"></div>
+                                            <div class="square-card p-0">
+                                                <div class="bg-neutral-600 text-center">Accessibility</div>
+                                                <div class="text-center text-3xl font-medium">
+                                                    <div class="w-20 h-7 bg-neutral-600 my-2 mx-auto"></div>
+                                                </div>
+                                            </div>
+                                            <div class="square-card p-0">
+                                                <div class="bg-neutral-600 text-center">Best Practices</div>
+                                                <div class="text-center text-3xl font-medium">
+                                                    <div class="w-20 h-7 bg-neutral-600 my-2 mx-auto"></div>
+                                                </div>
+                                            </div>
+                                            <div class="square-card p-0">
+                                                <div class="bg-neutral-600 text-center">SEO</div>
+                                                <div class="text-center text-3xl font-medium">
+                                                    <div class="w-20 h-7 bg-neutral-600 my-2 mx-auto"></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
