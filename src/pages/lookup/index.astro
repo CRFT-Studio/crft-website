@@ -154,14 +154,22 @@ if (url) {
                 // Tab switching for lighthouse overview
                 $("#overview-tabs div").click(function() {
                     if ($(this).hasClass("tab-active")) return;
-                    $(".tab-active").add(this).toggleClass("tab-active");
+                    $("#overview-tabs .tab-active").removeClass("tab-active");
+                    $(this).addClass("tab-active");
                     const tabId = $(this).attr("id");
                     if (tabId === "desktop-overview-tab") {
-                        $("#lighthouse-overview-desktop").removeAttr("hidden");
-                        $("#lighthouse-overview-mobile").attr("hidden", true);
+                        $("#lighthouse-overview-desktop").show().css("display", "flex");
+                        $("#lighthouse-overview-mobile").hide();
                     } else {
-                        $("#lighthouse-overview-mobile").removeAttr("hidden");
-                        $("#lighthouse-overview-desktop").attr("hidden", true);
+                        $("#lighthouse-overview-mobile").show().css("display", "flex");
+                        $("#lighthouse-overview-desktop").hide();
+
+                        // Force layout recalculation
+                        const mobileContainer = document.querySelector("#lighthouse-overview-mobile");
+                        if (mobileContainer) {
+                            // Trigger a reflow by accessing offsetHeight
+                            void mobileContainer.offsetHeight;
+                        }
                     }
                 });
             });
@@ -436,6 +444,11 @@ if (url) {
             .tab-active {
                 @apply border-neutral-600 !important;
                 @apply bg-neutral-700;
+            }
+
+            /* Ensure the hidden attribute works */
+            [hidden] {
+                display: none;
             }
         </style>
     </head>

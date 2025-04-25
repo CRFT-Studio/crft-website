@@ -93,6 +93,11 @@ if (url) {
         @apply border-neutral-600 !important;
         @apply bg-neutral-700;
     }
+
+    /* Ensure the hidden attribute works */
+    [hidden] {
+        display: none;
+    }
 </style>
 
 <script>
@@ -103,14 +108,15 @@ if (url) {
         // Tab switching logic
         $("#lighthouse-tabs div").click(function() {
             if ($(this).hasClass("tab-active")) return;
-            $(".tab-active").add(this).toggleClass("tab-active");
+            $("#lighthouse-tabs .tab-active").removeClass("tab-active");
+            $(this).addClass("tab-active");
             const tabId = $(this).attr("id");
             if (tabId === "desktop-tab") {
-                $("#lighthouse-viewer-desktop").removeAttr("hidden");
-                $("#lighthouse-viewer-mobile").attr("hidden", true);
+                $("#lighthouse-viewer-desktop").show();
+                $("#lighthouse-viewer-mobile").hide();
             } else {
-                $("#lighthouse-viewer-mobile").removeAttr("hidden");
-                $("#lighthouse-viewer-desktop").attr("hidden", true);
+                $("#lighthouse-viewer-mobile").show();
+                $("#lighthouse-viewer-desktop").hide();
             }
         });
 
