@@ -1,51 +1,181 @@
 ---
 export const prerender = false;
-// const { env } = Astro.locals.runtime;
 const PAGESPEED_API = import.meta.env.PAGESPEED_API;
 
 const {url} = Astro.props;
 
-let report = null;
+let desktopReport = null;
+let mobileReport = null;
+
 if (url) {
     console.log(`Starting PageSpeed analysis for URL: ${url}`);
     try {
         const encodedUrl = encodeURIComponent(url);
         console.log(`Encoded URL: ${encodedUrl}`);
-        console.log(`Making API request to PageSpeed Insights...`);
-        const response = await fetch(
-            `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodedUrl}&category=performance&category=best-practices&category=seo&category=accessibility&strategy=desktop&locale=en&key=${PAGESPEED_API}`
-        );
-        if (!response.ok) {
-            console.error(`API response not OK. Status: ${response.status}`);
-            throw new Error(`HTTP error! status: ${response.status}`);
+
+        // Run both requests in parallel
+        const [desktopResponse, mobileResponse] = await Promise.all([
+            fetch(
+                `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodedUrl}&category=performance&category=best-practices&category=seo&category=accessibility&strategy=desktop&locale=en&key=${PAGESPEED_API}`
+            ),
+            fetch(
+                `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodedUrl}&category=performance&category=best-practices&category=seo&category=accessibility&strategy=mobile&locale=en&key=${PAGESPEED_API}`
+            )
+        ]);
+
+        if (!desktopResponse.ok) {
+            console.error(`Desktop API response not OK. Status: ${desktopResponse.status}`);
+            throw new Error(`HTTP error! status: ${desktopResponse.status}`);
         }
-        console.log('Successfully received PageSpeed API response');
-        report = await response.json();
-        console.log('Successfully parsed JSON response');
+
+        if (!mobileResponse.ok) {
+            console.error(`Mobile API response not OK. Status: ${mobileResponse.status}`);
+            throw new Error(`HTTP error! status: ${mobileResponse.status}`);
+        }
+
+        console.log('Successfully received PageSpeed API responses');
+        desktopReport = await desktopResponse.json();
+        mobileReport = await mobileResponse.json();
+        console.log('Successfully parsed JSON responses');
     } catch (error) {
         console.error("Error fetching PageSpeed data:", error);
         console.error("Stack trace:", error.stack);
     }
 };
 ---
-<div id="lighthouse-viewer-element" class="lighthouse-viewer"></div>
+<div class="square-card p-0 bg-[#212121] overflow-x-auto max-sm:w-[calc(100vw-60px)]">
+    <div class="flex justify-start mb-4">
+        <div id="lighthouse-tabs" class="inline-flex flex-row card p-[2px] rounded-lg border-[1px] gap-2 text-sm text-nowrap">
+            <div id="desktop-tab" class="tab-active border-[1px] rounded-[4px] px-2 py-1 hover:cursor-pointer transition-all">Desktop</div>
+            <div id="mobile-tab" class="px-2 py-1 rounded-[4px] border-[1px] hover:cursor-pointer transition-all">Mobile</div>
+        </div>
+    </div>
 
-{report && <span id="report" hidden>{JSON.stringify(report.lighthouseResult)}</span>}
+    <div id="lighthouse-viewer-desktop" class="lighthouse-viewer">
+        {!desktopReport &&
+            <div class="flex flex-row gap-4 justify-start text-neutral-300">
+                <div role="status">
+                    <svg aria-hidden="true" class="w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-orange-300" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                    </svg>
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div>Loading desktop report...</div>
+            </div>
+        }
+    </div>
+
+    <div id="lighthouse-viewer-mobile" class="lighthouse-viewer" hidden>
+        {!mobileReport &&
+            <div class="flex flex-row gap-4 justify-start text-neutral-300">
+                <div role="status">
+                    <svg aria-hidden="true" class="w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-orange-300" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                    </svg>
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div>Loading mobile report...</div>
+            </div>
+        }
+    </div>
+
+    {desktopReport && <span id="desktop-report" hidden>{JSON.stringify(desktopReport.lighthouseResult)}</span>}
+    {mobileReport && <span id="mobile-report" hidden>{JSON.stringify(mobileReport.lighthouseResult)}</span>}
+</div>
+
+<style>
+    #lighthouse-tabs div {
+        @apply border-transparent;
+    }
+    .tab-active {
+        @apply border-neutral-600 !important;
+        @apply bg-neutral-700;
+    }
+</style>
+
 <script>
     import $ from 'jquery';
     import { renderReport } from 'lighthouse-viewer';
-    $(() => {
-        if ($("#report")[0]) {
-            const reportData = JSON.parse($("#report").text());
-            const app = document.querySelector('#lighthouse-viewer-element');
-            const reportHtml = renderReport(reportData, {});
-            app.appendChild(reportHtml);
 
-            setTimeout(() => {
-                $(".lh-sticky-header").css("position", "static");
-                $(".lh-topbar").css("position", "static");
-                $(".lh-filmstrip").css("overflow", "hidden");
-            }, 100);
+    $(() => {
+        // Tab switching logic
+        $("#lighthouse-tabs div").click(function() {
+            if ($(this).hasClass("tab-active")) return;
+            $(".tab-active").add(this).toggleClass("tab-active");
+            const tabId = $(this).attr("id");
+            if (tabId === "desktop-tab") {
+                $("#lighthouse-viewer-desktop").removeAttr("hidden");
+                $("#lighthouse-viewer-mobile").attr("hidden", true);
+            } else {
+                $("#lighthouse-viewer-mobile").removeAttr("hidden");
+                $("#lighthouse-viewer-desktop").attr("hidden", true);
+            }
+        });
+
+        // Function to render a report with error handling
+        function renderLighthouseReport(data, viewerId, reportType) {
+            try {
+                console.log(`Rendering ${reportType} report...`);
+                const viewer = document.querySelector(`#${viewerId}`);
+                if (!viewer) {
+                    console.error(`Viewer element #${viewerId} not found`);
+                    return;
+                }
+                const reportHtml = renderReport(data, {});
+                viewer.appendChild(reportHtml);
+                console.log(`${reportType} report rendered successfully`);
+
+                // Adjust styles after rendering
+                setTimeout(() => {
+                    try {
+                        const $viewer = $(`#${viewerId}`);
+                        const stickyHeader = $viewer.find('.lh-sticky-header');
+                        const topbar = $viewer.find('.lh-topbar');
+                        const filmstrip = $viewer.find('.lh-filmstrip');
+
+                        if (stickyHeader.length) stickyHeader.css("position", "static");
+                        if (topbar.length) topbar.css("position", "static");
+                        if (filmstrip.length) filmstrip.css("overflow", "hidden");
+                        console.log(`${reportType} report styles adjusted`);
+                    } catch (styleError) {
+                        console.error(`Error adjusting styles for ${reportType} report:`, styleError);
+                    }
+                }, 100);
+            } catch (error) {
+                console.error(`Error rendering ${reportType} report:`, error);
+                const viewer = document.querySelector(`#${viewerId}`);
+                if (viewer) {
+                    viewer.innerHTML = `<div class="text-neutral-300">Failed to render ${reportType} report. Please try again later.</div>`;
+                }
+            }
         }
+
+        // Render desktop report
+        if ($("#desktop-report").length) {
+            try {
+                const desktopData = JSON.parse($("#desktop-report").text());
+                renderLighthouseReport(desktopData, 'lighthouse-viewer-desktop', 'Desktop');
+            } catch (parseError) {
+                console.error("Error parsing desktop report data:", parseError);
+                $("#lighthouse-viewer-desktop").html('<div class="text-neutral-300">Failed to load Desktop report data.</div>');
+            }
+        }
+
+        // Render mobile report
+        if ($("#mobile-report").length) {
+            try {
+                const mobileData = JSON.parse($("#mobile-report").text());
+                renderLighthouseReport(mobileData, 'lighthouse-viewer-mobile', 'Mobile');
+            } catch (parseError) {
+                console.error("Error parsing mobile report data:", parseError);
+                $("#lighthouse-viewer-mobile").html('<div class="text-neutral-300">Failed to load Mobile report data.</div>');
+            }
+        }
+
+        // Signal that rendering is complete
+        console.log("Lighthouse rendering complete");
+        $(document).trigger('lighthouse:rendered');
     });
 </script>
