@@ -7,14 +7,24 @@ const {url} = Astro.props;
 
 let report = null;
 if (url) {
+    console.log(`Starting PageSpeed analysis for URL: ${url}`);
     try {
         const encodedUrl = encodeURIComponent(url);
+        console.log(`Encoded URL: ${encodedUrl}`);
+        console.log(`Making API request to PageSpeed Insights...`);
         const response = await fetch(
             `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodedUrl}&category=performance&category=best-practices&category=seo&category=accessibility&strategy=desktop&locale=en&key=${PAGESPEED_API}`
         );
+        if (!response.ok) {
+            console.error(`API response not OK. Status: ${response.status}`);
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        console.log('Successfully received PageSpeed API response');
         report = await response.json();
+        console.log('Successfully parsed JSON response');
     } catch (error) {
         console.error("Error fetching PageSpeed data:", error);
+        console.error("Stack trace:", error.stack);
     }
 };
 ---
