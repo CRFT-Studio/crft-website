@@ -151,26 +151,51 @@ if (url) {
                         });
                 });
 
-                // Tab switching for lighthouse overview
+                // Function to update layout based on window width
+                const updateLayoutStyle = (element) => {
+                    const displayStyle = $(window).width() < 1024 ? 'grid' : 'flex';
+                    if ($(element).is(':visible')) {
+                        $(element).css({
+                            'display': displayStyle,
+                            'grid-template-columns': displayStyle === 'grid' ? 'repeat(2, 1fr)' : 'none'
+                        });
+                    }
+                };
+
+                // Tab switching logic
                 $("#overview-tabs div").click(function() {
                     if ($(this).hasClass("tab-active")) return;
                     $("#overview-tabs .tab-active").removeClass("tab-active");
                     $(this).addClass("tab-active");
                     const tabId = $(this).attr("id");
+
                     if (tabId === "desktop-overview-tab") {
-                        $("#lighthouse-overview-desktop").show().css("display", "flex");
+                        $("#lighthouse-overview-desktop").show();
                         $("#lighthouse-overview-mobile").hide();
+                        updateLayoutStyle("#lighthouse-overview-desktop");
                     } else {
-                        $("#lighthouse-overview-mobile").show().css("display", "flex");
+                        $("#lighthouse-overview-mobile").show();
                         $("#lighthouse-overview-desktop").hide();
+                        updateLayoutStyle("#lighthouse-overview-mobile");
 
                         // Force layout recalculation
                         const mobileContainer = document.querySelector("#lighthouse-overview-mobile");
                         if (mobileContainer) {
-                            // Trigger a reflow by accessing offsetHeight
                             void mobileContainer.offsetHeight;
                         }
                     }
+                });
+
+                // Handle window resize
+                $(window).resize(function() {
+                    updateLayoutStyle("#lighthouse-overview-mobile");
+                    updateLayoutStyle("#lighthouse-overview-desktop");
+                });
+
+                // Run on initial page load
+                $(document).ready(function() {
+                    updateLayoutStyle("#lighthouse-overview-mobile");
+                    updateLayoutStyle("#lighthouse-overview-desktop");
                 });
             });
 
