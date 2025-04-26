@@ -3,16 +3,17 @@ import { Image } from 'astro:assets';
 import NickPFP from '../images/nick-pfp-new.png';
 ---
 <div class="container">
-    <div class="square-card mb-7 flex lg:flex-row flex-col gap-5 items-start max-w-[1000px] mx-auto">
-        <div class="relative shrink-0">
-            <Image src={NickPFP} alt='Nick profile pic' class='lg:h-full lg:w-auto w-24 relative'></Image>
-            <div class="absolute w-full h-full top-0 bg-gradient-to-t from-neutral-800 via-50% via-transparent to-transparent"></div>
-        </div>
-        <div class="inline-block py-2 px-3 rounded-tl-none lg:text-2xl text-xl leading-snug">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-12 rotate-180 mb-4 fill-neutral-500" viewBox="0 -960 960 960"><path d="m245.69-253.85 93.93-163.46q-3.46 1.92-8.08 2.69t-9.23.77q-61 0-103.58-42.96-42.57-42.96-42.57-103.19 0-61 42.57-103.58 42.58-42.57 103.58-42.57 60.23 0 103.19 42.57Q468.46-621 468.46-560q0 21.08-5.11 39.23-5.12 18.15-14.97 34.62l-133.77 232.3h-68.92Zm355.39 0L695-417.31q-3.46 1.92-8.08 2.69-4.61.77-9.23.77-61 0-103.57-42.96-42.58-42.96-42.58-103.19 0-61.38 42.58-103.77 42.57-42.38 103.57-42.38 60.23 0 103.19 42.57Q823.84-621 823.84-560q0 21.08-5.11 39.23-5.12 18.15-14.96 34.62L670-253.85h-68.92Z"/></svg>
-            <div class="mb-3">This did a great job at giving me insight into how some of my favorite sites are created, and has inspired me to build.</div>
-            <div class="text-neutral-300 text-pretty text-lg font-medium">Nick Hoban</div>
-            <div class="text-neutral-500 text-pretty text-lg">Web Developer 🇨🇦</div>
+    <div class="square-card mb-7 max-w-[1000px] mx-auto">
+        <div class="inline-block py-2 px-3 rounded-tl-none lg:text-2xl text-xl">
+            <div class="relative shrink-0 mb-5">
+                <Image src={NickPFP} alt='Nick profile pic' class='w-24 relative'></Image>
+                <div class="absolute w-full h-full top-0 bg-gradient-to-t from-neutral-800 via-50% via-transparent to-transparent"></div>
+            </div>
+            <blockquote class="mb-5 leading-normal"><span class="text-neutral-400">" </span>This did a great job at giving me insight into how some of my favorite sites are created, and has inspired me to build.<span class="text-neutral-400"> "</span></blockquote>
+            <div>
+                <div class="text-neutral-300 text-pretty text-lg font-medium">Nick Hoban</div>
+                <div class="text-neutral-400 text-pretty text-lg">Web Developer 🇨🇦</div>
+            </div>
         </div>
     </div>
 </div>
