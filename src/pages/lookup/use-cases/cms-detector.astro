@@ -1,6 +1,8 @@
 ---
 import LookupUseCase from "../../../layouts/LookupUseCase.astro";
 import FAQItem from "../../../components/FAQItem.astro";
+import { Image } from 'astro:assets';
+import NickPFP from '../../../images/nick-pfp-new.png';
 ---
 
 <LookupUseCase
@@ -258,102 +260,63 @@ import FAQItem from "../../../components/FAQItem.astro";
     </div>
 
     <div slot="article">
-        <p>
-            In today's digital landscape, understanding which Content Management
-            System (CMS) powers a website can provide valuable insights for
-            businesses, developers, and marketers. The CRFT Lookup serves as a
-            sophisticated CMS detector, enabling users to discover the
-            underlying technology stack of any website instantly.
-        </p>
+      <p>Ever wondered what’s running the show behind your favorite website? In the wild world of digital experiences, knowing the Content Management System (CMS) powering a site is like holding the keys to the kingdom. Meet <strong>CRFT Lookup</strong>, your techy sidekick that sniffs out CMS platforms and more with just a URL and a wink.</p>
+      <p>With hundreds of CMS options out there—from old-school WordPress to sleek headless systems like Contentful—figuring out what’s under the hood used to require a tech wizard’s hat. Not anymore. CRFT Lookup spills the beans on any website’s tech stack, CMS included, faster than you can say “digital detective.”</p>
 
-        <p>
-            With hundreds of CMS platforms available, from traditional systems
-            like WordPress to modern headless solutions like Contentful,
-            identifying the specific platform a website uses has traditionally
-            required technical expertise—until now.
-        </p>
+      <h2>Why CMS Sleuthing Matters</h2>
+      <p>Before we dive into how CRFT Lookup works its magic, let’s break down why CMS detection is a game-changer:</p>
+      <ul>
+        <li><strong>Competitor Recon</strong>: Curious about how rivals build their sites? Their CMS choice reveals their strategy—flexibility, scalability, or maybe just sticking to the classics.</li>
+        <li><strong>Beginner’s Blueprint</strong>: New to web-building? See what top sites use and kickstart your project with a proven platform.</li>
+        <li><strong>Pro Moves</strong>: Developers and agencies, this is your jam. Spot CMS trends and make data-driven recommendations that leave clients in awe.</li>
+      </ul>
+      <p>CRFT Lookup doesn’t just say, “Yup, it’s Drupal.” It delivers a full tech rundown—free, fast, and with a dash of charm.</p>
 
-        <h2>Why Detecting CMS Platforms Matters</h2>
+      <h2>How CRFT Lookup Cracks the Code</h2>
+      <p>So, how does CRFT Lookup play CMS detective? Picture it as a cyber-sleuth, combing through a site’s HTML, JavaScript, response headers, and more. Armed with a database of over 2,500 technology fingerprints, it fires up a headless Chromium instance to scan any URL you toss its way. In mere seconds, it pins down CMS platforms like WordPress, Webflow, or Shopify, plus other tech like frameworks and analytics tools.</p>
+      <p>Pop in a website’s URL, and CRFT Lookup hunts for CMS clues left in public-facing code. It’s not limited to CMS either—it can dissect any site, from Stripe to PostHog, serving up a tidy tech stack summary that’s easy on the eyes.</p>
 
-        <p>
-            Understanding which CMS a website uses is valuable for multiple
-            reasons: It helps developers evaluate technical requirements for
-            similar projects, enables marketers to understand platform
-            limitations and capabilities, and assists businesses in making
-            informed decisions about their own technology choices.
-        </p>
+      <h2>Beyond CMS: The Ultimate Tech Takedown</h2>
+      <p>CRFT Lookup isn’t here to do the bare minimum. It goes all-in, giving you a panoramic view of a website’s tech profile. Here’s the full scoop:</p>
+      <ul>
+        <li><strong>Tech Stack Breakdown</strong>: Spot everything from React and Gatsby to Cloudflare and AWS. It’s the whole tech enchilada.</li>
+        <li><strong>Lighthouse Scores</strong>: Google Lighthouse metrics rate performance, accessibility, SEO, and best practices. Is that site speedy or just sparkly? Find out.</li>
+        <li><strong>Meta Tag Previews</strong>: Check how a site looks when shared on Google, Twitter, or WhatsApp. Make sure its social vibe is pure fire.</li>
+        <li><strong>Sitemap Visualization</strong>: Dive into a site’s structure with an interactive tree view, mapping out pages and navigation like a digital treasure hunt.</li>
+      </ul>
+      <p>Whether you’re sizing up a competitor’s CMS or analyzing a site’s performance, these insights let you spot weaknesses, borrow brilliance (ethically!), and level up your game.</p>
 
-        <p>
-            The CRFT Lookup eliminates guesswork by providing concrete data
-            about the CMS and related technologies powering any website.
-        </p>
+      <h2>Real-World Superpowers</h2>
+      <p>What can you <em>do</em> with this tech intel? Oh, plenty:</p>
+      <ul>
+        <li><strong>Business Owners</strong>: Compare CMS choices to industry leaders and pick the perfect platform for your site.</li>
+        <li><strong>Marketers</strong>: Understand which CMS powers top campaigns in your niche and tailor your strategy.</li>
+        <li><strong>Developers</strong>: Uncover CMS patterns and integrations to build sharper, smarter solutions.</li>
+        <li><strong>Agencies</strong>: Walk into client pitches with tech insights that scream “We’ve got this.”</li>
+      </ul>
+      <div id="testimonial" class="square-card p-7 pt-0 my-14 max-w-[1000px] mx-auto">
+        <div class="relative shrink-0 mb-5">
+          <Image src={NickPFP} alt='Nick profile pic' class='w-24 relative'></Image>
+          <div class="absolute w-full h-full top-0 bg-gradient-to-t from-neutral-800 via-50% via-transparent to-transparent"></div>
+        </div>
+        <blockquote class="mb-5 leading-normal p-0 border-0 text-xl"><span class="text-neutral-400">" </span>This did a great job at giving me insight into how some of my favorite sites are created, and has inspired me to build.<span class="text-neutral-400"> "</span></blockquote>
+        <div>
+          <div class="text-neutral-300 text-pretty text-lg">Nick Hoban</div>
+          <div class="text-neutral-400 text-pretty text-lg">Web Developer 🇨🇦</div>
+        </div>
+      </div>
 
-        <h2>How The CRFT Lookup Detects CMS Platforms</h2>
+      <h2>Keeping It Ethical (and Free!)</h2>
+      <p>Let’s clear the air: CRFT Lookup only pokes around in publicly accessible data. No hacking into private code or spilling sensitive secrets—it’s all legit, just reading what’s out in the open. Think of it as checking the ingredients on a cereal box, not raiding the kitchen.</p>
+      <p>And yes, it’s <em>free</em>. Unlimited scans, no strings attached. How do they make money? By offering top-tier web design and development services, not by charging for reports. Share your findings via unique URLs, stored for 30 days, and packed with all the details—perfect for team collabs or client flexes.</p>
 
-        <p>
-            The CRFT Lookup employs advanced technology scanning capabilities to
-            identify CMS platforms and related technologies. It analyzes a
-            site's code, meta information, and technical signatures that
-            different CMS platforms leave in their implementations.
-        </p>
+      <h2>The Fine Print on CMS Detection</h2>
+      <p>To keep things straight: CRFT Lookup doesn’t dish out detailed CMS feature lists, use cases, or technical requirements. It identifies platforms (like WordPress or Contentful) and categorizes them based on their technical footprints. Want more? You’ll need to dig into the CMS yourself—CRFT just hands you the map.</p>
+      <p>Its detection is rock-solid, thanks to a constantly updated engine that cross-checks multiple clues. That said, it can only spot CMS platforms with public-facing signatures—super-custom or hidden setups might stay off the radar.</p>
 
-        <p>
-            When you enter a URL into the CRFT Lookup, it performs a
-            comprehensive scan that can detect popular platforms like WordPress,
-            Drupal, Webflow, and hundreds of others. The tool categorizes these
-            findings and presents them in an easy-to-understand format.
-        </p>
-
-        <h2>Practical Applications of CMS Detection</h2>
-
-        <p>
-            CMS detection capabilities open numerous strategic opportunities:
-            Developers can understand technology stacks for inspiration,
-            businesses can evaluate potential migration paths, and marketers can
-            better understand platform limitations and capabilities.
-        </p>
-
-        <p>
-            Additionally, agencies can better scope projects by understanding
-            client technology requirements, while researchers can analyze CMS
-            market share and trends in specific industries.
-        </p>
-
-        <h2>Beyond Basic CMS Detection</h2>
-
-        <p>
-            The CRFT Lookup doesn't just identify CMS platforms—it provides
-            context about their capabilities, typical use cases, and technical
-            requirements. For each detected platform, users can access
-            information about its features, limitations, and ecosystem.
-        </p>
-
-        <p>
-            This contextual information transforms raw detection data into
-            actionable intelligence, helping users make informed decisions about
-            their own CMS choices.
-        </p>
-
-        <h2>Privacy and Ethical Considerations</h2>
-
-        <p>
-            The CRFT Lookup only detects information that is publicly visible in
-            a website's code. It doesn't access private areas or reveal
-            sensitive configurations.
-        </p>
-
-        <p>
-            The tool is designed for legitimate technical research and
-            educational purposes, providing transparency into the publicly
-            visible aspects of websites' technical infrastructure.
-        </p>
-
-        <p>
-            For developers, marketers, and business professionals looking to
-            gain deeper insights into website technology stacks, the CRFT
-            Lookup's CMS detection capabilities provide a valuable window into
-            the platforms driving digital experiences.
-        </p>
+      <h2>Ready to Snoop?</h2>
+      <p>Whether you’re a business owner picking a CMS, a developer chasing tech inspiration, or just a web-curious soul, CRFT Lookup is your ticket to uncovering the tech behind any site. Run a scan, share the results, and build smarter. You might just stumble on the secret sauce that turns your site from “okay” to “outstanding.”</p>
+      <p><a href="https://www.crft.studio/lookup">Scan a website now</a> and unleash your inner tech detective.</p>
     </div>
 
     <div slot="faqs">

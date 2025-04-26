@@ -1,6 +1,8 @@
 ---
 import LookupUseCase from "../../../layouts/LookupUseCase.astro";
 import FAQItem from "../../../components/FAQItem.astro";
+import { Image } from 'astro:assets';
+import NickPFP from '../../../images/nick-pfp-new.png';
 ---
 <LookupUseCase
 h1="Identify any website's JavaScript framework"
@@ -96,45 +98,63 @@ techCategory="JavaScript"
     </div>
 
     <div slot="article">
-        <p>In today's modern web development landscape, understanding which JavaScript framework powers a website can provide valuable insights for developers, teams, and businesses. The CRFT Lookup serves as a sophisticated framework detector, enabling users to discover the frontend technologies behind any website instantly.</p>
+      <p>Ever wondered what’s making your favorite website’s frontend pop? In the buzzing world of modern web dev, JavaScript frameworks are the secret sauce behind slick user interfaces. Meet <strong>CRFT Lookup</strong>, your techy detective that uncovers which JavaScript framework powers any site, with just a URL and a mischievous grin.</p>
+      <p>With a parade of frameworks out there—from stalwarts like React and Angular to fresh faces like Svelte—nailing down the one driving a site used to be a coder’s conundrum. Not anymore. CRFT Lookup dives into the tech stack, spotting frameworks and more, faster than you can debug a console error.</p>
 
-        <p>With numerous JavaScript frameworks available, from established solutions like React and Angular to newer innovations like Svelte, identifying the specific framework a website uses has traditionally required technical expertise—until now.</p>
+      <h2>Why Framework Sleuthing Matters</h2>
+      <p>Before we spill the beans on CRFT Lookup’s detective skills, let’s talk about why sniffing out JavaScript frameworks is a game-changer:</p>
+      <ul>
+        <li><strong>Competitor Recon</strong>: Curious how a rival site nails its snappy UI? Their framework choice reveals their frontend strategy—performance, scalability, or developer flair.</li>
+        <li><strong>Newbie Boost</strong>: Just dipping your toes into web dev? See what top sites use and launch your project with a proven framework.</li>
+        <li><strong>Pro Power</strong>: Developers and architects, this is your spotlight. Spot framework trends to craft recommendations that make clients swoon.</li>
+      </ul>
+      <p>CRFT Lookup doesn’t just mutter, “It’s Vue.” It delivers a full tech rundown—free, sharp, and with a dash of charm.</p>
 
-        <h2>Why Detecting JavaScript Frameworks Matters</h2>
+      <h2>How CRFT Lookup Works Its Magic</h2>
+      <p>So, how does CRFT Lookup play framework detective? It’s like a code-whisperer, analyzing bundle signatures, DOM structures, and technical patterns. With a database of over 2,500 technology fingerprints, it spins up a headless Chromium instance to scan any URL you throw at it. In a heartbeat, it IDs frameworks like React, Vue, or Next.js, plus other tech like UI libraries and analytics tools.</p>
+      <p>Drop a website’s URL into CRFT Lookup, and it’ll hunt for framework clues left in public-facing code. It’s not just about frameworks, though—this tool can dissect any site, from GitHub to PostHog, serving up a tidy tech stack summary that’s easy to grok.</p>
 
-        <p>Understanding which JavaScript framework a website uses is valuable for multiple reasons: It helps developers evaluate technical requirements for similar projects, enables teams to understand architectural decisions, and assists businesses in making informed choices about their technology stack.</p>
+      <h2>Beyond Frameworks: The Full Tech Takedown</h2>
+      <p>CRFT Lookup isn’t here to half-bake it. It goes all-in, giving you a panoramic view of a website’s tech profile. Here’s the full spread:</p>
+      <ul>
+        <li><strong>Tech Stack Breakdown</strong>: From Angular and Gatsby to Cloudflare and AWS, see the whole crew of frameworks, CMS platforms, and infrastructure.</li>
+        <li><strong>Lighthouse Scores</strong>: Google Lighthouse metrics rate performance, accessibility, SEO, and best practices. Is that site smooth or just shiny? You’ll know.</li>
+        <li><strong>Meta Tag Previews</strong>: Peek at how a site looks when shared on Google, Facebook, or Slack. Keep its social game flawless.</li>
+        <li><strong>Sitemap Visualization</strong>: Explore a site’s structure with an interactive tree view, mapping pages and navigation like a digital cartographer.</li>
+      </ul>
+      <p>Whether you’re fine-tuning your site’s frontend or scoping out a competitor’s tech, these insights help you spot gaps, borrow brilliance (ethically, naturally), and code like a rockstar.</p>
 
-        <p>The CRFT Lookup eliminates guesswork by providing concrete data about the frameworks and related technologies powering any website.</p>
+      <h2>Real-World Superpowers</h2>
+      <p>What can you <em>do</em> with this tech gold? Tons:</p>
+      <ul>
+        <li><strong>Developers</strong>: Compare framework choices to industry leaders and pick the perfect one for your project.</li>
+        <li><strong>Architects</strong>: Spot framework patterns and integrations to design smarter, scalable solutions.</li>
+        <li><strong>Teams</strong>: Analyze frontend tech to boost performance and streamline development.</li>
+        <li><strong>Consultants</strong>: Strut into client meetings with tech insights that scream expertise.</li>
+      </ul>
+      <div id="testimonial" class="square-card p-7 pt-0 my-14 max-w-[1000px] mx-auto">
+        <div class="relative shrink-0 mb-5">
+          <Image src={NickPFP} alt='Nick profile pic' class='w-24 relative'></Image>
+          <div class="absolute w-full h-full top-0 bg-gradient-to-t from-neutral-800 via-50% via-transparent to-transparent"></div>
+        </div>
+        <blockquote class="mb-5 leading-normal p-0 border-0 text-xl"><span class="text-neutral-400">" </span>This did a great job at giving me insight into how some of my favorite sites are created, and has inspired me to build.<span class="text-neutral-400"> "</span></blockquote>
+        <div>
+          <div class="text-neutral-300 text-pretty text-lg">Nick Hoban</div>
+          <div class="text-neutral-400 text-pretty text-lg">Web Developer 🇨🇦</div>
+        </div>
+      </div>
 
-        <h2>How The CRFT Lookup Detects JavaScript Frameworks</h2>
+      <h2>Keeping It Ethical (and Free!)</h2>
+      <p>Let’s squash any concerns: CRFT Lookup only scans publicly accessible data. No creeping into private code or spilling sensitive secrets—it’s all above board, just reading what’s out there. Think of it as checking a website’s public GitHub repo, not hacking the server.</p>
+      <p>Oh, and it’s <em>free</em>. Unlimited scans, no wallet required. How do they make money? By selling top-notch web design and development services, not by charging for reports. Share your reports via unique URLs, stored for 30 days, and packed with all the details—perfect for team collabs or client show-offs.</p>
 
-        <p>The CRFT Lookup employs advanced code analysis capabilities to identify JavaScript frameworks and related technologies. It analyzes bundle signatures, DOM structures, and technical patterns that different frameworks leave in their implementations.</p>
+      <h2>The Fine Print on Framework Detection</h2>
+      <p>To keep it real: CRFT Lookup doesn’t serve up detailed framework features, ecosystems, or use cases. It identifies frameworks (like React or Svelte) and categorizes them based on their technical signatures. For the deep dive, you’ll need to research the framework yourself—CRFT just hands you the starting point.</p>
+      <p>Its detection is solid, thanks to a regularly updated engine that cross-checks multiple indicators. But it can only spot frameworks with public-facing components—heavily optimized or custom builds might stay incognito.</p>
 
-        <p>When you enter a URL into the CRFT Lookup, it performs a comprehensive scan that can detect popular frameworks like React, Vue, Angular, and many others. The tool categorizes these findings and presents them in an easy-to-understand format.</p>
-
-        <h2>Key Framework Features We Detect</h2>
-
-        <p>Our detection covers all major framework aspects including:</p>
-        <ul>
-            <li>Core Frameworks (React, Vue, Angular)</li>
-            <li>Meta Frameworks (Next.js, Nuxt, Remix)</li>
-            <li>State Management Solutions</li>
-            <li>UI Component Libraries</li>
-            <li>Build Tools and Bundlers</li>
-            <li>Development Frameworks</li>
-        </ul>
-
-        <h2>Beyond Basic Framework Detection</h2>
-
-        <p>The CRFT Lookup doesn't just identify frameworks—it provides context about their capabilities, ecosystem, and technical features. For each detected framework, users can access information about its architecture, performance characteristics, and typical use cases.</p>
-
-        <p>This contextual information transforms raw detection data into actionable intelligence, helping users make informed decisions about their own frontend technology choices.</p>
-
-        <h2>Privacy and Ethical Considerations</h2>
-
-        <p>The CRFT Lookup only detects information that is publicly visible in a website's frontend code. It doesn't access private areas or reveal sensitive configurations.</p>
-
-        <p>For developers, architects, and technical professionals looking to gain deeper insights into frontend technology stacks, the CRFT Lookup's framework detection capabilities provide a valuable window into the technologies powering modern web experiences.</p>
+      <h2>Ready to Snoop?</h2>
+      <p>Whether you’re a developer crafting the next big app, an architect planning a scalable frontend, or just a web-curious coder, CRFT Lookup is your go-to for uncovering the tech behind any site. Fire up a scan, share the results, and build smarter. You might just find the secret sauce that takes your site from “meh” to “mind-blowing.”</p>
+      <p><a href="https://www.crft.studio/lookup">Scan a website now</a> and unleash your inner tech detective.</p>
     </div>
 
     <div slot="faqs">

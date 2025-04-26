@@ -1,6 +1,9 @@
 ---
 import LookupUseCase from "../../../layouts/LookupUseCase.astro";
 import FAQItem from "../../../components/FAQItem.astro";
+import LookupTestimonial from "../../../components/LookupTestimonial.astro";
+import { Image } from 'astro:assets';
+import NickPFP from '../../../images/nick-pfp-new.png';
 ---
 
 <LookupUseCase
@@ -249,105 +252,62 @@ import FAQItem from "../../../components/FAQItem.astro";
     </div>
 
     <div slot="article">
-        <p>
-            In the competitive e-commerce landscape, understanding which apps
-            power successful Shopify stores can provide valuable insights for
-            merchants looking to optimize their own storefronts. The CRFT Lookup
-            serves as a powerful Shopify app detector, allowing users to uncover
-            the technology stack behind any Shopify store with just a few
-            clicks.
-        </p>
-        <p>
-            Shopify's app ecosystem now includes over 8,000 applications that
-            enhance store functionality, from email marketing and customer
-            service to inventory management and upselling features. However,
-            determining which apps a competitor or inspiration store is using
-            has traditionally been challenging—until now.
-        </p>
-        <h2>Why Detecting Shopify Apps Matters</h2>
-        <p>
-            Before diving into how the CRFT Lookup works as a Shopify app
-            detector, it's worth understanding why this capability is valuable:
-        </p>
-        <p>
-            When researching competitors, identifying their app stack reveals
-            their technical strategy and investment priorities. For new store
-            owners, discovering which apps power successful stores in their
-            niche provides a roadmap for essential functionality. Additionally,
-            for agencies and developers, understanding prevalent app usage helps
-            in making informed recommendations to clients.
-        </p>
-        <p>
-            The CRFT Lookup eliminates guesswork by providing concrete data on
-            exactly which Shopify apps are operating on any given store.
-        </p>
-        <h2>How The CRFT Lookup Detects Shopify Apps</h2>
-        <p>
-            The CRFT Lookup utilizes advanced technology scanning capabilities
-            to identify Shopify apps installed on websites. The tool works by
-            analyzing a site's code, network requests, and other technical
-            signatures that apps leave behind when integrated into a Shopify
-            store.
-        </p>
-        <p>
-            When you enter a Shopify store URL into the CRFT Lookup, it performs
-            a comprehensive scan that can detect popular apps such as Klaviyo,
-            Judge.me, Privy, ReCharge, and hundreds of others. The tool
-            categorizes these findings and presents them in an
-            easy-to-understand format, allowing you to quickly see which apps
-            are handling specific functions like marketing automation, reviews,
-            upselling, or subscription management.
-        </p>
-        <h2>Practical Applications of a Shopify App Detector</h2>
-        <p>
-            The ability to detect Shopify apps opens numerous strategic
-            opportunities:
-        </p>
-        <p>
-            E-commerce managers can benchmark their technology stack against
-            industry leaders, identifying potential gaps or opportunities for
-            optimization. Digital marketers gain insights into which marketing
-            tools drive success for comparable stores, informing their own app
-            selection process. Developers can better understand integration
-            patterns and common app pairings to create more effective solutions.
-        </p>
-        <p>
-            Furthermore, investors conducting due diligence can evaluate a
-            store's technical sophistication based on its app selection, while
-            consultants can provide more targeted recommendations by
-            understanding which apps are already working well in specific
-            niches.
-        </p>
-        <h2>Going Beyond Basic Detection</h2>
-        <p>
-            The CRFT Lookup doesn't just identify apps—it provides context about
-            their functionality and purpose. For each detected Shopify app,
-            users can access information about what the app does, its typical
-            cost range, and its category within the Shopify ecosystem.
-        </p>
-        <p>
-            This contextual information transforms raw detection data into
-            actionable intelligence, helping users make informed decisions about
-            which apps might benefit their own Shopify operations.
-        </p>
-        <h2>Privacy and Ethical Considerations</h2>
-        <p>
-            It's important to note that the CRFT Lookup only detects apps that
-            leave visible signatures in publicly accessible code. It doesn't
-            access private areas of websites or reveal sensitive information
-            like pricing plans or custom configurations.
-        </p>
-        <p>
-            The tool is designed for legitimate competitive research and
-            educational purposes, providing transparency into the publicly
-            visible aspects of Shopify stores' technical infrastructure.
-        </p>
-        <p>
-            For merchants, developers, marketers, and e-commerce professionals
-            looking to gain deeper insights into successful Shopify stores, the
-            CRFT Lookup's Shopify app detection capabilities provide a valuable
-            window into the technology choices driving e-commerce success.
-        </p>
+        <p>Ever wondered what’s powering your favorite Shopify store or that slick website you can’t stop browsing? In the fast-paced world of e-commerce and web design, knowing the tech behind the curtain is like having a superpower. Meet <strong>CRFT Lookup</strong>, the digital detective that uncovers a website’s tech stack, performance stats, and more with just a URL and a bit of swagger.</p>
+          <p>With Shopify’s ecosystem boasting over 8,000 apps—everything from email marketing to inventory wizardry—figuring out what’s driving a store’s success used to be a guessing game. Not anymore. CRFT Lookup is here to lift the hood and reveal the engine, whether it’s a Shopify store or any website on the web.</p>
+
+          <h2>Why Playing Tech Detective Matters</h2>
+          <p>Before we get into the nitty-gritty of CRFT Lookup’s sleuthing skills, let’s talk about why this matters:</p>
+          <ul>
+            <li><strong>Competitor Espionage</strong>: Want to know how your rival’s store is raking in sales? Their tech stack reveals their strategy—marketing tools, customer retention apps, or maybe some subscription voodoo.</li>
+            <li><strong>Rookie Roadmap</strong>: New to Shopify or web-building? See what the pros are using to power their sites and get a head start on your own masterpiece.</li>
+            <li><strong>Pro-Level Insights</strong>: Developers and agencies, this one’s for you. Spot trending tools and integrations to make killer recommendations that wow your clients.</li>
+          </ul>
+          <p>CRFT Lookup doesn’t just point and say, “There’s an app!” It hands you a full tech dossier—free of charge and with a side of sass.</p>
+
+          <h2>How CRFT Lookup Works Its Magic</h2>
+          <p>So, how does CRFT Lookup play tech detective? It’s like a digital forensics expert, analyzing a website’s HTML, JavaScript, response headers, and more. Powered by a database of over 2,500 technology fingerprints, it spins up a headless Chromium instance to scan any URL you throw its way. In seconds, it identifies frameworks, CMS platforms, analytics tools, and—yes—Shopify apps like Klaviyo, Judge.me, or ReCharge.</p>
+          <p>Enter a Shopify store’s URL, and CRFT Lookup will sniff out the apps leaving public-facing clues in the code. It’s not just about Shopify, though—this tool can dissect any website, from TailwindCSS to GitHub, revealing the tech stack in a neat, easy-to-read breakdown.</p>
+
+          <h2>Beyond Apps: The Full Tech Takedown</h2>
+          <p>CRFT Lookup isn’t a one-trick pony. It goes way beyond spotting Shopify apps, offering a 360-degree view of a website’s tech profile. Here’s what you get:</p>
+          <ul>
+            <li><strong>Tech Stack Breakdown</strong>: From React and NextJS to Cloudflare and AWS, see the frameworks, CMS platforms, and infrastructure powering a site.</li>
+            <li><strong>Lighthouse Scores</strong>: Integrated Google Lighthouse metrics grade performance, accessibility, SEO, and best practices. Is that site fast or just flashy? Now you know.</li>
+            <li><strong>Meta Tag Previews</strong>: See how a site looks when shared on Google, Facebook, WhatsApp, or Slack. Perfect for ensuring your site’s social glow-up is on point.</li>
+            <li><strong>Sitemap Visualization</strong>: Explore a site’s structure with an interactive tree view, revealing page hierarchy and navigation paths. It’s like a map to the website’s soul.</li>
+          </ul>
+          <p>Whether you’re benchmarking your Shopify store against the big dogs or analyzing a competitor’s site, these insights help you spot gaps, steal ideas (ethically, of course), and optimize like a pro.</p>
+
+          <h2>Real-World Superpowers</h2>
+          <p>So, what can you <em>do</em> with all this intel? Plenty:</p>
+          <ul>
+            <li><strong>Merchants</strong>: Compare your tech stack to industry leaders and plug any holes in your setup.</li>
+            <li><strong>Marketers</strong>: Discover which tools power your niche’s top campaigns and add them to your arsenal.</li>
+            <li><strong>Developers</strong>: Spot integration patterns and trending tech to build smarter solutions.</li>
+            <li><strong>Consultants</strong>: Walk into client meetings with data-driven recommendations that scream expertise.</li>
+          </ul>
+          <div id="testimonial" class="square-card p-7 pt-0 my-14 max-w-[1000px] mx-auto">
+              <div class="relative shrink-0 mb-5">
+                  <Image src={NickPFP} alt='Nick profile pic' class='w-24 relative'></Image>
+                  <div class="absolute w-full h-full top-0 bg-gradient-to-t from-neutral-800 via-50% via-transparent to-transparent"></div>
+              </div>
+              <blockquote class="mb-5 leading-normal p-0 border-0 text-xl"><span class="text-neutral-400">" </span>This did a great job at giving me insight into how some of my favorite sites are created, and has inspired me to build.<span class="text-neutral-400"> "</span></blockquote>
+              <div>
+                  <div class="text-neutral-300 text-pretty text-lg">Nick Hoban</div>
+                  <div class="text-neutral-400 text-pretty text-lg">Web Developer 🇨🇦</div>
+              </div>
+          </div>
+          <h2>Keeping It Ethical (and Free!)</h2>
+          <p>Let’s address the elephant in the room: CRFT Lookup only scans publicly accessible data. No sneaking into private code or spilling sensitive secrets—it’s all above board, analyzing what’s already out there. Think of it as reading the label on a jar, not cracking it open.</p>
+          <p>Oh, and did we mention it’s <em>free</em>? Yup, unlimited scans, no credit card required. How do they make money? By selling top-notch web design and development services, not by nickel-and-diming you for reports. Reports are shareable via unique URLs, saved for 30 days, and packed with all the juicy details—perfect for collaborating with your team or impressing a client.</p>
+
+          <h2>The Fine Print on Shopify App Detection</h2>
+          <p>Now, to clear up any confusion: CRFT Lookup doesn’t provide detailed app descriptions, pricing, or specific roles in the Shopify ecosystem for detected apps. Instead, it identifies the apps (like Klaviyo or Privy) and categorizes them based on their technical signatures. For deeper insights, you’ll need to research the apps yourself—but CRFT gives you the starting point.</p>
+          <p>Its accuracy is solid, thanks to a regularly updated detection engine that cross-references multiple indicators. However, it can only spot apps with public-facing components—custom or heavily obfuscated setups might slip through.</p>
+
+          <h2>Ready to Snoop?</h2>
+          <p>Whether you’re a Shopify merchant plotting your next move, a developer hunting for tech inspiration, or just a curious web nerd, CRFT Lookup is your go-to tool for uncovering the tech behind any site. Fire up a scan, share the results, and start building smarter. Who knows? You might just discover the secret sauce that takes your site from “meh” to “marvelous.”</p>
+          <p><a href="https://www.crft.studio/lookup">Scan a website now</a> and unleash your inner tech detective.</p>
     </div>
 
     <div slot="faqs">

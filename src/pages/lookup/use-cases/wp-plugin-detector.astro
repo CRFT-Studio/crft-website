@@ -1,6 +1,8 @@
 ---
 import LookupUseCase from "../../../layouts/LookupUseCase.astro";
 import FAQItem from "../../../components/FAQItem.astro";
+import { Image } from 'astro:assets';
+import NickPFP from '../../../images/nick-pfp-new.png';
 ---
 <LookupUseCase
 h1="See the WordPress plugins any site is using"
@@ -96,45 +98,63 @@ techCategory="WordPress"
     </div>
 
     <div slot="article">
-        <p>In the vast WordPress ecosystem, understanding which plugins power successful websites can provide valuable insights for site owners, developers, and marketers. The CRFT Lookup serves as a sophisticated WordPress plugin detector, enabling users to discover the exact tools and features powering any WordPress website.</p>
+      <p>Ever wondered what’s juicing up your favorite WordPress site? In the sprawling jungle of WordPress, with over 60,000 plugins fueling everything from SEO to e-commerce, knowing the tools behind a site’s success is like finding a cheat code. Enter <strong>CRFT Lookup</strong>, your tech-savvy sleuth that uncovers WordPress plugins and more with just a URL and a sly grin.</p>
+      <p>Figuring out which plugins power a WordPress site used to require geek-level know-how. Not anymore. CRFT Lookup dives into the code, spots the plugins, and serves up the tech stack of any site—WordPress or otherwise—in a snap.</p>
 
-        <p>With over 60,000 plugins available in the WordPress repository alone, identifying the specific plugins a website uses has traditionally required technical expertise—until now.</p>
+      <h2>Why Plugin Snooping Matters</h2>
+      <p>Before we spill the beans on CRFT Lookup’s detective skills, let’s talk about why plugin detection is a big deal:</p>
+      <ul>
+        <li><strong>Competitor Spy Game</strong>: Want to know how a rival site nails its features? Their plugins reveal the tricks—SEO magic, e-commerce flair, or security muscle.</li>
+        <li><strong>Newbie Shortcut</strong>: Just starting with WordPress? See what the pros use and build your site with a head start.</li>
+        <li><strong>Expert Edge</strong>: Developers and agencies, this one’s for you. Spot plugin trends and integrations to craft recommendations that make clients go “Wow!”</li>
+      </ul>
+      <p>CRFT Lookup doesn’t just yell, “It’s Yoast!” It hands you a full tech report—free, fun, and with a sprinkle of swagger.</p>
 
-        <h2>Why Detecting WordPress Plugins Matters</h2>
+      <h2>How CRFT Lookup Cracks the Case</h2>
+      <p>So, how does CRFT Lookup play plugin detective? Think of it as a digital bloodhound, sniffing through a site’s HTML, JavaScript, asset files, and response headers. With a database of over 2,500 technology fingerprints, it spins up a headless Chromium instance to scan any URL you throw at it. In seconds, it nails down WordPress plugins like WooCommerce, Elementor, or Contact Form 7, plus other tech like frameworks and analytics.</p>
+      <p>Drop a WordPress site’s URL into CRFT Lookup, and it’ll hunt for plugins leaving public-facing clues in the code. But it’s not just a WordPress party—this tool can dissect any website, from Basecamp to GitHub, delivering a clean tech stack breakdown that’s easy to digest.</p>
 
-        <p>Understanding which plugins a WordPress site uses is valuable for multiple reasons: It helps developers evaluate technical requirements for similar projects, enables site owners to understand how competitors achieve certain functionalities, and assists businesses in making informed decisions about their own WordPress setup.</p>
+      <h2>Beyond Plugins: The Full Tech Takedown</h2>
+      <p>CRFT Lookup isn’t here to half-ass it. It goes all out, giving you a panoramic view of a website’s tech profile. Here’s what you get:</p>
+      <ul>
+        <li><strong>Tech Stack Breakdown</strong>: From React and NextJS to Cloudflare and AWS, see the full lineup of frameworks, CMS platforms, and infrastructure.</li>
+        <li><strong>Lighthouse Scores</strong>: Google Lighthouse metrics size up performance, accessibility, SEO, and best practices. Is that site zippy or just glitzy? You’ll know.</li>
+        <li><strong>Meta Tag Previews</strong>: Peek at how a site looks when shared on Google, Facebook, or Slack. Keep its social game sharp.</li>
+        <li><strong>Sitemap Visualization</strong>: Explore a site’s structure with an interactive tree view, mapping pages and navigation like a techy treasure map.</li>
+      </ul>
+      <p>Whether you’re sizing up a WordPress site’s plugins or dissecting a competitor’s tech, these insights help you spot gaps, borrow genius (ethically, duh), and optimize like a boss.</p>
 
-        <p>The CRFT Lookup eliminates guesswork by providing concrete data about the plugins and features powering any WordPress website.</p>
+      <h2>Real-World Superpowers</h2>
+      <p>What can you <em>do</em> with this tech goldmine? Loads:</p>
+      <ul>
+        <li><strong>Site Owners</strong>: Compare your plugin stack to top dogs and beef up your WordPress setup.</li>
+        <li><strong>Marketers</strong>: Spot plugins driving killer campaigns in your niche and steal their thunder.</li>
+        <li><strong>Developers</strong>: Uncover plugin patterns and integrations to build slicker solutions.</li>
+        <li><strong>Consultants</strong>: Strut into client meetings with tech insights that scream expertise.</li>
+      </ul>
+      <div id="testimonial" class="square-card p-7 pt-0 my-14 max-w-[1000px] mx-auto">
+        <div class="relative shrink-0 mb-5">
+          <Image src={NickPFP} alt='Nick profile pic' class='w-24 relative'></Image>
+          <div class="absolute w-full h-full top-0 bg-gradient-to-t from-neutral-800 via-50% via-transparent to-transparent"></div>
+        </div>
+        <blockquote class="mb-5 leading-normal p-0 border-0 text-xl"><span class="text-neutral-400">" </span>This did a great job at giving me insight into how some of my favorite sites are created, and has inspired me to build.<span class="text-neutral-400"> "</span></blockquote>
+        <div>
+          <div class="text-neutral-300 text-pretty text-lg">Nick Hoban</div>
+          <div class="text-neutral-400 text-pretty text-lg">Web Developer 🇨🇦</div>
+        </div>
+      </div>
 
-        <h2>How The CRFT Lookup Detects WordPress Plugins</h2>
+      <h2>Keeping It Ethical (and Free!)</h2>
+      <p>Let’s squash any worries: CRFT Lookup only scans publicly accessible data. No creeping into private code or leaking sensitive configs—it’s all on the up-and-up, just reading what’s out there. Think of it as checking a car’s paint job, not popping the hood.</p>
+      <p>Oh, and it’s <em>free</em>. Unlimited scans, no wallet required. How do they cash in? By selling primo web design and development services, not by charging for reports. Share your reports via unique URLs, stored for 30 days, and loaded with all the details—great for team huddles or client show-offs.</p>
 
-        <p>The CRFT Lookup employs advanced scanning capabilities to identify WordPress plugins and related technologies. It analyzes a site's code, asset files, and technical signatures that different plugins leave in their implementations.</p>
+      <h2>The Fine Print on Plugin Detection</h2>
+      <p>To set the record straight: CRFT Lookup doesn’t serve up detailed plugin features, use cases, or performance impacts. It identifies plugins (like Yoast SEO or WooCommerce) and categorizes them based on their technical signatures. For the deep dive, you’ll need to research the plugins yourself—CRFT just points you in the right direction.</p>
+      <p>Its detection is tight, thanks to a regularly updated engine that cross-checks multiple clues. But it can only spot plugins with public-facing components—custom or super-stealthy setups might dodge the radar.</p>
 
-        <p>When you enter a URL into the CRFT Lookup, it performs a comprehensive scan that can detect popular plugins like Yoast SEO, WooCommerce, Elementor, and hundreds of others. The tool categorizes these findings and presents them in an easy-to-understand format.</p>
-
-        <h2>Common Plugin Categories We Detect</h2>
-
-        <p>Our detection covers all major plugin categories including:</p>
-        <ul>
-            <li>SEO and Marketing Tools</li>
-            <li>Page Builders and Theme Frameworks</li>
-            <li>E-commerce Solutions</li>
-            <li>Security and Performance Optimization</li>
-            <li>Forms and Lead Generation</li>
-            <li>Backup and Maintenance Tools</li>
-        </ul>
-
-        <h2>Beyond Basic Plugin Detection</h2>
-
-        <p>The CRFT Lookup doesn't just identify plugins—it provides context about their capabilities, typical use cases, and technical requirements. For each detected plugin, users can access information about its features, performance impact, and compatibility considerations.</p>
-
-        <p>This contextual information transforms raw detection data into actionable intelligence, helping users make informed decisions about their own WordPress implementations.</p>
-
-        <h2>Privacy and Ethical Considerations</h2>
-
-        <p>The CRFT Lookup only detects information that is publicly visible in a website's code. It doesn't access private areas or reveal sensitive configurations.</p>
-
-        <p>For developers, marketers, and WordPress professionals looking to gain deeper insights into successful websites, the CRFT Lookup's plugin detection capabilities provide a valuable window into the tools driving modern WordPress experiences.</p>
+      <h2>Ready to Snoop?</h2>
+      <p>Whether you’re a WordPress warrior tweaking your site, a developer chasing tech inspo, or just a curious web geek, CRFT Lookup is your go-to for uncovering the tech behind any site. Fire up a scan, share the results, and build smarter. You might just find the secret sauce that takes your site from “fine” to “fire.”</p>
+      <p><a href="https://www.crft.studio/lookup">Scan a website now</a> and unleash your inner tech detective.</p>
     </div>
 
     <div slot="faqs">

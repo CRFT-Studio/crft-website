@@ -1,6 +1,8 @@
 ---
 import LookupUseCase from "../../../layouts/LookupUseCase.astro";
 import FAQItem from "../../../components/FAQItem.astro";
+import { Image } from 'astro:assets';
+import NickPFP from '../../../images/nick-pfp-new.png';
 ---
 <LookupUseCase
 h1="Identify any website's CDN provider"
@@ -96,45 +98,63 @@ techCategory="CDN"
     </div>
 
     <div slot="article">
-        <p>In today's high-performance web ecosystem, understanding which Content Delivery Network (CDN) powers a website can provide valuable insights for businesses, developers, and technical teams. The CRFT Lookup serves as a sophisticated CDN detector, enabling users to discover the delivery infrastructure behind any website instantly.</p>
+      <p>Ever wondered what’s keeping your favorite website lightning-fast and secure? In the high-speed world of the web, a Content Delivery Network (CDN) is the unsung hero delivering content at warp speed. Meet <strong>CRFT Lookup</strong>, your techy detective that uncovers which CDN is powering any site, with just a URL and a cheeky smirk.</p>
+      <p>With a slew of CDN providers out there—from heavyweights like Cloudflare and Akamai to nimble players like BunnyCDN—pinpointing the one behind a site used to be a tech nerd’s puzzle. Not anymore. CRFT Lookup zips through the tech stack, spotting CDNs and more, faster than you can refresh a page.</p>
 
-        <p>With numerous CDN providers available, from industry giants like Cloudflare and Akamai to specialized solutions like BunnyCDN, identifying the specific provider a website uses has traditionally required technical expertise—until now.</p>
+      <h2>Why CDN Snooping Matters</h2>
+      <p>Before we dive into CRFT Lookup’s sleuthing chops, let’s talk about why spotting a CDN is a big win:</p>
+      <ul>
+        <li><strong>Competitor Intel</strong>: Curious how a rival site stays snappy? Their CDN choice spills the beans on their speed and security game plan.</li>
+        <li><strong>Starter’s Guide</strong>: New to web performance? See which CDNs top sites trust and kick off your project with a speed boost.</li>
+        <li><strong>Tech Pro Swagger</strong>: Developers and sysadmins, this is your moment. Spot CDN trends to make recommendations that leave clients dazzled.</li>
+      </ul>
+      <p>CRFT Lookup doesn’t just whisper, “It’s Cloudflare.” It hands you a full tech dossier—free, slick, and with a pinch of pizzazz.</p>
 
-        <h2>Why Detecting CDN Providers Matters</h2>
+      <h2>How CRFT Lookup Works Its Magic</h2>
+      <p>So, how does CRFT Lookup play CDN detective? It’s like a cyber bloodhound, sniffing out DNS records, HTTP headers, and technical signatures. With a database of over 2,500 technology fingerprints, it fires up a headless Chromium instance to scan any URL you toss its way. In a flash, it IDs CDNs like Amazon CloudFront, Fastly, or Cloudflare, plus other tech like frameworks and analytics tools.</p>
+      <p>Plug in a website’s URL, and CRFT Lookup hunts for CDN clues left in public-facing infrastructure. It’s not just about CDNs, though—this tool can dissect any site, from TailwindCSS to Stripe, delivering a crisp tech stack breakdown that’s a breeze to read.</p>
 
-        <p>Understanding which CDN a website uses is valuable for multiple reasons: It helps developers evaluate performance requirements, enables teams to understand infrastructure decisions, and assists businesses in making informed choices about their content delivery strategy.</p>
+      <h2>Beyond CDNs: The Full Tech Takedown</h2>
+      <p>CRFT Lookup doesn’t stop at CDNs—it’s got ambition. It delivers a 360-degree view of a website’s tech profile. Here’s the full package:</p>
+      <ul>
+        <li><strong>Tech Stack Breakdown</strong>: From React and Gatsby to AWS and Contentful, see the complete lineup of frameworks, CMS platforms, and infrastructure.</li>
+        <li><strong>Lighthouse Scores</strong>: Google Lighthouse metrics grade performance, accessibility, SEO, and best practices. Is that site fast or just fancy? You’ll know.</li>
+        <li><strong>Meta Tag Previews</strong>: Check how a site looks when shared on Google, Twitter, or WhatsApp. Keep its social shine on point.</li>
+        <li><strong>Sitemap Visualization</strong>: Dive into a site’s structure with an interactive tree view, mapping pages and navigation like a digital explorer.</li>
+      </ul>
+      <p>Whether you’re optimizing your site’s speed or spying on a competitor’s tech, these insights help you find weak spots, borrow brilliance (ethically, of course), and level up your web game.</p>
 
-        <p>The CRFT Lookup eliminates guesswork by providing concrete data about the CDN and related technologies powering any website.</p>
+      <h2>Real-World Superpowers</h2>
+      <p>What can you <em>do</em> with this tech treasure? Plenty:</p>
+      <ul>
+        <li><strong>Business Owners</strong>: Compare CDN choices to industry leaders and pick a provider that turbocharges your site.</li>
+        <li><strong>Developers</strong>: Spot CDN integrations and trends to build faster, more secure solutions.</li>
+        <li><strong>Sysadmins</strong>: Analyze CDN setups to boost performance and tighten security.</li>
+        <li><strong>Consultants</strong>: Walk into meetings with tech insights that scream “I know my stuff.”</li>
+      </ul>
+      <div id="testimonial" class="square-card p-7 pt-0 my-14 max-w-[1000px] mx-auto">
+        <div class="relative shrink-0 mb-5">
+          <Image src={NickPFP} alt='Nick profile pic' class='w-24 relative'></Image>
+          <div class="absolute w-full h-full top-0 bg-gradient-to-t from-neutral-800 via-50% via-transparent to-transparent"></div>
+        </div>
+        <blockquote class="mb-5 leading-normal p-0 border-0 text-xl"><span class="text-neutral-400">" </span>This did a great job at giving me insight into how some of my favorite sites are created, and has inspired me to build.<span class="text-neutral-400"> "</span></blockquote>
+        <div>
+          <div class="text-neutral-300 text-pretty text-lg">Nick Hoban</div>
+          <div class="text-neutral-400 text-pretty text-lg">Web Developer 🇨🇦</div>
+        </div>
+      </div>
 
-        <h2>How The CRFT Lookup Detects CDN Providers</h2>
+      <h2>Keeping It Ethical (and Free!)</h2>
+      <p>Let’s clear the air: CRFT Lookup only pokes around in publicly accessible data. No sneaking into private configs or spilling sensitive secrets—it’s all legit, just checking what’s out in the open. Think of it as reading a billboard, not breaking into the office.</p>
+      <p>And yes, it’s <em>free</em>. Unlimited scans, no credit card needed. How do they make bank? By offering top-shelf web design and development services, not by charging for reports. Share your reports via unique URLs, stored for 30 days, and packed with all the details—perfect for team chats or client flexes.</p>
 
-        <p>The CRFT Lookup employs advanced network analysis capabilities to identify CDN providers and related infrastructure. It analyzes DNS records, HTTP headers, and technical signatures that different CDN providers leave in their implementations.</p>
+      <h2>The Fine Print on CDN Detection</h2>
+      <p>To keep it real: CRFT Lookup doesn’t dish out detailed CDN features, global presence, or use cases. It identifies providers (like Fastly or Cloudflare) and categorizes them based on their technical signatures. For the full scoop, you’ll need to research the CDN yourself—CRFT just gives you the starting line.</p>
+      <p>Its detection is sharp, thanks to a constantly updated engine that cross-checks multiple indicators. But it can only spot CDNs with public-facing components—custom or super-private setups might slip through the cracks.</p>
 
-        <p>When you enter a URL into the CRFT Lookup, it performs a comprehensive scan that can detect popular CDNs like Cloudflare, Amazon CloudFront, Fastly, and many others. The tool categorizes these findings and presents them in an easy-to-understand format.</p>
-
-        <h2>Key CDN Features We Detect</h2>
-
-        <p>Our detection covers all major CDN capabilities including:</p>
-        <ul>
-            <li>Global Edge Networks and PoP Locations</li>
-            <li>Security Features and DDoS Protection</li>
-            <li>Caching and Performance Optimization</li>
-            <li>SSL/TLS Management</li>
-            <li>Image Optimization</li>
-            <li>Edge Computing Capabilities</li>
-        </ul>
-
-        <h2>Beyond Basic CDN Detection</h2>
-
-        <p>The CRFT Lookup doesn't just identify CDN providers—it provides context about their capabilities, global presence, and technical features. For each detected provider, users can access information about its infrastructure, performance characteristics, and typical use cases.</p>
-
-        <p>This contextual information transforms raw detection data into actionable intelligence, helping users make informed decisions about their own content delivery strategy.</p>
-
-        <h2>Privacy and Ethical Considerations</h2>
-
-        <p>The CRFT Lookup only detects information that is publicly visible in a website's infrastructure. It doesn't access private areas or reveal sensitive configurations.</p>
-
-        <p>For developers, system administrators, and technical professionals looking to gain deeper insights into website delivery infrastructure, the CRFT Lookup's CDN detection capabilities provide a valuable window into the networks powering modern web experiences.</p>
+      <h2>Ready to Snoop?</h2>
+      <p>Whether you’re a business owner chasing faster load times, a developer hunting tech inspiration, or just a web-curious nerd, CRFT Lookup is your go-to for uncovering the tech behind any site. Run a scan, share the results, and build smarter. You might just find the secret sauce that takes your site from “meh” to “mega-fast.”</p>
+      <p><a href="https://www.crft.studio/lookup">Scan a website now</a> and unleash your inner tech detective.</p>
     </div>
 
     <div slot="faqs">
