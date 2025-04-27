@@ -273,6 +273,10 @@ if (url) {
                             console.log('Fading out overlay after Lighthouse overview updates');
                             $("#loadingOverlay").fadeOut(500, () => {
                                 $('body').toggleClass("overflow-hidden h-full");
+                                posthog.capture('report_loaded', {
+                                    url: new URLSearchParams(window.location.search).get('url'),
+                                    datetime: new URLSearchParams(window.location.search).get('datetime')
+                                });
                             });
                         }
                     }
