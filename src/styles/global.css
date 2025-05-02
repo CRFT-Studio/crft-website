@@ -68,7 +68,6 @@
         color: #FA934E;
         font-weight: 400;
         font-size: 1rem;
-        border-radius: 12px;
         background:
             linear-gradient(to bottom, #FFD2B4, #9F4000) padding-box,
             linear-gradient(to bottom, #FFD2B4, #9F4000) border-box;
@@ -84,7 +83,6 @@
         position: absolute;
         inset: 0.5px;
         background: #554032;
-        border-radius: 11px;
         z-index: -1;
         pointer-events: none;
         transform: translateZ(-1px); /* Add this to ensure proper stacking */
@@ -110,7 +108,6 @@
         color: #C7C7C7;
         font-weight: 400;
         font-size: 1rem;
-        border-radius: 12px;
         border: solid 1px #8F8F8F;
         background-color: #2C2C2C;
     }
