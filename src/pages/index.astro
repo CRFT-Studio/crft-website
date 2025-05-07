@@ -262,7 +262,7 @@ import LookupCard from '../components/LookupCard.astro';
                                 <div class="square-card p-2 inline-block mb-8">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M479.23-100q-77.77 0-146.92-29.96-69.16-29.96-120.77-81.58-51.62-51.61-81.58-120.96T100-480q0-79.15 30.77-148.5t83.58-120.65q52.8-51.31 123.54-81.08Q408.62-860 488.77-860q75 0 142.15 25.58 67.16 25.58 117.96 70.81 50.81 45.23 80.96 107.5Q860-593.85 860-521.08q0 103.85-61.73 162.46Q736.54-300 640-300h-72.46q-17.08 0-27.31 11.15Q530-277.69 530-262.46q0 18.54 15 38.54T560-178q0 39.61-21.92 58.81Q516.15-100 479.23-100Zm.77-380Zm-220 30q21.38 0 35.69-14.31Q310-478.62 310-500q0-21.38-14.31-35.69Q281.38-550 260-550q-21.38 0-35.69 14.31Q210-521.38 210-500q0 21.38 14.31 35.69Q238.62-450 260-450Zm120-160q21.38 0 35.69-14.31Q430-638.62 430-660q0-21.38-14.31-35.69Q401.38-710 380-710q-21.38 0-35.69 14.31Q330-681.38 330-660q0 21.38 14.31 35.69Q358.62-610 380-610Zm200 0q21.38 0 35.69-14.31Q630-638.62 630-660q0-21.38-14.31-35.69Q601.38-710 580-710q-21.38 0-35.69 14.31Q530-681.38 530-660q0 21.38 14.31 35.69Q558.62-610 580-610Zm120 160q21.38 0 35.69-14.31Q750-478.62 750-500q0-21.38-14.31-35.69Q721.38-550 700-550q-21.38 0-35.69 14.31Q650-521.38 650-500q0 21.38 14.31 35.69Q678.62-450 700-450ZM479.23-160q9.77 0 15.27-4.81T500-178q0-14-15-31.46t-15-54.69q0-42.77 29-69.31T570-360h70q70.62 0 115.31-41.38Q800-442.77 800-521.08q0-121.38-93.08-200.15Q613.85-800 488.77-800q-137.15 0-232.96 93T160-480q0 133 93.5 226.5T479.23-160Z"/></svg>                                </div>
                                 <div>
-                                    <p class="text-neutral-300"><span class="font-medium text-neutral-50">Brand identity. </span>The foundation of your online presence; your logo, colors, and typeface. We'll craft yours to stand out and drive business results.</p>
+                                    <p class="text-neutral-300"><span class="font-medium text-neutral-50">Visual Brand identity. </span>The foundation of your online presence; your logo, colors, and typeface. We'll craft yours to stand out and drive business results.</p>
                                 </div>
                             </div>
                             <div class="square-card bg-neutral-900 border-neutral-700 flex-col justify-between shadow-orange-800/20 shadow-lg">
@@ -469,45 +469,82 @@ import LookupCard from '../components/LookupCard.astro';
                 <div class="max-w-[800px] mx-auto">
                     <div class="text-orange-300 text-lg mb-3 text-pretty text-center">How we work</div>
                     <h2 class="text-3xl lg:text-4xl font-medium leading-tight text-balance text-center">A structured approach to web design and development</h2>
-                    <p class="text-lg font-normal text-neutral-200 mt-5 text-pretty max-w-4xl mx-auto text-center">We break down our projects into clear phases, each with specific deliverables and milestones. From kickoff to launch, you'll know exactly what to expect and when to expect it. Below is our typical project timeline.</p>
+                    <p class="text-lg font-normal text-neutral-200 mt-5 text-pretty max-w-4xl mx-auto text-center">We break down our projects into phases, each with specific deliverables and milestones. Every project is different, but from kickoff to launch, you'll know what to expect and when to expect it. Below is our estimate of our typical project's timeline. For an estimate specific to your business, <span><a href="mailto:jeremy@crft.studio" class="text-orange-300 underline">contact us</a></span>.</p>
                 </div>
-                <div class="grid lg:grid-cols-4 gap-0 mt-10">
-                    <div class="square-card lg:border lg:border-r-0 border-b-0 p-0">
-                        <div class="square-card py-1 px-3 border-0 border-b bg-neutral-700">Today</div>
-                        <div class="p-3">
-                            <ul class="checkmark-list">
-                                <li class="pl-1">Subscription begun</li>
-                                <li class="pl-1">Optional kick-off meeting</li>
-                                <li class="pl-1">Basecamp project invite sent</li>
-                                <li class="pl-1">We scan your website in the <span><a href="/lookup" class="text-orange-300 underline">CRFT Lookup</a></span>, to see its Lighthouse score, tech stack, sitemap visualization and meta tag preview</li>
-                            </ul>
+                <div class="mt-10 flex flex-col gap-14">
+                    <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
+                        <div>
+                            <div class="sticky top-36 text-neutral-400">Onboarding</div>
+                        </div>
+                        <div>
+                            <div class="mb-3 text-neutral-100">Today</div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">Subscription begun</div>
+                            </div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">Basecamp project invite sent</div>
+                            </div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">Kick-off meeting (optional)</div>
+                            </div>
+                            <div class="square-card">
+                                <div class="text-lg">We scan your website using the <span><a href="/lookup" class="text-orange-300 underline">CRFT Lookup</a></span>, to see its Lighthouse score, tech stack, sitemap visualization and meta tags.</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="square-card lg:border lg:border-r-0 border-b-0 p-0">
-                        <div class="square-card py-1 px-3 border-0 border-b bg-neutral-700">Brand Identity (~1 Week)</div>
-                        <div class="p-3">
-                            <ul class="checkmark-list">
-                                <li class="pl-1">Logo redesign (optional)</li>
-                                <li class="pl-1">Typeface selection</li>
-                                <li class="pl-1">Primary, secondary, accent color selection</li>
-                            </ul>
+                    <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
+                        <div>
+                            <div class="sticky top-36 text-neutral-400">Visual Brand Identity</div>
+                        </div>
+                        <div>
+                            <div class="mb-3 text-neutral-100">1 - 3 weeks</div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">Logo, wordmark and icon redesign (optional)</div>
+                            </div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">Color palette selection</div>
+                            </div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">Typeface selection</div>
+                            </div>
+                            <div class="square-card">
+                                <div class="text-lg">Creation of marketing collateral (optional)</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="square-card lg:border lg:border-r-0 border-b-0 p-0">
-                        <div class="square-card py-1 px-3 border-0 border-b bg-neutral-700">Design (~2 Weeks)</div>
-                        <div class="p-3">
-                            <ul class="checkmark-list">
-                                <li class="pl-1">Based on your sitemap, we identify your site's core pages and create new wireframes of them in Figma/Sketch</li>
-                            </ul>
+                    <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
+                        <div>
+                            <div class="sticky top-36 text-neutral-400">Web Design</div>
+                        </div>
+                        <div>
+                            <div class="mb-3 text-neutral-100">1 - 2 weeks</div>
+                            <div class="square-card mb-2">
+                                <div class="text-lg">Identify and wireframe core pages</div>
+                            </div>
+                            <div class="text-neutral-400">We limit our use of vector design tools like Figma beyond initial ideation, and build high-fidelity designs in code. This allows us to collaborate and drive results for your business much faster than otherwise possible.</div>
                         </div>
                     </div>
-                    <div class="square-card lg:border lg:border-r-0 border-b-0 p-0">
-                        <div class="square-card py-1 px-3 border-0 border-b bg-neutral-700">Development (~2 - 12 weeks)</div>
-                        <div class="p-3">
-                            <ul class="checkmark-list">
-                                <li class="pl-1">Creating pixel-perfect designs in vector design software (like Figma) a poor use of time - instead, we design directly in code where you can see and interact with the real thing</li>
-                                <li class="pl-1">You'll have access to preview deployments</li>
-                            </ul>
+                    <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
+                        <div>
+                            <div class="sticky top-36 text-neutral-400">Web Development</div>
+                        </div>
+                        <div>
+                            <div class="mb-3 text-neutral-100">4 - 8 weeks</div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">Creation of code repository</div>
+                            </div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">High fidelity, responsive design and development of core pages & components</div>
+                            </div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">Content migration and setup of Sanity, our CMS of choice</div>
+                            </div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">Integration of third-party tools (e.g. analytics, cookie consent, etc)</div>
+                            </div>
+                            <div class="square-card">
+                                <div class="text-lg">DNS configuration and launch</div>
+                            </div>
                         </div>
                     </div>
                 </div>
