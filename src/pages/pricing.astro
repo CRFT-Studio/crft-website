@@ -4,6 +4,7 @@ import Testimonials from "../components/Testimonials.astro";
 import Footer from "../components/Footer.astro";
 import Stripe from "stripe";
 import HeadScripts from "../components/HeadScripts.astro";
+import HowWeWork from "../components/HowWeWork.astro";
 
 const STRIPE_API = import.meta.env.STRIPE_API;
 const stripe = new Stripe(STRIPE_API);
@@ -121,6 +122,12 @@ tiers.forEach(tier => prices[tier] = pricesRaw.data.find(price => price.lookup_k
                     </div>
                 </div>
             </div>
+        </section>
+
+        <div class="w-full h-[1px] bg-neutral-700 mx-auto"></div>
+
+        <section id="how-we-work-calendar">
+            <HowWeWork/>
         </section>
 
         <div class="w-full h-[1px] bg-neutral-700 mx-auto"></div>
