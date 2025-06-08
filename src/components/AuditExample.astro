@@ -4,18 +4,25 @@ const {companyName, websiteUrl, imageBefore, imageAfter} = Astro.props;
 
 import HenryAfter from "../images/audits/henry-james-legal-after.png";
 ---
-<div class="lg:grid lg:grid-cols-[0.5fr_1.25fr] grid-cols-1 mb-20 gap-14">
-    <div class="mb-8">
-        <div class="sticky top-32">
-            <div class="text-2xl lg:font-normal font-medium mb-2">{companyName}</div>
-            <div class="text-lg text-neutral-300 mb-3">Audited URL: https://{websiteUrl}</div>
-            <a href="#hero" class="text-orange-300 text-lg">Get my audit →</a>
+<div class="grid lg:grid-cols-[0.5fr_1.25fr] grid-cols-1 mb-20 lg:gap-14 gap-0">
+    <div class="mb-8 lg:order-1 order-2">
+        <div class="lg:sticky lg:top-32">
+            <div class="lg:block hidden">
+                <div class="text-2xl lg:font-normal font-medium mb-2">{companyName}</div>
+                <div class="text-lg text-neutral-300 mb-3">Audited URL: https://{websiteUrl}</div>
+                <a href="#hero" class="text-orange-300 text-lg">Get my audit →</a>
+            </div>
             <div class="flex flex-col lg:scale-90 lg:origin-top-left mt-8">
                 <slot name="annotations"/>
             </div>
         </div>
     </div>
-    <div>
+    <div class="lg:order-2 order-1">
+        <div class="mb-8 lg:hidden block">
+            <div class="text-2xl lg:font-normal font-medium mb-2">{companyName}</div>
+            <div class="text-lg text-neutral-300 mb-3">Audited URL: https://{websiteUrl}</div>
+            <a href="#hero" class="text-orange-300 text-lg">Get my audit →</a>
+        </div>
         <Image src={imageBefore} alt={`${companyName} before`} class="w-full aspect-video object-contain object-center mb-2 border border-neutral-700 bg-neutral-800"></Image>
         <div class="mb-10">Before</div>
         <Image src={imageAfter} alt={`${companyName} after`} class="w-full aspect-video object-contain object-center mb-2 border border-neutral-700 bg-neutral-800"></Image>
