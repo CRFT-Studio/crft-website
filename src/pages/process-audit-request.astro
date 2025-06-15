@@ -24,7 +24,7 @@ await resend.batch.send([
     cc: 'jeremy@crft.studio',
     subject: `${params["First Name"]}, thanks for requesting a hero redesign!`,
     html: `<p>Hi ${params["First Name"]},</p>
-    <p>Thanks for requesting a hero redesign of ${params["Website URL"]}. We'll have it ready for you within 3 business days. In the meantime, feel free to check out <a href="${Astro.url.origin}/audit#examples">examples of past redesigns</a> in case you haven't already, and reply to this email with any questions or comments you have.</p>
+    <p>Thanks for requesting a hero redesign of ${params["Website URL"]}. We'll have it ready for you within 3 business days. In the meantime, feel free to check out <a href="${Astro.url.origin}/audit#examples">examples of past redesigns</a> in case you haven't already, and reply to this email with the words <b>"hero redesign"</b> to let us know you saw it, along with any questions or comments you have.</p>
     <p>I look forward to hearing back,</p>
     <p>Jeremy<br>Founder @ CRFT Studio</p>`
   },
