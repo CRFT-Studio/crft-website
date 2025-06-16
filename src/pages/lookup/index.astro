@@ -511,7 +511,7 @@ if (url) {
                                     <input id="search" type="url" placeholder="Type a URL..." name="url" class="text-lg h-10 text-neutral-300 bg-neutral-800 border-neutral-600 outline-neutral-600 pl-10">
                                     <input type="hidden" name="datetime" value={new Date().toISOString().substring(0, 16).replaceAll(':', '-')}>
                                 </div>
-                                <button class="lg:w-auto text-lg h-10 w-full px-2 py-1 border border-neutral-600 bg-neutral-800 hover:bg-neutral-700 transition-all text-nowrap">Generate report</button>
+                                <button class="lg:w-auto text-lg h-10 w-full px-2 py-1 border border-neutral-600 bg-neutral-800 hover:bg-neutral-700 transition-all text-nowrap"><span class="card bg-transparent bg-opacity-25 px-[6px] py-0 rounded-none mr-2 text-neutral-300">~20s</span>Generate report</button>
                             </form>
                             <div class="lg:mt-2 mt-3 text-left text-neutral-300">Don't have a site in mind? <span id="randomReport" class="underline cursor-pointer">Generate random report.</span></div>
                             <div class="flex flex-col gap-2 text-neutral-300 text-lg mt-7">
