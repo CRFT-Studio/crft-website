@@ -197,11 +197,21 @@ if (url) {
                     });
                 });
 
-                $('#downloadReport').on('click', function (e) {
+                $('#downloadReport').on('click', async function (e) {
                     e.preventDefault();
 
                     // Clone the document to avoid modifying the original
                     const documentClone = document.cloneNode(true) as Document;
+
+                    // Delete elements with id "share" and "reportDownload"
+                    const shareElement = documentClone.getElementById('share');
+                    if (shareElement) {
+                        shareElement.remove();
+                    }
+                    const downloadReportElement = documentClone.getElementById('downloadReport');
+                    if (downloadReportElement) {
+                        downloadReportElement.remove();
+                    }
 
                     // Parse all <link> elements with rel="stylesheet" and inline their styles
                     const linkElements = documentClone.querySelectorAll('link[rel="stylesheet"][href]');
@@ -231,6 +241,7 @@ if (url) {
                             }
                         }
                     }
+                    // Parse all <script> elements with type="module" and inline them
                     for (const script of scriptElements) {
                         const module = script.getAttribute('module');
                         if (module) {
