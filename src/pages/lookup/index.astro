@@ -203,7 +203,7 @@ if (url) {
                     // Clone the document to avoid modifying the original
                     const documentClone = document.cloneNode(true);
 
-                    // ===== CSS INLINING =====
+                    // === 1. CSS INLINING & FONT DATA-URL REWRITE ===
                     const linkElements = documentClone.querySelectorAll('link[rel="stylesheet"][href]');
                     for (const link of linkElements) {
                         const href = link.getAttribute('href');
@@ -212,7 +212,56 @@ if (url) {
                                 const absoluteUrl = new URL(href, document.baseURI).href;
                                 const response = await fetch(absoluteUrl);
                                 if (response.ok) {
-                                    const cssContent = await response.text();
+                                    let cssContent = await response.text();
+
+                                    // --- Inline referenced fonts in CSS (@font-face { src: url('...') })
+                                    // This fetches fonts, converts to data URL, and rewrites CSS font-face URLs
+                                    const fontRegex = /@font-face\s*{[^}]*src:\s*([^;}]+);[^}]*}/gi;
+                                    const urlRegex = /url\(([^)]+)\)/g;
+
+                                    let fontMatch;
+                                    let replacements = [];
+                                    while ((fontMatch = fontRegex.exec(cssContent)) !== null) {
+                                        let src = fontMatch[1];
+                                        let urls = [];
+                                        let match;
+                                        while ((match = urlRegex.exec(src)) !== null) {
+                                            let originalUrl = match[1].replace(/['"]/g, '').trim();
+                                            if (!originalUrl.startsWith('data:')) {
+                                                // Robustly resolve any relative URL, as before
+                                                let fontAbsUrl = new URL(originalUrl, absoluteUrl).href;
+                                                try {
+                                                    const fontResp = await fetch(fontAbsUrl);
+                                                    if (fontResp.ok) {
+                                                        const fontBlob = await fontResp.blob();
+                                                        const fontDataUrl = await new Promise(resolve => {
+                                                            const reader = new FileReader();
+                                                            reader.onloadend = () => resolve(reader.result);
+                                                            reader.readAsDataURL(fontBlob);
+                                                        });
+                                                        urls.push({originalUrl, dataUrl: fontDataUrl});
+                                                    }
+                                                } catch (err) {
+                                                    console.error('Error inlining font:', err);
+                                                }
+                                            }
+                                        }
+                                        // Save this block's replacements for later batch replace
+                                        replacements.push({block: fontMatch[0], urls});
+                                    }
+                                    // Actually replace font URLs with inlined data
+                                    for (const rep of replacements) {
+                                        let newBlock = rep.block;
+                                        for (const {originalUrl, dataUrl} of rep.urls) {
+                                            newBlock = newBlock.replace(
+                                                new RegExp(`url\\(['"]?${originalUrl}['"]?\\)`, 'g'),
+                                                `url('${dataUrl}')`
+                                            );
+                                        }
+                                        cssContent = cssContent.replace(rep.block, newBlock);
+                                    }
+
+                                    // --- End font handling
                                     const styleElement = documentClone.createElement('style');
                                     styleElement.textContent = cssContent;
                                     link.parentNode?.replaceChild(styleElement, link);
@@ -223,7 +272,7 @@ if (url) {
                         }
                     }
 
-                    // ===== SCRIPT INLINING =====
+                    // === 2. SCRIPT INLINING (optional) ===
                     const scriptElements = documentClone.querySelectorAll('script[type="module"][src]');
                     for (const script of scriptElements) {
                         const src = script.getAttribute('src');
@@ -245,7 +294,7 @@ if (url) {
                         }
                     }
 
-                    // ===== IMAGE INLINING =====
+                    // === 3. IMAGE INLINING ===
                     const imgElements = documentClone.querySelectorAll('img[src]');
                     for (const img of imgElements) {
                         const src = img.getAttribute('src');
@@ -268,13 +317,20 @@ if (url) {
                         }
                     }
 
-                    // ===== REMOVE SHARE + DOWNLOAD UI (LAST) =====
+                    // === 4. ADD JQUERY TO HEAD ===
+                    const jQueryScript = documentClone.createElement('script');
+                    jQueryScript.src = "https://code.jquery.com/jquery-3.7.1.min.js";
+                    jQueryScript.setAttribute("integrity", "sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=");
+                    jQueryScript.setAttribute("crossorigin", "anonymous");
+                    documentClone.head.appendChild(jQueryScript);
+
+                    // === 5. REMOVE UI ELEMENTS (#share, #downloadReport) ===
                     const shareElement = documentClone.getElementById('share');
                     if (shareElement) shareElement.remove();
                     const downloadReportElement = documentClone.getElementById('downloadReport');
                     if (downloadReportElement) downloadReportElement.remove();
 
-                    // ===== GENERATE HTML, CREATE AND DOWNLOAD FILE =====
+                    // === 6. GENERATE HTML, DOWNLOAD ===
                     const htmlContent = '<!DOCTYPE html>\n' + documentClone.documentElement.outerHTML;
                     const blob = new Blob([htmlContent], { type: 'text/html' });
                     const url = URL.createObjectURL(blob);
@@ -284,7 +340,6 @@ if (url) {
                     a.download = (document.title.replace(/\s+/g, '-').toLowerCase() || 'report') + '.html';
                     document.body.appendChild(a);
                     a.click();
-
                     setTimeout(() => {
                         document.body.removeChild(a);
                         URL.revokeObjectURL(url);
