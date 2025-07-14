@@ -241,13 +241,14 @@ if (url) {
                             }
                         }
                     }
+
                     // Parse all <script> elements with type="module" and inline them
                     for (const script of scriptElements) {
-                        const module = script.getAttribute('module');
-                        if (module) {
+                        const src = script.getAttribute('src');
+                        if (src) {
                             try {
                                 // Convert relative URL to absolute URL if needed
-                                const absoluteUrl = module.startsWith('/') ? 'https://crft.studio' + module : module;
+                                const absoluteUrl = src.startsWith('/') ? 'https://crft.studio' + src : src;
 
                                 // Fetch the JavaScript module content
                                 const response = await fetch(absoluteUrl);
@@ -257,6 +258,9 @@ if (url) {
                                     // Create a script element with the JavaScript content
                                     const scriptElement = documentClone.createElement('script');
                                     scriptElement.textContent = scriptContent;
+                                    // Remove the type="module" and src attributes since we're inlining
+                                    scriptElement.removeAttribute('type');
+                                    scriptElement.removeAttribute('src');
 
                                     // Replace the script element with the new script element
                                     script.parentNode?.replaceChild(scriptElement, script);
@@ -267,6 +271,7 @@ if (url) {
                             }
                         }
                     }
+
 
                     // Get full HTML source from the modified clone
                     const htmlContent = '<!DOCTYPE html>\n' + documentClone.documentElement.outerHTML;
