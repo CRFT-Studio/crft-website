@@ -197,55 +197,94 @@ if (url) {
                     });
                 });
 
-                $('#downloadReport').on('click', function (e) {
+                $('#downloadReport').on('click', async function (e) {
                     e.preventDefault();
 
                     // Clone the document to avoid modifying the original
-                    const documentClone = document.cloneNode(true) as Document;
+                    const documentClone = document.cloneNode(true);
 
-                    // Parse all <link> elements with rel="stylesheet" and inline their styles
+                    // ===== CSS INLINING =====
                     const linkElements = documentClone.querySelectorAll('link[rel="stylesheet"][href]');
                     for (const link of linkElements) {
                         const href = link.getAttribute('href');
                         if (href) {
                             try {
-                                // Convert relative URL to absolute URL if needed
-                                const absoluteUrl = href.startsWith('/') ? 'https://crft.studio' + href : href;
-
-                                // Fetch the CSS content
+                                const absoluteUrl = new URL(href, document.baseURI).href;
                                 const response = await fetch(absoluteUrl);
                                 if (response.ok) {
                                     const cssContent = await response.text();
-
-                                    // Create a style element with the CSS content
                                     const styleElement = documentClone.createElement('style');
                                     styleElement.textContent = cssContent;
-
-                                    // Replace the link element with the style element
                                     link.parentNode?.replaceChild(styleElement, link);
                                 }
                             } catch (error) {
                                 console.error('Error fetching CSS:', error);
-                                // Keep the original link element if fetching fails
                             }
                         }
                     }
 
-                    // Get full HTML source from the modified clone
-                    const htmlContent = '<!DOCTYPE html>\n' + documentClone.documentElement.outerHTML;
+                    // ===== SCRIPT INLINING =====
+                    const scriptElements = documentClone.querySelectorAll('script[type="module"][src]');
+                    for (const script of scriptElements) {
+                        const src = script.getAttribute('src');
+                        if (src) {
+                            try {
+                                const absoluteUrl = new URL(src, document.baseURI).href;
+                                const response = await fetch(absoluteUrl);
+                                if (response.ok) {
+                                    const scriptContent = await response.text();
+                                    const scriptElement = documentClone.createElement('script');
+                                    scriptElement.textContent = scriptContent;
+                                    scriptElement.removeAttribute('type');
+                                    scriptElement.removeAttribute('src');
+                                    script.parentNode?.replaceChild(scriptElement, script);
+                                }
+                            } catch (error) {
+                                console.error('Error fetching JavaScript:', error);
+                            }
+                        }
+                    }
 
-                    // Create a Blob and object URL
+                    // ===== IMAGE INLINING =====
+                    const imgElements = documentClone.querySelectorAll('img[src]');
+                    for (const img of imgElements) {
+                        const src = img.getAttribute('src');
+                        if (src && !src.startsWith('data:')) {
+                            try {
+                                const absoluteUrl = new URL(src, document.baseURI).href;
+                                const response = await fetch(absoluteUrl);
+                                if (response.ok) {
+                                    const blob = await response.blob();
+                                    const dataUrl = await new Promise(resolve => {
+                                        const reader = new FileReader();
+                                        reader.onloadend = () => resolve(reader.result);
+                                        reader.readAsDataURL(blob);
+                                    });
+                                    img.setAttribute('src', dataUrl);
+                                }
+                            } catch (error) {
+                                console.error('Error inlining image:', error);
+                            }
+                        }
+                    }
+
+                    // ===== REMOVE SHARE + DOWNLOAD UI (LAST) =====
+                    const shareElement = documentClone.getElementById('share');
+                    if (shareElement) shareElement.remove();
+                    const downloadReportElement = documentClone.getElementById('downloadReport');
+                    if (downloadReportElement) downloadReportElement.remove();
+
+                    // ===== GENERATE HTML, CREATE AND DOWNLOAD FILE =====
+                    const htmlContent = '<!DOCTYPE html>\n' + documentClone.documentElement.outerHTML;
                     const blob = new Blob([htmlContent], { type: 'text/html' });
                     const url = URL.createObjectURL(blob);
 
-                    // Create a temporary link to trigger download
                     const a = document.createElement('a');
                     a.href = url;
                     a.download = (document.title.replace(/\s+/g, '-').toLowerCase() || 'report') + '.html';
                     document.body.appendChild(a);
                     a.click();
 
-                    // Cleanup: remove link and revoke URL
                     setTimeout(() => {
                         document.body.removeChild(a);
                         URL.revokeObjectURL(url);
