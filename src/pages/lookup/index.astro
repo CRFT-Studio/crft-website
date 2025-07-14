@@ -203,15 +203,33 @@ if (url) {
                     // Clone the document to avoid modifying the original
                     const documentClone = document.cloneNode(true) as Document;
 
-                    // Parse all <link> elements and convert relative URLs to absolute ones
-                    const linkElements = documentClone.querySelectorAll('link[href]');
-                    linkElements.forEach(link => {
+                    // Parse all <link> elements with rel="stylesheet" and inline their styles
+                    const linkElements = documentClone.querySelectorAll('link[rel="stylesheet"][href]');
+                    for (const link of linkElements) {
                         const href = link.getAttribute('href');
-                        if (href && href.startsWith('/')) {
-                            // Convert relative URL to absolute URL with https://crft.studio domain
-                            link.setAttribute('href', 'https://crft.studio' + href);
+                        if (href) {
+                            try {
+                                // Convert relative URL to absolute URL if needed
+                                const absoluteUrl = href.startsWith('/') ? 'https://crft.studio' + href : href;
+
+                                // Fetch the CSS content
+                                const response = await fetch(absoluteUrl);
+                                if (response.ok) {
+                                    const cssContent = await response.text();
+
+                                    // Create a style element with the CSS content
+                                    const styleElement = documentClone.createElement('style');
+                                    styleElement.textContent = cssContent;
+
+                                    // Replace the link element with the style element
+                                    link.parentNode?.replaceChild(styleElement, link);
+                                }
+                            } catch (error) {
+                                console.error('Error fetching CSS:', error);
+                                // Keep the original link element if fetching fails
+                            }
                         }
-                    });
+                    }
 
                     // Get full HTML source from the modified clone
                     const htmlContent = '<!DOCTYPE html>\n' + documentClone.documentElement.outerHTML;
