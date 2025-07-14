@@ -39,10 +39,10 @@ tiers.forEach(tier => prices[tier] = pricesRaw.data.find(price => price.lookup_k
                 <div class="text-center text-lg font-normal text-orange-300 mb-6 text-pretty">Web Design & Development Plans</div>
                 <form action="/checkout">
                     <div class="flex justify-center mb-8">
-                        <div id="tabs" class="inline-flex flex-row card p-[2px] rounded-lg border-[1px] gap-2 mx-auto text-sm text-nowrap overflow-x-auto">
-                            <div id="monthly" data-price={`$${prices["monthly"].unit_amount / 100}`} class="tab-active border-[1px] rounded-[4px] px-2 py-1 hover:cursor-pointer transition-all">Monthly</div>
-                            <div id="quarterly" data-price={`$${prices["quarterly"].unit_amount / 100 / 3}`} class="px-2 py-1 rounded-[4px] border-[1px] hover:cursor-pointer transition-all">Quarterly (Save 10%)</div>
-                            <div id="annually" data-price={`$${prices["annually"].unit_amount / 100 / 12}`} class="px-2 py-1 rounded-[4px] border-[1px] hover:cursor-pointer transition-all">Annually (Save 15%)</div>
+                        <div id="tabs" class="inline-flex flex-row card rounded-none p-[2px] border-[1px] gap-2 mx-auto text-sm text-nowrap overflow-x-auto">
+                            <div id="monthly" data-price={`$${prices["monthly"].unit_amount / 100}`} class="tab-active border-[1px] px-2 py-1 hover:cursor-pointer transition-all">Monthly</div>
+                            <div id="quarterly" data-price={`$${prices["quarterly"].unit_amount / 100 / 3}`} class="px-2 py-1 border-[1px] hover:cursor-pointer transition-all">Quarterly (Save 10%)</div>
+                            <div id="annually" data-price={`$${prices["annually"].unit_amount / 100 / 12}`} class="px-2 py-1 border-[1px] hover:cursor-pointer transition-all">Annually (Save 15%)</div>
                             <input type="hidden" id="plan" name="plan">
                         </div>
                     </div>
