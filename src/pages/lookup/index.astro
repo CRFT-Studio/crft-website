@@ -197,14 +197,25 @@ if (url) {
                     });
                 });
 
-                $('#downloadReport').on('click', function (e) {
+                $('#downloadReport').on('click', async function (e) {
                     e.preventDefault();
 
                     // Clone the document to avoid modifying the original
                     const documentClone = document.cloneNode(true) as Document;
 
+                    // Delete elements with id "share" and "reportDownload"
+                    const shareElement = documentClone.getElementById('share');
+                    if (shareElement) {
+                        shareElement.remove();
+                    }
+                    const downloadReportElement = documentClone.getElementById('downloadReport');
+                    if (downloadReportElement) {
+                        downloadReportElement.remove();
+                    }
+
                     // Parse all <link> elements with rel="stylesheet" and inline their styles
                     const linkElements = documentClone.querySelectorAll('link[rel="stylesheet"][href]');
+                    const scriptElements = documentClone.querySelectorAll('script[type="module"]');
                     for (const link of linkElements) {
                         const href = link.getAttribute('href');
                         if (href) {
@@ -227,6 +238,32 @@ if (url) {
                             } catch (error) {
                                 console.error('Error fetching CSS:', error);
                                 // Keep the original link element if fetching fails
+                            }
+                        }
+                    }
+                    // Parse all <script> elements with type="module" and inline them
+                    for (const script of scriptElements) {
+                        const module = script.getAttribute('module');
+                        if (module) {
+                            try {
+                                // Convert relative URL to absolute URL if needed
+                                const absoluteUrl = module.startsWith('/') ? 'https://crft.studio' + module : module;
+
+                                // Fetch the JavaScript module content
+                                const response = await fetch(absoluteUrl);
+                                if (response.ok) {
+                                    const scriptContent = await response.text();
+
+                                    // Create a script element with the JavaScript content
+                                    const scriptElement = documentClone.createElement('script');
+                                    scriptElement.textContent = scriptContent;
+
+                                    // Replace the script element with the new script element
+                                    script.parentNode?.replaceChild(scriptElement, script);
+                                }
+                            } catch (error) {
+                                console.error('Error fetching JavaScript:', error);
+                                // Keep the original script element if fetching fails
                             }
                         }
                     }
