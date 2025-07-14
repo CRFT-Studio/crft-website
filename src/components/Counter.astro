@@ -1,0 +1,31 @@
+---
+
+---
+<html lang="en">
+    <head>
+        <script>
+            // Simple independent counter (seconds with tenth and hundredth place)
+            (function() {
+                let count = 0;
+
+                function updateCounter() {
+                    console.log('Checking for counter element...');
+                    const counterElement = document.getElementById("counter");
+                    if (counterElement) {
+                        console.log('Found counter, updating...');
+                        counterElement.textContent = count.toFixed(2);
+                        count += 0.01;
+                        setTimeout(updateCounter, 10);
+                    }
+                }
+
+                console.log('Counter script starting...');
+                // Start immediately - don't wait for DOM ready
+                updateCounter();
+            })();
+        </script>
+    </head>
+    <body>
+        <div class="card bg-transparent bg-opacity-25 px-[6px] py-0 rounded-none mr-2 text-neutral-300" id="counter">0.00</div>
+    </body>
+</html>
