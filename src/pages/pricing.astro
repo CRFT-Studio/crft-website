@@ -5,14 +5,6 @@ import Footer from "../components/Footer.astro";
 import Stripe from "stripe";
 import HeadScripts from "../components/HeadScripts.astro";
 import HowWeWork from "../components/HowWeWork.astro";
-
-const STRIPE_API = import.meta.env.STRIPE_API;
-const stripe = new Stripe(STRIPE_API);
-const tiers = ["monthly", "quarterly", "annually"], prices = {};
-const pricesRaw = await stripe.prices.list({ lookup_keys: tiers });
-tiers.forEach(tier => prices[tier] = pricesRaw.data.find(price => price.lookup_key === tier));
-
-//categorize pricing list based on the work, the comms, and the money stuff
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -37,22 +29,23 @@ tiers.forEach(tier => prices[tier] = pricesRaw.data.find(price => price.lookup_k
         <section class="mt-20">
             <div class="container">
                 <div class="text-center text-lg font-normal text-orange-300 mb-6 text-pretty">Web Design & Development Plans</div>
-                <form action="/checkout">
-                    <div class="flex justify-center mb-8">
-                        <div id="tabs" class="inline-flex flex-row card rounded-none p-[2px] border-[1px] gap-2 mx-auto text-sm text-nowrap overflow-x-auto">
-                            <div id="monthly" data-price={`$${prices["monthly"].unit_amount / 100}`} class="tab-active border-[1px] px-2 py-1 hover:cursor-pointer transition-all">Monthly</div>
-                            <div id="quarterly" data-price={`$${prices["quarterly"].unit_amount / 100 / 3}`} class="px-2 py-1 border-[1px] hover:cursor-pointer transition-all">Quarterly (Save 10%)</div>
-                            <div id="annually" data-price={`$${prices["annually"].unit_amount / 100 / 12}`} class="px-2 py-1 border-[1px] hover:cursor-pointer transition-all">Annually (Save 15%)</div>
-                            <input type="hidden" id="plan" name="plan">
-                        </div>
+                <div class="flex lg:flex-row flex-col justify-center mb-8 gap-4">
+                    <div id="tabs" class="inline-flex flex-row card rounded-none p-[2px] border-[1px] gap-2 text-sm text-nowrap overflow-x-auto">
+                        <div id="monthly" class="tab-active border-[1px] px-2 py-1 hover:cursor-pointer transition-all">Monthly</div>
+                        <div id="quarterly" class="px-2 py-1 border-[1px] hover:cursor-pointer transition-all">Quarterly (Save 10%)</div>
+                        <div id="annually" class="px-2 py-1 border-[1px] hover:cursor-pointer transition-all">Annually (Save 15%)</div>
                     </div>
-                    <h1 class="lg:text-7xl md:text-6xl sm:text-5xl text-[2.6rem] text-center text-balance font-semibold leading-tight lg:mb-7 mb-5"><span id="price">$5000</span><span class="bg-neutral-400 bg-clip-text">/month</span></h1>
-                    <div class="text-center lg:text-xl text-lg font-medium leading-normal text-neutral-200 text-pretty max-w-[800px] mx-auto">A simple, straightforward monthly subscription for the length of our project. No contracts or fixed scopes of work. Pause or cancel your subscription as needed. We think of ourselves as an extension of your team, dedicated to designing and developing your website while you work on your core business.</div>
-                    <div class="flex flex-row justify-center gap-3 mt-8">
-                        <button class="primary-cta">Subscribe</button>
-                        <a href='/audit' class="secondary-cta">Get Free Audit</a>
-                    </div>
-                </form>
+                    <select id="currency" class="order-first lg:order-last card rounded-none p-[2px] py-2 border-[1px] text-sm text-nowrap overflow-x-auto">
+                        <option value="usd">🇺🇸 USD</option>
+                        <option value="cad">🇨🇦 CAD</option>
+                    </select>
+                </div>
+                <h1 class="lg:text-7xl md:text-6xl sm:text-5xl text-[2.6rem] text-center text-balance font-semibold leading-tight lg:mb-7 mb-5"><span id="price">$5000</span><span class="bg-neutral-400 bg-clip-text">/month</span></h1>
+                <div class="text-center lg:text-xl text-lg font-medium leading-normal text-neutral-200 text-pretty max-w-[800px] mx-auto">A simple, straightforward monthly subscription for the length of our project. No contracts or fixed scopes of work. Pause or cancel your subscription as needed. We think of ourselves as an extension of your team, dedicated to designing and developing your website while you work on your core business.</div>
+                <div class="flex flex-row justify-center gap-3 mt-8">
+                    <a href="/checkout?plan=monthly" class="primary-cta">Subscribe</a>
+                    <a href='/audit' class="secondary-cta">Get Free Audit</a>
+                </div>
             </div>
 
             <div class="container mx-auto mt-20">
@@ -138,13 +131,41 @@ tiers.forEach(tier => prices[tier] = pricesRaw.data.find(price => price.lookup_k
 
         <script>
             import $ from "jquery";
-            $("#price").text($(".tab-active").attr("data-price"));
-            $("#plan").val($(".tab-active").attr("id"));
+
+            const prices = {
+                monthly: { usd: 5000, cad: 6600 },
+                quarterly: { usd: 13500, cad: 18500 },
+                annually: { usd: 51000, cad: 66600 }
+            };
+
+            function updatePrice() {
+                const activePlan = $(".tab-active").attr("id");
+                const selectedCurrency = $("#currency").val();
+                const price = prices[activePlan][selectedCurrency];
+                $("#price").text(`$${price.toLocaleString()}`);
+            }
+
+            function updateCheckoutLink() {
+                const activePlan = $(".tab-active").attr("id");
+                $(".primary-cta").attr("href", `/checkout?plan=${activePlan}`);
+            }
+
+            // Initialize price and checkout link on page load
+            updatePrice();
+            updateCheckoutLink();
+
+            // Update price and checkout link when tab changes
             $("#tabs div").click(function() {
-              if ($(this).hasClass("tab-active")) return;
-              $(".tab-active").add(this).toggleClass("tab-active");
-              $("#price").text($(this).attr("data-price"));
-              $("#plan").val($(this).attr("id"));
+                if ($(this).hasClass("tab-active")) return;
+                $(".tab-active").add(this).toggleClass("tab-active");
+                $("#plan").val($(this).attr("id"));
+                updatePrice();
+                updateCheckoutLink();
+            });
+
+            // Update price when currency changes
+            $("#currency").change(function() {
+                updatePrice();
             });
         </script>
 
