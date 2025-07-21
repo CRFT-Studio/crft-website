@@ -19,7 +19,7 @@ import { Resend } from 'resend';
 const resend = new Resend(import.meta.env.RESEND_API);
 await resend.batch.send([
   {
-    from: 'audit@crft.studio',
+    from: 'Jeremy from CRFT Studio <audit@crft.studio>',
     to: params["Work Email"],
     cc: 'jeremy@crft.studio',
     subject: `${params["First Name"]}, thanks for requesting a hero redesign!`,
