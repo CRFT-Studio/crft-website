@@ -2,7 +2,7 @@
 layout: ../../layouts/PostLayout.astro
 title: 'On designers coding'
 pubDate: 'May 5, 2024'
-description: 'This is the first post of my new Astro blog.'
+description: 'I explain why I decided to learn coding as a designer: to make my ideas real, work more efficiently in later design iterations, and develop better design.'
 author: ['Jeremy']
 image:
     url: 'https://docs.astro.build/assets/rose.webp'

@@ -4,9 +4,22 @@ const allPosts = Object.values(import.meta.glob('../pages/blog/*.md', { eager: t
 // // const {frontmatter} = Astro.props;
 // // const {authors} = authorsData;
 ---
-{allPosts.map(post => (
-    <a href={post.url} class="flex flex-row justify-between align-middle border-t border-b border-neutral-700 py-2 px-1">
-        <div class="max-w-[75%]">{post.frontmatter.title}</div>
-        <div class="text-neutral-400">{post.frontmatter.tags}</div>
-    </a>
-))}
+<div class="grid lg:grid-cols-3 gap-4">
+    {allPosts.map(post => (
+        <a href={post.url}>
+            <div class="square-card bg-neutral-900 border-neutral-700 hover:bg-neutral-800 transition-all flex flex-col justify-between gap-4 h-full">
+                <div>
+                    <div class="flex flex-row justify-between mb-4">
+                        <div class="square-card p-0 px-1 bg-transparent  border-neutral-700 text-neutral-400">{post.frontmatter.tags}</div>
+                        <div class="text-neutral-400">{post.frontmatter.pubDate}</div>
+                    </div>
+                    <div class="text-pretty text-neutral-200 text-xl mb-2">{post.frontmatter.title}</div>
+                    <div class="text-pretty text-neutral-300">{post.frontmatter.description}</div>
+                </div>
+                <div class="flex flex-row gap-1 items-center">
+                    <div class="text-base text-orange-400">Read post</div>
+                    <svg class="fill-orange-400 translate-y-[1px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="m517.85-480-184-184L376-706.15 602.15-480 376-253.85 333.85-296l184-184Z"/></svg>                </div>
+            </div>
+        </a>
+    ))}
+</div>

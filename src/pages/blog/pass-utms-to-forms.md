@@ -2,7 +2,7 @@
 layout: ../../layouts/PostLayout.astro
 title: 'Dynamically track query (UTM) parameters and pass them in forms'
 pubDate: 'May 5, 2024'
-description: 'This is the first post of my new Astro blog.'
+description: 'Learn how to capture UTM parameters from URLs and automatically pass them through forms using JavaScript and local storage to track marketing attribution.'
 author: ['Jeremy', 'David']
 image:
     url: 'https://docs.astro.build/assets/rose.webp'

@@ -14,13 +14,12 @@ import HeadScripts from "../components/HeadScripts.astro";
 	</head>
     <body>
         <Navigation />
-        <section>
-            <div class="container max-w-[800px]">
-                <h1 class="text-4xl font-semibold max-w-[60%] leading-tight mb-10">Blog. <span class="bg-neutral-400 bg-clip-text">Recent thinking and work we've done.</span></h1>
+        <section class="lg:mt-[150px] mt-14">
+            <div class="container">
+                <h1 class="text-4xl font-medium leading-tight mb-10">Blog. <span class="bg-neutral-400 bg-clip-text">Recent thinking and work we've done.</span></h1>
                 <BlogPosts />
             </div>
         </section>
-
         <Footer/>
     </body>
 </html>
