@@ -8,7 +8,7 @@ tags: ["News"]
 ---
 A quick announcement: our design for the [FeedBear website](https://www.feedbear.com/) was recently selected to be listed among the “Best Professional Services Website Designs” on [DesignRush](https://www.designrush.com/best-designs).
 
-![FeedBear Desktop Website Screenshot](https://www.crft.studio/images/feedbear-desktop.png)
+![FeedBear Desktop Website Screenshot](/images/feedbear-desktop.png)
 
 They run a directory and publish roundups highlighting work by agencies and studios. They reached out directly, liked the FeedBear project, and asked if we’d be open to being included. It’s always nice to see our work appreciated by other folks in the web design community :)
 
