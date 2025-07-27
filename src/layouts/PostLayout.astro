@@ -27,7 +27,11 @@ const authorImages = {
     	<Navigation/>
         <section class="mt-24">
             <div class="container">
-                <div class="mb-4">Published on {frontmatter.pubDate}</div>
+                <div class="flex flex-row gap-2 mb-4">
+                    <a class="text-orange-300" href="/blog">Blog</a>
+                    <div> / </div>
+                    <div class="text-neutral-400">Published on {frontmatter.pubDate}</div>
+                </div>
                 <h1 class="text-4xl font-semibold leading-tight mb-5 max-w-[800px] text-pretty">{frontmatter.title}</h1>
                 <div class="flex flex-row flex-wrap gap-8 items-center">
                     {frontmatter.author.map((authorName) => (
