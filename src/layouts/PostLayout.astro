@@ -32,7 +32,7 @@ const authorImages = {
                     <div> / </div>
                     <div class="text-neutral-400">Published on {frontmatter.pubDate}</div>
                 </div>
-                <h1 class="text-4xl font-semibold leading-tight mb-5 max-w-[800px] text-pretty">{frontmatter.title}</h1>
+                <h1 class="lg:text-4xl text-3xl font-semibold leading-tight mb-5 max-w-[800px] text-pretty">{frontmatter.title}</h1>
                 <div class="flex flex-row flex-wrap lg:gap-8 gap-4 mb-7 items-center">
                     {frontmatter.author.map((authorName) => (
                         <div class="flex flex-row gap-2 items-center">
@@ -51,15 +51,15 @@ const authorImages = {
                     ))}
                 </div>
                 <div class="lg:grid lg:grid-cols-[1fr_0.2fr]">
-                    <article class="prose prose-lg text-neutral-200 leading-normal prose-h2:text-2xl prose-h2:font-medium prose-h2:mb-4 prose-h2:mt-9 prose-headings:text-neutral-200 prose-a:text-orange-300 prose-a:font-normal prose-code:w-[90px]">
+                    <article class="prose prose-lg prose-blockquote:text-neutral-200 prose-strong:text-neutral-200 text-neutral-200 leading-normal prose-h2:text-2xl prose-h2:font-medium prose-h2:mb-4 prose-h2:mt-9 prose-headings:text-neutral-200 prose-a:text-orange-300 prose-a:font-normal prose-code:w-[90px]">
                         <slot/>
                     </article>
                     <aside>
                         <div id="sidebar" class="lg:pt-0 pt-7 lg:sticky lg:top-36">
-                            <div id="toc" class="square-card p-0 border-0 lg:mb-5 mb-10"></div>
+                            <div id="toc" class="square-card p-0 border-0 lg:mb-5 mb-10 lg:max-h-[30vh] overflow-y-auto"></div>
                             <div class="lg:block hidden square-card bg-transparent relative overflow-hidden max-w-[300px] h-[365px]">
-                                <div class="lg:max-w-[40ch] text-pretty mb-8">See the tech stack, pagespeed, sitemap and meta tags of the sites you're curious about.</div>
-                                <a href="/lookup" class="primary-cta">Scan a website →</a>
+                                <div class="lg:max-w-[40ch] text-pretty mb-6">See the tech stack, pagespeed, sitemap and meta tags of the sites you're curious about.</div>
+                                <a href="/lookup" class="primary-cta py-1">Scan a website (free) →</a>
                                 <div class="max-w-[300px] mt-8 flex flex-row gap-4">
                                     <div class="flex flex-row gap-4 origin-top-left scale-[0.55]">
                                         <LookupCard url="tailwindcss.com" img="https://tailwindcss.com/opengraph-image.jpg?22502194f1a254bc" metaTitle="Tailwind CSS - Rapidly build modern websites without ever leaving your HTML" performance="75" accessibility="86" bestPractices="96" seo="91">
@@ -133,7 +133,7 @@ const authorImages = {
             const article = document.querySelector('article');
             if (!article) return [];
 
-            const headingElements = article.querySelectorAll('h2, h3');
+            const headingElements = article.querySelectorAll('h2');
             const headings = Array.from(headingElements).map(heading => ({
                 depth: parseInt(heading.tagName[1]), // Get the heading level (2 or 3)
                 slug: heading.id || heading.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
