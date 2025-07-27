@@ -11,7 +11,7 @@ tags: ["How We Work"]
 ---
 Whether designers should code or not seems to be a topic of heated debate. As a designer whose stood on the sidelines, I've thought about it, and came to the realization that I should learn to code. And that's what I've been doing over the past couple months. Here's why.
 
-# Wanting to make my ideas real
+## Wanting to make my ideas real
 
 When it comes down to it, a designer's job is to *draw* an interface. I want to be able to turn that interface into a real thing that people can use and interact with, without having to rely on someone else.
 
@@ -25,7 +25,7 @@ But with some prodding from my older brother (a developer), and growing frustrat
 
 Thinking back, picking up any new skill has never not been an arduous process. That's just a part of the game until you become fluent.
 
-# Later iterations take place in code
+## Later iterations take place in code
 
 Before I was set on programming, working with Webflow gave me an understanding of HTML and CSS. Unlike many other "no-code" website builders, I'm grateful that Webflow doesn't abstract these concepts away.
 
@@ -37,7 +37,7 @@ MobiLoud, a client of mine, has a fairly mature website now. I almost never touc
 
 The closer a design is to completion, the more it makes sense to work in the closest environment to reality. And that happens to be in code.
 
-# Programming makes you have better ideas
+## Programming makes you have better ideas
 
 Oftentimes, when designing something in Figma, I tend to have little regard for its technical feasibility. Seeing as front-end development is obviously more complex than drawing, I like the idea of drawing without a care, and then challenging myself to build whatever it is afterwards.
 
