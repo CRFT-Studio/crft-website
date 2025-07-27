@@ -1,5 +1,6 @@
 ---
 import Navigation from '../components/Navigation.astro';
+import LookupCard from '../components/LookupCard.astro';
 import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
 import authorsData from '../data/authors.json';
@@ -25,9 +26,9 @@ const authorImages = {
 	<body>
     	<Navigation/>
         <section class="mt-24">
-            <div class="container max-w-[800px]">
+            <div class="container">
                 <div class="mb-4">Published on {frontmatter.pubDate}</div>
-                <h1 class="text-4xl font-semibold leading-tight mb-5">{frontmatter.title}</h1>
+                <h1 class="text-4xl font-semibold leading-tight mb-5 max-w-[800px] text-pretty">{frontmatter.title}</h1>
                 <div class="flex flex-row flex-wrap gap-8 items-center">
                     {frontmatter.author.map((authorName) => (
                         <div class="flex flex-row gap-2 mb-7 items-center">
@@ -42,12 +43,112 @@ const authorImages = {
                         </div>
                     ))}
                 </div>
-                <article class="prose prose-lg text-neutral-200 leading-normal prose-h1:text-2xl prose-h1:font-medium prose-headings:text-neutral-200 prose-a:text-orange-300 prose-a:font-normal">
-                    <slot/>
-                </article>
+                <div class="grid lg:grid-cols-[1fr_0.2fr]">
+                    <article class="prose prose-lg text-neutral-200 leading-normal prose-h2:text-2xl prose-h2:font-medium prose-h2:mb-4 prose-h2:mt-9 prose-headings:text-neutral-200 prose-a:text-orange-300 prose-a:font-normal">
+                        <slot/>
+                    </article>
+                    <aside>
+                        <div id="sidebar" class="pt-7 lg:sticky lg:top-36">
+                            <div id="toc" class="square-card p-0 border-0 lg:mb-5 mb-10"></div>
+                        </div>
+                    </aside>
+                </div>
             </div>
         </section>
+        <script>
+        import $ from 'jquery';
 
+        function generateHeadings() {
+            const article = document.querySelector('article');
+            if (!article) return [];
+
+            const headingElements = article.querySelectorAll('h2, h3');
+            const headings = Array.from(headingElements).map(heading => ({
+                depth: parseInt(heading.tagName[1]), // Get the heading level (2 or 3)
+                slug: heading.id || heading.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+                text: heading.textContent
+            }));
+
+            // Set IDs for headings that don't have them
+            headingElements.forEach((heading, index) => {
+                if (!heading.id) {
+                    heading.id = headings[index].slug;
+                }
+            });
+
+            return headings;
+        }
+
+        const moveTocOnMobile = () => {
+            if ($(window).width() < 1024) {
+                $("#toc").insertBefore("h2:first");
+            } else {
+                $("#toc").prependTo("#sidebar");
+            }
+        };
+
+        // Initialize TOC when document is ready
+        $(document).ready(() => {
+            const headings = generateHeadings();
+            const tocContainer = document.querySelector('#toc');
+
+            if (tocContainer) {
+                // Hide TOC if no headings are found
+                if (headings.length === 0) {
+                    tocContainer.style.display = 'none';
+                    return;
+                }
+
+                const tocHtml = `
+                    <div class="p-3 px-4 rounded-sm border border-neutral-700 shadow-md">
+                        <div class="text-lg mb-2">Table of contents</div>
+                        <div class="mt-4 flex flex-col gap-2 text-neutral-300">
+                            ${headings.map(heading => `
+                                <div class="${heading.depth === 2 ? 'pl-0' : 'pl-3'}">
+                                    <a href="#${heading.slug}" class="toc-link transition hover:text-orange-300">
+                                        ${heading.text}
+                                    </a>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                tocContainer.innerHTML = tocHtml;
+            }
+
+            // Set up intersection observer for highlighting current section
+            const observerOptions = {
+                root: null,
+                rootMargin: "0px 0px -50% 0px",
+                threshold: [1],
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        document.querySelectorAll('.toc-link').forEach(link => link.classList.remove('toc-current'));
+                        const targetLink = document.querySelector(`a[href="#${entry.target.id}"].toc-link`);
+                        if (targetLink) targetLink.classList.add('toc-current');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('h2, h3').forEach(heading => {
+                heading.classList.add('scroll-mt-24');
+                observer.observe(heading);
+            });
+
+            moveTocOnMobile();
+        });
+
+        $(window).resize(moveTocOnMobile);
+        </script>
+
+        <style>
+        .toc-current {
+            @apply text-orange-300;
+        }
+        </style>
         <Footer/>
 	</body>
 </html>
