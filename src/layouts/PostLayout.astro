@@ -39,12 +39,13 @@ const authorImages = {
                             <Image
                                 src={authorImages[authorName]}
                                 alt={authors[authorName].name}
-                                width={40}
-                                height={40}
+                                width={45}
+                                height={45}
                                 class="border aspect-square object-cover border-neutral-800"
                             />
                             <div>
-                                <div class="font-normal text-neutral-200 mb-[2px]">By {authors[authorName].name}</div>
+                                <div class="font-normal text-neutral-200">By {authors[authorName].name}</div>
+                                <div class="font-normal text-neutral-400">{authors[authorName].role}</div>
                             </div>
                         </div>
                     ))}
