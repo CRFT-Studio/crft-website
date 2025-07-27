@@ -33,9 +33,9 @@ const authorImages = {
                     <div class="text-neutral-400">Published on {frontmatter.pubDate}</div>
                 </div>
                 <h1 class="text-4xl font-semibold leading-tight mb-5 max-w-[800px] text-pretty">{frontmatter.title}</h1>
-                <div class="flex flex-row flex-wrap gap-8 items-center">
+                <div class="flex flex-row flex-wrap lg:gap-8 gap-4 mb-7 items-center">
                     {frontmatter.author.map((authorName) => (
-                        <div class="flex flex-row gap-2 mb-7 items-center">
+                        <div class="flex flex-row gap-2 items-center">
                             <Image
                                 src={authorImages[authorName]}
                                 alt={authors[authorName].name}
@@ -51,7 +51,7 @@ const authorImages = {
                     ))}
                 </div>
                 <div class="grid lg:grid-cols-[1fr_0.2fr]">
-                    <article class="prose prose-lg text-neutral-200 leading-normal prose-h2:text-2xl prose-h2:font-medium prose-h2:mb-4 prose-h2:mt-9 prose-headings:text-neutral-200 prose-a:text-orange-300 prose-a:font-normal">
+                    <article class="prose prose-lg text-neutral-200 leading-normal prose-h2:text-2xl prose-h2:font-medium prose-h2:mb-4 prose-h2:mt-9 prose-headings:text-neutral-200 prose-a:text-orange-300 prose-a:font-normal prose-code:w-[90px]">
                         <slot/>
                     </article>
                     <aside>
