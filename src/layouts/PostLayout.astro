@@ -41,9 +41,11 @@ const authorImages = {
                                 alt={authors[authorName].name}
                                 width={40}
                                 height={40}
-                                class="rounded-full"
+                                class="border border-neutral-800"
                             />
-                            <div class="text-lg font-normal text-neutral-200">By {authors[authorName].name}</div>
+                            <div>
+                                <div class="font-normal text-neutral-200 mb-[2px]">By {authors[authorName].name}</div>
+                            </div>
                         </div>
                     ))}
                 </div>
