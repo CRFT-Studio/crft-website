@@ -1,6 +1,7 @@
 ---
 import Navigation from '../components/Navigation.astro';
 import LookupCard from '../components/LookupCard.astro';
+import HeadScripts from '../components/HeadScripts.astro';
 import Footer from '../components/Footer.astro';
 import { Image } from 'astro:assets';
 import authorsData from '../data/authors.json';
@@ -17,6 +18,11 @@ const authorImages = {
 <!doctype html>
 <html lang="en">
 	<head>
+    	<HeadScripts
+    	title={`${frontmatter.title} | CRFT Studio`}
+    	description={`${frontmatter.description} | CRFT Studio`}
+    	ogImageUrl="https://www.crft.studio/open-graph-img.png"
+    	/>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
