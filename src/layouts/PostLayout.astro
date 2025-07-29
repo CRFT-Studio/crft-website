@@ -177,7 +177,7 @@ const authorImages = {
                 }
 
                 const tocHtml = `
-                    <div class="p-3 px-4 rounded-sm border border-neutral-700 shadow-md">
+                    <div class="p-3 px-4 border border-neutral-700 shadow-md">
                         <div class="text-lg mb-2">Table of contents</div>
                         <div class="mt-4 flex flex-col gap-2 text-neutral-300">
                             ${headings.map(heading => `
@@ -222,6 +222,7 @@ const authorImages = {
         </script>
 
         <style>
+        @reference "../styles/global.css";
         .toc-current {
             @apply text-orange-300;
         }

@@ -10,11 +10,12 @@ import HowWeWork from "../components/HowWeWork.astro";
 <html lang="en">
     <head>
         <style>
+        @reference "../styles/global.css";
             #tabs div {
                 @apply border-transparent;
             }
             .tab-active {
-                @apply border-neutral-600 !important;
+                border-color: #525252 !important;
                 @apply bg-neutral-700;
             }
         </style>
