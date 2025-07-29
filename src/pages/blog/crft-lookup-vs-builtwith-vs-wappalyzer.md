@@ -2,7 +2,7 @@
 layout: ../../layouts/PostLayout.astro
 title: 'CRFT Lookup vs BuiltWith vs Wappalyzer: Which Website Tech Detection Tool Is Best for You?'
 pubDate: 'July 28, 2025'
-description: 'Explore a deep, practical comparison of the CRFT Lookup, BuiltWith, and Wappalyzer—the web’s top technology detection tools. See what each offers, who should use them, and why the CRFT Lookup is the best free, holistic solution for web professionals in 2025. Includes key use cases and smart internal linking tactics for agencies and marketers.'
+description: 'See what each offers, who should use them, and why the CRFT Lookup is the best free, holistic solution for web professionals in 2025.'
 author: ['Jeremy']
 tags: ['Resources']
 ---
