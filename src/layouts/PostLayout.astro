@@ -216,6 +216,13 @@ const authorImages = {
             });
 
             moveTocOnMobile();
+
+            // Wrap tables in overflow-auto divs
+            $('article table').each(function() {
+                if (!$(this).parent().hasClass('overflow-auto')) {
+                    $(this).wrap('<div class="overflow-auto"></div>');
+                }
+            });
         });
 
         $(window).resize(moveTocOnMobile);
