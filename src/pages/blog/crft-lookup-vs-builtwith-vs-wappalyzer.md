@@ -29,28 +29,26 @@ All three tools let you paste a URL and instantly reveal the software, framework
 
 | Feature                         | CRFT Lookup                                             | BuiltWith               | Wappalyzer         |
 |----------------------------------|--------------------------------------------------------|-------------------------|--------------------|
-| **Price**                       | Free (unlimited scans)                                 | Freemium (expensive for full export/API) | Freemium (usage limits) |
-| **Tech Detection**              | 2,500+ techs incl. frameworks, CMS, ecommerce, analytics | 60k+ techs, enterprise focus  | 2500+ techs, solid browser plugin |
-| **Performance Analysis**        | Google Lighthouse: speed, SEO, accessibility, best practices (integrated, 1 click) | Not included            | Not included       |
+| **Price**                       | Free (unlimited scans)                                 | Unlimited technology lookups | 50 free technology scans per month  |
+| **Tech Detection**              | Real-time analysis using maintained fork of Wappalyzer fingerprints (~10-20 sec scan) | 108,942+ total technologies, periodic web crawling  | 7200+ technologies across 106 categories, including frameworks, CMS's, and more |
+| **Update Frequency**            | Realtime detection, weekly technology updates | Data updated periodically (e.g., quarterly full scans), with historical trends dating back to 2009 for many technologies	 | Realtime detection, frequent (unknown) technology update frequency |
+| **Performance Analysis**        | Google Lighthouse: speed, SEO, accessibility, best practices (integrated, 1 click) | No            | No      |
 | **Meta Tag Preview**            | Yes: live previews across Google, Facebook, Twitter, etc. | No                      | No                 |
 | **Sitemap Visualization**       | Yes: interactive, tree-style site map if sitemap.xml exists | No                      | No                 |
-| **Shareable Reports**           | Yes: unique URLs, kept for 30 days, full analysis      | Yes (with account)      | Yes (limited)      |
-| **Niche Detectors**             | Yes: CMS, Shopify App, Analytics, Email Tech, JS Framework | Partial/limited        | Partial/limited    |
-| **Data Privacy**                | Public data only—never private or user accounts        | Public (but pricey for details)| Public           |
-| **API / Export**                | No public API; focused on instant reports. Contact for integration. | Robust API, paid        | API, paid          |
+| **Shareable Reports**           | Yes: unique URLs kept for 30 days + downloadable reports      | Yes      | No      |
+| **API / Export**                | No public API | API, paid        | API, paid          |
 | **Support / Contact**           | Email [jeremy@crft.studio](mailto:jeremy@crft.studio), rapid help | Enterprise support      | Standard           |
 
 ### The CRFT Lookup Advantage
 
 While BuiltWith and Wappalyzer paved the way, the **CRFT Lookup** stands out as the most practical, up-to-date, and cost-effective solution for 2025:
 
-- **True “All-in-One”:** Go beyond tech detection. Benchmark Lighthouse scores, instantly preview meta tags, and dig into site hierarchies—all within a single workflow[1][2].
-- **No Paywall or Rate Limits:** Unlimited deep scans and reports at no cost. Perfect for agencies, marketers, or devs who need to audit many URLs (or do competitive research at scale)[1][2].
+- **True “All-in-One”:** Go beyond tech detection. Benchmark Lighthouse scores, instantly preview meta tags, and dig into site hierarchies—all within a single workflow.
+- **No Paywall or Rate Limits:** Unlimited deep scans and reports at no cost. Perfect for agencies, marketers, or devs who need to audit many URLs (or do competitive research at scale).
 - **Visual-first Reports:** Instantly share a single, linkable report that sums up a full audit—an absolute game-changer for pitching, onboarding, or educating clients. Keep your internal team (or your client) aligned with transparent evidence.
-- **Niche Detector Modes:** Instantly switch to focus purely on Shopify Apps, CMSs, Analytics Platforms, Email Tech, or JS Frameworks—ideal for niche sales, technical audits, or competitor benchmarking[3][4][5][6][7][8].
 - **Ethical and Secure:** CRFT Lookup analyzes only public-facing code (HTML, JS, HTTP headers, sitemaps, meta info). No login, account, or API token needed—and full privacy compliance.
 
-> *“CRFT Lookup did a great job at giving me insight into how some of my favorite sites are created, and has inspired me to build.” — Real user feedback*
+> *“CRFT Lookup did a great job at giving me insight into how some of my favorite sites are created, and has inspired me to build.” — Nick Hoban, 🇨🇦 Web developer*
 
 ## How Does the CRFT Lookup Work?
 
@@ -110,6 +108,8 @@ Here’s how web pros are using the CRFT Lookup—in ways that naturally support
 ### CRFT Lookup Cons:
 - No public API (yet), so not for automated scraping or huge competitive-mapping projects.
 - Accuracy is industry-leading but cannot see behind logins or private dashboards (no tool can).
+- No lead list building features
+- Does not crawl all pages and create a sitemap, but visualizes existing sitemap.xml files if already present
 
 ## Using the CRFT Lookup in Your Workflow
 
