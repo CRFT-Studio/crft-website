@@ -3,7 +3,7 @@ import GlossaryNavLetter from "./GlossaryNavLetter.astro";
 const { highlightedLetter, vertical } = Astro.props;
 const alphabet = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
 ---
-<div style="scrollbar-width: thin;" class={`glossaryNav relative flex ${vertical ? "flex-col overflow-y-auto max-h-[80vh] rounded-md w-fit" : "flex-row lg:justify-around overflow-x-auto w-full rounded-[0px]"} lg:gap-[12.5px] gap-2 items-center bg-neutral-800 border border-neutral-700 p-1 rounded-sm`}>
+<div style="scrollbar-width: thin;" class={`glossaryNav relative flex ${vertical ? "flex-col overflow-y-auto max-h-[80vh] w-fit" : "flex-row lg:justify-around overflow-x-auto w-full"} lg:gap-[12.5px] gap-2 items-center bg-neutral-800 border border-neutral-700 p-1`}>
     {alphabet.map(letter =>
         <GlossaryNavLetter letter={letter} highlighted={highlightedLetter === letter}/>
     )}

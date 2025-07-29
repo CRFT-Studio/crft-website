@@ -1,7 +1,5 @@
 import { defineConfig } from 'astro/config';
 
-import tailwind from "@astrojs/tailwind";
-
 import cloudflare from "@astrojs/cloudflare";
 
 import sitemap from "@astrojs/sitemap";
@@ -12,11 +10,17 @@ import robotsTxt from "astro-robots-txt";
 
 import vercel from "@astrojs/vercel";
 
+import tailwindcss from "@tailwindcss/vite";
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.crft.studio',
-  integrations: [tailwind(), sitemap(), mdx(), robotsTxt()],
+  integrations: [sitemap(), mdx(), robotsTxt()],
   output: "static",
   adapter: vercel(),
-  trailingSlash: "never"
+  trailingSlash: "never",
+
+  vite: {
+    plugins: [tailwindcss()]
+  }
 });

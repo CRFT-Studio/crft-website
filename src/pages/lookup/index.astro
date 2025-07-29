@@ -587,6 +587,7 @@ if (url) {
         </script>
 
         <style>
+        @reference "../../styles/global.css";
             .toc-current {
                 @apply text-orange-300;
             }
@@ -611,7 +612,7 @@ if (url) {
                 @apply border-transparent;
             }
             .tab-active {
-                @apply border-neutral-600 !important;
+                border-color: #525252 !important;
                 @apply bg-neutral-700;
             }
 
@@ -1047,7 +1048,7 @@ if (url) {
                     </div>
                 </section> -->
                 <section>
-                    <div class="container max-w-[800px]">
+                    <div class="container !max-w-[800px]">
                         <h2 class="text-3xl lg:text-4xl font-semibold text-center leading-tight mb-10 text-neutral-300">Your questions, answered</h2>
                         <FAQItem
                             question="What exactly does the CRFT Lookup do?"
@@ -1437,7 +1438,7 @@ if (url) {
                                                     <h4 class="text-lg mb-3 font-medium">X (formerly Twitter)</h4>
                                                     <div class="rounded-xl border border-neutral-700 relative overflow-hidden">
                                                         <img class="aspect-video w-full bg-neutral-500 object-cover object-center" src={ogImageUrl} alt="">
-                                                        <div class="p-1 px-2 text-sm bg-neutral-950 bg-opacity-80 inline-block absolute bottom-0 mb-2 ml-2 rounded-md meta-title-preview">{ogTitle}</div>
+                                                        <div class="p-1 px-2 text-sm bg-neutral-950/80 inline-block absolute bottom-0 mb-2 ml-2 rounded-md meta-title-preview">{ogTitle}</div>
                                                     </div>
                                                 </div>
                                                 <div>
@@ -1491,7 +1492,7 @@ if (url) {
                                                     <h4 class="text-lg mb-3 font-medium">Telegram</h4>
                                                     <div class="rounded-2xl rounded-br-[0px] p-3 pb-1 bg-gradient-to-b from-[#7F47C0] to-[#676AEF] relative max-w-[400px]">
                                                         <div class="mb-2 text-xl underline">{url}</div>
-                                                        <div class="rounded-xl overflow-hidden bg-white bg-opacity-10 mb-1">
+                                                        <div class="rounded-xl overflow-hidden bg-white/10 mb-1">
                                                             <div class="border-l-4 border-neutral-50 p-2">
                                                                 <div class="font-semibold">{url.replace(/^https?:\/\//i, '').split('/')[0]}</div>
                                                                 <div class="font-semibold meta-title-preview">{ogTitle}</div>
