@@ -99,11 +99,11 @@ if (url) {
             $(this).addClass("tab-active");
             const tabId = $(this).attr("id");
             if (tabId === "desktop-tab") {
-                $("#lighthouse-viewer-desktop").show();
-                $("#lighthouse-viewer-mobile").hide();
+                $("#lighthouse-viewer-desktop").removeAttr("hidden");
+                $("#lighthouse-viewer-mobile").attr("hidden", "hidden");
             } else {
-                $("#lighthouse-viewer-mobile").show();
-                $("#lighthouse-viewer-desktop").hide();
+                $("#lighthouse-viewer-mobile").removeAttr("hidden");
+                $("#lighthouse-viewer-desktop").attr("hidden", "hidden");
             }
         });
 
