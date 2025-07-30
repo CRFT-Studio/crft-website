@@ -310,12 +310,12 @@ if (url) {
                     const tabId = $(this).attr("id");
 
                     if (tabId === "desktop-overview-tab") {
-                        $("#lighthouse-overview-desktop").show();
-                        $("#lighthouse-overview-mobile").hide();
+                        $("#lighthouse-overview-desktop").removeAttr("hidden");
+                        $("#lighthouse-overview-mobile").attr("hidden", "hidden");
                         updateLayoutStyle("#lighthouse-overview-desktop");
                     } else {
-                        $("#lighthouse-overview-mobile").show();
-                        $("#lighthouse-overview-desktop").hide();
+                        $("#lighthouse-overview-mobile").removeAttr("hidden");
+                        $("#lighthouse-overview-desktop").attr("hidden", "hidden");
                         updateLayoutStyle("#lighthouse-overview-mobile");
 
                         // Force layout recalculation
