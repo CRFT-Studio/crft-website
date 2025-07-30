@@ -1,0 +1,161 @@
+---
+import Navigation from '../../components/Navigation.astro';
+import FAQItem from '../../components/FAQItem.astro';
+---
+<html lang="en">
+    <head>
+        <meta name="robots" content="noindex">
+    </head>
+    <body>
+        <Navigation />
+        <section style="margin-bottom: 0px; margin-top: 100px;" class="px-5">
+            <div class="max-w-[1300px] mx-auto border border-neutral-700 bg-neutral-800 p-20">
+                <div>
+                    <h1 class="text-5xl font-medium mb-16 max-w-[700px] leading-tight text-pretty">CyberImpact Website Redesign & Build Proposal</h1>
+                    <div class="flex flex-row items-center text-lg gap-4 mt">
+                        <div class="w-8 h-8 card p-1 rounded-none flex items-center justify-center text-xl">1</div>
+                        <div>Introduction</div>
+                    </div>
+                    <div class="h-[1px] bg-neutral-700 w-full my-5"></div>
+                    <div class="flex flex-row items-center text-lg gap-4 mt">
+                        <div class="w-8 h-8 card p-1 rounded-none flex items-center justify-center text-xl">2</div>
+                        <div>Timelines</div>
+                    </div>
+                    <div class="h-[1px] bg-neutral-700 w-full my-5"></div>
+                    <div class="flex flex-row items-center text-lg gap-4 mt">
+                        <div class="w-8 h-8 card p-1 rounded-none flex items-center justify-center text-xl">3</div>
+                        <div>FAQs</div>
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg mt-20">
+                    <div>
+                        <div class="sticky top-36 text-neutral-400">Introduction</div>
+                    </div>
+                    <div>
+                        <p class="mb-2.5 text-neutral-300 font-medium">CRFT Studio is a purpose-built partner for brands that want more than just a website.</p>
+                        <p class="text-neutral-400">We collaborate with ambitious marketing and product teams to transform their digital presence into high-performance marketing engines. At CRFT Studio, every project is designed to deliver tangible business results; combining strategy, design, and modern development in one seamless, end-to-end process. From discovery and strategy to launch and ongoing growth, we build sites that are beautiful, lightning-fast, and effortless to manage - so you can focus on growing your business, not wrangling your website.</p>
+                    </div>
+                </div>
+                <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
+                <div class="mt-20 flex flex-col gap-14">
+                    <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
+                        <div>
+                            <div class="sticky top-36 text-neutral-400">Onboarding</div>
+                        </div>
+                        <div>
+                            <div class="mb-3 text-neutral-100">Today</div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">Subscription begun</div>
+                            </div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">Basecamp project invite sent</div>
+                            </div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">Kick-off meeting (optional)</div>
+                            </div>
+                            <div class="square-card">
+                                <div class="text-lg">We scan your website using the <span><a href="/lookup" class="text-orange-300 underline">CRFT Lookup</a></span>, to see its Lighthouse score, tech stack, sitemap visualization and meta tags.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
+                        <div>
+                            <div class="sticky top-36 text-neutral-400">Visual Brand Identity</div>
+                        </div>
+                        <div>
+                            <div class="mb-3 text-neutral-100">1 - 3 weeks</div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">Logo, wordmark and icon redesign (optional)</div>
+                            </div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">Color palette selection</div>
+                            </div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">Typeface selection</div>
+                            </div>
+                            <div class="square-card">
+                                <div class="text-lg">Creation of marketing collateral (optional)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
+                        <div>
+                            <div class="sticky top-36 text-neutral-400">Web Design</div>
+                        </div>
+                        <div>
+                            <div class="mb-3 text-neutral-100">1 - 2 weeks</div>
+                            <div class="square-card mb-2">
+                                <div class="text-lg">Identify and wireframe core pages</div>
+                            </div>
+                            <div class="text-neutral-400">We limit our use of vector design tools like Figma beyond initial ideation, and build high-fidelity designs in code. This allows us to collaborate and drive results for your business much faster than otherwise possible.</div>
+                        </div>
+                    </div>
+                    <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
+                        <div>
+                            <div class="sticky top-36 text-neutral-400">Web Development</div>
+                        </div>
+                        <div>
+                            <div class="mb-3 text-neutral-100">4 - 8 weeks</div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">Creation of code repository</div>
+                            </div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">High fidelity, responsive design and development of core pages & components</div>
+                            </div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">Content migration and setup of Sanity, our CMS of choice</div>
+                            </div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">We write and/or collaborate on new copy for every page</div>
+                            </div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">Integration of third-party tools (e.g. analytics, cookie consent, etc)</div>
+                            </div>
+                            <div class="square-card">
+                                <div class="text-lg">DNS configuration and launch</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
+                        <div>
+                            <div class="sticky top-36 text-neutral-400">Website Maintenance</div>
+                        </div>
+                        <div>
+                            <div class="mb-3 text-neutral-100">Ongoing (or optional/as-needed)</div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">Performance optimization and speed enhancements</div>
+                            </div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">Security monitoring and updates</div>
+                            </div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">New landing page creation</div>
+                            </div>
+                            <div class="square-card border-b-0">
+                                <div class="text-lg">Analytics monitoring and reporting</div>
+                            </div>
+                            <div class="square-card">
+                                <div class="text-lg">24/7 technical support</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
+                <div class="mt-20 flex flex-col gap-14">
+                    <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
+                        <div>
+                            <div class="sticky top-36 text-neutral-400">FAQs</div>
+                        </div>
+                        <div>
+                            <FAQItem question="Will our team be able to edit the website ourselves?" answer="test"/>
+                            <FAQItem question="Can it be hosted on our own infrastucture?" answer="test"/>
+                            <FAQItem question="How much ongoing dev/maintenance is needed?" answer="test"/>
+                            <FAQItem question="What if we need new features after launch?" answer="test"/>
+                            <FAQItem question="How do you handle timelines and feedback?" answer="test"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
