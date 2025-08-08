@@ -2,26 +2,34 @@
 export const prerender = false;
 const { url } = Astro.props;
 
-console.log("Wappalyzer component is being executed");
-console.log("URL received in Wappalyzer component:", url);
+console.log("[Wappalyzer] component is being executed");
+console.log("[Wappalyzer] URL received in component:", url);
 
 let techByCategory = {};
 
 if (!url) {
-  console.log("No URL provided to Wappalyzer component");
+  console.log("[Wappalyzer] No URL provided to component");
 } else {
   try {
+    console.log("[Wappalyzer] Starting to process URL:", url);
+
     const wappalyzerServiceUrl = process.env.WAPPALYZER_URL || import.meta.env.WAPPALYZER_URL;
     const apiKey = process.env.WAPPALYZER_API || import.meta.env.WAPPALYZER_API;
 
-    console.log("Request url:", wappalyzerServiceUrl);
-    console.log("API Key:", apiKey);
+    console.log("[Wappalyzer] Service URL:", wappalyzerServiceUrl);
+    console.log("[Wappalyzer] API Key present:", !!apiKey);
+    console.log("[Wappalyzer] API Key (first 10 chars):", apiKey ? apiKey.substring(0, 10) + '...' : 'undefined');
 
     if (!apiKey) {
-      console.error("No API key found in environment variables");
+      console.error("[Wappalyzer] No API key found in environment variables");
     }
 
-    console.log("Making request to external Wappalyzer service:", wappalyzerServiceUrl);
+    if (!wappalyzerServiceUrl) {
+      console.error("[Wappalyzer] No service URL found in environment variables");
+    }
+
+    console.log("[Wappalyzer] Making request to external service:", wappalyzerServiceUrl);
+    console.log("[Wappalyzer] Request payload:", { url, options: {} });
 
     const response = await fetch(wappalyzerServiceUrl, {
       method: 'POST',
@@ -41,22 +49,32 @@ if (!url) {
       })
     });
 
-    console.log("Response status:", response.status);
+    console.log("[Wappalyzer] Response received - status:", response.status);
+    console.log("[Wappalyzer] Response headers:", Object.fromEntries(response.headers.entries()));
 
     if (!response.ok) {
       const errorText = await response.text();
+      console.error("[Wappalyzer] Error response body:", errorText);
       throw new Error(`Error from Wappalyzer service: ${response.status} - ${errorText}`);
     }
 
     const results = await response.json();
-    console.log("Raw results from external Wappalyzer service:", results);
+    console.log("[Wappalyzer] Raw results from external service:", results);
+    console.log("[Wappalyzer] Technologies found:", results?.technologies?.length || 0);
 
     if (results && results.technologies) {
+      console.log("[Wappalyzer] Processing technologies into categories");
+
       techByCategory = results.technologies.reduce((acc, tech) => {
+        console.log("[Wappalyzer] Processing tech:", tech.name);
+
         if (tech.categories) {
+          console.log("[Wappalyzer] Tech categories:", tech.categories.map(cat => cat.name));
+
           tech.categories.forEach(cat => {
             if (!acc[cat.name]) {
               acc[cat.name] = [];
+              console.log("[Wappalyzer] Created new category:", cat.name);
             }
             acc[cat.name].push({
               name: tech.name,
@@ -64,15 +82,26 @@ if (!url) {
               website: tech.website,
               icon: tech.icon,
             });
+            console.log("[Wappalyzer] Added tech to category:", cat.name, "->", tech.name);
           });
+        } else {
+          console.log("[Wappalyzer] Tech has no categories:", tech.name);
         }
         return acc;
       }, {});
+
+      console.log("[Wappalyzer] Final techByCategory structure:", Object.keys(techByCategory));
+      console.log("[Wappalyzer] Total categories:", Object.keys(techByCategory).length);
+    } else {
+      console.log("[Wappalyzer] No technologies found in results");
     }
   } catch (error) {
-    console.error("Error in Wappalyzer component:", error);
+    console.error("[Wappalyzer] Error in component:", error);
+    console.error("[Wappalyzer] Error stack:", error.stack);
   }
 }
+
+console.log("[Wappalyzer] Component processing complete. Final data:", techByCategory);
 ---
 
 <div class="flex flex-col gap-8" id="wappalyzer-tech-data">
