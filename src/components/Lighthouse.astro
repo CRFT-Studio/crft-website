@@ -1,7 +1,48 @@
 ---
-const { desktopReport, mobileReport } = Astro.props;
----
+export const prerender = false;
+const PAGESPEED_API = import.meta.env.PAGESPEED_API;
 
+const {url} = Astro.props;
+
+let desktopReport = null;
+let mobileReport = null;
+
+if (url) {
+    console.log(`Starting PageSpeed analysis for URL: ${url}`);
+    try {
+        const encodedUrl = encodeURIComponent(url);
+        console.log(`Encoded URL: ${encodedUrl}`);
+
+        // Run both requests in parallel
+        const [desktopResponse, mobileResponse] = await Promise.all([
+            fetch(
+                `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodedUrl}&category=performance&category=best-practices&category=seo&category=accessibility&strategy=desktop&locale=en&key=${PAGESPEED_API}`
+            ),
+            fetch(
+                `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodedUrl}&category=performance&category=best-practices&category=seo&category=accessibility&strategy=mobile&locale=en&key=${PAGESPEED_API}`
+            )
+        ]);
+
+        if (!desktopResponse.ok) {
+            console.error(`Desktop API response not OK. Status: ${desktopResponse.status}`);
+            throw new Error(`HTTP error! status: ${desktopResponse.status}`);
+        }
+
+        if (!mobileResponse.ok) {
+            console.error(`Mobile API response not OK. Status: ${mobileResponse.status}`);
+            throw new Error(`HTTP error! status: ${mobileResponse.status}`);
+        }
+
+        console.log('Successfully received PageSpeed API responses');
+        desktopReport = await desktopResponse.json();
+        mobileReport = await mobileResponse.json();
+        console.log('Successfully parsed JSON responses');
+    } catch (error) {
+        console.error("Error fetching PageSpeed data:", error);
+        console.error("Stack trace:", error.stack);
+    }
+};
+---
 <div>
     <div class="flex justify-start mb-4">
         <div id="lighthouse-tabs" class="inline-flex flex-row square-card p-[2px] border-[1px] gap-2 text-sm text-nowrap">
