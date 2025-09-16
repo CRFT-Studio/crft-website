@@ -1,0 +1,425 @@
+---
+import Navigation from '../components/Navigation.astro';
+import { Image } from 'astro:assets';
+import NihalPFP from '../images/nihal-pfp.png';
+import FeedBear from '../../src/images/FeedBear.png';
+import MobiLoud from '../../src/images/MobiLoud.png';
+import MixBloom from '../../src/images/MixBloom.png';
+import BrandIdentity from '../../src/images/brand-identity.png';
+import Design from '../../src/images/design.png';
+import Development from '../../src/images/development.png';
+import ClientCard from '../components/ClientCard.astro';
+import MobiLoudDesktop from '../../src/images/mobiloud-desktop.png';
+import FeedBearDesktop from '../../src/images/feedbear-desktop.png';
+import HoppyCopyDesktop from '../../src/images/hoppy-copy-desktop.png';
+import MixBloomDesktop from '../../src/images/mixbloom-desktop.png';
+import Footer from '../components/Footer.astro';
+import FAQs from '../components/FAQs.astro';
+import Testimonials from '../components/Testimonials.astro';
+import HeadScripts from '../components/HeadScripts.astro';
+import LookupCard from '../components/LookupCard.astro';
+import LookupCTA from '../components/LookupCTA.astro';
+import HowWeWork from '../components/HowWeWork.astro';
+
+const {location} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+		<HeadScripts
+		title={`CRFT Studio | ${location} Web Design & Development Agency`}
+		description={`We design and develop beautiful, performant, and maintainable websites for the best ${location} marketing teams.`}
+		ogImageUrl="https://www.crft.studio/open-graph-img.png"
+		/>
+	</head>
+    <body>
+        <Navigation />
+        <section class="mt-24">
+            <div class="container flex flex-col items-center !max-w-[800px]">
+                    <div class="text-center  mx-auto text-orange-300 font-normal text-lg mb-5">{`${location} Web Design & Development Agency`}</div>
+                    <h1 class="lg:text-5xl text-4xl text-center text-balance font-semibold leading-tight">{`${location}'s premier marketing websites, crafted to convert.`}</h1>
+                    <p class="text-center text-pretty lg:text-xl text-lg mt-5 text-neutral-300 mb-7 max-w-[44ch]">{`We design and develop beautiful, performant, and maintainable websites for the best ${location} marketing teams.`}</p>
+                    <div class="flex flex-row gap-3">
+                        <a href="/pricing" class="primary-cta">View pricing</a>
+                        <a href="/audit" class="secondary-cta">Get Free Redesign</a>
+                    </div>
+            </div>
+            <div class="lg:max-w-[1400px] lg:mx-auto relative">
+                <div class="lg:absolute w-full h-full bg-gradient-to-r from-neutral-900 via-transparent to-neutral-900 z-20"></div>
+                <div class="flex flex-row justify-center gap-10 lg:gap-16 mt-20 overflow-x-hidden z-10">
+                    <Image class="w-60 lg:w-auto" src={MobiLoud} alt="MobiLoud" />
+                    <Image class="w-60 lg:w-auto" src={FeedBear} alt="FeedBear" />
+                    <Image class="w-60 lg:w-auto" src={MobiLoud} alt="MobiLoud" />
+                    <Image class="w-60 lg:w-auto" src={MixBloom} alt="MixBloom" />
+                    <Image class="w-60 lg:w-auto" src={MobiLoud} alt="MobiLoud" />
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="text-center w-[11ch] mx-auto bg-gradient-to-r from-red-400 to-red-500 bg-clip-text text-transparent font-normal text-lg">The problem</div>
+                <h2 class="text-3xl lg:text-4xl text-center text-balance font-semibold mt-5 leading-tight mb-5">Why your website may not be performing</h2>
+                <div class="lg:text-xl text-lg text-neutral-300 text-center max-w-[800px] text-pretty mx-auto">Your website is more than just a digital storefront - it's your brand's most powerful sales and marketing tool. But like any tool, it can either help or hinder your success. Here's why yours might be failing you:</div>
+                <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-4 mt-10">
+                    <div class="square-card flex-col justify-between">
+                        <div class="square-card bg-neutral-700 p-2 inline-block mb-8">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="fill-red-500" height="30px" viewBox="0 -960 960 960" width="30px" fill="#FFFFFF"><path d="M424.15-346.15q21.31 21.3 54.89 20.23 33.57-1.08 49.27-24.23l217.07-314.46-315.23 216.3q-23.53 15.7-25.42 48.27-1.88 32.58 19.42 53.89ZM480-780q57.08 0 106.96 14.96 49.89 14.96 96.35 45.27l-56.39 36.46q-34.15-18.15-70.8-27.42Q519.46-720 480-720q-133 0-226.5 93.5T160-400q0 42 11.5 83t32.5 77h552q23-38 33.5-79t10.5-85q0-36-8.88-72.88-8.89-36.89-27.43-70.04l36.46-56.39q29.62 48.54 44.43 97.12 14.8 48.58 15.42 100.96.61 54.31-12.23 102.65-12.85 48.35-38.69 94.58-7.93 13-22.31 20.5Q772.38-180 756-180H204q-16 0-30.19-7.69-14.19-7.7-22.89-21.85-22.92-40-36.92-87.23Q100-344 100-400q0-78.38 29.74-147.37 29.74-68.99 81.19-120.85 51.46-51.86 120.99-81.82Q401.46-780 480-780Zm4.31 295.69Z"/></svg>
+                        </div>
+                        <div>
+                            <div class="text-lg font-medium mb-2">It's slow</div>
+                            <div class="text-neutral-300">40% of users abandon a site that takes over 3 seconds to load. <span class="bg-gradient-to-r from-green-300 to-green-400 bg-clip-text text-transparent font-medium">Our lightweight tech stack ensures sub-second load times.</span></div>
+                        </div>
+                    </div>
+                    <div class="square-card flex-col justify-between">
+                        <div class="square-card bg-neutral-700 p-2 inline-block mb-8">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="fill-red-500" height="30px" viewBox="0 -960 960 960" width="30px" fill="#FFFFFF"><path d="M640-258.08v-60h118.62L534.08-539.85l-160 160L100-655.92l42.15-42.16 231.93 231.93 160-160L800-360.23v-117.85h60v220H640Z"/></svg>
+                        </div>
+                        <div>
+                            <div class="text-lg font-medium mb-2">It doesn't sell</div>
+                            <div class="text-neutral-300">Poor design and user experience doesn't engage, and even frustrates visitors, lowering sales and leads. <span class="bg-gradient-to-r from-green-300 to-green-400 bg-clip-text text-transparent font-medium">Our designs follow proven patterns that drive results.</span></div>
+                        </div>
+                    </div>
+                    <div class="square-card flex-col justify-between">
+                        <div class="square-card bg-neutral-700 p-2 inline-block mb-8">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="fill-red-500" height="30px" viewBox="0 -960 960 960" width="30px" fill="#FFFFFF"><path d="M479.23-140q-129.92 0-226.46-85.54Q156.23-311.08 141.62-440h61.23Q218-336.38 296.12-268.19 374.23-200 479.23-200q117 0 198.5-81.5t81.5-198.5q0-117-81.5-198.5T479.23-760q-65.54 0-122.84 29.12-57.31 29.11-98.7 80.11h104.62v60H159.23v-203.08h60v94.77q48.69-57.46 116.62-89.19Q403.77-820 479.23-820q70.77 0 132.62 26.77 61.84 26.77 107.84 72.77t72.77 107.85q26.77 61.84 26.77 132.61 0 70.77-26.77 132.61-26.77 61.85-72.77 107.85-46 46-107.84 72.77Q550-140 479.23-140Zm120.08-178.92L450.39-467.85V-680h59.99v187.85l131.08 131.07-42.15 42.16Z"/></svg>
+                        </div>
+                        <div>
+                            <div class="text-lg font-medium mb-2">It's outdated</div>
+                            <div class="text-neutral-300">Old tech stacks make your site hard to maintain and scale. <span class="bg-gradient-to-r from-green-300 to-green-400 bg-clip-text text-transparent font-medium">We use modern content management systems like Sanity, making it easy for your whole team to update and maintain content.</span></div>
+                        </div>
+                    </div>
+                    <div class="square-card flex-col justify-between">
+                        <div class="square-card bg-neutral-700 p-2 inline-block mb-8">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="fill-red-500" height="30px" viewBox="0 -960 960 960" width="30px" fill="#FFFFFF"><path d="M630.92-441.08 586-486q9-49.69-28.35-89.35Q520.31-615 466-606l-44.92-44.92q13.54-6.08 27.77-9.12 14.23-3.04 31.15-3.04 68.08 0 115.58 47.5T643.08-500q0 16.92-3.04 31.54-3.04 14.61-9.12 27.38Zm127.23 124.46L714-358q38-29 67.5-63.5T832-500q-50-101-143.5-160.5T480-720q-29 0-57 4t-55 12l-46.61-46.61q37.92-15.08 77.46-22.23Q438.39-780 480-780q140.61 0 253.61 77.54T898.46-500q-22.23 53.61-57.42 100.08-35.2 46.46-82.89 83.3Zm32.31 231.39L628.62-245.85q-30.77 11.39-68.2 18.62Q523-220 480-220q-141 0-253.61-77.54Q113.77-375.08 61.54-500q22.15-53 57.23-98.88 35.08-45.89 77.23-79.58l-110.77-112 42.16-42.15 705.22 705.22-42.15 42.16Zm-552.3-551.08q-31.7 25.23-61.66 60.66Q146.54-540.23 128-500q50 101 143.5 160.5T480-280q27.31 0 54.39-4.62 27.07-4.61 45.92-9.53L529.69-346q-10.23 4.15-23.69 6.61-13.46 2.47-26 2.47-68.08 0-115.58-47.5T316.92-500q0-12.15 2.47-25.42 2.46-13.27 6.61-24.27l-87.84-86.62ZM541-531Zm-131.77 65.77Z"/></svg>
+                        </div>
+                        <div>
+                            <div class="text-lg font-medium mb-2">It's invisible</div>
+                            <div class="text-neutral-300">Poor SEO keeps your site buried in search results, making it impossible for prospects to find you. <span class="bg-gradient-to-r from-green-300 to-green-400 bg-clip-text text-transparent font-medium">Our SEO-optimized builds boost visibility and help you rank higher.</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="bg-gradient-to-t from-neutral-900 via-neutral-950 to-neutral-950 py-20 border-t border-neutral-800">
+            <div class="container">
+                <div class="grid lg:grid-cols-2 gap-14">
+                    <div class="text-pretty">
+                        <div class="w-[12ch] bg-gradient-to-r from-green-300 to-green-400 bg-clip-text text-transparent font-normal text-lg">Our services</div>
+                        <h2 class="text-3xl lg:text-4xl font-semibold mt-5 leading-tight mb-5">From A to Z, we create high-performing websites that sell.</h2>
+                        <div class="lg:text-xl text-lg text-neutral-300 mx-auto mb-8">From branding to code, we handle every aspect of creating your high-performance marketing website. Our end-to-end process ensures a cohesive, powerful result that drives real business growth.</div>
+                        <div class="flex flex-row gap-3">
+                            <a href="/pricing" class="primary-cta">View pricing</a>
+                            <a href="/audit" class="secondary-cta">Get Free Redesign</a>
+                        </div>
+                    </div>
+                    <div class="max-w-full overflow-hidden relative lg:order-last order-first lg:max-h-[400px]">
+                        <div class="absolute h-full w-full bg-gradient-to-r from-transparent to-neutral-950 z-10 pointer-events-none"></div>
+                        <div class="absolute h-full w-full bg-gradient-to-b from-transparent to-neutral-950 z-10 pointer-events-none"></div>
+                        <div class="lg:grid lg:grid-cols-3 flex flex-row lg:min-w-[150%] overflow-x-auto gap-4" style="-webkit-scrollbar { display: none; } -ms-overflow-style: none; scrollbar-width: none;">
+                            <LookupCard url="mobiloud.com" img="https://cdn.prod.website-files.com/63894f0e251e5628a4443bcd/6642752db60787b7b846e2cb_Open%20Graph%20Preview.png" metaTitle="MobiLoud - Convert Your Website to Native Mobile Apps" performance="65" accessibility="90" bestPractices="96" seo="100">
+                                <div class="flex flex-row gap-4 flex-wrap lg:text-base text-sm">
+                                    <div class="flex flex-row gap-2 items-center">
+                                        <svg viewBox="0 0 1080 674" xmlns="http://www.w3.org/2000/svg" width="20" fill="none"><path fill="#146EF5" fill-rule="evenodd" d="M1080 0 735.386 673.684H411.695l144.221-279.203h-6.471C430.464 548.934 252.942 650.61-.0005 673.684v-275.34s161.8135-9.557 256.9385-109.568H-.0005V.0053H288.771V237.515l6.481-.026L413.254.0053h218.39V236.009l6.482-.01L760.555 0H1080Z" clip-rule="evenodd"/></svg>
+                                        <div>Webflow</div>
+                                    </div>
+                                    <div class="flex flex-row gap-2 items-center">
+                                        <svg viewBox="0 0 256 116" xmlns="http://www.w3.org/2000/svg" width="24" preserveAspectRatio="xMidYMid"><path fill="#FFF" d="m202.357 49.394-5.311-2.124C172.085 103.434 72.786 69.289 66.81 85.997c-.996 11.286 54.227 2.146 93.706 4.059 12.039.583 18.076 9.671 12.964 24.484l10.069.031c11.615-36.209 48.683-17.73 50.232-29.68-2.545-7.857-42.601 0-31.425-35.497Z"/><path fill="#F4811F" d="M176.332 108.348c1.593-5.31 1.062-10.622-1.593-13.809-2.656-3.187-6.374-5.31-11.154-5.842L71.17 87.634c-.531 0-1.062-.53-1.593-.53-.531-.532-.531-1.063 0-1.594.531-1.062 1.062-1.594 2.124-1.594l92.946-1.062c11.154-.53 22.839-9.56 27.087-20.182l5.312-13.809c0-.532.531-1.063 0-1.594C191.203 20.182 166.772 0 138.091 0 111.535 0 88.697 16.995 80.73 40.896c-5.311-3.718-11.684-5.843-19.12-5.31-12.747 1.061-22.838 11.683-24.432 24.43-.531 3.187 0 6.374.532 9.56C16.996 70.107 0 87.103 0 108.348c0 2.124 0 3.718.531 5.842 0 1.063 1.062 1.594 1.594 1.594h170.489c1.062 0 2.125-.53 2.125-1.594l1.593-5.842Z"/><path fill="#FAAD3F" d="M205.544 48.863h-2.656c-.531 0-1.062.53-1.593 1.062l-3.718 12.747c-1.593 5.31-1.062 10.623 1.594 13.809 2.655 3.187 6.373 5.31 11.153 5.843l19.652 1.062c.53 0 1.062.53 1.593.53.53.532.53 1.063 0 1.594-.531 1.063-1.062 1.594-2.125 1.594l-20.182 1.062c-11.154.53-22.838 9.56-27.087 20.182l-1.063 4.78c-.531.532 0 1.594 1.063 1.594h70.108c1.062 0 1.593-.531 1.593-1.593 1.062-4.25 2.124-9.03 2.124-13.81 0-27.618-22.838-50.456-50.456-50.456"/></svg>
+                                        <div>Cloudflare</div>
+                                    </div>
+                                </div>
+                            </LookupCard>
+                            <LookupCard url="crft.studio" img="https://www.crft.studio/open-graph-img.png" metaTitle="CRFT Studio | Marketing Sites Built to Convert" performance="82" accessibility="100" bestPractices="96" seo="92">
+                                <div class="flex flex-row gap-4 flex-wrap lg:text-base text-sm">
+                                    <div class="flex flex-row gap-2 items-center">
+                                        <svg viewBox="0 0 256 366" xmlns="http://www.w3.org/2000/svg" width="15" preserveAspectRatio="xMidYMid"><path fill="#FFFFFF" d="M182.022 9.147c2.982 3.702 4.502 8.697 7.543 18.687L256 246.074a276.467 276.467 0 0 0-79.426-26.891L133.318 73.008a5.63 5.63 0 0 0-10.802.017L79.784 219.11A276.453 276.453 0 0 0 0 246.04L66.76 27.783c3.051-9.972 4.577-14.959 7.559-18.654a24.541 24.541 0 0 1 9.946-7.358C88.67 0 93.885 0 104.314 0h47.683c10.443 0 15.664 0 20.074 1.774a24.545 24.545 0 0 1 9.95 7.373Z"/><path fill="#FF5D01" d="M189.972 256.46c-10.952 9.364-32.812 15.751-57.992 15.751-30.904 0-56.807-9.621-63.68-22.56-2.458 7.415-3.009 15.903-3.009 21.324 0 0-1.619 26.623 16.898 45.14 0-9.615 7.795-17.41 17.41-17.41 16.48 0 16.46 14.378 16.446 26.043l-.001 1.041c0 17.705 10.82 32.883 26.21 39.28a35.685 35.685 0 0 1-3.588-15.647c0-16.886 9.913-23.173 21.435-30.48 9.167-5.814 19.353-12.274 26.372-25.232a47.588 47.588 0 0 0 5.742-22.735c0-5.06-.786-9.938-2.243-14.516Z"/></svg>
+                                        <div>Astro</div>
+                                    </div>
+                                    <div class="flex flex-row gap-2 items-center">
+                                        <svg viewBox="0 0 256 222" width="19" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><path fill="#FFFFFF" d="m128 0 128 221.705H0z"/></svg>
+                                        <div>Vercel</div>
+                                    </div>
+                                </div>
+                            </LookupCard>
+                            <LookupCard url="github.com" img="https://github.githubassets.com/assets/home24-5939032587c9.jpg" metaTitle="GitHub · Build and ship software on a single, collaborative platform · GitHub" performance="64" accessibility="100" bestPractices="100" seo="92">
+                                <div class="flex flex-row gap-4 flex-wrap lg:text-base text-sm">
+                                <div class="flex flex-row gap-2 items-center">
+                                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 569 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <g fill="none" fill-rule="evenodd">
+                                            <g fill="#087EA4" fill-rule="nonzero">
+                                                <path d="M285.5,201 C255.400481,201 231,225.400481 231,255.5 C231,285.599519 255.400481,310 285.5,310 C315.599519,310 340,285.599519 340,255.5 C340,225.400481 315.599519,201 285.5,201" id="Path"></path>
+                                                <path d="M568.959856,255.99437 C568.959856,213.207656 529.337802,175.68144 466.251623,150.985214 C467.094645,145.423543 467.85738,139.922107 468.399323,134.521063 C474.621631,73.0415145 459.808523,28.6686204 426.709856,9.5541429 C389.677085,-11.8291748 337.36955,3.69129898 284.479928,46.0162134 C231.590306,3.69129898 179.282771,-11.8291748 142.25,9.5541429 C109.151333,28.6686204 94.3382249,73.0415145 100.560533,134.521063 C101.102476,139.922107 101.845139,145.443621 102.708233,151.02537 C97.4493791,153.033193 92.2908847,155.161486 87.3331099,157.39017 C31.0111824,182.708821 0,217.765415 0,255.99437 C0,298.781084 39.6220545,336.307301 102.708233,361.003527 C101.845139,366.565197 101.102476,372.066633 100.560533,377.467678 C94.3382249,438.947226 109.151333,483.32012 142.25,502.434597 C153.629683,508.887578 166.52439,512.186771 179.603923,511.991836 C210.956328,511.991836 247.567589,495.487529 284.479928,465.972527 C321.372196,495.487529 358.003528,511.991836 389.396077,511.991836 C402.475265,512.183856 415.36922,508.884856 426.75,502.434597 C459.848667,483.32012 474.661775,438.947226 468.439467,377.467678 C467.897524,372.066633 467.134789,366.565197 466.291767,361.003527 C529.377946,336.347457 569,298.761006 569,255.99437 M389.155214,27.1025182 C397.565154,26.899606 405.877839,28.9368502 413.241569,33.0055186 C436.223966,46.2772304 446.540955,82.2775015 441.522965,131.770345 C441.181741,135.143488 440.780302,138.556788 440.298575,141.990165 C414.066922,134.08804 387.205771,128.452154 360.010724,125.144528 C343.525021,103.224055 325.192524,82.7564475 305.214266,63.9661533 C336.586743,39.7116483 366.032313,27.1025182 389.135142,27.1025182 M378.356498,310.205598 C368.204912,327.830733 357.150626,344.919965 345.237759,361.405091 C325.045049,363.479997 304.758818,364.51205 284.459856,364.497299 C264.167589,364.51136 243.888075,363.479308 223.702025,361.405091 C211.820914,344.919381 200.80007,327.83006 190.683646,310.205598 C180.532593,292.629285 171.306974,274.534187 163.044553,255.99437 C171.306974,237.454554 180.532593,219.359455 190.683646,201.783142 C200.784121,184.229367 211.770999,167.201087 223.601665,150.764353 C243.824636,148.63809 264.145559,147.579168 284.479928,147.591877 C304.772146,147.579725 325.051559,148.611772 345.237759,150.68404 C357.109048,167.14607 368.136094,184.201112 378.27621,201.783142 C388.419418,219.363718 397.644825,237.458403 405.915303,255.99437 C397.644825,274.530337 388.419418,292.625022 378.27621,310.205598 M419.724813,290.127366 C426.09516,307.503536 431.324985,325.277083 435.380944,343.334682 C417.779633,348.823635 399.836793,353.149774 381.668372,356.285142 C388.573127,345.871232 395.263781,335.035679 401.740334,323.778483 C408.143291,312.655143 414.144807,301.431411 419.805101,290.207679 M246.363271,390.377981 C258.848032,391.140954 271.593728,391.582675 284.5,391.582675 C297.406272,391.582675 310.232256,391.140954 322.737089,390.377981 C310.880643,404.583418 298.10766,417.997563 284.5,430.534446 C270.921643,417.999548 258.18192,404.585125 246.363271,390.377981 Z M187.311556,356.244986 C169.137286,353.123646 151.187726,348.810918 133.578912,343.334682 C137.618549,325.305649 142.828222,307.559058 149.174827,290.207679 C154.754833,301.431411 160.736278,312.655143 167.239594,323.778483 C173.74291,334.901824 180.467017,345.864539 187.311556,356.285142 M149.174827,221.760984 C142.850954,204.473938 137.654787,186.794745 133.619056,168.834762 C151.18418,163.352378 169.085653,159.013101 187.211197,155.844146 C180.346585,166.224592 173.622478,176.986525 167.139234,188.210257 C160.65599,199.433989 154.734761,210.517173 149.074467,221.760984 M322.616657,121.590681 C310.131896,120.827708 297.3862,120.385987 284.379568,120.385987 C271.479987,120.385987 258.767744,120.787552 246.242839,121.590681 C258.061488,107.383537 270.801211,93.9691137 284.379568,81.4342157 C297.99241,93.9658277 310.765727,107.380324 322.616657,121.590681 Z M401.70019,188.210257 C395.196875,176.939676 388.472767,166.09743 381.527868,155.68352 C399.744224,158.819049 417.734224,163.151949 435.380944,168.654058 C431.331963,186.680673 426.122466,204.426664 419.785029,221.781062 C414.205023,210.55733 408.203506,199.333598 401.720262,188.230335 M127.517179,131.790423 C122.438973,82.3176579 132.816178,46.2973086 155.778503,33.0255968 C163.144699,28.9632474 171.455651,26.9264282 179.864858,27.1225964 C202.967687,27.1225964 232.413257,39.7317265 263.785734,63.9862316 C243.794133,82.7898734 225.448298,103.270812 208.949132,125.204763 C181.761691,128.528025 154.90355,134.14313 128.661281,141.990165 C128.199626,138.556788 127.778115,135.163566 127.456963,131.790423 M98.4529773,182.106474 C101.54406,180.767925 104.695358,179.429376 107.906872,178.090828 C114.220532,204.735668 122.781793,230.7969 133.498624,255.99437 C122.761529,281.241316 114.193296,307.357063 107.8868,334.058539 C56.7434387,313.076786 27.0971497,284.003505 27.0971497,255.99437 C27.0971497,229.450947 53.1907013,202.526037 98.4529773,182.106474 Z M155.778503,478.963143 C132.816178,465.691432 122.438973,429.671082 127.517179,380.198317 C127.838331,376.825174 128.259842,373.431953 128.721497,369.978497 C154.953686,377.878517 181.814655,383.514365 209.009348,386.824134 C225.500295,408.752719 243.832321,429.233234 263.805806,448.042665 C220.069,481.834331 180.105722,492.97775 155.838719,478.963143 M441.502893,380.198317 C446.520883,429.691161 436.203894,465.691432 413.221497,478.963143 C388.974566,493.017906 348.991216,481.834331 305.274481,448.042665 C325.241364,429.232737 343.566681,408.752215 360.050868,386.824134 C387.245915,383.516508 414.107066,377.880622 440.338719,369.978497 C440.820446,373.431953 441.221885,376.825174 441.563109,380.198317 M461.193488,334.018382 C454.869166,307.332523 446.294494,281.231049 435.561592,255.99437 C446.289797,230.744081 454.857778,204.629101 461.173416,177.930202 C512.216417,198.911955 541.942994,227.985236 541.942994,255.99437 C541.942994,284.003505 512.296705,313.076786 461.153344,334.058539" id="Shape"></path>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                    <div>React</div>
+                                </div>
+                                    <div class="flex flex-row gap-2 items-center">
+                                        <img src="https://cmscritic.com/ms-content/uploads/2024/03/aws-logo-icon.jpg?format=auto&width=256" class="w-4 h-4 shrink-0"></img>
+                                        <div>AWS</div>
+                                    </div>
+                                </div>
+                            </LookupCard>
+                            <LookupCard url="yourwebsite.com" img="https://images.stripeassets.com/fzn2n1nzq965/3AGidihOJl4nH9D1vDjM84/9540155d584be52fc54c443b6efa4ae6/homepage.png?q=80" metaTitle="Stripe | Financial Infrastructure to Grow Your Revenue" performance="72" accessibility="93" bestPractices="74" seo="100">
+                                <div class="flex flex-row gap-4 flex-wrap lg:text-base text-sm">
+                                <div class="flex flex-row gap-2 items-center">
+                                    <svg class="w-4 h-4 shrink-0" viewBox="0 0 569 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <g fill="none" fill-rule="evenodd">
+                                            <g fill="#087EA4" fill-rule="nonzero">
+                                                <path d="M285.5,201 C255.400481,201 231,225.400481 231,255.5 C231,285.599519 255.400481,310 285.5,310 C315.599519,310 340,285.599519 340,255.5 C340,225.400481 315.599519,201 285.5,201" id="Path"></path>
+                                                <path d="M568.959856,255.99437 C568.959856,213.207656 529.337802,175.68144 466.251623,150.985214 C467.094645,145.423543 467.85738,139.922107 468.399323,134.521063 C474.621631,73.0415145 459.808523,28.6686204 426.709856,9.5541429 C389.677085,-11.8291748 337.36955,3.69129898 284.479928,46.0162134 C231.590306,3.69129898 179.282771,-11.8291748 142.25,9.5541429 C109.151333,28.6686204 94.3382249,73.0415145 100.560533,134.521063 C101.102476,139.922107 101.845139,145.443621 102.708233,151.02537 C97.4493791,153.033193 92.2908847,155.161486 87.3331099,157.39017 C31.0111824,182.708821 0,217.765415 0,255.99437 C0,298.781084 39.6220545,336.307301 102.708233,361.003527 C101.845139,366.565197 101.102476,372.066633 100.560533,377.467678 C94.3382249,438.947226 109.151333,483.32012 142.25,502.434597 C153.629683,508.887578 166.52439,512.186771 179.603923,511.991836 C210.956328,511.991836 247.567589,495.487529 284.479928,465.972527 C321.372196,495.487529 358.003528,511.991836 389.396077,511.991836 C402.475265,512.183856 415.36922,508.884856 426.75,502.434597 C459.848667,483.32012 474.661775,438.947226 468.439467,377.467678 C467.897524,372.066633 467.134789,366.565197 466.291767,361.003527 C529.377946,336.347457 569,298.761006 569,255.99437 M389.155214,27.1025182 C397.565154,26.899606 405.877839,28.9368502 413.241569,33.0055186 C436.223966,46.2772304 446.540955,82.2775015 441.522965,131.770345 C441.181741,135.143488 440.780302,138.556788 440.298575,141.990165 C414.066922,134.08804 387.205771,128.452154 360.010724,125.144528 C343.525021,103.224055 325.192524,82.7564475 305.214266,63.9661533 C336.586743,39.7116483 366.032313,27.1025182 389.135142,27.1025182 M378.356498,310.205598 C368.204912,327.830733 357.150626,344.919965 345.237759,361.405091 C325.045049,363.479997 304.758818,364.51205 284.459856,364.497299 C264.167589,364.51136 243.888075,363.479308 223.702025,361.405091 C211.820914,344.919381 200.80007,327.83006 190.683646,310.205598 C180.532593,292.629285 171.306974,274.534187 163.044553,255.99437 C171.306974,237.454554 180.532593,219.359455 190.683646,201.783142 C200.784121,184.229367 211.770999,167.201087 223.601665,150.764353 C243.824636,148.63809 264.145559,147.579168 284.479928,147.591877 C304.772146,147.579725 325.051559,148.611772 345.237759,150.68404 C357.109048,167.14607 368.136094,184.201112 378.27621,201.783142 C388.419418,219.363718 397.644825,237.458403 405.915303,255.99437 C397.644825,274.530337 388.419418,292.625022 378.27621,310.205598 M419.724813,290.127366 C426.09516,307.503536 431.324985,325.277083 435.380944,343.334682 C417.779633,348.823635 399.836793,353.149774 381.668372,356.285142 C388.573127,345.871232 395.263781,335.035679 401.740334,323.778483 C408.143291,312.655143 414.144807,301.431411 419.805101,290.207679 M246.363271,390.377981 C258.848032,391.140954 271.593728,391.582675 284.5,391.582675 C297.406272,391.582675 310.232256,391.140954 322.737089,390.377981 C310.880643,404.583418 298.10766,417.997563 284.5,430.534446 C270.921643,417.999548 258.18192,404.585125 246.363271,390.377981 Z M187.311556,356.244986 C169.137286,353.123646 151.187726,348.810918 133.578912,343.334682 C137.618549,325.305649 142.828222,307.559058 149.174827,290.207679 C154.754833,301.431411 160.736278,312.655143 167.239594,323.778483 C173.74291,334.901824 180.467017,345.864539 187.311556,356.285142 M149.174827,221.760984 C142.850954,204.473938 137.654787,186.794745 133.619056,168.834762 C151.18418,163.352378 169.085653,159.013101 187.211197,155.844146 C180.346585,166.224592 173.622478,176.986525 167.139234,188.210257 C160.65599,199.433989 154.734761,210.517173 149.074467,221.760984 M322.616657,121.590681 C310.131896,120.827708 297.3862,120.385987 284.379568,120.385987 C271.479987,120.385987 258.767744,120.787552 246.242839,121.590681 C258.061488,107.383537 270.801211,93.9691137 284.379568,81.4342157 C297.99241,93.9658277 310.765727,107.380324 322.616657,121.590681 Z M401.70019,188.210257 C395.196875,176.939676 388.472767,166.09743 381.527868,155.68352 C399.744224,158.819049 417.734224,163.151949 435.380944,168.654058 C431.331963,186.680673 426.122466,204.426664 419.785029,221.781062 C414.205023,210.55733 408.203506,199.333598 401.720262,188.230335 M127.517179,131.790423 C122.438973,82.3176579 132.816178,46.2973086 155.778503,33.0255968 C163.144699,28.9632474 171.455651,26.9264282 179.864858,27.1225964 C202.967687,27.1225964 232.413257,39.7317265 263.785734,63.9862316 C243.794133,82.7898734 225.448298,103.270812 208.949132,125.204763 C181.761691,128.528025 154.90355,134.14313 128.661281,141.990165 C128.199626,138.556788 127.778115,135.163566 127.456963,131.790423 M98.4529773,182.106474 C101.54406,180.767925 104.695358,179.429376 107.906872,178.090828 C114.220532,204.735668 122.781793,230.7969 133.498624,255.99437 C122.761529,281.241316 114.193296,307.357063 107.8868,334.058539 C56.7434387,313.076786 27.0971497,284.003505 27.0971497,255.99437 C27.0971497,229.450947 53.1907013,202.526037 98.4529773,182.106474 Z M155.778503,478.963143 C132.816178,465.691432 122.438973,429.671082 127.517179,380.198317 C127.838331,376.825174 128.259842,373.431953 128.721497,369.978497 C154.953686,377.878517 181.814655,383.514365 209.009348,386.824134 C225.500295,408.752719 243.832321,429.233234 263.805806,448.042665 C220.069,481.834331 180.105722,492.97775 155.838719,478.963143 M441.502893,380.198317 C446.520883,429.691161 436.203894,465.691432 413.221497,478.963143 C388.974566,493.017906 348.991216,481.834331 305.274481,448.042665 C325.241364,429.232737 343.566681,408.752215 360.050868,386.824134 C387.245915,383.516508 414.107066,377.880622 440.338719,369.978497 C440.820446,373.431953 441.221885,376.825174 441.563109,380.198317 M461.193488,334.018382 C454.869166,307.332523 446.294494,281.231049 435.561592,255.99437 C446.289797,230.744081 454.857778,204.629101 461.173416,177.930202 C512.216417,198.911955 541.942994,227.985236 541.942994,255.99437 C541.942994,284.003505 512.296705,313.076786 461.153344,334.058539" id="Shape"></path>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                    <div>React</div>
+                                </div>
+                                    <div class="flex flex-row gap-2 items-center">
+                                        <img src="https://www.svgrepo.com/show/353600/contentful.svg" class="w-4 h-4 shrink-0"></img>
+                                        <div>Contentful</div>
+                                    </div>
+                                </div>
+                            </LookupCard>
+                            <LookupCard url="yourwebsite.com" img="https://posthog.com/images/home.png" metaTitle="PostHog - How developers build successful products" performance="59" accessibility="69" bestPractices="74" seo="83">
+                                <div class="flex flex-row gap-4 flex-wrap lg:text-base text-sm">
+                                    <div class="flex flex-row gap-2 items-center">
+                                        <img src="https://static-00.iconduck.com/assets.00/gatsby-icon-2048x2048-tasa4u9p.png" class="w-4 h-4 shrink-0"></img>
+                                        <div>Gatsby</div>
+                                    </div>
+                                    <div class="flex flex-row gap-2 items-center">
+                                        <svg class="w-4 h-4 shrink-0" viewBox="0 0 256 116" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><path fill="#FFF" d="m202.357 49.394-5.311-2.124C172.085 103.434 72.786 69.289 66.81 85.997c-.996 11.286 54.227 2.146 93.706 4.059 12.039.583 18.076 9.671 12.964 24.484l10.069.031c11.615-36.209 48.683-17.73 50.232-29.68-2.545-7.857-42.601 0-31.425-35.497Z"/><path fill="#F4811F" d="M176.332 108.348c1.593-5.31 1.062-10.622-1.593-13.809-2.656-3.187-6.374-5.31-11.154-5.842L71.17 87.634c-.531 0-1.062-.53-1.593-.53-.531-.532-.531-1.063 0-1.594.531-1.062 1.062-1.594 2.124-1.594l92.946-1.062c11.154-.53 22.839-9.56 27.087-20.182l5.312-13.809c0-.532.531-1.063 0-1.594C191.203 20.182 166.772 0 138.091 0 111.535 0 88.697 16.995 80.73 40.896c-5.311-3.718-11.684-5.843-19.12-5.31-12.747 1.061-22.838 11.683-24.432 24.43-.531 3.187 0 6.374.532 9.56C16.996 70.107 0 87.103 0 108.348c0 2.124 0 3.718.531 5.842 0 1.063 1.062 1.594 1.594 1.594h170.489c1.062 0 2.125-.53 2.125-1.594l1.593-5.842Z"/><path fill="#FAAD3F" d="M205.544 48.863h-2.656c-.531 0-1.062.53-1.593 1.062l-3.718 12.747c-1.593 5.31-1.062 10.623 1.594 13.809 2.655 3.187 6.373 5.31 11.153 5.843l19.652 1.062c.53 0 1.062.53 1.593.53.53.532.53 1.063 0 1.594-.531 1.063-1.062 1.594-2.125 1.594l-20.182 1.062c-11.154.53-22.838 9.56-27.087 20.182l-1.063 4.78c-.531.532 0 1.594 1.063 1.594h70.108c1.062 0 1.593-.531 1.593-1.593 1.062-4.25 2.124-9.03 2.124-13.81 0-27.618-22.838-50.456-50.456-50.456"/></svg>
+                                        <div>Cloudflare</div>
+                                    </div>
+                                </div>
+                            </LookupCard>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container lg:mt-32 mt-10">
+                <div class="grid lg:grid-cols-[1.5fr_1fr] gap-20">
+                    <div>
+                        <div class="grid lg:grid-cols-2 gap-4">
+                            <div class="square-card bg-neutral-900 border-neutral-700 flex-col justify-between shadow-orange-800/20 shadow-lg">
+                                <div class="square-card p-2 inline-block mb-8">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M479.23-100q-77.77 0-146.92-29.96-69.16-29.96-120.77-81.58-51.62-51.61-81.58-120.96T100-480q0-79.15 30.77-148.5t83.58-120.65q52.8-51.31 123.54-81.08Q408.62-860 488.77-860q75 0 142.15 25.58 67.16 25.58 117.96 70.81 50.81 45.23 80.96 107.5Q860-593.85 860-521.08q0 103.85-61.73 162.46Q736.54-300 640-300h-72.46q-17.08 0-27.31 11.15Q530-277.69 530-262.46q0 18.54 15 38.54T560-178q0 39.61-21.92 58.81Q516.15-100 479.23-100Zm.77-380Zm-220 30q21.38 0 35.69-14.31Q310-478.62 310-500q0-21.38-14.31-35.69Q281.38-550 260-550q-21.38 0-35.69 14.31Q210-521.38 210-500q0 21.38 14.31 35.69Q238.62-450 260-450Zm120-160q21.38 0 35.69-14.31Q430-638.62 430-660q0-21.38-14.31-35.69Q401.38-710 380-710q-21.38 0-35.69 14.31Q330-681.38 330-660q0 21.38 14.31 35.69Q358.62-610 380-610Zm200 0q21.38 0 35.69-14.31Q630-638.62 630-660q0-21.38-14.31-35.69Q601.38-710 580-710q-21.38 0-35.69 14.31Q530-681.38 530-660q0 21.38 14.31 35.69Q558.62-610 580-610Zm120 160q21.38 0 35.69-14.31Q750-478.62 750-500q0-21.38-14.31-35.69Q721.38-550 700-550q-21.38 0-35.69 14.31Q650-521.38 650-500q0 21.38 14.31 35.69Q678.62-450 700-450ZM479.23-160q9.77 0 15.27-4.81T500-178q0-14-15-31.46t-15-54.69q0-42.77 29-69.31T570-360h70q70.62 0 115.31-41.38Q800-442.77 800-521.08q0-121.38-93.08-200.15Q613.85-800 488.77-800q-137.15 0-232.96 93T160-480q0 133 93.5 226.5T479.23-160Z"/></svg>                                </div>
+                                <div>
+                                    <p class="text-neutral-300"><span class="font-medium text-neutral-50">Visual Brand Identity. </span>The foundation of your online presence; your logo, colors, and typeface. We'll craft yours to stand out and drive business results.</p>
+                                </div>
+                            </div>
+                            <div class="square-card bg-neutral-900 border-neutral-700 flex-col justify-between shadow-orange-800/20 shadow-lg">
+                                <div class="square-card p-2 inline-block mb-8">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M247.69-147.69q-34.33 0-67.89-15.08-33.57-15.08-55.95-40.31 22.92-6.54 43.38-27.81 20.46-21.26 20.46-56.8 0-41.93 29.04-70.96 29.04-29.04 70.96-29.04 41.93 0 70.96 29.04 29.04 29.03 29.04 70.96 0 57.75-41.12 98.87-41.13 41.13-98.88 41.13Zm0-60q33 0 56.5-23.5t23.5-56.5q0-17-11.5-28.5t-28.5-11.5q-17 0-28.5 11.5t-11.5 28.5q0 23-5.5 42t-14.5 36q5 2 10 2h10ZM460-370l-89.23-89.23 342.61-342.61q11-11 27.5-11.5t28.5 11.5l33.23 33.23q12 12 12 28t-12 28L460-370Zm-172.31 82.31Z"/></svg>                                </div>
+                                <div>
+                                    <p class="text-neutral-300"><span class="font-medium text-neutral-50">Design. </span>We wireframe page layouts, and are receptive to feedback all throughout. Once the wireframes are complete, we push them to development, where pixel perfection is achieved.</p>
+                                </div>
+                            </div>
+                            <div class="square-card bg-neutral-900 border-neutral-700 flex-col justify-between shadow-orange-800/20 shadow-lg">
+                                <div class="square-card p-2 inline-block mb-8">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M320-253.85 93.85-480 320-706.15l42.77 42.77-184 184L362.15-296 320-253.85Zm320 0-42.77-42.77 184-184L597.85-664 640-706.15 866.15-480 640-253.85Z"/></svg>                                </div>
+                                <div>
+                                    <p class="text-neutral-300"><span class="font-medium text-neutral-50">Development. </span>Where we perfect our designs, and turn them into lighting-fast websites. You'll have access to preview deployments before each change rolls out to production.</p>
+                                </div>
+                            </div>
+                            <div class="square-card bg-neutral-900 border-neutral-700 flex-col justify-between shadow-orange-800/20 shadow-lg">
+                                <div class="square-card p-2 inline-block mb-8">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M180-400v-60h280v60H180Zm0-160v-60h440v60H180Zm0-160v-60h440v60H180Zm344.62 540v-105.69l217.15-216.16q7.46-7.46 16.11-10.5 8.65-3.03 17.3-3.03 9.43 0 18.25 3.53 8.82 3.54 16.03 10.62l37 37.38q6.46 7.47 10 16.16Q860-439 860-430.31t-3.23 17.69q-3.23 9-10.31 16.46L630.31-180H524.62Zm287.69-250.31-37-37.38 37 37.38Zm-240 202.62h38l129.84-130.47-18.38-19-18.62-18.76-130.84 130.23v38Zm149.46-149.47-18.62-18.76 37 37.76-18.38-19Z"/></svg>                                </div>
+                                <div>
+                                    <p class="text-neutral-300"><span class="font-medium text-neutral-50">Copywriting. </span>We can write the copy for landing pages we build. They'll be fully editable, along with all content, by members of your team using Sanity, our CMS of choice.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col justify-end items-end">
+                        <div>
+                            <div class="flex flex-col gap-5 items-start">
+                                <Image src={NihalPFP} alt='Nihal profile pic' class='w-36'></Image>
+                                <div class="square-card flex flex-col gap-3">
+                                    <div class="mb-1 text-xl">Working with him on our website design was an awesome experience and everything from start to finish felt like a breeze.</div>
+                                    <div class="text-neutral-400 text-lg text-pretty"> - Nihal Mandanna, Head of Growth @ MobiLoud</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- <section id="services">
+            <div class="container flex flex-col items-center mb-20">
+                <div class="text-center text-orange-300 font-normal text-lg">Our services</div>
+                <h2 class="text-3xl lg:text-4xl text-center text-balance font-semibold mt-5 leading-tight max-w-[20ch]">Great sites are the result of many disciplines</h2>
+            </div>
+
+            <div class="container grid lg:grid-cols-2 gap-4">
+                <div class="square-card bg-transparent flex flex-col justify-between gap-7 items-center">
+                    <Image src={BrandIdentity} alt="Brand Identity" />
+                    <div>
+                        <div class="text-xl font-medium mb-3">Brand identity</div>
+                        <p class="text-lg text-pretty text-neutral-300">The foundation of your online presence; your logo, colors, and typeface. We'll craft yours to stand out and drive business results.</p>
+                    </div>
+                </div>
+
+                <div class="square-card bg-transparent flex flex-col justify-between gap-7 items-center">
+                    <Image src={Design} alt="Design" />
+                    <div>
+                        <div class="text-xl font-medium mb-3">Design</div>
+                        <p class="text-lg text-pretty text-neutral-300">Where we concept initial page layouts in Figma/Sketch. We're receptive to feedback all throughout. Once the designs are 80% complete, we push them to development, where pixel perfection is achieved.</p>
+                    </div>
+                </div>
+
+                <div class="square-card bg-transparent flex flex-col justify-between gap-7 items-center">
+                    <Image src={Development} alt="Development" />
+                    <div>
+                        <div class="text-xl font-medium mb-3">Development</div>
+                        <p class="text-lg text-pretty text-neutral-300">Where we perfect our designs, and turn them into lighting-fast websites. You'll have access to preview deployments before each change rolls out to production.</p>
+                    </div>
+                </div>
+
+                <div class="square-card bg-transparent flex flex-col justify-between gap-7 items-center">
+                    <div class="relative w-full order-2 lg:order-1">
+                        <div class="bg-gradient-to-b from-transparent via-neutral-900 via-90% to-neutral-900 z-10 absolute w-full h-full"></div>
+                        <div class="square-card p-8">
+                            <div class="text-2xl mb-7">Homepage copy - Sept 2024</div>
+                            <div>
+                                <svg width="100%" height="100%" viewBox="0 0 325 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="0.266113" y="0.0898438" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="45.2661" y="0.0898438" width="87" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="142.266" y="0.0898438" width="59" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="211.266" y="0.0898438" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="256.266" y="0.0898438" width="52" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="0.266113" y="14" width="59" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="69.2661" y="14" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="114.266" y="14" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="159.266" y="14" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="204.266" y="14" width="87" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="0.266113" y="27.9102" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="45.2661" y="27.9102" width="51" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="106.266" y="27.9102" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="151.266" y="27.9102" width="67" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="228.266" y="27.9102" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="273.266" y="27.9102" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="0.266113" y="41.8203" width="28" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="38.2661" y="41.8203" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="83.2661" y="41.8203" width="56" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="149.266" y="41.8203" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="194.266" y="41.8203" width="68" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="272.266" y="41.8203" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="0.266113" y="55.7305" width="53" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="63.2661" y="55.7305" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="108.266" y="55.7305" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="153.266" y="55.7305" width="28" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="191.266" y="55.7305" width="50" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="251.266" y="55.7305" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="0.266113" y="69.6406" width="71" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="81.2661" y="69.6406" width="86" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="177.266" y="69.6406" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="222.266" y="69.6406" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="0.266113" y="83.5508" width="87" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="97.2661" y="83.5508" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="142.266" y="83.5508" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="187.266" y="83.5508" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="232.266" y="83.5508" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="277.266" y="83.5508" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="0.266113" y="97.4609" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="45.2661" y="97.4609" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="90.2661" y="97.4609" width="69" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="169.266" y="97.4609" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="214.266" y="97.4609" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="259.266" y="97.4609" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="0.266113" y="111.371" width="102" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="112.266" y="111.371" width="62" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="184.266" y="111.371" width="32" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="226.266" y="111.371" width="25" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="261.266" y="111.371" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="0.266113" y="125.281" width="49" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="59.2661" y="125.281" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="104.266" y="125.281" width="117" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="231.266" y="125.281" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="276.266" y="125.281" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="0.266113" y="139.191" width="61" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="71.2661" y="139.191" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="116.266" y="139.191" width="35" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                <rect x="161.266" y="139.191" width="47" height="3.91016" rx="1.95508" fill="#4F4F4F"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-1 lg:order-2">
+                        <div class="text-xl font-medium mb-3">Copywriting</div>
+                        <p class="text-lg text-pretty text-neutral-300">We can write the copy for landing pages we build. They'll be fully editable, along with all content, by members of your team using Payload, our CMS of choice.</p>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <section>
+            <div class="container mb-20">
+                <h2 class="text-3xl lg:text-4xl text-center text-balance font-semibold mt-5 leading-tight mb-12">Selected works</h2>
+                <ClientCard
+                  title="MobiLoud"
+                  description="MobiLoud turns your website into an iOS and Android app in under 2 weeks, for 10% of the usual cost. Solutions for WordPress, eCommerce, eLearning and more!"
+                  link="https://www.mobiloud.com/"
+                  image={MobiLoudDesktop}
+                  tags={["Web Design", "Webflow Development", "WordPress Migration"]}
+                />
+                <ClientCard
+                  title="FeedBear"
+                  description="FeedBear is a better way to collect and manage customer feedback and ideas and keep your customers in the loop about product changes."
+                  link="https://www.feedbear.com/"
+                  image={FeedBearDesktop}
+                  tags={["Web Design", "Webflow Development", "Umso Migration"]}
+                />
+                <ClientCard
+                  title="MixBloom"
+                  description="MixBloom helps you scale social media content creation for your clients with a talented and reliable team of social media managers and white label approvals software."
+                  link="https://www.mixbloom.com/"
+                  image={MixBloomDesktop}
+                  tags={["Web Design", "Webflow Development", "Umso Migration"]}
+                />
+                <ClientCard
+                  title="Hoppy Copy"
+                  description="Save countless hours writing. Use AI to generate powerful copy for hundreds of different email marketing campaigns, drips, newsletters and more—in seconds."
+                  link="https://www.hoppycopy.co/"
+                  image={HoppyCopyDesktop}
+                  tags={["Squarespace Migration", "Webflow Development"]}
+                />
+            </div>
+        </section>
+
+        <section class="bg-gradient-to-t from-neutral-900 via-neutral-950 to-neutral-950 py-20 border-t border-neutral-800">
+            <div class="container grid lg:grid-cols-2 items-center gap-14">
+                <div>
+                    <div class="text-orange-300 text-lg mb-3 text-pretty">Our core tech stack</div>
+                    <h2 class="text-3xl lg:text-4xl font-medium leading-tight text-balance">The power of code, with a seamless content editing experience. </h2>
+                    <p class="text-lg font-normal text-neutral-200 mt-5 text-pretty max-w-4xl mx-auto">Many think both aren't possible, and instead opt for no-code website builders. We used to use Webflow, after all. Now, we combine the flexbility, ownership and performance that code brings, with Sanity for the best content editing experience. It's a marriage between developers and marketers.</p>
+                </div>
+                <div>
+                    <div class="w-full overflow-hidden relative">
+                        <div class="absolute h-full w-full z-10 bg-gradient-to-t from-neutral-900 to-transparent pointer-events-none"></div>
+                        <div class="flex flex-col gap-4"> <a href="https://basecamp.com" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Basecamp" data-tech-icon="Basecamp.svg"> <div class="flex flex-row gap-2 items-center"> <img src="https://avatars.githubusercontent.com/u/13131?s=280&v=4" class="w-5 h-5" alt=""> <div>Basecamp</div> </div> <div class="text-pretty">Basecamp is a project management and team communication platform that helps teams stay organized and on track.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://figma.com" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Figma" data-tech-icon="Figma.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Figma.svg" class="w-5 h-5" alt=""> <div>Figma</div> </div> <div class="text-pretty">Figma is a collaborative interface design tool that lets teams create, test, and ship better designs together.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> <a href="https://astro.build" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Astro" data-tech-icon="Astro.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Astro.svg" class="w-5 h-5" alt=""> <div>Astro</div> </div> <div class="text-pretty">Astro is a modern frontend build tool that delivers lightning-fast performance with a content-first approach.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://sanity.io" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Sanity" data-tech-icon="Sanity.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Sanity.svg" class="w-5 h-5" alt=""> <div>Sanity</div> </div> <div class="text-pretty">Sanity is a flexible and collaborative headless CMS that gives you a real-time editing environment for structured content.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-we-work-calendar">
+            <HowWeWork/>
+        </section>
+
+        <Testimonials/>
+
+        <section>
+            <LookupCTA/>
+        </section>
+
+        <section id="faq">
+            <div class="container !max-w-[800px]">
+                <h2 class="text-3xl lg:text-4xl font-semibold text-center leading-tight mb-10">Your questions, answered</h2>
+                <FAQs/>
+            </div>
+        </section>
+
+        <Footer />
+    </body>
+</html>
