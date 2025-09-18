@@ -21,14 +21,14 @@ import LookupCard from '../components/LookupCard.astro';
 import LookupCTA from '../components/LookupCTA.astro';
 import HowWeWork from '../components/HowWeWork.astro';
 
-const {location} = Astro.props;
+const {city, country, continent} = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="en">
     <head>
 		<HeadScripts
-		title={`CRFT Studio | ${location} Web Design & Development Agency`}
-		description={`We design and develop beautiful, performant, and maintainable websites for the best ${location} marketing teams.`}
+		title={`CRFT Studio | ${city} Web Design & Development Agency`}
+		description={`We design and develop beautiful, performant, and maintainable websites for the best ${city} marketing teams.`}
 		ogImageUrl="https://www.crft.studio/open-graph-img.png"
 		/>
 	</head>
@@ -36,9 +36,9 @@ const {location} = Astro.props;
         <Navigation />
         <section class="mt-24">
             <div class="container flex flex-col items-center !max-w-[800px]">
-                    <div class="text-center  mx-auto text-orange-300 font-normal text-lg mb-5">{`${location} Web Design & Development Agency`}</div>
-                    <h1 class="lg:text-5xl text-4xl text-center text-balance font-semibold leading-tight">{`${location}'s premier marketing websites, crafted to convert.`}</h1>
-                    <p class="text-center text-pretty lg:text-xl text-lg mt-5 text-neutral-300 mb-7 max-w-[44ch]">{`We design and develop beautiful, performant, and maintainable websites for the best ${location} marketing teams.`}</p>
+                    <div class="text-center  mx-auto text-orange-300 font-normal text-lg mb-5">{`${city} Web Design & Development Agency`}</div>
+                    <h1 class="lg:text-5xl text-4xl text-center text-balance font-semibold leading-tight">{`${city}'s premier marketing websites, crafted to convert.`}</h1>
+                    <p class="text-center text-pretty lg:text-xl text-lg mt-5 text-neutral-300 mb-7 max-w-[44ch]">{`We design and develop beautiful, performant, and maintainable websites for the best ${city} marketing teams.`}</p>
                     <div class="flex flex-row gap-3">
                         <a href="/pricing" class="primary-cta">View pricing</a>
                         <a href="/audit" class="secondary-cta">Get Free Redesign</a>
