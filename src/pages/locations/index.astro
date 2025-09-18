@@ -1,6 +1,34 @@
 ---
 import Navigation from "../../components/Navigation.astro";
 import HeadScripts from "../../components/HeadScripts.astro";
+import Footer from "../../components/Footer.astro";
+
+// Dynamically import all location pages except index
+const locationModules = Object.entries(import.meta.glob('./*.astro', {eager: true}))
+    .filter(([path]) => !path.includes('index.astro'));
+
+// Extract locationData and slug from each module
+const locations = locationModules
+    .map(([path, mod]) => ({
+        ...mod.locationData,
+        slug: path.replace('./', '').replace('.astro', ''),
+    }))
+    .filter(loc => loc.city && loc.country && loc.continent);
+
+// Get sorted lists for rendering
+const continents = [...new Set(locations.map(loc => loc.continent))].sort();
+
+function getCountries(continent) {
+    return [...new Set(
+        locations.filter(loc => loc.continent === continent).map(loc => loc.country)
+    )].sort();
+}
+
+function getLocations(continent, country) {
+    return locations
+        .filter(loc => loc.continent === continent && loc.country === country)
+        .sort((a, b) => a.city.localeCompare(b.city));
+}
 ---
 <html lang="en">
     <head>
@@ -44,8 +72,30 @@ import HeadScripts from "../../components/HeadScripts.astro";
         <div class="h-[1px] bg-neutral-700"></div>
         <section>
             <div class="container">
-
+                {continents.map(continent => (
+                    <div class="mb-16" key={continent}>
+                        <h2 class="text-3xl font-semibold mb-8">{continent}</h2>
+                        {getCountries(continent).map(country => (
+                            <div class="mb-12" key={country}>
+                                <h3 class="text-xl font-medium mb-6 text-neutral-300">{country}</h3>
+                                <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4">
+                                    {getLocations(continent, country).map(loc => (
+                                        <a
+                                            href={`/locations/${loc.slug}`}
+                                            class="square-card hover:bg-neutral-700 transition-all"
+                                            key={loc.slug}
+                                        >
+                                            <div class="font-medium">{loc.city}</div>
+                                            <div class="text-sm text-neutral-400 mt-1">{loc.country}</div>
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                ))}
             </div>
         </section>
+        <Footer />
     </body>
 </html>
