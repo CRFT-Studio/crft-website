@@ -12,4 +12,4 @@ A quick announcement: our design for the [FeedBear website](https://www.feedbear
 
 They run a directory and publish roundups highlighting work by agencies and studios. They reached out directly, liked the FeedBear project, and asked if we’d be open to being included. It’s always nice to see our work appreciated by other folks in the web design community :)
 
-If you’re curious, you can [check out the full list here](https://www.designrush.com/best-designs/awards/websites). Thanks for following along and, as always, feel free to [contact me](mailto:jeremy@crft.studio) if you have thoughts on the project, or want to start one of your own!
+If you’re curious, you can [check out their analysis of our work](https://www.designrush.com/best-designs/websites/feedbear-website-design). Thanks for following along and, as always, feel free to [contact me](mailto:jeremy@crft.studio) if you have thoughts on the project, or want to start one of your own!

@@ -1,0 +1,14 @@
+---
+import Location from "../../layouts/Location.astro";
+
+export const locationData = {
+    city: "New Orleans",
+    country: "United States",
+    continent: "North America"
+};
+---
+<Location
+city={locationData.city}
+country={locationData.country}
+continent={locationData.continent}
+/>

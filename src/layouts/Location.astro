@@ -13,52 +13,32 @@ import MobiLoudDesktop from '../../src/images/mobiloud-desktop.png';
 import FeedBearDesktop from '../../src/images/feedbear-desktop.png';
 import HoppyCopyDesktop from '../../src/images/hoppy-copy-desktop.png';
 import MixBloomDesktop from '../../src/images/mixbloom-desktop.png';
-import LookupCTA from '../components/LookupCTA.astro';
 import Footer from '../components/Footer.astro';
 import FAQs from '../components/FAQs.astro';
 import Testimonials from '../components/Testimonials.astro';
 import HeadScripts from '../components/HeadScripts.astro';
 import LookupCard from '../components/LookupCard.astro';
+import LookupCTA from '../components/LookupCTA.astro';
 import HowWeWork from '../components/HowWeWork.astro';
+
+const {city, country, continent} = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="en">
     <head>
 		<HeadScripts
-		title="CRFT Studio | Marketing Sites Built to Convert"
-		description="We design and develop beautiful, performant, and maintainable websites for the best marketing teams."
+		title={`CRFT Studio | ${city} Web Design & Development Agency`}
+		description={`We design and develop beautiful, performant, and maintainable websites for the best ${city} marketing teams.`}
 		ogImageUrl="https://www.crft.studio/open-graph-img.png"
 		/>
-		<!-- <script type="application/ld+json">
-        {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "url": "https://www.example.com",
-        "sameAs": ["https://example.net/profile/example1234", "https://example.org/example1234"],
-        "logo": "https://www.example.com/images/logo.png",
-        "name": "Example Corporation",
-        "description": "The example corporation is well-known for producing high-quality widgets",
-        "email": "contact@example.com",
-        "telephone": "+47-99-999-9999",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Rue Improbable 99",
-            "addressLocality": "Paris",
-            "addressCountry": "FR",
-            "addressRegion": "Ile-de-France",
-            "postalCode": "75001"
-        },
-        "vatID": "FR12345678901",
-        "iso6523Code": "0199:724500PMK2A2M1SQQ228"
-        }
-        </script> -->
 	</head>
     <body>
         <Navigation />
         <section class="mt-24">
             <div class="container flex flex-col items-center !max-w-[800px]">
-                    <h1 class="lg:text-5xl text-4xl text-center text-balance font-semibold leading-tight">Sell more with a marketing website crafted to convert.</h1>
-                    <p class="text-center text-pretty lg:text-xl text-lg mt-5 text-neutral-300 mb-7 max-w-[44ch]">We design and develop beautiful, performant, and maintainable websites for the best marketing teams.</p>
+                    <div class="text-center  mx-auto text-orange-300 font-normal text-lg mb-5">{`${city} Web Design & Development Agency`}</div>
+                    <h1 class="lg:text-5xl text-4xl text-center text-balance font-semibold leading-tight">{`${city}'s premier marketing websites, crafted to convert (from Toronto, Canada).`}</h1>
+                    <p class="text-center text-pretty lg:text-xl text-lg mt-5 text-neutral-300 mb-7 max-w-[800px]">{`Surprised? Don’t be. This location page is here purely for SEO—because we want to work with awesome people in ${city} (and yes, you’re in a timezone where we won’t be replying at 4am). Your business deserves a site that actually converts. We design and build high-performance marketing websites from Toronto, for anyone who wants results—not geography lessons.`}</p>
                     <div class="flex flex-row gap-3">
                         <a href="/pricing" class="primary-cta">View pricing</a>
                         <a href="/audit" class="secondary-cta">Get Free Redesign</a>
