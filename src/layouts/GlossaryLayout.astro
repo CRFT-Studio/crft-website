@@ -32,6 +32,7 @@ console.log("Page URLs:", glossaryPages.map(p => p.url));
 <html lang="en">
     <head>
         <HeadScripts
+        url={Astro.url}
         title={`${frontmatter.title} | CRFT Glossary`}
         description={`${frontmatter.description} | CRFT Glossary`}
         ogImageUrl="https://www.crft.studio/open-graph-img.png"
