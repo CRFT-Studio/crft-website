@@ -33,7 +33,8 @@ if (!fields.filter(field => field !== "Notes").every(field => params[field])) re
         <meta name="description" content="Thanks for requesting a hero redesign!" />
         <meta name="robots" content="noindex" />
         <title>Thanks {params["First Name"]} | CRFT Studio</title>
-        <HeadScripts/>
+        <HeadScripts
+        url={Astro.url/>
     </head>
     <body>
         <Navigation />

@@ -43,6 +43,7 @@ const checkoutSession = await stripe.checkout.sessions.create({
 <html lang="en">
     <head>
         <HeadScripts
+        url={Astro.url}
         title="Checkout | CRFT Studio"
         />
         <meta name="robots" content="noindex">
