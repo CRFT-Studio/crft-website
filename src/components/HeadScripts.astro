@@ -1,5 +1,5 @@
 ---
-const {title, description, ogImageUrl, url} = Astro.props;
+const {title, description, ogImageUrl} = Astro.props;
 ---
 <link rel="sitemap" href="/sitemap-index.xml" />
 
@@ -18,7 +18,7 @@ const {title, description, ogImageUrl, url} = Astro.props;
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:alt" content="Sell more with a marketing website crafted to convert" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content={url} />
+<meta property="og:url" content={Astro.url} />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:card" content="summary_large_image" />
