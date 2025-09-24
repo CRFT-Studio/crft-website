@@ -1,6 +1,7 @@
 ---
 import HeadScripts from "../components/HeadScripts.astro";
 import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
 ---
 <html lang="en">
     <head>
@@ -13,12 +14,16 @@ import Navigation from "../components/Navigation.astro";
         <Navigation/>
         <section class="mt-16">
             <div class="container">
-                <div class="w-full aspect-video bg-neutral-700 mb-8"></div>
+                <div class="mb-2">Breadcrumbs here</div>
+                <div class="w-full aspect-video bg-neutral-700 mb-8 border border-neutral-600"></div>
                 <div class="flex flex-row justify-between w-full">
                     <div class="max-w-[500px]">
-                        <div class="text-xl font-medium mb-2">Linear</div>
+                        <div class="text-2xl font-medium mb-2">Linear</div>
                         <div class="text-lg text-neutral-300">Linear is a purpose-built tool for modern product development. Streamline issues, projects, and product roadmaps.</div>
-                        <a href="/pricing" class="primary-cta mt-5 py-1 px-2">Visit website</a>
+                        <div class="flex flex-row flex-wrap gap-2 items-center">
+                            <a href="/pricing" class="primary-cta mt-5 py-1 px-2">Visit website</a>
+                            <a href="/pricing" class="secondary-cta mt-5 py-1 px-2 border-neutral-600">Generate full report</a>
+                        </div>
                     </div>
                     <div>
                         <div id="lighthouse-overview-desktop" class="flex flex-row flex-wrap gap-2">
@@ -49,11 +54,380 @@ import Navigation from "../components/Navigation.astro";
                         </div>
                     </div>
                 </div>
-                <div class="mt-28" data-astro-cid-66dgfmvl=""> <h2 class="text-2xl font-medium mb-2" id="tech-stack" data-astro-cid-66dgfmvl="">Tech Stack</h2> <div class="text-lg text-neutral-300 text-pretty mb-8 max-w-[700px]" data-astro-cid-66dgfmvl="">
-                This is a scan of <span data-astro-cid-66dgfmvl="">https://linear.app</span> to determine what technologies it was made with. From analytics tools,
-                                                to hosting provider, frameworks and more, here's what we found.
-                </div> <div class="flex flex-col gap-8" id="wappalyzer-tech-data"> <div data-category="CMS"> <h3 class="text-xl font-medium mb-4">CMS</h3> <div class="grid lg:grid-cols-2 gap-4"> <a href="https://www.sanity.io?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Sanity" data-tech-icon="Sanity.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Sanity.svg" class="w-5 h-5" alt=""> <div>Sanity</div> </div> <div class="text-pretty">Sanity is a platform for structured content. It comes with an open-source, headless CMS that can be customized with Javascript, a real-time hosted data store and an asset delivery pipeline.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div> </div><div data-category="Issue trackers"> <h3 class="text-xl font-medium mb-4">Issue trackers</h3> <div class="grid lg:grid-cols-2 gap-4"> <a href="https://sentry.io/?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Sentry" data-tech-icon="Sentry.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Sentry.svg" class="w-5 h-5" alt=""> <div>Sentry</div> </div> <div class="text-pretty">Sentry is an open-source platform for workflow productivity, aggregating errors from across the stack in real time.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div> </div><div data-category="Search engines"> <h3 class="text-xl font-medium mb-4">Search engines</h3> <div class="grid lg:grid-cols-2 gap-4"> <a href="https://www.algolia.com?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Algolia" data-tech-icon="Algolia.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Algolia.svg" class="w-5 h-5" alt=""> <div>Algolia</div> </div> <div class="text-pretty">Algolia offers a hosted web search product delivering real-time results.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div> </div><div data-category="UI frameworks"> <h3 class="text-xl font-medium mb-4">UI frameworks</h3> <div class="grid lg:grid-cols-2 gap-4"> <a href="https://www.radix-ui.com?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Radix UI" data-tech-icon="Radix UI.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Radix UI.svg" class="w-5 h-5" alt=""> <div>Radix UI</div> </div> <div class="text-pretty">Radix UI is a React-based user interface component library that offers accessible, responsive, and customisable components for building web applications.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://nextui.org/?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="HeroUI" data-tech-icon="HeroUI.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/HeroUI.svg" class="w-5 h-5" alt=""> <div>HeroUI</div> </div> <div class="text-pretty">HeroUI allows you to make beautiful, modern, and fast websites/applications regardless of your design experience, created with React.js and Stitches, based on React Aria and inspired by Vuesax.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div> </div><div data-category="JavaScript frameworks"> <h3 class="text-xl font-medium mb-4">JavaScript frameworks</h3> <div class="grid lg:grid-cols-2 gap-4"> <a href="https://reactjs.org?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="React" data-tech-icon="React.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/React.svg" class="w-5 h-5" alt=""> <div>React</div> </div> <div class="text-pretty">React is an open-source JavaScript library for building user interfaces or UI components.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://nextjs.org?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Next.js" data-tech-icon="Next.js.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Next.js.svg" class="w-5 h-5" alt=""> <div>Next.js</div> </div> <div class="text-pretty">Next.js is a React framework for developing single page Javascript applications.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://styled-components.com?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="styled-components" data-tech-icon="styled-components.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/styled-components.svg" class="w-5 h-5" alt=""> <div>styled-components</div> </div> <div class="text-pretty">Styled components is a CSS-in-JS styling framework that uses tagged template literals in JavaScript.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div> </div><div data-category="IaaS"> <h3 class="text-xl font-medium mb-4">IaaS</h3> <div class="grid lg:grid-cols-2 gap-4"> <a href="https://cloud.google.com?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Google Cloud" data-tech-icon="Google Cloud.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Google Cloud.svg" class="w-5 h-5" alt=""> <div>Google Cloud</div> </div> <div class="text-pretty">Google Cloud is a suite of cloud computing services.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div> </div><div data-category="Web frameworks"> <h3 class="text-xl font-medium mb-4">Web frameworks</h3> <div class="grid lg:grid-cols-2 gap-4"> <a href="https://nextjs.org?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Next.js" data-tech-icon="Next.js.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Next.js.svg" class="w-5 h-5" alt=""> <div>Next.js</div> </div> <div class="text-pretty">Next.js is a React framework for developing single page Javascript applications.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div> </div><div data-category="Web servers"> <h3 class="text-xl font-medium mb-4">Web servers</h3> <div class="grid lg:grid-cols-2 gap-4"> <a href="https://nextjs.org?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Next.js" data-tech-icon="Next.js.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Next.js.svg" class="w-5 h-5" alt=""> <div>Next.js</div> </div> <div class="text-pretty">Next.js is a React framework for developing single page Javascript applications.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div> </div><div data-category="Static site generator"> <h3 class="text-xl font-medium mb-4">Static site generator</h3> <div class="grid lg:grid-cols-2 gap-4"> <a href="https://nextjs.org?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Next.js" data-tech-icon="Next.js.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Next.js.svg" class="w-5 h-5" alt=""> <div>Next.js</div> </div> <div class="text-pretty">Next.js is a React framework for developing single page Javascript applications.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div> </div><div data-category="Development"> <h3 class="text-xl font-medium mb-4">Development</h3> <div class="grid lg:grid-cols-2 gap-4"> <a href="https://styled-components.com?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="styled-components" data-tech-icon="styled-components.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/styled-components.svg" class="w-5 h-5" alt=""> <div>styled-components</div> </div> <div class="text-pretty">Styled components is a CSS-in-JS styling framework that uses tagged template literals in JavaScript.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div> </div><div data-category="Analytics"> <h3 class="text-xl font-medium mb-4">Analytics</h3> <div class="grid lg:grid-cols-2 gap-4"> <a href="https://posthog.com?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="PostHog" data-tech-icon="PostHog.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/PostHog.svg" class="w-5 h-5" alt=""> <div>PostHog</div> </div> <div class="text-pretty">PostHog is the open-source, all-in-one product analytics platform.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div> </div><div data-category="JavaScript libraries"> <h3 class="text-xl font-medium mb-4">JavaScript libraries</h3> <div class="grid lg:grid-cols-2 gap-4"> <a href="https://mobx.js.org?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="MobX" data-tech-icon="MobX.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/MobX.svg" class="w-5 h-5" alt=""> <div>MobX</div> </div> <div class="text-pretty"></div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://motion.dev?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Framer Motion" data-tech-icon="FramerMotion.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/FramerMotion.svg" class="w-5 h-5" alt=""> <div>Framer Motion</div> </div> <div class="text-pretty">Framer Motion is a modern animation library for JavaScript, React, and Vue.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div> </div><div data-category="Performance"> <h3 class="text-xl font-medium mb-4">Performance</h3> <div class="grid lg:grid-cols-2 gap-4"> <a href="https://wicg.github.io/priority-hints/?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Priority Hints" data-tech-icon="Priority Hints.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Priority Hints.svg" class="w-5 h-5" alt=""> <div>Priority Hints</div> </div> <div class="text-pretty">Priority Hints exposes a mechanism for developers to signal a relative priority for browsers to consider when fetching resources.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div> </div><div data-category="Security"> <h3 class="text-xl font-medium mb-4">Security</h3> <div class="grid lg:grid-cols-2 gap-4"> <a href="https://www.rfc-editor.org/rfc/rfc6797#section-6.1?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="HSTS" data-tech-icon="default.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/default.svg" class="w-5 h-5" alt=""> <div>HSTS</div> </div> <div class="text-pretty">HTTP Strict Transport Security (HSTS) informs browsers that the site should only be accessed using HTTPS.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div> </div><div data-category="CDN"> <h3 class="text-xl font-medium mb-4">CDN</h3> <div class="grid lg:grid-cols-2 gap-4"> <a href="https://cloud.google.com/cdn?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Google Cloud CDN" data-tech-icon="google-cloud-cdn.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/google-cloud-cdn.svg" class="w-5 h-5" alt=""> <div>Google Cloud CDN</div> </div> <div class="text-pretty">Cloud CDN uses Google's global edge network to serve content closer to users.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://www.cloudflare.com?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Cloudflare" data-tech-icon="CloudFlare.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/CloudFlare.svg" class="w-5 h-5" alt=""> <div>Cloudflare</div> </div> <div class="text-pretty">Cloudflare is a web-infrastructure and website-security company, providing content-delivery-network services, DDoS mitigation, Internet security, and distributed domain-name-server services.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div> </div><div data-category="Miscellaneous"> <h3 class="text-xl font-medium mb-4">Miscellaneous</h3> <div class="grid lg:grid-cols-2 gap-4"> <a href="https://webpack.js.org/?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Webpack" data-tech-icon="Webpack.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Webpack.svg" class="w-5 h-5" alt=""> <div>Webpack</div> </div> <div class="text-pretty">Webpack is an open-source JavaScript module bundler.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://web.dev/progressive-web-apps/?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="PWA" data-tech-icon="PWA.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/PWA.svg" class="w-5 h-5" alt=""> <div>PWA</div> </div> <div class="text-pretty">Progressive Web Apps (PWAs) are web apps built and enhanced with modern APIs to deliver enhanced capabilities, reliability, and installability while reaching anyone, anywhere, on any device, all with a single codebase.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://ogp.me?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Open Graph" data-tech-icon="Open Graph.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/Open Graph.svg" class="w-5 h-5" alt=""> <div>Open Graph</div> </div> <div class="text-pretty">Open Graph is a protocol that is used to integrate any web page into the social graph.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a><a href="https://httpwg.org/?ref=crftlookup" target="_blank" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="HTTP/3" data-tech-icon="HTTP3.svg"> <div class="flex flex-row gap-2 items-center"> <img src="/icons/HTTP3.svg" class="w-5 h-5" alt=""> <div>HTTP/3</div> </div> <div class="text-pretty">HTTP/3 is the third major version of the Hypertext Transfer Protocol used to exchange information on the World Wide Web.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path></svg> </a> </div> </div> </div> </div>
+                <div class="mt-28" data-astro-cid-66dgfmvl="">
+                    <h2 class="text-2xl font-medium mb-2" id="tech-stack" data-astro-cid-66dgfmvl="">Tech Stack</h2>
+                    <div class="text-lg text-neutral-300 text-pretty mb-8 max-w-[700px]" data-astro-cid-66dgfmvl="">
+                        This is a scan of <span data-astro-cid-66dgfmvl="">https://linear.app</span> to determine what technologies it
+                        was made with. From analytics tools,
+                        to hosting provider, frameworks and more, here's what we found.
+                    </div>
+                    <div class="flex flex-col gap-8" id="wappalyzer-tech-data">
+                        <div data-category="CMS">
+                            <h3 class="text-xl font-medium mb-4">CMS</h3>
+                            <div class="grid lg:grid-cols-2 gap-4"> <a href="https://www.sanity.io?ref=crftlookup" target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="Sanity" data-tech-icon="Sanity.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/Sanity.svg" class="w-5 h-5" alt="">
+                                        <div>Sanity</div>
+                                    </div>
+                                    <div class="text-pretty">Sanity is a platform for structured content. It comes with an open-source,
+                                        headless CMS that can be customized with Javascript, a real-time hosted data store and an asset
+                                        delivery pipeline.</div> <svg class="absolute top-0 right-0 mt-3 mr-3"
+                                        xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                        fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a> </div>
+                        </div>
+                        <div data-category="Issue trackers">
+                            <h3 class="text-xl font-medium mb-4">Issue trackers</h3>
+                            <div class="grid lg:grid-cols-2 gap-4"> <a href="https://sentry.io/?ref=crftlookup" target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="Sentry" data-tech-icon="Sentry.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/Sentry.svg" class="w-5 h-5" alt="">
+                                        <div>Sentry</div>
+                                    </div>
+                                    <div class="text-pretty">Sentry is an open-source platform for workflow productivity, aggregating
+                                        errors from across the stack in real time.</div> <svg class="absolute top-0 right-0 mt-3 mr-3"
+                                        xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                        fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a> </div>
+                        </div>
+                        <div data-category="Search engines">
+                            <h3 class="text-xl font-medium mb-4">Search engines</h3>
+                            <div class="grid lg:grid-cols-2 gap-4"> <a href="https://www.algolia.com?ref=crftlookup" target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="Algolia" data-tech-icon="Algolia.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/Algolia.svg" class="w-5 h-5" alt="">
+                                        <div>Algolia</div>
+                                    </div>
+                                    <div class="text-pretty">Algolia offers a hosted web search product delivering real-time results.
+                                    </div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg"
+                                        height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a> </div>
+                        </div>
+                        <div data-category="UI frameworks">
+                            <h3 class="text-xl font-medium mb-4">UI frameworks</h3>
+                            <div class="grid lg:grid-cols-2 gap-4"> <a href="https://www.radix-ui.com?ref=crftlookup" target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="Radix UI" data-tech-icon="Radix UI.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/Radix UI.svg" class="w-5 h-5"
+                                            alt="">
+                                        <div>Radix UI</div>
+                                    </div>
+                                    <div class="text-pretty">Radix UI is a React-based user interface component library that offers
+                                        accessible, responsive, and customisable components for building web applications.</div> <svg
+                                        class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px"
+                                        viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a><a href="https://nextui.org/?ref=crftlookup" target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="HeroUI" data-tech-icon="HeroUI.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/HeroUI.svg" class="w-5 h-5" alt="">
+                                        <div>HeroUI</div>
+                                    </div>
+                                    <div class="text-pretty">HeroUI allows you to make beautiful, modern, and fast websites/applications
+                                        regardless of your design experience, created with React.js and Stitches, based on React Aria
+                                        and inspired by Vuesax.</div> <svg class="absolute top-0 right-0 mt-3 mr-3"
+                                        xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                        fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a> </div>
+                        </div>
+                        <div data-category="JavaScript frameworks">
+                            <h3 class="text-xl font-medium mb-4">JavaScript frameworks</h3>
+                            <div class="grid lg:grid-cols-2 gap-4"> <a href="https://reactjs.org?ref=crftlookup" target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="React" data-tech-icon="React.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/React.svg" class="w-5 h-5" alt="">
+                                        <div>React</div>
+                                    </div>
+                                    <div class="text-pretty">React is an open-source JavaScript library for building user interfaces or
+                                        UI components.</div> <svg class="absolute top-0 right-0 mt-3 mr-3"
+                                        xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                        fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a><a href="https://nextjs.org?ref=crftlookup" target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="Next.js" data-tech-icon="Next.js.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/Next.js.svg" class="w-5 h-5" alt="">
+                                        <div>Next.js</div>
+                                    </div>
+                                    <div class="text-pretty">Next.js is a React framework for developing single page Javascript
+                                        applications.</div> <svg class="absolute top-0 right-0 mt-3 mr-3"
+                                        xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                        fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a><a href="https://styled-components.com?ref=crftlookup" target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="styled-components" data-tech-icon="styled-components.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/styled-components.svg"
+                                            class="w-5 h-5" alt="">
+                                        <div>styled-components</div>
+                                    </div>
+                                    <div class="text-pretty">Styled components is a CSS-in-JS styling framework that uses tagged
+                                        template literals in JavaScript.</div> <svg class="absolute top-0 right-0 mt-3 mr-3"
+                                        xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                        fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a> </div>
+                        </div>
+                        <div data-category="IaaS">
+                            <h3 class="text-xl font-medium mb-4">IaaS</h3>
+                            <div class="grid lg:grid-cols-2 gap-4"> <a href="https://cloud.google.com?ref=crftlookup" target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="Google Cloud" data-tech-icon="Google Cloud.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/Google Cloud.svg" class="w-5 h-5"
+                                            alt="">
+                                        <div>Google Cloud</div>
+                                    </div>
+                                    <div class="text-pretty">Google Cloud is a suite of cloud computing services.</div> <svg
+                                        class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px"
+                                        viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a> </div>
+                        </div>
+                        <div data-category="Web frameworks">
+                            <h3 class="text-xl font-medium mb-4">Web frameworks</h3>
+                            <div class="grid lg:grid-cols-2 gap-4"> <a href="https://nextjs.org?ref=crftlookup" target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="Next.js" data-tech-icon="Next.js.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/Next.js.svg" class="w-5 h-5" alt="">
+                                        <div>Next.js</div>
+                                    </div>
+                                    <div class="text-pretty">Next.js is a React framework for developing single page Javascript
+                                        applications.</div> <svg class="absolute top-0 right-0 mt-3 mr-3"
+                                        xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                        fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a> </div>
+                        </div>
+                        <div data-category="Web servers">
+                            <h3 class="text-xl font-medium mb-4">Web servers</h3>
+                            <div class="grid lg:grid-cols-2 gap-4"> <a href="https://nextjs.org?ref=crftlookup" target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="Next.js" data-tech-icon="Next.js.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/Next.js.svg" class="w-5 h-5" alt="">
+                                        <div>Next.js</div>
+                                    </div>
+                                    <div class="text-pretty">Next.js is a React framework for developing single page Javascript
+                                        applications.</div> <svg class="absolute top-0 right-0 mt-3 mr-3"
+                                        xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                        fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a> </div>
+                        </div>
+                        <div data-category="Static site generator">
+                            <h3 class="text-xl font-medium mb-4">Static site generator</h3>
+                            <div class="grid lg:grid-cols-2 gap-4"> <a href="https://nextjs.org?ref=crftlookup" target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="Next.js" data-tech-icon="Next.js.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/Next.js.svg" class="w-5 h-5" alt="">
+                                        <div>Next.js</div>
+                                    </div>
+                                    <div class="text-pretty">Next.js is a React framework for developing single page Javascript
+                                        applications.</div> <svg class="absolute top-0 right-0 mt-3 mr-3"
+                                        xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                        fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a> </div>
+                        </div>
+                        <div data-category="Development">
+                            <h3 class="text-xl font-medium mb-4">Development</h3>
+                            <div class="grid lg:grid-cols-2 gap-4"> <a href="https://styled-components.com?ref=crftlookup"
+                                    target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="styled-components" data-tech-icon="styled-components.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/styled-components.svg"
+                                            class="w-5 h-5" alt="">
+                                        <div>styled-components</div>
+                                    </div>
+                                    <div class="text-pretty">Styled components is a CSS-in-JS styling framework that uses tagged
+                                        template literals in JavaScript.</div> <svg class="absolute top-0 right-0 mt-3 mr-3"
+                                        xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                        fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a> </div>
+                        </div>
+                        <div data-category="Analytics">
+                            <h3 class="text-xl font-medium mb-4">Analytics</h3>
+                            <div class="grid lg:grid-cols-2 gap-4"> <a href="https://posthog.com?ref=crftlookup" target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="PostHog" data-tech-icon="PostHog.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/PostHog.svg" class="w-5 h-5" alt="">
+                                        <div>PostHog</div>
+                                    </div>
+                                    <div class="text-pretty">PostHog is the open-source, all-in-one product analytics platform.</div>
+                                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px"
+                                        viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a> </div>
+                        </div>
+                        <div data-category="JavaScript libraries">
+                            <h3 class="text-xl font-medium mb-4">JavaScript libraries</h3>
+                            <div class="grid lg:grid-cols-2 gap-4"> <a href="https://mobx.js.org?ref=crftlookup" target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="MobX" data-tech-icon="MobX.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/MobX.svg" class="w-5 h-5" alt="">
+                                        <div>MobX</div>
+                                    </div>
+                                    <div class="text-pretty"></div> <svg class="absolute top-0 right-0 mt-3 mr-3"
+                                        xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                        fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a><a href="https://motion.dev?ref=crftlookup" target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="Framer Motion" data-tech-icon="FramerMotion.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/FramerMotion.svg" class="w-5 h-5"
+                                            alt="">
+                                        <div>Framer Motion</div>
+                                    </div>
+                                    <div class="text-pretty">Framer Motion is a modern animation library for JavaScript, React, and Vue.
+                                    </div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg"
+                                        height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a> </div>
+                        </div>
+                        <div data-category="Performance">
+                            <h3 class="text-xl font-medium mb-4">Performance</h3>
+                            <div class="grid lg:grid-cols-2 gap-4"> <a href="https://wicg.github.io/priority-hints/?ref=crftlookup"
+                                    target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="Priority Hints" data-tech-icon="Priority Hints.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/Priority Hints.svg" class="w-5 h-5"
+                                            alt="">
+                                        <div>Priority Hints</div>
+                                    </div>
+                                    <div class="text-pretty">Priority Hints exposes a mechanism for developers to signal a relative
+                                        priority for browsers to consider when fetching resources.</div> <svg
+                                        class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px"
+                                        viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a> </div>
+                        </div>
+                        <div data-category="Security">
+                            <h3 class="text-xl font-medium mb-4">Security</h3>
+                            <div class="grid lg:grid-cols-2 gap-4"> <a
+                                    href="https://www.rfc-editor.org/rfc/rfc6797#section-6.1?ref=crftlookup" target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="HSTS" data-tech-icon="default.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/default.svg" class="w-5 h-5" alt="">
+                                        <div>HSTS</div>
+                                    </div>
+                                    <div class="text-pretty">HTTP Strict Transport Security (HSTS) informs browsers that the site should
+                                        only be accessed using HTTPS.</div> <svg class="absolute top-0 right-0 mt-3 mr-3"
+                                        xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                        fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a> </div>
+                        </div>
+                        <div data-category="CDN">
+                            <h3 class="text-xl font-medium mb-4">CDN</h3>
+                            <div class="grid lg:grid-cols-2 gap-4"> <a href="https://cloud.google.com/cdn?ref=crftlookup"
+                                    target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="Google Cloud CDN" data-tech-icon="google-cloud-cdn.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/google-cloud-cdn.svg"
+                                            class="w-5 h-5" alt="">
+                                        <div>Google Cloud CDN</div>
+                                    </div>
+                                    <div class="text-pretty">Cloud CDN uses Google's global edge network to serve content closer to
+                                        users.</div> <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg"
+                                        height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a><a href="https://www.cloudflare.com?ref=crftlookup" target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="Cloudflare" data-tech-icon="CloudFlare.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/CloudFlare.svg" class="w-5 h-5"
+                                            alt="">
+                                        <div>Cloudflare</div>
+                                    </div>
+                                    <div class="text-pretty">Cloudflare is a web-infrastructure and website-security company, providing
+                                        content-delivery-network services, DDoS mitigation, Internet security, and distributed
+                                        domain-name-server services.</div> <svg class="absolute top-0 right-0 mt-3 mr-3"
+                                        xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                        fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a> </div>
+                        </div>
+                        <div data-category="Miscellaneous">
+                            <h3 class="text-xl font-medium mb-4">Miscellaneous</h3>
+                            <div class="grid lg:grid-cols-2 gap-4"> <a href="https://webpack.js.org/?ref=crftlookup" target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="Webpack" data-tech-icon="Webpack.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/Webpack.svg" class="w-5 h-5" alt="">
+                                        <div>Webpack</div>
+                                    </div>
+                                    <div class="text-pretty">Webpack is an open-source JavaScript module bundler.</div> <svg
+                                        class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px"
+                                        viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a><a href="https://web.dev/progressive-web-apps/?ref=crftlookup" target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="PWA" data-tech-icon="PWA.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/PWA.svg" class="w-5 h-5" alt="">
+                                        <div>PWA</div>
+                                    </div>
+                                    <div class="text-pretty">Progressive Web Apps (PWAs) are web apps built and enhanced with modern
+                                        APIs to deliver enhanced capabilities, reliability, and installability while reaching anyone,
+                                        anywhere, on any device, all with a single codebase.</div> <svg
+                                        class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px"
+                                        viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a><a href="https://ogp.me?ref=crftlookup" target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="Open Graph" data-tech-icon="Open Graph.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/Open Graph.svg" class="w-5 h-5"
+                                            alt="">
+                                        <div>Open Graph</div>
+                                    </div>
+                                    <div class="text-pretty">Open Graph is a protocol that is used to integrate any web page into the
+                                        social graph.</div> <svg class="absolute top-0 right-0 mt-3 mr-3"
+                                        xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                                        fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a><a href="https://httpwg.org/?ref=crftlookup" target="_blank"
+                                    class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all"
+                                    data-tech-name="HTTP/3" data-tech-icon="HTTP3.svg">
+                                    <div class="flex flex-row gap-2 items-center"> <img src="/icons/HTTP3.svg" class="w-5 h-5" alt="">
+                                        <div>HTTP/3</div>
+                                    </div>
+                                    <div class="text-pretty">HTTP/3 is the third major version of the Hypertext Transfer Protocol used
+                                        to exchange information on the World Wide Web.</div> <svg
+                                        class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px"
+                                        viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
+                                        <path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"></path>
+                                    </svg>
+                                </a> </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
+        <Footer />
     </body>
 </html>
