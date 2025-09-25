@@ -70,28 +70,32 @@ const metrics = [
         <Navigation/>
         <section class="mt-16">
             <div class="container">
-                <div class="flex flex-row justify-between items-center mb-3">
-                    <div class="flex flex-row flex-wrap gap-2 items-center">
+                <div class="flex flex-row flex-wrap gap-4 justify-between items-center mb-3">
+                    <div class="lg:flex hidden flex-row flex-wrap gap-2 items-center">
                         <a href="/lookup">CRFT Lookup</a>
                         <svg class="w-5 h-5 translate-y-[2px]" fill="#D4D4D4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m517.85-480-184-184L376-706.15 602.15-480 376-253.85 333.85-296l184-184Z"/></svg>
                         <a href="/lookup/gallery">Gallery</a>
                         <svg class="w-5 h-5 translate-y-[2px]" fill="#D4D4D4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m517.85-480-184-184L376-706.15 602.15-480 376-253.85 333.85-296l184-184Z"/></svg>
                         <a class="text-orange-300" href="">{company.name}</a>
                     </div>
-                    <div>
-                        <div>Published on 09/24/26</div>
+                    <div class="lg:hidden flex flex-row gap-1 items-center text-orange-300">
+                        <svg class="w-5 h-5 translate-y-[2px] rotate-180" fill="#FFB86A" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m517.85-480-184-184L376-706.15 602.15-480 376-253.85 333.85-296l184-184Z"/></svg>
+                        <div>CRFT Lookup</div>
+                    </div>
+                    <div class="text-neutral-400">
+                        <div>Scanned on 09/24/26</div>
                     </div>
                 </div>
 
                 <img src={company.ogImageUrl} alt={`${company.name} website screenshot`} class="w-full aspect-video object-cover mb-8 border border-neutral-600" />
 
-                <div class="flex flex-row justify-between w-full mb-12 items-start">
+                <div class="flex flex-row justify-between flex-wrap gap-11 w-full mb-12 items-start">
                     <div class="max-w-[500px]">
                         <div class="text-2xl font-medium mb-2">{company.name}</div>
                         <div class="text-neutral-300">{company.description}</div>
                         <div class="flex flex-row flex-wrap gap-2 items-center">
                             <a href={company.websiteUrl} target="_blank" class="primary-cta mt-5 py-1 px-2">Visit website</a>
-                            <a href="/pricing" class="secondary-cta mt-5 py-1 px-2 border-neutral-600">Generate full report</a>
+                            <a href="/lookup" class="secondary-cta mt-5 py-1 px-2 border-neutral-600">Generate full report</a>
                         </div>
                     </div>
 
@@ -104,7 +108,7 @@ const metrics = [
                             </div>
                         </div>
 
-                        <div id="lighthouse-overview-desktop" class="flex flex-row gap-2">
+                        <div id="lighthouse-overview-desktop" class="flex flex-row flex-wrap gap-2">
                             {metrics.map(metric => (
                                 <div class="square-card p-0">
                                     <div class="bg-neutral-600 text-center px-5">{metric.label}</div>
@@ -117,7 +121,7 @@ const metrics = [
                             ))}
                         </div>
 
-                        <div id="lighthouse-overview-mobile" class="flex flex-row gap-2" hidden>
+                        <div id="lighthouse-overview-mobile" class="flex flex-row flex-wrap gap-2" hidden>
                             {metrics.map(metric => (
                                 <div class="square-card p-0">
                                     <div class="bg-neutral-600 text-center px-5">{metric.label}</div>
@@ -182,7 +186,7 @@ const metrics = [
                     const scoreDiv = card.querySelector('div:last-child');
 
                     headerDiv.className = `${colors.bg} text-center px-2`;
-                    scoreDiv.className = `text-center text-3xl ${colors.lightBg} ${colors.text} font-medium`;
+                    scoreDiv.className = `text-center text-3xl px-3 ${colors.lightBg} ${colors.text} font-medium`;
                 });
             }
 
