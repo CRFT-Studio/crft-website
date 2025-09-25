@@ -10,11 +10,16 @@ interface Company {
     ogImageUrl: string;
 }
 
-interface Lighthouse {
+interface LighthouseScores {
     performance: number;
     seo: number;
     bestPractices: number;
     accessibility: number;
+}
+
+interface Lighthouse {
+    desktop: LighthouseScores;
+    mobile: LighthouseScores;
 }
 
 // Simplified Wappalyzer interface since data comes pre-processed
@@ -33,10 +38,10 @@ const { company, lighthouse, techByCategory } = Astro.props;
 
 // Define metrics for Lighthouse section
 const metrics = [
-    { key: 'performance', label: 'Performance', value: lighthouse.performance },
-    { key: 'accessibility', label: 'Accessibility', value: lighthouse.accessibility },
-    { key: 'bestPractices', label: 'Best Practices', value: lighthouse.bestPractices },
-    { key: 'seo', label: 'SEO', value: lighthouse.seo }
+    { key: 'performance', label: 'Performance' },
+    { key: 'accessibility', label: 'Accessibility' },
+    { key: 'bestPractices', label: 'Best Practices' },
+    { key: 'seo', label: 'SEO' }
 ];
 ---
 
@@ -47,6 +52,19 @@ const metrics = [
             description={`Explore the technology stack and performance metrics of ${company.name}`}
             ogImage={company.ogImageUrl}
         />
+        <style>
+            @reference "../styles/global.css";
+            #overview-tabs div {
+                @apply border-transparent;
+            }
+            .tab-active {
+                border-color: #525252 !important;
+                @apply bg-neutral-700;
+            }
+            [hidden] {
+                display: none;
+            }
+        </style>
     </head>
     <body>
         <Navigation/>
@@ -78,15 +96,43 @@ const metrics = [
                     </div>
 
                     <!-- Lighthouse Scores -->
-                    <div id="lighthouse-overview" class="flex flex-row flex-wrap gap-2">
-                        {metrics.map(metric => (
-                            <div class="square-card p-0">
-                                <div class="bg-neutral-600 text-center px-2">{metric.label}</div>
-                                <div class="text-center text-3xl font-medium">{metric.value}</div>
+                    <div id="lighthouse-overview" class="flex flex-col gap-2">
+                        <div class="flex justify-start">
+                            <div id="overview-tabs" class="inline-flex flex-row square-card p-[2px] border-[1px] gap-2 text-sm text-nowrap">
+                                <div id="desktop-overview-tab" class="tab-active border-[1px] px-2 py-1 hover:cursor-pointer transition-all">Desktop</div>
+                                <div id="mobile-overview-tab" class="px-2 py-1 border-[1px] hover:cursor-pointer transition-all">Mobile</div>
                             </div>
-                        ))}
+                        </div>
+
+                        <div id="lighthouse-overview-desktop" class="flex flex-row gap-2">
+                            {metrics.map(metric => (
+                                <div class="square-card p-0">
+                                    <div class="bg-neutral-600 text-center px-5">{metric.label}</div>
+                                    <div class="text-center text-3xl font-medium">
+                                        {metric.key
+                                            ? lighthouse.desktop[metric.key]
+                                            : lighthouse.desktop[metric.key.toLowerCase()]}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div id="lighthouse-overview-mobile" class="flex flex-row gap-2" hidden>
+                            {metrics.map(metric => (
+                                <div class="square-card p-0">
+                                    <div class="bg-neutral-600 text-center px-5">{metric.label}</div>
+                                    <div class="text-center text-3xl font-medium">
+                                        {metric.key
+                                            ? lighthouse.mobile[metric.key]
+                                            : lighthouse.mobile[metric.key.toLowerCase()]}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
+
+                <div class="h-[1px] w-full mt-20 mb-20 bg-gradient-to-r from-transparent via-neutral-700 to-transparent"></div>
 
                 <!-- Technology Stack -->
                 <div class="mt-12">
@@ -124,26 +170,45 @@ const metrics = [
                 return { bg: 'bg-red-600', text: 'text-red-600', lightBg: 'bg-red-300' };
             }
 
-            const metrics = [
-                { key: 'performance', label: 'Performance' },
-                { key: 'accessibility', label: 'Accessibility' },
-                { key: 'bestPractices', label: 'Best Practices' },
-                { key: 'seo', label: 'SEO' }
-            ];
-
-            document.addEventListener('DOMContentLoaded', () => {
-                const overview = document.getElementById('lighthouse-overview');
+            function updateScoreColors(viewerId) {
+                const overview = document.getElementById(viewerId);
                 const cards = overview.querySelectorAll('.square-card');
 
-                metrics.forEach((metric, index) => {
-                    const score = parseInt(cards[index].querySelector('.text-3xl').textContent);
+                cards.forEach(card => {
+                    const score = parseInt(card.querySelector('.text-3xl').textContent);
                     const colors = getColorClasses(score);
 
-                    const headerDiv = cards[index].querySelector('div:first-child');
-                    const scoreDiv = cards[index].querySelector('div:last-child');
+                    const headerDiv = card.querySelector('div:first-child');
+                    const scoreDiv = card.querySelector('div:last-child');
 
                     headerDiv.className = `${colors.bg} text-center px-2`;
                     scoreDiv.className = `text-center text-3xl ${colors.lightBg} ${colors.text} font-medium`;
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                // Initialize colors for both views
+                updateScoreColors('lighthouse-overview-desktop');
+                updateScoreColors('lighthouse-overview-mobile');
+
+                // Set up tab switching
+                const desktopTab = document.getElementById('desktop-overview-tab');
+                const mobileTab = document.getElementById('mobile-overview-tab');
+                const desktopView = document.getElementById('lighthouse-overview-desktop');
+                const mobileView = document.getElementById('lighthouse-overview-mobile');
+
+                desktopTab.addEventListener('click', () => {
+                    desktopTab.classList.add('tab-active');
+                    mobileTab.classList.remove('tab-active');
+                    desktopView.removeAttribute('hidden');
+                    mobileView.setAttribute('hidden', '');
+                });
+
+                mobileTab.addEventListener('click', () => {
+                    mobileTab.classList.add('tab-active');
+                    desktopTab.classList.remove('tab-active');
+                    mobileView.removeAttribute('hidden');
+                    desktopView.setAttribute('hidden', '');
                 });
             });
         </script>
