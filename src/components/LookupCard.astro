@@ -14,38 +14,39 @@ const accessibilityColors = getColorClasses(accessibility);
 const bestPracticesColors = getColorClasses(bestPractices);
 const seoColors = getColorClasses(seo);
 ---
-
-<div class="square-card relative lg:w-auto md:w-[300px] w-[250px] md:shadow-2xl shadow-lg">
-    <div class="absolute left-4 top-0 square-card py-0 px-1 md:text-sm text-xs border-t-0">{url}</div>
-    <div class="relative overflow-hidden border border-neutral-600 md:my-4 my-2">
-    <div class="aspect-video bg-neutral-500 bg-cover bg-center w-full" style={`background-image: url(${img});`}></div>
-        <div class="square-card border-0 py-0 px-1 md:text-sm text-xs text-nowrap md:max-w-[300px] max-w-[250px]">{metaTitle}</div>
+<div class="square-card p-0 relative lg:w-auto md:w-[300px] w-[250px] md:shadow-2xl shadow-lg overflow-hidden">
+    <div class="px-4 mb-2.5">
+        <div class="square-card border-t-0 py-0 px-1 w-auto inline-block md:text-sm text-xs -translate-y-1">{url}</div>
     </div>
-    <div id="fucko" class="grid grid-cols-4 md:gap-2 gap-1 md:my-4 my-2">
-        <div class="square-card p-0 overflow-hidden">
-            <div class={`${performanceColors.bg} text-center text-nowrap md:text-sm text-xs`}>Performance</div>
-            <div class={`text-center md:text-3xl text-xl ${performanceColors.lightBg} ${performanceColors.text} font-medium`}>
-            {performance}
+    <img class="square-card aspect-video object-cover p-0 border-0 border-t w-full" src={img}></img>
+    <div class="square-card border-x-0 py-0 px-1 md:text-sm text-xs text-nowrap md:max-w-[300px] max-w-[250px]">{metaTitle}</div>
+    <div class="p-4 pt-0">
+        <div class="grid grid-cols-4 md:gap-2 gap-1 md:my-4 my-2">
+            <div class="square-card p-0 overflow-hidden">
+                <div class={`${performanceColors.bg} text-center text-nowrap md:text-sm text-xs`}>Performance</div>
+                <div class={`text-center md:text-3xl text-xl ${performanceColors.lightBg} ${performanceColors.text} font-medium`}>
+                {performance}
+                </div>
+            </div>
+            <div class="square-card p-0 overflow-hidden">
+                <div class={`${accessibilityColors.bg} text-center text-nowrap md:text-sm text-xs`}>Accessibility</div>
+                <div class={`text-center md:text-3xl text-xl ${accessibilityColors.lightBg} ${accessibilityColors.text} font-medium`}>
+                {accessibility}
+                </div>
+            </div>
+            <div class="square-card p-0 overflow-hidden">
+                <div class={`${bestPracticesColors.bg} text-center text-nowrap md:text-sm text-xs`}>Best Practices</div>
+                <div class={`text-center md:text-3xl text-xl ${bestPracticesColors.lightBg} ${bestPracticesColors.text} font-medium`}>
+                {bestPractices}
+                </div>
+            </div>
+            <div class="square-card p-0 overflow-hidden">
+                <div class={`${seoColors.bg} text-center text-nowrap md:text-sm text-xs`}>SEO</div>
+                <div class={`text-center md:text-3xl text-xl ${seoColors.lightBg} ${seoColors.text} font-medium`}>
+                {seo}
+                </div>
             </div>
         </div>
-        <div class="square-card p-0 overflow-hidden">
-            <div class={`${accessibilityColors.bg} text-center text-nowrap md:text-sm text-xs`}>Accessibility</div>
-            <div class={`text-center md:text-3xl text-xl ${accessibilityColors.lightBg} ${accessibilityColors.text} font-medium`}>
-            {accessibility}
-            </div>
-        </div>
-        <div class="square-card p-0 overflow-hidden">
-            <div class={`${bestPracticesColors.bg} text-center text-nowrap md:text-sm text-xs`}>Best Practices</div>
-            <div class={`text-center md:text-3xl text-xl ${bestPracticesColors.lightBg} ${bestPracticesColors.text} font-medium`}>
-            {bestPractices}
-            </div>
-        </div>
-        <div class="square-card p-0 overflow-hidden">
-            <div class={`${seoColors.bg} text-center text-nowrap md:text-sm text-xs`}>SEO</div>
-            <div class={`text-center md:text-3xl text-xl ${seoColors.lightBg} ${seoColors.text} font-medium`}>
-            {seo}
-            </div>
-        </div>
+        <slot/>
     </div>
-    <slot/>
 </div>
