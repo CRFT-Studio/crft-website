@@ -3,6 +3,12 @@ import HeadScripts from "../components/HeadScripts.astro";
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
 
+// Define displayed tech categories here - this will be used across all gallery pages
+export const displayedTechCategories = [
+    'JavaScript frameworks',
+    'PaaS'
+];
+
 interface Company {
     name: string;
     metaTitle: string;
@@ -44,6 +50,14 @@ const metrics = [
     { key: 'bestPractices', label: 'Best Practices' },
     { key: 'seo', label: 'SEO' }
 ];
+
+// Filter tech categories based on displayedTechCategories
+const filteredTechByCategory = Object.entries(techByCategory)
+    .filter(([category]) => displayedTechCategories.includes(category))
+    .reduce((acc, [category, techs]) => {
+        acc[category] = techs;
+        return acc;
+    }, {});
 ---
 
 <html lang="en">

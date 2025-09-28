@@ -1,7 +1,7 @@
 ---
 import Gallery from "../../../layouts/LookupGallery.astro";
 
-const pageData = {
+export const pageData = {
     company: {
         name: "Linear",
         metaTitle: "Linear – Plan and build products",
@@ -216,5 +216,6 @@ const pageData = {
       ]
     }
 };
+
 ---
 <Gallery {...pageData} />
