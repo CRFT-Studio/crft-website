@@ -658,8 +658,12 @@ if (url) {
                             </form>
                             <!-- <div class="lg:mt-2 mt-3 text-left text-neutral-300">Don't have a site in mind? <span id="randomReport" class="underline cursor-pointer">Generate random report.</span></div> -->
                         </div>
-                        <div class="grid md:grid-cols-4 gap-4 mt-12">
-                            {galleries.map((galleryData) => (
+                        <div class="flex flex-row gap-4 justify-between items-center mt-12">
+                            <div class="font-medium">Featured reports</div>
+                            <a href="/lookup/gallery" class="secondary-cta border-neutral-700 py-0 px-1.5">View all</a>
+                        </div>
+                        <div class="grid md:grid-cols-4 gap-4 mt-4">
+                            {galleries.slice(0,4).map((galleryData) => (
                                 <LookupGalleryCard
                                     company={galleryData.company}
                                     lighthouse={galleryData.lighthouse}
