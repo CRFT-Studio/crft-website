@@ -20,6 +20,7 @@ interface Company {
     description: string;
     websiteUrl: string;
     ogImageUrl: string;
+    dateScanned: string; // day/month/year
 }
 
 interface LighthouseScores {
@@ -103,7 +104,7 @@ const filteredTechByCategory = Object.entries(techByCategory)
                         <div>CRFT Lookup</div>
                     </div>
                     <div class="text-neutral-400">
-                        <div>Scanned on 09/24/26</div>
+                        <div>{`Scanned on ${company.dateScanned}`}</div>
                     </div>
                 </div>
 
