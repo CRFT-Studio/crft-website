@@ -103,8 +103,8 @@
         color: #C7C7C7;
         font-weight: 400;
         font-size: 1rem;
-        border: solid 1px #8F8F8F;
         background-color: #2C2C2C;
+        @apply border border-neutral-700
     }
 
     .tag {
