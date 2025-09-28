@@ -1,0 +1,93 @@
+---
+import Gallery from "../../../layouts/LookupGallery.astro";
+
+export const pageData = {
+    company: {
+        name: "Incident",
+        metaTitle: "All-in-one incident management platform | incident.io",
+        description: "incident.io is an all-in-one incident management platform unifying on-call scheduling, real-time incident response, and integrated status pages – helping teams resolve issues faster and reduce downtime.",
+        websiteUrl: "https://incident.io",
+        ogImageUrl: "https://incident.io/opengraph-image.png?15a1f71743c596be"
+    },
+    lighthouse: {
+        desktop: {
+            performance: 79,
+            seo: 92,
+            bestPractices: 96,
+            accessibility: 100
+        },
+        mobile: {
+            performance: 51,
+            seo: 100,
+            bestPractices: 100,
+            accessibility: 100
+        }
+    },
+    techByCategory: {
+      CMS: [
+        {
+          name: 'Sanity',
+          description: 'Sanity is a platform for structured content. It comes with an open-source, headless CMS that can be customized with Javascript, a real-time hosted data store and an asset delivery pipeline.',
+          website: 'https://www.sanity.io',
+          icon: 'Sanity.svg'
+        }
+      ],
+      'Issue trackers': [
+        {
+          name: 'Incident.io',
+          description: 'Incident.io is a Slack-integrated incident management tool used to announce, manage, and resolve all incidents in a single channel.',
+          website: 'https://incident.io',
+          icon: 'Incident.io.svg'
+        }
+      ],
+      'Programming languages': [
+        {
+          name: 'PHP',
+          description: 'PHP is a general-purpose scripting language used for web development.',
+          website: 'https://php.net',
+          icon: 'PHP.svg'
+        }
+      ],
+      PaaS: [
+        {
+          name: 'Amazon Web Services',
+          description: 'Amazon Web Services (AWS) is a comprehensive cloud services platform offering compute power, database storage, content delivery and other functionality.',
+          website: 'https://aws.amazon.com/',
+          icon: 'Amazon Web Services.svg'
+        },
+        {
+          name: 'Vercel',
+          description: 'Vercel is a cloud platform for static frontends and serverless functions.',
+          website: 'https://vercel.com',
+          icon: 'vercel.svg'
+        }
+      ],
+      Advertising: [
+        {
+          name: 'DoubleClick Floodlight',
+          description: null,
+          website: 'https://support.google.com/ds/answer/6029713?hl=en',
+          icon: 'DoubleClick.svg'
+        }
+      ],
+      Security: [
+        {
+          name: 'HSTS',
+          description: 'HTTP Strict Transport Security (HSTS) informs browsers that the site should only be accessed using HTTPS.',
+          website: 'https://www.rfc-editor.org/rfc/rfc6797#section-6.1',
+          icon: 'default.svg'
+        }
+      ],
+      CDN: [
+        {
+          name: 'Amazon S3',
+          description: 'Amazon S3 or Amazon Simple Storage Service is a service offered by Amazon Web Services (AWS) that provides object storage through a web service interface.',
+          website: 'https://aws.amazon.com/s3/',
+          icon: 'Amazon S3.svg'
+        }
+      ]
+    }
+};
+
+---
+<Gallery {...pageData} />

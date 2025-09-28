@@ -1,0 +1,91 @@
+---
+import Gallery from "../../../layouts/LookupGallery.astro";
+
+export const pageData = {
+    company: {
+        name: "Helium",
+        metaTitle: "Helium Browser",
+        description: "The web browser made for people, with love. Best privacy by default, unbiased ad-blocking, no bloat and no noise. Fully open source.",
+        websiteUrl: "https://helium.computer",
+        ogImageUrl: "https://helium.computer/embed.png"
+    },
+    lighthouse: {
+        desktop: {
+            performance: 90,
+            seo: 95,
+            bestPractices: 100,
+            accessibility: 100
+        },
+        mobile: {
+            performance: 89,
+            seo: 96,
+            bestPractices: 100,
+            accessibility: 100
+        }
+    },
+    techByCategory: {
+      'UI frameworks': [
+        {
+          name: 'SvelteKit',
+          description: 'SvelteKit is the official Svelte framework for building web applications with a flexible filesystem-based routing.',
+          website: 'https://kit.svelte.dev',
+          icon: 'Svelte.svg'
+        }
+      ],
+      'JavaScript frameworks': [
+        {
+          name: 'Svelte',
+          description: 'Svelte is a free and open-source front end compiler created by Rich Harris and maintained by the Svelte core team members.',
+          website: 'https://svelte.dev',
+          icon: 'Svelte.svg'
+        }
+      ],
+      Analytics: [
+        {
+          name: 'Plausible',
+          description: 'Plausible is an open-source alternative to Google Analytics.',
+          website: 'https://plausible.io/',
+          icon: 'Plausible.svg'
+        }
+      ],
+      Security: [
+        {
+          name: 'HSTS',
+          description: 'HTTP Strict Transport Security (HSTS) informs browsers that the site should only be accessed using HTTPS.',
+          website: 'https://www.rfc-editor.org/rfc/rfc6797#section-6.1',
+          icon: 'default.svg'
+        }
+      ],
+      CDN: [
+        {
+          name: 'Cloudflare',
+          description: 'Cloudflare is a web-infrastructure and website-security company, providing content-delivery-network services, DDoS mitigation, Internet security, and distributed domain-name-server services.',
+          website: 'https://www.cloudflare.com',
+          icon: 'CloudFlare.svg'
+        }
+      ],
+      Miscellaneous: [
+        {
+          name: 'Vite',
+          description: 'Vite is a rapid development tool for modern web projects.',
+          website: 'https://vitejs.dev',
+          icon: 'vite.svg'
+        },
+        {
+          name: 'Open Graph',
+          description: 'Open Graph is a protocol that is used to integrate any web page into the social graph.',
+          website: 'https://ogp.me',
+          icon: 'Open Graph.svg'
+        },
+        {
+          name: 'HTTP/3',
+          description: 'HTTP/3 is the third major version of the Hypertext Transfer Protocol used to exchange information on the World Wide Web.',
+          website: 'https://httpwg.org/',
+          icon: 'HTTP3.svg'
+        }
+      ]
+    }
+};
+
+---
+<Gallery {...pageData} />

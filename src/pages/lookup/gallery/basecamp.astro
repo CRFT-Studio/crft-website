@@ -1,0 +1,99 @@
+---
+import Gallery from "../../../layouts/LookupGallery.astro";
+
+export const pageData = {
+    company: {
+        name: "Basecamp",
+        metaTitle: "Project management software, online collaboration",
+        description: "Trusted by millions, Basecamp puts everything you need to get work done in one place. It’s the calm, organized way to manage projects, work with clients, and communicate company-wide.",
+        websiteUrl: "https://basecamp.com",
+        ogImageUrl: "https://basecamp.com/assets/images/opengraph/basecamp.png?1758930700"
+    },
+    lighthouse: {
+        desktop: {
+            performance: 98,
+            seo: 100,
+            bestPractices: 100,
+            accessibility: 100
+        },
+        mobile: {
+            performance: 74,
+            seo: 100,
+            bestPractices: 100,
+            accessibility: 100
+        }
+    },
+    techByCategory: {
+      'JavaScript frameworks': [
+        {
+          name: 'Stimulus',
+          description: 'A modest JavaScript framework for the HTML you already have.',
+          website: 'https://stimulusjs.org/',
+          icon: 'Stimulus.svg'
+        }
+      ],
+      Advertising: [
+        {
+          name: 'Google Ads',
+          description: 'Google Ads is an online advertising platform developed by Google.',
+          website: 'https://ads.google.com',
+          icon: 'Google Ads.svg'
+        }
+      ],
+      Analytics: [
+        {
+          name: 'Plausible',
+          description: 'Plausible is an open-source alternative to Google Analytics.',
+          website: 'https://plausible.io/',
+          icon: 'Plausible.svg'
+        },
+        {
+          name: 'Linkedin Insight Tag',
+          description: 'LinkedIn Insight Tag is a lightweight JavaScript tag that powers conversion tracking, website audiences, and website demographics.',
+          website: 'https://business.linkedin.com/marketing-solutions/insight-tag',
+          icon: 'Linkedin.svg'
+        },
+        {
+          name: 'Google Ads Conversion Tracking',
+          description: 'Google Ads Conversion Tracking is a free tool that shows you what happens after a customer interacts with your ads.',
+          website: 'https://support.google.com/google-ads/answer/1722022',
+          icon: 'Google.svg'
+        }
+      ],
+      'Marketing automation': [
+        {
+          name: 'MailChimp',
+          description: 'Mailchimp is a marketing automation platform and email marketing service.',
+          website: 'https://mailchimp.com',
+          icon: 'mailchimp.svg'
+        }
+      ],
+      Email: [
+        {
+          name: 'MailChimp',
+          description: 'Mailchimp is a marketing automation platform and email marketing service.',
+          website: 'https://mailchimp.com',
+          icon: 'mailchimp.svg'
+        }
+      ],
+      CDN: [
+        {
+          name: 'Cloudflare',
+          description: 'Cloudflare is a web-infrastructure and website-security company, providing content-delivery-network services, DDoS mitigation, Internet security, and distributed domain-name-server services.',
+          website: 'https://www.cloudflare.com',
+          icon: 'CloudFlare.svg'
+        }
+      ],
+      Miscellaneous: [
+        {
+          name: 'Open Graph',
+          description: 'Open Graph is a protocol that is used to integrate any web page into the social graph.',
+          website: 'https://ogp.me',
+          icon: 'Open Graph.svg'
+        }
+      ]
+    }
+};
+
+---
+<Gallery {...pageData} />
