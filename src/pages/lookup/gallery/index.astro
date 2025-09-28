@@ -24,30 +24,47 @@ const galleries = (await Astro.glob('./*.astro'))
         <Navigation/>
         <section class="lg:my-20 my-10">
             <div class="container">
-                <!-- <div class="mb-7 lg:flex flex-row gap-5 lg:items-center items-start hidden">
-                    <div class="relative shrink-0">
-                        <Image src={NickPFP} alt='Nick profile pic' class='w-24 relative'></Image>
-                        <div class="absolute w-full h-full top-0 bg-gradient-to-t from-neutral-900 via-50% via-transparent to-transparent"></div>
+                <div class="mb-5">
+                    <div class="lg:flex hidden flex-row flex-wrap gap-2 items-center">
+                        <a href="/lookup">CRFT Lookup</a>
+                        <svg class="w-5 h-5 translate-y-[2px]" fill="#D4D4D4" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m517.85-480-184-184L376-706.15 602.15-480 376-253.85 333.85-296l184-184Z"/></svg>
+                        <a href="/lookup/gallery" class="text-orange-300">Gallery</a>
                     </div>
-                    <div class="card inline-block py-2 px-3 rounded-tl-none md:text-base text-sm">
-                        <div class="mb-1">"This did a great job at giving me insight into how some of my favorite sites are created, and has inspired me to build."</div>
-                        <div class="text-neutral-400 text-pretty"> - Nick Hoban, Web Developer 🇨🇦</div>
+                    <div class="lg:hidden flex flex-row gap-1 items-center text-orange-300">
+                        <svg class="w-5 h-5 translate-y-[2px] rotate-180" fill="#FFB86A" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="m517.85-480-184-184L376-706.15 602.15-480 376-253.85 333.85-296l184-184Z"/></svg>
+                        <div>CRFT Lookup</div>
                     </div>
-                </div> -->
-                <div class="text-left">
-                    <h1 class="lg:text-5xl text-3xl font-semibold leading-tight text-pretty mb-4">The <span class="card p-2 inline-block translate-y-2"><svg class="lg:w-[140px] w-[100px]" viewBox="0 0 132 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6.47615 11.5709C6.47615 7.67882 8.42219 5.8923 16.6211 5.8923C21.6297 5.8923 26.8298 6.78556 30.5623 7.51931L31.7108 2.12783C27.2764 1.10696 21.6616 0.341309 16.3977 0.341309C4.46631 0.341309 0 4.26528 0 11.5709C0 18.8765 4.46631 22.8324 16.3977 22.8324C21.6616 22.8324 27.2764 22.0667 31.7108 21.0459L30.5623 15.6544C26.8298 16.3881 21.6297 17.2814 16.6211 17.2814C8.42219 17.2814 6.47615 15.4949 6.47615 11.5709ZM40.6676 22.4176V16.101H48.9303L56.7463 22.4176H64.8814L57.7353 16.8029L56.0125 15.7501L57.4162 15.7182C62.2335 15.3354 65.0728 13.0384 65.0728 8.25306C65.0728 2.54256 61.3402 0.66033 55.9806 0.66033H34.1914V22.4176H40.6676ZM40.6676 6.21132H55.3426C57.48 6.21132 58.3733 6.81746 58.3733 8.7635C58.3733 10.55 57.48 11.2519 55.3426 11.2519H40.6676V6.21132ZM74.3768 22.4176V15.3035H96.3257V10.1991H74.3768V6.21132H96.9319V0.66033H67.9006V22.4176H74.3768ZM111.951 6.21132V22.4176H118.427V6.21132H131.316V0.66033H99.0305V6.21132H111.951Z" fill="white"/>
-                    </svg></span> lookup gallery.</h1>
                 </div>
-                <div class="lg:text-xl text-lg mb-7 text-neutral-300 text-pretty max-w-[750px]">A collection of beautiful websites scanned with the CRFT Lookup, featuring performance and tech stack insights.</div>
-                <div class="flex flex-row gap-3">
-                    <a href="/lookup" class="primary-cta">Scan a website</a>
-                    <a href="/audit" class="secondary-cta">Get Free Redesign</a>
+                <div class="grid lg:grid-cols-[1.5fr_1fr] gap-10">
+                    <div>
+                        <div class="text-left">
+                            <h1 class="lg:text-5xl text-3xl font-semibold leading-tight text-pretty mb-4">The <span class="card p-2 inline-block translate-y-2"><svg class="lg:w-[140px] w-[100px]" viewBox="0 0 132 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.47615 11.5709C6.47615 7.67882 8.42219 5.8923 16.6211 5.8923C21.6297 5.8923 26.8298 6.78556 30.5623 7.51931L31.7108 2.12783C27.2764 1.10696 21.6616 0.341309 16.3977 0.341309C4.46631 0.341309 0 4.26528 0 11.5709C0 18.8765 4.46631 22.8324 16.3977 22.8324C21.6616 22.8324 27.2764 22.0667 31.7108 21.0459L30.5623 15.6544C26.8298 16.3881 21.6297 17.2814 16.6211 17.2814C8.42219 17.2814 6.47615 15.4949 6.47615 11.5709ZM40.6676 22.4176V16.101H48.9303L56.7463 22.4176H64.8814L57.7353 16.8029L56.0125 15.7501L57.4162 15.7182C62.2335 15.3354 65.0728 13.0384 65.0728 8.25306C65.0728 2.54256 61.3402 0.66033 55.9806 0.66033H34.1914V22.4176H40.6676ZM40.6676 6.21132H55.3426C57.48 6.21132 58.3733 6.81746 58.3733 8.7635C58.3733 10.55 57.48 11.2519 55.3426 11.2519H40.6676V6.21132ZM74.3768 22.4176V15.3035H96.3257V10.1991H74.3768V6.21132H96.9319V0.66033H67.9006V22.4176H74.3768ZM111.951 6.21132V22.4176H118.427V6.21132H131.316V0.66033H99.0305V6.21132H111.951Z" fill="white"/>
+                            </svg></span> lookup gallery.</h1>
+                        </div>
+                        <div class="lg:text-xl text-lg mb-7 text-neutral-300 text-pretty max-w-[750px]">A collection of beautiful websites scanned with the CRFT Lookup, featuring performance and tech stack insights.</div>
+                        <div class="flex flex-row gap-3">
+                            <a href="/lookup" class="primary-cta">Scan a website</a>
+                            <a href="/audit" class="secondary-cta">Get Free Redesign</a>
+                        </div>
+                    </div>
+                    <div class="square-card">
+                        <div class="">
+                            <div class="relative shrink-0 mb-3.5">
+                                <Image src={NickPFP} alt='Nick profile pic' class='w-18 relative'></Image>
+                                <div class="absolute w-full h-full top-0 bg-gradient-to-t from-neutral-800 via-50% via-transparent to-transparent"></div>
+                            </div>
+                            <div class="">
+                                <div class="mb-1">"This did a great job at giving me insight into how some of my favorite sites are created, and has inspired me to build."</div>
+                                <div class="text-neutral-400 text-pretty"> - Nick Hoban, Web Developer 🇨🇦</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- <div class="h-[1px] w-full mt-20 mb-20 bg-gradient-to-r from-transparent via-neutral-700 to-transparent"></div> -->
+                <div class="h-[1px] w-full mt-20 mb-20 bg-gradient-to-r from-transparent via-neutral-700 to-transparent"></div>
 
-                <div class="grid md:grid-cols-4 gap-4 mt-12">
+                <div class="grid md:grid-cols-4 gap-4">
                     {galleries.slice(0,4).map((galleryData) => (
                         <LookupGalleryCard
                             company={galleryData.company}
