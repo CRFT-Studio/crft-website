@@ -1,0 +1,128 @@
+---
+import Gallery from "../../../layouts/LookupGallery.astro";
+
+export const pageData = {
+    company: {
+        name: "Stripe",
+        metaTitle: "Stripe | Financial Infrastructure to Grow Your Revenue",
+        description: "Stripe is a suite of APIs powering online payment processing and commerce solutions for internet businesses of all sizes. Accept payments and scale faster with AI.",
+        websiteUrl: "https://stripe.com",
+        ogImageUrl: "https://images.stripeassets.com/fzn2n1nzq965/3AGidihOJl4nH9D1vDjM84/9540155d584be52fc54c443b6efa4ae6/homepage.png?q=80",
+        dateScanned: "29/09/25" //day/month/year
+    },
+    lighthouse: {
+        desktop: {
+            performance: 71,
+            accessibility: 87,
+            bestPractices: 56,
+            seo: 100
+        },
+        mobile: {
+            performance: 44,
+            accessibility: 92,
+            bestPractices: 57,
+            seo: 100
+        }
+    },
+    techByCategory: {
+      Ecommerce: [
+        {
+          name: 'Cart Functionality',
+          description: 'Websites that have a shopping cart or checkout page, either using a known ecommerce platform or a custom solution.',
+          website: 'https://www.wappalyzer.com/technologies/ecommerce/cart-functionality',
+          icon: 'Cart-generic.svg'
+        }
+      ],
+      'Issue trackers': [
+        {
+          name: 'Sentry',
+          description: 'Sentry is an open-source platform for workflow productivity, aggregating errors from across the stack in real time.',
+          website: 'https://sentry.io/',
+          icon: 'Sentry.svg'
+        }
+      ],
+      'Search engines': [
+        {
+          name: 'Algolia',
+          description: 'Algolia offers a hosted web search product delivering real-time results.',
+          website: 'https://www.algolia.com',
+          icon: 'Algolia.svg'
+        }
+      ],
+      'UI frameworks': [
+        {
+          name: 'Bootstrap',
+          description: 'Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development. It contains CSS and JavaScript-based design templates for typography, forms, buttons, navigation, and other interface components.',
+          website: 'https://getbootstrap.com',
+          icon: 'Bootstrap.svg'
+        }
+      ],
+      PaaS: [
+        {
+          name: 'Amazon Web Services',
+          description: 'Amazon Web Services (AWS) is a comprehensive cloud services platform offering compute power, database storage, content delivery and other functionality.',
+          website: 'https://aws.amazon.com/',
+          icon: 'Amazon Web Services.svg'
+        }
+      ],
+      'Web servers': [
+        {
+          name: 'Nginx',
+          description: 'Nginx is a web server that can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache.',
+          website: 'https://nginx.org/en',
+          icon: 'Nginx.svg'
+        }
+      ],
+      'Reverse proxies': [
+        {
+          name: 'Nginx',
+          description: 'Nginx is a web server that can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache.',
+          website: 'https://nginx.org/en',
+          icon: 'Nginx.svg'
+        }
+      ],
+      'JavaScript libraries': [
+        {
+          name: 'core-js',
+          description: 'core-js is a modular standard library for JavaScript, with polyfills for cutting-edge ECMAScript features.',
+          website: 'https://github.com/zloirock/core-js',
+          icon: 'core-js.png'
+        }
+      ],
+      Security: [
+        {
+          name: 'HSTS',
+          description: 'HTTP Strict Transport Security (HSTS) informs browsers that the site should only be accessed using HTTPS.',
+          website: 'https://www.rfc-editor.org/rfc/rfc6797#section-6.1',
+          icon: 'default.svg'
+        }
+      ],
+      'SSL/TLS certificate authorities': [
+        {
+          name: 'DigiCert',
+          description: null,
+          website: 'https://www.digicert.com/',
+          icon: 'DigiCert.svg'
+        }
+      ],
+      CDN: [
+        {
+          name: 'Amazon S3',
+          description: 'Amazon S3 or Amazon Simple Storage Service is a service offered by Amazon Web Services (AWS) that provides object storage through a web service interface.',
+          website: 'https://aws.amazon.com/s3/',
+          icon: 'Amazon S3.svg'
+        }
+      ],
+      Miscellaneous: [
+        {
+          name: 'Open Graph',
+          description: 'Open Graph is a protocol that is used to integrate any web page into the social graph.',
+          website: 'https://ogp.me',
+          icon: 'Open Graph.svg'
+        }
+      ]
+    }
+};
+
+---
+<Gallery {...pageData} />

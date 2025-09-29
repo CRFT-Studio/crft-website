@@ -1,0 +1,80 @@
+---
+import Gallery from "../../../layouts/LookupGallery.astro";
+
+export const pageData = {
+    company: {
+        name: "Apple",
+        metaTitle: "Apple",
+        description: "Discover the innovative world of Apple and shop everything iPhone, iPad, Apple Watch, Mac, and Apple TV, plus explore accessories, entertainment, and expert device support.",
+        websiteUrl: "https://apple.com",
+        ogImageUrl: "https://www.apple.com/ac/structured-data/images/open_graph_logo.png?202110180743",
+        dateScanned: "29/09/25" //day/month/year
+    },
+    lighthouse: {
+        desktop: {
+            performance: 78,
+            accessibility: 93,
+            bestPractices: 100,
+            seo: 92
+        },
+        mobile: {
+            performance: 55,
+            accessibility: 100,
+            bestPractices: 100,
+            seo: 92
+        }
+    },
+    techByCategory: {
+      Ecommerce: [
+        {
+          name: 'Cart Functionality',
+          description: 'Websites that have a shopping cart or checkout page, either using a known ecommerce platform or a custom solution.',
+          website: 'https://www.wappalyzer.com/technologies/ecommerce/cart-functionality',
+          icon: 'Cart-generic.svg'
+        }
+      ],
+      Maps: [
+        {
+          name: 'Apple MapKit JS',
+          description: 'Apple MapKit JS lets you embed interactive maps directly into your websites across platforms and operating systems, including iOS and Android.',
+          website: 'https://developer.apple.com/maps/web/',
+          icon: 'Apple.svg'
+        }
+      ],
+      Analytics: [
+        {
+          name: 'Adobe Analytics',
+          description: 'Adobe Analytics is a web analytics, marketing and cross-channel analytics application.',
+          website: 'https://www.adobe.com/analytics/adobe-analytics.html',
+          icon: 'Adobe Analytics.svg'
+        }
+      ],
+      'JavaScript libraries': [
+        {
+          name: 'Preact',
+          description: 'Preact is a JavaScript library that describes itself as a fast 3kB alternative to React with the same ES6 API.',
+          website: 'https://preactjs.com',
+          icon: 'Preact.svg'
+        }
+      ],
+      Security: [
+        {
+          name: 'HSTS',
+          description: 'HTTP Strict Transport Security (HSTS) informs browsers that the site should only be accessed using HTTPS.',
+          website: 'https://www.rfc-editor.org/rfc/rfc6797#section-6.1',
+          icon: 'default.svg'
+        }
+      ],
+      Miscellaneous: [
+        {
+          name: 'Open Graph',
+          description: 'Open Graph is a protocol that is used to integrate any web page into the social graph.',
+          website: 'https://ogp.me',
+          icon: 'Open Graph.svg'
+        }
+      ]
+    }
+};
+
+---
+<Gallery {...pageData} />
