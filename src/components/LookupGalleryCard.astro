@@ -47,36 +47,36 @@ const filteredTechs = Object.entries(Astro.props.techByCategory || {})
 ---
 <a href={`/lookup/gallery/${company.name.toLowerCase()}`} class="square-card p-0 relative lg:w-auto md:w-[300px] w-full md:shadow-2xl shadow-lg overflow-hidden transition-all hover:-translate-y-1.5">
     <div class="px-4 mb-2.5 flex justify-between">
-        <div class="square-card border-t-0 py-0 px-1 w-auto inline-block md:text-sm text-xs">{company.websiteUrl}</div>
-        <div class="square-card border-t-0 py-0 px-1 w-auto inline-flex flex-row items-center gap-1 md:text-sm text-xs text-orange-300">
+        <div class="square-card border-t-0 py-0 px-1 w-auto inline-block text-sm">{company.websiteUrl}</div>
+        <div class="square-card border-t-0 py-0 px-1 w-auto inline-flex flex-row items-center gap-1 text-sm text-orange-300">
             <div>View</div>
             <svg class="translate-y-[1px]" xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="18px" fill="#FFB86A"><path d="M238.77-254.23 202-291l414.62-415H245.77v-52h460v460h-52v-370.85l-415 414.62Z"/></svg>
         </div>
     </div>
     <img class="square-card aspect-video object-cover p-0 border-0 border-t w-full" src={company.ogImageUrl}></img>
-    <div class="square-card border-x-0 py-0 px-1 pl-4 md:text-sm text-xs text-nowrap">{company.metaTitle}</div>
+    <div class="square-card border-x-0 py-0 px-1 pl-4 text-sm text-nowrap">{company.metaTitle}</div>
     <div class="p-4 md:pt-0 pt-2">
         <div class="grid grid-cols-4 md:gap-2 gap-1 md:my-4 my-2">
             <div class="square-card p-0 overflow-hidden">
-                <div class={`${performanceColors.bg} text-center text-nowrap md:text-sm text-xs px-1`}>Performance</div>
+                <div class={`${performanceColors.bg} text-center text-nowrap text-sm px-1`}>Performance</div>
                 <div class={`text-center md:text-3xl text-xl ${performanceColors.lightBg} ${performanceColors.text} font-medium`}>
                 {lighthouse.desktop.performance}
                 </div>
             </div>
             <div class="square-card p-0 overflow-hidden">
-                <div class={`${accessibilityColors.bg} text-center text-nowrap md:text-sm text-xs px-1`}>Accessibility</div>
+                <div class={`${accessibilityColors.bg} text-center text-nowrap text-sm px-1`}>Accessibility</div>
                 <div class={`text-center md:text-3xl text-xl ${accessibilityColors.lightBg} ${accessibilityColors.text} font-medium`}>
                 {lighthouse.desktop.accessibility}
                 </div>
             </div>
             <div class="square-card p-0 overflow-hidden">
-                <div class={`${bestPracticesColors.bg} text-center text-nowrap md:text-sm text-xs px-1`}>Best Practices</div>
+                <div class={`${bestPracticesColors.bg} text-center text-nowrap text-sm px-1`}>Best Practices</div>
                 <div class={`text-center md:text-3xl text-xl ${bestPracticesColors.lightBg} ${bestPracticesColors.text} font-medium`}>
                 {lighthouse.desktop.bestPractices}
                 </div>
             </div>
             <div class="square-card p-0 overflow-hidden">
-                <div class={`${seoColors.bg} text-center text-nowrap md:text-sm text-xs px-1`}>SEO</div>
+                <div class={`${seoColors.bg} text-center text-nowrap text-sm px-1`}>SEO</div>
                 <div class={`text-center md:text-3xl text-xl ${seoColors.lightBg} ${seoColors.text} font-medium`}>
                 {lighthouse.desktop.seo}
                 </div>
