@@ -45,7 +45,7 @@ const filteredTechs = Object.entries(Astro.props.techByCategory || {})
     .flatMap(([category, techs]) => techs)
     .slice(0, 3);
 ---
-<a href={`/lookup/gallery/${company.name.toLowerCase()}`} class="square-card p-0 relative lg:w-auto md:w-[300px] w-full md:shadow-2xl shadow-lg overflow-hidden transition-all hover:-translate-y-1.5">
+<a href={`/lookup/gallery/${company.name.toLowerCase().replace(/\s+/g, '-')}`} class="square-card p-0 relative lg:w-auto md:w-[300px] w-full md:shadow-2xl shadow-lg overflow-hidden transition-all hover:-translate-y-1.5">
     <div class="px-4 mb-2.5 flex justify-between">
         <div class="square-card border-t-0 py-0 px-1 w-auto inline-block text-sm">{company.websiteUrl}</div>
         <div class="square-card border-t-0 py-0 px-1 w-auto inline-flex flex-row items-center gap-1 text-sm text-orange-300">
