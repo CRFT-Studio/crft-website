@@ -1,0 +1,164 @@
+---
+import Gallery from "../../../layouts/LookupGallery.astro";
+
+export const pageData = {
+    company: {
+        name: "Posthog",
+        metaTitle: "PostHog is for product engineers",
+        description: "We’re building every tool for product engineers to build successful products.",
+        websiteUrl: "https://posthog.com",
+        ogImageUrl: "https://posthog.com/images/og/default.png",
+        dateScanned: "28/09/25" //day/month/year
+    },
+    lighthouse: {
+        desktop: {
+            performance: 26,
+            seo: 73,
+            bestPractices: 93,
+            accessibility: 92
+        },
+        mobile: {
+            performance: 29,
+            seo: 91,
+            bestPractices: 89,
+            accessibility: 100
+        }
+    },
+    techByCategory: {
+      'Search engines': [
+        {
+          name: 'Algolia',
+          description: 'Algolia offers a hosted web search product delivering real-time results.',
+          website: 'https://www.algolia.com',
+          icon: 'Algolia.svg'
+        }
+      ],
+      'UI frameworks': [
+        {
+          name: 'Radix UI',
+          description: 'Radix UI is a React-based user interface component library that offers accessible, responsive, and customisable components for building web applications.',
+          website: 'https://www.radix-ui.com',
+          icon: 'Radix UI.svg'
+        },
+        {
+          name: 'HeroUI',
+          description: 'HeroUI allows you to make beautiful, modern, and fast websites/applications regardless of your design experience, created with React.js and Stitches, based on React Aria and inspired by Vuesax.',
+          website: 'https://nextui.org/',
+          icon: 'HeroUI.svg'
+        }
+      ],
+      'JavaScript frameworks': [
+        {
+          name: 'React',
+          description: 'React is an open-source JavaScript library for building user interfaces or UI components.',
+          website: 'https://reactjs.org',
+          icon: 'React.svg'
+        },
+        {
+          name: 'Gatsby',
+          description: 'Gatsby is a React-based open-source framework with performance, scalability and security built-in.',
+          website: 'https://www.gatsbyjs.org/',
+          icon: 'Gatsby.svg'
+        }
+      ],
+      'Static site generator': [
+        {
+          name: 'Gatsby',
+          description: 'Gatsby is a React-based open-source framework with performance, scalability and security built-in.',
+          website: 'https://www.gatsbyjs.org/',
+          icon: 'Gatsby.svg'
+        }
+      ],
+      PaaS: [
+        {
+          name: 'Amazon Web Services',
+          description: 'Amazon Web Services (AWS) is a comprehensive cloud services platform offering compute power, database storage, content delivery and other functionality.',
+          website: 'https://aws.amazon.com/',
+          icon: 'Amazon Web Services.svg'
+        },
+        {
+          name: 'Vercel',
+          description: 'Vercel is a cloud platform for static frontends and serverless functions.',
+          website: 'https://vercel.com',
+          icon: 'vercel.svg'
+        }
+      ],
+      Analytics: [
+        {
+          name: 'PostHog',
+          description: 'PostHog is the open-source, all-in-one product analytics platform.',
+          website: 'https://posthog.com',
+          icon: 'PostHog.svg'
+        }
+      ],
+      'JavaScript libraries': [
+        {
+          name: 'core-js',
+          description: 'core-js is a modular standard library for JavaScript, with polyfills for cutting-edge ECMAScript features.',
+          website: 'https://github.com/zloirock/core-js',
+          icon: 'core-js.png'
+        }
+      ],
+      'Font scripts': [
+        {
+          name: 'Google Font API',
+          description: 'Google Font API is a web service that supports open-source font files that can be used on your web designs.',
+          website: 'https://google.com/fonts',
+          icon: 'Google Font API.svg'
+        }
+      ],
+      CDN: [
+        {
+          name: 'Cloudinary',
+          description: 'Cloudinary is an end-to-end image- and video-management solution for websites and mobile apps, covering everything from image and video uploads, storage, manipulations, optimisations to delivery.',
+          website: 'https://cloudinary.com',
+          icon: 'Cloudinary.svg'
+        }
+      ],
+      'Digital asset management': [
+        {
+          name: 'Cloudinary',
+          description: 'Cloudinary is an end-to-end image- and video-management solution for websites and mobile apps, covering everything from image and video uploads, storage, manipulations, optimisations to delivery.',
+          website: 'https://cloudinary.com',
+          icon: 'Cloudinary.svg'
+        }
+      ],
+      Security: [
+        {
+          name: 'HSTS',
+          description: 'HTTP Strict Transport Security (HSTS) informs browsers that the site should only be accessed using HTTPS.',
+          website: 'https://www.rfc-editor.org/rfc/rfc6797#section-6.1',
+          icon: 'default.svg'
+        }
+      ],
+      Miscellaneous: [
+        {
+          name: 'Webpack',
+          description: 'Webpack is an open-source JavaScript module bundler.',
+          website: 'https://webpack.js.org/',
+          icon: 'Webpack.svg'
+        },
+        {
+          name: 'Prism',
+          description: 'Prism is an extensible syntax highlighter.',
+          website: 'https://prismjs.com',
+          icon: 'Prism.svg'
+        },
+        {
+          name: 'PWA',
+          description: 'Progressive Web Apps (PWAs) are web apps built and enhanced with modern APIs to deliver enhanced capabilities, reliability, and installability while reaching anyone, anywhere, on any device, all with a single codebase.',
+          website: 'https://web.dev/progressive-web-apps/',
+          icon: 'PWA.svg'
+        },
+        {
+          name: 'Open Graph',
+          description: 'Open Graph is a protocol that is used to integrate any web page into the social graph.',
+          website: 'https://ogp.me',
+          icon: 'Open Graph.svg'
+        }
+      ]
+    }
+};
+
+---
+<Gallery {...pageData} />
