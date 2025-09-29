@@ -672,7 +672,7 @@ if (url) {
                             <a href="/lookup/gallery" class="secondary-cta border-neutral-700 py-0 px-1.5">View all</a>
                         </div>
                         <div class="grid md:grid-cols-4 gap-4 mt-4">
-                            {galleries.slice(0,4).map((galleryData) => (
+                            {galleries.filter(galleryData => ['Basecamp', 'Helium', 'Notion', 'Linear'].includes(galleryData.company.name)).map((galleryData) => (
                                 <LookupGalleryCard
                                     company={galleryData.company}
                                     lighthouse={galleryData.lighthouse}
