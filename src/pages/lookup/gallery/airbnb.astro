@@ -1,0 +1,204 @@
+---
+import Gallery from "../../../layouts/LookupGallery.astro";
+
+export const pageData = {
+    company: {
+        name: "Airbnb",
+        metaTitle: "Airbnb | Vacation rentals, cabins, beach houses, & more",
+        description: "Get an Airbnb for every kind of trip → 7 million vacation rentals → 2 million Guest Favourites → 220+ countries and regions worldwide",
+        websiteUrl: "https://airbnb.com",
+        ogImageUrl: "https://a0.muscache.com/im/pictures/fe7217ff-0b24-438d-880d-b94722c75bf5.jpg",
+        dateScanned: "29/09/25" //day/month/year
+    },
+    lighthouse: {
+        desktop: {
+            performance: 45,
+            accessibility: 100,
+            bestPractices: 100,
+            seo: 63
+        },
+        mobile: {
+            performance: 39,
+            accessibility: 100,
+            bestPractices: 100,
+            seo: 63
+        }
+    },
+    techByCategory: {
+      'Programming languages': [
+        {
+          name: 'Ruby',
+          description: 'Ruby is an open-source object-oriented programming language.',
+          website: 'https://ruby-lang.org',
+          icon: 'Ruby.svg'
+        }
+      ],
+      'Web frameworks': [
+        {
+          name: 'Ruby on Rails',
+          description: 'Ruby on Rails is a server-side web application framework written in Ruby under the MIT License.',
+          website: 'https://rubyonrails.org',
+          icon: 'Ruby on Rails.svg'
+        }
+      ],
+      'Reverse proxies': [
+        {
+          name: 'Envoy',
+          description: 'Envoy is an open-source edge and service proxy, designed for cloud-native applications.',
+          website: 'https://www.envoyproxy.io/',
+          icon: 'Envoy.svg'
+        },
+        {
+          name: 'Nginx',
+          description: 'Nginx is a web server that can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache.',
+          website: 'https://nginx.org/en',
+          icon: 'Nginx.svg'
+        }
+      ],
+      'JavaScript frameworks': [
+        {
+          name: 'RequireJS',
+          description: 'RequireJS is a JavaScript library and file loader which manages the dependencies between JavaScript files and in modular programming.',
+          website: 'https://requirejs.org',
+          icon: 'RequireJS.svg'
+        }
+      ],
+      'Payment processors': [
+        {
+          name: 'PayPal',
+          description: 'PayPal is an online payments system that supports online money transfers and serves as an electronic alternative to traditional paper methods like checks and money orders.',
+          website: 'https://paypal.com',
+          icon: 'PayPal.svg'
+        },
+        {
+          name: 'Klarna Checkout',
+          description: "Klarna Checkout is a complete payment solution where Klarna handles a store's entire checkout.",
+          website: 'https://www.klarna.com/international/',
+          icon: 'Klarna.svg'
+        },
+        {
+          name: 'Plaid',
+          description: "Plaid is a fintech company that facilitates communication between financial services apps and users' banks and credit card providers.",
+          website: 'https://plaid.com',
+          icon: 'Plaid.svg'
+        }
+      ],
+      'Web servers': [
+        {
+          name: 'Nginx',
+          description: 'Nginx is a web server that can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache.',
+          website: 'https://nginx.org/en',
+          icon: 'Nginx.svg'
+        }
+      ],
+      CDN: [
+        {
+          name: 'Akamai',
+          description: 'Akamai is global content delivery network (CDN) services provider for media and software delivery, and cloud security solutions.',
+          website: 'https://akamai.com',
+          icon: 'Akamai.svg'
+        }
+      ],
+      Security: [
+        {
+          name: 'Akamai Bot Manager',
+          description: 'Akamai Bot Manager detect bots using device fingerprinting bot signatures.',
+          website: 'https://www.akamai.com/us/en/products/security/bot-manager.jsp',
+          icon: 'Akamai.svg'
+        },
+        {
+          name: 'HSTS',
+          description: 'HTTP Strict Transport Security (HSTS) informs browsers that the site should only be accessed using HTTPS.',
+          website: 'https://www.rfc-editor.org/rfc/rfc6797#section-6.1',
+          icon: 'default.svg'
+        },
+        {
+          name: 'GeeTest',
+          description: 'GeeTest is a CAPTCHA and bot management provider, protects websites, mobile apps, and APIs from automated bot-driven attacks, like ATO, credential stuffing, web scalping, etc.',
+          website: 'https://www.geetest.com',
+          icon: 'GeeTest.svg'
+        },
+        {
+          name: 'Arkose Labs',
+          description: 'Arkose Labs is a toolkit for fraud prevention that provides solutions to detect and mitigate malicious activity across digital platforms.',
+          website: 'https://www.arkoselabs.com',
+          icon: 'ArkoseLabs.svg'
+        }
+      ],
+      'JavaScript libraries': [
+        {
+          name: 'lit-html',
+          description: 'lit-html is a simple, modern, safe, small and fast HTML templating library for JavaScript.',
+          website: 'https://lit.dev',
+          icon: 'Lit.svg'
+        },
+        {
+          name: 'lit-element',
+          description: 'lit-element is a simple base class for creating web components that work in any web page with any framework. lit-element uses lit-html to render into shadow DOM, and adds API to manage properties and attributes.',
+          website: 'https://lit.dev',
+          icon: 'Lit.svg'
+        }
+      ],
+      Performance: [
+        {
+          name: 'Priority Hints',
+          description: 'Priority Hints exposes a mechanism for developers to signal a relative priority for browsers to consider when fetching resources.',
+          website: 'https://wicg.github.io/priority-hints/',
+          icon: 'Priority Hints.svg'
+        }
+      ],
+      Analytics: [
+        {
+          name: 'Google Analytics',
+          description: 'Google Analytics is a free web analytics service that tracks and reports website traffic.',
+          website: 'https://google.com/analytics',
+          icon: 'Google Analytics.svg'
+        }
+      ],
+      'Buy now pay later': [
+        {
+          name: 'Klarna Checkout',
+          description: "Klarna Checkout is a complete payment solution where Klarna handles a store's entire checkout.",
+          website: 'https://www.klarna.com/international/',
+          icon: 'Klarna.svg'
+        }
+      ],
+      'SSL/TLS certificate authorities': [
+        {
+          name: 'DigiCert',
+          description: null,
+          website: 'https://www.digicert.com/',
+          icon: 'DigiCert.svg'
+        }
+      ],
+      Miscellaneous: [
+        {
+          name: 'PWA',
+          description: 'Progressive Web Apps (PWAs) are web apps built and enhanced with modern APIs to deliver enhanced capabilities, reliability, and installability while reaching anyone, anywhere, on any device, all with a single codebase.',
+          website: 'https://web.dev/progressive-web-apps/',
+          icon: 'PWA.svg'
+        },
+        {
+          name: 'Open Graph',
+          description: 'Open Graph is a protocol that is used to integrate any web page into the social graph.',
+          website: 'https://ogp.me',
+          icon: 'Open Graph.svg'
+        },
+        {
+          name: 'Plaid',
+          description: "Plaid is a fintech company that facilitates communication between financial services apps and users' banks and credit card providers.",
+          website: 'https://plaid.com',
+          icon: 'Plaid.svg'
+        },
+        {
+          name: 'HTTP/3',
+          description: 'HTTP/3 is the third major version of the Hypertext Transfer Protocol used to exchange information on the World Wide Web.',
+          website: 'https://httpwg.org/',
+          icon: 'HTTP3.svg'
+        }
+      ]
+    }
+};
+
+---
+<Gallery {...pageData} />
