@@ -65,7 +65,7 @@ const galleries = (await Astro.glob('./*.astro'))
                 <div class="h-[1px] w-full mt-20 mb-20 bg-gradient-to-r from-transparent via-neutral-700 to-transparent"></div>
 
                 <div class="grid md:grid-cols-4 gap-4">
-                    {galleries.slice(0,4).map((galleryData) => (
+                    {galleries.map((galleryData) => (
                         <LookupGalleryCard
                             company={galleryData.company}
                             lighthouse={galleryData.lighthouse}
