@@ -173,7 +173,7 @@ const filteredTechByCategory = Object.entries(techByCategory)
                                 <h3 class="text-xl font-medium mb-4">{category}</h3>
                                 <div class="grid lg:grid-cols-2 gap-4">
                                     {techs.map((tech) => (
-                                        <a href={tech.website ? `${tech.website}?ref=crftlookup` : '#'}
+                                        <a href={tech.website ? `${tech.website}?utm_source=crftLookup` : '#'}
                                            target="_blank"
                                            class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all">
                                             <div class="flex flex-row gap-2 items-center">

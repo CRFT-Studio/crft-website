@@ -111,7 +111,7 @@ console.log("[Wappalyzer] Component processing complete. Final data:", techByCat
                 <h3 class="text-xl font-medium mb-4">{category}</h3>
                 <div class="grid lg:grid-cols-2 gap-4">
                     {techs.map((tech) => (
-                        <a href={`${tech.website}?ref=crftlookup`} target="_blank" id={tech.categories?.[0]?.slug} class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name={tech.name} data-tech-icon={tech.icon}>
+                        <a href={`${tech.website}?utm_source=crftLookup`} target="_blank" id={tech.categories?.[0]?.slug} class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name={tech.name} data-tech-icon={tech.icon}>
                             <div id={tech.slug} class="flex flex-row gap-2 items-center">
                                 <img src={`/icons/${tech.icon}`} class="w-5 h-5" alt="" />
                                 <div>{tech.name}</div>
