@@ -1,0 +1,256 @@
+---
+import Gallery from "../../../layouts/LookupGallery.astro";
+
+export const pageData = {
+    company: {
+        name: "Notion",
+        metaTitle: "The AI workspace that works for you. | Notion",
+        description: "A tool that connects everyday work into one space. It gives you and your teams AI tools—search, writing, note-taking—inside an all-in-one, flexible workspace.",
+        websiteUrl: "https://notion.com",
+        ogImageUrl: "https://www.notion.com/front-static/meta/think-it-make-it.png",
+        dateScanned: "29/09/25" //day/month/year
+    },
+    lighthouse: {
+        desktop: {
+            performance: 69,
+            accessibility: 96,
+            bestPractices: 74,
+            seo: 100
+        },
+        mobile: {
+            performance: 40,
+            accessibility: 96,
+            bestPractices: 75,
+            seo: 100
+        }
+    },
+    techByCategory: {
+      CMS: [
+        {
+          name: 'Contentful',
+          description: 'Contentful is an API-first content management platform to create, manage and publish content on any digital channel.',
+          website: 'https://www.contentful.com',
+          icon: 'Contentful.svg'
+        }
+      ],
+      'Issue trackers': [
+        {
+          name: 'Sentry',
+          description: 'Sentry is an open-source platform for workflow productivity, aggregating errors from across the stack in real time.',
+          website: 'https://sentry.io/',
+          icon: 'Sentry.svg'
+        }
+      ],
+      Authentication: [
+        {
+          name: 'Google Sign-in',
+          description: 'Google Sign-In is a secure authentication system that reduces the burden of login for users, by enabling them to sign in with their Google account.',
+          website: 'https://developers.google.com/identity/sign-in/web',
+          icon: 'Google.svg'
+        }
+      ],
+      'Video players': [
+        {
+          name: 'YouTube',
+          description: 'YouTube is a video sharing service where users can create their own profile, upload videos, watch, like and comment on other videos.',
+          website: 'https://www.youtube.com',
+          icon: 'YouTube.svg'
+        }
+      ],
+      'UI frameworks': [
+        {
+          name: 'HeroUI',
+          description: 'HeroUI allows you to make beautiful, modern, and fast websites/applications regardless of your design experience, created with React.js and Stitches, based on React Aria and inspired by Vuesax.',
+          website: 'https://nextui.org/',
+          icon: 'HeroUI.svg'
+        }
+      ],
+      'JavaScript frameworks': [
+        {
+          name: 'React',
+          description: 'React is an open-source JavaScript library for building user interfaces or UI components.',
+          website: 'https://reactjs.org',
+          icon: 'React.svg'
+        },
+        {
+          name: 'Next.js',
+          description: 'Next.js is a React framework for developing single page Javascript applications.',
+          website: 'https://nextjs.org',
+          icon: 'Next.js.svg'
+        }
+      ],
+      PaaS: [
+        {
+          name: 'Amazon Web Services',
+          description: 'Amazon Web Services (AWS) is a comprehensive cloud services platform offering compute power, database storage, content delivery and other functionality.',
+          website: 'https://aws.amazon.com/',
+          icon: 'Amazon Web Services.svg'
+        },
+        {
+          name: 'Vercel',
+          description: 'Vercel is a cloud platform for static frontends and serverless functions.',
+          website: 'https://vercel.com',
+          icon: 'vercel.svg'
+        }
+      ],
+      'Web frameworks': [
+        {
+          name: 'Next.js',
+          description: 'Next.js is a React framework for developing single page Javascript applications.',
+          website: 'https://nextjs.org',
+          icon: 'Next.js.svg'
+        }
+      ],
+      'Web servers': [
+        {
+          name: 'Next.js',
+          description: 'Next.js is a React framework for developing single page Javascript applications.',
+          website: 'https://nextjs.org',
+          icon: 'Next.js.svg'
+        }
+      ],
+      'Static site generator': [
+        {
+          name: 'Next.js',
+          description: 'Next.js is a React framework for developing single page Javascript applications.',
+          website: 'https://nextjs.org',
+          icon: 'Next.js.svg'
+        }
+      ],
+      Analytics: [
+        {
+          name: 'Naver Analytics',
+          description: 'Naver Analytics is a Korean based analytics service.',
+          website: 'https://analytics.naver.com',
+          icon: 'Naver Analytics.svg'
+        },
+        {
+          name: 'Google Analytics',
+          description: 'Google Analytics is a free web analytics service that tracks and reports website traffic.',
+          website: 'https://google.com/analytics',
+          icon: 'Google Analytics.svg'
+        },
+        {
+          name: 'Facebook Pixel',
+          description: 'Facebook pixel is an analytics tool that allows you to measure the effectiveness of your advertising.',
+          website: 'https://facebook.com',
+          icon: 'Facebook.svg'
+        },
+        {
+          name: 'Linkedin Insight Tag',
+          description: 'LinkedIn Insight Tag is a lightweight JavaScript tag that powers conversion tracking, website audiences, and website demographics.',
+          website: 'https://business.linkedin.com/marketing-solutions/insight-tag',
+          icon: 'Linkedin.svg'
+        }
+      ],
+      Security: [
+        {
+          name: 'Cloudflare Bot Management',
+          description: 'Cloudflare bot management solution identifies and mitigates automated traffic to protect websites from bad bots.',
+          website: 'https://www.cloudflare.com/en-gb/products/bot-management/',
+          icon: 'CloudFlare.svg'
+        },
+        {
+          name: 'hCaptcha',
+          description: 'hCaptcha is an anti-bot solution that protects user privacy and rewards websites.',
+          website: 'https://www.hcaptcha.com',
+          icon: 'hCaptcha.svg'
+        },
+        {
+          name: 'HSTS',
+          description: 'HTTP Strict Transport Security (HSTS) informs browsers that the site should only be accessed using HTTPS.',
+          website: 'https://www.rfc-editor.org/rfc/rfc6797#section-6.1',
+          icon: 'default.svg'
+        }
+      ],
+      Advertising: [
+        {
+          name: 'Twitter Ads',
+          description: "Twitter Ads is an advertising platform for Twitter 'microblogging' system.",
+          website: 'https://ads.twitter.com',
+          icon: 'Twitter.svg'
+        },
+        {
+          name: 'DoubleClick Floodlight',
+          description: null,
+          website: 'https://support.google.com/ds/answer/6029713?hl=en',
+          icon: 'DoubleClick.svg'
+        },
+        {
+          name: 'Linkedin Ads',
+          description: 'Linkedin Ads is a paid marketing tool that offers access to Linkedin social networks through various sponsored posts and other methods.',
+          website: 'https://business.linkedin.com/marketing-solutions/ads',
+          icon: 'Linkedin.svg'
+        }
+      ],
+      'Cookie compliance': [
+        {
+          name: 'Transcend',
+          description: 'Transcend is data privacy management compliance platform.',
+          website: 'https://www.transcend.io',
+          icon: 'Transcend.svg'
+        }
+      ],
+      'Marketing automation': [
+        {
+          name: 'Marketo',
+          description: 'Marketo develops and sells marketing automation software for account-based marketing and other marketing services and products including SEO and content creation.',
+          website: 'https://www.marketo.com',
+          icon: 'Marketo.svg'
+        }
+      ],
+      'Tag managers': [
+        {
+          name: 'Google Tag Manager',
+          description: 'Google Tag Manager is a tag management system (TMS) that allows you to quickly and easily update measurement codes and related code fragments collectively known as tags on your website or mobile app.',
+          website: 'https://www.google.com/tagmanager',
+          icon: 'Google Tag Manager.svg'
+        }
+      ],
+      'JavaScript libraries': [
+        {
+          name: 'core-js',
+          description: 'core-js is a modular standard library for JavaScript, with polyfills for cutting-edge ECMAScript features.',
+          website: 'https://github.com/zloirock/core-js',
+          icon: 'core-js.png'
+        }
+      ],
+      CDN: [
+        {
+          name: 'Cloudflare',
+          description: 'Cloudflare is a web-infrastructure and website-security company, providing content-delivery-network services, DDoS mitigation, Internet security, and distributed domain-name-server services.',
+          website: 'https://www.cloudflare.com',
+          icon: 'CloudFlare.svg'
+        },
+        {
+          name: 'Amazon S3',
+          description: 'Amazon S3 or Amazon Simple Storage Service is a service offered by Amazon Web Services (AWS) that provides object storage through a web service interface.',
+          website: 'https://aws.amazon.com/s3/',
+          icon: 'Amazon S3.svg'
+        }
+      ],
+      Miscellaneous: [
+        {
+          name: 'Webpack',
+          description: 'Webpack is an open-source JavaScript module bundler.',
+          website: 'https://webpack.js.org/',
+          icon: 'Webpack.svg'
+        },
+        {
+          name: 'Open Graph',
+          description: 'Open Graph is a protocol that is used to integrate any web page into the social graph.',
+          website: 'https://ogp.me',
+          icon: 'Open Graph.svg'
+        },
+        {
+          name: 'HTTP/3',
+          description: 'HTTP/3 is the third major version of the Hypertext Transfer Protocol used to exchange information on the World Wide Web.',
+          website: 'https://httpwg.org/',
+          icon: 'HTTP3.svg'
+        }
+      ]
+    }
+};
+
+---
+<Gallery {...pageData} />
