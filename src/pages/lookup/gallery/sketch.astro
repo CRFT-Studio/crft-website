@@ -1,0 +1,154 @@
+---
+import Gallery from "../../../layouts/LookupGallery.astro";
+
+export const pageData = {
+    company: {
+        name: "Sketch",
+        metaTitle: "Sketch · Design, prototype, collaborate and handoff",
+        description: "Sketch puts the focus back on you and your work. Made by designers, for designers.",
+        websiteUrl: "https://sketch.com",
+        ogImageUrl: "https://www.sketch.com/images/metadata/pages/home.jpg",
+        dateScanned: "30/09/25" //day/month/year
+    },
+    lighthouse: {
+        desktop: {
+            performance: 76,
+            accessibility: 85,
+            bestPractices: 78,
+            seo: 92
+        },
+        mobile: {
+            performance: 54,
+            accessibility: 85,
+            bestPractices: 82,
+            seo: 92
+        }
+    },
+    techByCategory: {
+      'Issue trackers': [
+        {
+          name: 'Sentry',
+          description: 'Sentry is an open-source platform for workflow productivity, aggregating errors from across the stack in real time.',
+          website: 'https://sentry.io/',
+          icon: 'Sentry.svg'
+        }
+      ],
+      'Search engines': [
+        {
+          name: 'Algolia',
+          description: 'Algolia offers a hosted web search product delivering real-time results.',
+          website: 'https://www.algolia.com',
+          icon: 'Algolia.svg'
+        }
+      ],
+      PaaS: [
+        {
+          name: 'Amazon Web Services',
+          description: 'Amazon Web Services (AWS) is a comprehensive cloud services platform offering compute power, database storage, content delivery and other functionality.',
+          website: 'https://aws.amazon.com/',
+          icon: 'Amazon Web Services.svg'
+        },
+        {
+          name: 'Netlify',
+          description: 'Netlify providers hosting and server-less backend services for web applications and static websites.',
+          website: 'https://www.netlify.com/',
+          icon: 'Netlify.svg'
+        }
+      ],
+      'JavaScript frameworks': [
+        {
+          name: 'Stimulus',
+          description: 'A modest JavaScript framework for the HTML you already have.',
+          website: 'https://stimulusjs.org/',
+          icon: 'Stimulus.svg'
+        }
+      ],
+      Analytics: [
+        {
+          name: 'Simple Analytics',
+          description: 'Simple Analytics is a privacy-friendly Google Analytics alternative.',
+          website: 'https://simpleanalytics.com',
+          icon: 'Simple Analytics.svg'
+        }
+      ],
+      'JavaScript libraries': [
+        {
+          name: 'lit-html',
+          description: 'lit-html is a simple, modern, safe, small and fast HTML templating library for JavaScript.',
+          website: 'https://lit.dev',
+          icon: 'Lit.svg'
+        },
+        {
+          name: 'lit-element',
+          description: 'lit-element is a simple base class for creating web components that work in any web page with any framework. lit-element uses lit-html to render into shadow DOM, and adds API to manage properties and attributes.',
+          website: 'https://lit.dev',
+          icon: 'Lit.svg'
+        },
+        {
+          name: 'core-js',
+          description: 'core-js is a modular standard library for JavaScript, with polyfills for cutting-edge ECMAScript features.',
+          website: 'https://github.com/zloirock/core-js',
+          icon: 'core-js.png'
+        },
+        {
+          name: 'Swiper',
+          description: 'Swiper is a JavaScript library that creates modern touch sliders with hardware-accelerated transitions.',
+          website: 'https://swiperjs.com',
+          icon: 'Swiper.svg'
+        }
+      ],
+      CDN: [
+        {
+          name: 'Bunny',
+          description: null,
+          website: 'https://bunny.net',
+          icon: 'Bunny.svg'
+        },
+        {
+          name: 'Netlify',
+          description: 'Netlify providers hosting and server-less backend services for web applications and static websites.',
+          website: 'https://www.netlify.com/',
+          icon: 'Netlify.svg'
+        },
+        {
+          name: 'Amazon CloudFront',
+          description: 'Amazon CloudFront is a fast content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally with low latency, high transfer speeds.',
+          website: 'https://aws.amazon.com/cloudfront/',
+          icon: 'Amazon Cloudfront.svg'
+        }
+      ],
+      Security: [
+        {
+          name: 'HSTS',
+          description: 'HTTP Strict Transport Security (HSTS) informs browsers that the site should only be accessed using HTTPS.',
+          website: 'https://www.rfc-editor.org/rfc/rfc6797#section-6.1',
+          icon: 'default.svg'
+        }
+      ],
+      'SSL/TLS certificate authorities': [
+        {
+          name: 'AWS Certificate Manager',
+          description: 'AWS Certificate Manager is a service that lets you easily provision, manage, and deploy public and private Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificates for use with AWS services and your internal connected resources.',
+          website: 'https://aws.amazon.com/certificate-manager/',
+          icon: 'AWS Certificate Manager.svg'
+        }
+      ],
+      Miscellaneous: [
+        {
+          name: 'RSS',
+          description: 'RSS is a family of web feed formats used to publish frequently updated works—such as blog entries, news headlines, audio, and video—in a standardized format.',
+          website: 'https://www.rssboard.org/rss-specification',
+          icon: 'RSS.svg'
+        },
+        {
+          name: 'Open Graph',
+          description: 'Open Graph is a protocol that is used to integrate any web page into the social graph.',
+          website: 'https://ogp.me',
+          icon: 'Open Graph.svg'
+        }
+      ]
+    }
+};
+
+---
+<Gallery {...pageData} />

@@ -1,0 +1,142 @@
+---
+import Gallery from "../../../layouts/LookupGallery.astro";
+
+export const pageData = {
+    company: {
+        name: "Opal Camera",
+        metaTitle: "Opal Camera Inc.",
+        description: "Opal Camera creates professional webcams and accessories designed for modern laptops and remote work. ",
+        websiteUrl: "https://opalcamera.com",
+        ogImageUrl: "https://emails.opalcamera.com/og.png",
+        dateScanned: "30/09/25" //day/month/year
+    },
+    lighthouse: {
+        desktop: {
+            performance: 63,
+            accessibility: 82,
+            bestPractices: 100,
+            seo: 82
+        },
+        mobile: {
+            performance: 0,
+            accessibility: 81,
+            bestPractices: 100,
+            seo: 82
+        }
+    },
+    techByCategory: {
+      'Issue trackers': [
+        {
+          name: 'Sentry',
+          description: 'Sentry is an open-source platform for workflow productivity, aggregating errors from across the stack in real time.',
+          website: 'https://sentry.io/',
+          icon: 'Sentry.svg'
+        }
+      ],
+      'JavaScript frameworks': [
+        {
+          name: 'React',
+          description: 'React is an open-source JavaScript library for building user interfaces or UI components.',
+          website: 'https://reactjs.org',
+          icon: 'React.svg'
+        },
+        {
+          name: 'Next.js',
+          description: 'Next.js is a React framework for developing single page Javascript applications.',
+          website: 'https://nextjs.org',
+          icon: 'Next.js.svg'
+        }
+      ],
+      'Web frameworks': [
+        {
+          name: 'Next.js',
+          description: 'Next.js is a React framework for developing single page Javascript applications.',
+          website: 'https://nextjs.org',
+          icon: 'Next.js.svg'
+        }
+      ],
+      'Web servers': [
+        {
+          name: 'Next.js',
+          description: 'Next.js is a React framework for developing single page Javascript applications.',
+          website: 'https://nextjs.org',
+          icon: 'Next.js.svg'
+        }
+      ],
+      'Static site generator': [
+        {
+          name: 'Next.js',
+          description: 'Next.js is a React framework for developing single page Javascript applications.',
+          website: 'https://nextjs.org',
+          icon: 'Next.js.svg'
+        }
+      ],
+      PaaS: [
+        {
+          name: 'Amazon Web Services',
+          description: 'Amazon Web Services (AWS) is a comprehensive cloud services platform offering compute power, database storage, content delivery and other functionality.',
+          website: 'https://aws.amazon.com/',
+          icon: 'Amazon Web Services.svg'
+        },
+        {
+          name: 'Vercel',
+          description: 'Vercel is a cloud platform for static frontends and serverless functions.',
+          website: 'https://vercel.com',
+          icon: 'vercel.svg'
+        }
+      ],
+      Advertising: [
+        {
+          name: 'DoubleClick Floodlight',
+          description: null,
+          website: 'https://support.google.com/ds/answer/6029713?hl=en',
+          icon: 'DoubleClick.svg'
+        }
+      ],
+      'JavaScript libraries': [
+        {
+          name: 'Lodash',
+          description: 'Lodash is a JavaScript library which provides utility functions for common programming tasks using the functional programming paradigm.',
+          website: 'https://www.lodash.com',
+          icon: 'Lodash.svg'
+        },
+        {
+          name: 'Axios',
+          description: 'Promise based HTTP client for the browser and node.js',
+          website: 'https://github.com/axios/axios',
+          icon: 'Axios.svg'
+        }
+      ],
+      Security: [
+        {
+          name: 'HSTS',
+          description: 'HTTP Strict Transport Security (HSTS) informs browsers that the site should only be accessed using HTTPS.',
+          website: 'https://www.rfc-editor.org/rfc/rfc6797#section-6.1',
+          icon: 'default.svg'
+        }
+      ],
+      Miscellaneous: [
+        {
+          name: 'Webpack',
+          description: 'Webpack is an open-source JavaScript module bundler.',
+          website: 'https://webpack.js.org/',
+          icon: 'Webpack.svg'
+        },
+        {
+          name: 'PWA',
+          description: 'Progressive Web Apps (PWAs) are web apps built and enhanced with modern APIs to deliver enhanced capabilities, reliability, and installability while reaching anyone, anywhere, on any device, all with a single codebase.',
+          website: 'https://web.dev/progressive-web-apps/',
+          icon: 'PWA.svg'
+        },
+        {
+          name: 'Open Graph',
+          description: 'Open Graph is a protocol that is used to integrate any web page into the social graph.',
+          website: 'https://ogp.me',
+          icon: 'Open Graph.svg'
+        }
+      ]
+    }
+};
+
+---
+<Gallery {...pageData} />

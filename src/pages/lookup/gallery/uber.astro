@@ -1,0 +1,190 @@
+---
+import Gallery from "../../../layouts/LookupGallery.astro";
+
+export const pageData = {
+    company: {
+        name: "Uber",
+        metaTitle: "Earn Money by Driving or Get a Ride Now | Uber",
+        description: "Get a ride in minutes. Or become a driver and earn money on your schedule. Uber is finding you better ways to move, work, and succeed.",
+        websiteUrl: "https://uber.com",
+        ogImageUrl: "https://tb-static.uber.com/prod/udam-assets/6b65f287-0bee-44e7-868a-e26b8722364e.png",
+        dateScanned: "30/09/25" //day/month/year
+    },
+    lighthouse: {
+        desktop: {
+            performance: 56,
+            accessibility: 88,
+            bestPractices: 100,
+            seo: 100
+        },
+        mobile: {
+            performance: 31,
+            accessibility: 87,
+            bestPractices: 100,
+            seo: 100
+        }
+    },
+    techByCategory: {
+      'Programming languages': [
+        {
+          name: 'PHP',
+          description: 'PHP is a general-purpose scripting language used for web development.',
+          website: 'https://php.net',
+          icon: 'PHP.svg'
+        }
+      ],
+      Authentication: [
+        {
+          name: 'Google Sign-in',
+          description: 'Google Sign-In is a secure authentication system that reduces the burden of login for users, by enabling them to sign in with their Google account.',
+          website: 'https://developers.google.com/identity/sign-in/web',
+          icon: 'Google.svg'
+        }
+      ],
+      'Reverse proxies': [
+        {
+          name: 'Envoy',
+          description: 'Envoy is an open-source edge and service proxy, designed for cloud-native applications.',
+          website: 'https://www.envoyproxy.io/',
+          icon: 'Envoy.svg'
+        }
+      ],
+      'JavaScript frameworks': [
+        {
+          name: 'React',
+          description: 'React is an open-source JavaScript library for building user interfaces or UI components.',
+          website: 'https://reactjs.org',
+          icon: 'React.svg'
+        },
+        {
+          name: 'React Router',
+          description: 'React Router provides declarative routing for React.',
+          website: 'https://reactrouter.com',
+          icon: 'React Router.svg'
+        }
+      ],
+      PaaS: [
+        {
+          name: 'Amazon Web Services',
+          description: 'Amazon Web Services (AWS) is a comprehensive cloud services platform offering compute power, database storage, content delivery and other functionality.',
+          website: 'https://aws.amazon.com/',
+          icon: 'Amazon Web Services.svg'
+        }
+      ],
+      'Tag managers': [
+        {
+          name: 'Tealium',
+          description: 'Tealium provides a sales enterprise tag management system and marketing software.',
+          website: 'https://tealium.com',
+          icon: 'Tealium.svg'
+        }
+      ],
+      'Customer data platform': [
+        {
+          name: 'Tealium',
+          description: 'Tealium provides a sales enterprise tag management system and marketing software.',
+          website: 'https://tealium.com',
+          icon: 'Tealium.svg'
+        }
+      ],
+      Security: [
+        {
+          name: 'Cloudflare Bot Management',
+          description: 'Cloudflare bot management solution identifies and mitigates automated traffic to protect websites from bad bots.',
+          website: 'https://www.cloudflare.com/en-gb/products/bot-management/',
+          icon: 'CloudFlare.svg'
+        },
+        {
+          name: 'HSTS',
+          description: 'HTTP Strict Transport Security (HSTS) informs browsers that the site should only be accessed using HTTPS.',
+          website: 'https://www.rfc-editor.org/rfc/rfc6797#section-6.1',
+          icon: 'default.svg'
+        }
+      ],
+      'JavaScript libraries': [
+        {
+          name: 'web-vitals',
+          description: 'The web-vitals JavaScript is a tiny, modular library for measuring all the web vitals metrics on real users.',
+          website: 'https://github.com/GoogleChrome/web-vitals',
+          icon: 'web-vitals.svg'
+        },
+        {
+          name: 'Hammer.js',
+          description: 'Hammer.js is a JavaScript library for adding touch gestures like swipe, pinch, and rotate to web applications.',
+          website: 'https://hammerjs.github.io',
+          icon: 'Hammer.js.svg'
+        },
+        {
+          name: 'core-js',
+          description: 'core-js is a modular standard library for JavaScript, with polyfills for cutting-edge ECMAScript features.',
+          website: 'https://github.com/zloirock/core-js',
+          icon: 'core-js.png'
+        }
+      ],
+      RUM: [
+        {
+          name: 'web-vitals',
+          description: 'The web-vitals JavaScript is a tiny, modular library for measuring all the web vitals metrics on real users.',
+          website: 'https://github.com/GoogleChrome/web-vitals',
+          icon: 'web-vitals.svg'
+        }
+      ],
+      Analytics: [
+        {
+          name: 'TikTok Pixel',
+          description: null,
+          website: 'https://ads.tiktok.com',
+          icon: 'TikTok.svg'
+        }
+      ],
+      Performance: [
+        {
+          name: 'Priority Hints',
+          description: 'Priority Hints exposes a mechanism for developers to signal a relative priority for browsers to consider when fetching resources.',
+          website: 'https://wicg.github.io/priority-hints/',
+          icon: 'Priority Hints.svg'
+        }
+      ],
+      Advertising: [
+        {
+          name: 'Linkedin Ads',
+          description: 'Linkedin Ads is a paid marketing tool that offers access to Linkedin social networks through various sponsored posts and other methods.',
+          website: 'https://business.linkedin.com/marketing-solutions/ads',
+          icon: 'Linkedin.svg'
+        }
+      ],
+      'SSL/TLS certificate authorities': [
+        {
+          name: 'DigiCert',
+          description: null,
+          website: 'https://www.digicert.com/',
+          icon: 'DigiCert.svg'
+        }
+      ],
+      CDN: [
+        {
+          name: 'Cloudflare',
+          description: 'Cloudflare is a web-infrastructure and website-security company, providing content-delivery-network services, DDoS mitigation, Internet security, and distributed domain-name-server services.',
+          website: 'https://www.cloudflare.com',
+          icon: 'CloudFlare.svg'
+        },
+        {
+          name: 'Amazon S3',
+          description: 'Amazon S3 or Amazon Simple Storage Service is a service offered by Amazon Web Services (AWS) that provides object storage through a web service interface.',
+          website: 'https://aws.amazon.com/s3/',
+          icon: 'Amazon S3.svg'
+        }
+      ],
+      Miscellaneous: [
+        {
+          name: 'Open Graph',
+          description: 'Open Graph is a protocol that is used to integrate any web page into the social graph.',
+          website: 'https://ogp.me',
+          icon: 'Open Graph.svg'
+        }
+      ]
+    }
+};
+
+---
+<Gallery {...pageData} />

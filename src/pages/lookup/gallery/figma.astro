@@ -1,0 +1,190 @@
+---
+import Gallery from "../../../layouts/LookupGallery.astro";
+
+export const pageData = {
+    company: {
+        name: "Figma",
+        metaTitle: "Figma: The Collaborative Interface Design Tool",
+        description: "Figma is the leading collaborative design platform for building meaningful products. Design, prototype, and build products faster—while gathering feedback all in one place.",
+        websiteUrl: "https://figma.com",
+        ogImageUrl: "https://cdn.sanity.io/images/599r6htc/regionalized/1adfa5a99040c80af7b4b5e3e2cf845315ea2367-2400x1260.png?w=1200&q=70&fit=max&auto=format",
+        dateScanned: "30/09/25" //day/month/year
+    },
+    lighthouse: {
+        desktop: {
+            performance: 54,
+            accessibility: 93,
+            bestPractices: 70,
+            seo: 100
+        },
+        mobile: {
+            performance: 32,
+            accessibility: 93,
+            bestPractices: 71,
+            seo: 100
+        }
+    },
+    techByCategory: {
+      CMS: [
+        {
+          name: 'Sanity',
+          description: 'Sanity is a platform for structured content. It comes with an open-source, headless CMS that can be customized with Javascript, a real-time hosted data store and an asset delivery pipeline.',
+          website: 'https://www.sanity.io',
+          icon: 'Sanity.svg'
+        }
+      ],
+      'Issue trackers': [
+        {
+          name: 'Sentry',
+          description: 'Sentry is an open-source platform for workflow productivity, aggregating errors from across the stack in real time.',
+          website: 'https://sentry.io/',
+          icon: 'Sentry.svg'
+        }
+      ],
+      'Programming languages': [
+        {
+          name: 'PHP',
+          description: 'PHP is a general-purpose scripting language used for web development.',
+          website: 'https://php.net',
+          icon: 'PHP.svg'
+        }
+      ],
+      'Video players': [
+        {
+          name: 'Vimeo',
+          description: 'Vimeo is a video hosting, sharing and services platform. Vimeo operation an ad-free basis by providing subscription plans.',
+          website: 'https://vimeo.com',
+          icon: 'Vimeo.svg'
+        }
+      ],
+      'JavaScript frameworks': [
+        {
+          name: 'React',
+          description: 'React is an open-source JavaScript library for building user interfaces or UI components.',
+          website: 'https://reactjs.org',
+          icon: 'React.svg'
+        },
+        {
+          name: 'Next.js',
+          description: 'Next.js is a React framework for developing single page Javascript applications.',
+          website: 'https://nextjs.org',
+          icon: 'Next.js.svg'
+        },
+        {
+          name: 'Emotion',
+          description: 'Emotion is a library designed for writing CSS styles with JavaScript.',
+          website: 'https://emotion.sh',
+          icon: 'Emotion.svg'
+        }
+      ],
+      'Web frameworks': [
+        {
+          name: 'Next.js',
+          description: 'Next.js is a React framework for developing single page Javascript applications.',
+          website: 'https://nextjs.org',
+          icon: 'Next.js.svg'
+        }
+      ],
+      'Web servers': [
+        {
+          name: 'Next.js',
+          description: 'Next.js is a React framework for developing single page Javascript applications.',
+          website: 'https://nextjs.org',
+          icon: 'Next.js.svg'
+        }
+      ],
+      'Static site generator': [
+        {
+          name: 'Next.js',
+          description: 'Next.js is a React framework for developing single page Javascript applications.',
+          website: 'https://nextjs.org',
+          icon: 'Next.js.svg'
+        }
+      ],
+      Development: [
+        {
+          name: 'Emotion',
+          description: 'Emotion is a library designed for writing CSS styles with JavaScript.',
+          website: 'https://emotion.sh',
+          icon: 'Emotion.svg'
+        }
+      ],
+      PaaS: [
+        {
+          name: 'Amazon Web Services',
+          description: 'Amazon Web Services (AWS) is a comprehensive cloud services platform offering compute power, database storage, content delivery and other functionality.',
+          website: 'https://aws.amazon.com/',
+          icon: 'Amazon Web Services.svg'
+        }
+      ],
+      'JavaScript libraries': [
+        {
+          name: 'Framer Motion',
+          description: 'Framer Motion is a modern animation library for JavaScript, React, and Vue.',
+          website: 'https://motion.dev',
+          icon: 'FramerMotion.svg'
+        }
+      ],
+      Performance: [
+        {
+          name: 'Priority Hints',
+          description: 'Priority Hints exposes a mechanism for developers to signal a relative priority for browsers to consider when fetching resources.',
+          website: 'https://wicg.github.io/priority-hints/',
+          icon: 'Priority Hints.svg'
+        }
+      ],
+      Security: [
+        {
+          name: 'HSTS',
+          description: 'HTTP Strict Transport Security (HSTS) informs browsers that the site should only be accessed using HTTPS.',
+          website: 'https://www.rfc-editor.org/rfc/rfc6797#section-6.1',
+          icon: 'default.svg'
+        }
+      ],
+      CDN: [
+        {
+          name: 'Amazon CloudFront',
+          description: 'Amazon CloudFront is a fast content delivery network (CDN) service that securely delivers data, videos, applications, and APIs to customers globally with low latency, high transfer speeds.',
+          website: 'https://aws.amazon.com/cloudfront/',
+          icon: 'Amazon Cloudfront.svg'
+        }
+      ],
+      'SSL/TLS certificate authorities': [
+        {
+          name: 'AWS Certificate Manager',
+          description: 'AWS Certificate Manager is a service that lets you easily provision, manage, and deploy public and private Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificates for use with AWS services and your internal connected resources.',
+          website: 'https://aws.amazon.com/certificate-manager/',
+          icon: 'AWS Certificate Manager.svg'
+        }
+      ],
+      Miscellaneous: [
+        {
+          name: 'Webpack',
+          description: 'Webpack is an open-source JavaScript module bundler.',
+          website: 'https://webpack.js.org/',
+          icon: 'Webpack.svg'
+        },
+        {
+          name: 'PWA',
+          description: 'Progressive Web Apps (PWAs) are web apps built and enhanced with modern APIs to deliver enhanced capabilities, reliability, and installability while reaching anyone, anywhere, on any device, all with a single codebase.',
+          website: 'https://web.dev/progressive-web-apps/',
+          icon: 'PWA.svg'
+        },
+        {
+          name: 'Open Graph',
+          description: 'Open Graph is a protocol that is used to integrate any web page into the social graph.',
+          website: 'https://ogp.me',
+          icon: 'Open Graph.svg'
+        },
+        {
+          name: 'HTTP/3',
+          description: 'HTTP/3 is the third major version of the Hypertext Transfer Protocol used to exchange information on the World Wide Web.',
+          website: 'https://httpwg.org/',
+          icon: 'HTTP3.svg'
+        }
+      ]
+    }
+};
+
+---
+<Gallery {...pageData} />
