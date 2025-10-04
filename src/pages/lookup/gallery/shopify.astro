@@ -1,0 +1,142 @@
+---
+import Gallery from "../../../layouts/LookupGallery.astro";
+
+export const pageData = {
+    company: {
+        name: "Shopify",
+        metaTitle: "Shopify: The All-in-One Commerce Platform for Businesses - Shopify",
+        description: "Try Shopify free and start a business or grow an existing one. Get more than ecommerce software with tools to manage every part of your business.",
+        websiteUrl: "https://shopify.com",
+        ogImageUrl: "https://cdn.shopify.com/b/shopify-brochure2-assets/d617483c5e5cdd01ae8b4f2571c76f34.png?originalWidth=2400&originalHeight=1260",
+        dateScanned: "01/10/25" //day/month/year
+    },
+    lighthouse: {
+        desktop: {
+            performance: 76,
+            accessibility: 93,
+            bestPractices: 100,
+            seo: 100
+        },
+        mobile: {
+            performance: 50,
+            accessibility: 93,
+            bestPractices: 100,
+            seo: 100
+        }
+    },
+    techByCategory: {
+      Ecommerce: [
+        {
+          name: 'Shopify',
+          description: 'Shopify is a subscription-based software that allows anyone to set up an online store and sell their products. Shopify store owners can also sell in physical locations using Shopify POS, a point-of-sale app and accompanying hardware.',
+          website: 'https://shopify.com',
+          icon: 'Shopify.svg'
+        },
+        {
+          name: 'Cart Functionality',
+          description: 'Websites that have a shopping cart or checkout page, either using a known ecommerce platform or a custom solution.',
+          website: 'https://www.wappalyzer.com/technologies/ecommerce/cart-functionality',
+          icon: 'Cart-generic.svg'
+        }
+      ],
+      'JavaScript frameworks': [
+        {
+          name: 'React',
+          description: 'React is an open-source JavaScript library for building user interfaces or UI components.',
+          website: 'https://reactjs.org',
+          icon: 'React.svg'
+        },
+        {
+          name: 'React Router',
+          description: 'React Router provides declarative routing for React.',
+          website: 'https://reactrouter.com',
+          icon: 'React Router.svg'
+        }
+      ],
+      Analytics: [
+        {
+          name: 'Linkedin Insight Tag',
+          description: 'LinkedIn Insight Tag is a lightweight JavaScript tag that powers conversion tracking, website audiences, and website demographics.',
+          website: 'https://business.linkedin.com/marketing-solutions/insight-tag',
+          icon: 'Linkedin.svg'
+        },
+        {
+          name: 'Google Analytics',
+          description: 'Google Analytics is a free web analytics service that tracks and reports website traffic.',
+          website: 'https://google.com/analytics',
+          icon: 'Google Analytics.svg'
+        },
+        {
+          name: 'Facebook Pixel',
+          description: 'Facebook pixel is an analytics tool that allows you to measure the effectiveness of your advertising.',
+          website: 'https://facebook.com',
+          icon: 'Facebook.svg'
+        }
+      ],
+      'Tag managers': [
+        {
+          name: 'Google Tag Manager',
+          description: 'Google Tag Manager is a tag management system (TMS) that allows you to quickly and easily update measurement codes and related code fragments collectively known as tags on your website or mobile app.',
+          website: 'https://www.google.com/tagmanager',
+          icon: 'Google Tag Manager.svg'
+        }
+      ],
+      'JavaScript libraries': [
+        {
+          name: 'core-js',
+          description: 'core-js is a modular standard library for JavaScript, with polyfills for cutting-edge ECMAScript features.',
+          website: 'https://github.com/zloirock/core-js',
+          icon: 'core-js.png'
+        }
+      ],
+      Performance: [
+        {
+          name: 'Priority Hints',
+          description: 'Priority Hints exposes a mechanism for developers to signal a relative priority for browsers to consider when fetching resources.',
+          website: 'https://wicg.github.io/priority-hints/',
+          icon: 'Priority Hints.svg'
+        }
+      ],
+      Advertising: [
+        {
+          name: 'DoubleClick Floodlight',
+          description: null,
+          website: 'https://support.google.com/ds/answer/6029713?hl=en',
+          icon: 'DoubleClick.svg'
+        }
+      ],
+      Security: [
+        {
+          name: 'HSTS',
+          description: 'HTTP Strict Transport Security (HSTS) informs browsers that the site should only be accessed using HTTPS.',
+          website: 'https://www.rfc-editor.org/rfc/rfc6797#section-6.1',
+          icon: 'default.svg'
+        }
+      ],
+      CDN: [
+        {
+          name: 'Cloudflare',
+          description: 'Cloudflare is a web-infrastructure and website-security company, providing content-delivery-network services, DDoS mitigation, Internet security, and distributed domain-name-server services.',
+          website: 'https://www.cloudflare.com',
+          icon: 'CloudFlare.svg'
+        }
+      ],
+      Miscellaneous: [
+        {
+          name: 'Open Graph',
+          description: 'Open Graph is a protocol that is used to integrate any web page into the social graph.',
+          website: 'https://ogp.me',
+          icon: 'Open Graph.svg'
+        },
+        {
+          name: 'HTTP/3',
+          description: 'HTTP/3 is the third major version of the Hypertext Transfer Protocol used to exchange information on the World Wide Web.',
+          website: 'https://httpwg.org/',
+          icon: 'HTTP3.svg'
+        }
+      ]
+    }
+};
+
+---
+<Gallery {...pageData} />
