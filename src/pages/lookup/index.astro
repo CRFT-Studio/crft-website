@@ -35,7 +35,7 @@ if (url && datetime) {
 
   await logsnag.track({
     channel: "lookup",
-    event: "New CRFT Lookup",
+    event: `New CRFT Lookup from ${url}`,
     icon: "🔎",
     notify: true,
     tags: {
