@@ -1,0 +1,130 @@
+---
+import Gallery from "../../../layouts/LookupGallery.astro";
+
+export const pageData = {
+    company: {
+        name: "Brittany Chiang",
+        metaTitle: "Brittany Chiang",
+        description: "Brittany Chiang is a software engineer who builds accessible, inclusive products and digital experiences for the web.",
+        websiteUrl: "https://brittanychiang.com",
+        ogImageUrl: "https://brittanychiang.com/og.png",
+        dateScanned: "05/10/25" //day/month/year
+    },
+    lighthouse: {
+        desktop: {
+            performance: 93,
+            accessibility: 100,
+            bestPractices: 100,
+            seo: 100
+        },
+        mobile: {
+            performance: 76,
+            accessibility: 96,
+            bestPractices: 100,
+            seo: 100
+        }
+    },
+    techByCategory: {
+      'JavaScript frameworks': [
+        {
+          name: 'React',
+          description: 'React is an open-source JavaScript library for building user interfaces or UI components.',
+          website: 'https://reactjs.org',
+          icon: 'React.svg'
+        },
+        {
+          name: 'Next.js',
+          description: 'Next.js is a React framework for developing single page Javascript applications.',
+          website: 'https://nextjs.org',
+          icon: 'Next.js.svg'
+        }
+      ],
+      'Web frameworks': [
+        {
+          name: 'Next.js',
+          description: 'Next.js is a React framework for developing single page Javascript applications.',
+          website: 'https://nextjs.org',
+          icon: 'Next.js.svg'
+        }
+      ],
+      'Web servers': [
+        {
+          name: 'Next.js',
+          description: 'Next.js is a React framework for developing single page Javascript applications.',
+          website: 'https://nextjs.org',
+          icon: 'Next.js.svg'
+        }
+      ],
+      'Static site generator': [
+        {
+          name: 'Next.js',
+          description: 'Next.js is a React framework for developing single page Javascript applications.',
+          website: 'https://nextjs.org',
+          icon: 'Next.js.svg'
+        }
+      ],
+      PaaS: [
+        {
+          name: 'Vercel',
+          description: 'Vercel is a cloud platform for static frontends and serverless functions.',
+          website: 'https://vercel.com',
+          icon: 'vercel.svg'
+        }
+      ],
+      'Tag managers': [
+        {
+          name: 'Google Tag Manager',
+          description: 'Google Tag Manager is a tag management system (TMS) that allows you to quickly and easily update measurement codes and related code fragments collectively known as tags on your website or mobile app.',
+          website: 'https://www.google.com/tagmanager',
+          icon: 'Google Tag Manager.svg'
+        }
+      ],
+      Analytics: [
+        {
+          name: 'Google Analytics',
+          description: 'Google Analytics is a free web analytics service that tracks and reports website traffic.',
+          website: 'https://google.com/analytics',
+          icon: 'Google Analytics.svg'
+        }
+      ],
+      Advertising: [
+        {
+          name: 'DoubleClick Floodlight',
+          description: null,
+          website: 'https://support.google.com/ds/answer/6029713?hl=en',
+          icon: 'DoubleClick.svg'
+        }
+      ],
+      Security: [
+        {
+          name: 'HSTS',
+          description: 'HTTP Strict Transport Security (HSTS) informs browsers that the site should only be accessed using HTTPS.',
+          website: 'https://www.rfc-editor.org/rfc/rfc6797#section-6.1',
+          icon: 'default.svg'
+        }
+      ],
+      Miscellaneous: [
+        {
+          name: 'Webpack',
+          description: 'Webpack is an open-source JavaScript module bundler.',
+          website: 'https://webpack.js.org/',
+          icon: 'Webpack.svg'
+        },
+        {
+          name: 'PWA',
+          description: 'Progressive Web Apps (PWAs) are web apps built and enhanced with modern APIs to deliver enhanced capabilities, reliability, and installability while reaching anyone, anywhere, on any device, all with a single codebase.',
+          website: 'https://web.dev/progressive-web-apps/',
+          icon: 'PWA.svg'
+        },
+        {
+          name: 'Open Graph',
+          description: 'Open Graph is a protocol that is used to integrate any web page into the social graph.',
+          website: 'https://ogp.me',
+          icon: 'Open Graph.svg'
+        }
+      ]
+    }
+};
+
+---
+<Gallery {...pageData} />
