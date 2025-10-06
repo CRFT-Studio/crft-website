@@ -62,71 +62,121 @@ import LookupFeatures from "../../components/LookupFeatures.astro";
             <div class="container">
                 <h2 class="lg:text-4xl text-3xl text-balance text-center font-medium text-neutral-200 lg:leading-snug leading-normal">How we stack up</h2>
                 <p class="text-pretty text-lg text-center mt-3 text-neutral-300 mb-6 max-w-[800px] mx-auto">See how CRFT Lookup compares to Octopus.do in features and capabilities. Both tools visualize sitemaps, but we go beyond with performance analysis, technology detection and meta tag previews.</p>
-                <div class="max-w-[800px] mx-auto font-medium lg:text-lg text-sm mt-12">
-                    <div class="grid grid-cols-[1fr_0.3fr_0.4fr] gap-x-3">
-                        <div></div>
-                        <div class="flex flex-row items-center justify-center pb-7">
-                            <div class="square-card p-1 aspect-square w-10 h-10 object-contain flex items-center justify-center bg-[#2F7FEF]">
-                                <svg class="w-14 fill-[#FFFFFF]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" preserveAspectRatio="xMidYMid meet" aria-hidden="true" role="img">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M40.651 24.5604H35.4183C35.0841 24.5604 34.7728 24.4014 34.5837 24.1351C34.3954 23.8695 34.3533 23.5311 34.4732 23.2298L36.6048 17.8702L36.6235 17.8236C37.1625 16.3937 37.4344 14.8961 37.4344 13.3677C37.4344 6.20181 31.4063 0.37207 23.9964 0.37207C16.587 0.37207 10.5579 6.20181 10.5579 13.3677C10.5579 14.2617 10.6527 15.154 10.8383 16.0205C10.9595 16.5857 11.1254 17.1562 11.3301 17.7153C11.3346 17.7264 11.3381 17.7368 11.3409 17.7477L11.4878 18.1247L11.5047 18.1698L13.4734 23.2368C13.5904 23.5376 13.5478 23.8746 13.3577 24.139C13.1694 24.4022 12.8584 24.5602 12.5254 24.5602H7.34234C5.35767 24.5602 3.74414 26.1209 3.74414 28.0403C3.74414 29.9583 5.35767 31.5198 7.34234 31.5198H12.8466C13.2569 31.5198 13.6266 31.7591 13.7827 32.1262C13.9394 32.4929 13.8508 32.9151 13.5587 33.1949L9.53204 37.0502C8.85634 37.7041 8.48121 38.5781 8.48121 39.5073C8.48121 40.437 8.85634 41.3105 9.53603 41.9681C10.2147 42.6254 11.1191 42.9868 12.0797 42.9868C13.0409 42.9868 13.9429 42.6264 14.6198 41.9719L18.6737 38.0901C18.867 37.9044 19.1247 37.8069 19.3855 37.8069C19.5165 37.8069 19.6489 37.831 19.7754 37.8819C20.152 38.0341 20.3972 38.3902 20.3972 38.7851V44.1468C20.3972 46.0653 22.012 47.6268 23.9954 47.6268C25.9796 47.6268 27.5944 46.0653 27.5944 44.1468V38.7899C27.5944 38.3945 27.8393 38.038 28.2174 37.8858C28.594 37.7331 29.0293 37.8166 29.3191 38.0949L33.3516 41.9654C34.034 42.6254 34.9379 42.9868 35.8984 42.9868C36.8592 42.9868 37.7631 42.6254 38.4426 41.9681C39.1225 41.3102 39.4964 40.4372 39.4964 39.5073C39.4964 38.5781 39.1208 37.7032 38.4401 37.0441L34.4273 33.1934C34.1363 32.9136 34.049 32.4924 34.2049 32.1258C34.3615 31.7591 34.7301 31.5198 35.1404 31.5198H40.6505C42.6339 31.5198 44.2482 29.9583 44.2482 28.0403C44.2484 26.1211 42.6344 24.5604 40.651 24.5604ZM20.1328 10.6494C18.4883 10.6494 17.1504 11.9431 17.1504 13.5335C17.1504 15.1237 18.4883 16.4176 20.1328 16.4176C21.777 16.4176 23.1149 15.1237 23.1149 13.5335C23.1149 11.9431 21.777 10.6494 20.1328 10.6494ZM30.5657 15.5749C29.4038 16.699 27.5114 16.6985 26.3491 15.5749C25.1858 14.4493 25.1858 12.6199 26.3491 11.4948C27.511 10.3716 29.4031 10.3711 30.5657 11.4955C31.0253 11.9406 31.7714 11.9406 32.2316 11.4955C32.6912 11.0509 32.6912 10.3299 32.2316 9.8853C30.1504 7.87322 26.7644 7.87154 24.6835 9.88482C24.5443 10.0197 24.4158 10.1603 24.2954 10.3062C23.3161 9.12905 21.8173 8.37305 20.138 8.37305C17.195 8.37305 14.8008 10.6888 14.8008 13.5348C14.8008 16.3808 17.195 18.6966 20.138 18.6966C21.8173 18.6966 23.3161 17.9404 24.2954 16.7634C24.4158 16.9094 24.544 17.0497 24.6835 17.1848C25.7238 18.1912 27.0907 18.6944 28.4575 18.6944C29.8244 18.6944 31.1905 18.1912 32.2316 17.1848C32.6912 16.7403 32.6912 16.0192 32.2316 15.5749C31.7714 15.1296 31.0253 15.1296 30.5657 15.5749Z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="flex md:flex-row flex-col items-center justify-center pb-7 gap-2 bg-green-400/15 rounded-t-lg">
-                            <span class="card p-1 inline-block translate-y-[2px]"><svg class="lg:w-[70px] w-[60px]" viewBox="0 0 132 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.47615 11.5709C6.47615 7.67882 8.42219 5.8923 16.6211 5.8923C21.6297 5.8923 26.8298 6.78556 30.5623 7.51931L31.7108 2.12783C27.2764 1.10696 21.6616 0.341309 16.3977 0.341309C4.46631 0.341309 0 4.26528 0 11.5709C0 18.8765 4.46631 22.8324 16.3977 22.8324C21.6616 22.8324 27.2764 22.0667 31.7108 21.0459L30.5623 15.6544C26.8298 16.3881 21.6297 17.2814 16.6211 17.2814C8.42219 17.2814 6.47615 15.4949 6.47615 11.5709ZM40.6676 22.4176V16.101H48.9303L56.7463 22.4176H64.8814L57.7353 16.8029L56.0125 15.7501L57.4162 15.7182C62.2335 15.3354 65.0728 13.0384 65.0728 8.25306C65.0728 2.54256 61.3402 0.66033 55.9806 0.66033H34.1914V22.4176H40.6676ZM40.6676 6.21132H55.3426C57.48 6.21132 58.3733 6.81746 58.3733 8.7635C58.3733 10.55 57.48 11.2519 55.3426 11.2519H40.6676V6.21132ZM74.3768 22.4176V15.3035H96.3257V10.1991H74.3768V6.21132H96.9319V0.66033H67.9006V22.4176H74.3768ZM111.951 6.21132V22.4176H118.427V6.21132H131.316V0.66033H99.0305V6.21132H111.951Z" fill="white"/>
-                            </svg></span>
-                            <div>Lookup</div>
-                        </div>
-                        <div class="py-3">Technology Detection</div>
-                        <div class="flex flex-row items-center justify-center">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="m336-293.85 144-144 144 144L666.15-336l-144-144 144-144L624-666.15l-144 144-144-144L293.85-624l144 144-144 144L336-293.85ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Z"/></svg>
-                        </div>
-                        <div class="flex flex-row items-center justify-center bg-green-400/15">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
-                        </div>
-                    </div>
-                    <div class="w-full h-[2px] bg-neutral-600"></div>
-                    <div class="grid grid-cols-[1fr_0.3fr_0.4fr] gap-x-3">
-                        <div class="py-3">Lighthouse Analysis</div>
-                        <div class="flex flex-row items-center justify-center">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="m336-293.85 144-144 144 144L666.15-336l-144-144 144-144L624-666.15l-144 144-144-144L293.85-624l144 144-144 144L336-293.85ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Z"/></svg>
-                        </div>
-                        <div class="flex flex-row items-center justify-center bg-green-400/15">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
-                        </div>
-                    </div>
-                    <div class="w-full h-[2px] bg-neutral-600"></div>
-                    <div class="grid grid-cols-[1fr_0.3fr_0.4fr] gap-x-3">
-                        <div class="py-3">Meta Tag Previews</div>
-                        <div class="flex flex-row items-center justify-center">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="m336-293.85 144-144 144 144L666.15-336l-144-144 144-144L624-666.15l-144 144-144-144L293.85-624l144 144-144 144L336-293.85ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Z"/></svg>
-                        </div>
-                        <div class="flex flex-row items-center justify-center bg-green-400/15">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
-                        </div>
-                    </div>
-                    <div class="w-full h-[2px] bg-neutral-600"></div>
-                    <div class="grid grid-cols-[1fr_0.3fr_0.4fr] gap-x-3">
-                        <div class="py-3">Sitemap Visualization</div>
-                        <div class="flex flex-row items-center justify-center">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
-                        </div>
-                        <div class="flex flex-row items-center justify-center bg-green-400/15">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
-                        </div>
-                    </div>
-                    <div class="w-full h-[2px] bg-neutral-600"></div>
-                    <div class="grid grid-cols-[1fr_0.3fr_0.4fr] gap-x-3">
-                        <div class="py-3">Free, Unlimited Usage</div>
-                        <div class="flex flex-row items-center justify-center">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="m336-293.85 144-144 144 144L666.15-336l-144-144 144-144L624-666.15l-144 144-144-144L293.85-624l144 144-144 144L336-293.85ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Z"/></svg>
-                        </div>
-                        <div class="flex flex-row items-center justify-center bg-green-400/15 rounded-b-lg">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
-                        </div>
-                    </div>
+                <div class="mt-12 lg:bg-transparent lg:border-0 square-card p-0 max-w-[800px] mx-auto">
+                    <table class="w-full text-left lg:text-lg border-collapse">
+                        <thead class="my-6 hidden lg:table-header-group">
+                            <th></th>
+                            <th>Octopus.do</th>
+                            <th>CRFT Lookup</th>
+                        </thead>
+                        <tr>
+                            <td>Technology Detection</td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">Octopus.do</div>
+                                <div>
+                                    <svg class="flex-shrink-0 w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#EA3323"><path d="m336-293.85 144-144 144 144L666.15-336l-144-144 144-144L624-666.15l-144 144-144-144L293.85-624l144 144-144 144L336-293.85ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Z"/></svg>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">CRFT Lookup</div>
+                                <div>
+                                    <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lighthouse Analysis</td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">Octopus.do</div>
+                                <div>
+                                    <svg class="flex-shrink-0 w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#EA3323"><path d="m336-293.85 144-144 144 144L666.15-336l-144-144 144-144L624-666.15l-144 144-144-144L293.85-624l144 144-144 144L336-293.85ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Z"/></svg>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">CRFT Lookup</div>
+                                <div>
+                                    <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Meta Tag Previews</td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">Octopus.do</div>
+                                <div>
+                                    <svg class="flex-shrink-0 w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#EA3323"><path d="m336-293.85 144-144 144 144L666.15-336l-144-144 144-144L624-666.15l-144 144-144-144L293.85-624l144 144-144 144L336-293.85ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Z"/></svg>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">CRFT Lookup</div>
+                                <div>
+                                    <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sitemap Visualization</td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">Octopus.do</div>
+                                <div>
+                                    <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">CRFT Lookup</div>
+                                <div>
+                                    <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Free, Unlimited Usage</td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">Octopus.do</div>
+                                <div>
+                                    <svg class="flex-shrink-0 w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#EA3323"><path d="m336-293.85 144-144 144 144L666.15-336l-144-144 144-144L624-666.15l-144 144-144-144L293.85-624l144 144-144 144L336-293.85ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Z"/></svg>
+                                </div>
+                            </td>
+                            <td class="">
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">CRFT Lookup</div>
+                                <div>
+                                    <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
+                <style>
+                    @reference "../../styles/global.css";
+
+                    td {
+                        @apply p-3 border-b border-neutral-700;
+                    }
+
+                    @media (min-width: 1023px) {
+                        tr:last-child td, tr:last-child th {
+                            @apply border-b-0;
+                        }
+                    }
+
+                    th {
+                        @apply p-3 pb-6 font-medium;
+                    }
+
+                    tr :nth-child(3), th:nth-child(3) {
+                        @apply bg-green-300/10;
+                    }
+
+                    @media (max-width: 1023px) {
+                        tr, td {
+                            @apply block;
+                        }
+
+                        tr:not(:first-child) td:first-child {
+                            @apply pt-10 font-medium;
+                        }
+                    }
+                </style>
             </div>
         </section>
         <section>

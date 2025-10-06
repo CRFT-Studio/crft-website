@@ -52,72 +52,121 @@ import LookupFeatures from "../../components/LookupFeatures.astro";
             <div class="container">
                 <h2 class="lg:text-4xl text-3xl text-balance text-center font-medium text-neutral-200 lg:leading-snug leading-normal">How we stack up</h2>
                 <p class="text-pretty text-lg text-center mt-3 text-neutral-300 mb-6 max-w-[800px] mx-auto">See how CRFT Lookup compares to Wappalyzer in features and capabilities. Both tools detect technologies, but we go beyond with performance analysis, meta tag previews and sitemap visualization.</p>
-                <div class="max-w-[800px] mx-auto font-medium lg:text-lg text-sm mt-12">
-                    <div class="grid grid-cols-[1fr_0.3fr_0.4fr] gap-x-3">
-                        <div></div>
-                        <div class="flex flex-row items-center justify-center pb-7">
-                            <div class="square-card border-purple-800 p-1 aspect-square w-10 h-10 object-contain flex items-center justify-center bg-[#460FAD]">
-                                <svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M63.9994 93.9355L7.33824 64.5078L0.00224445 69.7704L0 72.9895L63.9994 118.91L127.996 72.9918L128 69.7738L120.661 64.5078L63.9994 93.9355Z" fill="white" fill-opacity="0.5"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.00336668 56.0236L63.9994 10.1053L127.999 56.0258L127.995 59.2449L63.9994 105.164L0 59.2427L0.00336668 56.0236ZM64.5695 44.6585L72.3724 55.424L72.2882 55.4858L57.9159 49.5281L52.665 53.3715L60.8033 63.863L60.7203 63.9248L46.055 58.2108L39.3812 63.0973L67.4357 73.2519L73.021 69.1627L64.5269 58.2883L64.5909 58.2422L79.5064 64.4154L85.0917 60.3251L71.2221 39.7878L64.5695 44.6585Z" fill="white"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="flex md:flex-row flex-col items-center justify-center pb-7 gap-2 bg-green-400/15 rounded-t-lg">
-                            <span class="card p-1 inline-block translate-y-[2px]"><svg class="lg:w-[70px] w-[60px]" viewBox="0 0 132 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M6.47615 11.5709C6.47615 7.67882 8.42219 5.8923 16.6211 5.8923C21.6297 5.8923 26.8298 6.78556 30.5623 7.51931L31.7108 2.12783C27.2764 1.10696 21.6616 0.341309 16.3977 0.341309C4.46631 0.341309 0 4.26528 0 11.5709C0 18.8765 4.46631 22.8324 16.3977 22.8324C21.6616 22.8324 27.2764 22.0667 31.7108 21.0459L30.5623 15.6544C26.8298 16.3881 21.6297 17.2814 16.6211 17.2814C8.42219 17.2814 6.47615 15.4949 6.47615 11.5709ZM40.6676 22.4176V16.101H48.9303L56.7463 22.4176H64.8814L57.7353 16.8029L56.0125 15.7501L57.4162 15.7182C62.2335 15.3354 65.0728 13.0384 65.0728 8.25306C65.0728 2.54256 61.3402 0.66033 55.9806 0.66033H34.1914V22.4176H40.6676ZM40.6676 6.21132H55.3426C57.48 6.21132 58.3733 6.81746 58.3733 8.7635C58.3733 10.55 57.48 11.2519 55.3426 11.2519H40.6676V6.21132ZM74.3768 22.4176V15.3035H96.3257V10.1991H74.3768V6.21132H96.9319V0.66033H67.9006V22.4176H74.3768ZM111.951 6.21132V22.4176H118.427V6.21132H131.316V0.66033H99.0305V6.21132H111.951Z" fill="white"/>
-                            </svg></span>
-                            <div>Lookup</div>
-                        </div>
-                        <div class="py-3">Technology Detection</div>
-                        <div class="flex flex-row items-center justify-center">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
-                        </div>
-                        <div class="flex flex-row items-center justify-center bg-green-400/15">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
-                        </div>
-                    </div>
-                    <div class="w-full h-[2px] bg-neutral-600"></div>
-                    <div class="grid grid-cols-[1fr_0.3fr_0.4fr] gap-x-3">
-                        <div class="py-3">Lighthouse Analysis</div>
-                        <div class="flex flex-row items-center justify-center">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="m336-293.85 144-144 144 144L666.15-336l-144-144 144-144L624-666.15l-144 144-144-144L293.85-624l144 144-144 144L336-293.85ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Z"/></svg>
-                        </div>
-                        <div class="flex flex-row items-center justify-center bg-green-400/15">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
-                        </div>
-                    </div>
-                    <div class="w-full h-[2px] bg-neutral-600"></div>
-                    <div class="grid grid-cols-[1fr_0.3fr_0.4fr] gap-x-3">
-                        <div class="py-3">Meta Tag Previews</div>
-                        <div class="flex flex-row items-center justify-center">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="m336-293.85 144-144 144 144L666.15-336l-144-144 144-144L624-666.15l-144 144-144-144L293.85-624l144 144-144 144L336-293.85ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Z"/></svg>
-                        </div>
-                        <div class="flex flex-row items-center justify-center bg-green-400/15">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
-                        </div>
-                    </div>
-                    <div class="w-full h-[2px] bg-neutral-600"></div>
-                    <div class="grid grid-cols-[1fr_0.3fr_0.4fr] gap-x-3">
-                        <div class="py-3">Sitemap Visualization</div>
-                        <div class="flex flex-row items-center justify-center">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="m336-293.85 144-144 144 144L666.15-336l-144-144 144-144L624-666.15l-144 144-144-144L293.85-624l144 144-144 144L336-293.85ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Z"/></svg>
-                        </div>
-                        <div class="flex flex-row items-center justify-center bg-green-400/15">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
-                        </div>
-                    </div>
-                    <div class="w-full h-[2px] bg-neutral-600"></div>
-                    <div class="grid grid-cols-[1fr_0.3fr_0.4fr] gap-x-3">
-                        <div class="py-3">Free, Unlimited Usage</div>
-                        <div class="flex flex-row items-center justify-center">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="m336-293.85 144-144 144 144L666.15-336l-144-144 144-144L624-666.15l-144 144-144-144L293.85-624l144 144-144 144L336-293.85ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Z"/></svg>
-                        </div>
-                        <div class="flex flex-row items-center justify-center bg-green-400/15 rounded-b-lg">
-                            <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
-                        </div>
-                    </div>
+                <div class="mt-12 lg:bg-transparent lg:border-0 square-card p-0 max-w-[800px] mx-auto">
+                    <table class="w-full text-left lg:text-lg border-collapse">
+                        <thead class="my-6 hidden lg:table-header-group">
+                            <th></th>
+                            <th>Wappalyzer</th>
+                            <th>CRFT Lookup</th>
+                        </thead>
+                        <tr>
+                            <td>Technology Detection</td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">Wappalyzer</div>
+                                <div>
+                                    <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">CRFT Lookup</div>
+                                <div>
+                                    <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Lighthouse Analysis</td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">Wappalyzer</div>
+                                <div>
+                                    <svg class="flex-shrink-0 w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#EA3323"><path d="m336-293.85 144-144 144 144L666.15-336l-144-144 144-144L624-666.15l-144 144-144-144L293.85-624l144 144-144 144L336-293.85ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Z"/></svg>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">CRFT Lookup</div>
+                                <div>
+                                    <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Meta Tag Previews</td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">Wappalyzer</div>
+                                <div>
+                                    <svg class="flex-shrink-0 w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#EA3323"><path d="m336-293.85 144-144 144 144L666.15-336l-144-144 144-144L624-666.15l-144 144-144-144L293.85-624l144 144-144 144L336-293.85ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Z"/></svg>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">CRFT Lookup</div>
+                                <div>
+                                    <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sitemap Visualization</td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">Wappalyzer</div>
+                                <div>
+                                    <svg class="flex-shrink-0 w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#EA3323"><path d="m336-293.85 144-144 144 144L666.15-336l-144-144 144-144L624-666.15l-144 144-144-144L293.85-624l144 144-144 144L336-293.85ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Z"/></svg>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">CRFT Lookup</div>
+                                <div>
+                                    <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Free, Unlimited Usage</td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">Wappalyzer</div>
+                                <div>
+                                    <svg class="flex-shrink-0 w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#EA3323"><path d="m336-293.85 144-144 144 144L666.15-336l-144-144 144-144L624-666.15l-144 144-144-144L293.85-624l144 144-144 144L336-293.85ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Z"/></svg>
+                                </div>
+                            </td>
+                            <td class="">
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">CRFT Lookup</div>
+                                <div>
+                                    <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
+                <style>
+                    @reference "../../styles/global.css";
+
+                    td {
+                        @apply p-3 border-b border-neutral-700;
+                    }
+
+                    @media (min-width: 1023px) {
+                        tr:last-child td, tr:last-child th {
+                            @apply border-b-0;
+                        }
+                    }
+
+                    th {
+                        @apply p-3 pb-6 font-medium;
+                    }
+
+                    tr :nth-child(3), th:nth-child(3) {
+                        @apply bg-green-300/10;
+                    }
+
+                    @media (max-width: 1023px) {
+                        tr, td {
+                            @apply block;
+                        }
+
+                        tr:not(:first-child) td:first-child {
+                            @apply pt-10 font-medium;
+                        }
+                    }
+                </style>
             </div>
         </section>
         <section>
