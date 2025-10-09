@@ -14,207 +14,445 @@ import HeadScripts from '../../components/HeadScripts.astro';
         />
     </head>
     <body>
-        <Navigation />
-        <section style="margin-bottom: 0px; margin-top: 100px;" class="px-5">
-            <div class="max-w-[1300px] mx-auto border border-neutral-700 bg-neutral-800 lg:p-20 p-10">
-                <div>
-                    <h1 class="lg:text-5xl text-3xl font-medium mb-16 max-w-[700px] leading-tight text-pretty">CyberImpact Website Redesign & Development Proposal</h1>
-                    <div class="flex flex-row items-center text-lg gap-4 mt">
-                        <div class="w-8 h-8 card p-1 rounded-none flex items-center justify-center text-xl">1</div>
-                        <div>Introduction</div>
-                    </div>
-                    <div class="h-[1px] bg-neutral-700 w-full my-5"></div>
-                    <div class="flex flex-row items-center text-lg gap-4 mt">
-                        <div class="w-8 h-8 card p-1 rounded-none flex items-center justify-center text-xl">2</div>
-                        <div>Timelines</div>
-                    </div>
-                    <div class="h-[1px] bg-neutral-700 w-full my-5"></div>
-                    <div class="flex flex-row items-center text-lg gap-4 mt">
-                        <div class="w-8 h-8 card p-1 rounded-none flex items-center justify-center text-xl">3</div>
-                        <div>FAQs</div>
-                    </div>
+        <!-- <div id="why-posthog" class="fixed flex items-center justify-center h-full w-full bg-neutral-800/10 backdrop-blur-xs z-50">
+            <div class="square-card">
+                <div class="text-center text-lg mb-9 underline">Why we recommend Posthog over GA4</div>
+                <div class="lg:bg-transparent lg:border-0 square-card p-0 max-w-[800px] mx-auto">
+                    <table class="w-full text-left lg:text-lg border-collapse">
+                        <thead class="my-6 hidden lg:table-header-group">
+                            <th></th>
+                            <th>GA4</th>
+                            <th>PostHog</th>
+                        </thead>
+                        <tr>
+                            <td>Data Ownership</td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">GA4</div>
+                                <div>Google-hosted</div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">PostHog</div>
+                                <div>Full (self-host/cloud)</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Privacy Law Fit</td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">GA4</div>
+                                <div>Google-defined policies</div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">PostHog</div>
+                                <div>Strong (Canada/EU)</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Event Tracking Setup</td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">GA4</div>
+                                <div>Manual, needs GTM/Measurement Prot.</div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">PostHog</div>
+                                <div>Autocapture + API + SDK</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Session Replay/Heatmap</td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">GA4</div>
+                                <div>Requires third-party tools</div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">PostHog</div>
+                                <div>Built-in</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Feature Flags/A/B Test</td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">GA4</div>
+                                <div>Needs another product</div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">PostHog</div>
+                                <div>Built-in</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Pricing</td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">GA4</div>
+                                <div>Free tier + expensive 360 upgrade</div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">PostHog</div>
+                                <div>Transparent, usage-based, free OSS</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ease of Use</td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">GA4</div>
+                                <div>Complex, steep learning curve</div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">PostHog</div>
+                                <div>Intuitive, modern UI</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Qualitative Analysis</td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">GA4</div>
+                                <div>Third-party tools needed</div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">PostHog</div>
+                                <div>Direct, in-dashboard</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Community Support</td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">GA4</div>
+                                <div>Mostly third-party</div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">PostHog</div>
+                                <div>Active & direct</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Custom Dashboards</td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">GA4</div>
+                                <div>BigQuery required for deep analysis</div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">PostHog</div>
+                                <div>Powerful, SQL/ClickHouse options</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>AI/ML Features</td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">GA4</div>
+                                <div>Mature ML (best for ads)</div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-neutral-400 lg:hidden mb-2">PostHog</div>
+                                <div>AI-assisted, modern</div>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
-                <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg mt-20">
-                    <div>
-                        <div class="sticky top-28 text-neutral-400">Introduction</div>
+                <style>
+                    @reference "../../styles/global.css";
+
+                    td {
+                        @apply p-3 border-b border-neutral-700;
+                    }
+
+                    @media (min-width: 1023px) {
+                        tr:last-child td, tr:last-child th {
+                            @apply border-b-0;
+                        }
+                    }
+
+                    th {
+                        @apply p-3 pb-6 font-medium;
+                    }
+
+                    tr :nth-child(3), th:nth-child(3) {
+                        @apply bg-green-300/10;
+                    }
+
+                    @media (max-width: 1023px) {
+                        tr, td {
+                            @apply block;
+                        }
+
+                        tr:not(:first-child) td:first-child {
+                            @apply pt-10 font-medium;
+                        }
+                    }
+                </style>
+            </div>
+        </div> -->
+        <div class="opacity-0 pointer-events-none">
+            <Navigation />
+        </div>
+        <section style="margin-bottom: 0px; margin-top: 50px;" class="px-5">
+            <div class="max-w-[1500px] mx-auto">
+                <div class="grid lg:grid-cols-[0.2fr_1fr] gap-4">
+                    <div class="order-top">
+                        <div class="sticky top-10">
+                            <div class="square-card mb-4">Language toggle</div>
+                            <div class="square-card">
+                                <div>Table of Contents</div>
+                                <div class="mt-4 flex flex-col gap-1.5 text-neutral-300">
+                                    <div>Introduction</div>
+                                    <div>Homepage Redesign</div>
+                                    <div>Timelines</div>
+                                    <div>Costs</div>
+                                    <div>FAQs</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <p class="mb-2.5 text-neutral-300 font-medium">CRFT Studio is a purpose-built partner for brands that want more than just a website.</p>
-                        <p class="text-neutral-400">We collaborate with ambitious marketing and product teams to transform their digital presence into high-performance marketing engines. At CRFT Studio, every project is designed to deliver tangible business results; combining strategy, design, and modern development in one seamless, end-to-end process. From discovery and strategy to launch and ongoing growth, we build sites that are beautiful, lightning-fast, and effortless to manage - so you can focus on growing your business, not wrangling your website.</p>
-                    </div>
-                </div>
-                <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
-                <div class="mb-10 text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
-                    <div class="inline">Estimated project duration: 3 months</div>
-                </div>
-                <div class="square-card pt-8 p-0 mb-20 overflow-hidden">
-                    <div class="lg:grid lg:grid-cols-[300px_1.5fr] flex flex-col gap-10 items-start">
-                        <div class="flex flex-col justify-between px-8 h-full pb-8">
-                            <div>
-                                <div class="text-xl font-medium mb-3">CyberImpact</div>
-                                <p class="text-base text-pretty text-neutral-300 mb-4">A fully annotated redesign implementation of CyberImpact's homepage</p>
-                                <a href="https://cyberimpact-website.vercel.app/" target="_blank" rel="noopener noreferrer" class="flex flex-row gap-1 items-center">
-                                    <div class="text-base text-orange-300 font-medium">Visit website</div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FDBA74"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+                    <div class="border border-neutral-700 bg-neutral-800 lg:p-20 lg:pt-8 p-10">
+                        <div class="lg:flex hidden flex-row items-center gap-6 flex-wrap">
+                            <a href="/" class="nav-link"><svg class="lg:h-[23px] w-[90px]" viewBox="0 0 132 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.47615 11.5709C6.47615 7.67882 8.42219 5.8923 16.6211 5.8923C21.6297 5.8923 26.8298 6.78556 30.5623 7.51931L31.7108 2.12783C27.2764 1.10696 21.6616 0.341309 16.3977 0.341309C4.46631 0.341309 0 4.26528 0 11.5709C0 18.8765 4.46631 22.8324 16.3977 22.8324C21.6616 22.8324 27.2764 22.0667 31.7108 21.0459L30.5623 15.6544C26.8298 16.3881 21.6297 17.2814 16.6211 17.2814C8.42219 17.2814 6.47615 15.4949 6.47615 11.5709ZM40.6676 22.4176V16.101H48.9303L56.7463 22.4176H64.8814L57.7353 16.8029L56.0125 15.7501L57.4162 15.7182C62.2335 15.3354 65.0728 13.0384 65.0728 8.25306C65.0728 2.54256 61.3402 0.66033 55.9806 0.66033H34.1914V22.4176H40.6676ZM40.6676 6.21132H55.3426C57.48 6.21132 58.3733 6.81746 58.3733 8.7635C58.3733 10.55 57.48 11.2519 55.3426 11.2519H40.6676V6.21132ZM74.3768 22.4176V15.3035H96.3257V10.1991H74.3768V6.21132H96.9319V0.66033H67.9006V22.4176H74.3768ZM111.951 6.21132V22.4176H118.427V6.21132H131.316V0.66033H99.0305V6.21132H111.951Z" fill="white"/>
+                            </svg></a>
+                            <div class="text-xl text-neutral-300">x</div>
+                            <a href="https://www.cyberimpact.com/en/">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="28px" viewBox="0 0 247.983 51.922" class="site-logo">
+                                    <path id="logo-cyberimpact" d="M-3202.282,69.922a25.961,25.961,0,0,1,25.96-25.961,25.962,25.962,0,0,1,25.961,25.961,25.961,25.961,0,0,1-25.961,25.96A25.96,25.96,0,0,1-3202.282,69.922Zm1.823-.05a24.138,24.138,0,0,0,24.138,24.139,24.138,24.138,0,0,0,24.138-24.139,24.138,24.138,0,0,0-24.138-24.138A24.138,24.138,0,0,0-3200.459,69.872ZM-3024.2,86.227V62.73h2.217v3.153h.1a8.235,8.235,0,0,1,1.625-1.774,7.65,7.65,0,0,1,1.774-1.084,7.93,7.93,0,0,1,1.773-.542l1.577-.148a9.495,9.495,0,0,1,3.842.739,9.1,9.1,0,0,1,2.956,2.02A9.363,9.363,0,0,1-3006.467,68a8.911,8.911,0,0,1,.591,3.4,9.059,9.059,0,0,1-.689,3.547,8.863,8.863,0,0,1-1.922,2.906,9.213,9.213,0,0,1-2.956,1.971,9.512,9.512,0,0,1-3.744.739l-1.527-.148a8.2,8.2,0,0,1-1.773-.543,7.6,7.6,0,0,1-1.823-1.084,7.433,7.433,0,0,1-1.626-1.724h-.049v9.162Zm11.97-8.276a6.9,6.9,0,0,0,2.266-1.527,6.69,6.69,0,0,0,1.428-2.217l-.049-.049a7.883,7.883,0,0,0-.049-5.714,6.611,6.611,0,0,0-1.577-2.266,7.135,7.135,0,0,0-2.265-1.428,7.34,7.34,0,0,0-2.71-.493,6.67,6.67,0,0,0-2.759.591,7,7,0,0,0-3.646,3.843,7.391,7.391,0,0,0,.05,5.566,6.949,6.949,0,0,0,3.744,3.694,6.708,6.708,0,0,0,2.66.542A7.438,7.438,0,0,0-3012.231,77.952Zm-110.1,8.227,3.005-6.651-6.749-16.8h2.364l5.518,13.842,5.911-13.842,2.316-.05-10.05,23.5Zm-68.129-4.532a4.632,4.632,0,0,1-3.005-2.217,18.836,18.836,0,0,1-1.281-5.271h-.542a.691.691,0,0,1-.519-.184.691.691,0,0,1-.22-.506l-.2-6.5a.739.739,0,0,1,.69-.739h.542c.1-2.02.3-3.547.344-4.188a2.462,2.462,0,0,1,2.118-2.118,103.965,103.965,0,0,1,13.99-1.38,2.7,2.7,0,0,0,2.069-2.414V53.764a.542.542,0,0,1-.415-.59.542.542,0,0,1,.538-.481.542.542,0,0,1,.538.481.542.542,0,0,1-.415.59v2.364a2.747,2.747,0,0,0,2.069,2.414,103.94,103.94,0,0,1,13.99,1.38,2.462,2.462,0,0,1,2.119,2.118c.1.641.247,2.217.345,4.188h.542a.69.69,0,0,1,.507.219.693.693,0,0,1,.184.52l-.2,6.453a.69.69,0,0,1-.219.506.685.685,0,0,1-.519.184h-.542a18.835,18.835,0,0,1-1.281,5.271,4.634,4.634,0,0,1-3.055,2.266,56.3,56.3,0,0,1-14.089,1.823A56.3,56.3,0,0,1-3190.459,81.646Zm-.246-20.937c-2.316.3-2.562.3-2.759,2.021s-1.133,10.837,1.084,15.664a4.235,4.235,0,0,0,2.856,2.021,54.976,54.976,0,0,0,13.2,1.675,54.855,54.855,0,0,0,13.154-1.675,4.236,4.236,0,0,0,2.857-2.021c2.217-4.828,1.281-13.99,1.084-15.714s-.444-1.675-2.76-2.02c-5.468-.345-14.384,9.311-14.384,9.311s-8.517-9.274-14-9.274Q-3190.541,60.7-3190.705,60.71Zm91.528,19.853-1.527-.148a8.1,8.1,0,0,1-1.774-.543,7.8,7.8,0,0,1-1.823-1.084,7.684,7.684,0,0,1-1.625-1.724h-.049v3.054h-2.217v-23.5h2.266v9.212h.049a7.712,7.712,0,0,1,1.626-1.724,9,9,0,0,1,1.773-1.084,7.744,7.744,0,0,1,1.774-.542l1.576-.148a9.5,9.5,0,0,1,3.843.739,9.112,9.112,0,0,1,2.956,2.02A9.368,9.368,0,0,1-3090.458,68a8.934,8.934,0,0,1,.591,3.4,9.065,9.065,0,0,1-.69,3.547,8.958,8.958,0,0,1-1.921,2.906,9.332,9.332,0,0,1-2.957,1.971,9.506,9.506,0,0,1-3.676.739Zm2.956-2.611a6.851,6.851,0,0,0,2.265-1.527,6.7,6.7,0,0,0,1.429-2.217,7.457,7.457,0,0,0,.542-2.758,7.54,7.54,0,0,0-.591-3.005,6.5,6.5,0,0,0-1.577-2.266,7.032,7.032,0,0,0-2.265-1.428,7.341,7.341,0,0,0-2.71-.493,6.7,6.7,0,0,0-2.759.591,6.979,6.979,0,0,0-2.217,1.577,7.34,7.34,0,0,0-1.428,7.833,6.947,6.947,0,0,0,3.744,3.694,6.7,6.7,0,0,0,2.66.542A7.445,7.445,0,0,0-3096.221,77.952Zm17.438,2.561a8.828,8.828,0,0,1-3.449-.689,9.06,9.06,0,0,1-2.906-1.922,9.215,9.215,0,0,1-1.97-2.857,9.159,9.159,0,0,1-.049-7.093,9.139,9.139,0,0,1,1.921-2.907,9.521,9.521,0,0,1,2.857-1.97,8.766,8.766,0,0,1,6.207-.394A9.248,9.248,0,0,1-3074,63.764a9.108,9.108,0,0,1,1.675,1.428,9.842,9.842,0,0,1,1.232,1.577,8.784,8.784,0,0,1,1.083,2.463,10.139,10.139,0,0,1,.3,2.414,2.706,2.706,0,0,1,0,.3c0,.1,0,.2,0,.3h-15.813a6.011,6.011,0,0,0,.641,2.414,6.833,6.833,0,0,0,1.527,2.02,7.389,7.389,0,0,0,2.118,1.379,6.258,6.258,0,0,0,2.463.493,7.663,7.663,0,0,0,2.167-.346,6.667,6.667,0,0,0,1.823-.886,6.388,6.388,0,0,0,1.38-1.281,5.33,5.33,0,0,0,.838-1.576h2.364a8.873,8.873,0,0,1-1.281,2.414,9.256,9.256,0,0,1-1.971,1.921,9.079,9.079,0,0,1-2.462,1.281,8.659,8.659,0,0,1-2.738.445Zm-2.069-15.911a6.747,6.747,0,0,0-2.069,1.084,7.007,7.007,0,0,0-1.675,1.872,6.8,6.8,0,0,0-.936,2.66h13.6a7.145,7.145,0,0,0-.985-2.66,7.008,7.008,0,0,0-1.675-1.872,6.72,6.72,0,0,0-2.021-1.084,6.941,6.941,0,0,0-2.118-.346A7.033,7.033,0,0,0-3080.852,64.6Zm107.144,15.862a9.5,9.5,0,0,1-3.744-.739,9.172,9.172,0,0,1-2.956-1.97,9.317,9.317,0,0,1-1.921-2.907,8.914,8.914,0,0,1,.049-6.995,9.111,9.111,0,0,1,2.021-2.906,9.7,9.7,0,0,1,2.956-1.971,9.17,9.17,0,0,1,3.645-.739,10.1,10.1,0,0,1,2.414.3,8.966,8.966,0,0,1,2.414.985,9.448,9.448,0,0,1,2.167,1.774,8.729,8.729,0,0,1,1.626,2.66h-2.463a7.379,7.379,0,0,0-1.231-1.675,7.1,7.1,0,0,0-1.527-1.133,6.859,6.859,0,0,0-1.675-.69,7.442,7.442,0,0,0-1.675-.2,7.684,7.684,0,0,0-2.561.444,6.984,6.984,0,0,0-2.316,1.38,7.219,7.219,0,0,0-1.675,2.217,6.8,6.8,0,0,0-.641,3.054,7.194,7.194,0,0,0,2.02,5.025,7.188,7.188,0,0,0,5.123,2.119,7.063,7.063,0,0,0,2.414-.345,6.849,6.849,0,0,0,1.774-.887,7.228,7.228,0,0,0,1.231-1.133A6.378,6.378,0,0,0-2967.5,75h2.463a14.216,14.216,0,0,1-1.085,1.773,9.088,9.088,0,0,1-1.723,1.774,9.208,9.208,0,0,1-2.463,1.379,9.4,9.4,0,0,1-3.152.545C-2973.543,80.467-2973.626,80.466-2973.708,80.464Zm-24.385-.739a9.226,9.226,0,0,1-2.956-1.97,8.616,8.616,0,0,1-1.921-2.907,9.3,9.3,0,0,1-.69-3.546,8.819,8.819,0,0,1,.69-3.4A9.218,9.218,0,0,1-3001.1,65a9.081,9.081,0,0,1,2.956-2.02,9.459,9.459,0,0,1,3.842-.739l1.577.148a8.228,8.228,0,0,1,1.823.543,7.563,7.563,0,0,1,1.773,1.084,7.108,7.108,0,0,1,1.577,1.773h.05V62.73h2.217V80.021h-2.217V76.966h-.05a7.183,7.183,0,0,1-1.626,1.774A8.5,8.5,0,0,1-2991,79.774a8.359,8.359,0,0,1-1.773.542l-1.527.148h-.1A9.594,9.594,0,0,1-2998.093,79.725Zm1.085-14.975a7.087,7.087,0,0,0-2.266,1.428,6.607,6.607,0,0,0-1.577,2.266,7.532,7.532,0,0,0-.591,3.005,7.443,7.443,0,0,0,.493,2.758,6.61,6.61,0,0,0,1.428,2.217,6.819,6.819,0,0,0,2.266,1.527,7.439,7.439,0,0,0,2.906.542,6.708,6.708,0,0,0,2.66-.542,7,7,0,0,0,2.217-1.478,6.806,6.806,0,0,0,1.527-2.217,7.134,7.134,0,0,0,.64-2.857,7.186,7.186,0,0,0-.541-2.709,6.838,6.838,0,0,0-1.479-2.266,7.287,7.287,0,0,0-2.217-1.577,6.554,6.554,0,0,0-2.758-.591h-.071A7.3,7.3,0,0,0-2997.008,64.75Zm-142.613,14.926A9.065,9.065,0,0,1-3144.5,74.8a8.966,8.966,0,0,1,.049-7,9.115,9.115,0,0,1,2.02-2.906,9.689,9.689,0,0,1,2.956-1.97,9.144,9.144,0,0,1,3.646-.739,9.973,9.973,0,0,1,2.414.3,9.051,9.051,0,0,1,2.413.986,9.561,9.561,0,0,1,2.168,1.773,8.726,8.726,0,0,1,1.625,2.66h-2.463a6.989,6.989,0,0,0-2.759-2.808,6.81,6.81,0,0,0-1.675-.641,7.547,7.547,0,0,0-1.675-.2,7.645,7.645,0,0,0-2.561.444,6.958,6.958,0,0,0-2.316,1.38,7.094,7.094,0,0,0-1.675,2.217,6.749,6.749,0,0,0-.64,3.054,7.1,7.1,0,0,0,2.094,5.083,7.1,7.1,0,0,0,5.1,2.06,7.1,7.1,0,0,0,2.414-.345,6.861,6.861,0,0,0,1.774-.887,7.032,7.032,0,0,0,1.231-1.133,6.33,6.33,0,0,0,.689-1.183h2.463a14.209,14.209,0,0,1-1.084,1.773,8.919,8.919,0,0,1-1.724,1.774,9.174,9.174,0,0,1-2.463,1.38,10.3,10.3,0,0,1-3.305.545A10.3,10.3,0,0,1-3139.621,79.676Zm178.918.443V64.75h-3.645V62.73h3.645V56.621h2.218V62.73h4.187v2.02h-4.187V80.119Zm-68.424,0V70.07a6.539,6.539,0,0,0-1.231-4.286,4.828,4.828,0,0,0-3.473-1.474,4.828,4.828,0,0,0-3.473,1.474,6.539,6.539,0,0,0-1.231,4.286V80.119h-2.217V70.07a6.452,6.452,0,0,0-1.281-4.286,4.828,4.828,0,0,0-3.473-1.474,4.828,4.828,0,0,0-3.473,1.474,6.539,6.539,0,0,0-1.231,4.286V80.119h-2.218V62.73h2.218V64.8a4.822,4.822,0,0,1,1.97-1.823,5.955,5.955,0,0,1,2.759-.64,6.8,6.8,0,0,1,3.4.837,6.411,6.411,0,0,1,2.414,2.463,6.5,6.5,0,0,1,5.813-3.35,7.4,7.4,0,0,1,2.808.542,6.257,6.257,0,0,1,2.217,1.478,6.7,6.7,0,0,1,1.428,2.364,9.05,9.05,0,0,1,.492,3.1V80.119Zm-28.424,0V62.73h2.217V80.119Zm-9.754,0V62.73h2.217v2.561h.05a4.386,4.386,0,0,1,.936-1.478,4.566,4.566,0,0,1,1.183-.887,4.709,4.709,0,0,1,1.379-.444l1.428-.2v2.364a6.566,6.566,0,0,0-2.118.542,4.286,4.286,0,0,0-1.625,1.183,5.716,5.716,0,0,0-.887,1.625,5.882,5.882,0,0,0-.345,1.971V80.119Zm-113.646-1.182a.6.6,0,0,1-.221-.814.6.6,0,0,1,.813-.221,7.736,7.736,0,0,0,3.6.838,8.377,8.377,0,0,0,4.433-1.282.593.593,0,0,1,.45-.1.59.59,0,0,1,.387.252.591.591,0,0,1,.083.461.591.591,0,0,1-.28.376,9.5,9.5,0,0,1-5.073,1.478h-.1A8.966,8.966,0,0,1-3180.952,78.937Zm8.424-7.292a3.991,3.991,0,0,1,3.941-4.039,4.041,4.041,0,0,1,4.039,3.941,3.99,3.99,0,0,1-3.941,4.039h-.05A3.991,3.991,0,0,1-3172.528,71.645Zm3.909-2.363a2.758,2.758,0,0,0-2.726,2.775,2.758,2.758,0,0,0,2.759,2.742V74.75a2.759,2.759,0,0,0,2.759-2.758,2.758,2.758,0,0,0-2.758-2.709Zm-19.77,2.4a3.992,3.992,0,0,1,3.891-4.072,4.04,4.04,0,0,1,4.089,3.941,3.991,3.991,0,0,1-3.925,4.038h-.065A3.991,3.991,0,0,1-3188.39,71.678Zm1.132.363A2.759,2.759,0,0,0-3184.5,74.8V74.75a2.758,2.758,0,0,0,2.758-2.709,2.759,2.759,0,0,0-2.758-2.759A2.759,2.759,0,0,0-3187.257,72.041Zm16.946,0a1.725,1.725,0,0,1,1.724-1.724,1.724,1.724,0,0,1,1.724,1.724,1.723,1.723,0,0,1-1.724,1.723A1.724,1.724,0,0,1-3170.311,72.041Zm-15.863,0a1.725,1.725,0,0,1,1.724-1.724,1.724,1.724,0,0,1,1.724,1.724,1.724,1.724,0,0,1-1.724,1.723A1.724,1.724,0,0,1-3186.174,72.041Zm128.623-11.429V56.621h2.217v3.991Z" transform="translate(3202.282 -43.961)" fill="currentcolor"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="lg:block hidden h-[1px] bg-neutral-700 w-full mt-5 mb-16"></div>
+                        <div>
+                            <h1 class="lg:text-5xl text-3xl font-medium mb-5 max-w-[700px] leading-tight text-pretty">CyberImpact Website Redesign & Development Proposal</h1>
+                        </div>
+                        <div id="intro" class="text-lg">
+                            <p class="text-neutral-400">We collaborate with ambitious marketing and product teams to transform their digital presence into high-performance marketing engines. At CRFT Studio, every project is designed to deliver tangible business results; combining strategy, design, and modern development in one seamless, end-to-end process. From discovery and strategy to launch and ongoing growth, we build sites that are beautiful, lightning-fast, and effortless to manage - so you can focus on growing your business, not wrangling your website.</p>
+                        </div>
+                        <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
+                        <div class="mb-10 text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
+                            <h2 class="inline">Homepage Redesign</h2>
+                        </div>
+                        <p class="text-neutral-400 text-lg mb-10">We reviewed the homepages of your key competitors—Mailchimp, Envoke, Knak, Flodesk, CakeMail, LeadFox, and ContactMonkey—and distilled the best elements into a new homepage draft for CyberImpact. Want to see exactly what inspired each section? Check out our <span class="underline"><a href="https://cyberimpact-website.vercel.app/notes" target="_blank">design annotations</a></span> for a peek at what made the cut.</p>
+                        <div class="square-card pt-8 p-0 mb-20 overflow-hidden">
+                            <div class="lg:grid lg:grid-cols-[300px_1.5fr] flex flex-col gap-10 items-start">
+                                <div class="flex flex-col justify-between px-8 h-full pb-8">
+                                    <div>
+                                        <div class="text-xl font-medium mb-3">CyberImpact</div>
+                                        <p class="text-base text-pretty text-neutral-300 mb-4">A fully annotated redesign implementation of CyberImpact's homepage</p>
+                                        <a href="https://cyberimpact-website.vercel.app/" target="_blank" rel="noopener noreferrer" class="flex flex-row gap-1 items-center">
+                                            <div class="text-base text-orange-300 font-medium">Visit website</div>
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FDBA74"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="w-[120%] h-[400px] overflow-hidden relative lg:pl-0 pl-5">
+                                  <iframe
+                                    src="https://cyberimpact-website.vercel.app/"
+                                    class="scale-75 origin-top-left w-[calc(100%/0.75)] h-[calc(100%/0.75)] border-none rounded-tl-sm overflow-y-hidden"
+                                    frameborder="0"
+                                  ></iframe>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="text-lg text-neutral-400 mb-10">Our Core Tech Stack</div>
+                            <div class="grid lg:grid-cols-3 gap-4">
+                                <a href="https://astro.build?utm_source=crftLookup" target="_blank" id="astro" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Astro" data-tech-icon="astro.svg">
+                                    <div id="astro" class="flex flex-row gap-2 items-center">
+                                        <img src="/icons/Astro.svg" class="w-5 h-5" alt="" />
+                                        <div>Astro</div>
+                                    </div>
+                                    <div class="text-pretty">Ultra‑fast, modern frontend framework that ships minimal JavaScript and supports multiple rendering paradigms.</div>
+                                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
+                                </a>
+                                <a href="https://sanity.io?utm_source=crftLookup" target="_blank" id="sanity" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Sanity" data-tech-icon="sanity.svg">
+                                    <div id="sanity" class="flex flex-row gap-2 items-center">
+                                        <img src="/icons/Sanity.svg" class="w-5 h-5" alt="" />
+                                        <div>Sanity</div>
+                                    </div>
+                                    <div class="text-pretty">Headless CMS that offers flexible content modeling, real‑time collaboration, and a powerful content API.</div>
+                                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
+                                </a>
+                                <a href="https://posthog.com?utm_source=crftLookup" target="_blank" id="posthog" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="PostHog" data-tech-icon="posthog.svg">
+                                    <div id="posthog" class="flex flex-row gap-2 items-center">
+                                        <img src="/icons/PostHog.svg" class="w-5 h-5" alt="" />
+                                        <div>PostHog</div>
+                                    </div>
+                                    <div class="text-pretty">Open‑source product analytics platform that lets you track user behavior, run experiments, and build insights.</div>
+                                    <div class="square-card px-1 py-0 absolute flex flex-row items-center text-orange-300 gap-1 top-0 right-0 mt-3 mr-3">
+                                        <div>Why?</div>
+                                        <svg class="" xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" viewBox="0 -960 960 960" fill="#D69A5C"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
+                                    </div>
                                 </a>
                             </div>
                         </div>
-                        <div class="w-[1000px] h-[400px] overflow-hidden relative lg:pl-0 pl-5">
-                          <iframe
-                            src="https://cyberimpact-website.vercel.app/"
-                            class="scale-75 origin-top-left w-[calc(100%/0.75)] h-[calc(100%/0.75)] border-none rounded-tl-sm overflow-y-hidden"
-                            frameborder="0"
-                          ></iframe>
+                        <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
+                        <div class="flex flex-col gap-14">
+                            <div class="flex flex-row flex-wrap gap-4 justify-between items-center mb-10">
+                                <div class=" text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
+                                    <h2 class="inline">Timelines</h2>
+                                </div>
+                                <div class="text-neutral-300 text-lg">Estimated project duration: 3 months</div>
+                            </div>
+                            <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
+                                <div>
+                                    <div class="sticky top-10 text-neutral-400">Onboarding</div>
+                                </div>
+                                <div>
+                                    <div class="mb-3 text-neutral-100">Day 1</div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">Project begun</div>
+                                    </div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">Basecamp project invite sent</div>
+                                    </div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">Kick-off meeting (optional)</div>
+                                    </div>
+                                    <div class="square-card">
+                                        <div class="text-lg">We scan your website using the <span><a href="/lookup" class="text-orange-300 underline">CRFT Lookup</a></span>, to see its Lighthouse score, tech stack, sitemap structure and meta tags.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
+                                <div>
+                                    <div class="sticky top-10 text-neutral-400">Visual Brand Identity</div>
+                                </div>
+                                <div>
+                                    <div class="mb-3 text-neutral-100">1 - 3 weeks</div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">Logo, wordmark and icon redesign (optional)</div>
+                                    </div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">Color palette selection</div>
+                                    </div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">Typeface selection</div>
+                                    </div>
+                                    <div class="square-card">
+                                        <div class="text-lg">Creation of marketing collateral (optional)</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
+                                <div>
+                                    <div class="sticky top-10 text-neutral-400">Web Design</div>
+                                </div>
+                                <div>
+                                    <div class="mb-3 text-neutral-100">1 - 2 weeks</div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">Competitor & inspiration audit</div>
+                                    </div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">Sitemap & content audit</div>
+                                    </div>
+                                    <div class="square-card mb-2">
+                                        <div class="text-lg">Identify and wireframe core pages</div>
+                                    </div>
+                                    <div class="text-neutral-400">We limit our use of vector design tools like Figma beyond initial ideation, and build high-fidelity designs in code. This allows us to collaborate and drive results for your business much faster than otherwise possible.</div>
+                                </div>
+                            </div>
+                            <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
+                                <div>
+                                    <div class="sticky top-10 text-neutral-400">Web Development</div>
+                                </div>
+                                <div>
+                                    <div class="mb-3 text-neutral-100">4 - 8 weeks</div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">Creation of code repository</div>
+                                    </div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">High fidelity, responsive design and development of core pages & components</div>
+                                    </div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">Content migration and setup of Sanity, our CMS of choice</div>
+                                    </div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">We write and/or collaborate on new copy for every page</div>
+                                    </div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">Integration of third-party tools (e.g. analytics, cookie consent, etc)</div>
+                                    </div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">QA testing (cross-browser/device responsiveness, Lighthouse, etc)</div>
+                                    </div>
+                                    <div class="square-card">
+                                        <div class="text-lg">DNS configuration and launch</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
+                                <div>
+                                    <div class="sticky top-10 text-neutral-400">Website Maintenance</div>
+                                </div>
+                                <div>
+                                    <div class="mb-3 text-neutral-100">Ongoing (or optional/as-needed)</div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">Performance optimization and speed enhancements</div>
+                                    </div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">Security monitoring and updates</div>
+                                    </div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">New landing page creation</div>
+                                    </div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">Analytics monitoring and reporting</div>
+                                    </div>
+                                    <div class="square-card">
+                                        <div class="text-lg">24/7 technical support</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="flex flex-col gap-14">
-                    <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
-                        <div>
-                            <div class="sticky top-28 text-neutral-400">Onboarding</div>
-                        </div>
-                        <div>
-                            <div class="mb-3 text-neutral-100">Today</div>
-                            <div class="square-card border-b-0">
-                                <div class="text-lg">Subscription begun</div>
-                            </div>
-                            <div class="square-card border-b-0">
-                                <div class="text-lg">Basecamp project invite sent</div>
-                            </div>
-                            <div class="square-card border-b-0">
-                                <div class="text-lg">Kick-off meeting (optional)</div>
-                            </div>
-                            <div class="square-card">
-                                <div class="text-lg">We scan your website using the <span><a href="/lookup" class="text-orange-300 underline">CRFT Lookup</a></span>, to see its Lighthouse score, tech stack, sitemap visualization and meta tags.</div>
+                        <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
+                        <div class="mt-20 flex flex-col gap-14">
+                            <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
+                                <div>
+                                    <div class="sticky top-10 text-neutral-400">
+                                        <div class=" text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
+                                            <h2 class="inline">Costs</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
-                        <div>
-                            <div class="sticky top-28 text-neutral-400">Visual Brand Identity</div>
-                        </div>
-                        <div>
-                            <div class="mb-3 text-neutral-100">1 - 3 weeks</div>
-                            <div class="square-card border-b-0">
-                                <div class="text-lg">Logo, wordmark and icon redesign (optional)</div>
+                        <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
+                        <div class="mt-20 flex flex-col gap-14">
+                            <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
+                                <div>
+                                    <div class="sticky top-10 text-neutral-400">
+                                        <div class=" text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
+                                            <h2 class="inline">FAQs</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <FAQItem
+                                        question="What technologies do you use to build websites?"
+                                        answer="We use Astro for ultra-fast, modern frontend development, combined with Sanity as a powerful and flexible headless CMS for easy content management. This stack delivers performance, scalability, and a seamless editing experience."
+                                    />
+                                    <FAQItem
+                                        question="Will our team be able to edit the website ourselves?"
+                                        answer="Absolutely. Sanity's intuitive, real-time editing environment lets your team update copy, images, and even page layouts—no developer required."
+                                    />
+                                    <FAQItem
+                                        question="Can it be hosted on our own infrastructure?"
+                                        answer="Yes. The Astro frontend can be deployed as a Node application wherever you choose, and Sanity's content editing client (Sanity Studio) can be self-hosted or managed in the cloud, giving you control over your deployments."
+                                    />
+                                    <FAQItem
+                                        question="How much ongoing dev/maintenance is needed?"
+                                        answer="Very little. Our sites are designed for low maintenance, with most updates handled easily by your team in Sanity. We're always available for major changes, support, or new features."
+                                    />
+                                    <FAQItem
+                                        question="Is the new system harder to use than WordPress?"
+                                        answer="No—the opposite. Sanity offers a modern, user-friendly interface tailored for your content, not blog posts and plugins. Many clients find it quicker and more intuitive than the traditional WordPress dashboard, especially for non-technical users."
+                                    />
+                                    <FAQItem
+                                        question="What if we need new features after launch?"
+                                        answer="We offer ongoing support! Whether you need new pages, additional integrations, or advanced features, we can quickly scope and implement updates as your needs evolve."
+                                    />
+                                    <FAQItem
+                                        question="How do you handle timelines and feedback?"
+                                        answer="We break projects into clear phases with defined milestones and deliverables. You'll receive regular progress updates and preview links via Basecamp (our project management software of choice), and your feedback is built into every step of the process."
+                                    />
+                                </div>
                             </div>
-                            <div class="square-card border-b-0">
-                                <div class="text-lg">Color palette selection</div>
-                            </div>
-                            <div class="square-card border-b-0">
-                                <div class="text-lg">Typeface selection</div>
-                            </div>
-                            <div class="square-card">
-                                <div class="text-lg">Creation of marketing collateral (optional)</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
-                        <div>
-                            <div class="sticky top-28 text-neutral-400">Web Design</div>
-                        </div>
-                        <div>
-                            <div class="mb-3 text-neutral-100">1 - 2 weeks</div>
-                            <div class="square-card border-b-0">
-                                <div class="text-lg">Competitor & inspiration audit</div>
-                            </div>
-                            <div class="square-card border-b-0">
-                                <div class="text-lg">Sitemap & content audit</div>
-                            </div>
-                            <div class="square-card mb-2">
-                                <div class="text-lg">Identify and wireframe core pages</div>
-                            </div>
-                            <div class="text-neutral-400">We limit our use of vector design tools like Figma beyond initial ideation, and build high-fidelity designs in code. This allows us to collaborate and drive results for your business much faster than otherwise possible.</div>
-                        </div>
-                    </div>
-                    <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
-                        <div>
-                            <div class="sticky top-28 text-neutral-400">Web Development</div>
-                        </div>
-                        <div>
-                            <div class="mb-3 text-neutral-100">4 - 8 weeks</div>
-                            <div class="square-card border-b-0">
-                                <div class="text-lg">Creation of code repository</div>
-                            </div>
-                            <div class="square-card border-b-0">
-                                <div class="text-lg">High fidelity, responsive design and development of core pages & components</div>
-                            </div>
-                            <div class="square-card border-b-0">
-                                <div class="text-lg">Content migration and setup of Sanity, our CMS of choice</div>
-                            </div>
-                            <div class="square-card border-b-0">
-                                <div class="text-lg">We write and/or collaborate on new copy for every page</div>
-                            </div>
-                            <div class="square-card border-b-0">
-                                <div class="text-lg">Integration of third-party tools (e.g. analytics, cookie consent, etc)</div>
-                            </div>
-                            <div class="square-card border-b-0">
-                                <div class="text-lg">QA testing (cross-browser/device responsiveness, Lighthouse, etc)</div>
-                            </div>
-                            <div class="square-card">
-                                <div class="text-lg">DNS configuration and launch</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
-                        <div>
-                            <div class="sticky top-28 text-neutral-400">Website Maintenance</div>
-                        </div>
-                        <div>
-                            <div class="mb-3 text-neutral-100">Ongoing (or optional/as-needed)</div>
-                            <div class="square-card border-b-0">
-                                <div class="text-lg">Performance optimization and speed enhancements</div>
-                            </div>
-                            <div class="square-card border-b-0">
-                                <div class="text-lg">Security monitoring and updates</div>
-                            </div>
-                            <div class="square-card border-b-0">
-                                <div class="text-lg">New landing page creation</div>
-                            </div>
-                            <div class="square-card border-b-0">
-                                <div class="text-lg">Analytics monitoring and reporting</div>
-                            </div>
-                            <div class="square-card">
-                                <div class="text-lg">24/7 technical support</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
-                <div class="mt-20 flex flex-col gap-14">
-                    <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
-                        <div>
-                            <div class="sticky top-28 text-neutral-400">FAQs</div>
-                        </div>
-                        <div>
-                            <FAQItem
-                                question="What technologies do you use to build websites?"
-                                answer="We use Astro for ultra-fast, modern frontend development, combined with Sanity as a powerful and flexible headless CMS for easy content management. This stack delivers performance, scalability, and a seamless editing experience."
-                            />
-                            <FAQItem
-                                question="Will our team be able to edit the website ourselves?"
-                                answer="Absolutely. Sanity's intuitive, real-time editing environment lets your team update copy, images, and even page layouts—no developer required."
-                            />
-                            <FAQItem
-                                question="Can it be hosted on our own infrastructure?"
-                                answer="Yes. The Astro frontend can be deployed as a Node application wherever you choose, and Sanity's content editing client (Sanity Studio) can be self-hosted or managed in the cloud, giving you control over your deployments."
-                            />
-                            <FAQItem
-                                question="How much ongoing dev/maintenance is needed?"
-                                answer="Very little. Our sites are designed for low maintenance, with most updates handled easily by your team in Sanity. We're always available for major changes, support, or new features."
-                            />
-                            <FAQItem
-                                question="Is the new system harder to use than WordPress?"
-                                answer="No—the opposite. Sanity offers a modern, user-friendly interface tailored for your content, not blog posts and plugins. Many clients find it quicker and more intuitive than the traditional WordPress dashboard, especially for non-technical users."
-                            />
-                            <FAQItem
-                                question="What if we need new features after launch?"
-                                answer="We offer ongoing support! Whether you need new pages, additional integrations, or advanced features, we can quickly scope and implement updates as your needs evolve."
-                            />
-                            <FAQItem
-                                question="How do you handle timelines and feedback?"
-                                answer="We break projects into clear phases with defined milestones and deliverables. You'll receive regular progress updates and preview links via Basecamp (our project management software of choice), and your feedback is built into every step of the process."
-                            />
                         </div>
                     </div>
                 </div>
