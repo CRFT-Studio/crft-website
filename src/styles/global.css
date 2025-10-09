@@ -42,6 +42,10 @@
         @apply max-w-[1300px] mx-auto px-8
     }
 
+    html {
+        scroll-padding-top: 120px;
+    }
+
 }
 
 @layer components {
