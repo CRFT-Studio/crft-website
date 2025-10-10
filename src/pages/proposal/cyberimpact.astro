@@ -14,9 +14,26 @@ import HeadScripts from '../../components/HeadScripts.astro';
         />
     </head>
     <body>
-        <!-- <div id="why-posthog" class="fixed flex items-center justify-center h-full w-full bg-neutral-800/10 backdrop-blur-xs z-50">
+        <script>
+            import $ from 'jquery';
+            $("#ph-trigger").click(function() {
+                $("#ph-modal").toggleClass("hidden flex");
+            });
+            $("#ph-modal").click(function(event) {
+                if (!$(event.target).closest('.square-card').length) {
+                    $("#ph-modal").toggleClass("hidden flex");
+                }
+            });
+        </script>
+        <div id="ph-modal" class="fixed hidden items-center justify-center h-full w-full bg-neutral-800/10 backdrop-blur-xs z-50 transition-all">
             <div class="square-card">
-                <div class="text-center text-lg mb-9 underline">Why we recommend Posthog over GA4</div>
+                <div class="flex flex-row items-center justify-between mb-9">
+                    <div class="text-lg underline">Why we recommend Posthog over GA4</div>
+                    <a href="https://posthog.com/blog/posthog-vs-ga4" target="_blank" class="square-card px-1 py-0 flex flex-row items-center text-orange-300 gap-1">
+                        <div>Learn more</div>
+                        <svg class="" xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" viewBox="0 -960 960 960" fill="#D69A5C"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
+                    </a>
+                </div>
                 <div class="lg:bg-transparent lg:border-0 square-card p-0 max-w-[800px] mx-auto">
                     <table class="w-full text-left lg:text-lg border-collapse">
                         <thead class="my-6 hidden lg:table-header-group">
@@ -179,17 +196,17 @@ import HeadScripts from '../../components/HeadScripts.astro';
                     }
                 </style>
             </div>
-        </div> -->
+        </div>
         <div class="opacity-0 pointer-events-none">
             <Navigation />
         </div>
         <section style="margin-bottom: 0px; margin-top: 50px;" class="px-5">
-            <div class="max-w-[1500px] mx-auto">
+            <div class="max-w-[1350px] mx-auto">
                 <div class="grid lg:grid-cols-[0.2fr_1fr] gap-4">
                     <div class="order-top">
                         <div class="sticky top-10">
-                            <div class="square-card mb-4">Language toggle</div>
-                            <div class="square-card">
+                            <div class="square-card border-neutral-700 mb-4">Language toggle</div>
+                            <div class="square-card border-neutral-700">
                                 <div>Table of Contents</div>
                                 <div class="mt-4 flex flex-col gap-1.5 text-neutral-300">
                                     <div>Introduction</div>
@@ -237,7 +254,7 @@ import HeadScripts from '../../components/HeadScripts.astro';
                                         </a>
                                     </div>
                                 </div>
-                                <div class="w-[120%] h-[400px] overflow-hidden relative lg:pl-0 pl-5">
+                                <div class="w-[150%] h-[400px] overflow-hidden relative lg:pl-0 pl-5 pointer-events-none">
                                   <iframe
                                     src="https://cyberimpact-website.vercel.app/"
                                     class="scale-75 origin-top-left w-[calc(100%/0.75)] h-[calc(100%/0.75)] border-none rounded-tl-sm overflow-y-hidden"
@@ -265,7 +282,7 @@ import HeadScripts from '../../components/HeadScripts.astro';
                                     <div class="text-pretty">Headless CMS that offers flexible content modeling, real‑time collaboration, and a powerful content API.</div>
                                     <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
                                 </a>
-                                <a href="https://posthog.com?utm_source=crftLookup" target="_blank" id="posthog" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="PostHog" data-tech-icon="posthog.svg">
+                                <button id="ph-trigger" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all text-left cursor-pointer" data-tech-name="PostHog" data-tech-icon="posthog.svg">
                                     <div id="posthog" class="flex flex-row gap-2 items-center">
                                         <img src="/icons/PostHog.svg" class="w-5 h-5" alt="" />
                                         <div>PostHog</div>
@@ -275,7 +292,7 @@ import HeadScripts from '../../components/HeadScripts.astro';
                                         <div>Why?</div>
                                         <svg class="" xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" viewBox="0 -960 960 960" fill="#D69A5C"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
                                     </div>
-                                </a>
+                                </button>
                             </div>
                         </div>
                         <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
@@ -399,17 +416,14 @@ import HeadScripts from '../../components/HeadScripts.astro';
                         </div>
                         <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
                         <div class="mt-20 flex flex-col gap-14">
-                            <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
-                                <div>
-                                    <div class="sticky top-10 text-neutral-400">
-                                        <div class=" text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
-                                            <h2 class="inline">Costs</h2>
-                                        </div>
-                                    </div>
+                            <div>
+                                <div class=" text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
+                                    <h2 class="inline-block">Costs</h2>
                                 </div>
-                                <div>
-
-                                </div>
+                            </div>
+                            <div class="grid lg:grid-cols-[1.5fr_1fr] gap-4">
+                                <div class="square-card"></div>
+                                <div class="square-card"></div>
                             </div>
                         </div>
                         <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
