@@ -25,9 +25,9 @@ import HeadScripts from '../../components/HeadScripts.astro';
                 }
             });
         </script>
-        <div id="ph-modal" class="fixed hidden items-center justify-center h-full w-full bg-neutral-800/10 backdrop-blur-xs z-50 transition-all">
-            <div class="square-card">
-                <div class="flex flex-row items-center justify-between mb-9">
+        <div id="ph-modal" class="fixed hidden lg:items-center items-end lg:justify-center justify-end h-full w-full bg-neutral-800/10 backdrop-blur-xs z-50 transition-all">
+            <div class="square-card lg:h-auto w-auto h-[85vh] lg:overflow-hidden overflow-y-auto">
+                <div class="flex flex-row gap-4 flex-wrap items-center justify-between mb-9">
                     <div class="text-lg underline">Why we recommend Posthog over GA4</div>
                     <a href="https://posthog.com/blog/posthog-vs-ga4" target="_blank" class="square-card px-1 py-0 flex flex-row items-center text-orange-300 gap-1">
                         <div>Learn more</div>
@@ -265,7 +265,7 @@ import HeadScripts from '../../components/HeadScripts.astro';
                         </div>
                         <div>
                             <div class="text-lg text-neutral-400 mb-10">Our Core Tech Stack</div>
-                            <div class="grid lg:grid-cols-3 gap-4">
+                            <div class="grid lg:grid-cols-[1fr_1fr_1.5fr] gap-4">
                                 <a href="https://astro.build?utm_source=crftLookup" target="_blank" id="astro" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Astro" data-tech-icon="astro.svg">
                                     <div id="astro" class="flex flex-row gap-2 items-center">
                                         <img src="/icons/Astro.svg" class="w-5 h-5" alt="" />
@@ -282,15 +282,17 @@ import HeadScripts from '../../components/HeadScripts.astro';
                                     <div class="text-pretty">Headless CMS that offers flexible content modeling, real‑time collaboration, and a powerful content API.</div>
                                     <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
                                 </a>
-                                <button id="ph-trigger" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all text-left cursor-pointer" data-tech-name="PostHog" data-tech-icon="posthog.svg">
-                                    <div id="posthog" class="flex flex-row gap-2 items-center">
-                                        <img src="/icons/PostHog.svg" class="w-5 h-5" alt="" />
-                                        <div>PostHog</div>
-                                    </div>
-                                    <div class="text-pretty">Open‑source product analytics platform that lets you track user behavior, run experiments, and build insights.</div>
-                                    <div class="square-card px-1 py-0 absolute flex flex-row items-center text-orange-300 gap-1 top-0 right-0 mt-3 mr-3">
-                                        <div>Why?</div>
+                                <button id="ph-trigger" class="flex flex-col lg:items-start items-end gap-2 square-card p-0 relative hover:bg-neutral-700 transition-all text-left cursor-pointer" data-tech-name="PostHog" data-tech-icon="posthog.svg">
+                                    <div class="square-card px-1 py-0 lg:absolute flex flex-row items-center text-orange-300 gap-1 lg:border border-t-0 border-r-0 lg:top-0 lg:right-0 lg:mt-3 lg:mr-3">
+                                        <div>Why over GA4?</div>
                                         <svg class="" xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" viewBox="0 -960 960 960" fill="#D69A5C"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
+                                    </div>
+                                    <div class="p-4 flex flex-col gap-2 items-start">
+                                        <div id="posthog" class="flex flex-row gap-2 items-center">
+                                            <img src="/icons/PostHog.svg" class="w-5 h-5" alt="" />
+                                            <div>PostHog</div>
+                                        </div>
+                                        <div class="text-pretty">Open‑source product analytics platform that lets you track user behavior, run experiments, and build insights.</div>
                                     </div>
                                 </button>
                             </div>
