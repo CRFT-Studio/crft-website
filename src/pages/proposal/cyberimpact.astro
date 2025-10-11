@@ -14,9 +14,26 @@ import HeadScripts from '../../components/HeadScripts.astro';
         />
     </head>
     <body>
-        <!-- <div id="why-posthog" class="fixed flex items-center justify-center h-full w-full bg-neutral-800/10 backdrop-blur-xs z-50">
-            <div class="square-card">
-                <div class="text-center text-lg mb-9 underline">Why we recommend Posthog over GA4</div>
+        <script>
+            import $ from 'jquery';
+            $("#ph-trigger").click(function() {
+                $("#ph-modal").toggleClass("hidden flex");
+            });
+            $("#ph-modal").click(function(event) {
+                if (!$(event.target).closest('.square-card').length) {
+                    $("#ph-modal").toggleClass("hidden flex");
+                }
+            });
+        </script>
+        <div id="ph-modal" class="fixed hidden lg:items-center items-end lg:justify-center justify-end h-full w-full bg-neutral-800/10 backdrop-blur-xs z-50 transition-all">
+            <div class="square-card lg:h-auto w-auto h-[85vh] lg:overflow-hidden overflow-y-auto">
+                <div class="flex flex-row gap-4 flex-wrap items-center justify-between mb-9">
+                    <div class="text-lg underline">Why we recommend Posthog over GA4</div>
+                    <a href="https://posthog.com/blog/posthog-vs-ga4" target="_blank" class="square-card px-1 py-0 flex flex-row items-center text-orange-300 gap-1">
+                        <div>Learn more</div>
+                        <svg class="" xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" viewBox="0 -960 960 960" fill="#D69A5C"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
+                    </a>
+                </div>
                 <div class="lg:bg-transparent lg:border-0 square-card p-0 max-w-[800px] mx-auto">
                     <table class="w-full text-left lg:text-lg border-collapse">
                         <thead class="my-6 hidden lg:table-header-group">
@@ -179,17 +196,17 @@ import HeadScripts from '../../components/HeadScripts.astro';
                     }
                 </style>
             </div>
-        </div> -->
+        </div>
         <div class="opacity-0 pointer-events-none">
             <Navigation />
         </div>
         <section style="margin-bottom: 0px; margin-top: 50px;" class="px-5">
-            <div class="max-w-[1500px] mx-auto">
+            <div class="max-w-[1350px] mx-auto">
                 <div class="grid lg:grid-cols-[0.2fr_1fr] gap-4">
                     <div class="order-top">
                         <div class="sticky top-10">
-                            <div class="square-card mb-4">Language toggle</div>
-                            <div class="square-card">
+                            <div class="square-card border-neutral-700 mb-4">Language toggle</div>
+                            <div class="square-card border-neutral-700">
                                 <div>Table of Contents</div>
                                 <div class="mt-4 flex flex-col gap-1.5 text-neutral-300">
                                     <div>Introduction</div>
@@ -201,7 +218,7 @@ import HeadScripts from '../../components/HeadScripts.astro';
                             </div>
                         </div>
                     </div>
-                    <div class="border border-neutral-700 bg-neutral-800 lg:p-20 lg:pt-8 p-10">
+                    <div class="border border-neutral-700 bg-neutral-800 lg:p-20 lg:pt-8 p-5">
                         <div class="lg:flex hidden flex-row items-center gap-6 flex-wrap">
                             <a href="/" class="nav-link"><svg class="lg:h-[23px] w-[90px]" viewBox="0 0 132 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M6.47615 11.5709C6.47615 7.67882 8.42219 5.8923 16.6211 5.8923C21.6297 5.8923 26.8298 6.78556 30.5623 7.51931L31.7108 2.12783C27.2764 1.10696 21.6616 0.341309 16.3977 0.341309C4.46631 0.341309 0 4.26528 0 11.5709C0 18.8765 4.46631 22.8324 16.3977 22.8324C21.6616 22.8324 27.2764 22.0667 31.7108 21.0459L30.5623 15.6544C26.8298 16.3881 21.6297 17.2814 16.6211 17.2814C8.42219 17.2814 6.47615 15.4949 6.47615 11.5709ZM40.6676 22.4176V16.101H48.9303L56.7463 22.4176H64.8814L57.7353 16.8029L56.0125 15.7501L57.4162 15.7182C62.2335 15.3354 65.0728 13.0384 65.0728 8.25306C65.0728 2.54256 61.3402 0.66033 55.9806 0.66033H34.1914V22.4176H40.6676ZM40.6676 6.21132H55.3426C57.48 6.21132 58.3733 6.81746 58.3733 8.7635C58.3733 10.55 57.48 11.2519 55.3426 11.2519H40.6676V6.21132ZM74.3768 22.4176V15.3035H96.3257V10.1991H74.3768V6.21132H96.9319V0.66033H67.9006V22.4176H74.3768ZM111.951 6.21132V22.4176H118.427V6.21132H131.316V0.66033H99.0305V6.21132H111.951Z" fill="white"/>
@@ -237,7 +254,7 @@ import HeadScripts from '../../components/HeadScripts.astro';
                                         </a>
                                     </div>
                                 </div>
-                                <div class="w-[120%] h-[400px] overflow-hidden relative lg:pl-0 pl-5">
+                                <div class="w-[150%] h-[400px] overflow-hidden relative lg:pl-0 pl-5 pointer-events-none">
                                   <iframe
                                     src="https://cyberimpact-website.vercel.app/"
                                     class="scale-75 origin-top-left w-[calc(100%/0.75)] h-[calc(100%/0.75)] border-none rounded-tl-sm overflow-y-hidden"
@@ -248,7 +265,7 @@ import HeadScripts from '../../components/HeadScripts.astro';
                         </div>
                         <div>
                             <div class="text-lg text-neutral-400 mb-10">Our Core Tech Stack</div>
-                            <div class="grid lg:grid-cols-3 gap-4">
+                            <div class="grid lg:grid-cols-[1fr_1fr_1.5fr] gap-4">
                                 <a href="https://astro.build?utm_source=crftLookup" target="_blank" id="astro" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Astro" data-tech-icon="astro.svg">
                                     <div id="astro" class="flex flex-row gap-2 items-center">
                                         <img src="/icons/Astro.svg" class="w-5 h-5" alt="" />
@@ -265,17 +282,19 @@ import HeadScripts from '../../components/HeadScripts.astro';
                                     <div class="text-pretty">Headless CMS that offers flexible content modeling, real‑time collaboration, and a powerful content API.</div>
                                     <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
                                 </a>
-                                <a href="https://posthog.com?utm_source=crftLookup" target="_blank" id="posthog" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="PostHog" data-tech-icon="posthog.svg">
-                                    <div id="posthog" class="flex flex-row gap-2 items-center">
-                                        <img src="/icons/PostHog.svg" class="w-5 h-5" alt="" />
-                                        <div>PostHog</div>
-                                    </div>
-                                    <div class="text-pretty">Open‑source product analytics platform that lets you track user behavior, run experiments, and build insights.</div>
-                                    <div class="square-card px-1 py-0 absolute flex flex-row items-center text-orange-300 gap-1 top-0 right-0 mt-3 mr-3">
-                                        <div>Why?</div>
+                                <button id="ph-trigger" class="flex flex-col lg:items-start items-end gap-2 square-card p-0 relative hover:bg-neutral-700 transition-all text-left cursor-pointer" data-tech-name="PostHog" data-tech-icon="posthog.svg">
+                                    <div class="square-card px-1 py-0 lg:absolute flex flex-row items-center text-orange-300 gap-1 lg:border border-t-0 border-r-0 lg:top-0 lg:right-0 lg:mt-3 lg:mr-3">
+                                        <div>Why over GA4?</div>
                                         <svg class="" xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" viewBox="0 -960 960 960" fill="#D69A5C"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
                                     </div>
-                                </a>
+                                    <div class="p-4 flex flex-col gap-2 items-start">
+                                        <div id="posthog" class="flex flex-row gap-2 items-center">
+                                            <img src="/icons/PostHog.svg" class="w-5 h-5" alt="" />
+                                            <div>PostHog</div>
+                                        </div>
+                                        <div class="text-pretty">Open‑source product analytics platform that lets you track user behavior, run experiments, and build insights.</div>
+                                    </div>
+                                </button>
                             </div>
                         </div>
                         <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
@@ -399,16 +418,139 @@ import HeadScripts from '../../components/HeadScripts.astro';
                         </div>
                         <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
                         <div class="mt-20 flex flex-col gap-14">
-                            <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
-                                <div>
-                                    <div class="sticky top-10 text-neutral-400">
-                                        <div class=" text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
-                                            <h2 class="inline">Costs</h2>
+                            <div>
+                                <div class=" text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
+                                    <h2 class="inline-block">Costs</h2>
+                                </div>
+                            </div>
+                            <div class="grid gap-4">
+                                <div class="square-card p-0">
+                                    <div class="square-card py-0 px-1 border-0 border-b">Website Redesign & Development: From Zero to Launch</div>
+                                    <div class="p-5">
+                                        <h1 class="text-4xl font-medium mb-3">$18,500 CAD <span class="text-2xl text-neutral-300">/ billed quarterly</span></h1>
+                                        <div class="text-lg font-medium leading-normal text-neutral-200 text-pretty">A simple, straightforward quarterly subscription for the length of our project. No contracts or rigid scopes of work. Pause or cancel your subscription as needed. We think of ourselves as an extension of your team, dedicated to designing and developing your website while you work on your core business.</div>
+                                        <div class="h-[1px] w-full bg-neutral-700 my-6"></div>
+                                        <div class="grid lg:grid-cols-2 gap-8 text-pretty">
+                                            <div class="flex flex-row gap-2 items-start">
+                                                <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                                <div class="flex flex-col gap-2">
+                                                    <div class=" font-medium">Design work in Figma/Sketch</div>
+                                                    <div class=" font-normal text-neutral-300">We kick off projects by designing initial web/brand concepts, and are receptive to feedback all throughout. Once we're 80% there, we bring ideas to life in code, and make final refinements.</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex flex-row gap-2 items-start">
+                                                <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                                <div class="flex flex-col gap-2">
+                                                    <div class=" font-medium">Custom web development</div>
+                                                    <div class=" font-normal  text-neutral-300">Astro is our framework of choice. Expect lightning performance, solid technical SEO, and a separate environment to preview updates before they go live.</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex flex-row gap-2 items-start">
+                                                <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                                <div class="flex flex-col gap-2">
+                                                    <div class=" font-medium">Headless CMS integration</div>
+                                                    <div class=" font-normal  text-neutral-300">We'll integrate Sanity CMS into our project, so your team can update and collaborate on content in realtime, without our input.</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex flex-row gap-2 items-start">
+                                                <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                                <div class="flex flex-col gap-2">
+                                                    <div class=" font-medium">Daily progress & live updates</div>
+                                                    <div class=" font-normal  text-neutral-300">We take in a small number of clients at a time to ensure a close, consistent partnership.</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex flex-row gap-2 items-start">
+                                                <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                                <div class="flex flex-col gap-2">
+                                                    <div class=" font-medium">Project management (in Basecamp)</div>
+                                                    <div class=" font-normal  text-neutral-300">It keeps everything neat and in one place, from messages, to files, to-do items, and more. You'll love it.</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex flex-row gap-2 items-start">
+                                                <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                                <div class="flex flex-col gap-2">
+                                                    <div class=" font-medium">Weekly video call (on request)</div>
+                                                    <div class=" font-normal  text-neutral-300">There are occasions where synchonous communcation really helps. For those times, do not hesitate to request a call.</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex flex-row gap-2 items-start">
+                                                <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                                <div class="flex flex-col gap-2">
+                                                    <div class=" font-medium">Pause or cancel anytime</div>
+                                                    <div class=" font-normal  text-neutral-300">When our work together is done, you're welcome to pause or cancel your subscription until you need us next.</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex flex-row gap-2 items-start">
+                                                <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                                <div class="flex flex-col gap-2">
+                                                    <div class=" font-medium">7-day money-back guarantee</div>
+                                                    <div class=" font-normal  text-neutral-300">There are no strings attached. If you don't like our work within the first 7 days of your subscription, we'll refund 100% of your money.</div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div>
+                                <div class="square-card p-0">
+                                    <div class="square-card py-0 px-1 border-0 border-b">Post-Launch Support</div>
+                                    <div class="p-5">
+                                        <div class="flex lg:flex-row flex-col justify-start mb-8 gap-4">
+                                            <div id="tabs" class="inline-flex flex-row card rounded-none p-[2px] border-[1px] gap-2 text-sm text-nowrap lg:max-w-full max-w-[65vw] overflow-x-auto">
+                                                <div id="hourly" class="tab-active border-[1px] px-2 py-1 hover:cursor-pointer transition-all">Hourly</div>
+                                                <div id="bundle5" class="px-2 py-1 border-[1px] hover:cursor-pointer transition-all">5 Hours (Save 5%)</div>
+                                                <div id="bundle10" class="px-2 py-1 border-[1px] hover:cursor-pointer transition-all">10 Hours (Save 10%)</div>
+                                                <div id="bundle20" class="px-2 py-1 border-[1px] hover:cursor-pointer transition-all">20 Hours (Save 15%)</div>
+                                                <div id="bundle30" class="px-2 py-1 border-[1px] hover:cursor-pointer transition-all">30 Hours (Save 20%)</div>
+                                                <div id="bundle40" class="px-2 py-1 border-[1px] hover:cursor-pointer transition-all">40 Hours (Save 25%)</div>
+                                            </div>
+                                        </div>
+                                        <h1 class="text-4xl font-medium mb-3 leading-tight"><span id="price">$100</span><span class="bg-neutral-400 bg-clip-text">/hour</span></h1>
+                                        <div class="text-lg font-medium leading-normal text-neutral-200 text-pretty">Flexible hourly support is available for ongoing development needs, and you can opt for bundled hours to save on larger updates or new features. However, you’re only billed for actual changes to the code—any additional support like answering emails, providing training, or helping out with general questions is always included and never counted against your hours. We remain available post-launch to help with optimizations, updates, or feature additions, so you have access to support whenever you need it without worrying about extra charges for routine help.</div>
+                                        <style>
+                                        @reference "../../styles/global.css";
+                                        #tabs div {
+                                            @apply border-transparent;
+                                        }
+                                        .tab-active {
+                                            border-color: #525252 !important;
+                                            @apply bg-neutral-700;
+                                        }
+                                        </style>
+                                        <script>
+                                        import $ from "jquery";
+                                        const prices = {
+                                            hourly: 100,
+                                            bundle5: 95,
+                                            bundle10: 90,
+                                            bundle20: 85,
+                                            bundle30: 80,
+                                            bundle40: 75
+                                        };
+                                        function updatePrice() {
+                                            const activePlan = $(".tab-active").attr("id");
+                                            const price = prices[activePlan];
+                                            $("#price").text(`$${price.toLocaleString()}`);
+                                        }
+                                        updatePrice();
+                                        $("#tabs div").click(function() {
+                                            if ($(this).hasClass("tab-active")) return;
+                                            $(".tab-active").add(this).toggleClass("tab-active");
+                                            updatePrice();
+                                        });
+                                        </script>
+                                    </div>
+                                </div>
+                                <div class="square-card p-0">
+                                    <div class="square-card py-0 px-1 border-0 border-b">Tech Stack</div>
+                                    <div class="p-5">
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -451,6 +593,7 @@ import HeadScripts from '../../components/HeadScripts.astro';
                                         question="How do you handle timelines and feedback?"
                                         answer="We break projects into clear phases with defined milestones and deliverables. You'll receive regular progress updates and preview links via Basecamp (our project management software of choice), and your feedback is built into every step of the process."
                                     />
+                                    <div class="text-neutral-300">Contact <a class="underline" href="mailto:jeremy@crft.studio"><span>jeremy@crft.studio</span></a> with any questions!</div>
                                 </div>
                             </div>
                         </div>
