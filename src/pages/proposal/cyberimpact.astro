@@ -14,17 +14,6 @@ import HeadScripts from '../../components/HeadScripts.astro';
         />
     </head>
     <body>
-        <script>
-            import $ from 'jquery';
-            $("#ph-trigger").click(function() {
-                $("#ph-modal").toggleClass("hidden flex");
-            });
-            $("#ph-modal").click(function(event) {
-                if (!$(event.target).closest('.square-card').length) {
-                    $("#ph-modal").toggleClass("hidden flex");
-                }
-            });
-        </script>
         <div id="ph-modal" class="fixed hidden lg:items-center items-end lg:justify-center justify-end h-full w-full bg-neutral-800/10 backdrop-blur-xs z-50 transition-all">
             <div class="square-card lg:h-auto w-auto h-[85vh] lg:overflow-hidden overflow-y-auto">
                 <div class="flex flex-row gap-4 flex-wrap items-center justify-between mb-9">
@@ -206,15 +195,15 @@ import HeadScripts from '../../components/HeadScripts.astro';
                     <div class="order-top">
                         <div class="sticky top-10">
                             <div class="square-card border-neutral-700 mb-4">Language toggle</div>
-                            <div class="square-card border-neutral-700">
-                                <div>Table of Contents</div>
+                            <div id="toc">
+                                <!-- <div>Table of Contents</div>
                                 <div class="mt-4 flex flex-col gap-1.5 text-neutral-300">
                                     <div>Introduction</div>
                                     <div>Homepage Redesign</div>
                                     <div>Timelines</div>
                                     <div>Costs</div>
                                     <div>FAQs</div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -239,7 +228,7 @@ import HeadScripts from '../../components/HeadScripts.astro';
                         </div>
                         <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
                         <div class="mb-10 text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
-                            <h2 class="inline">Homepage Redesign</h2>
+                            <h2 id="homepage-redesign" class="inline">Homepage Redesign</h2>
                         </div>
                         <p class="text-neutral-400 text-lg mb-10">We reviewed the homepages of your key competitors—Mailchimp, Envoke, Knak, Flodesk, CakeMail, LeadFox, and ContactMonkey—and distilled the best elements into a new homepage draft for CyberImpact. Want to see exactly what inspired each section? Check out our <span class="underline"><a href="https://cyberimpact-website.vercel.app/notes" target="_blank">design annotations</a></span> for a peek at what made the cut.</p>
                         <div class="square-card pt-8 p-0 mb-20 overflow-hidden">
@@ -265,7 +254,7 @@ import HeadScripts from '../../components/HeadScripts.astro';
                         </div>
                         <div>
                             <div class="text-lg text-neutral-400 mb-10">Our Core Tech Stack</div>
-                            <div class="grid lg:grid-cols-[1fr_1fr_1.5fr] gap-4">
+                            <div class="grid lg:grid-cols-3 gap-4">
                                 <a href="https://astro.build?utm_source=crftLookup" target="_blank" id="astro" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Astro" data-tech-icon="astro.svg">
                                     <div id="astro" class="flex flex-row gap-2 items-center">
                                         <img src="/icons/Astro.svg" class="w-5 h-5" alt="" />
@@ -282,6 +271,14 @@ import HeadScripts from '../../components/HeadScripts.astro';
                                     <div class="text-pretty">Headless CMS that offers flexible content modeling, real‑time collaboration, and a powerful content API.</div>
                                     <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
                                 </a>
+                                <!-- <a href="https://mux.com?utm_source=crftLookup" target="_blank" id="mux" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Mux" data-tech-icon="mux.svg">
+                                    <div id="mux" class="flex flex-row gap-2 items-center">
+                                        <img src="/icons/Mux.svg" class="w-5 h-5" alt="" />
+                                        <div>Mux</div>
+                                    </div>
+                                    <div class="text-pretty">Video hosting platform with API for streaming, transcoding, and more.</div>
+                                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
+                                </a> -->
                                 <button id="ph-trigger" class="flex flex-col lg:items-start items-end gap-2 square-card p-0 relative hover:bg-neutral-700 transition-all text-left cursor-pointer" data-tech-name="PostHog" data-tech-icon="posthog.svg">
                                     <div class="square-card px-1 py-0 lg:absolute flex flex-row items-center text-orange-300 gap-1 lg:border border-t-0 border-r-0 lg:top-0 lg:right-0 lg:mt-3 lg:mr-3">
                                         <div>Why over GA4?</div>
@@ -301,9 +298,9 @@ import HeadScripts from '../../components/HeadScripts.astro';
                         <div class="flex flex-col gap-14">
                             <div class="flex flex-row flex-wrap gap-4 justify-between items-center mb-10">
                                 <div class=" text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
-                                    <h2 class="inline">Timelines</h2>
+                                    <h2 id="timelines" class="inline">Timelines</h2>
                                 </div>
-                                <div class="text-neutral-300 text-lg">Estimated project duration: 3 months</div>
+                                <div class="text-neutral-300 text-lg">Estimated project duration: 2 months</div>
                             </div>
                             <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
                                 <div>
@@ -420,7 +417,7 @@ import HeadScripts from '../../components/HeadScripts.astro';
                         <div class="mt-20 flex flex-col gap-14">
                             <div>
                                 <div class=" text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
-                                    <h2 class="inline-block">Costs</h2>
+                                    <h2 id="costs" class="inline-block">Costs</h2>
                                 </div>
                             </div>
                             <div class="grid gap-4">
@@ -435,7 +432,7 @@ import HeadScripts from '../../components/HeadScripts.astro';
                                                 <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
                                                 <div class="flex flex-col gap-2">
                                                     <div class=" font-medium">Design work in Figma/Sketch</div>
-                                                    <div class=" font-normal text-neutral-300">We kick off projects by designing initial web/brand concepts, and are receptive to feedback all throughout. Once we're 80% there, we bring ideas to life in code, and make final refinements.</div>
+                                                    <div class=" font-normal text-neutral-300">We use Figma or Sketch only for early concepts, then quickly move to high-fidelity design in code. This lets us collaborate in real time and deliver results much faster, refining as we build.</div>
                                                 </div>
                                             </div>
 
@@ -511,7 +508,7 @@ import HeadScripts from '../../components/HeadScripts.astro';
                                             </div>
                                         </div>
                                         <h1 class="text-4xl font-medium mb-3 leading-tight"><span id="price">$100</span><span class="bg-neutral-400 bg-clip-text">/hour</span></h1>
-                                        <div class="text-lg font-medium leading-normal text-neutral-200 text-pretty">Flexible hourly support is available for ongoing development needs, and you can opt for bundled hours to save on larger updates or new features. However, you’re only billed for actual changes to the code—any additional support like answering emails, providing training, or helping out with general questions is always included and never counted against your hours. We remain available post-launch to help with optimizations, updates, or feature additions, so you have access to support whenever you need it without worrying about extra charges for routine help.</div>
+                                        <div class="text-lg font-medium leading-normal text-neutral-200 text-pretty">Flexible hourly support is available for ongoing development needs, and you can opt for bundled hours to save on larger updates or new features. We remain available post-launch to help with optimizations, updates, or feature additions, so you have access to support whenever you need it.</div>
                                         <style>
                                         @reference "../../styles/global.css";
                                         #tabs div {
@@ -521,9 +518,14 @@ import HeadScripts from '../../components/HeadScripts.astro';
                                             border-color: #525252 !important;
                                             @apply bg-neutral-700;
                                         }
+                                        .toc-current {
+                                            @apply text-orange-300 font-medium;
+                                        }
                                         </style>
                                         <script>
                                         import $ from "jquery";
+
+                                        //pricing
                                         const prices = {
                                             hourly: 100,
                                             bundle5: 95,
@@ -543,6 +545,73 @@ import HeadScripts from '../../components/HeadScripts.astro';
                                             $(".tab-active").add(this).toggleClass("tab-active");
                                             updatePrice();
                                         });
+
+                                        //posthog
+                                        $("#ph-trigger").click(function() {
+                                            $("#ph-modal").toggleClass("hidden flex");
+                                        });
+                                        $("#ph-modal").click(function(event) {
+                                            if (!$(event.target).closest('.square-card').length) {
+                                                $("#ph-modal").toggleClass("hidden flex");
+                                            }
+                                        });
+
+                                        //toc
+
+                                        const headings = [
+                                            { text: "Introduction", slug: "intro" },
+                                            { text: "Homepage Redesign", slug: "homepage-redesign" },
+                                            { text: "Timelines", slug: "timelines" },
+                                            { text: "Costs", slug: "costs" },
+                                            { text: "FAQs", slug: "faqs" }
+                                        ];
+
+                                        $(document).ready(() => {
+                                            const tocContainer = document.querySelector('#toc');
+                                            if (tocContainer) {
+                                                // Hide TOC if no headings are found
+                                                if (headings.length === 0) {
+                                                    tocContainer.style.display = 'none';
+                                                    return;
+                                                }
+                                                const tocHtml = `
+                                                    <div class="square-card p-3 px-4 border border-neutral-700 shadow-md">
+                                                        <div class="text-lg mb-2">Table of contents</div>
+                                                        <div class="mt-4 flex flex-col gap-2 text-neutral-300">
+                                                            ${headings.map(heading => `
+                                                                <div class="">
+                                                                    <a href="#${heading.slug}" class="toc-link transition hover:text-orange-300">
+                                                                        ${heading.text}
+                                                                    </a>
+                                                                </div>
+                                                            `).join('')}
+                                                        </div>
+                                                    </div>
+                                                `;
+                                                tocContainer.innerHTML = tocHtml;
+                                            }
+
+                                            // Set up intersection observer for highlighting current section
+                                            const observerOptions = {
+                                                root: null,
+                                                rootMargin: "0px 0px -50% 0px",
+                                                threshold: [1],
+                                            };
+                                            const observer = new IntersectionObserver((entries) => {
+                                                entries.forEach(entry => {
+                                                    if (entry.isIntersecting) {
+                                                        document.querySelectorAll('.toc-link').forEach(link => link.classList.remove('toc-current'));
+                                                        const targetLink = document.querySelector(`a[href="#${entry.target.id}"].toc-link`);
+                                                        if (targetLink) targetLink.classList.add('toc-current');
+                                                    }
+                                                });
+                                            }, observerOptions);
+
+                                            document.querySelectorAll('h2').forEach(heading => {
+                                                heading.classList.add('scroll-mt-24');
+                                                observer.observe(heading);
+                                            });
+                                        });
                                         </script>
                                     </div>
                                 </div>
@@ -560,7 +629,7 @@ import HeadScripts from '../../components/HeadScripts.astro';
                                 <div>
                                     <div class="sticky top-10 text-neutral-400">
                                         <div class=" text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
-                                            <h2 class="inline">FAQs</h2>
+                                            <h2 id="faqs" class="inline">FAQs</h2>
                                         </div>
                                     </div>
                                 </div>
