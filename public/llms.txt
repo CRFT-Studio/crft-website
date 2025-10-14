@@ -4,7 +4,7 @@
 
 Our expertise covers:
 - Visual brand identity (logo, colors, typeface)
-- Design and development of modern marketing sites (with Astro, Sanity CMS, Vercel, React, Webflow, and more)
+- Design and development of modern marketing sites (with Astro, Payload CMS, Vercel, React, Webflow, and more)
 - Conversion-focused copywriting
 - Full site audits and performance optimization (Lighthouse, SEO)
 - Ongoing technical support and landing page creation
@@ -14,7 +14,7 @@ We provide a unique "free hero redesign"—a full mockup and annotated improveme
 Our free CRFT Lookup tool lets users scan any site to analyze its tech stack, Lighthouse performance metrics, meta tags, and sitemap structure—all in one shareable report.
 
 ## Core Services and Offers
-- [Web Design & Development Services](https://www.crft.studio/#services) : Full-stack site design & dev, using Astro, React, Sanity, and more
+- [Web Design & Development Services](https://www.crft.studio/#services) : Full-stack site design & dev, using Astro, React, Payload, and more
 - [Free Hero Redesign](https://www.crft.studio/audit) : Get a free homepage hero redesign with expert insights and mockups
 - [CRFT Lookup](https://www.crft.studio/lookup) : Analyze any website's tech stack, performance, SEO, and meta tags—free and shareable reports
 
