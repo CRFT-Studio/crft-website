@@ -2,6 +2,8 @@
 import Navigation from '../../components/Navigation.astro';
 import FAQItem from '../../components/FAQItem.astro';
 import HeadScripts from '../../components/HeadScripts.astro';
+import { Image } from 'astro:assets';
+import PayloadScreenshot from '../../images/cyberimpact-payload.png';
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -255,6 +257,9 @@ import HeadScripts from '../../components/HeadScripts.astro';
                                 </div>
                             </div>
                         </div>
+                        <!-- <div>
+                            <Image src={PayloadScreenshot} alt='Payload Screenshot'></Image>
+                        </div> -->
                         <div>
                             <div class="text-lg text-neutral-400 mb-10">Our Core Tech Stack</div>
                             <div class="grid lg:grid-cols-3 gap-4">
