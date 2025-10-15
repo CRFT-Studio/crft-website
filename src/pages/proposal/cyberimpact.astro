@@ -188,6 +188,161 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                 </style>
             </div>
         </div>
+        <div id="cms-modal" class="fixed hidden lg:items-center items-end lg:justify-center justify-end h-full w-full bg-neutral-800/10 backdrop-blur-xs z-50 transition-all">
+            <div class="square-card lg:h-auto w-auto h-[85vh] lg:overflow-hidden overflow-y-auto">
+                <div class="flex flex-row gap-4 flex-wrap items-center justify-center mb-9">
+                    <div class="text-lg underline">Sanity vs Payload</div>
+                </div>
+                <div class="lg:bg-transparent lg:border-0 square-card p-0 max-w-[800px] mx-auto">
+                    <table class="w-full text-left lg:text-lg border-collapse">
+                        <thead class="my-6 hidden lg:table-header-group">
+                            <tr>
+                                <th></th>
+                                <th>Sanity</th>
+                                <th>Payload CMS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Pricing</td>
+                                <td>
+                                    <div class="text-sm text-neutral-400 lg:hidden mb-2">
+                                        Sanity
+                                    </div>
+                                    <div>Free tier: includes up to 20 user seats, 2 permission roles,
+                                        2 datasets, unlimited content types and locales.
+                                        Growth tier: $15 USD/user/month
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-sm text-neutral-400 lg:hidden mb-2">
+                                        Payload CMS
+                                    </div>
+                                    <div>Free OSS self-host: unlimited users, permission roles, datasets, locales, etc</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ongoing Dev Dependency</td>
+                                <td>
+                                    <div class="text-sm text-neutral-400 lg:hidden mb-2">
+                                        Sanity
+                                    </div>
+                                    <div>Low; managed cloud, minimal DevOps</div>
+                                </td>
+                                <td>
+                                    <div class="text-sm text-neutral-400 lg:hidden mb-2">
+                                        Payload CMS
+                                    </div>
+                                    <div>Medium; self-host requires infrastructure management</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Features</td>
+                                <td>
+                                    <div class="text-sm text-neutral-400 lg:hidden mb-2">
+                                        Sanity
+                                    </div>
+                                    <div>
+                                        Visual/live editing, asset management, localization, publishing workflows, versioning, and more
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-sm text-neutral-400 lg:hidden mb-2">
+                                        Payload CMS
+                                    </div>
+                                    <div>
+                                        Near feature-parity: Asset management, localization, publishing workflows, versioning, and more
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Data Ownership</td>
+                                <td>
+                                    <div class="text-sm text-neutral-400 lg:hidden mb-2">
+                                        Sanity
+                                    </div>
+                                    <div>GDPR/SOC2 compliant, cloud-hosted database, albeit with full data export</div>
+                                </td>
+                                <td>
+                                    <div class="text-sm text-neutral-400 lg:hidden mb-2">
+                                        Payload CMS
+                                    </div>
+                                    <div>Complete control; self-hosted DB (MongoDB/Postgres/etc)</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Hosting and Scalability</td>
+                                <td>
+                                    <div class="text-sm text-neutral-400 lg:hidden mb-2">
+                                        Sanity
+                                    </div>
+                                    <div>Self-hostable, OSS client, with a cloud-hosted database behind a global CDN</div>
+                                </td>
+                                <td>
+                                    <div class="text-sm text-neutral-400 lg:hidden mb-2">
+                                        Payload CMS
+                                    </div>
+                                    <div>Self/cloud client and database; manual scaling, full perf control</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Community and Support</td>
+                                <td>
+                                    <div class="text-sm text-neutral-400 lg:hidden mb-2">
+                                        Sanity
+                                    </div>
+                                    <div>Large (180k+ devs), docs/plugins, enterprise SLAs</div>
+                                </td>
+                                <td>
+                                    <div class="text-sm text-neutral-400 lg:hidden mb-2">
+                                        Payload CMS
+                                    </div>
+                                    <div>Growing (30k+ stars), active GitHub, recent Figma acquisition</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Summary</td>
+                                <td colspan="2">Payload has near feature parity with Sanity, and offers a similar content editing experience. Though
+                                    Sanity offers a more seamless setup and long term maintenance with managed infrastructure. We choose
+                                    Payload when pricing and data ownership are upmost considerations.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <style>
+                    @reference "../../styles/global.css";
+
+                    #cms-modal table td {
+                        @apply p-3 border-b border-neutral-700;
+                    }
+
+                    @media (min-width: 1023px) {
+                        #cms-modal table tr:last-child td, #cms-modal table tr:last-child th {
+                            @apply border-b-0;
+                        }
+                    }
+
+                    #cms-modal table th {
+                        @apply p-3 pb-6 font-medium;
+                    }
+
+                    /*#cms-modal table tr :nth-child(3), #cms-modal table th:nth-child(3) {
+                        @apply bg-green-300/10;
+                    }*/
+
+                    @media (max-width: 1023px) {
+                        #cms-modal table tr, #cms-modal table td {
+                            @apply block;
+                        }
+
+                        #cms-modal table tr:not(:first-child) td:first-child {
+                            @apply pt-10 font-medium;
+                        }
+                    }
+                </style>
+            </div>
+        </div>
         <div class="opacity-0 pointer-events-none">
             <Navigation />
         </div>
@@ -263,36 +418,41 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                         <div>
                             <div class="text-lg text-neutral-400 mb-10">Our Core Tech Stack</div>
                             <div class="grid lg:grid-cols-3 gap-4">
-                                <a href="https://astro.build?utm_source=crftLookup" target="_blank" id="astro" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Astro" data-tech-icon="astro.svg">
-                                    <div id="astro" class="flex flex-row gap-2 items-center">
-                                        <img src="/icons/Astro.svg" class="w-5 h-5" alt="" />
-                                        <div>Astro</div>
+                                <a href="https://astro.build?utm_source=crftLookup" target="_blank" class="flex flex-col lg:items-start items-end gap-2 square-card p-0 relative hover:bg-neutral-700 transition-all text-left" data-tech-name="Astro" data-tech-icon="astro.svg">
+                                    <div class="square-card px-1 py-0 flex flex-row items-center ml-auto text-orange-300 gap-1 border border-t-0 border-r-0">
+                                        <div>Learn about Astro</div>
+                                        <svg class="" xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" viewBox="0 -960 960 960" fill="#D69A5C"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
                                     </div>
-                                    <div class="text-pretty">Ultra‑fast, modern frontend framework that ships minimal JavaScript and supports multiple rendering paradigms.</div>
-                                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
+                                    <div class="p-4 pt-0 flex flex-col gap-2 items-start">
+                                        <div id="astro" class="flex flex-row gap-2 items-center">
+                                            <img src="/icons/Astro.svg" class="w-5 h-5" alt="" />
+                                            <div>Astro</div>
+                                        </div>
+                                        <div class="text-pretty">Ultra‑fast, modern frontend framework that ships minimal JavaScript and supports multiple rendering paradigms.</div>
+                                    </div>
                                 </a>
-                                <a href="https://payloadcms.com?utm_source=crftLookup" target="_blank" id="Payload" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Payload" data-tech-icon="Payload.svg">
-                                    <div id="Payload" class="flex flex-row gap-2 items-center">
-                                        <img src="/icons/PayloadCMS.svg" class="w-5 h-5" alt="" />
-                                        <div>Payload</div>
+                                <button id="cms-trigger" class="flex flex-col lg:items-start items-end gap-2 square-card p-0 relative hover:bg-neutral-700 transition-all text-left cursor-pointer" data-tech-name="Payload" data-tech-icon="Payload.svg">
+                                    <div class="square-card px-1 py-0 flex flex-row items-center ml-auto text-orange-300 gap-1 border border-t-0 border-r-0">
+                                        <div>Which CMS?</div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" viewBox="0 -960 960 960" fill="#D69A5C"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
                                     </div>
-                                    <div class="text-pretty">Self-hostable headless CMS that offers flexible content modeling, real‑time collaboration, and a powerful content API.</div>
-                                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
-                                </a>
-                                <!-- <a href="https://mux.com?utm_source=crftLookup" target="_blank" id="mux" class="flex flex-col gap-2 square-card p-4 relative hover:bg-neutral-700 transition-all" data-tech-name="Mux" data-tech-icon="mux.svg">
-                                    <div id="mux" class="flex flex-row gap-2 items-center">
-                                        <img src="/icons/Mux.svg" class="w-5 h-5" alt="" />
-                                        <div>Mux</div>
+                                    <div class="p-4 pt-0 flex flex-col gap-2 items-start">
+                                        <div id="payload" class="flex flex-row gap-2 items-center">
+                                            <div class="flex flex-row gap-1 items-center">
+                                                <img src="/icons/PayloadCMS.svg" class="w-5 h-5" alt="" />
+                                                <img src="/icons/Sanity.svg" class="w-5 h-5" alt="" />
+                                            </div>
+                                            <div>Payload or Sanity</div>
+                                        </div>
+                                        <div class="text-pretty">Payload and Sanity are both headless CMS options we use, depending on project requirements. They offer flexible content modeling, real‑time collaboration, and powerful content APIs for seamless content management.</div>
                                     </div>
-                                    <div class="text-pretty">Video hosting platform with API for streaming, transcoding, and more.</div>
-                                    <svg class="absolute top-0 right-0 mt-3 mr-3" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
-                                </a> -->
+                                </button>
                                 <button id="ph-trigger" class="flex flex-col lg:items-start items-end gap-2 square-card p-0 relative hover:bg-neutral-700 transition-all text-left cursor-pointer" data-tech-name="PostHog" data-tech-icon="posthog.svg">
-                                    <div class="square-card px-1 py-0 lg:absolute flex flex-row items-center text-orange-300 gap-1 lg:border border-t-0 border-r-0 lg:top-0 lg:right-0 lg:mt-3 lg:mr-3">
+                                    <div class="square-card px-1 py-0 ml-auto flex flex-row items-center text-orange-300 gap-1 border border-t-0 border-r-0">
                                         <div>Why over GA4?</div>
                                         <svg class="" xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" viewBox="0 -960 960 960" fill="#D69A5C"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
                                     </div>
-                                    <div class="p-4 flex flex-col gap-2 items-start">
+                                    <div class="p-4 pt-0 flex flex-col gap-2 items-start">
                                         <div id="posthog" class="flex flex-row gap-2 items-center">
                                             <img src="/icons/PostHog.svg" class="w-5 h-5" alt="" />
                                             <div>PostHog</div>
@@ -554,13 +714,22 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                             updatePrice();
                                         });
 
-                                        //posthog
+                                        //posthog n cms choice
                                         $("#ph-trigger").click(function() {
                                             $("#ph-modal").toggleClass("hidden flex");
                                         });
                                         $("#ph-modal").click(function(event) {
                                             if (!$(event.target).closest('.square-card').length) {
                                                 $("#ph-modal").toggleClass("hidden flex");
+                                            }
+                                        });
+
+                                        $("#cms-trigger").click(function() {
+                                            $("#cms-modal").toggleClass("hidden flex");
+                                        });
+                                        $("#cms-modal").click(function(event) {
+                                            if (!$(event.target).closest('.square-card').length) {
+                                                $("#cms-modal").toggleClass("hidden flex");
                                             }
                                         });
 
@@ -641,9 +810,9 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                                     <td class="border border-neutral-600 p-2">Free, open-source, self-hostable frontend framework</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="border border-neutral-600 p-2">Payload CMS</td>
+                                                    <td class="border border-neutral-600 p-2">Payload CMS or Astro</td>
                                                     <td class="border border-neutral-600 p-2">$0</td>
-                                                    <td class="border border-neutral-600 p-2">Free, self hostable</td>
+                                                    <td class="border border-neutral-600 p-2">Free</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="border border-neutral-600 p-2">PostHog</td>
@@ -674,15 +843,15 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                 <div>
                                     <FAQItem
                                         question="What technologies do you use to build websites?"
-                                        answer="We use Astro for ultra-fast, modern frontend development, combined with Payload as a powerful and flexible headless CMS for easy content management. This stack delivers performance, scalability, and a seamless editing experience."
+                                        answer="We use Astro for ultra-fast, modern frontend development, combined with Payload or Sanity as a powerful and flexible headless CMS for easy content management. This stack delivers performance, and a seamless editing experience."
                                     />
                                     <FAQItem
                                         question="Will our team be able to edit the website ourselves?"
-                                        answer="Absolutely. Payload's intuitive, real-time editing environment lets your team update copy, images, and even page layouts—no developer required."
+                                        answer="Absolutely. Both Payload and Sanity's CMS offer intuitive, real-time editing environment lets your team update copy, images, and even page layouts—no developer required."
                                     />
                                     <FAQItem
                                         question="Can it be hosted on our own infrastructure?"
-                                        answer="Yes. The Astro frontend can be deployed as a Node application wherever you choose, along with Payload CMS. You also retain full ownership over the underlying database, PostgreSQL. We'll containerize the stack with Podman for easy deployment."
+                                        answer="Yes. The Astro frontend can be deployed as a Node application wherever you choose. We offer two choices of headless CMS, each of which differ in their self-hosting capabilities. Sanity's content editing client, Sanity Studio, is open source and self-hostable, but the underlying database is cloud-hosted. Payload CMS's client and underlying database is fully open source and self-hostable, giving you full ownership over your content."
                                     />
                                     <FAQItem
                                         question="How much ongoing dev/maintenance is needed?"
@@ -690,7 +859,7 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                     />
                                     <FAQItem
                                         question="Is the new system harder to use than WordPress?"
-                                        answer="No—the opposite. Payload offers a modern, user-friendly interface tailored for your content, not blog posts and plugins. Many clients find it quicker and more intuitive than the traditional WordPress dashboard, especially for non-technical users."
+                                        answer="No—the opposite. Both Sanity and Payload offer a modern, user-friendly interface tailored for your content, not just blog posts. Many clients find it quicker and more intuitive than the traditional WordPress dashboard, especially for non-technical users."
                                     />
                                     <FAQItem
                                         question="What if we need new features after launch?"
