@@ -15,7 +15,9 @@ import tailwindcss from "@tailwindcss/vite";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.crft.studio',
-  integrations: [sitemap(), mdx(), robotsTxt()],
+  integrations: [sitemap({
+      filter: (page) => !new URL(page).pathname.startsWith('/proposal'),
+  }), mdx(), robotsTxt()],
   output: "static",
   adapter: vercel(),
   trailingSlash: "never",
