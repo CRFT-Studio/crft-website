@@ -15,6 +15,8 @@ import LookupFeatures from "../../components/LookupFeatures.astro";
 
 import { Image } from 'astro:assets';
 import NickPFP from '../../images/nick-pfp-new.png';
+import JeremyPFP from '../../images/jeremy-pfp.png';
+import DavidPFP from '../../images/david-pfp.png';
 
 import { LogSnag } from '@logsnag/node';
 const LOGSNAG_API = process.env.LOGSNAG_API;
@@ -610,14 +612,6 @@ if (url) {
         @reference "../../styles/global.css";
             .toc-current {
                 @apply text-orange-300;
-            }
-
-            #overview,
-            #lighthouse,
-            #tech-stack,
-            #sitemap,
-            #meta-tags {
-                scroll-margin-top: 170px;
             }
 
             .toc-link {
@@ -1244,6 +1238,29 @@ if (url) {
 
                                             <div>Fetching lighthouse scores...</div>
                                     </Lighthouse>
+                                </div>
+                            </div>
+                            <div class="square-card p-5 flex md:flex-row flex-col gap-9 justify-between items-center mt-28">
+                                <div class="lg:px-5">
+                                    <div class="flex flex-row items-center mb-4">
+                                        <Image src={JeremyPFP} alt="Jeremy pfp" class="rounded-full aspect-square object-cover w-[50px]"/>
+                                        <Image src={DavidPFP} alt="Jeremy pfp" class="rounded-full aspect-square w-[50px] object-cover -ml-3"/>
+                                    </div>
+                                    <div class="text-3xl text-pretty font-medium mb-2">{`Do you own ${new URL(url).hostname}?`}</div>
+                                    <div class="text-lg text-pretty max-w-[400px]">See what a redesigned, lightning-fast website can do for your business.</div>
+                                </div>
+                                <div>
+                                    <div class="flex md:flex-row flex-col gap-3 lg:max-w-[600px]">
+                                        <a href="mailto:jeremy@crft.studio" class="square-card p-5 text-lg hover:-translate-y-1 transition-all flex flex-col justify-between">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#CDCDCD"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z"/></svg>                                            <div class="font-normal leading-normal mb-2 mt-3">Tell us more about your business, goals, brand guidelines, and more.</div>
+                                            <div class="text-orange-300">Contact Us →</div>
+                                        </a>
+                                        <a href="/audit" class="square-card p-5 text-lg hover:-translate-y-1 transition-all flex flex-col justify-between">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#D4D4D4"><path d="m352-522 86-87-56-57-44 44-56-56 43-44-45-45-87 87 159 158Zm328 329 87-87-45-45-44 43-56-56 43-44-57-56-86 86 158 159Zm24-567 57 57-57-57ZM290-120H120v-170l175-175L80-680l200-200 216 216 151-152q12-12 27-18t31-6q16 0 31 6t27 18l53 54q12 12 18 27t6 31q0 16-6 30.5T816-647L665-495l215 215L680-80 465-295 290-120Zm-90-80h56l392-391-57-57-391 392v56Zm420-419-29-29 57 57-28-28Z"/></svg>
+                                            <div class="font-normal leading-normal mb-2 mt-3">Kick things off with a free redesign of your homepage hero section.</div>
+                                            <div class="text-orange-300">Get a free hero redesign →</div>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="mt-28">
