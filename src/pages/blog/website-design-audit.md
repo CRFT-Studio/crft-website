@@ -157,4 +157,4 @@ Anyone can audit. But actionable design help—from a real human—accelerates y
 
 > **Ready for a no-strings-attached hero section upgrade? [Request your complimentary expert redesign here.](/audit)**
 
-For questions, feedback, or a second set of eyes on your audit, reach out to me anytime at [jeremy@crft.studio](mailto:jeremy@crft.studio). At CRFT Studio, we’re passionate about making web design practical, gorgeous, and *measurably* better.
+For questions, feedback, or a second set of eyes on your audit, reach out to me anytime at [jeremy@crft.studio](/contact-us). At CRFT Studio, we’re passionate about making web design practical, gorgeous, and *measurably* better.
