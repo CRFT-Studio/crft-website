@@ -1,0 +1,71 @@
+---
+import HeadScripts from "../components/HeadScripts.astro";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
+---
+<html>
+    <head>
+        <HeadScripts
+        title=""
+        description=""
+        ogImageUrl=""
+        />
+    </head>
+    <body>
+        <Navigation />
+        <section class="mb-0 mt-20">
+            <div class="container">
+                <div class="square-card border-b-0 p-8 pb-14 h-full">
+                    <div class="mb-7">
+                        <div class="text-orange-300 mb-3">Contact Us</div>
+                        <h1 class="lg:text-5xl text-4xl text-balance font-semibold leading-tight">Get in touch.</h1>
+                        <p class="text-pretty lg:text-xl text-lg mt-2 text-neutral-300 max-w-[600px]">We design and develop beautiful, performant, and maintainable websites for the best marketing teams. Expect a response within a couple of hours (during our 9-5 business hours).</p>
+                    </div>
+                    <div class="flex flex-col gap-5">
+                        <div class="flex flex-row gap-5 text-lg lg:items-center items-start">
+                            <div class="square-card py-0 px-1">Email</div>
+                            <a href="mailto:jeremy@crft.studio">jeremy@crft.studio</a>
+                        </div>
+                        <div class="flex flex-row lg:gap-5 gap-2 text-lg lg:items-center items-start flex-wrap">
+                            <div class="square-card py-0 px-1">Address</div>
+                            <div client:load>
+                                Remotely from Toronto, Canada.<span class="text-neutral-400" id="time-span"></span>
+                                <script>
+                                    import $ from 'jquery';
+                                    function updateTime() {
+                                        const timeEl = $('#time-span');
+                                        if (timeEl.length) {
+                                            const time = new Date().toLocaleTimeString("en-US", {timeZone: "America/Toronto", hour: 'numeric', minute: 'numeric'});
+                                            timeEl.text(` It is currently ${time}.`);
+                                        }
+                                    }
+                                    updateTime();
+                                    setInterval(updateTime, 1000);
+                                </script>
+                            </div>
+                        </div>
+                        <div class="flex flex-row gap-5 text-lg lg:items-center items-start">
+                            <div class="square-card py-0 px-1">Call</div>
+                            <button class="underline cursor-pointer" data-cal-link="crftstudio/consultation" data-cal-namespace="consultation" data-cal-config='{"layout":"month_view","theme":"dark"}'>Book here</button>
+                            <!-- Cal element-click embed code begins -->
+                            <script type="text/javascript">
+                              (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+                            Cal("init", "consultation", {origin:"https://app.cal.com"});
+
+
+                              // Important: Please add the following attributes to the element that should trigger the calendar to open upon clicking.
+                              // `data-cal-link="crftstudio/consultation"`
+                              // data-cal-namespace="consultation"
+                              // `data-cal-config='{"layout":"month_view","theme":"dark"}'`
+
+                              Cal.ns.consultation("ui", {"theme":"dark","hideEventTypeDetails":false,"layout":"month_view"});
+                              </script>
+                              <!-- Cal element-click embed code ends -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <Footer hideTop />
+    </body>
+</html>
