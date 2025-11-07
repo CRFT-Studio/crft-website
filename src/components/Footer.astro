@@ -4,7 +4,10 @@ import JeremyPFP from '../images/jeremy-pfp.png';
 import DavidPFP from '../images/david-pfp.png';
 import NihalPFP from '../images/nihal-pfp.png';
 import LookupCard from './LookupCard.astro';
+
+const { hideTop = false } = Astro.props;
 ---
+{!hideTop && (
 <div class="container mb-20">
     <div class="square-card p-5 flex md:flex-row flex-col gap-9 justify-between items-center">
         <div class="lg:px-5">
@@ -18,7 +21,7 @@ import LookupCard from './LookupCard.astro';
 
         <div>
             <div class="flex md:flex-row flex-col gap-3 lg:max-w-[600px]">
-                <a href="mailto:jeremy@crft.studio" class="square-card p-5 text-lg hover:-translate-y-1 transition-all flex flex-col justify-between">
+                <a href="/contact-us" class="square-card p-5 text-lg hover:-translate-y-1 transition-all flex flex-col justify-between">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#CDCDCD"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z"/></svg>                                            <div class="font-normal leading-normal mb-2 mt-3">Tell us more about your business, goals, brand guidelines, and more.</div>
                     <div class="text-orange-300">Contact Us →</div>
                 </a>
@@ -31,6 +34,7 @@ import LookupCard from './LookupCard.astro';
         </div>
     </div>
 </div>
+)}
 <footer class="bg-[#1C1A1A] py-10 border-t border-neutral-700">
     <div class="container">
         <div class="grid lg:grid-cols-[0.2fr_1fr] gap-3 mb-3">
@@ -65,7 +69,7 @@ import LookupCard from './LookupCard.astro';
                     <a href="/glossary" class="text-neutral-300">Glossary</a>
                     <a href="/blog" class="text-neutral-300">Blog</a>
                     <a href="/#faq" class="text-neutral-300">FAQ</a>
-                    <a href="mailto:jeremy@crft.studio" class="text-neutral-300 text-nowrap">Contact Us</a>
+                    <a href="/contact-us" class="text-neutral-300 text-nowrap">Contact Us</a>
                     <a href="https://billing.stripe.com/p/login/8wM5mq6kH2nvgx2aEE" target="_blank" class="text-neutral-300 text-nowrap">Manage Billing</a>
                 </div>
 

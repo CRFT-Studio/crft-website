@@ -37,7 +37,7 @@ All three tools let you paste a URL and instantly reveal the software, framework
 | **Sitemap Visualization**       | Yes: interactive, tree-style site map if sitemap.xml exists | No                      | No                 |
 | **Shareable Reports**           | Yes: unique URLs kept for 30 days + downloadable reports      | Yes      | No      |
 | **API / Export**                | No public API | API, paid        | API, paid          |
-| **Support / Contact**           | Email [jeremy@crft.studio](mailto:jeremy@crft.studio), rapid help | Enterprise support      | Standard           |
+| **Support / Contact**           | Email [jeremy@crft.studio](/contact-us), rapid help | Enterprise support      | Standard           |
 
 ### The CRFT Lookup Advantage
 
@@ -75,7 +75,7 @@ Here’s how web pros are using the CRFT Lookup—in ways that naturally support
 4. **Industry-Specific Checklists:** Build ultra-actionable checklists (on-page or as PDFs) for routine audits, with “Check Now with the CRFT Lookup” CTAs for each workflow.
 5. **API/Integration Guides:** Even if you’re working without a public API, document how agencies, SEOs, or developers can reference CRFT Lookup insights in manual (or internal) audits—supporting both power users and non-dev professionals.
 
-> Need help with internal strategy or content planning? Contact [jeremy@crft.studio](mailto:jeremy@crft.studio) for tailored advice.
+> Need help with internal strategy or content planning? Contact [jeremy@crft.studio](/contact-us) for tailored advice.
 
 ## How CRFT Lookup Compares with BuiltWith and Wappalyzer: Pros & Cons
 
@@ -117,4 +117,4 @@ Want quick wins? Start with a free [hero section design audit](/audit)—you’l
 
 Whether you’re an agency leader, freelancer, or marketer, the CRFT Lookup is your all-in-one, no-nonsense choice for website technology detection, performance review, and intelligent, client-facing reporting. Make it your competitive edge in 2025 and beyond.
 
-For more resources, see our full [Glossary](/glossary), and the [Lookup home](/lookup). Interested in a custom workflow, integration, or content strategy? Email me directly at [jeremy@crft.studio](mailto:jeremy@crft.studio).
+For more resources, see our full [Glossary](/glossary), and the [Lookup home](/lookup). Interested in a custom workflow, integration, or content strategy? Email me directly at [jeremy@crft.studio](/contact-us).
