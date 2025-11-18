@@ -1,0 +1,254 @@
+---
+import Gallery from "../../../layouts/LookupGallery.astro";
+
+export const pageData = {
+    company: {
+        name: "Cluely",
+        metaTitle: "Cluely - Live AI Meeting Assistant | Real-Time Meeting Notes and AI Insights",
+        description: "AI meeting assistant that provides live meeting notes, instant answers, and real-time insights during calls. Unlike Otter or Granola, helps you during meetings, not just after.",
+        websiteUrl: "https://cluely.com",
+        ogImageUrl: "https://cluely.com/social-previews/index.jpg",
+        dateScanned: "18/11/25" //day/month/year
+    },
+    lighthouse: {
+        desktop: {
+            performance: 69,
+            seo: 96,
+            bestPractices: 96,
+            accessibility: 100
+        },
+        mobile: {
+            performance: 42,
+            seo: 96,
+            bestPractices: 100,
+            accessibility: 100
+        }
+    },
+    techByCategory: {
+      Databases: [
+        {
+          name: 'Firebase',
+          description: 'Firebase is a Google-backed application development software that enables developers to develop iOS, Android and Web apps.',
+          website: 'https://firebase.google.com',
+          icon: 'Firebase.svg'
+        }
+      ],
+      Development: [
+        {
+          name: 'Firebase',
+          description: 'Firebase is a Google-backed application development software that enables developers to develop iOS, Android and Web apps.',
+          website: 'https://firebase.google.com',
+          icon: 'Firebase.svg'
+        }
+      ],
+      'UI frameworks': [
+        {
+          name: 'Radix UI',
+          description: 'Radix UI is a React-based user interface component library that offers accessible, responsive, and customisable components for building web applications.',
+          website: 'https://www.radix-ui.com',
+          icon: 'Radix UI.svg'
+        },
+        {
+          name: 'HeroUI',
+          description: 'HeroUI allows you to make beautiful, modern, and fast websites/applications regardless of your design experience, created with React.js and Stitches, based on React Aria and inspired by Vuesax.',
+          website: 'https://nextui.org/',
+          icon: 'HeroUI.svg'
+        }
+      ],
+      'JavaScript frameworks': [
+        {
+          name: 'React',
+          description: 'React is an open-source JavaScript library for building user interfaces or UI components.',
+          website: 'https://reactjs.org',
+          icon: 'React.svg'
+        },
+        {
+          name: 'Next.js',
+          description: 'Next.js is a React framework for developing single page Javascript applications.',
+          website: 'https://nextjs.org',
+          icon: 'Next.js.svg'
+        }
+      ],
+      'Web frameworks': [
+        {
+          name: 'Next.js',
+          description: 'Next.js is a React framework for developing single page Javascript applications.',
+          website: 'https://nextjs.org',
+          icon: 'Next.js.svg'
+        }
+      ],
+      'Web servers': [
+        {
+          name: 'Next.js',
+          description: 'Next.js is a React framework for developing single page Javascript applications.',
+          website: 'https://nextjs.org',
+          icon: 'Next.js.svg'
+        }
+      ],
+      'Static site generator': [
+        {
+          name: 'Next.js',
+          description: 'Next.js is a React framework for developing single page Javascript applications.',
+          website: 'https://nextjs.org',
+          icon: 'Next.js.svg'
+        }
+      ],
+      Advertising: [
+        {
+          name: 'Google Ads',
+          description: 'Google Ads is an online advertising platform developed by Google.',
+          website: 'https://ads.google.com',
+          icon: 'Google Ads.svg'
+        },
+        {
+          name: 'Reddit Ads',
+          description: 'Reddit Ads is an online advertising offering from Reddit.',
+          website: 'https://advertising.reddithelp.com/',
+          icon: 'Reddit.svg'
+        },
+        {
+          name: 'DoubleClick Floodlight',
+          description: null,
+          website: 'https://support.google.com/ds/answer/6029713?hl=en',
+          icon: 'DoubleClick.svg'
+        }
+      ],
+      Analytics: [
+        {
+          name: 'Linkedin Insight Tag',
+          description: 'LinkedIn Insight Tag is a lightweight JavaScript tag that powers conversion tracking, website audiences, and website demographics.',
+          website: 'https://business.linkedin.com/marketing-solutions/insight-tag',
+          icon: 'Linkedin.svg'
+        },
+        {
+          name: 'Google Analytics',
+          description: 'Google Analytics is a free web analytics service that tracks and reports website traffic.',
+          website: 'https://google.com/analytics',
+          icon: 'Google Analytics.svg'
+        },
+        {
+          name: 'Google Ads Conversion Tracking',
+          description: 'Google Ads Conversion Tracking is a free tool that shows you what happens after a customer interacts with your ads.',
+          website: 'https://support.google.com/google-ads/answer/1722022',
+          icon: 'Google.svg'
+        },
+        {
+          name: 'Cloudflare Browser Insights',
+          description: 'Cloudflare Browser Insights is a tool that measures the performance of websites from the perspective of users.',
+          website: 'https://www.cloudflare.com',
+          icon: 'CloudFlare.svg'
+        },
+        {
+          name: 'TikTok Pixel',
+          description: null,
+          website: 'https://ads.tiktok.com',
+          icon: 'TikTok.svg'
+        },
+        {
+          name: 'PostHog',
+          description: 'PostHog is the open-source, all-in-one product analytics platform.',
+          website: 'https://posthog.com',
+          icon: 'PostHog.svg'
+        }
+      ],
+      'Marketing automation': [
+        {
+          name: 'Klaviyo',
+          description: 'Klaviyo is an email marketing platform for online businesses.',
+          website: 'https://www.klaviyo.com/',
+          icon: 'Klaviyo.svg'
+        },
+        {
+          name: 'HubSpot',
+          description: 'HubSpot is a marketing and sales software that helps companies attract visitors, convert leads, and close customers.',
+          website: 'https://www.hubspot.com',
+          icon: 'HubSpot.svg'
+        }
+      ],
+      'Tag managers': [
+        {
+          name: 'Google Tag Manager',
+          description: 'Google Tag Manager is a tag management system (TMS) that allows you to quickly and easily update measurement codes and related code fragments collectively known as tags on your website or mobile app.',
+          website: 'https://www.google.com/tagmanager',
+          icon: 'Google Tag Manager.svg'
+        }
+      ],
+      'Affiliate programs': [
+        {
+          name: 'FirstPromoter',
+          description: 'FirstPromoter is a software platform that helps businesses to create, manage and track their affiliate marketing programs.',
+          website: 'https://firstpromoter.com',
+          icon: 'FirstPromoter.svg'
+        }
+      ],
+      RUM: [
+        {
+          name: 'Cloudflare Browser Insights',
+          description: 'Cloudflare Browser Insights is a tool that measures the performance of websites from the perspective of users.',
+          website: 'https://www.cloudflare.com',
+          icon: 'CloudFlare.svg'
+        }
+      ],
+      'JavaScript libraries': [
+        {
+          name: 'Framer Motion',
+          description: 'Framer Motion is a modern animation library for JavaScript, React, and Vue.',
+          website: 'https://motion.dev',
+          icon: 'FramerMotion.svg'
+        }
+      ],
+      Performance: [
+        {
+          name: 'Priority Hints',
+          description: 'Priority Hints exposes a mechanism for developers to signal a relative priority for browsers to consider when fetching resources.',
+          website: 'https://wicg.github.io/priority-hints/',
+          icon: 'Priority Hints.svg'
+        }
+      ],
+      'Font scripts': [
+        {
+          name: 'Lucide',
+          description: 'Lucide is an open-source icon library that provides 1000+ vector (svg) files for displaying icons and symbols in digital and non-digital projects.',
+          website: 'https://lucide.dev',
+          icon: 'Lucide.svg'
+        }
+      ],
+      CDN: [
+        {
+          name: 'Cloudflare',
+          description: 'Cloudflare is a web-infrastructure and website-security company, providing content-delivery-network services, DDoS mitigation, Internet security, and distributed domain-name-server services.',
+          website: 'https://www.cloudflare.com',
+          icon: 'CloudFlare.svg'
+        }
+      ],
+      Miscellaneous: [
+        {
+          name: 'Webpack',
+          description: 'Webpack is an open-source JavaScript module bundler.',
+          website: 'https://webpack.js.org/',
+          icon: 'Webpack.svg'
+        },
+        {
+          name: 'PWA',
+          description: 'Progressive Web Apps (PWAs) are web apps built and enhanced with modern APIs to deliver enhanced capabilities, reliability, and installability while reaching anyone, anywhere, on any device, all with a single codebase.',
+          website: 'https://web.dev/progressive-web-apps/',
+          icon: 'PWA.svg'
+        },
+        {
+          name: 'Open Graph',
+          description: 'Open Graph is a protocol that is used to integrate any web page into the social graph.',
+          website: 'https://ogp.me',
+          icon: 'Open Graph.svg'
+        },
+        {
+          name: 'HTTP/3',
+          description: 'HTTP/3 is the third major version of the Hypertext Transfer Protocol used to exchange information on the World Wide Web.',
+          website: 'https://httpwg.org/',
+          icon: 'HTTP3.svg'
+        }
+      ]
+    }
+};
+
+---
+<Gallery {...pageData} />
