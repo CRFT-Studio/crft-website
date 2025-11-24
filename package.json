@@ -26,6 +26,7 @@
         "jquery": "^3.7.1",
         "lighthouse-viewer": "^0.1.235",
         "open-graph-scraper": "^6.9.0",
+        "parallel-web": "^0.2.4",
         "patch-package": "^8.0.0",
         "puppeteer-core": "^21.6.1",
         "resend": "^4.0.1-alpha.0",
