@@ -26,6 +26,10 @@ const outputSchema = {
       type: 'string' as const,
       description: 'The name of the company',
     },
+    company_email_pattern: {
+      type: 'string' as const,
+      description: 'The email pattern used by the company',
+    },
     employees: {
       type: 'array' as const,
       items: {
@@ -45,7 +49,7 @@ const outputSchema = {
           },
           email: {
             type: 'string' as const,
-            description: 'Email address of the employee',
+            description: 'Email address of the employee. If not found directly, infer it based on the company email pattern.',
           },
           linkedin_profile_url: {
             type: 'string' as const,
@@ -57,7 +61,7 @@ const outputSchema = {
       },
     },
   },
-  required: ['company_name', 'employees'],
+  required: ['company_name', 'company_email_pattern', 'employees'],
   additionalProperties: false,
 };
 
