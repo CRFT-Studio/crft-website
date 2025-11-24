@@ -1,0 +1,113 @@
+---
+import Parallel from 'parallel-web';
+
+const {url} = Astro.props;
+
+const client = new Parallel({
+  apiKey: process.env.PARALLEL_API_KEY || import.meta.env.PARALLEL_API,
+});
+
+// Define input and output schemas
+const inputSchema = {
+  type: 'object' as const,
+  properties: {
+    company_website: {
+      type: 'string' as const,
+      description: 'The website of the company whose employees to research',
+    },
+  },
+  required: ['company_website'],
+};
+
+const outputSchema = {
+  type: 'object' as const,
+  properties: {
+    company_name: {
+      type: 'string' as const,
+      description: 'The name of the company',
+    },
+    employees: {
+      type: 'array' as const,
+      items: {
+        type: 'object' as const,
+        properties: {
+          first_name: {
+            type: 'string' as const,
+            description: 'First name of the employee',
+          },
+          last_name: {
+            type: 'string' as const,
+            description: 'Last name of the employee',
+          },
+          role: {
+            type: 'string' as const,
+            description: 'Role or position of the employee',
+          },
+          email: {
+            type: 'string' as const,
+            description: 'Email address of the employee',
+          },
+          linkedin_profile_url: {
+            type: 'string' as const,
+            description: 'LinkedIn profile URL of the employee',
+          },
+        },
+        required: ['first_name', 'last_name', 'role', 'email', 'linkedin_profile_url'],
+        additionalProperties: false,
+      },
+    },
+  },
+  required: ['company_name', 'employees'],
+  additionalProperties: false,
+};
+
+const taskRun = await client.taskRun.create({
+  input: {
+    company_website: {url},
+  },
+  processor: 'base',
+  task_spec: {
+    input_schema: {
+      type: 'json',
+      json_schema: inputSchema,
+    },
+    output_schema: {
+      type: 'json',
+      json_schema: outputSchema,
+    },
+  },
+});
+
+console.log(`Run ID: ${taskRun.run_id}`);
+
+// Poll for results with 25-second timeout, retry up to 144 times (1 hour total)
+let runResult;
+for (let i = 0; i < 144; i++) {
+  try {
+    runResult = await client.taskRun.result(taskRun.run_id, { timeout: 25 });
+    break;
+  } catch (error) {
+    if (i === 143) throw error; // Last attempt failed
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+  }
+}
+
+console.log(runResult.output);
+---
+{runResult.output.content.employees.map(employee => (
+    <div class="square-card">
+        <div class="square-card h-12 w-12 mb-2.5"></div>
+        <div class="font-medium">{`${employee.first_name} ${employee.last_name}`}</div>
+        <div class="text-orange-300">{`${employee.role} at ${runResult.output.content.company_name}`}</div>
+        <div class="flex flex-col gap-2 mt-2.5">
+            <div class="flex flex-row gap-2">
+                <div class="square-card px-1 py-0">Email</div>
+                <div>{employee.email}</div>
+            </div>
+            <div class="flex flex-row gap-2">
+                <div class="square-card px-1 py-0">LinkedIn</div>
+                <div class="underline">{employee.linkedin_profile_url}</div>
+            </div>
+        </div>
+    </div>
+))}
