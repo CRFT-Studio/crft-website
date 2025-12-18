@@ -1503,6 +1503,21 @@ if (url) {
                                     </div>
                                 </div>
                             </div>
+                            <div class="mt-28">
+                                <h2 class="text-2xl font-medium mb-2" id="meta-tags">Feedback</h2>
+                                <p class="text-lg text-neutral-300 text-pretty mb-4 max-w-[700px]">
+                                    Use this form to share your feedback on the report for <span>{url}</span>. Your input helps us improve our analysis and deliver better insights.
+                                </p>
+                                <div id="survey-container"></div>
+                                <script>
+                                  posthog.onSurveysLoaded(() => {
+                                    posthog.displaySurvey('#survey-container', {
+                                      displayType: 'inline',
+                                      surveyId: '01967650-b979-0000-8348-8f67c3af0a5e'
+                                    });
+                                  });
+                                </script>
+                            </div>
                         </div>
                     </div>
                 </div>
