@@ -1114,6 +1114,9 @@ if (url) {
                                         <a href="#sitemap" class="toc-link transition hover:text-orange-300 text-nowrap">Sitemap</a>
                                         <a href="#meta-tags" class="toc-link transition hover:text-orange-300 text-nowrap">Meta Tags</a>
                                     </div>
+                                    <div class="square-card p-1 px-4 border-0 border-t -m-4 mt-5 bg-neutral-700 cursor-pointer">
+                                        <button id="survey-button" class="cursor-pointer">Share feedback</button>
+                                    </div>
                                 </div>
                                 <a href="/audit" target="_blank">
                                     <div class="square-card bg-transparent hover:bg-neutral-800 transition-all shadow-md mt-4 text-left">
@@ -1301,17 +1304,6 @@ if (url) {
                                     <Sitemap url={url}/>
                                 </div>
                             </div>
-                            <!-- <div class="mt-28">
-                                <h2 class="text-2xl font-medium mb-2">Heat Map</h2>
-                                <div class="text-lg text-neutral-300 text-pretty mb-4 max-w-[700px]">
-                                This is a simulation that uses color-coded patterns to represent user interaction data on a website. Similar to weather maps showing temperature
-                                variations, website heat maps display “hot” areas with high user engagement in warmer colors (reds and oranges) and “cold” areas with lower engagement
-                                in cooler colors (blues and greens).
-                                </div>
-                                <div class="text-lg text-neutral-300 text-pretty mb-8 max-w-[700px]">While we aim for this simulation to be as accurate as possible, we recommend
-                                the use of Posthog, our analytics tool of choice, to gather heat maps from your live website visitors.
-                                </div>
-                            </div> -->
                             <div class="mt-28">
                                 <h2 class="text-2xl font-medium mb-2" id="meta-tags">Meta Tags</h2>
                                 <div class="text-lg text-neutral-300 text-pretty mb-4 max-w-[700px]">
@@ -1503,6 +1495,28 @@ if (url) {
                                     </div>
                                 </div>
                             </div>
+                            <!-- <div class="mt-28">
+                                <h2 class="text-2xl font-medium mb-2" id="meta-tags">Feedback</h2>
+                                <p class="text-lg text-neutral-300 text-pretty mb-4 max-w-[700px]">
+                                    Use this form to share your feedback on the report for <span>{url}</span>. Your input helps us improve our analysis and deliver better insights.
+                                </p>
+                                <div id="survey-container"></div>
+                                <script>
+                                  posthog.debug(); // Logs SDK activity
+                                  posthog.onSurveysLoaded(() => {
+                                    posthog.getActiveMatchingSurveys((surveys) => {
+                                      console.log('Available surveys:', surveys); // Should show array with your survey
+                                      if (surveys.length > 0) {
+                                        posthog.displaySurvey(surveys[0].id, {
+                                          displayType: 'inline',
+                                          selector: '#survey-container'
+                                        });
+                                      }
+                                    }, true); // Force reload cache
+                                  });
+                                </script>
+
+                            </div> -->
                         </div>
                     </div>
                 </div>
