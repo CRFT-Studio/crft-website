@@ -36,7 +36,7 @@ if (url && datetime) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
           chat_id: TELEGRAM_CHAT_ID,
-          text: `🔎 New CRFT Lookup from ${url}`
+          text: `${url}`
       })
     });
   } catch (error) {
