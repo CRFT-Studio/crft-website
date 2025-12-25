@@ -1,0 +1,281 @@
+---
+// minimal demo form. e.g. https://www.shopify.com/ca/plus#contact-sales
+// make it free, bc company employees may not be able to spend cash haphazardly
+// worry less about money as a means to qualify leads
+//q: what happens after I receive my audit? a: you decide whether you want us to continue redesigning your website for you, and subsequently develop it.
+//mention somewhere that your technical execution is right up there with your design ability. e.g. no-code approaches are more of a liability for the kind of businesses with marketing teams.
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import { Image } from 'astro:assets';
+import NihalPFP from '../images/nihal-pfp.png';
+import AuditExample from '../components/AuditExample.astro';
+import FAQItem from '../components/FAQItem.astro';
+import HeadScripts from '../components/HeadScripts.astro';
+
+//audit imports
+import HenryBefore from "../images/audits/henry-james-legal-before.png"
+import HenryAfter from "../images/audits/henry-james-legal-after.png";
+import DocytBefore from "../images/audits/docyt-before.png";
+import DocytAfter from "../images/audits/docyt-after.png";
+import SendBarsBefore from "../images/audits/send-bars-before.png";
+import SendBarsAfter from "../images/audits/send-bars-after.png";
+import PrivyBefore from "../images/audits/privy-before.png";
+import PrivyAfter from "../images/audits/privy-after.png";
+import serVmeBefore from "../images/audits/servme-before.png";
+import serVmeAfter from "../images/audits/servme-after.png";
+
+const {heading, metaTitle, metaDescription, industry} = Astro.props;
+---
+<html lang="en">
+    <head>
+		<HeadScripts
+		title={`${metaTitle} | CRFT Studio`}
+		description={metaDescription}
+		ogImageUrl="https://www.crft.studio/open-graph-img.png"
+		/>
+	</head>
+    <body>
+        <Navigation />
+        <section id="hero" class="lg:mt-20 mt-14 mb-24">
+            <div class="container">
+                <div class="grid lg:grid-cols-2 grid-cols-1 gap-12">
+                    <div>
+                        <div class="sticky top-20">
+                            <div class="mb-7 flex flex-row gap-5 lg:items-center items-start">
+                                <Image src={NihalPFP} alt='Nihal profile pic' class='w-24'></Image>
+                                <div class="card inline-block py-2 px-3 rounded-tl-none md:text-base text-sm">
+                                    <div class="mb-1">"Working with him on our website design was an awesome experience and everything from start to finish felt like a breeze."</div>
+                                    <div class="text-neutral-400 text-pretty"> - Nihal Mandanna, Head of Growth @ MobiLoud</div>
+                                </div>
+                            </div>
+                            <div class="font-normal text-lg mb-3 flex flex-row gap-2 items-center">
+                                <a href="/audit" class="underline text-neutral-400">CRFT Audit</a>
+                                <div>/</div>
+                                <div class="text-orange-300">{industry}</div>
+                            </div>
+                            <h1 class="lg:text-4xl text-3xl font-semibold leading-tight text-pretty mb-4">{heading}</h1>
+                            <div class="lg:text-xl text-lg font-normal text-pretty mb-6 text-neutral-300">Get a free test run before you commit to working with us on a full-scale redesign. We'll give you the free, personalized insights you need to boost your website hero's conversion rate.</div>
+                            <div class="flex flex-col gap-2 text-neutral-300 text-lg">
+                                <div class="flex flex-row gap-2 items-start">
+                                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                    <div class="flex flex-col gap-2">
+                                        <div class="font-medium">Fully designed, custom mobile and desktop mockups</div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-row gap-2 items-start">
+                                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                    <div class="flex flex-col gap-2">
+                                        <div class="font-medium">Annotated design changes</div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-row gap-2 items-start">
+                                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                    <div class="flex flex-col gap-2">
+                                        <div class="font-medium">Clear, concise and persuasive copywriting</div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-row gap-2 items-start">
+                                    <svg class="flex-shrink-0 translate-y-[2px]" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                                    <div class="flex flex-col gap-2">
+                                        <div class="font-medium">3 business day delivery by email</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="square-card lg:p-8 p-5">
+                            <form method="post" action="/process-audit-request" class="flex flex-col gap-5">
+                                <div class="flex md:flex-row flex-col md:gap-8 gap-5">
+                                    <div class="w-full">
+                                        <label for="firstName">First Name</label>
+                                        <input id="firstName" name="First Name" type="text" placeholder="Jimmy" required>
+                                    </div>
+                                    <div class="w-full">
+                                        <label for="lastName">Last Name</label>
+                                        <input id="lastName" name="Last Name" type="text" placeholder="John" required>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="email">Work Email</label>
+                                    <input id="email" name="Work Email" type="email" placeholder="john@example.com" required>
+                                </div>
+                                <div>
+                                    <label for="websiteUrl">Website URL</label>
+                                    <input id="websiteUrl" name="Website URL" type="url" placeholder="https://example.com" required>
+                                </div>
+                                <div>
+                                    <label for="role">Role</label>
+                                    <input id="role" name="Role" type="text" placeholder="e.g. CEO, Marketing Manager, etc" required>
+                                </div>
+                                <div>
+                                    <label for="notes">Design Goals (optional)</label>
+                                    <textarea id="story" name="Notes" rows="5" cols="33" placeholder="Is there anything we should know before we start? (e.g., your preferred style, target audience, conversion goals, pain points, branding guidelines)"></textarea>
+                                </div>
+                                <button class="primary-cta text-center">Request Hero Redesign</button>
+                                <div class="text-center text-neutral-400">Prefer to email us directly? Contact <span class="underline"><a href="/contact-us">jeremy@crft.studio.</a></span></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="examples" class="mt-0">
+            <div class="container">
+                <h2 class="lg:text-4xl text-3xl font-medium text-center lg:mb-16 mb-14">See examples</h2>
+                <AuditExample companyName="Docyt" websiteUrl="docyt.com" imageBefore={DocytBefore} imageAfter={DocytAfter}>
+                    <FAQItem slot="annotations" singleExpansion
+                    question="Note 1 - Mobile banner"
+                    answer="Unwrap the banner text such that it occupies a single, horizontally scrolling line. This way, the text will not push the rest of the content further down the screen."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 2 - Mobile navigation"
+                    answer="Add the “Schedule a Demo” button inside the mobile navigation. This ensures visitors will be able to express their interest in Docyt no matter their current scroll position."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 3 - Social proof"
+                    answer="Display your Capterra and App Store ratings immediately on page load, in addition to those from GetApp and G2. This helps establish social proof and credibility with new website visitors, and encourages them to scroll down."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 4 - H1 text"
+                    answer="Shorten the heading to minimize the time it takes visitors to understand what Docyt is."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 5 - Hero image"
+                    answer="Showcase an image of Docyt to allow visitors to visualize what the heading and subtitle are describing. To accommodate the narrower dimensions of mobile devices, this image will be of the iOS app."
+                    />
+                </AuditExample>
+
+                <AuditExample companyName="Send Bars" websiteUrl="sendbars.com" imageBefore={SendBarsBefore} imageAfter={SendBarsAfter}>
+                    <FAQItem slot="annotations" singleExpansion
+                    question="Note 1 - Hero image"
+                    answer="Showcase an image of one of the bars, and the outcome they sell as high up on the page as possible. This immediately makes it easier for your visitors to understand who you are and what you make without having to dig. Additionally, the picture of the bar should have the wrapper slightly torn off (without removing branding) so as to display what the very thing people will put in their mouth looks like."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 2 - H1 and subtitle"
+                    answer="Update your title and subtitle to be more descriptive. The title introduces the product within its particular use case, and the subtitle explains how it provides its value."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 3 - CTA button"
+                    answer="Direct your visitor’s attention where you want it with full-width buttons. The call-to-action is most effective through the use of verbs."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 4 - Customer reviews"
+                    answer="Showcase your customer reviews, with their profile pictures, under the CTA. This builds trust and credibility early on, and removes hesitation in clicking the button."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 5 - Nutritional claims"
+                    answer="Feature all the nutritional claims/certifications in a horizontally scrolling bar. This is another way to illustrate what makes your bars better than others on the market."
+                    />
+                </AuditExample>
+
+                <AuditExample companyName="Privy" websiteUrl="privy.com" imageBefore={PrivyBefore} imageAfter={PrivyAfter}>
+                    <FAQItem slot="annotations" singleExpansion
+                    question="Note 1 - Mobile navigation"
+                    answer="Add a sign-up CTA to the navigation menu. This ensures a visitor can instantly try Privy no matter their scroll position on the site, and is constantly reminding them of their ability to do so."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 2 - H1 text"
+                    answer="Make the heading more visually prominent by increasing its font size, and align the rest of the content's width with that of the navigation menu's."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 3 - CTA buttons"
+                    answer="Direct your visitor's attention towards trying Privy with bold, full-width buttons. As the primary CTA redirects to Privy's listing on the Shopify App Store, its text can be renamed from 'One-click signup with Shopify' to a shorter 'Add to Shopify.' The secondary CTA, labeled 'Not on Shopify? Sign up here' may lead a small, albeit non-zero number of visitors to think that clicking this would lead to signing up for Shopify and not Privy. To clarify the intent of the secondary CTA, rename it to 'Not on Shopify? Try Privy here' for those who use other eCommerce platforms."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 4 - Social proof"
+                    answer="Showcase some of the store/customer profile pictures from your reviews for added credibility, and feature Privy's average star rating from the Shopify App Store alongside it."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 5 - Hero image"
+                    answer="Display an image whose association to the heading can be understood at a glance. In this instance, that would be a view of a shopper's device as they receive emails and SMS messages from a brand that uses Privy to send them."
+                    />
+                </AuditExample>
+
+                <AuditExample companyName="serVme" websiteUrl="servemeco.com" imageBefore={serVmeBefore} imageAfter={serVmeAfter}>
+                    <FAQItem slot="annotations" singleExpansion
+                    question="Note 1 - Mobile navigation"
+                    answer="Place a “Request a demo” button inside the navigation menu. This ensures that visitors have the option to readily provide you with their information, no matter their current scroll position on the website."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 2 - Social proof"
+                    answer="Display a form of social proof further up the page to more immediately build credibility with your visitors."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 3 - Background image"
+                    answer="Darken the restaurant background image to ensure that text always remains legible. Here, I darkened the background slightly more than required for legibility, and added concentrated lighting to the text with the goal of giving a luxury restaurant “feel” to the website."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 4 - Mobile hero image"
+                    answer="Showcase the serVme platform as high up on the page as possible, just as your users will see it when using it. This further solidifies the visitor’s understanding of who you are and what you do, which they can only partially receive from reading a headline and subtitle."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 5 - Desktop navigation"
+                    answer="Move the “Login” link beside the “Request a demo” button, and move the rest of the navigation links to the center of the screen. This adds separation to the navigation menu, and ensures visitors will not be overwhelmed by the number of buttons and links beside one another - allowing them to quickly process which they’d like to click."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 6 - Desktop hero image"
+                    answer="To account for serVme’s other capabilites beyond table management; screenshots of restaurant analytics and CRM data can also be included here. For example, the table management screen inside the tablet can change to a different screen as the website visitor scrolls down. This approach would ensure that visitors can process each image at a time, without being overwhelmed by everything serVme can do all at  once."
+                    />
+                </AuditExample>
+
+                <!-- <AuditExample companyName="TMO Group" websiteUrl="tmogroup.asia" imageBefore={HenryBefore} imageAfter={HenryAfter}>
+                    <FAQItem slot="annotations" singleExpansion
+                    question="Note 1 - Navigation"
+                    answer="Make the navigation menu sticky, such that it always visible even after the user scrolls the page. Then, add a call-to-action button. This will enable visitors t o contact you whenever they see fit, without having to dig."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 2 - Partnerships"
+                    answer="Surface mention of the Shopify and Adobe partnerships from the footer. This is valuable information that brings you credibility - visitors should know it the moment they land o n your website."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 3 - H1 copy"
+                    answer="The current copy is ambiguous. Rewrite the Hl and description to more accurately describe who TMO Group is and your service offering."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 4 - CTAs"
+                    answer="Add a secondary call-to-action button that links to your Services page. This will provide a direct avenue for visitors to learn more about your offering in t h e event that they a r e not ready t o contact you just yet."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 5 - Hero image"
+                    answer="Showcase images of your best work t o build more trust with your visitors, a n d demonstate your expertise in line with t h e updated copy."
+                    />
+                </AuditExample> -->
+
+                <AuditExample companyName="Henry James Legal" websiteUrl="henryjameslegal.com" imageBefore={HenryBefore} imageAfter={HenryAfter}>
+                    <FAQItem slot="annotations" singleExpansion
+                    question="Note 1 - Mobile navigation"
+                    answer="Place a “Contact us” button inside the navigation menu, and give it sticky positioning. This ensures that visitors can always reach out, no matter their scroll position on the website."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 2 - H1 text"
+                    answer="Immediately communicate your value proposition to your visitors right as they land on the page. This is accomplished with a bold heading and description on a white background, ensuring they are legible."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 3 - CTA buttons"
+                    answer="Display a call-to-action spanning the full width of the display, encouraging your visitors to engage with your firm."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 4 - Hero image"
+                    answer="Showcase a professional image of yourself to humanize your brand and leave visitors with a good impression. Here, the portrait on your current site was edited to include a courthouse in the background, ensuring it fits the description of a lawyer."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 5 - Social proof"
+                    answer="Feature snippets from your testimonials under the portrait of yourself, further establishing credibility and authority with your visitors."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 6 - Desktop navigation"
+                    answer="Build additional pages to substantiate your offering (each of which will rank in search), and feature them in the navigation menu."
+                    />
+                    <FAQItem slot="annotations"
+                    question="Note 7 - Practice areas"
+                    answer="Showcase your practice areas directly below the first section of the page, as this is information that visitors will likely want to know before reading a multi-paragraph bio of yourself."
+                    />
+                </AuditExample>
+            </div>
+        </section>
+
+        <Footer/>
+    </body>
+</html>
