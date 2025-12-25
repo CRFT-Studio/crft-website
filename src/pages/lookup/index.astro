@@ -18,13 +18,8 @@ import NickPFP from '../../images/nick-pfp-new.png';
 import JeremyPFP from '../../images/jeremy-pfp.png';
 import DavidPFP from '../../images/david-pfp.png';
 
-import { LogSnag } from '@logsnag/node';
-const LOGSNAG_API = process.env.LOGSNAG_API;
-
-const logsnag = new LogSnag({
-    token: LOGSNAG_API,
-    project: 'crft-website'
-});
+const TELEGRAM_API = process.env.TELEGRAM_BOT_TOKEN;
+const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
 const url = Astro.url.searchParams.get("url");
 const datetime = Astro.url.searchParams.get("datetime");
@@ -35,15 +30,18 @@ if (url && datetime) {
   Astro.response.headers.set('Cache-Control', 'public, max-age=2592000, stale-while-revalidate=86400');
   Astro.response.headers.set('Vercel-CDN-Cache-Control', 'max-age=2592000');
 
-  await logsnag.track({
-    channel: "lookup",
-    event: `New CRFT Lookup from ${url}`,
-    icon: "🔎",
-    notify: true,
-    tags: {
-        url: url
-    }
-  });
+  try {
+    await fetch(`https://api.telegram.org/bot${TELEGRAM_API}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text: `🔎 New CRFT Lookup from ${url}`
+      })
+    });
+  } catch (error) {
+    console.error("Error sending Telegram message:", error);
+  }
 } else {
   Astro.response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate');
 }
