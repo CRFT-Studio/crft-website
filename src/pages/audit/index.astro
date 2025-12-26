@@ -12,6 +12,7 @@ import AuditExample from '../../components/AuditExample.astro';
 import FAQItem from '../../components/FAQItem.astro';
 import HeadScripts from '../../components/HeadScripts.astro';
 import LookupCTA from '../../components/LookupCTA.astro';
+import AuditSelect from '../../components/AuditSelect.astro';
 
 //audit imports
 import HenryBefore from "../../images/audits/henry-james-legal-before.png"
@@ -24,6 +25,9 @@ import PrivyBefore from "../../images/audits/privy-before.png";
 import PrivyAfter from "../../images/audits/privy-after.png";
 import serVmeBefore from "../../images/audits/servme-before.png";
 import serVmeAfter from "../../images/audits/servme-after.png";
+
+const auditModules = import.meta.glob('./*.astro', { eager: true });
+const audits = Object.keys(auditModules).filter(path => !path.includes('index.astro')).map(path => ({ slug: path.replace('./', '').replace('.astro', ''), ...auditModules[path].auditData }));
 ---
 <html lang="en">
     <head>
@@ -46,6 +50,11 @@ import serVmeAfter from "../../images/audits/servme-after.png";
                                     <div class="mb-1">"Working with him on our website design was an awesome experience and everything from start to finish felt like a breeze."</div>
                                     <div class="text-neutral-400 text-pretty"> - Nihal Mandanna, Head of Growth @ MobiLoud</div>
                                 </div>
+                            </div>
+                            <div class="font-normal text-lg mb-3 flex flex-row gap-2 items-center">
+                                <a href="/audit" class="underline text-neutral-400">CRFT Audit</a>
+                                <div>/</div>
+                                <AuditSelect {audits} />
                             </div>
                             <h1 class="lg:text-4xl text-3xl font-semibold leading-tight text-pretty mb-4">Boost your landing page conversions with a free, human-crafted hero redesign.</h1>
                             <div class="lg:text-xl text-lg font-normal text-pretty mb-6 text-neutral-300">Get a free test run before you commit to working with us on a full-scale redesign. We'll give you the free, personalized insights you need to boost your website hero's conversion rate.</div>
