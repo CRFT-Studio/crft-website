@@ -6,6 +6,13 @@ import NihalPFP from '../images/nihal-pfp.png';
 import LookupCard from './LookupCard.astro';
 
 const { hideTop = false } = Astro.props;
+const audits = (await Astro.glob("../pages/audit/*.astro"))
+  .filter(module => !module.file.includes('index.astro'))
+  .map(module => ({
+    slug: module.file.split("/").pop().replace('.astro', ''),
+    name: module.auditData.industry
+  }))
+  .sort((a, b) => a.name.localeCompare(b.name));
 ---
 {!hideTop && (
 <div class="container mb-20">
@@ -90,34 +97,15 @@ const { hideTop = false } = Astro.props;
                     <div class="text-neutral-200 font-medium">CRFT Audit</div>
                 </a>
             </div>
-            <div class="flex flex-row lg:flex-nowrap flex-wrap gap-20">
+            <div class="flex flex-row lg:flex-nowrap flex-wrap lg:gap-20 gap-10">
                 <div class="square-card bg-transparent max-w-[300px] h-full">
                     <div class="text-pretty mb-3">The free, personalized insights you need to boost your website hero's conversion rate.</div>
                     <a href="/audit" class="text-orange-300">Get started →</a>
                 </div>
                 <div>
                     <div class="text-neutral-100 font-medium mb-3">Industries</div>
-                    <div class="flex flex-row gap-4 flex-wrap">
-                        <a href="/audit/accounting" class="text-neutral-300">Accounting</a>
-                        <a href="/audit/agencies" class="text-neutral-300">Agencies</a>
-                        <a href="/audit/b2b" class="text-neutral-300">B2B</a>
-                        <a href="/audit/beauty-med-spa" class="text-neutral-300">Beauty/Med Spa</a>
-                        <a href="/audit/cybersecurity" class="text-neutral-300">Cybersecurity</a>
-                        <a href="/audit/d2c-cpg" class="text-neutral-300">D2C CPG</a>
-                        <a href="/audit/edtech" class="text-neutral-300">EdTech</a>
-                        <a href="/audit/fintech" class="text-neutral-300">Fintech</a>
-                        <a href="/audit/gym" class="text-neutral-300">Gyms</a>
-                        <a href="/audit/healthtech" class="text-neutral-300">Healthtech</a>
-                        <a href="/audit/hr" class="text-neutral-300">HR</a>
-                        <a href="/audit/legal" class="text-neutral-300">Legal</a>
-                        <a href="/audit/manufacturing" class="text-neutral-300">Manufacturing</a>
-                        <a href="/audit/marketplaces" class="text-neutral-300">Marketplaces</a>
-                        <a href="/audit/nonprofit" class="text-neutral-300">Nonprofit</a>
-                        <a href="/audit/proptech" class="text-neutral-300">PropTech</a>
-                        <a href="/audit/real-estate" class="text-neutral-300">Real Estate</a>
-                        <a href="/audit/shopify" class="text-neutral-300">eCommerce</a>
-                        <a href="/audit/telehealth" class="text-neutral-300">Telehealth</a>
-                        <a href="/audit/travel-hospitality" class="text-neutral-300">Travel & Hospitality</a>
+                    <div class="flex flex-row gap-4 gap-y-2 flex-wrap">
+                        {audits.map(audit => <a href={`/audit/${audit.slug}`} class="text-neutral-300">{audit.name}</a>)}
                     </div>
                 </div>
             </div>
