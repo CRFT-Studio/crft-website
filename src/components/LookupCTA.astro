@@ -1,8 +1,9 @@
 ---
 import LookupCard from "./LookupCard.astro";
+const {heading} = Astro.props;
 ---
 <div class="container !max-w-[800px] flex flex-col justify-center items-center">
-    <h2 class="lg:text-4xl text-3xl text-balance text-center font-medium text-neutral-200 lg:leading-snug leading-normal">Get the complete technical profile of any website</h2>
+    <h2 class="lg:text-4xl text-3xl text-balance text-center font-medium text-neutral-200 lg:leading-snug leading-normal">{heading || "Get the complete technical profile of any website"}</h2>
     <p class="text-pretty text-lg text-center mt-3 text-neutral-300 mb-6">Discover what technologies power any website, visualize their sitemap structure, analyze their performance with Lighthouse scores, and preview how they appear across social platforms with meta tag previews - all in one free tool.</p>
         <a href="/lookup" class="primary-cta">Scan a website</a>
     </div>
