@@ -11,6 +11,7 @@ import NihalPFP from '../images/nihal-pfp.png';
 import AuditExample from '../components/AuditExample.astro';
 import FAQItem from '../components/FAQItem.astro';
 import HeadScripts from '../components/HeadScripts.astro';
+import LookupCTA from '../components/LookupCTA.astro';
 
 //audit imports
 import HenryBefore from "../images/audits/henry-james-legal-before.png"
@@ -274,6 +275,11 @@ const {heading, metaTitle, metaDescription, industry} = Astro.props;
                     />
                 </AuditExample>
             </div>
+        </section>
+        <section>
+            <LookupCTA
+            heading="Want faster insights? Try the free, self-serve CRFT Lookup."
+            />
         </section>
 
         <Footer/>
