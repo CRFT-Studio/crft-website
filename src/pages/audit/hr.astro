@@ -1,9 +1,16 @@
 ---
 import AuditLayout from "../../layouts/AuditLayout.astro";
+
+export const auditData = {
+  heading: "Book more employer demos with a results-focused recruiting hero.",
+  metaTitle: "Free HR/Recruiting Website Hero Redesign",
+  metaDescription: "Get a free test run before you commit to working with us on a full-scale redesign. We'll give you the free, personalized insights you need to boost your website hero's conversion rate.",
+  industry: "HR/Recruiting"
+};
 ---
 <AuditLayout
-heading="Book more employer demos with a results-focused recruiting hero."
-metaTitle="Free HR/Recruiting Website Hero Redesign"
-metaDescription="Get a free test run before you commit to working with us on a full-scale redesign. We'll give you the free, personalized insights you need to boost your website hero's conversion rate."
-industry="HR/Recruiting"
+  heading={auditData.heading}
+  metaTitle={auditData.metaTitle}
+  metaDescription={auditData.metaDescription}
+  industry={auditData.industry}
 />

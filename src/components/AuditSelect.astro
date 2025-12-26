@@ -1,0 +1,18 @@
+   ---
+   const { audits } = Astro.props;
+   ---
+
+   <select class="text-orange-300 square-card px-1 py-0" id="audit-select">
+     <option value="/audit">Industry</option>
+     {audits.map(({ slug, industry }) => (
+       <option value={`/audit/${slug}`}>{industry}</option>
+     ))}
+   </select>
+
+   <script>
+     const select = document.getElementById('audit-select');
+     select.value = window.location.pathname;
+     select.addEventListener('change', (event) => {
+       window.location.href = event.target.value;
+     });
+   </script>

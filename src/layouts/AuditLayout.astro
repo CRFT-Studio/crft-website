@@ -12,6 +12,7 @@ import AuditExample from '../components/AuditExample.astro';
 import FAQItem from '../components/FAQItem.astro';
 import HeadScripts from '../components/HeadScripts.astro';
 import LookupCTA from '../components/LookupCTA.astro';
+import AuditSelect from '../components/AuditSelect.astro';
 
 //audit imports
 import HenryBefore from "../images/audits/henry-james-legal-before.png"
@@ -26,6 +27,9 @@ import serVmeBefore from "../images/audits/servme-before.png";
 import serVmeAfter from "../images/audits/servme-after.png";
 
 const {heading, metaTitle, metaDescription, industry} = Astro.props;
+
+const auditModules = import.meta.glob('../pages/audit/*.astro', { eager: true });
+const audits = Object.keys(auditModules).filter(path => !path.includes('index.astro')).map(path => ({ slug: path.replace('../pages/audit/', '').replace('.astro', ''), ...auditModules[path].auditData }));
 ---
 <html lang="en">
     <head>
@@ -52,7 +56,8 @@ const {heading, metaTitle, metaDescription, industry} = Astro.props;
                             <div class="font-normal text-lg mb-3 flex flex-row gap-2 items-center">
                                 <a href="/audit" class="underline text-neutral-400">CRFT Audit</a>
                                 <div>/</div>
-                                <div class="text-orange-300">{industry}</div>
+                                <!-- <div class="text-orange-300">{industry}</div> -->
+                                <AuditSelect {audits} />
                             </div>
                             <h1 class="lg:text-4xl text-3xl font-semibold leading-tight text-pretty mb-4">{heading}</h1>
                             <div class="lg:text-xl text-lg font-normal text-pretty mb-6 text-neutral-300">Get a free test run before you commit to working with us on a full-scale redesign. We'll give you the free, personalized insights you need to boost your website hero's conversion rate.</div>
