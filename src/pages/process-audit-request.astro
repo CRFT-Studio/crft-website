@@ -15,6 +15,33 @@ if (!fields.filter(field => field !== "Notes").every(field => params[field])) re
     - add url validation
 */
 
+// enforce domain matching
+const extractDomain = (input) => {
+  if (!input) return null;
+  try {
+    const url = new URL(input.startsWith('http') ? input : `https://${input}`);
+    const hostname = url.hostname;
+    const parts = hostname.split('.');
+    return parts.length >= 2 ? parts.slice(-2).join('.') : null;
+  } catch {
+    return null;
+  }
+};
+
+const email = params["Work Email"];
+const websiteUrl = params["Website URL"];
+
+if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  return Astro.redirect("/audit");
+}
+
+const emailDomain = extractDomain(email);
+const websiteDomain = extractDomain(websiteUrl);
+
+if (!emailDomain || !websiteDomain || emailDomain.toLowerCase() !== websiteDomain.toLowerCase()) {
+  return Astro.redirect("/audit");
+}
+
 import { Resend } from 'resend';
 const resend = new Resend(import.meta.env.RESEND_API);
 await resend.batch.send([
