@@ -102,13 +102,21 @@ const audits = Object.keys(auditModules).filter(path => !path.includes('index.as
                                         <input id="lastName" name="Last Name" type="text" placeholder="John" required>
                                     </div>
                                 </div>
-                                <div>
-                                    <label for="email">Work Email</label>
-                                    <input id="email" name="Work Email" type="email" placeholder="john@example.com" required>
-                                </div>
-                                <div>
-                                    <label for="websiteUrl">Website URL</label>
-                                    <input id="websiteUrl" name="Website URL" type="url" placeholder="https://example.com" required>
+                                <div id="errorWrapper" class="transition-all p-0">
+                                    <div id="errorInnerWrapper" class="transition-all flex flex-col gap-5">
+                                        <div>
+                                            <label for="email">Work Email</label>
+                                            <input id="email" name="Work Email" type="email" placeholder="john@example.com" required>
+                                        </div>
+                                        <div>
+                                            <label for="websiteUrl">Website URL</label>
+                                            <input id="websiteUrl" name="Website URL" type="url" placeholder="https://example.com" required>
+                                        </div>
+                                    </div>
+                                    <div id="errorMsg" class="transition-all opacity-0 h-0 hidden square-card border-0 border-t py-1 px-5  bg-red-600/20 flex-row gap-2 lg:items-center items-start">
+                                        <svg class="h-5 w-5 fill-red-300 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#181818"><path d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm-40-160h80v-240h-80v240Zm40 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+                                        <div class="text-red-300 leading-tight">Email and website domains must match</div>
+                                    </div>
                                 </div>
                                 <div>
                                     <label for="role">Role</label>
@@ -118,9 +126,48 @@ const audits = Object.keys(auditModules).filter(path => !path.includes('index.as
                                     <label for="notes">Design Goals (optional)</label>
                                     <textarea id="story" name="Notes" rows="5" cols="33" placeholder="Is there anything we should know before we start? (e.g., your preferred style, target audience, conversion goals, pain points, branding guidelines)"></textarea>
                                 </div>
-                                <button class="primary-cta text-center">Request Hero Redesign</button>
+                                <button id="submit" class="transition-all primary-cta text-center cursor-pointer">Request Hero Redesign</button>
                                 <div class="text-center text-neutral-400">Prefer to email us directly? Contact <span class="underline"><a href="/contact-us">jeremy@crft.studio.</a></span></div>
                             </form>
+                            <script>
+                                import $ from 'jquery';
+
+                                const extractDomain = (input) => {
+                                    if (!input) return null;
+                                    try {
+                                        const url = new URL(input.startsWith('http') ? input : `https://${input}`);
+                                        const hostname = url.hostname;
+                                        const parts = hostname.split('.');
+                                        return parts.length >= 2 ? parts.slice(-2).join('.') : null;
+                                    } catch {
+                                        return null;
+                                    }
+                                };
+
+                                $('#email, #websiteUrl').on('input', function() {
+                                    const email = $('#email').val();
+                                    const websiteUrl = $('#websiteUrl').val();
+
+                                    const emailDomain = extractDomain(email);
+                                    const websiteDomain = extractDomain(websiteUrl);
+
+                                    const mismatch = email && websiteUrl && emailDomain && websiteDomain && emailDomain !== websiteDomain;
+
+                                    if (mismatch) {
+                                        $('#errorWrapper').addClass('square-card shadow-lg');
+                                        $('#errorInnerWrapper').addClass('p-5 bg-red-800/10');
+                                        $('#errorMsg').removeClass('opacity-0 h-0 hidden').addClass('flex');
+                                        $('#submit').removeClass('primary-cta').addClass('secondary-cta');
+                                        $('#submit').prop('disabled', true)
+                                    } else {
+                                        $('#errorWrapper').removeClass('square-card shadow-lg');
+                                        $('#errorInnerWrapper').removeClass('p-5 bg-red-800/10');
+                                        $('#errorMsg').addClass('opacity-0 h-0 hidden').removeClass('flex');
+                                        $('#submit').removeClass('secondary-cta').addClass('primary-cta');
+                                        $('#submit').prop('disabled', false)
+                                    }
+                                });
+                            </script>
                         </div>
                     </div>
                 </div>
