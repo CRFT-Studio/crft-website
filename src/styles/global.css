@@ -43,7 +43,7 @@
     }
 
     body {
-        font-family: 'Satoshi', sans-serif;
+        font-family: 'Geist Pixel Grid', sans-serif;
         @apply bg-neutral-900 text-neutral-100;
     }
 
@@ -53,9 +53,14 @@
     }
 
     h1:not(article h1) {
-      background: -webkit-linear-gradient(290deg, #FFF7EB, #B1AEA9);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+        font-family: 'Geist Pixel Circle', sans-serif;
+        background: -webkit-linear-gradient(290deg, #FFF7EB, #B1AEA9);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    article {
+        font-family: 'Satoshi', sans-serif;
     }
 
     .container {
