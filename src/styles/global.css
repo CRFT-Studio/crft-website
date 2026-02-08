@@ -22,6 +22,26 @@
         src: url('/Fonts/PlayfairDisplay-VariableFont_wght.ttf') format('truetype');
     }
 
+    @font-face {
+        font-family: 'Geist Pixel Circle';
+        src: url('/Fonts/GeistPixel-Circle.woff2') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Geist Pixel Grid';
+        src: url('/Fonts/GeistPixel-Grid.woff2') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Geist Pixel Square';
+        src: url('/Fonts/GeistPixel-Square.woff2') format('truetype');
+    }
+
+    @font-face {
+        font-family: 'Geist Mono';
+        src: url('/Fonts/GeistMono[wght].woff2') format('truetype');
+    }
+
     body {
         font-family: 'Satoshi', sans-serif;
         @apply bg-neutral-900 text-neutral-100;
