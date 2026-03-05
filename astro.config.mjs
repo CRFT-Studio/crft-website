@@ -18,7 +18,7 @@ import react from "@astrojs/react";
 export default defineConfig({
   site: 'https://www.crft.studio',
   integrations: [sitemap({
-      filter: (page) => !new URL(page).pathname.startsWith('/proposal'),
+      filter: (page) => !new URL(page).pathname.startsWith('/proposal') && !new URL(page).pathname.startsWith('/audit/requests'),
   }), mdx(), robotsTxt(), react()],
   output: "static",
   adapter: vercel(),
