@@ -7,6 +7,7 @@ import JeremyPFP from "../images/jeremy-pfp.png";
 import AuditExample from '../components/AuditExample.astro';
 import FAQItem from '../components/FAQItem.astro';
 import HeadScripts from '../components/HeadScripts.astro';
+import HowWeWork from '@/components/HowWeWork.astro';
 
 import HenryBefore from "../images/audits/henry-james-legal-before.png"
 import HenryAfter from "../images/audits/henry-james-legal-after.png";
@@ -34,7 +35,8 @@ const {firstName, lastName, companyName, url, email, role, date} = Astro.props;
     </head>
     <body>
         <Navigation />
-        <section class="lg:mt-20">
+        <div class="square-card w-full py-1 text-center border-t-0 border-x-0 text-neutral-300">This is a private page. No one will see it unless you share the URL.</div>
+        <section class="mt-20">
             <div class="container">
                 <div class="max-w-[900px] mx-auto">
                     <div class="text-center text-lg font-normal text-orange-300 mb-8 text-pretty">{date}</div>
@@ -48,7 +50,7 @@ const {firstName, lastName, companyName, url, email, role, date} = Astro.props;
                 </div>
 
                 <div class="mt-24">
-                    <AuditExample companyName="Privy" websiteUrl="privy.com" imageBefore={PrivyBefore} imageAfter={PrivyAfter}>
+                    <AuditExample callCTA companyName={companyName} websiteUrl={url} imageBefore={PrivyBefore} imageAfter={PrivyAfter}>
                         <FAQItem slot="annotations" singleExpansion
                         question="Note 1 - Mobile navigation"
                         answer="Add a sign-up CTA to the navigation menu. This ensures a visitor can instantly try Privy no matter their scroll position on the site, and is constantly reminding them of their ability to do so."
@@ -71,6 +73,68 @@ const {firstName, lastName, companyName, url, email, role, date} = Astro.props;
                         />
                     </AuditExample>
                 </div>
+            </div>
+        </section>
+        <section>
+            <HowWeWork
+            subheading="Next Steps"
+            heading="Ready to upgrade your website?"
+            description={`Love what you see? Let's make it real. Reply to our email or reach out to <a href="mailto:jeremy@crft.studio" class="text-orange-300 underline">jeremy@crft.studio</a> to discuss turning this audit into a full redesign. We'll scope the project, align on your goals, and get your ${companyName} hero section converting like never before—all while keeping your marketing team in the loop.`}
+            />
+        </section>
+        <section>
+            <div class="container !max-w-[800px]">
+                <h2 class="text-3xl lg:text-4xl font-semibold text-center leading-tight mb-10 text-neutral-300">Your questions, answered.</h2>
+                <FAQItem
+                    question="How do I implement these redesign suggestions myself?"
+                    answer="You can use the annotated mockups and copywriting from your audit as a guide. The designs are fully specified, so you or your team can recreate them using tools like Figma, or implement them directly on your website if you're comfortable with that. That being said, if you'd like us to implement them for you, visit our <a href='/pricing' class='underline text-orange-300'>pricing page</a> for more details."
+                />
+                <FAQItem
+                    question="Can CRFT build this hero redesign for me?"
+                    answer="Absolutely! If you're impressed with the audit and want us to bring it to life, we can handle the full design and development. This includes implementing the changes, optimizing for conversions, and ensuring it works seamlessly across devices. Check our pricing page for details."
+                />
+                <FAQItem
+                    question="What's the next step if I love the audit?"
+                    answer="Simply reply to the email with your audit or contact jeremy@crft.studio. We'll set up a quick call to discuss your goals, timeline, and budget. From there, we can scope out the full project, including the hero and any additional pages you need."
+                />
+                <FAQItem
+                    question="Can I share the audit with my team or stakeholders?"
+                    answer="Yes, go ahead! Many clients use it internally to present ideas or get buy-in before moving forward with a redesign."
+                />
+                <FAQItem
+                    question="How accurate and reliable are these recommendations?"
+                    answer="Our suggestions are based on proven conversion optimization principles, data from A/B tests we've run, and our experience with similar sites. While results can vary, the audits are designed to boost key metrics like click-through rates and sign-ups. We stand by the quality of our work."
+                />
+                <FAQItem
+                    question="What if my business goals or branding have changed since the audit?"
+                    answer="No worries—we can adjust! If you provide updated details, we can refine the designs or create a new audit. This is part of our commitment to delivering value, whether as a standalone audit or as part of a larger project."
+                />
+                <FAQItem
+                    question="Do you offer any ongoing support after implementing the changes?"
+                    answer="For full projects, yes. Visit our <a href='/pricing' class='underline text-orange-300'>pricing page</a> for more details."
+                />
+                <FAQItem
+                    question="How long will it take to see results from implementing the audit?"
+                    answer="It depends on your traffic and how quickly you implement, but many clients see improvements in engagement within a week. Full conversion lifts often show in analytics reports after 2-4 weeks of data."
+                />
+                <FAQItem
+                    question="Why should I choose CRFT for the full redesign?"
+                    answer="We've helped companies like MobiLoud, MixBloom and FeedBear achieve standout hero sections that drive results. Our designs are conversion-focused, technically solid, and customized to fit your needs—perfect for marketing teams looking to level up without the hassle."
+                />
+            </div>
+        </section>
+        <section class="mb-0">
+            <div class="container">
+                <div class="max-w-[800px] mx-auto mb-7">
+                    <div class="text-orange-300 text-lg mb-3 text-pretty text-center">Get started</div>
+                    <h2 class="text-3xl lg:text-4xl font-medium leading-tight text-balance text-center">Ready to Bring This to Life?</h2>
+                    <p class="text-lg font-normal text-neutral-200 mt-5 text-pretty max-w-4xl mx-auto text-center">{`Love your personalized ${companyName} hero redesign? The next step is simple: book a quick call to discuss turning this into a full project, or view our pricing to get started.`}</p>
+                </div>
+                <div class="flex flex-row gap-3 items-center justify-center mb-10">
+                    <a href="/pricing" class="primary-cta">Book a call</a>
+                    <a href="/audit" class="secondary-cta">View pricing</a>
+                </div>
+                <Image src={PrivyAfter} alt={`${companyName} after`}/>
             </div>
         </section>
         <Footer hideTop/>
