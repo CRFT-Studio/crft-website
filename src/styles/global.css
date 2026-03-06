@@ -58,9 +58,7 @@
 
     h1:not(article h1) {
         font-family: 'Geist Pixel Circle', sans-serif;
-        background: -webkit-linear-gradient(290deg, #FFF7EB, #B1AEA9);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        @apply bg-gradient-to-r from-[#FFF7EB] to-[#B1AEA9] bg-clip-text text-transparent;
     }
 
     article {

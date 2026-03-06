@@ -1,0 +1,146 @@
+---
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import NihalPFP from '../images/nihal-pfp.png';
+import JeremyPFP from "../images/jeremy-pfp.png";
+import AuditExample from '../components/AuditExample.astro';
+import FAQItem from '../components/FAQItem.astro';
+import HeadScripts from '../components/HeadScripts.astro';
+import HowWeWork from '@/components/HowWeWork.astro';
+
+import HenryBefore from "../images/audits/henry-james-legal-before.png";
+import HenryAfter from "../images/audits/henry-james-legal-after.png";
+import DocytBefore from "../images/audits/docyt-before.png";
+import DocytAfter from "../images/audits/docyt-after.png";
+import SendBarsBefore from "../images/audits/send-bars-before.png";
+import SendBarsAfter from "../images/audits/send-bars-after.png";
+import PrivyBefore from "../images/audits/privy-before.png";
+import PrivyAfter from "../images/audits/privy-after.png";
+import serVmeBefore from "../images/audits/servme-before.png";
+import serVmeAfter from "../images/audits/servme-after.png";
+
+const {firstName, lastName, companyName, url, email, role, date, beforeImgPath, afterImgPath} = Astro.props;
+
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/images/audits/*.{jpeg,jpg,png,gif}');
+if (!images[beforeImgPath]) throw new Error(`"${beforeImgPath}" does not exist in glob: "src/images/audits/*.{jpeg,jpg,png,gif}"`);
+if (!images[afterImgPath]) throw new Error(`"${afterImgPath}" does not exist in glob: "src/images/audits/*.{jpeg,jpg,png,gif}"`);
+---
+<html lang="en">
+    <head>
+        <HeadScripts
+        title={`${companyName} Hero Redesign | CRFT Studio`}
+        description="This is just a little taste of CRFT. Hire us to design and develop the rest for your marketing team."
+        ogImgUrl="https://www.crft.studio/open-graph-img.png"
+        />
+
+        <meta name="robots" content="noindex">
+    </head>
+    <body>
+        <Navigation />
+        <div class="square-card w-full py-1 text-center border-t-0 border-x-0 text-neutral-300">This is a private page. No one will see it unless you share the URL.</div>
+        <section class="mt-20">
+            <div class="container">
+                <div class="max-w-[900px] mx-auto">
+                    <div class="text-center text-lg font-normal text-orange-300 mb-8 text-pretty">{date}</div>
+                    <h1 class="lg:text-5xl text-4xl text-center text-balance font-semibold leading-tight">Hey <span>{firstName}</span>, here's your personalized <span class="bg-clip-text text-orange-300 square-card px-2 py-0">{companyName}</span> hero redesign</h1>
+                    <p class="text-center text-pretty lg:text-xl text-lg mt-5 text-neutral-300 mb-7 max-w-[600px] mx-auto">This is just a little taste of CRFT. <span class="text-orange-300 underline"><a href="/pricing">Hire us</a></span> to design and develop the rest for you and your marketing team.</p>
+                </div>
+
+                <div class="flex flex-row flex-wrap gap-5 items-center mt-7 justify-center text-neutral-300">
+                    <Image src={JeremyPFP} alt="Jeremy pfp" class="square-card p-0 aspect-square object-cover w-[60px]"/>
+                    <div class="text-lg">— Jeremy  Vejgman</div>
+                </div>
+
+                <div class="mt-24">
+                    <AuditExample callCTA companyName={companyName} websiteUrl={url} imageBefore={beforeImgPath} imageAfter={afterImgPath}>
+                        <FAQItem slot="annotations" singleExpansion
+                        question="Note 1 - Mobile navigation"
+                        answer="Add a sign-up CTA to the navigation menu. This ensures a visitor can instantly try Privy no matter their scroll position on the site, and is constantly reminding them of their ability to do so."
+                        />
+                        <FAQItem slot="annotations"
+                        question="Note 2 - H1 text"
+                        answer="Make the heading more visually prominent by increasing its font size, and align the rest of the content's width with that of the navigation menu's."
+                        />
+                        <FAQItem slot="annotations"
+                        question="Note 3 - CTA buttons"
+                        answer="Direct your visitor's attention towards trying Privy with bold, full-width buttons. As the primary CTA redirects to Privy's listing on the Shopify App Store, its text can be renamed from 'One-click signup with Shopify' to a shorter 'Add to Shopify.' The secondary CTA, labeled 'Not on Shopify? Sign up here' may lead a small, albeit non-zero number of visitors to think that clicking this would lead to signing up for Shopify and not Privy. To clarify the intent of the secondary CTA, rename it to 'Not on Shopify? Try Privy here' for those who use other eCommerce platforms."
+                        />
+                        <FAQItem slot="annotations"
+                        question="Note 4 - Social proof"
+                        answer="Showcase some of the store/customer profile pictures from your reviews for added credibility, and feature Privy's average star rating from the Shopify App Store alongside it."
+                        />
+                        <FAQItem slot="annotations"
+                        question="Note 5 - Hero image"
+                        answer="Display an image whose association to the heading can be understood at a glance. In this instance, that would be a view of a shopper's device as they receive emails and SMS messages from a brand that uses Privy to send them."
+                        />
+                    </AuditExample>
+                </div>
+            </div>
+        </section>
+        <section>
+            <HowWeWork
+            subheading="Next Steps"
+            heading="Ready to upgrade your website?"
+            description={`Love what you see? Let's make it real. Reply to our email or reach out to <a href="mailto:jeremy@crft.studio" class="text-orange-300 underline">jeremy@crft.studio</a> to discuss turning this audit into a full redesign. We'll scope the project, align on your goals, and get your ${companyName} hero section converting like never before—all while keeping your marketing team in the loop.`}
+            />
+        </section>
+        <section>
+            <div class="container !max-w-[800px]">
+                <h2 class="text-3xl lg:text-4xl font-semibold text-center leading-tight mb-10 text-neutral-300">Your questions, answered.</h2>
+                <FAQItem
+                    question="How do I implement these redesign suggestions myself?"
+                    answer="You can use the annotated mockups and copywriting from your audit as a guide. The designs are fully specified, so you or your team can recreate them using tools like Figma, or implement them directly on your website if you're comfortable with that. That being said, if you'd like us to implement them for you, visit our <a href='/pricing' class='underline text-orange-300'>pricing page</a> for more details."
+                />
+                <FAQItem
+                    question="Can CRFT build this hero redesign for me?"
+                    answer="Absolutely! If you're impressed with the audit and want us to bring it to life, we can handle the full design and development. This includes implementing the changes, optimizing for conversions, and ensuring it works seamlessly across devices. Check our pricing page for details."
+                />
+                <FAQItem
+                    question="What's the next step if I love the audit?"
+                    answer="Simply reply to the email with your audit or contact jeremy@crft.studio. We'll set up a quick call to discuss your goals, timeline, and budget. From there, we can scope out the full project, including the hero and any additional pages you need."
+                />
+                <FAQItem
+                    question="Can I share the audit with my team or stakeholders?"
+                    answer="Yes, go ahead! Many clients use it internally to present ideas or get buy-in before moving forward with a redesign."
+                />
+                <FAQItem
+                    question="How accurate and reliable are these recommendations?"
+                    answer="Our suggestions are based on proven conversion optimization principles, data from A/B tests we've run, and our experience with similar sites. While results can vary, the audits are designed to boost key metrics like click-through rates and sign-ups. We stand by the quality of our work."
+                />
+                <FAQItem
+                    question="What if my business goals or branding have changed since the audit?"
+                    answer="No worries—we can adjust! If you provide updated details, we can refine the designs or create a new audit. This is part of our commitment to delivering value, whether as a standalone audit or as part of a larger project."
+                />
+                <FAQItem
+                    question="Do you offer any ongoing support after implementing the changes?"
+                    answer="For full projects, yes. Visit our <a href='/pricing' class='underline text-orange-300'>pricing page</a> for more details."
+                />
+                <FAQItem
+                    question="How long will it take to see results from implementing the audit?"
+                    answer="It depends on your traffic and how quickly you implement, but many clients see improvements in engagement within a week. Full conversion lifts often show in analytics reports after 2-4 weeks of data."
+                />
+                <FAQItem
+                    question="Why should I choose CRFT for the full redesign?"
+                    answer="We've helped companies like MobiLoud, MixBloom and FeedBear achieve standout hero sections that drive results. Our designs are conversion-focused, technically solid, and customized to fit your needs—perfect for marketing teams looking to level up without the hassle."
+                />
+            </div>
+        </section>
+        <section class="mb-0">
+            <div class="container">
+                <div class="max-w-[800px] mx-auto mb-7">
+                    <div class="text-orange-300 text-lg mb-3 text-pretty text-center">Get started</div>
+                    <h2 class="text-3xl lg:text-4xl font-medium leading-tight text-balance text-center">Ready to bring this to life?</h2>
+                    <p class="text-lg font-normal text-neutral-200 mt-5 text-pretty max-w-4xl mx-auto text-center">{`Love your personalized ${companyName} hero redesign? The next step is simple: book a quick call to discuss turning this into a full project, or view our pricing to get started.`}</p>
+                </div>
+                <div class="flex flex-row gap-3 items-center justify-center mb-10">
+                    <a href="/pricing" class="primary-cta">Book a call</a>
+                    <a href="/audit" class="secondary-cta">View pricing</a>
+                </div>
+                <Image width="100%" height="100%" class="w-full" inferSize={true} src={afterImgPath} alt={`${companyName} after`}/>
+            </div>
+        </section>
+        <Footer hideTop/>
+    </body>
+</html>

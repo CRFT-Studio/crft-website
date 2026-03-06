@@ -1,0 +1,28 @@
+---
+// target audience - Women - Age 25-55 Subpage for pregnant women - https://myfittio.com/prenatal-coaching/
+
+import AuditReport from "@/layouts/AuditReport.astro";
+
+export const auditData = {
+  firstName: "Antonio",
+  lastName: "Stipic",
+  companyName: "myFittio",
+  url: "myfittio.com/prenatal-coaching",
+  email: "Agencies",
+  role: "email",
+  date: "March 6th 2026",
+  beforeImgPath: "/src/images/audits/docyt-before.png",
+  afterImgPath: "/src/images/audits/docyt-after.png"
+};
+---
+<AuditReport
+firstName={auditData.firstName}
+lastName={auditData.lastName}
+companyName={auditData.companyName}
+url={auditData.url}
+email={auditData.email}
+role={auditData.role}
+date={auditData.date}
+beforeImgPath={auditData.beforeImgPath}
+afterImgPath={auditData.afterImgPath}
+/>
