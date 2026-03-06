@@ -2,6 +2,8 @@
 import { Image } from 'astro:assets';
 const {companyName, websiteUrl, imageBefore, imageAfter} = Astro.props;
 
+const { callCTA = false } = Astro.props;
+
 import HenryAfter from "../images/audits/henry-james-legal-after.png";
 ---
 <div class="grid lg:grid-cols-[0.5fr_1.25fr] grid-cols-1 mb-20 lg:gap-14 gap-0">
@@ -10,7 +12,26 @@ import HenryAfter from "../images/audits/henry-james-legal-after.png";
             <div class="lg:block hidden">
                 <div class="text-2xl lg:font-normal font-medium mb-2">{companyName}</div>
                 <div class="text-lg text-neutral-300 mb-3">Audited URL: https://{websiteUrl}</div>
-                <a href="#hero" class="text-orange-300 text-lg">Get my audit →</a>
+                {!callCTA && (
+                    <a href="#hero" class="text-orange-300 text-lg">Get my audit →</a>
+                )}
+                {callCTA && (
+                    <button class="primary-cta py-1 px-2 mt-2.5" data-cal-link="crftstudio/consultation" data-cal-namespace="consultation" data-cal-config='{"layout":"month_view","theme":"dark"}'>Book a call →</button>
+                    <!-- Cal element-click embed code begins -->
+                    <script type="text/javascript">
+                        (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+                    Cal("init", "consultation", {origin:"https://app.cal.com"});
+
+
+                        // Important: Please add the following attributes to the element that should trigger the calendar to open upon clicking.
+                        // `data-cal-link="crftstudio/consultation"`
+                        // data-cal-namespace="consultation"
+                        // `data-cal-config='{"layout":"month_view","theme":"dark"}'`
+
+                        Cal.ns.consultation("ui", {"theme":"dark","hideEventTypeDetails":false,"layout":"month_view"});
+                        </script>
+                        <!-- Cal element-click embed code ends -->
+                )}
             </div>
             <div class="flex flex-col lg:scale-90 lg:origin-top-left mt-8">
                 <slot name="annotations"/>
