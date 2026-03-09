@@ -637,7 +637,7 @@ if (url) {
 
     <body class="overflow-hidden w-full h-full">
         <Navigation/>
-        <section class="lg:my-20 my-10">
+        <section class="lg:my-20 my-10 relative">
             {!url ?
                 <div class="overflow-x-hidden" id="hero">
                     <div class="container">
@@ -997,6 +997,9 @@ if (url) {
                     </div>
                 </section>
             :
+                <div class="lg:hidden flex flex-row items-center justify-center fixed z-10 bottom-0 px-5 mb-8 w-full">
+                    <a href="/audit" class="w-full square-card px-2 py-2 text-center text-white">Get Free Design Audit <span class="square-card px-1 py-0 text-orange-300"><strike>$399 value</strike> Free</span></a>
+                </div>
                 <div id="result" class="sticky top-[56px] lg:mt-6 -mt-20 z-20"></div>
                 <div id="loadingOverlay" class="z-50 fixed bottom-0 h-[60vh] w-[100vw] bg-gradient-to-t from-black to-transparent transition-all flex flex-col items-center justify-end gap-5 pb-16">
                     <svg aria-hidden="true" class="w-6 h-6 text-gray-200 animate-[spin_0.5s_linear_infinite] dark:text-gray-600 fill-orange-300" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
