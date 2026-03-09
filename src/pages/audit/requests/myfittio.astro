@@ -11,8 +11,30 @@ export const auditData = {
   email: "Agencies",
   role: "email",
   date: "March 6th 2026",
-  beforeImgPath: "/src/images/audits/docyt-before.png",
-  afterImgPath: "/src/images/audits/docyt-after.png"
+  beforeImgPath: "/src/images/audits/myfittio-before.png",
+  afterImgPath: "/src/images/audits/myfittio-after.png",
+  annotations: [
+    {
+      question: "Note 1 - Mobile navigation",
+      answer: "Enhance mobile navigation by adding a prominent sign-up CTA, ensuring pregnant women can easily access prenatal coaching resources at any point on the page."
+    },
+    {
+      question: "Note 2 - H1 text",
+      answer: "Increase the font size of the main heading to make it more visually prominent, and align the content width with the navigation for better consistency."
+    },
+    {
+      question: "Note 3 - CTA buttons",
+      answer: "Use bold, full-width buttons to direct attention toward starting prenatal coaching. Rename primary CTA to 'Start My Prenatal Journey' for clarity, and secondary to 'Learn More About Coaching' to avoid confusion."
+    },
+    {
+      question: "Note 4 - Social proof",
+      answer: "Incorporate testimonials and profiles from expecting mothers who have used myFittio's coaching, along with average ratings, to build trust and credibility for the target audience of women aged 25-55."
+    },
+    {
+      question: "Note 5 - Hero image",
+      answer: "Replace the current image with one depicting a diverse group of pregnant women engaging in coaching sessions, making the connection to prenatal health and community instantly clear."
+    }
+  ]
 };
 ---
 <AuditReport
@@ -25,4 +47,5 @@ role={auditData.role}
 date={auditData.date}
 beforeImgPath={auditData.beforeImgPath}
 afterImgPath={auditData.afterImgPath}
+annotations={auditData.annotations}
 />

@@ -19,7 +19,20 @@ import PrivyAfter from "../images/audits/privy-after.png";
 import serVmeBefore from "../images/audits/servme-before.png";
 import serVmeAfter from "../images/audits/servme-after.png";
 
-const {firstName, lastName, companyName, url, email, role, date, beforeImgPath, afterImgPath} = Astro.props;
+interface Props {
+    firstName: string;
+    lastName: string;
+    companyName: string;
+    url: string;
+    email: string;
+    role: string;
+    date: string;
+    beforeImgPath: string;
+    afterImgPath: string;
+    annotations: Array<{ question: string; answer: string}>;
+}
+
+const { firstName, lastName, companyName, url, email, role, date, beforeImgPath, afterImgPath, annotations } = Astro.props;
 
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
@@ -58,26 +71,9 @@ const afterImg = (await images[afterImgPath]()).default;
 
                 <div class="mt-24">
                     <AuditExample callCTA companyName={companyName} websiteUrl={url} imageBefore={beforeImg} imageAfter={afterImg}>
-                        <FAQItem slot="annotations" singleExpansion
-                        question="Note 1 - Mobile navigation"
-                        answer="Add a sign-up CTA to the navigation menu. This ensures a visitor can instantly try Privy no matter their scroll position on the site, and is constantly reminding them of their ability to do so."
-                        />
-                        <FAQItem slot="annotations"
-                        question="Note 2 - H1 text"
-                        answer="Make the heading more visually prominent by increasing its font size, and align the rest of the content's width with that of the navigation menu's."
-                        />
-                        <FAQItem slot="annotations"
-                        question="Note 3 - CTA buttons"
-                        answer="Direct your visitor's attention towards trying Privy with bold, full-width buttons. As the primary CTA redirects to Privy's listing on the Shopify App Store, its text can be renamed from 'One-click signup with Shopify' to a shorter 'Add to Shopify.' The secondary CTA, labeled 'Not on Shopify? Sign up here' may lead a small, albeit non-zero number of visitors to think that clicking this would lead to signing up for Shopify and not Privy. To clarify the intent of the secondary CTA, rename it to 'Not on Shopify? Try Privy here' for those who use other eCommerce platforms."
-                        />
-                        <FAQItem slot="annotations"
-                        question="Note 4 - Social proof"
-                        answer="Showcase some of the store/customer profile pictures from your reviews for added credibility, and feature Privy's average star rating from the Shopify App Store alongside it."
-                        />
-                        <FAQItem slot="annotations"
-                        question="Note 5 - Hero image"
-                        answer="Display an image whose association to the heading can be understood at a glance. In this instance, that would be a view of a shopper's device as they receive emails and SMS messages from a brand that uses Privy to send them."
-                        />
+                        {annotations.map((annotation, index) => (
+                            <FAQItem slot="annotations" singleExpansion={index === 0} question={annotation.question} answer={annotation.answer} />
+                        ))}
                     </AuditExample>
                 </div>
             </div>
