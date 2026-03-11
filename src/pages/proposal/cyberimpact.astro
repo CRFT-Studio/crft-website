@@ -4,6 +4,14 @@ import FAQItem from '../../components/FAQItem.astro';
 import HeadScripts from '../../components/HeadScripts.astro';
 import { Image } from 'astro:assets';
 import PayloadScreenshot from '../../images/cyberimpact-payload.png';
+
+// 6k/month with monthyl, quarterly, 6 month options
+// sanity over payload. remove comparison table ✅
+// remove homepage redesign secvtion ✅
+// remove visual brand identity and design from timeline ✅
+// strucutre as core build, optimization (month 4-5), post-launch support (e.g. free seo tools, email database (mailboard), pricing calculator - month 6) ✅
+// detail handover process in timeline ✅
+// qwillr/docusend/documenso - prepare contract. business billing - setup corporation
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -387,7 +395,7 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                             <p class="text-neutral-400">We collaborate with ambitious marketing and product teams to transform their digital presence into high-performance marketing engines. At CRFT Studio, every project is designed to deliver tangible business results; combining strategy, design, and modern development in one seamless, end-to-end process. From discovery and strategy to launch and ongoing growth, we build sites that are beautiful, lightning-fast, and effortless to manage - so you can focus on growing your business, not wrangling your website.</p>
                         </div>
                         <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
-                        <div class="mb-10 text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
+                        <!-- <div class="mb-10 text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
                             <h2 id="homepage-redesign" class="inline">Homepage Redesign</h2>
                         </div>
                         <p class="text-neutral-400 text-lg mb-10">We reviewed the homepages of your key competitors—Mailchimp, Envoke, Flodesk, CakeMail, LeadFox, and ContactMonkey—and distilled the best elements into a new homepage draft for CyberImpact. Want to see exactly what inspired each section? Check out our <span class="underline"><a href="https://cyberimpact-website.vercel.app/notes" target="_blank">design annotations</a></span> for a peek at what made the cut.</p>
@@ -411,7 +419,7 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                   ></iframe>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- <div>
                             <Image src={PayloadScreenshot} alt='Payload Screenshot'></Image>
                         </div> -->
@@ -431,22 +439,22 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                         <div class="text-pretty">Ultra‑fast, modern frontend framework that ships minimal JavaScript and supports multiple rendering paradigms.</div>
                                     </div>
                                 </a>
-                                <button id="cms-trigger" class="flex flex-col lg:items-start items-end gap-2 square-card p-0 relative hover:bg-neutral-700 transition-all text-left cursor-pointer" data-tech-name="Payload" data-tech-icon="Payload.svg">
+                                <a href="https://www.sanity.io/" id="" class="flex flex-col lg:items-start items-end gap-2 square-card p-0 relative hover:bg-neutral-700 transition-all text-left cursor-pointer" data-tech-name="Payload" data-tech-icon="Payload.svg">
                                     <div class="square-card px-1 py-0 flex flex-row items-center ml-auto text-orange-300 gap-1 border border-t-0 border-r-0">
-                                        <div>Which CMS?</div>
+                                        <div>Learn about Sanity</div>
                                         <svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" viewBox="0 -960 960 960" fill="#D69A5C"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>
                                     </div>
                                     <div class="p-4 pt-0 flex flex-col gap-2 items-start">
                                         <div id="payload" class="flex flex-row gap-2 items-center">
                                             <div class="flex flex-row gap-1 items-center">
-                                                <img src="/icons/PayloadCMS.svg" class="w-5 h-5" alt="" />
+                                                <!-- <img src="/icons/PayloadCMS.svg" class="w-5 h-5" alt="" /> -->
                                                 <img src="/icons/Sanity.svg" class="w-5 h-5" alt="" />
                                             </div>
-                                            <div>Payload or Sanity</div>
+                                            <div>Sanity</div>
                                         </div>
-                                        <div class="text-pretty">Payload and Sanity are both headless CMS options we use, depending on project requirements. They offer flexible content modeling, real‑time collaboration, and powerful content APIs for seamless content management.</div>
+                                        <div class="text-pretty">Sanity is a headless CMS we use, offering flexible content modeling, real‑time collaboration, and powerful content APIs for seamless content management.</div>
                                     </div>
-                                </button>
+                                </a>
                                 <button id="ph-trigger" class="flex flex-col lg:items-start items-end gap-2 square-card p-0 relative hover:bg-neutral-700 transition-all text-left cursor-pointer" data-tech-name="PostHog" data-tech-icon="posthog.svg">
                                     <div class="square-card px-1 py-0 ml-auto flex flex-row items-center text-orange-300 gap-1 border border-t-0 border-r-0">
                                         <div>Why over GA4?</div>
@@ -475,7 +483,7 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                 <div class=" text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
                                     <h2 id="timelines" class="inline">Timelines</h2>
                                 </div>
-                                <div class="text-neutral-300 text-lg">Estimated project duration: 2 months</div>
+                                <div class="text-neutral-300 text-lg">Estimated project duration: 3 months</div>
                             </div>
                             <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
                                 <div>
@@ -497,7 +505,7 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                     </div>
                                 </div>
                             </div>
-                            <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
+                            <!-- <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
                                 <div>
                                     <div class="sticky top-10 text-neutral-400">Visual Brand Identity</div>
                                 </div>
@@ -534,13 +542,13 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                     </div>
                                     <div class="text-neutral-400">We limit our use of vector design tools like Figma beyond initial ideation, and build high-fidelity designs in code. This allows us to collaborate and drive results for your business much faster than otherwise possible.</div>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
                                 <div>
                                     <div class="sticky top-10 text-neutral-400">Web Development</div>
                                 </div>
                                 <div>
-                                    <div class="mb-3 text-neutral-100">4 - 8 weeks</div>
+                                    <div class="mb-3 text-neutral-100">8 - 12 weeks</div>
                                     <div class="square-card border-b-0">
                                         <div class="text-lg">Creation of code repository</div>
                                     </div>
@@ -548,7 +556,7 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                         <div class="text-lg">High fidelity, responsive design and development of core pages & components</div>
                                     </div>
                                     <div class="square-card border-b-0">
-                                        <div class="text-lg">Content migration and setup of Payload, our CMS of choice</div>
+                                        <div class="text-lg">Content migration and setup of Sanity, our CMS of choice</div>
                                     </div>
                                     <div class="square-card border-b-0">
                                         <div class="text-lg">We write and/or collaborate on new copy for every page</div>
@@ -566,6 +574,26 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                             </div>
                             <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
                                 <div>
+                                    <div class="sticky top-10 text-neutral-400">Handover</div>
+                                </div>
+                                <div>
+                                    <div class="mb-3 text-neutral-100">~ 1 week</div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">Github repository transfer and ownership handover</div>
+                                    </div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">Sanity CMS account sharing and access setup</div>
+                                    </div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">Deployment guidance for Astro (NodeJS) application on your infrastructure</div>
+                                    </div>
+                                    <div class="square-card">
+                                        <div class="text-lg">Documentation and help for ongoing maintenance</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
+                                <div>
                                     <div class="sticky top-10 text-neutral-400">Website Maintenance</div>
                                 </div>
                                 <div>
@@ -578,6 +606,9 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                     </div>
                                     <div class="square-card border-b-0">
                                         <div class="text-lg">New landing page creation</div>
+                                    </div>
+                                    <div class="square-card border-b-0">
+                                        <div class="text-lg">New free SEO tool creation</div>
                                     </div>
                                     <div class="square-card border-b-0">
                                         <div class="text-lg">Analytics monitoring and reporting</div>
@@ -599,8 +630,8 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                 <div class="square-card p-0">
                                     <div class="square-card py-0 px-1 border-0 border-b">Website Redesign & Development</div>
                                     <div class="p-5">
-                                        <h1 class="text-4xl font-medium mb-3">$6,850 CAD <span class="text-2xl text-neutral-300">/ billed monthly</span></h1>
-                                        <div class="text-lg font-medium leading-normal text-neutral-200 text-pretty">We normally bill an upfront monthly, quarterly or annual fee based on a project's duration. While we estimate Cyberimpact's new website to launch within two months, we reserve an additional month to refine the website based on real user feedback and analytics observations, ensuring the final result matches your business goals and delivers a great user experience.</div>
+                                        <h1 class="text-4xl font-medium mb-3">$6,000 CAD <span class="text-2xl text-neutral-300">/ billed monthly</span></h1>
+                                        <div class="text-lg font-medium leading-normal text-neutral-200 text-pretty">We normally bill an upfront monthly, quarterly or annual fee based on a project's duration. While we estimate Cyberimpact's new website to launch within three months, we like to reserve additional additional time to refine the website based on real user feedback and analytics observations, ensuring the final result matches your business goals and delivers a great user experience.</div>
                                         <div class="h-[1px] w-full bg-neutral-700 my-6"></div>
                                         <div class="grid lg:grid-cols-2 gap-8 text-pretty">
                                             <div class="flex flex-row gap-2 items-start">
@@ -623,7 +654,7 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                                 <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
                                                 <div class="flex flex-col gap-2">
                                                     <div class=" font-medium">Headless CMS integration</div>
-                                                    <div class=" font-normal  text-neutral-300">We'll integrate Payload CMS into our project, fully self-hostable with data ownership, so your team can update and collaborate on content in realtime, without our input.</div>
+                                                    <div class=" font-normal  text-neutral-300">We'll integrate Sanity CMS into our project, fully self-hostable with data ownership, so your team can update and collaborate on content in realtime, without our input.</div>
                                                 </div>
                                             </div>
 
@@ -818,7 +849,7 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                                     <td class="border border-neutral-600 p-2">Free, open-source, self-hostable frontend framework</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="border border-neutral-600 p-2">Sanity or Payload CMS</td>
+                                                    <td class="border border-neutral-600 p-2">Sanity CMS</td>
                                                     <td class="border border-neutral-600 p-2">$0</td>
                                                     <td class="border border-neutral-600 p-2">Free</td>
                                                 </tr>
