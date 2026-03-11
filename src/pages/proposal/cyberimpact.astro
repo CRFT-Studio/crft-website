@@ -630,7 +630,14 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                 <div class="square-card p-0">
                                     <div class="square-card py-0 px-1 border-0 border-b">Website Redesign & Development</div>
                                     <div class="p-5">
-                                        <h1 class="text-4xl font-medium mb-3">$6,000 CAD <span class="text-2xl text-neutral-300">/ billed monthly</span></h1>
+                                        <div class="flex lg:flex-row flex-col justify-start mb-8 gap-4">
+                                            <div id="dev-tabs" class="inline-flex flex-row card rounded-none p-[2px] border-[1px] gap-2 text-sm text-nowrap lg:max-w-full max-w-[65vw] overflow-x-auto">
+                                                <div id="monthly" class="dev-tab-active border-[1px] px-2 py-1 hover:cursor-pointer transition-all">Monthly</div>
+                                                <div id="quarterly" class="px-2 py-1 border-[1px] hover:cursor-pointer transition-all">Quarterly</div>
+                                                <div id="sixmonth" class="px-2 py-1 border-[1px] hover:cursor-pointer transition-all">6 Months</div>
+                                            </div>
+                                        </div>
+                                        <h1 class="text-4xl font-medium mb-3 leading-tight"><span id="dev-price">$6,000</span><span> CAD</span><span id="dev-period" class="bg-neutral-400 bg-clip-text">/month</span></h1>
                                         <div class="text-lg font-medium leading-normal text-neutral-200 text-pretty">We normally bill an upfront monthly, quarterly or annual fee based on a project's duration. While we estimate Cyberimpact's new website to launch within three months, we like to reserve additional additional time to refine the website based on real user feedback and analytics observations, ensuring the final result matches your business goals and delivers a great user experience.</div>
                                         <div class="h-[1px] w-full bg-neutral-700 my-6"></div>
                                         <div class="grid lg:grid-cols-2 gap-8 text-pretty">
@@ -717,10 +724,10 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                         <div class="text-lg font-medium leading-normal text-neutral-200 text-pretty">Flexible hourly support is available for ongoing development needs, and you can opt for bundled hours to save on larger updates or new features. We remain available post-launch to help with optimizations, updates, or feature additions, so you have access to support whenever you need it.</div>
                                         <style>
                                         @reference "../../styles/global.css";
-                                        #tabs div {
+                                        #tabs div, #dev-tabs div {
                                             @apply border-transparent;
                                         }
-                                        .tab-active {
+                                        .tab-active, .dev-tab-active {
                                             border-color: #525252 !important;
                                             @apply bg-neutral-700;
                                         }
@@ -730,6 +737,29 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                         </style>
                                         <script>
                                         import $ from "jquery";
+
+                                        //dev pricing
+                                        const devPrices = {
+                                            monthly: 6000,
+                                            quarterly: 18000,
+                                            sixmonth: 36000
+                                        };
+                                        function updateDevPrice() {
+                                            const activePlan = $(".dev-tab-active").attr("id");
+                                            const price = devPrices[activePlan];
+                                            $("#dev-price").text(`$${price.toLocaleString()}`);
+                                            if (activePlan === "monthly") {
+                                                $("#dev-period").show();
+                                            } else {
+                                                $("#dev-period").hide();
+                                            }
+                                        }
+                                        updateDevPrice();
+                                        $("#dev-tabs div").click(function() {
+                                            if ($(this).hasClass("dev-tab-active")) return;
+                                            $(".dev-tab-active").add(this).toggleClass("dev-tab-active");
+                                            updateDevPrice();
+                                        });
 
                                         //pricing
                                         const prices = {
