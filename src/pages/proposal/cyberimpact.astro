@@ -630,15 +630,15 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                 <div class="square-card p-0">
                                     <div class="square-card py-0 px-1 border-0 border-b">Website Redesign & Development</div>
                                     <div class="p-5">
-                                        <div class="flex lg:flex-row flex-col justify-start mb-8 gap-4">
+                                        <div class="flex lg:flex-row flex-col items-center justify-start mb-8 gap-4">
                                             <div id="dev-tabs" class="inline-flex flex-row card rounded-none p-[2px] border-[1px] gap-2 text-sm text-nowrap lg:max-w-full max-w-[65vw] overflow-x-auto">
                                                 <div id="monthly" class="dev-tab-active border-[1px] px-2 py-1 hover:cursor-pointer transition-all">Monthly</div>
-                                                <div id="quarterly" class="px-2 py-1 border-[1px] hover:cursor-pointer transition-all">Quarterly</div>
-                                                <div id="sixmonth" class="px-2 py-1 border-[1px] hover:cursor-pointer transition-all">6 Months</div>
+                                                <div id="quarterly" class="px-2 py-1 border-[1px] hover:cursor-pointer transition-all">Quarterly (Save 12%)</div>
+                                                <div id="sixmonth" class="px-2 py-1 border-[1px] hover:cursor-pointer transition-all">6 Months (Save 18%)</div>
                                             </div>
                                         </div>
-                                        <h1 class="text-4xl font-medium mb-3 leading-tight"><span id="dev-price">$6,000</span><span> CAD</span><span id="dev-period" class="bg-neutral-400 bg-clip-text">/month</span></h1>
-                                        <div class="text-lg font-medium leading-normal text-neutral-200 text-pretty">We normally bill an upfront monthly, quarterly or annual fee based on a project's duration. While we estimate Cyberimpact's new website to launch within three months, we like to reserve additional additional time to refine the website based on real user feedback and analytics observations, ensuring the final result matches your business goals and delivers a great user experience.</div>
+                                        <h1 class="text-4xl font-medium mb-3 leading-tight"><span id="dev-price">$6,850</span><span> CAD</span><span class="bg-neutral-400 bg-clip-text">/month</span></h1>
+                                        <div class="text-lg font-medium leading-normal text-neutral-200 text-pretty">We normally bill an upfront monthly, quarterly or annual fee based on a project's duration. While we estimate Cyberimpact's new website to launch within three months, we like to reserve additional time to refine the website based on real user feedback and analytics observations, ensuring the final result matches your business goals and delivers a great user experience.</div>
                                         <div class="h-[1px] w-full bg-neutral-700 my-6"></div>
                                         <div class="grid lg:grid-cols-2 gap-8 text-pretty">
                                             <div class="flex flex-row gap-2 items-start">
@@ -740,19 +740,14 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
 
                                         //dev pricing
                                         const devPrices = {
-                                            monthly: 6000,
-                                            quarterly: 18000,
-                                            sixmonth: 36000
+                                            monthly: 6850,
+                                            quarterly: 6000,
+                                            sixmonth: 5600,
                                         };
                                         function updateDevPrice() {
                                             const activePlan = $(".dev-tab-active").attr("id");
                                             const price = devPrices[activePlan];
                                             $("#dev-price").text(`$${price.toLocaleString()}`);
-                                            if (activePlan === "monthly") {
-                                                $("#dev-period").show();
-                                            } else {
-                                                $("#dev-period").hide();
-                                            }
                                         }
                                         updateDevPrice();
                                         $("#dev-tabs div").click(function() {
@@ -864,6 +859,7 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                 <div class="square-card p-0">
                                     <div class="square-card py-0 px-1 border-0 border-b">Tech Stack</div>
                                     <div class="p-5">
+                                        <div class="text-lg font-medium leading-normal text-neutral-200 text-pretty mb-6">The costs associated with our recommended tech stack are billed directly to CyberImpact and are not included in our billing.</div>
                                         <table class="border-collapse border border-neutral-600 text-sm overflow-x-auto">
                                             <thead>
                                                 <tr>
@@ -880,7 +876,7 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                                 </tr>
                                                 <tr>
                                                     <td class="border border-neutral-600 p-2">Sanity CMS</td>
-                                                    <td class="border border-neutral-600 p-2">$0</td>
+                                                    <td class="border border-neutral-600 p-2 text-pretty">$15 USD/per user/month (Growth plan)</td>
                                                     <td class="border border-neutral-600 p-2">Free</td>
                                                 </tr>
                                                 <tr>
@@ -888,9 +884,14 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                                     <td class="border border-neutral-600 p-2">$0</td>
                                                     <td class="border border-neutral-600 p-2">Generous free tier covers usage for over 90% of their users (1M events/month)</td>
                                                 </tr>
-                                                <tr class="font-semibold bg-neutral-800">
-                                                    <td class="border border-neutral-600 p-2">Total Monthly Tech Stack Cost</td>
+                                                <tr>
+                                                    <td class="border border-neutral-600 p-2">GitHub</td>
                                                     <td class="border border-neutral-600 p-2">$0</td>
+                                                    <td class="border border-neutral-600 p-2">Free for unlimited public and private repositories</td>
+                                                </tr>
+                                                <tr class="font-semibold bg-neutral-800">
+                                                    <td class="border border-neutral-600 p-2 text-pretty">Total Monthly Tech Stack Cost</td>
+                                                    <td class="border border-neutral-600 p-2">$15 USD/per user/month</td>
                                                     <td class="border border-neutral-600 p-2"></td>
                                                 </tr>
                                             </tbody>
@@ -912,23 +913,23 @@ import PayloadScreenshot from '../../images/cyberimpact-payload.png';
                                 <div>
                                     <FAQItem
                                         question="What technologies do you use to build websites?"
-                                        answer="We use Astro for ultra-fast, modern frontend development, combined with Payload or Sanity as a powerful and flexible headless CMS for easy content management. This stack delivers performance, and a seamless editing experience."
+                                        answer="We use Astro for ultra-fast, modern frontend development, combined with Sanity as a powerful and flexible headless CMS for easy content management. This stack delivers performance, and a seamless editing experience."
                                     />
                                     <FAQItem
                                         question="Will our team be able to edit the website ourselves?"
-                                        answer="Absolutely. Both Payload and Sanity's CMS offer intuitive, real-time editing environment lets your team update copy, images, and even page layouts—no developer required."
+                                        answer="Absolutely. Sanity's CMS offers intuitive, real-time editing environment lets your team update copy, images, and even page layouts—no developer required."
                                     />
                                     <FAQItem
                                         question="Can it be hosted on our own infrastructure?"
-                                        answer="Yes. The Astro frontend can be deployed as a Node application wherever you choose. We offer two choices of headless CMS, each of which differ in their self-hosting capabilities. Sanity's content editing client, Sanity Studio, is open source and self-hostable, but the underlying database is cloud-hosted. Payload CMS's client and underlying database is fully open source and self-hostable, giving you full ownership over your content."
+                                        answer="Yes. The Astro frontend can be deployed as a Node application wherever you choose. Sanity's content editing client, Sanity Studio, is open source and self-hostable, but the underlying database is cloud-hosted."
                                     />
                                     <FAQItem
                                         question="How much ongoing dev/maintenance is needed?"
-                                        answer="Very little. Our sites are designed for low maintenance, with most updates handled easily by your team in Payload. We're always available for major changes, support, or new features."
+                                        answer="Very little. Our sites are designed for low maintenance, with most updates handled easily by your team in Sanity. We're always available for major changes, support, or new features."
                                     />
                                     <FAQItem
                                         question="Is the new system harder to use than WordPress?"
-                                        answer="No—the opposite. Both Sanity and Payload offer a modern, user-friendly interface tailored for your content, not just blog posts. Many clients find it quicker and more intuitive than the traditional WordPress dashboard, especially for non-technical users."
+                                        answer="No—the opposite. Sanity offers a modern, user-friendly interface tailored for your content, not just blog posts. Many clients find it quicker and more intuitive than the traditional WordPress dashboard, especially for non-technical users."
                                     />
                                     <FAQItem
                                         question="What if we need new features after launch?"
