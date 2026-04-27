@@ -11,4 +11,5 @@
 | Perplexity | AI Search | $20 USD/month | AI-powered search engine |
 | Fly.io | Hosting | Pay-as-you-go | Global application hosting |
 | Railway | Hosting | $5 USD/month | App deployment, databases |
+| Adobe Photography | Design | $22 CAD/month | Photo editing
 | **Total** | | **Variable** | Costs depend on team size and usage |
