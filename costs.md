@@ -12,4 +12,5 @@
 | Fly.io | Hosting | Pay-as-you-go | Global application hosting |
 | Railway | Hosting | $5 USD/month | App deployment, databases |
 | Adobe Photography | Design | $22 CAD/month | Photo editing
+| Opencode Zen | Dev | Pay-as-you-go | AI
 | **Total** | | **Variable** | Costs depend on team size and usage |
