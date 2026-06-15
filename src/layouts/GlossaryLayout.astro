@@ -1,4 +1,8 @@
 ---
+import { Image } from 'astro:assets';
+import JeremyPFP from '../images/jeremy-pfp.png';
+import DavidPFP from '../images/david-pfp.png';
+
 import HeadScripts from "../components/HeadScripts.astro";
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
@@ -48,10 +52,30 @@ console.log("Page URLs:", glossaryPages.map(p => p.url));
                             <a href="/glossary" class="font-normal text-neutral-300 lg:block hidden hover:text-neutral-100 mb-5">← Glossary</a>
                             <div id="toc" class="lg:mb-0 mb-7 lg:overflow-y-auto lg:h-[90vh] lg:pb-24">
                                 <TableOfContents headings={headings} levels={3} />
-                                <div class="p-3 px-4 border border-neutral-700 shadow-md mt-4">
-                                    <div class="text-base mb-1 font-medium text-neutral-50">Want a new website?</div>
-                                    <div class="text-base text-neutral-300 mb-2">We design and develop beautiful, performant, and maintainable sites for the best marketing teams.</div>
-                                    <a href="/audit" class="text-base text-orange-300">Get a free site audit →</a>
+                                <div class="square-card bg-transparent shadow-md mt-4 text-left">
+                                    <div class="flex flex-row items-center mb-2">
+                                        <Image src={JeremyPFP} alt="Jeremy pfp" class="square-card p-0 aspect-square object-cover w-[50px] z-10"/>
+                                        <Image src={DavidPFP} alt="Jeremy pfp" class="square-card p-0 aspect-square w-[50px] object-cover -ml-3 z-0"/>
+                                    </div>
+                                    <div class="mb-2 font-medium text-neutral-50">Fix what's holding your website back.</div>
+                                    <div class="flex flex-col gap-2 w-full">
+                                        <a href="/audit" target="_blank" class="primary-cta p-1 w-full text-center text-sm">Get Redesign</a>
+                                        <div class="secondary-cta p-1 w-full text-center text-sm cursor-pointer" data-cal-link="crftstudio/consultation" data-cal-namespace="consultation" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book Call</div>
+                                        <!-- Cal element-click embed code begins -->
+                                        <script type="text/javascript">
+                                          (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+                                        Cal("init", "consultation", {origin:"https://app.cal.com"});
+
+
+                                          // Important: Please add the following attributes to the element that should trigger the calendar to open upon clicking.
+                                          // `data-cal-link="crftstudio/consultation"`
+                                          // data-cal-namespace="consultation"
+                                          // `data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'`
+
+                                          Cal.ns.consultation("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+                                          </script>
+                                          <!-- Cal element-click embed code ends -->
+                                    </div>
                                 </div>
                             </div>
                         </aside>
