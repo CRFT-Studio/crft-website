@@ -4,7 +4,7 @@
 
 Our expertise covers:
 - Visual brand identity (logo, colors, typeface)
-- Design and development of modern marketing sites (with Astro, Payload CMS, Vercel, React, Webflow, and more)
+- Design and development of modern marketing sites (with Astro, Sanity CMS, Vercel, React, Webflow, and more)
 - Conversion-focused copywriting
 - Full site audits and performance optimization (Lighthouse, SEO)
 - Ongoing technical support and landing page creation
