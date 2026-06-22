@@ -19,8 +19,8 @@ const audits = (await Astro.glob("../pages/audit/*.astro"))
     <div class="square-card p-5 flex md:flex-row flex-col gap-9 justify-between items-center">
         <div class="lg:px-5">
             <div class="flex flex-row items-center mb-4">
-                <Image src={JeremyPFP} alt="Jeremy pfp" class="rounded-full aspect-square object-cover w-[50px]"/>
-                <Image src={DavidPFP} alt="Jeremy pfp" class="rounded-full aspect-square w-[50px] object-cover -ml-3"/>
+                <Image src={JeremyPFP} alt="Jeremy pfp" class="square-card p-0 aspect-square object-cover w-[50px] z-10"/>
+                <!-- <Image src={DavidPFP} alt="David pfp" class="square-card p-0 aspect-square w-[50px] object-cover -ml-3"/> -->
             </div>
             <div class="text-3xl text-pretty font-medium mb-2">Tell us about your website</div>
             <div class="text-lg text-pretty max-w-[400px]">See what a redesigned, lightning-fast website can do for your business.</div>
