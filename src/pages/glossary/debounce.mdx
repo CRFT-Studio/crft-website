@@ -11,7 +11,7 @@ Debouncing limits how often a function runs by waiting until activity stops. If 
 
 ## How Debouncing Works
 
-Imagine a search box that queries an API on every keystroke. Without debouncing, typing "website" could trigger seven requests. With a 300ms debounce, the request fires once after the user pauses typing.
+Imagine a search box that queries an [API](/glossary/api) on every keystroke. Without debouncing, typing "website" could trigger seven requests. With a 300ms debounce, the request fires once after the user pauses typing.
 
 Conceptual example:
 
@@ -46,15 +46,15 @@ Use debounce when you care about the latest settled value. Use throttle when you
 ## Benefits
 
 - Fewer network requests
-- Lower CPU work on the main thread
-- Smoother UI under rapid input
-- Reduced backend load
+- Lower CPU work on the [main thread](/glossary/main-thread)
+- Smoother [UI](/glossary/user-interface) under rapid input
+- Reduced [backend](/glossary/backend) load
 
 ## Implementation Tips
 
-1. Choose delays based on UX, often 150–400ms for search
+1. Choose delays based on [UX](/glossary/user-experience), often 150–400ms for search
 2. Decide whether leading-edge execution is needed
-3. Cancel pending debounced work on unmount in SPA components
+3. Cancel pending debounced work on unmount in [SPA](/glossary/single-page-application) components
 4. Keep the debounced function identity stable where relevant
 5. Provide immediate feedback in the UI even if the action is delayed
 
@@ -64,9 +64,9 @@ Use debounce when you care about the latest settled value. Use throttle when you
 If the wait is too long, interfaces can feel unresponsive.
 
 ### Stale Closures
-In reactive UI frameworks, debounced callbacks can capture outdated state if not handled carefully.
+In reactive UI [frameworks](/glossary/framework), debounced callbacks can capture outdated state if not handled carefully.
 
-### Accessibility and Expectations
+### [Accessibility](/glossary/accessibility) and Expectations
 Users should still see loading or pending states when actions are deferred.
 
 Debouncing is a small technique with outsized impact on perceived performance and system efficiency in interactive interfaces.

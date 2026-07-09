@@ -7,11 +7,11 @@ pronunciation: "[toh-tuhl blok-ing tahym]"
 shortDefinition: "A performance metric that measures the total time between First Contentful Paint and Time to Interactive when the main thread is blocked for long enough to prevent input responsiveness."
 ---
 
-Total Blocking Time (TBT) is a crucial web performance metric that measures the total amount of time between [First Contentful Paint (FCP)](/glossary/first-contentful-paint) and [Time to Interactive (TTI)](/glossary/time-to-interactive) during which the main thread is blocked for long enough to prevent input responsiveness. Any tasks that take longer than 50 milliseconds to execute are considered "blocking" and contribute to the TBT score.
+Total Blocking Time (TBT) is a crucial web performance metric that measures the total amount of time between [First Contentful Paint (FCP)](/glossary/first-contentful-paint) and [Time to Interactive (TTI)](/glossary/time-to-interactive) during which the [main thread](/glossary/main-thread) is blocked for long enough to prevent input responsiveness. Any tasks that take longer than 50 milliseconds to execute are considered "blocking" and contribute to the TBT score.
 
 ## Why TBT Matters
 
-Total Blocking Time is a vital indicator of your website's interactivity and responsiveness. A high TBT score often results in a frustrating user experience where clicks, taps, and keyboard inputs feel sluggish or unresponsive. Google considers TBT as one of the [Core Web Vitals](/glossary/core-web-vitals) metrics, making it important for both user experience and search engine optimization.
+Total Blocking Time is a vital indicator of your website's interactivity and responsiveness. A high TBT score often results in a frustrating [user experience](/glossary/user-experience) where clicks, taps, and keyboard inputs feel sluggish or unresponsive. Google considers TBT as one of the [Core Web Vitals](/glossary/core-web-vitals) metrics, making it important for both user experience and [search engine optimization](/glossary/seo).
 
 ## Measuring TBT
 
@@ -25,15 +25,15 @@ For example, if a task takes 70ms to complete, it contributes 20ms (70ms - 50ms)
 ## Common Causes of High TBT
 
 Several factors can contribute to a high TBT score:
-- Heavy JavaScript execution
+- Heavy [JavaScript](/glossary/javascript) execution
 - Large third-party scripts
 - Complex rendering operations
 - Resource-intensive calculations
-- Multiple synchronous API calls
+- Multiple synchronous [API](/glossary/api) calls
 
 ## Optimizing TBT with Astro
 
-At CRFT Studio, we leverage [Astro](https://astro.build) as our preferred framework to optimize Total Blocking Time. Astro's unique "zero JavaScript by default" approach provides several advantages:
+At CRFT Studio, we leverage [Astro](https://astro.build) as our preferred [framework](/glossary/framework) to optimize Total Blocking Time. Astro's unique "zero JavaScript by default" approach provides several advantages:
 
 ### Partial Hydration
 Astro's partial [hydration](/glossary/hydration) strategy means JavaScript is only sent to the browser when absolutely necessary. This dramatically reduces the main thread blocking time as less JavaScript needs to be parsed and executed.
@@ -44,22 +44,22 @@ By generating [static HTML](/glossary/static-content) at [build](/glossary/build
 ### Component Islands
 Astro's component islands architecture allows us to isolate interactive components, preventing unnecessary JavaScript from blocking the main thread in static parts of the page.
 
-## Best Practices for TBT Optimization
+## Best Practices for TBT [Optimization](/glossary/optimization)
 
 To maintain optimal TBT scores:
 1. Break up long tasks into smaller chunks
 2. Defer non-critical JavaScript
-3. Implement code splitting
+3. Implement [code splitting](/glossary/code-splitting)
 4. Minimize third-party script impact
 5. Use web workers for computationally intensive tasks
-6. Optimize CSS and JavaScript execution
+6. Optimize [CSS](/glossary/css) and JavaScript execution
 
 ## Impact on User Experience
 
 A good TBT score (less than 200ms) ensures:
 - Responsive user interactions
-- Smooth scrolling and animations
-- Better conversion rates
+- [Smooth scrolling](/glossary/anchor-scroll) and animations
+- Better [conversion rates](/glossary/conversion-rate)
 - Improved user satisfaction
 - Higher search engine rankings
 

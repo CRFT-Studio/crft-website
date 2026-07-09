@@ -7,16 +7,16 @@ pronunciation: "[buhn-dl-ing]"
 shortDefinition: "The process of combining multiple code files and assets into fewer optimized files to improve website loading speed and performance."
 ---
 
-Bundling is a crucial development process that combines multiple [JavaScript](/glossary/javascript) files, stylesheets, and other web assets into a smaller number of optimized bundles. This technique reduces [HTTP](/glossary/httpP) requests and improves website loading performance by delivering consolidated, [minified](/glossary/minification) code to the browser.
+Bundling is a crucial development process that combines multiple [JavaScript](/glossary/javascript) files, stylesheets, and other web assets into a smaller number of optimized bundles. This technique reduces [HTTP](/glossary/http) requests and improves website loading performance by delivering consolidated, [minified](/glossary/minification) code to the browser.
 
 ## Why Bundling Matters
 
-Modern web applications often consist of hundreds of individual files, including JavaScript modules, CSS stylesheets, images, and other assets. Without bundling, browsers would need to make separate [HTTP requests](/glossary/http) for each file, significantly slowing down page load times. Bundling solves this problem by:
+Modern web applications often consist of hundreds of individual files, including JavaScript modules, [CSS](/glossary/css) stylesheets, images, and other assets. Without bundling, browsers would need to make separate [HTTP requests](/glossary/http) for each file, significantly slowing down [page load times](/glossary/page-load-time). Bundling solves this problem by:
 
-- Reducing the number of server [requests](/glossary/http)
+- Reducing the number of server requests
 - Minimizing network overhead
-- Managing code dependencies efficiently
-- Enabling code splitting and lazy loading
+- Managing code [dependencies](/glossary/dependencies) efficiently
+- Enabling [code splitting](/glossary/code-splitting) and [lazy loading](/glossary/lazy-loading)
 - Improving [caching](/glossary/cache) effectiveness
 
 ## Popular Bundling Tools
@@ -28,11 +28,11 @@ The most widely-used bundler in the JavaScript ecosystem, Webpack offers powerfu
 A newer, lightning-fast bundler that leverages native ES modules during development and uses Rollup for production builds. Vite has gained significant popularity due to its superior development experience and quick startup times - and it's a key component of [Astro](https://astro.build), our web [framework](/glossary/framework) of choice.
 
 ### Rollup
-Primarily focused on JavaScript modules, Rollup excels at creating efficient bundles for libraries and applications. It's known for its tree-shaking capabilities, which eliminate unused code from the final bundle.
+Primarily focused on JavaScript modules, Rollup excels at creating efficient bundles for [libraries](/glossary/library) and applications. It's known for its tree-shaking capabilities, which eliminate unused code from the final bundle.
 
 ## Benefits of Modern Bundling
 
-### Performance Optimization
+### Performance [Optimization](/glossary/optimization)
 Modern bundlers don't just combine files; they optimize them through:
 - [Minification](/glossary/minification) and compression
 - Dead code elimination
@@ -44,13 +44,13 @@ Bundlers enhance the development workflow with features like:
 - Hot module replacement
 - Source maps for debugging
 - Development servers with live reload
-- Build process automation
+- [Build process](/glossary/build-process) automation
 
 ### Production Ready
 For production environments, bundling provides:
 - Optimized asset delivery
 - Improved caching strategies
-- Reduced bandwidth usage
+- Reduced [bandwidth](/glossary/bandwidth) usage
 - Better cross-browser compatibility
 
 ## Best Practices
@@ -63,4 +63,4 @@ To maximize the benefits of bundling, developers should:
 - Use modern bundling features like tree shaking
 - Consider implementing dynamic imports
 
-Bundling remains a fundamental aspect of modern web development, enabling developers to build complex applications while maintaining optimal performance and user experience.
+Bundling remains a fundamental aspect of modern web development, enabling developers to build complex applications while maintaining optimal performance and [user experience](/glossary/user-experience).

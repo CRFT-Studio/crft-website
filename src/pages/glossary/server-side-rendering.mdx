@@ -7,7 +7,7 @@ pronunciation: "[sur-ver-sahyd ren-der-ing]"
 shortDefinition: "A web rendering method where the server processes and generates HTML for each request, enabling dynamic content and improved initial load times."
 ---
 
-Server-Side Rendering (SSR) is a web rendering technique where the server processes and generates the full HTML markup for a web page in response to a user's request. This approach contrasts with client-side rendering, where the browser builds the page using JavaScript after receiving minimal initial HTML.
+Server-Side Rendering (SSR) is a web rendering technique where the server processes and generates the full HTML markup for a web page in response to a user's request. This approach contrasts with client-side rendering, where the browser builds the page using [JavaScript](/glossary/javascript) after receiving minimal initial HTML.
 
 ## How SSR Works
 
@@ -34,7 +34,7 @@ By generating HTML on the server, SSR ensures that the latest data is always pre
 
 1. **Improved Initial Load Time**: Users receive a fully rendered page faster, especially beneficial for users with slower internet connections.
 
-2. **Better SEO**: Search engines can more easily crawl and index content, as it's immediately available in the HTML.
+2. **Better [SEO](/glossary/seo)**: Search engines can more easily crawl and index content, as it's immediately available in the HTML.
 
 3. **Enhanced Performance on Low-Power Devices**: Less client-side processing is required, improving performance on mobile devices or older computers.
 
@@ -45,7 +45,7 @@ By generating HTML on the server, SSR ensures that the latest data is always pre
 While SSR offers many advantages, it also comes with some challenges:
 
 - **Server Load**: Generating pages for each request can be resource-intensive for high-traffic sites.
-- **Time to Interactive (TTI)**: Although initial content is visible quickly, interactivity may be delayed until JavaScript loads.
+- **[Time to Interactive (TTI)](/glossary/time-to-interactive)**: Although initial content is visible quickly, interactivity may be delayed until JavaScript loads.
 - **Complexity**: Implementing SSR can be more complex than static site generation or purely client-side rendering.
 
 ## SSR Implementation with Astro
@@ -55,7 +55,7 @@ At CRFT Studio, we leverage [Astro](https://astro.build) for implementing server
 Astro's SSR capabilities allow us to:
 
 - Render dynamic content on the server
-- Improve page load times
+- Improve [page load times](/glossary/page-load-time)
 - Enhance SEO performance
 
 Astro's unique "Islands Architecture" enables us to combine the benefits of static content with dynamic, server-rendered components where necessary. This approach results in fast, efficient websites that can still incorporate dynamic elements seamlessly.
@@ -65,7 +65,7 @@ Astro's unique "Islands Architecture" enables us to combine the benefits of stat
 Server-side rendering is particularly useful for:
 
 1. Content-heavy websites that require frequent updates
-2. Applications with user-specific content or authentication
+2. Applications with user-specific content or [authentication](/glossary/authentication)
 3. E-commerce sites with real-time inventory or pricing
 
 By carefully considering the needs of each project, we can determine whether SSR is the most appropriate rendering strategy or if a combination of techniques would be more beneficial.
