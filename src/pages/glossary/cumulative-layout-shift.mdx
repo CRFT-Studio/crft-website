@@ -1,0 +1,59 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "What is Cumulative Layout Shift (CLS)?"
+description: "Learn about Cumulative Layout Shift (CLS), how unexpected page movement affects user experience, and how to measure and improve this Core Web Vital."
+term: "Cumulative Layout Shift (CLS)"
+pronunciation: "[kyoom-yuh-luh-tiv ley-out shift]"
+shortDefinition: "A Core Web Vital metric that measures how much a page's visible content unexpectedly moves during loading and interaction."
+---
+
+Cumulative Layout Shift (CLS) quantifies visual stability. It scores how often and how significantly elements move around as a page loads or updates. A high CLS means users may miss taps, lose their place while reading, or feel the interface is unstable.
+
+## How CLS Is Calculated
+
+CLS combines two factors for each unexpected layout shift:
+
+- **Impact fraction**: how much of the viewport is affected
+- **Distance fraction**: how far elements move
+
+These shift scores are aggregated during the page lifecycle. Google generally considers a good CLS score to be **0.1 or less**.
+
+## Common Causes of Layout Shift
+
+### Images Without Dimensions
+Images that load without reserved width and height push content down when they appear.
+
+### Ads, Embeds, and Iframes
+Third-party content that injects late often causes large jumps if space is not reserved.
+
+### Web Fonts
+Font swaps can change text size and reflow surrounding content if fallback metrics are poorly handled.
+
+### Dynamically Injected UI
+Banners, cookie notices, and late-loading modules can shove content around after the user starts reading.
+
+## How to Improve CLS
+
+1. Always set width and height (or aspect-ratio) for media
+2. Reserve space for ads, embeds, and async components
+3. Prefer `font-display` strategies that minimize reflow
+4. Avoid inserting content above existing content unless user-initiated
+5. Use skeleton loaders that match final layout dimensions
+6. Prefer transform-based animations over layout-affecting properties
+
+## Measuring CLS
+
+You can track CLS with:
+
+- Google Lighthouse
+- Chrome DevTools Performance and Experience panels
+- PageSpeed Insights
+- Real-user monitoring tools (CrUX, RUM platforms)
+
+Lab tools help catch issues in development, while field data shows how real users experience shifts across devices and networks.
+
+## Why CLS Matters
+
+Visual stability is part of perceived quality. Pages that stay put feel more polished, reduce mis-clicks, and support better engagement—especially on mobile, where layout shifts are more disruptive.
+
+Improving CLS is often a high-impact performance win because many fixes are structural: reserve space, load fonts carefully, and avoid surprise content insertion.

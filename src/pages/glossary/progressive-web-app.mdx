@@ -1,0 +1,65 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "What is a Progressive Web App (PWA)?"
+description: "Learn what Progressive Web Apps are, how service workers and installability work, and when PWAs are a strong alternative to native apps."
+term: "Progressive Web App (PWA)"
+pronunciation: "[pruh-gres-iv web ap]"
+shortDefinition: "A web application that uses modern browser capabilities to deliver app-like experiences, including offline support, installability, and reliable performance."
+---
+
+A Progressive Web App (PWA) is a website enhanced with technologies that make it behave more like a native application. PWAs can be installed on a device, work offline or on flaky networks, send push notifications (where supported), and load quickly through smart caching.
+
+## Core Building Blocks
+
+### Service Workers
+Background scripts that intercept network requests, enable offline caching strategies, and support background features.
+
+### Web App Manifest
+A JSON file that defines the app name, icons, theme colors, start URL, and display mode for installable experiences.
+
+### HTTPS
+PWAs require a secure context so service workers and advanced APIs can run safely.
+
+## What Makes an Experience "App-Like"
+
+- Fast, reliable loading
+- Offline or degraded-network support
+- Home screen installation
+- Full-screen or standalone display mode
+- Smooth navigation and responsive UI
+- Optional push notifications and background sync
+
+## Benefits of PWAs
+
+### Lower Friction Than App Stores
+Users can start in the browser and install later without a separate download process.
+
+### Cross-Platform Reach
+One codebase can serve desktop and mobile users across supported browsers.
+
+### Performance and Resilience
+Caching strategies improve repeat visits and reduce dependence on perfect connectivity.
+
+## Limitations
+
+- Platform support for features like push and background tasks varies
+- Deep hardware integrations may still require native apps
+- Discoverability and OS integration differ by browser and device
+
+## Common PWA Use Cases
+
+- Content sites and publications
+- E-commerce storefronts
+- Internal business tools
+- Event apps and lightweight utilities
+- Products that need offline-first workflows
+
+## Best Practices
+
+1. Start with strong performance and mobile UX before adding offline complexity
+2. Cache critical assets and define clear offline fallbacks
+3. Keep the manifest and icons polished for install prompts
+4. Test across browsers and devices, not just one platform
+5. Use service worker updates carefully to avoid stale-content surprises
+
+PWAs are a practical way to deliver installable, resilient experiences without committing every product surface to native development.

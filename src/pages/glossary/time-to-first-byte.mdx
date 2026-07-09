@@ -1,0 +1,67 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "What is Time to First Byte (TTFB)?"
+description: "Learn what Time to First Byte (TTFB) measures, why server response time affects page performance, and how to diagnose and improve it."
+term: "Time to First Byte (TTFB)"
+pronunciation: "[tahym too furst bahyt]"
+shortDefinition: "The time between a browser requesting a resource and receiving the first byte of the response from the server."
+---
+
+Time to First Byte (TTFB) measures how quickly a server starts responding to a request. It includes DNS lookup, connection time, TLS negotiation, and server processing before the first byte of content is returned. A high TTFB delays everything downstream, including rendering and interactivity.
+
+## What TTFB Includes
+
+1. Redirect time (if any)
+2. DNS resolution
+3. TCP connection and TLS handshake
+4. Server request handling
+5. Time until the first response byte arrives
+
+TTFB is not the full page load time, but it is a critical early signal of backend and network health.
+
+## Why TTFB Matters
+
+### Faster Starts Compound
+Every later performance metric waits on the first byte. Slow TTFB pushes out LCP and overall load.
+
+### Backend Visibility
+TTFB helps distinguish server/application delays from front-end rendering issues.
+
+### SEO and UX Impact
+Poor server responsiveness contributes to weak page experience, especially on content-heavy or dynamic sites.
+
+## Common Causes of High TTFB
+
+- Slow server-side rendering or database queries
+- Cold starts in serverless environments
+- Inefficient application logic or uncached APIs
+- Distant origin servers without edge caching
+- Overloaded hosting infrastructure
+- Expensive middleware or authentication checks
+
+## How to Improve TTFB
+
+1. Cache HTML or API responses where possible
+2. Use a CDN and edge caching for static or semi-static content
+3. Optimize database queries and backend code paths
+4. Enable HTTP/2 or HTTP/3 and keep connections efficient
+5. Reduce origin work with precomputing or incremental rendering
+6. Choose hosting regions close to your users
+7. Monitor real-user TTFB by geography and route
+
+## Measuring TTFB
+
+TTFB can be measured with:
+
+- Browser DevTools Network panel
+- Web Vitals and RUM tooling
+- Lighthouse and lab testing tools
+- Server logs and APM platforms
+
+Always compare lab and field data. Local tests can hide regional latency and production cache behavior.
+
+## Practical Benchmarks
+
+There is no single universal target, but many teams aim for a TTFB well under a few hundred milliseconds for cached or simple responses. Dynamic personalized pages may be higher, but should still be actively optimized.
+
+Improving TTFB is often about removing unnecessary server work and moving responses closer to users.

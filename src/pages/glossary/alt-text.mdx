@@ -1,0 +1,67 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "What is Alt Text? Image Accessibility Explained"
+description: "Learn what alt text is, why it matters for accessibility and SEO, and how to write effective alternative text for images on the web."
+term: "Alt Text"
+pronunciation: "[awlt tekst]"
+shortDefinition: "Written text that describes an image's content or function when the image cannot be seen or fails to load."
+---
+
+Alt text (alternative text) is the text description provided for an image in HTML via the `alt` attribute. It gives screen reader users equivalent information, appears when images fail to load, and can support SEO by clarifying image meaning.
+
+## Why Alt Text Matters
+
+### Accessibility
+People who are blind or have low vision rely on alt text to understand images that convey information.
+
+### Resilience
+If an image breaks or is blocked, alt text preserves meaning.
+
+### SEO Context
+Descriptive alt text helps search engines interpret image content, especially when relevant and natural.
+
+## Basic Example
+
+```html
+<img
+  src="/team-workshop.jpg"
+  alt="Design team collaborating around a whiteboard filled with user journey sketches"
+/>
+```
+
+## How to Write Good Alt Text
+
+1. Describe the purpose of the image in context, not every tiny detail
+2. Keep it concise, usually one short sentence
+3. Include text that appears in the image if that text matters
+4. Skip phrases like "image of" or "picture of"
+5. Match the level of detail to the image's importance on the page
+
+## Decorative vs Informative Images
+
+### Informative Images
+Need alt text that communicates the same essential information.
+
+### Decorative Images
+Should use empty alt text (`alt=""`) so assistive technologies can ignore them.
+
+### Functional Images
+Icons that act as controls should describe the action (for example, "Search" or "Close menu"), not the visual shape.
+
+## Common Mistakes
+
+- Leaving out the `alt` attribute entirely
+- Keyword stuffing for SEO
+- Repeating adjacent captions word for word
+- Describing decorative flourishes that add no meaning
+- Using filenames like `IMG_4032.jpg` as alt text
+
+## Best Practices Checklist
+
+- Every `<img>` has an `alt` attribute
+- Complex images (charts, diagrams) have longer text alternatives nearby when needed
+- Linked images describe destination or purpose
+- Product images mention distinguishing attributes users need
+- Alt text is reviewed as part of design QA, not only development
+
+Strong alt text is a content decision as much as a technical one. Write it for humans first, and accessibility and clarity improve together.

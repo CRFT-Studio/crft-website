@@ -1,0 +1,66 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "What is a Headless CMS?"
+description: "Learn what a headless CMS is, how the content API model works, and when headless architecture is a good fit for modern websites and apps."
+term: "Headless CMS"
+pronunciation: "[hed-lis see-em-es]"
+shortDefinition: "A content management system that provides content through APIs rather than being tied to a specific front-end presentation layer."
+---
+
+A headless CMS separates content management from content presentation. Editors create and organize content in the CMS, while websites, apps, and other channels fetch that content through APIs. The "head" (front end) is decoupled from the "body" (content system).
+
+## How Headless CMS Architecture Works
+
+1. Content is authored in the CMS
+2. Content is stored in a structured format
+3. Front ends request content via API (REST or GraphQL)
+4. Each channel renders content in its own UI layer
+
+This model supports websites, mobile apps, kiosks, and other digital surfaces from one content source.
+
+## Headless vs Traditional CMS
+
+| Headless CMS | Traditional CMS |
+| --- | --- |
+| API-first delivery | Coupled themes/templates |
+| Front-end freedom | Built-in rendering layer |
+| Multi-channel by design | Often web-page focused |
+| More engineering flexibility | Faster for simple sites |
+
+## Benefits
+
+### Front-End Flexibility
+Teams can use modern frameworks like Astro, Next.js, or custom stacks without CMS constraints.
+
+### Omnichannel Content
+The same content model can power web, mobile, and other experiences.
+
+### Better Developer Experience
+Clear content APIs and structured models fit component-driven development.
+
+### Scalability
+Presentation and content infrastructure can scale independently.
+
+## Trade-Offs
+
+- Preview and editorial workflows can be more complex
+- You must build or integrate the front end yourself
+- More moving parts than an all-in-one CMS theme system
+- Requires stronger content modeling discipline
+
+## When Headless Is a Good Fit
+
+- Marketing sites with custom design systems
+- Products that ship content to multiple platforms
+- Teams already invested in modern JAMstack or hybrid frameworks
+- Organizations that want structured content reuse
+
+## Best Practices
+
+1. Model content by meaning, not by page layout alone
+2. Plan preview, drafts, and publishing workflows early
+3. Use CDN caching for API responses where appropriate
+4. Define governance for content types and fields
+5. Keep front-end components aligned with content structure
+
+A headless CMS is most valuable when you need content flexibility and front-end control, not just a quick theme-based website.

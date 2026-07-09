@@ -1,0 +1,70 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "What is Atomic Design?"
+description: "Learn about Atomic Design, Brad Frost's methodology for building UI systems from atoms, molecules, organisms, templates, and pages."
+term: "Atomic Design"
+pronunciation: "[uh-tom-ik di-zahyn]"
+shortDefinition: "A methodology for creating design systems by breaking interfaces into five hierarchical levels: atoms, molecules, organisms, templates, and pages."
+---
+
+Atomic Design is a framework introduced by Brad Frost for constructing user interfaces from smaller, reusable parts. It gives teams a shared mental model for how components combine into full screens, making design systems more scalable and consistent.
+
+## The Five Levels
+
+### Atoms
+The smallest building blocks: buttons, inputs, labels, icons, and color or typography tokens.
+
+### Molecules
+Simple groups of atoms that function together, such as a search field with a button or a labeled form input.
+
+### Organisms
+More complex UI sections composed of molecules and atoms, like a header, product card grid, or footer.
+
+### Templates
+Page-level layouts that arrange organisms into structure without final content.
+
+### Pages
+Specific instances of templates filled with real content, used to test the system against actual use cases.
+
+## Why Teams Use Atomic Design
+
+### Reusability
+Shared atoms and molecules reduce duplicated UI work.
+
+### Consistency
+Similar problems get similar solutions across the product.
+
+### Scalability
+New features can be assembled from existing parts instead of designed from scratch.
+
+### Better Collaboration
+Designers and developers share a clear hierarchy for components and composition.
+
+## Atomic Design in Practice
+
+In modern product teams, Atomic Design often maps to:
+
+- Design tokens and primitives
+- Component libraries
+- Pattern documentation
+- Page templates in design tools and code
+
+It pairs well with tools like Figma component libraries and frontend component systems in React, Vue, or similar frameworks.
+
+## Common Misconceptions
+
+### It Is Not Only About Tiny Components
+The higher levels—templates and pages—are essential for validating whether lower-level pieces work in real contexts.
+
+### It Is a Mental Model, Not a Strict Folder Rule
+Teams should adapt the hierarchy to their workflow rather than forcing every file into rigid labels.
+
+## Best Practices
+
+1. Start with real product needs, not abstract component catalogs
+2. Document composition rules and usage examples
+3. Test components in page context, not only isolation
+4. Keep naming consistent across design and code
+5. Evolve the system as patterns prove themselves in production
+
+Atomic Design remains popular because it helps teams think systematically: small decisions compound into coherent interfaces when composition is intentional.

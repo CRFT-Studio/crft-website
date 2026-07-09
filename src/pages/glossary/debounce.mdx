@@ -1,0 +1,72 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "What is Debouncing in JavaScript?"
+description: "Learn what debouncing is, how it differs from throttling, and when to use it for search inputs, resize handlers, and other high-frequency events."
+term: "Debounce"
+pronunciation: "[dee-bowns]"
+shortDefinition: "A programming technique that delays running a function until a specified time has passed since the last time it was invoked."
+---
+
+Debouncing limits how often a function runs by waiting until activity stops. If events keep firing, the timer resets. The function executes only after a quiet period, which is useful for expensive operations tied to rapid user input.
+
+## How Debouncing Works
+
+Imagine a search box that queries an API on every keystroke. Without debouncing, typing "website" could trigger seven requests. With a 300ms debounce, the request fires once after the user pauses typing.
+
+Conceptual example:
+
+```javascript
+function debounce(fn, wait) {
+  let timeoutId;
+  return (...args) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn(...args), wait);
+  };
+}
+```
+
+## Common Use Cases
+
+- Live search and autocomplete
+- Form validation while typing
+- Window resize calculations
+- Autosave drafts
+- Filtering large lists as users type
+
+## Debounce vs Throttle
+
+| Debounce | Throttle |
+| --- | --- |
+| Waits until activity stops | Runs at most once per interval |
+| Great for "final value" actions | Great for continuous tracking |
+| Search-after-typing | Scroll position updates |
+
+Use debounce when you care about the latest settled value. Use throttle when you need regular updates during ongoing activity.
+
+## Benefits
+
+- Fewer network requests
+- Lower CPU work on the main thread
+- Smoother UI under rapid input
+- Reduced backend load
+
+## Implementation Tips
+
+1. Choose delays based on UX, often 150–400ms for search
+2. Decide whether leading-edge execution is needed
+3. Cancel pending debounced work on unmount in SPA components
+4. Keep the debounced function identity stable where relevant
+5. Provide immediate feedback in the UI even if the action is delayed
+
+## Potential Pitfalls
+
+### Feeling Laggy
+If the wait is too long, interfaces can feel unresponsive.
+
+### Stale Closures
+In reactive UI frameworks, debounced callbacks can capture outdated state if not handled carefully.
+
+### Accessibility and Expectations
+Users should still see loading or pending states when actions are deferred.
+
+Debouncing is a small technique with outsized impact on perceived performance and system efficiency in interactive interfaces.
