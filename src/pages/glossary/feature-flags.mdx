@@ -7,7 +7,7 @@ pronunciation: "[fee-cher flagz]"
 shortDefinition: "Configuration toggles that allow developers to enable, disable, or modify features in software without changing or deploying code."
 ---
 
-Feature flags (also known as feature toggles or feature switches) are configuration settings that allow developers to modify system behavior without changing code. They serve as a powerful tool in modern software development, enabling teams to control feature rollouts, conduct experiments, and manage code deployment risks.
+Feature flags (also known as feature toggles or feature switches) are configuration settings that allow developers to modify system behavior without changing code. They serve as a powerful tool in modern software development, enabling teams to control feature rollouts, conduct experiments, and manage code [deployment](/glossary/deploy) risks.
 
 ## How Feature Flags Work
 
@@ -26,7 +26,7 @@ At CRFT Studio, we use [PostHog](https://posthog.com) as our feature flag manage
 
 - Create and manage feature flags through an intuitive dashboard
 - Set up sophisticated targeting rules based on user properties  
-- Monitor feature flag usage and impact through analytics
+- Monitor feature flag usage and impact through [analytics](/glossary/analytics)
 - Implement multivariate testing with multiple flag variants
 - Integrate seamlessly with our existing development workflow
 
@@ -47,16 +47,16 @@ Feature flags enable gradual feature releases through techniques like canary rel
 ### Risk Mitigation
 By wrapping new features in feature flags, teams can quickly disable problematic functionality without rolling back entire deployments. This capability provides a safety net for production issues and reduces deployment risks.
 
-### A/B Testing
+### [A/B Testing](/glossary/ab-testing)
 Feature flags facilitate experimentation by allowing teams to show different versions of features to different user segments. This enables data-driven decision-making based on user behavior and preferences.
 
 ### Development Workflow
-Teams can practice trunk-based development more effectively by using feature flags to hide incomplete features in production. This allows for continuous integration while maintaining a stable user experience.
+Teams can practice trunk-based development more effectively by using feature flags to hide incomplete features in production. This allows for [continuous integration](/glossary/ci-cd) while maintaining a stable [user experience](/glossary/user-experience).
 
 ## Best Practices
 
 ### Naming and Documentation
-Feature flags should follow consistent naming conventions and be well-documented. This includes their purpose, intended lifespan, and any dependencies they might have.
+Feature flags should follow consistent naming conventions and be well-documented. This includes their purpose, intended lifespan, and any [dependencies](/glossary/dependencies) they might have.
 
 ### Lifecycle Management
 Regular cleanup of obsolete feature flags is crucial to prevent technical debt. Teams should track flag usage and remove them once features are fully launched or experiments are concluded.

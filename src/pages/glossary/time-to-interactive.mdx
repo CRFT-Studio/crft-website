@@ -11,7 +11,7 @@ Time to Interactive (TTI) is a crucial performance metric that measures the time
 
 ## Why TTI Matters
 
-Time to Interactive directly impacts user experience and is a key indicator of a website's performance. When a page has a high TTI, users may experience frustration as they attempt to interact with elements that appear ready but don't respond immediately. This can lead to increased bounce rates and decreased user satisfaction.
+Time to Interactive directly impacts [user experience](/glossary/user-experience) and is a key indicator of a website's performance. When a page has a high TTI, users may experience frustration as they attempt to interact with elements that appear ready but don't respond immediately. This can lead to increased [bounce rates](/glossary/bounce-rate) and decreased user satisfaction.
 
 ## How TTI is Measured
 
@@ -19,14 +19,14 @@ TTI measurement involves several key criteria:
 - The page has displayed useful content (First Contentful Paint)
 - Event handlers are registered for most visible page elements
 - The page responds to user interactions within 50 milliseconds
-- The main thread is free of long tasks (those exceeding 50ms)
+- The [main thread](/glossary/main-thread) is free of long tasks (those exceeding 50ms)
 
 ## Optimizing TTI
 
-### Astro's Zero-JavaScript Approach
-At CRFT Studio, we leverage [Astro](https://astro.build), our web framework of choice's "Zero JavaScript by default" architecture. This framework automatically removes unnecessary JavaScript from the final [build](/glossary/build-process), sending only the minimal code required for interactivity. This approach significantly reduces TTI by serving static HTML wherever possible.
+### Astro's Zero-[JavaScript](/glossary/javascript) Approach
+At CRFT Studio, we leverage [Astro](https://astro.build), our web [framework](/glossary/framework) of choice's "Zero JavaScript by default" architecture. This framework automatically removes unnecessary JavaScript from the final [build](/glossary/build-process), sending only the minimal code required for interactivity. This approach significantly reduces TTI by serving [static HTML](/glossary/static-content) wherever possible.
 
-### Code Splitting
+### [Code Splitting](/glossary/code-splitting)
 Breaking down large JavaScript bundles into smaller chunks that load on-demand can significantly improve TTI by reducing the initial JavaScript payload.
 
 ### Minimizing Main Thread Work
@@ -35,7 +35,7 @@ Breaking down large JavaScript bundles into smaller chunks that load on-demand c
 - Optimize JavaScript execution time
 - Use Web Workers for CPU-intensive tasks
 
-### Server-Side Rendering
+### [Server-Side Rendering](/glossary/server-side-rendering)
 Implementing server-side rendering can help deliver content faster while reducing the client-side JavaScript needed for initial interactivity.
 
 ## TTI vs Other Metrics
@@ -56,4 +56,4 @@ Several tools can help measure TTI:
 - [WebPageTest](https://www.webpagetest.org/)
 - [Performance API](https://developer.mozilla.org/en-US/docs/Web/API/Performance)
 
-By monitoring and optimizing TTI, developers can create more responsive and user-friendly web experiences that contribute to better engagement and conversion rates.
+By monitoring and optimizing TTI, developers can create more responsive and user-friendly web experiences that contribute to better engagement and [conversion rates](/glossary/conversion-rate).

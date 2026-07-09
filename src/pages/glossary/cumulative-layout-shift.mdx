@@ -13,7 +13,7 @@ Cumulative Layout Shift (CLS) quantifies visual stability. It scores how often a
 
 CLS combines two factors for each unexpected layout shift:
 
-- **Impact fraction**: how much of the viewport is affected
+- **Impact fraction**: how much of the [viewport](/glossary/viewport) is affected
 - **Distance fraction**: how far elements move
 
 These shift scores are aggregated during the page lifecycle. Google generally considers a good CLS score to be **0.1 or less**.
@@ -29,8 +29,8 @@ Third-party content that injects late often causes large jumps if space is not r
 ### Web Fonts
 Font swaps can change text size and reflow surrounding content if fallback metrics are poorly handled.
 
-### Dynamically Injected UI
-Banners, cookie notices, and late-loading modules can shove content around after the user starts reading.
+### Dynamically Injected [UI](/glossary/user-interface)
+Banners, [cookie](/glossary/cookie) notices, and late-loading modules can shove content around after the user starts reading.
 
 ## How to Improve CLS
 
@@ -45,7 +45,7 @@ Banners, cookie notices, and late-loading modules can shove content around after
 
 You can track CLS with:
 
-- Google Lighthouse
+- Google [Lighthouse](/glossary/lighthouse)
 - Chrome DevTools Performance and Experience panels
 - PageSpeed Insights
 - Real-user monitoring tools (CrUX, RUM platforms)

@@ -22,7 +22,7 @@ When a web application makes a request to a different origin (domain, protocol, 
 
 ### Response Headers
 - `Access-Control-Allow-Origin`: Specifies which origins can access the resource
-- `Access-Control-Allow-Methods`: Lists permitted HTTP methods
+- `Access-Control-Allow-Methods`: Lists permitted [HTTP methods](/glossary/http)
 - `Access-Control-Allow-Headers`: Indicates which headers can be used
 - `Access-Control-Max-Age`: Defines how long the preflight response can be cached
 
@@ -44,11 +44,11 @@ More complex requests require a preflight check, including those that:
 
 ### Security Considerations
 - Never use `Access-Control-Allow-Origin: *` in production for sensitive resources
-- Implement proper authentication and authorization
+- Implement proper [authentication](/glossary/authentication) and authorization
 - Validate and sanitize all cross-origin requests
-- Use HTTPS for all cross-origin communications
+- Use [HTTPS](/glossary/ssl-certificate) for all cross-origin communications
 
-### Performance Optimization
+### Performance [Optimization](/glossary/optimization)
 - Set appropriate `Access-Control-Max-Age` values to reduce preflight requests
 - Minimize the number of cross-origin requests
 - Consider using same-origin solutions when possible

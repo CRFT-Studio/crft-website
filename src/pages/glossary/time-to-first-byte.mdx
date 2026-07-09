@@ -7,7 +7,7 @@ pronunciation: "[tahym too furst bahyt]"
 shortDefinition: "The time between a browser requesting a resource and receiving the first byte of the response from the server."
 ---
 
-Time to First Byte (TTFB) measures how quickly a server starts responding to a request. It includes DNS lookup, connection time, TLS negotiation, and server processing before the first byte of content is returned. A high TTFB delays everything downstream, including rendering and interactivity.
+Time to First Byte (TTFB) measures how quickly a server starts responding to a request. It includes [DNS](/glossary/dns) lookup, connection time, TLS negotiation, and server processing before the first byte of content is returned. A high TTFB delays everything downstream, including rendering and interactivity.
 
 ## What TTFB Includes
 
@@ -17,34 +17,34 @@ Time to First Byte (TTFB) measures how quickly a server starts responding to a r
 4. Server request handling
 5. Time until the first response byte arrives
 
-TTFB is not the full page load time, but it is a critical early signal of backend and network health.
+TTFB is not the full [page load time](/glossary/page-load-time), but it is a critical early signal of [backend](/glossary/backend) and network health.
 
 ## Why TTFB Matters
 
 ### Faster Starts Compound
-Every later performance metric waits on the first byte. Slow TTFB pushes out LCP and overall load.
+Every later performance metric waits on the first byte. Slow TTFB pushes out [LCP](/glossary/largest-contentful-paint) and overall load.
 
 ### Backend Visibility
-TTFB helps distinguish server/application delays from front-end rendering issues.
+TTFB helps distinguish server/application delays from [front-end](/glossary/frontend) rendering issues.
 
-### SEO and UX Impact
+### [SEO](/glossary/seo) and [UX](/glossary/user-experience) Impact
 Poor server responsiveness contributes to weak page experience, especially on content-heavy or dynamic sites.
 
 ## Common Causes of High TTFB
 
-- Slow server-side rendering or database queries
-- Cold starts in serverless environments
-- Inefficient application logic or uncached APIs
-- Distant origin servers without edge caching
+- Slow [server-side rendering](/glossary/server-side-rendering) or database queries
+- Cold starts in [serverless](/glossary/serverless) environments
+- Inefficient application logic or uncached [APIs](/glossary/api)
+- Distant origin servers without edge [caching](/glossary/cache)
 - Overloaded hosting infrastructure
-- Expensive middleware or authentication checks
+- Expensive [middleware](/glossary/middleware) or [authentication](/glossary/authentication) checks
 
 ## How to Improve TTFB
 
 1. Cache HTML or API responses where possible
-2. Use a CDN and edge caching for static or semi-static content
+2. Use a [CDN](/glossary/cdn) and edge caching for static or semi-[static content](/glossary/static-content)
 3. Optimize database queries and backend code paths
-4. Enable HTTP/2 or HTTP/3 and keep connections efficient
+4. Enable [HTTP](/glossary/http)/2 or HTTP/3 and keep connections efficient
 5. Reduce origin work with precomputing or incremental rendering
 6. Choose hosting regions close to your users
 7. Monitor real-user TTFB by geography and route
@@ -55,7 +55,7 @@ TTFB can be measured with:
 
 - Browser DevTools Network panel
 - Web Vitals and RUM tooling
-- Lighthouse and lab testing tools
+- [Lighthouse](/glossary/lighthouse) and lab testing tools
 - Server logs and APM platforms
 
 Always compare lab and field data. Local tests can hide regional latency and production cache behavior.

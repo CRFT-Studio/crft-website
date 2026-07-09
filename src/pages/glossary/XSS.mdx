@@ -19,22 +19,22 @@ Reflected XSS occurs when malicious scripts are immediately reflected off a web 
 Also known as persistent XSS, this type occurs when the malicious script is permanently stored on target servers in databases, message forums, visitor logs, or comment fields. Every user viewing the affected page becomes a potential victim.
 
 ### DOM-based XSS
-This variant occurs when the vulnerability exists in client-side code rather than server-side code. The attack payload is executed through the Document Object Model (DOM) manipulation, never reaching the server.
+This variant occurs when the vulnerability exists in client-side code rather than server-side code. The attack payload is executed through the [Document Object Model](/glossary/dom) (DOM) manipulation, never reaching the server.
 
 ## Common Attack Vectors
 
 ### Input Fields
 Form fields, search boxes, and comment sections are prime targets for XSS attacks. Without proper sanitization, these inputs can become gateways for malicious code injection.
 
-### URL Parameters
-Attackers often manipulate URL parameters to inject malicious scripts, especially in applications that reflect these parameters in the page content.
+### [URL Parameters](/glossary/query-strings)
+Attackers often manipulate [URL](/glossary/url) parameters to inject malicious scripts, especially in applications that reflect these parameters in the page content.
 
-### HTTP Headers
+### [HTTP Headers](/glossary/http)
 Some applications display data from HTTP headers on their pages, which can be exploited if not properly sanitized.
 
 ## Prevention Techniques
 
-### Input Validation
+### [Input Validation](/glossary/input-validation)
 Implementing strict input validation on both client and server sides helps prevent malicious scripts from entering the application. This includes:
 - Validating data types
 - Checking length limits
@@ -43,7 +43,7 @@ Implementing strict input validation on both client and server sides helps preve
 ### Output Encoding
 Converting special characters to their HTML entity equivalents ensures that browsers interpret the content as data rather than executable code. Common encoding methods include:
 - HTML encoding
-- JavaScript encoding
+- [JavaScript](/glossary/javascript) encoding
 - URL encoding
 
 ### Security Headers

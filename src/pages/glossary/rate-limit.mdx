@@ -16,7 +16,7 @@ Rate limiting serves multiple essential purposes in web development and API mana
 - **Server Protection**: Prevents server overload from excessive requests
 - **Security Enhancement**: Helps mitigate DDoS attacks and brute force attempts
 - **Resource Management**: Ensures fair distribution of server resources
-- **Cost Control**: Manages API usage costs and bandwidth consumption
+- **Cost Control**: Manages API usage costs and [bandwidth](/glossary/bandwidth) consumption
 - **Service Quality**: Maintains consistent performance for all users
 
 ## Common Rate Limiting Strategies
@@ -40,7 +40,7 @@ Standard rate limit headers should be included in API responses:
 
 ### Status Codes
 When a rate limit is exceeded, servers should respond with:
-- HTTP 429 (Too Many Requests)
+- [HTTP](/glossary/http) 429 (Too Many Requests)
 - Clear error message
 - Retry-After header suggesting when to retry
 
@@ -50,7 +50,7 @@ Developers should implement proper error handling for rate-limited requests:
 
 1. Implement exponential backoff
 2. Queue requests when approaching limits
-3. Use multiple API keys or endpoints when available
+3. Use multiple API keys or [endpoints](/glossary/endpoint) when available
 4. Cache responses to reduce request frequency
 5. Monitor usage patterns to optimize request timing
 

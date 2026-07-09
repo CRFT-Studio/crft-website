@@ -7,22 +7,22 @@ pronunciation: "[kohd split-ing]"
 shortDefinition: "A performance technique that breaks JavaScript bundles into smaller chunks so browsers only load the code needed for the current page or feature."
 ---
 
-Code splitting is the practice of dividing application code into multiple smaller files (chunks) instead of shipping one large bundle. Users download only what they need for the current route or interaction, which improves load time and Time to Interactive.
+Code splitting is the practice of dividing application code into multiple smaller files (chunks) instead of shipping one large bundle. Users download only what they need for the current route or interaction, which improves [load time](/glossary/page-load-time) and [Time to Interactive](/glossary/time-to-interactive).
 
 ## Why Code Splitting Matters
 
-Modern frontends can grow large quickly. Without splitting, every visitor may download code for features they never use. Splitting reduces unused JavaScript, especially on first load.
+Modern frontends can grow large quickly. Without splitting, every visitor may download code for features they never use. Splitting reduces unused [JavaScript](/glossary/javascript), especially on first load.
 
 ## Common Code Splitting Strategies
 
 ### Route-Based Splitting
-Each page or route loads its own chunk. This is one of the most effective defaults for multi-page and SPA architectures.
+Each page or route loads its own chunk. This is one of the most effective defaults for multi-page and [SPA](/glossary/single-page-application) architectures.
 
 ### Component-Based Splitting
-Heavy components—charts, editors, maps, modals—are loaded only when rendered or requested.
+Heavy components—charts, editors, maps, [modals](/glossary/modal)—are loaded only when rendered or requested.
 
 ### Vendor Splitting
-Third-party libraries are separated into their own chunks so app updates do not force full vendor re-downloads.
+Third-party [libraries](/glossary/library) are separated into their own chunks so app updates do not force full vendor re-downloads.
 
 ## How It Works in Practice
 
@@ -32,14 +32,14 @@ Bundlers like Vite, Webpack, and Parcel support dynamic imports:
 const Chart = await import('./HeavyChart.js');
 ```
 
-Frameworks often wrap this pattern with lazy-loading helpers so routes and components can be split with minimal boilerplate.
+[Frameworks](/glossary/framework) often wrap this pattern with [lazy-loading](/glossary/lazy-loading) helpers so routes and components can be split with minimal boilerplate.
 
 ## Benefits
 
 - Faster initial page loads
-- Better caching for unchanged chunks
+- Better [caching](/glossary/cache) for unchanged chunks
 - Lower main-thread work on first render
-- Improved Core Web Vitals on JS-heavy sites
+- Improved [Core Web Vitals](/glossary/core-web-vitals) on JS-heavy sites
 
 ## Trade-Offs and Pitfalls
 
@@ -47,17 +47,17 @@ Frameworks often wrap this pattern with lazy-loading helpers so routes and compo
 Excessive splitting can create network overhead through too many requests.
 
 ### Loading Waterfalls
-Poorly planned lazy loads can delay critical UI if dependencies fetch sequentially.
+Poorly planned lazy loads can delay critical [UI](/glossary/user-interface) if [dependencies](/glossary/dependencies) fetch sequentially.
 
 ### Layout Shifts and Spinners
-Late-loading components need thoughtful placeholders so UX still feels stable.
+Late-loading components need thoughtful placeholders so [UX](/glossary/user-experience) still feels stable.
 
 ## Best Practices
 
 1. Split by route first, then target heavy components
-2. Preload likely next-step chunks for smoother navigation
+2. Preload likely next-step chunks for smoother [navigation](/glossary/navigation)
 3. Measure bundle size and real-user performance impact
-4. Keep critical above-the-fold code in the initial path
+4. Keep critical [above-the-fold](/glossary/above-the-fold) code in the initial path
 5. Avoid lazy-loading content required for first paint
 
-Code splitting is one of the highest-leverage frontend performance techniques when applied to real user journeys rather than arbitrary file boundaries.
+Code splitting is one of the highest-leverage [frontend](/glossary/frontend) performance techniques when applied to real user journeys rather than arbitrary file boundaries.

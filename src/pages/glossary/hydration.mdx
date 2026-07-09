@@ -7,7 +7,7 @@ pronunciation: "[hahy-drey-shun]"
 shortDefinition: "The process of making server-rendered HTML interactive by attaching JavaScript event listeners and state to the static markup."
 ---
 
-Hydration is the technical process of attaching JavaScript functionality to static HTML that has been pre-rendered on the server. It's like "bringing the page to life" by adding interactivity to an otherwise static document.
+Hydration is the technical process of attaching [JavaScript](/glossary/javascript) functionality to [static HTML](/glossary/static-content) that has been pre-rendered on the server. It's like "bringing the page to life" by adding interactivity to an otherwise static document.
 
 ## Why Hydration Matters
 
@@ -15,8 +15,8 @@ Hydration plays a crucial role in modern web development, particularly in [frame
 
 The primary advantages of hydration include:
 - Improved initial page load performance
-- Better SEO capabilities
-- Enhanced user experience
+- Better [SEO](/glossary/seo) capabilities
+- Enhanced [user experience](/glossary/user-experience)
 - Optimal time-to-interactive metrics
 
 ## Hydration in Astro
@@ -25,7 +25,7 @@ The primary advantages of hydration include:
 
 - `client:load` - Hydrates immediately during page load
 - `client:idle` - Hydrates once the page is done with its initial load
-- `client:visible` - Hydrates when the component enters the viewport
+- `client:visible` - Hydrates when the component enters the [viewport](/glossary/viewport)
 - `client:media` - Hydrates based on media query matches
 - `client:only` - Hydrates client-side only, skipping server-side rendering
 
@@ -40,8 +40,8 @@ Example:
 
 1. The server sends pre-rendered HTML to the client
 2. The JavaScript bundle loads in the browser
-3. The framework matches the static HTML with its virtual DOM
-4. Event listeners and state management are attached to the HTML elements
+3. The framework matches the static HTML with its virtual [DOM](/glossary/dom)
+4. Event listeners and state management are attached to the [HTML elements](/glossary/element)
 5. The page becomes fully interactive
 
 ## Common Hydration Strategies
@@ -50,7 +50,7 @@ Example:
 The entire application is hydrated at once, making all components interactive simultaneously. While straightforward, this approach can impact performance on larger applications.
 
 ### Progressive Hydration
-Components are hydrated gradually based on priority or visibility. This approach can significantly improve initial page load times and overall performance.
+Components are hydrated gradually based on priority or visibility. This approach can significantly improve initial [page load times](/glossary/page-load-time) and overall performance.
 
 ### Partial Hydration
 Only specific components that require interactivity are hydrated, while static components remain as-is. This strategy is particularly efficient for content-heavy sites.

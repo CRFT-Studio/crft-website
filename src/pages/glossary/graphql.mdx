@@ -7,7 +7,7 @@ pronunciation: "[graf-kyoo-el]"
 shortDefinition: "A query language and runtime for APIs that lets clients request exactly the data they need in a single request."
 ---
 
-GraphQL is an API style where clients describe the shape of data they need, and the server responds with matching JSON. Instead of multiple fixed endpoints, many GraphQL APIs expose a single endpoint with a typed schema of queries, mutations, and subscriptions.
+GraphQL is an API style where clients describe the shape of data they need, and the server responds with matching [JSON](/glossary/json). Instead of multiple fixed [endpoints](/glossary/endpoint), many GraphQL [APIs](/glossary/api) expose a single endpoint with a typed schema of queries, mutations, and subscriptions.
 
 ## How GraphQL Works
 
@@ -47,7 +47,7 @@ Frontends request only the fields required for a view, reducing payload size.
 Schemas create clear contracts between client and server and improve tooling.
 
 ### Rapid Product Iteration
-New UI requirements can often be met by adjusting queries without new endpoints.
+New [UI](/glossary/user-interface) requirements can often be met by adjusting queries without new endpoints.
 
 ### Great Ecosystem
 Tooling for documentation, validation, codegen, and developer experience is mature.
@@ -55,7 +55,7 @@ Tooling for documentation, validation, codegen, and developer experience is matu
 ## Challenges
 
 - Query complexity can create server performance risks
-- Caching is different from traditional HTTP resource caching
+- [Caching](/glossary/cache) is different from traditional [HTTP](/glossary/http) resource caching
 - Learning curve around schema design and resolvers
 - Poorly governed schemas can become hard to evolve
 
@@ -63,7 +63,7 @@ Tooling for documentation, validation, codegen, and developer experience is matu
 
 1. Design the schema around product domain concepts
 2. Add query cost limits and depth protections
-3. Use pagination for list fields
+3. Use [pagination](/glossary/pagination) for list fields
 4. Monitor slow resolvers and N+1 data-loading issues
 5. Version thoughtfully through additive schema changes
 
