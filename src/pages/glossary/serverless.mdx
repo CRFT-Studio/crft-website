@@ -1,0 +1,70 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "What is Serverless Computing?"
+description: "Learn what serverless computing is, how functions-as-a-service work, and the benefits and trade-offs for modern web applications and APIs."
+term: "Serverless"
+pronunciation: "[sur-ver-lis]"
+shortDefinition: "A cloud execution model where you deploy code without managing servers, and the platform automatically handles scaling, availability, and infrastructure."
+---
+
+Serverless computing lets developers run backend code without provisioning or maintaining traditional servers. You deploy functions or services, and the cloud provider handles scaling, patching, and capacity. Despite the name, servers still exist—you just do not manage them directly.
+
+## How Serverless Works
+
+In a common pattern called Functions as a Service (FaaS), code runs in response to events such as HTTP requests, queue messages, file uploads, or scheduled jobs. The platform spins up execution environments on demand and scales them automatically.
+
+## Common Serverless Use Cases
+
+- API endpoints and webhooks
+- Form handling and authentication flows
+- Image or file processing
+- Background jobs and scheduled tasks
+- E-commerce checkout and payment events
+- Lightweight personalization and A/B logic
+
+## Benefits
+
+### Reduced Ops Overhead
+Teams spend less time on server maintenance, capacity planning, and patching.
+
+### Automatic Scaling
+Workloads can scale from zero to high traffic without manual infrastructure changes.
+
+### Cost Efficiency for Spiky Traffic
+You typically pay for execution time and usage rather than idle servers.
+
+### Faster Iteration
+Small deployable units make it easier to ship isolated backend features.
+
+## Trade-Offs
+
+### Cold Starts
+Infrequently used functions may take longer to start, which can affect latency.
+
+### Vendor Constraints
+Runtime limits, timeouts, and platform-specific APIs can shape architecture decisions.
+
+### Observability Complexity
+Distributed functions require solid logging, tracing, and monitoring practices.
+
+### Not Ideal for Every Workload
+Long-running processes or consistently high, steady compute may be cheaper or simpler on traditional servers or containers.
+
+## Serverless vs Containers
+
+| Serverless | Containers |
+| --- | --- |
+| Minimal infrastructure management | More control over environment |
+| Event-driven scaling | Always-on or orchestrated services |
+| Great for bursty workloads | Great for complex, long-running systems |
+| Platform abstractions | Portable runtime packaging |
+
+## Best Practices
+
+1. Keep functions focused and single-purpose
+2. Design for idempotency and retries
+3. Set clear timeouts and memory limits
+4. Monitor cold starts and error rates
+5. Use managed services for queues, storage, and auth when possible
+
+Serverless is a powerful model for modern web backends when your workloads fit event-driven, scalable execution and you want to minimize infrastructure management.

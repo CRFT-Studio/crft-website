@@ -1,0 +1,55 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "What is a Single Page Application (SPA)?"
+description: "Learn what a Single Page Application (SPA) is, how client-side routing works, and the performance and UX trade-offs compared to multi-page websites."
+term: "Single Page Application (SPA)"
+pronunciation: "[sing-guhl peyj ap-li-key-shuhn]"
+shortDefinition: "A web application that loads a single HTML page and dynamically updates content as users interact, without full page reloads."
+---
+
+A Single Page Application (SPA) is a web app architecture where most navigation happens client-side. After the initial page load, JavaScript updates the interface and fetches data as needed, creating a fluid experience similar to a native app.
+
+## How SPAs Work
+
+Instead of requesting a new HTML document for every route, an SPA loads a shell page once, then uses client-side routing and API calls to render new views. Frameworks like React, Vue, and Angular are commonly used to build this pattern.
+
+## Benefits of SPAs
+
+### Faster In-App Navigation
+Once assets are loaded, moving between views is often near-instant because the browser does not reload the full page.
+
+### Rich Interactivity
+SPAs excel at dynamic interfaces such as dashboards, editors, and product tools that require frequent state changes.
+
+### Clear Frontend/Backend Separation
+Many SPAs consume APIs, making it easier to share the same backend with mobile apps or other clients.
+
+## Challenges of SPAs
+
+### Initial Load Performance
+Shipping a large JavaScript bundle can slow first load, especially on mobile networks.
+
+### SEO Complexity
+Search engines handle SPAs better than they used to, but server-side rendering or pre-rendering is often still needed for strong SEO.
+
+### State and Complexity Management
+Client-side routing, caching, authentication, and data syncing can introduce architectural complexity.
+
+## SPA vs Multi-Page Application
+
+| SPA | Multi-Page Application |
+| --- | --- |
+| Client-side navigation | Full page reloads |
+| Strong for app-like UX | Strong for content-heavy sites |
+| Heavier JS requirements | Often simpler to crawl |
+| API-driven data flow | Server-rendered pages |
+
+## Best Practices
+
+1. Code-split routes and lazy-load heavy features
+2. Use SSR or SSG when SEO matters
+3. Optimize Core Web Vitals on the initial shell
+4. Manage state intentionally to avoid unnecessary re-renders
+5. Provide meaningful loading and empty states
+
+SPAs are a powerful choice for interactive products, but they work best when performance, accessibility, and indexing are designed in from the start.

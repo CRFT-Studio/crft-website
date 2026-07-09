@@ -1,0 +1,70 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "What is GraphQL?"
+description: "Learn what GraphQL is, how it differs from REST, and why teams use it to fetch precise data for modern web and mobile applications."
+term: "GraphQL"
+pronunciation: "[graf-kyoo-el]"
+shortDefinition: "A query language and runtime for APIs that lets clients request exactly the data they need in a single request."
+---
+
+GraphQL is an API style where clients describe the shape of data they need, and the server responds with matching JSON. Instead of multiple fixed endpoints, many GraphQL APIs expose a single endpoint with a typed schema of queries, mutations, and subscriptions.
+
+## How GraphQL Works
+
+A GraphQL schema defines available types and operations. Clients send queries for reads and mutations for writes. Because the client specifies fields, responses can avoid both over-fetching and under-fetching common in some REST designs.
+
+Example query:
+
+```graphql
+query {
+  product(id: "123") {
+    name
+    price
+    images {
+      url
+    }
+  }
+}
+```
+
+## GraphQL vs REST
+
+| GraphQL | REST |
+| --- | --- |
+| Flexible queries defined by the client | Fixed resources and endpoints |
+| Often one endpoint | Many endpoints |
+| Strong schema and type system | Schema conventions vary |
+| Nested data in one request | Related data may need multiple calls |
+
+Neither approach is universally better. REST remains excellent for simple resource APIs; GraphQL shines when clients have diverse data needs.
+
+## Benefits
+
+### Precise Data Fetching
+Frontends request only the fields required for a view, reducing payload size.
+
+### Strong Typing
+Schemas create clear contracts between client and server and improve tooling.
+
+### Rapid Product Iteration
+New UI requirements can often be met by adjusting queries without new endpoints.
+
+### Great Ecosystem
+Tooling for documentation, validation, codegen, and developer experience is mature.
+
+## Challenges
+
+- Query complexity can create server performance risks
+- Caching is different from traditional HTTP resource caching
+- Learning curve around schema design and resolvers
+- Poorly governed schemas can become hard to evolve
+
+## Best Practices
+
+1. Design the schema around product domain concepts
+2. Add query cost limits and depth protections
+3. Use pagination for list fields
+4. Monitor slow resolvers and N+1 data-loading issues
+5. Version thoughtfully through additive schema changes
+
+GraphQL is a strong fit for product teams that need flexible client-driven data access with a clear, typed API contract.

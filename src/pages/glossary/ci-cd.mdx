@@ -1,0 +1,72 @@
+---
+layout: "../../layouts/GlossaryLayout.astro"
+title: "What is CI/CD? Continuous Integration and Delivery Explained"
+description: "Learn what CI/CD means in software development, how continuous integration and delivery pipelines work, and why automated shipping improves quality and speed."
+term: "CI/CD"
+pronunciation: "[see-ahy see-dee]"
+shortDefinition: "A set of automated practices—Continuous Integration and Continuous Delivery/Deployment—that build, test, and release software changes reliably and frequently."
+---
+
+CI/CD is a software delivery approach that automates how code moves from a developer’s machine to production. Continuous Integration focuses on frequently merging and validating changes. Continuous Delivery or Deployment focuses on releasing those validated changes safely and quickly.
+
+## Continuous Integration (CI)
+
+In CI, developers merge code into a shared repository often. Each change triggers automated builds and tests so issues are caught early, while fixes are still small and cheap.
+
+Typical CI steps:
+
+1. Install dependencies
+2. Build the application
+3. Run unit and integration tests
+4. Run linting and type checks
+5. Produce build artifacts
+
+## Continuous Delivery vs Continuous Deployment
+
+### Continuous Delivery
+Every change is kept in a releasable state. Deploying to production may still require a manual approval.
+
+### Continuous Deployment
+Every change that passes the pipeline is released to production automatically.
+
+## Why CI/CD Matters
+
+### Faster Feedback
+Broken builds and failing tests surface within minutes, not days.
+
+### Higher Confidence
+Automated checks reduce the risk of shipping regressions.
+
+### Smaller Releases
+Frequent releases are easier to reason about and roll back.
+
+### Team Scalability
+Shared pipelines encode quality standards so delivery does not depend on tribal knowledge.
+
+## Common Pipeline Stages
+
+- Source control trigger (pull request or merge)
+- Build and compile
+- Test and quality gates
+- Security and dependency scanning
+- Deploy to staging
+- Deploy to production
+- Post-deploy monitoring
+
+## Best Practices
+
+1. Keep the main branch deployable
+2. Make tests fast and reliable enough to run on every change
+3. Fail pipelines on meaningful quality gates
+4. Use environment parity between staging and production
+5. Automate rollbacks or quick recovery paths
+6. Treat pipeline config as versioned product code
+
+## Common Pitfalls
+
+- Flaky tests that erode trust in the pipeline
+- Manual steps that reintroduce release risk
+- Slow pipelines that discourage frequent commits
+- Missing observability after deployment
+
+CI/CD turns release from a stressful event into a routine process. For web teams, it is foundational to shipping polished product updates with speed and confidence.
