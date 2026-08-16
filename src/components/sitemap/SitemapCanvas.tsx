@@ -164,11 +164,15 @@ export default function SitemapCanvas({ url }: SitemapCanvasProps) {
         if (result.error && !result.urls?.length) {
           setError(result.error);
           setLoading(false);
+          window.__lookupSitemap = { urlCount: 0, hasSitemap: false };
+          document.dispatchEvent(new CustomEvent("lookup:sitemap", { detail: { urlCount: 0, hasSitemap: false } }));
           return;
         }
         if (!result.urls?.length) {
           setEmpty(true);
           setLoading(false);
+          window.__lookupSitemap = { urlCount: 0, hasSitemap: false };
+          document.dispatchEvent(new CustomEvent("lookup:sitemap", { detail: { urlCount: 0, hasSitemap: false } }));
           return;
         }
         const origin = new URL(url).origin;
@@ -177,10 +181,14 @@ export default function SitemapCanvas({ url }: SitemapCanvasProps) {
         setCollapsedIds(collectDefaultCollapsed(nextTree));
         setTotalUrls(result.urls.length);
         setLoading(false);
+        window.__lookupSitemap = { urlCount: result.urls.length, hasSitemap: true };
+        document.dispatchEvent(new CustomEvent("lookup:sitemap", { detail: { urlCount: result.urls.length, hasSitemap: true } }));
       } catch {
         if (cancelled) return;
         setError("Failed to access site");
         setLoading(false);
+        window.__lookupSitemap = { urlCount: 0, hasSitemap: false };
+        document.dispatchEvent(new CustomEvent("lookup:sitemap", { detail: { urlCount: 0, hasSitemap: false } }));
       }
     };
 
