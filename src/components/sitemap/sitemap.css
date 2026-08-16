@@ -1,0 +1,30 @@
+.sitemap-flow.react-flow {
+  --xy-background-color: #1c1c1c;
+  --xy-minimap-background-color: #262626;
+  --xy-minimap-mask-background-color: rgb(0 0 0 / 45%);
+  --xy-controls-button-background-color: #262626;
+  --xy-controls-button-background-color-hover: #404040;
+  --xy-controls-button-color: #f5f5f5;
+  --xy-controls-button-border-color: #404040;
+  --xy-attribution-background-color: transparent;
+  background: #1c1c1c;
+}
+
+.sitemap-flow .react-flow__attribution {
+  color: #737373;
+}
+
+.sitemap-flow .react-flow__minimap {
+  border: 1px solid #404040;
+  margin: 12px;
+}
+
+.sitemap-flow .react-flow__controls {
+  border: 1px solid #404040;
+  margin: 12px;
+  overflow: hidden;
+}
+
+.sitemap-flow .react-flow__controls-button svg {
+  fill: currentColor;
+}
