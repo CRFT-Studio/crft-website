@@ -38,6 +38,19 @@ function setHref(id: string, value: string) {
   if (node instanceof HTMLAnchorElement) node.href = value;
 }
 
+function normalize(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+function restates(candidate: string | undefined, ...seen: (string | undefined)[]) {
+  const text = normalize(candidate || "");
+  if (!text) return true;
+  return seen.some((item) => {
+    const other = normalize(item || "");
+    return !!other && (text === other || other.includes(text) || text.includes(other));
+  });
+}
+
 function setNote(id: string, summary?: string) {
   const node = document.getElementById(id);
   if (!node) return;
@@ -53,6 +66,7 @@ function applyCtas(packet: BriefPacket, findings: Finding[], brief?: ActionBrief
   const cta = brief?.cta || buildCta(packet, findings);
   const auditHref = buildAuditHref(packet, findings, brief?.verdict);
   const research = isWellKnownHost(packet.hostname) || brief?.ownerLikelihood === "research";
+  const seen = [brief?.verdict, cta.headline, ...findings.flatMap((finding) => [finding.title, finding.detail])];
 
   setText("sidebar-audit-label", cta.headline);
   setText("owner-card-headline", research ? `Curious about ${packet.hostname}?` : cta.headline);
@@ -63,10 +77,11 @@ function applyCtas(packet: BriefPacket, findings: Finding[], brief?: ActionBrief
   setHref("mobile-audit-cta", auditHref);
 
   if (brief) {
-    setNote("lighthouse-note", brief.sections.lighthouse.summary);
-    setNote("tech-stack-note", brief.sections.stack.rebuildAngle || brief.sections.stack.summary);
-    setNote("sitemap-note", brief.sections.sitemap.summary);
-    setNote("meta-tags-note", brief.sections.meta.summary);
+    const stackNote = brief.sections.stack.rebuildAngle || brief.sections.stack.summary;
+    setNote("lighthouse-note", restates(brief.sections.lighthouse.summary, ...seen) ? "" : brief.sections.lighthouse.summary);
+    setNote("tech-stack-note", restates(stackNote, ...seen) ? "" : stackNote);
+    setNote("sitemap-note", restates(brief.sections.sitemap.summary, ...seen) ? "" : brief.sections.sitemap.summary);
+    setNote("meta-tags-note", restates(brief.sections.meta.summary, ...seen) ? "" : brief.sections.meta.summary);
   }
 }
 
@@ -204,7 +219,14 @@ export default function ActionBrief({
   const cta = packet ? brief?.cta || buildCta(packet, findings) : null;
   const auditHref = packet ? buildAuditHref(packet, findings, brief?.verdict) : "/audit";
   const research = packet ? isWellKnownHost(packet.hostname) || brief?.ownerLikelihood === "research" : false;
-  const visibleFindings = findings.slice(0, 4);
+  const verdict = brief?.verdict || cta?.headline || "";
+  const visibleFindings = findings.filter((finding) => !restates(`${finding.title}. ${finding.detail}`, verdict)).slice(0, 4);
+  const overviewActions =
+    brief?.source === "ai"
+      ? (brief.sections.overview.actions || []).filter(
+          (action) => !restates(action, verdict, ...visibleFindings.flatMap((finding) => [finding.title, finding.detail]))
+        )
+      : [];
   const suggestedTitle = brief?.sections.meta.suggestedTitle;
   const suggestedDescription = brief?.sections.meta.suggestedDescription;
   const showMeta =
@@ -219,9 +241,7 @@ export default function ActionBrief({
         <div className="text-lg text-neutral-300">Reading the scan…</div>
       ) : (
         <>
-          <div className="text-xl font-medium text-pretty mb-3">
-            {brief?.verdict || cta?.headline}
-          </div>
+          <div className="text-xl font-medium text-pretty mb-3">{verdict}</div>
           {visibleFindings.length > 0 && (
             <div className="grid md:grid-cols-2 gap-3 mb-5">
               {visibleFindings.map((finding) => (
@@ -234,9 +254,9 @@ export default function ActionBrief({
               ))}
             </div>
           )}
-          {brief?.sections.overview.actions?.length ? (
+          {overviewActions.length ? (
             <ol className="list-decimal pl-5 mb-5 text-neutral-200 flex flex-col gap-1">
-              {brief.sections.overview.actions.map((action) => (
+              {overviewActions.map((action) => (
                 <li key={action}>{action}</li>
               ))}
             </ol>

@@ -315,9 +315,28 @@ export function buildCta(packet: BriefPacket, findings: Finding[], aiCta?: Brief
   };
 }
 
+function lighthouseNote(packet: BriefPacket, topFinding?: Finding) {
+  const mobile = packet.scores.mobile?.performance;
+  const desktop = packet.scores.desktop?.performance;
+  const topIsMobilePerf = topFinding?.id === "slow-mobile" || topFinding?.id === "mid-mobile";
+  const parts: string[] = [];
+
+  if (mobile != null && !topIsMobilePerf) {
+    parts.push(`Mobile performance is ${mobile}`);
+  }
+  if (desktop != null && !(topIsMobilePerf && desktop === mobile)) {
+    parts.push(`Desktop is ${desktop}`);
+  }
+  const audits = packet.topFailedAudits.slice(0, 2).map((audit) => audit.title);
+  if (audits.length) {
+    parts.push(`Top opportunities: ${audits.join("; ")}`);
+  }
+
+  return parts.join(". ") + (parts.length ? "." : "");
+}
+
 export function buildRuleBrief(packet: BriefPacket, findings: Finding[]): ActionBrief {
   const projectType = pickProjectType(findings);
-  const mobile = packet.scores.mobile;
   const stackNames = packet.stack.slice(0, 8).map((item) => item.name).join(", ");
   const topFinding = findings[0];
 
@@ -330,13 +349,10 @@ export function buildRuleBrief(packet: BriefPacket, findings: Finding[]): Action
     sections: {
       overview: {
         summary: topFinding?.detail || "No critical issues jumped out of this scan.",
-        actions: findings.slice(0, 3).map((finding) => finding.title),
+        actions: [],
       },
       lighthouse: {
-        summary:
-          mobile?.performance != null
-            ? `Mobile performance is ${mobile.performance}. Desktop is ${packet.scores.desktop?.performance ?? "n/a"}.`
-            : "Lighthouse scores were not available.",
+        summary: lighthouseNote(packet, topFinding),
         actions: packet.topFailedAudits.slice(0, 3).map((audit) =>
           audit.savings ? `${audit.title} (${audit.savings})` : audit.title
         ),
