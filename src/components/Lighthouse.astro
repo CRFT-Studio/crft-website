@@ -113,10 +113,15 @@ const { url } = Astro.props;
             } else {
                 showError('lighthouse-viewer-mobile', reports.errors?.mobile || 'Error fetching mobile report');
             }
+
+            window.__lookupLighthouse = reports;
+            document.dispatchEvent(new CustomEvent('lookup:lighthouse', { detail: reports }));
         } catch (error) {
             console.error('Error fetching Lighthouse reports:', error);
             showError('lighthouse-viewer-desktop', 'Error fetching desktop report');
             showError('lighthouse-viewer-mobile', 'Error fetching mobile report');
+            window.__lookupLighthouse = {};
+            document.dispatchEvent(new CustomEvent('lookup:lighthouse', { detail: {} }));
         }
 
         $(document).trigger('lighthouse:rendered');

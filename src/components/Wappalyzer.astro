@@ -51,12 +51,16 @@ const { url } = Astro.props;
         fetchLookupSection('wappalyzer', url)
             .then((data) => {
                 renderTech(container, data.techByCategory);
-                document.dispatchEvent(new Event('wappalyzer:loaded'));
+                window.__lookupWappalyzer = data.techByCategory || {};
+                document.dispatchEvent(new CustomEvent('wappalyzer:loaded'));
+                document.dispatchEvent(new CustomEvent('lookup:wappalyzer', { detail: data.techByCategory || {} }));
             })
             .catch((error) => {
                 console.error('[Wappalyzer] Error fetching tech stack:', error);
                 container.innerHTML = '<div class="text-neutral-300">No technology data available</div>';
-                document.dispatchEvent(new Event('wappalyzer:loaded'));
+                window.__lookupWappalyzer = {};
+                document.dispatchEvent(new CustomEvent('wappalyzer:loaded'));
+                document.dispatchEvent(new CustomEvent('lookup:wappalyzer', { detail: {} }));
             });
     }
 </script>

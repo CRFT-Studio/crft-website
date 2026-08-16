@@ -20,9 +20,6 @@ import JeremyPFP from '../../images/jeremy-pfp.png';
 import DavidPFP from '../../images/david-pfp.png';
 import { displayPath, parseLookupUrl } from "../../lib/lookup/parse-url";
 
-const TELEGRAM_API = process.env.TELEGRAM_API;
-const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
-
 const url = Astro.url.searchParams.get("url");
 const datetime = Astro.url.searchParams.get("datetime");
 const parsedUrl = parseLookupUrl(url);
@@ -47,25 +44,13 @@ if (datetime) {
 if (parsedUrl && datetime) {
   Astro.response.headers.set('Cache-Control', 'public, max-age=2592000, stale-while-revalidate=86400');
   Astro.response.headers.set('Vercel-CDN-Cache-Control', 'max-age=2592000');
-
-  try {
-    await fetch(`https://api.telegram.org/bot${TELEGRAM_API}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-          chat_id: TELEGRAM_CHAT_ID,
-          text: `${url}`
-      })
-    });
-  } catch (error) {
-    console.error("Error sending Telegram message:", error);
-  }
 } else {
   Astro.response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate');
 }
 
 import ogs from 'open-graph-scraper';
 import LookupCTA from "../../components/LookupCTA.astro";
+import ActionBrief from "../../components/ActionBrief";
 
 let ogTitle = '', ogImageUrl = '', ogDescription = '';
 
@@ -1006,7 +991,7 @@ if (parsedUrl) {
                 </div>
             ) : (
                 <div class="lg:hidden flex flex-row items-center justify-center fixed z-10 bottom-0 px-5 mb-8 w-full">
-                    <a href="/audit" class="w-full square-card px-2 py-2 text-center text-white flex flex-row flex-wrap gap-3 items-center justify-center">Get Free Design Audit<span class="square-card px-1 py-0 text-green-400"><strike class="text-orange-300">$499 value</strike> Free</span></a>
+                    <a id="mobile-audit-cta" href={`/audit?url=${encodeURIComponent(parsedUrl.href)}`} class="w-full square-card px-2 py-2 text-center text-white flex flex-row flex-wrap gap-3 items-center justify-center"><span id="mobile-audit-label">Get Free Design Audit</span><span class="square-card px-1 py-0 text-green-400"><strike class="text-orange-300">$499 value</strike> Free</span></a>
                 </div>
                 <div id="result" class="sticky top-[56px] lg:mt-6 -mt-20 z-20"></div>
                 <div id="loadingOverlay" class="z-50 fixed bottom-0 h-[60vh] w-[100vw] bg-gradient-to-t from-black to-transparent transition-all flex flex-col items-center justify-end gap-5 pb-16">
@@ -1126,9 +1111,9 @@ if (parsedUrl) {
                                             <Image src={JeremyPFP} alt="Jeremy pfp" class="square-card p-0 aspect-square object-cover w-[50px] z-10"/>
                                             <!-- <Image src={DavidPFP} alt="Jeremy pfp" class="square-card p-0 aspect-square w-[50px] object-cover -ml-3 z-0"/> -->
                                         </div>
-                                        <div class="mb-2 font-medium text-neutral-50">Fix what's holding your website back.</div>
+                                        <div id="sidebar-audit-label" class="mb-2 font-medium text-neutral-50">Fix what's holding your website back.</div>
                                         <div class="flex flex-col gap-2 w-full">
-                                            <a href="/audit" target="_blank" class="primary-cta p-1 w-full text-center text-sm">Get Redesign</a>
+                                            <a id="sidebar-audit-cta" href={`/audit?url=${encodeURIComponent(parsedUrl.href)}`} target="_blank" class="primary-cta p-1 w-full text-center text-sm">Get Redesign</a>
                                             <div class="secondary-cta p-1 w-full text-center text-sm cursor-pointer" data-cal-link="crftstudio/consultation" data-cal-namespace="consultation" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>Book Call</div>
                                             <!-- Cal element-click embed code begins -->
                                             <script type="text/javascript">
@@ -1258,9 +1243,25 @@ if (parsedUrl) {
                                     </div>
                                 </div>
                             </div>
+                            <ActionBrief
+                                client:load
+                                url={pagePath}
+                                hostname={parsedUrl.hostname}
+                                hasTitle={Boolean(ogTitle)}
+                                hasDesc={Boolean(ogDescription)}
+                                hasOgImage={Boolean(ogImageUrl)}
+                                ogTitle={ogTitle || ''}
+                                ogDescription={ogDescription || ''}
+                            />
                             <div class="mt-28">
                                 <h2 class="text-2xl font-medium mb-2" id="lighthouse">Lighthouse</h2>
-                                <div class="text-lg text-neutral-300 text-pretty mb-8 max-w-[700px]">A Lighthouse Score is a comprehensive performance metric generated by Google’s open-source tool, Lighthouse, which analyzes web pages and provides scores across multiple categories to help developers improve their websites’ quality.</div>
+                                <p id="lighthouse-note" hidden class="text-lg text-orange-300 text-pretty mb-3 max-w-[700px]"></p>
+                                <div class="text-lg text-neutral-400 text-pretty mb-8 mt-5 max-w-[700px]">
+                                    <FAQItem
+                                    question="What is a Lighthouse score?"
+                                    answer="Google Lighthouse scores this page on performance, accessibility, best practices, and SEO. The brief above is the takeaway — the report below is the evidence. Use it to confirm which opportunities are actually worth a rebuild."
+                                    />
+                                </div>
                                 <div>
                                     <Lighthouse url={pagePath} />
                                 </div>
@@ -1271,43 +1272,56 @@ if (parsedUrl) {
                                         <Image src={JeremyPFP} alt="Jeremy pfp" class="square-card p-0 aspect-square object-cover w-[50px]"/>
                                         <!-- <Image src={DavidPFP} alt="Jeremy pfp" class="rounded-full aspect-square w-[50px] object-cover -ml-3"/> -->
                                     </div>
-                                    <div class="text-3xl text-pretty font-medium mb-2 break-all">{`Do you own ${parsedUrl.hostname}?`}</div>
-                                    <div class="text-lg text-pretty max-w-[400px]">See what a redesigned, lightning-fast website can do for your business.</div>
+                                    <div id="owner-card-headline" class="text-3xl text-pretty font-medium mb-2 break-all">{`Do you own ${parsedUrl.hostname}?`}</div>
+                                    <div id="owner-card-sub" class="text-lg text-pretty max-w-[400px]">See what a redesigned, lightning-fast website can do for your business.</div>
                                 </div>
                                 <div>
                                     <div class="flex md:flex-row flex-col gap-3 lg:max-w-[600px]">
-                                        <a href="/contact-us" class="square-card p-5 text-lg hover:-translate-y-1 transition-all flex flex-col justify-between">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#CDCDCD"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z"/></svg>                                            <div class="font-normal leading-normal mb-2 mt-3">Tell us more about your business, goals, brand guidelines, and more.</div>
-                                            <div class="text-orange-300">Contact Us →</div>
+                                        <a href="/lookup" class="square-card p-5 text-lg hover:-translate-y-1 transition-all flex flex-col justify-between">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#CDCDCD"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
+                                            <div class="font-normal leading-normal mb-2 mt-3">Just researching? Run the same report on your own website.</div>
+                                            <div class="text-orange-300">Scan my site →</div>
                                         </a>
-                                        <a href="/audit" class="square-card p-5 text-lg hover:-translate-y-1 transition-all flex flex-col justify-between">
+                                        <a id="owner-card-audit" href={`/audit?url=${encodeURIComponent(parsedUrl.href)}`} class="square-card p-5 text-lg hover:-translate-y-1 transition-all flex flex-col justify-between">
                                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#D4D4D4"><path d="m352-522 86-87-56-57-44 44-56-56 43-44-45-45-87 87 159 158Zm328 329 87-87-45-45-44 43-56-56 43-44-57-56-86 86 158 159Zm24-567 57 57-57-57ZM290-120H120v-170l175-175L80-680l200-200 216 216 151-152q12-12 27-18t31-6q16 0 31 6t27 18l53 54q12 12 18 27t6 31q0 16-6 30.5T816-647L665-495l215 215L680-80 465-295 290-120Zm-90-80h56l392-391-57-57-391 392v56Zm420-419-29-29 57 57-28-28Z"/></svg>
                                             <div class="font-normal leading-normal mb-2 mt-3">Kick things off with a free redesign of your homepage hero section.</div>
-                                            <div class="text-orange-300">Get a free hero redesign →</div>
+                                            <div class="text-orange-300">I own this site — fix it →</div>
                                         </a>
                                     </div>
                                 </div>
                             </div>
                             <div class="mt-28">
                                 <h2 class="text-2xl font-medium mb-2" id="tech-stack">Tech Stack</h2>
-                                <div class="text-lg text-neutral-300 text-pretty mb-8 max-w-[700px]">
-                                    This is a scan of <span class="card rounded-none p-0 px-1">{pagePath}</span> to determine what technologies it was made with. From analytics tools,
-                                to hosting provider, frameworks and more, here's what we found.
+                                <p id="tech-stack-note" hidden class="text-lg text-orange-300 text-pretty mb-3 max-w-[700px]"></p>
+                                <div class="text-lg text-neutral-400 text-pretty mb-8 mt-5 max-w-[700px]">
+                                    <FAQItem
+                                    question="What does this tech scan show?"
+                                    answer={`The cards below are the public-facing stack on ${pagePath}: CMS, frameworks, analytics, hosting, and more. The brief above is the implication — whether this stack is a ceiling, a rebuild candidate, or just context.`}
+                                    />
                                 </div>
                                 <Wappalyzer url={pagePath} />
                             </div>
                             <div class="mt-28">
                                 <h2 class="text-2xl font-medium mb-2" id="sitemap">Sitemap</h2>
-                                <div class="text-lg text-neutral-300 text-pretty mb-8 max-w-[700px]">A visual representation of this website's structure, displayed as an interactive tree diagram. Each node represents a page, with lines connecting parent pages to their children. Large sections can be collapsed and expanded by clicking on nodes with many children.</div>
+                                <p id="sitemap-note" hidden class="text-lg text-orange-300 text-pretty mb-3 max-w-[700px]"></p>
+                                <div class="text-lg text-neutral-400 text-pretty mb-8 mt-5 max-w-[700px]">
+                                    <FAQItem
+                                    question="What is this sitemap?"
+                                    answer="This tree visualizes the site’s existing sitemap.xml — it is not a crawl. Use it to check the IA callouts above: missing money pages, a thin site, or a tree so large it needs collapsing."
+                                    />
+                                </div>
                                 <div class="square-card p-0 bg-[#212121] overflow-hidden max-sm:w-[calc(100vw-60px)]">
                                     <Sitemap url={pagePath}/>
                                 </div>
                             </div>
                             <div class="mt-28">
                                 <h2 class="text-2xl font-medium mb-2" id="meta-tags">Meta Tags</h2>
-                                <div class="text-lg text-neutral-300 text-pretty mb-4 max-w-[700px]">
-                                This is what <span>{pagePath}</span> will look like when seen on search engines and shared online through various social media services
-                                and messaging platforms.
+                                <p id="meta-tags-note" hidden class="text-lg text-orange-300 text-pretty mb-3 max-w-[700px]"></p>
+                                <div class="text-lg text-neutral-400 text-pretty mb-4 mt-5 max-w-[700px]">
+                                    <FAQItem
+                                    question="What are these previews?"
+                                    answer={`These show how ${pagePath} appears in search, social, and chat. If the brief above suggested a new title or description, paste them into the editor to see the difference.`}
+                                    />
                                 </div>
                                 <div class="grid lg:grid-cols-[1fr_1fr] mt-9 gap-14">
                                     <div>
