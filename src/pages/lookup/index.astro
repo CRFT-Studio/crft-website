@@ -18,16 +18,33 @@ import { Image } from 'astro:assets';
 import NickPFP from '../../images/nick-pfp-new.png';
 import JeremyPFP from '../../images/jeremy-pfp.png';
 import DavidPFP from '../../images/david-pfp.png';
+import { displayPath, parseLookupUrl } from "../../lib/lookup/parse-url";
 
 const TELEGRAM_API = process.env.TELEGRAM_API;
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
 const url = Astro.url.searchParams.get("url");
 const datetime = Astro.url.searchParams.get("datetime");
+const parsedUrl = parseLookupUrl(url);
+const pagePath = parsedUrl ? displayPath(parsedUrl) : '';
 const galleries = (await Astro.glob('./gallery/*.astro')).map(module => module.default?.props ?? module.pageData).filter(Boolean);
 
+let generatedLabel = '';
+if (datetime) {
+  try {
+    generatedLabel = new Date(datetime.replace(/-(\d{2})$/, ":$1")).toLocaleString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true
+    }).replace(',', ' at') + ' UTC';
+  } catch {}
+}
+
 // Set cache headers based on parameters
-if (url && datetime) {
+if (parsedUrl && datetime) {
   Astro.response.headers.set('Cache-Control', 'public, max-age=2592000, stale-while-revalidate=86400');
   Astro.response.headers.set('Vercel-CDN-Cache-Control', 'max-age=2592000');
 
@@ -52,13 +69,13 @@ import LookupCTA from "../../components/LookupCTA.astro";
 
 let ogTitle = '', ogImageUrl = '', ogDescription = '';
 
-if (url) {
+if (parsedUrl) {
     try {
-        const {result} = await ogs({url: url});
+        const {result} = await ogs({url: parsedUrl.href});
         ogTitle = result.ogTitle;
         ogImageUrl = result.ogImage?.[0]?.url;
         if (ogImageUrl?.startsWith('/')) {
-            ogImageUrl = new URL(ogImageUrl, url).toString();
+            ogImageUrl = new URL(ogImageUrl, parsedUrl).toString();
         }
         ogDescription = result.ogDescription;
 
@@ -379,7 +396,7 @@ if (url) {
                     const cards = overview.find('.square-card');
 
                     metrics.forEach((metric, index) => {
-                        const score = Math.round(report.categories[metric.key].score * 100);
+                        const score = Math.round((report.categories?.[metric.key]?.score ?? 0) * 100);
                         const colors = getColorClasses(score);
 
                         const card = $(cards[index]);
@@ -509,33 +526,15 @@ if (url) {
             // Initialize on view transitions
             document.addEventListener('astro:after-swap', initTOC);
 
-            // Watch for Wappalyzer component to appear and generate overview
-            document.addEventListener('DOMContentLoaded', () => {
-                // First check if element already exists (unlikely but possible)
-                generateTechOverview();
-
-                // Set up MutationObserver to watch for the Wappalyzer component to appear
-                const observer = new MutationObserver((mutations) => {
-                    mutations.forEach((mutation) => {
-                        if (mutation.type === 'childList' && mutation.addedNodes.length) {
-                            // Check if our target element has been added
-                            if (document.getElementById('wappalyzer-tech-data')) {
-                                generateTechOverview();
-                                observer.disconnect(); // Stop observing once we've found it
-                            }
-                        }
-                    });
-                });
-
-                // Start observing the document body for changes
-                observer.observe(document.body, { childList: true, subtree: true });
-            });
+            document.addEventListener('wappalyzer:loaded', generateTechOverview);
+            document.addEventListener('DOMContentLoaded', generateTechOverview);
 
             function generateTechOverview() {
                 const wappalyzerData = document.getElementById('wappalyzer-tech-data');
                 const overviewContainer = document.getElementById('tech-overview-container');
 
                 if (!wappalyzerData || !overviewContainer) return;
+                if (!wappalyzerData.querySelector('[data-category]') && !wappalyzerData.textContent?.includes('No technology')) return;
 
                 // Extract tech data from the rendered Wappalyzer component
                 const importantCategories = ['CDN', 'JavaScript frameworks', 'CMS', 'Page builders'];
@@ -636,10 +635,10 @@ if (url) {
         </style>
     </head>
 
-    <body class="overflow-hidden w-full h-full">
+    <body class={parsedUrl ? "overflow-hidden w-full h-full" : "w-full"}>
         <Navigation/>
         <section class="lg:my-20 my-10 relative">
-            {!url ?
+            {!url ? (
                 <div class="overflow-x-hidden" id="hero">
                     <div class="container">
                         <!-- <div class="mb-7 md:flex hidden flex-col items-center">
@@ -997,7 +996,15 @@ if (url) {
                         />
                     </div>
                 </section>
-            :
+            ) : !parsedUrl ? (
+                <div class="container">
+                    <div class="square-card max-w-[640px] mx-auto text-center py-16 px-6">
+                        <h1 class="text-3xl font-semibold mb-3">That URL isn’t valid</h1>
+                        <p class="text-neutral-300 text-pretty mb-6">Use a full http or https address, like https://linear.app</p>
+                        <a href="/lookup" class="primary-cta px-4 py-2 inline-block">Try another URL</a>
+                    </div>
+                </div>
+            ) : (
                 <div class="lg:hidden flex flex-row items-center justify-center fixed z-10 bottom-0 px-5 mb-8 w-full">
                     <a href="/audit" class="w-full square-card px-2 py-2 text-center text-white flex flex-row flex-wrap gap-3 items-center justify-center">Get Free Design Audit<span class="square-card px-1 py-0 text-green-400"><strike class="text-orange-300">$499 value</strike> Free</span></a>
                 </div>
@@ -1008,23 +1015,16 @@ if (url) {
                         <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
                     </svg>
                     <div class="text-xl">Generating report...</div>
-                    <div class="text-lg text-neutral-300 -mt-3 lg:hidden">Do not leave this tab</div>
+                    <div class="text-lg text-neutral-300 -mt-3 lg:hidden">You can switch tabs — we'll keep trying</div>
                 </div>
                 <div class="container lg:mt-5 mt-5 relative">
                     <div class="md:square-card md:p-0 flex flex-row gap-4 items-center md:mb-5 mb-2 md:sticky md:top-[81px] z-50">
                         <div class="lg:inline-flex hidden flex-row flex-nowrap max-w-[80vw] overflow-x-auto gap-3 square-card px-2 py-[3px] items-center text-neutral-300">
                             <a href="/lookup" class="hover:underline text-nowrap">CRFT Lookup</a>
                             <svg xmlns="http://www.w3.org/2000/svg" class="fill-neutral-300 h-[20px] w-auto" viewBox="0 -960 960 960" width="24px"><path d="m517.85-480-184-184L376-706.15 602.15-480 376-253.85 333.85-296l184-184Z"/></svg>
-                            <a href={url} target="_blank" class="text-nowrap">{new URL(url).origin + new URL(url).pathname}</a>
-                            <div class="aspect-square h-[5px] rounded-xl bg-neutral-300 mx-2 text-nowrap"></div>
-                            <div class="text-nowrap">Generated on {new Date(Astro.url.searchParams.get("datetime").replace(/-(\d{2})$/, ":$1")).toLocaleString('en-US', {
-                                month: 'short',
-                                day: 'numeric',
-                                year: 'numeric',
-                                hour: 'numeric',
-                                minute: '2-digit',
-                                hour12: true
-                            }).replace(',', ' at')} UTC</div>
+                             <a href={parsedUrl.href} target="_blank" class="text-nowrap">{pagePath}</a>
+                             <div class="aspect-square h-[5px] rounded-xl bg-neutral-300 mx-2 text-nowrap"></div>
+                             {generatedLabel && <div class="text-nowrap">Generated on {generatedLabel}</div>}
                         </div>
                         <div id="share" class="relative">
                             <div class="square-card px-1 pr-2 py-[3px] flex flex-row gap-1 text-neutral-300 items-center transition-all hover:bg-neutral-700 lg:mt-0 mt-20 cursor-pointer">
@@ -1154,7 +1154,7 @@ if (url) {
                                 <div>
                                     <div class="square-card p-0 mb-6 w-full aspect-[1.91/1]">
                                         {ogImageUrl ?
-                                            <img class="h-full w-full aspect-[1.91/1] object-cover object-center" src={ogImageUrl} alt={`Open Graph Image of ${new URL(url).origin + new URL(url).pathname}`}>
+                                            <img class="h-full w-full aspect-[1.91/1] object-cover object-center" src={ogImageUrl} alt={`Open Graph Image of ${pagePath}`}>
                                         :
                                             <div class="flex flex-col gap-3 h-full w-full items-center text-center text-pretty justify-center lg:text-lg text-sm font-medium">
                                                 <svg class="w-8 h-8 fill-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-290.77q13.73 0 23.02-9.29t9.29-23.02q0-13.73-9.29-23.02-9.29-9.28-23.02-9.28t-23.02 9.28q-9.29 9.29-9.29 23.02t9.29 23.02q9.29 9.29 23.02 9.29Zm-30-146.15h60v-240h-60v240ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Zm-.07-60q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
@@ -1262,18 +1262,7 @@ if (url) {
                                 <h2 class="text-2xl font-medium mb-2" id="lighthouse">Lighthouse</h2>
                                 <div class="text-lg text-neutral-300 text-pretty mb-8 max-w-[700px]">A Lighthouse Score is a comprehensive performance metric generated by Google’s open-source tool, Lighthouse, which analyzes web pages and provides scores across multiple categories to help developers improve their websites’ quality.</div>
                                 <div>
-                                    <Lighthouse server:defer url={new URL(url).origin + new URL(url).pathname}>
-                                        <div slot="fallback" class="flex flex-row gap-4 justify-start text-neutral-300">
-                                            <div role="status">
-                                                <svg aria-hidden="true" class="w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-orange-300" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-                                                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-                                                </svg>
-                                                <span class="sr-only">Loading...</span>
-                                            </div>
-
-                                            <div>Fetching lighthouse scores...</div>
-                                    </Lighthouse>
+                                    <Lighthouse url={pagePath} />
                                 </div>
                             </div>
                             <div class="square-card p-5 flex md:flex-row flex-col gap-9 justify-between items-center mt-28">
@@ -1282,7 +1271,7 @@ if (url) {
                                         <Image src={JeremyPFP} alt="Jeremy pfp" class="square-card p-0 aspect-square object-cover w-[50px]"/>
                                         <!-- <Image src={DavidPFP} alt="Jeremy pfp" class="rounded-full aspect-square w-[50px] object-cover -ml-3"/> -->
                                     </div>
-                                    <div class="text-3xl text-pretty font-medium mb-2 break-all">{`Do you own ${new URL(url).hostname}?`}</div>
+                                    <div class="text-3xl text-pretty font-medium mb-2 break-all">{`Do you own ${parsedUrl.hostname}?`}</div>
                                     <div class="text-lg text-pretty max-w-[400px]">See what a redesigned, lightning-fast website can do for your business.</div>
                                 </div>
                                 <div>
@@ -1302,34 +1291,22 @@ if (url) {
                             <div class="mt-28">
                                 <h2 class="text-2xl font-medium mb-2" id="tech-stack">Tech Stack</h2>
                                 <div class="text-lg text-neutral-300 text-pretty mb-8 max-w-[700px]">
-                                    This is a scan of <span class="card rounded-none p-0 px-1">{new URL(url).origin + new URL(url).pathname}</span> to determine what technologies it was made with. From analytics tools,
+                                    This is a scan of <span class="card rounded-none p-0 px-1">{pagePath}</span> to determine what technologies it was made with. From analytics tools,
                                 to hosting provider, frameworks and more, here's what we found.
                                 </div>
-                                <Wappalyzer server:defer url={url} variant="default">
-                                    <div slot="fallback" class="flex flex-row gap-4 justify-start text-neutral-300">
-                                        <div role="status">
-                                            <svg aria-hidden="true" class="w-6 h-6 text-gray-200 animate-spin dark:text-gray-600 fill-orange-300" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-                                                <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-                                            </svg>
-                                            <span class="sr-only">Loading...</span>
-                                        </div>
-
-                                        <div>Fetching tech stack...</div>
-                                    </div>
-                                </Wappalyzer>
+                                <Wappalyzer url={pagePath} />
                             </div>
                             <div class="mt-28">
                                 <h2 class="text-2xl font-medium mb-2" id="sitemap">Sitemap</h2>
                                 <div class="text-lg text-neutral-300 text-pretty mb-8 max-w-[700px]">A visual representation of this website's structure, displayed as an interactive tree diagram. Each node represents a page, with lines connecting parent pages to their children. Large sections can be collapsed and expanded by clicking on nodes with many children.</div>
                                 <div class="square-card p-0 bg-[#212121] overflow-x-auto max-sm:w-[calc(100vw-60px)]">
-                                    <Sitemap url={url}/>
+                                    <Sitemap url={pagePath}/>
                                 </div>
                             </div>
                             <div class="mt-28">
                                 <h2 class="text-2xl font-medium mb-2" id="meta-tags">Meta Tags</h2>
                                 <div class="text-lg text-neutral-300 text-pretty mb-4 max-w-[700px]">
-                                This is what <span>{new URL(url).origin + new URL(url).pathname}</span> will look like when seen on search engines and shared online through various social media services
+                                This is what <span>{pagePath}</span> will look like when seen on search engines and shared online through various social media services
                                 and messaging platforms.
                                 </div>
                                 <div class="grid lg:grid-cols-[1fr_1fr] mt-9 gap-14">
@@ -1349,7 +1326,7 @@ if (url) {
                                                 <div class="mb-2">Image</div>
                                                 <div class="square-card p-0 w-full aspect-[1.91/1]">
                                                     {ogImageUrl ?
-                                                        <img class="h-full w-full aspect-[1.91/1] object-cover object-center" src={ogImageUrl} alt={`Open Graph Image of ${new URL(url).origin + new URL(url).pathname}`}>
+                                                        <img class="h-full w-full aspect-[1.91/1] object-cover object-center" src={ogImageUrl} alt={`Open Graph Image of ${pagePath}`}>
                                                     :
                                                         <div class="flex flex-col gap-3 h-full w-full text-center text-pretty items-center justify-center text-lg font-medium">
                                                             <svg class="w-8 h-8 fill-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M480-290.77q13.73 0 23.02-9.29t9.29-23.02q0-13.73-9.29-23.02-9.29-9.28-23.02-9.28t-23.02 9.28q-9.29 9.29-9.29 23.02t9.29 23.02q9.29 9.29 23.02 9.29Zm-30-146.15h60v-240h-60v240ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100Zm-.07-60q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
@@ -1368,7 +1345,7 @@ if (url) {
                                                 <div>
                                                     <h4 class="text-lg mb-2 font-medium">Google</h4>
                                                     <div class="text-blue-300 font-medium text-lg meta-title-preview">{ogTitle}</div>
-                                                    <div class="text-green-500 mb-1">{new URL(url).origin + new URL(url).pathname}</div>
+                                                    <div class="text-green-500 mb-1">{pagePath}</div>
                                                     <div class="text-neutral-300 meta-description-preview">{ogDescription}</div>
                                                 </div>
                                             </div>
@@ -1435,13 +1412,13 @@ if (url) {
                                                                 </svg>
                                                             </div>
                                                         </div>
-                                                        <div class="text-blue-300 text-lg underline p-2">{new URL(url).origin + new URL(url).pathname}</div>
+                                                        <div class="text-blue-300 text-lg underline p-2">{pagePath}</div>
                                                     </div>
                                                 </div>
                                                 <div>
                                                     <h4 class="text-lg mb-3 font-medium">Telegram</h4>
                                                     <div class="rounded-2xl rounded-br-[0px] p-3 pb-1 bg-gradient-to-b from-[#7F47C0] to-[#676AEF] relative max-w-[400px]">
-                                                        <div class="mb-2 text-xl underline">{new URL(url).origin + new URL(url).pathname}</div>
+                                                        <div class="mb-2 text-xl underline">{pagePath}</div>
                                                         <div class="rounded-xl overflow-hidden bg-white/10 mb-1">
                                                             <div class="border-l-4 border-neutral-50 p-2">
                                                                 <div class="font-semibold">{url.replace(/^https?:\/\//i, '').split('/')[0]}</div>
@@ -1472,13 +1449,13 @@ if (url) {
                                                             <div class="text-sm text-neutral-300 leading-tight meta-description-preview">{ogDescription}</div>
                                                         </div>
                                                         <div class="p-3 bg-[#2166EE]">
-                                                            <div class="leading-tight">{new URL(url).origin + new URL(url).pathname}</div>
+                                                            <div class="leading-tight">{pagePath}</div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div>
                                                     <h4 class="text-lg mb-2 font-medium">Discord</h4>
-                                                    <div class="text-blue-300 mb-1">{new URL(url).origin + new URL(url).pathname}</div>
+                                                    <div class="text-blue-300 mb-1">{pagePath}</div>
                                                     <div class="overflow-hidden">
                                                         <div class="border-l-4 border-neutral-600 bg-[#2B2D31] rounded-md p-3">
                                                             <div class="text-blue-300 font-medium mb-2 meta-title-preview">{ogTitle}</div>
@@ -1489,7 +1466,7 @@ if (url) {
                                                 </div>
                                                 <div>
                                                     <h4 class="text-lg mb-2 font-medium">Slack</h4>
-                                                    <div class="text-[#1D9BD1] mb-2">{new URL(url).origin + new URL(url).pathname}</div>
+                                                    <div class="text-[#1D9BD1] mb-2">{pagePath}</div>
                                                     <div class="flex flex-row gap-4">
                                                         <div class="w-1 h-auto rounded-xl bg-neutral-600 shrink-0"></div>
                                                         <div>
@@ -1504,7 +1481,7 @@ if (url) {
                                                     <h4 class="text-lg mb-3 font-medium">Facebook Messenger</h4>
                                                     <div class="rounded-xl overflow-auto max-w-[300px]">
                                                         <div class="p-3 py-2 bg-[#6B78FF]">
-                                                            <div class="underline">{new URL(url).origin + new URL(url).pathname}</div>
+                                                            <div class="underline">{pagePath}</div>
                                                         </div>
                                                         <img class="aspect-[1.91/1] object-cover object-center" src={ogImageUrl} class="w-full" alt="">
                                                         <div class="p-3 bg-[#333334]">
@@ -1542,7 +1519,7 @@ if (url) {
                         </div>
                     </div>
                 </div>
-            }
+            )}
         </section>
         <Footer/>
     </body>
