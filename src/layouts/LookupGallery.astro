@@ -3,6 +3,8 @@ import HeadScripts from "../components/HeadScripts.astro";
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
 import LookupGalleryCard from "../components/LookupGalleryCard.astro";
+import LookupScanDatetime from "../components/LookupScanDatetime.astro";
+import { formatLookupDatetime } from "../lib/lookup/datetime";
 
 const galleries = (await Astro.glob('../pages/lookup/gallery/*.astro')).map(module => module.default?.props ?? module.pageData).filter(Boolean);
 const datetime = Astro.url.searchParams.get("datetime");
@@ -118,10 +120,10 @@ const filteredTechByCategory = Object.entries(techByCategory)
                         <div class="text-neutral-300">{company.description}</div>
                         <div class="flex flex-row flex-wrap gap-2 items-center">
                             <a href={company.websiteUrl} target="_blank" class="primary-cta mt-5 py-1 px-2">Visit website</a>
-                            <form action="/lookup">
+                            <form action="/lookup" data-lookup-scan>
                                 <input type="hidden" value={company.websiteUrl} placeholder="Type a URL..." name="url">
-                                <input type="hidden" name="datetime" value={new Date().toISOString().substring(0, 16).replaceAll(':', '-')}>
-                                <button class="secondary-cta mt-5 py-1 px-2 border-neutral-600 cursor-pointer">Generate full report</a>
+                                <input type="hidden" name="datetime" value={formatLookupDatetime()}>
+                                <button class="secondary-cta mt-5 py-1 px-2 border-neutral-600 cursor-pointer">Generate full report</button>
                             </form>
                         </div>
                     </div>
@@ -259,5 +261,6 @@ const filteredTechByCategory = Object.entries(techByCategory)
                 });
             });
         </script>
+        <LookupScanDatetime />
     </body>
 </html>

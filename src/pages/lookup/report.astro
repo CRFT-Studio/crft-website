@@ -14,9 +14,21 @@ import LookupFeatures from "../../components/LookupFeatures.astro";
 
 import { Image } from 'astro:assets';
 import NickPFP from '../../images/nick-pfp-new.png';
+import { parseLookupDatetime } from "../../lib/lookup/datetime";
 
 const url = Astro.url.searchParams.get("url");
 const datetime = Astro.url.searchParams.get("datetime");
+const generatedLabel = datetime
+  ? parseLookupDatetime(datetime).toLocaleString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true,
+      timeZone: 'UTC',
+    }).replace(',', ' at') + ' UTC'
+  : '';
 
 // Set cache headers based on parameters
 if (url && datetime) {
@@ -696,14 +708,7 @@ if (url) {
                             <svg xmlns="http://www.w3.org/2000/svg" class="fill-neutral-300 h-[20px] w-auto" viewBox="0 -960 960 960" width="24px"><path d="m517.85-480-184-184L376-706.15 602.15-480 376-253.85 333.85-296l184-184Z"/></svg>
                             <div class="text-nowrap">{url}</div>
                             <div class="aspect-square h-[5px] rounded-xl bg-neutral-300 mx-2 text-nowrap"></div>
-                            <div class="text-nowrap">Generated on {new Date(Astro.url.searchParams.get("datetime").replace(/-(\d{2})$/, ":$1")).toLocaleString('en-US', {
-                                month: 'short',
-                                day: 'numeric',
-                                year: 'numeric',
-                                hour: 'numeric',
-                                minute: '2-digit',
-                                hour12: true
-                            }).replace(',', ' at')} UTC</div>
+                            <div class="text-nowrap">Generated on {generatedLabel}</div>
                         </div>
                         <div id="share" class="relative">
                             <div class="square-card px-1 pr-2 py-[3px] flex flex-row gap-1 text-neutral-300 items-center transition-all hover:bg-neutral-700 lg:mt-0 mt-20 cursor-pointer">
