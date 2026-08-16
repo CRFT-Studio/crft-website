@@ -19,6 +19,7 @@ import NickPFP from '../../images/nick-pfp-new.png';
 import JeremyPFP from '../../images/jeremy-pfp.png';
 import DavidPFP from '../../images/david-pfp.png';
 import { displayPath, parseLookupUrl } from "../../lib/lookup/parse-url";
+import { formatLookupDatetime, parseLookupDatetime } from "../../lib/lookup/datetime";
 
 const url = Astro.url.searchParams.get("url");
 const datetime = Astro.url.searchParams.get("datetime");
@@ -29,13 +30,14 @@ const galleries = (await Astro.glob('./gallery/*.astro')).map(module => module.d
 let generatedLabel = '';
 if (datetime) {
   try {
-    generatedLabel = new Date(datetime.replace(/-(\d{2})$/, ":$1")).toLocaleString('en-US', {
+    generatedLabel = parseLookupDatetime(datetime).toLocaleString('en-US', {
       month: 'short',
       day: 'numeric',
       year: 'numeric',
       hour: 'numeric',
       minute: '2-digit',
-      hour12: true
+      hour12: true,
+      timeZone: 'UTC',
     }).replace(',', ' at') + ' UTC';
   } catch {}
 }
@@ -50,6 +52,7 @@ if (parsedUrl && datetime) {
 
 import ogs from 'open-graph-scraper';
 import LookupCTA from "../../components/LookupCTA.astro";
+import LookupScanDatetime from "../../components/LookupScanDatetime.astro";
 import ActionBrief from "../../components/ActionBrief";
 
 let ogTitle = '', ogImageUrl = '', ogDescription = '';
@@ -641,11 +644,11 @@ if (parsedUrl) {
                         </div>
                         <div class="lg:text-xl text-lg mb-7 text-neutral-300 text-pretty text-center max-w-[750px] mx-auto">All the info we look for in websites, consolidated. See the tech stack, pagespeed, sitemap and meta tags of the sites you're curious about.</div>
                         <div class="lg:max-w-[700px] lg:mx-auto lg:w-auto w-full">
-                            <form class="flex lg:flex-row flex-col lg:gap-1 gap-2 items-center">
+                            <form class="flex lg:flex-row flex-col lg:gap-1 gap-2 items-center" data-lookup-scan>
                                 <div class="w-full relative lg:mr-[2px]">
                                     <svg class="absolute top-1/2 -translate-y-1/2 ml-2" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#a3a3a3"><path d="M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>
                                     <input id="search" type="url" placeholder="Type a URL..." name="url" class="text-lg h-10 text-neutral-300 bg-neutral-800 border-neutral-600 outline-neutral-600 pl-10">
-                                    <input type="hidden" name="datetime" value={new Date().toISOString().substring(0, 16).replaceAll(':', '-')}>
+                                    <input type="hidden" name="datetime" value={formatLookupDatetime()}>
                                 </div>
                                 <button class="lg:w-auto text-lg h-10 w-full px-2 py-1 border border-neutral-600 bg-neutral-800 hover:bg-neutral-700 transition-all text-nowrap cursor-pointer"><span class="card bg-transparent px-[6px] py-0 rounded-none mr-2 text-neutral-300">~20s</span>Generate report</button>
                             </form>
@@ -1536,5 +1539,6 @@ if (parsedUrl) {
             )}
         </section>
         <Footer/>
+        <LookupScanDatetime />
     </body>
 </html>
