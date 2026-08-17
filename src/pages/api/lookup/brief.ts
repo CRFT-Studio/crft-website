@@ -13,15 +13,15 @@ export const prerender = false;
 export const maxDuration = 30;
 
 function briefPrompt(packet: ReturnType<typeof Object> & Record<string, unknown>) {
-  return `Turn this CRFT Lookup scan into an action brief for the site owner.
+  return `Turn this CRFT Lookup scan into a very short, direct, empirical brief.
 
 Return JSON with this shape:
 {
-  "verdict": "one sentence",
+  "verdict": "one short factual line (scores, stack, sitemap, meta — no marketing)",
   "ownerLikelihood": "own" | "research" | "unknown",
   "projectType": "redesign" | "rebuild" | "perf" | "seo" | "none",
   "sections": {
-    "overview": { "summary": "string", "actions": ["string"] },
+    "overview": { "summary": "one short factual sentence", "actions": ["string"] },
     "lighthouse": { "summary": "string", "actions": ["string"] },
     "stack": { "summary": "string", "actions": ["string"], "rebuildAngle": "string" },
     "sitemap": { "summary": "string", "actions": ["string"] },
@@ -31,10 +31,11 @@ Return JSON with this shape:
 }
 
 Rules:
-- Business English, not Lighthouse jargon
-- Max 3 actions per section
+- Empirical only: cite real scores, tech names, URL counts, missing fields
+- No hype, no redesign pitch, no "costing you conversions"
+- verdict <= 140 characters
+- Max 2 actions per section
 - suggestedTitle <= 60 chars, suggestedDescription <= 155
-- Bias toward a human rebuild when the stack is a page builder or scores are poor
 - If the host is a famous site, ownerLikelihood should be "research"
 
 Scan packet:

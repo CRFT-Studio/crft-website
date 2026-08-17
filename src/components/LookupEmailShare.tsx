@@ -6,12 +6,12 @@ import {
   extractFailedAudits,
   extractScores,
   flattenStack,
-  isWellKnownHost,
   type ActionBrief as ActionBriefData,
   type BriefPacket,
   type Finding,
 } from "@/lib/lookup/brief";
 import { fetchLookupSection } from "@/lib/lookup/client";
+import type { EmailReportPayload } from "@/lib/lookup/email-report";
 
 type Props = {
   url: string;
@@ -21,6 +21,7 @@ type Props = {
   hasOgImage: boolean;
   ogTitle: string;
   ogDescription: string;
+  ogImageUrl: string;
 };
 
 type LighthouseReports = {
@@ -38,19 +39,6 @@ function setHref(id: string, value: string) {
   if (node instanceof HTMLAnchorElement) node.href = value;
 }
 
-function normalize(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
-}
-
-function restates(candidate: string | undefined, ...seen: (string | undefined)[]) {
-  const text = normalize(candidate || "");
-  if (!text) return true;
-  return seen.some((item) => {
-    const other = normalize(item || "");
-    return !!other && (text === other || other.includes(text) || text.includes(other));
-  });
-}
-
 function setNote(id: string, summary?: string) {
   const node = document.getElementById(id);
   if (!node) return;
@@ -62,15 +50,11 @@ function setNote(id: string, summary?: string) {
   node.removeAttribute("hidden");
 }
 
-function applyCtas(packet: BriefPacket, findings: Finding[], brief?: ActionBriefData | null) {
+function applyBriefAndLinks(packet: BriefPacket, findings: Finding[], brief?: ActionBriefData | null) {
   const cta = brief?.cta || buildCta(packet, findings);
   const auditHref = buildAuditHref(packet, findings, brief?.verdict);
-  const research = isWellKnownHost(packet.hostname) || brief?.ownerLikelihood === "research";
-  const seen = [brief?.verdict, cta.headline, ...findings.flatMap((finding) => [finding.title, finding.detail])];
 
   setText("sidebar-audit-label", cta.headline);
-  setText("owner-card-headline", research ? `Curious about ${packet.hostname}?` : cta.headline);
-  setText("owner-card-sub", cta.sub);
   setText("mobile-audit-label", cta.offer === "rebuild" ? "Get a rebuild plan" : "Get Free Design Audit");
   setHref("sidebar-audit-cta", auditHref);
   setHref("owner-card-audit", auditHref);
@@ -78,14 +62,14 @@ function applyCtas(packet: BriefPacket, findings: Finding[], brief?: ActionBrief
 
   if (brief) {
     const stackNote = brief.sections.stack.rebuildAngle || brief.sections.stack.summary;
-    setNote("lighthouse-note", restates(brief.sections.lighthouse.summary, ...seen) ? "" : brief.sections.lighthouse.summary);
-    setNote("tech-stack-note", restates(stackNote, ...seen) ? "" : stackNote);
-    setNote("sitemap-note", restates(brief.sections.sitemap.summary, ...seen) ? "" : brief.sections.sitemap.summary);
-    setNote("meta-tags-note", restates(brief.sections.meta.summary, ...seen) ? "" : brief.sections.meta.summary);
+    setNote("lighthouse-note", brief.sections.lighthouse.summary);
+    setNote("tech-stack-note", stackNote);
+    setNote("sitemap-note", brief.sections.sitemap.summary);
+    setNote("meta-tags-note", brief.sections.meta.summary);
   }
 }
 
-export default function ActionBrief({
+export default function LookupEmailShare({
   url,
   hostname,
   hasTitle,
@@ -93,6 +77,7 @@ export default function ActionBrief({
   hasOgImage,
   ogTitle,
   ogDescription,
+  ogImageUrl,
 }: Props) {
   const [lighthouse, setLighthouse] = useState<LighthouseReports | null>(null);
   const [stack, setStack] = useState<{ name: string; category: string }[] | null>(null);
@@ -126,6 +111,27 @@ export default function ActionBrief({
 
   const findings = useMemo(() => (packet ? buildFindings(packet) : []), [packet]);
   const ready = Boolean(lighthouse && stack && sitemap);
+
+  const emailPayload = useMemo<EmailReportPayload | null>(() => {
+    if (!packet || typeof window === "undefined") return null;
+    const origin = window.location.origin;
+    return {
+      hostname: packet.hostname,
+      pageUrl: packet.url,
+      reportUrl: window.location.href,
+      auditUrl: `${origin}${buildAuditHref(packet, findings, brief?.verdict)}`,
+      contactUrl: `${origin}/contact-us`,
+      ogTitle: ogTitle || packet.hostname,
+      ogDescription: ogDescription || "",
+      ogImageUrl: ogImageUrl || "",
+      hasTitle,
+      hasDesc,
+      hasOgImage,
+      stack: packet.stack,
+      sitemap: packet.sitemap,
+      scores: packet.scores,
+    };
+  }, [packet, findings, brief, ogTitle, ogDescription, ogImageUrl, hasTitle, hasDesc, hasOgImage]);
 
   useEffect(() => {
     const onLighthouse = (event: Event) => {
@@ -162,7 +168,7 @@ export default function ActionBrief({
 
   useEffect(() => {
     if (!packet || !ready) return;
-    applyCtas(packet, findings, brief);
+    applyBriefAndLinks(packet, findings, brief);
   }, [packet, findings, brief, ready]);
 
   useEffect(() => {
@@ -190,92 +196,33 @@ export default function ActionBrief({
 
   async function sendEmail(event: React.FormEvent) {
     event.preventDefault();
-    if (!packet || emailState === "sending") return;
+    if (!emailPayload || emailState === "sending") return;
     setEmailState("sending");
     try {
       const response = await fetch("/api/lookup/email-brief", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          url: packet.url,
-          hostname: packet.hostname,
-          verdict: brief?.verdict || findings[0]?.detail || "",
-          actions: brief?.sections.overview.actions || findings.map((finding) => finding.title),
-          suggestedTitle: brief?.sections.meta.suggestedTitle || ogTitle,
-          suggestedDescription: brief?.sections.meta.suggestedDescription || ogDescription,
-          reportUrl: window.location.href,
-          auditUrl: `${window.location.origin}${buildAuditHref(packet, findings, brief?.verdict)}`,
-        }),
+        body: JSON.stringify({ email, ...emailPayload }),
       });
       if (!response.ok) throw new Error("send failed");
       setEmailState("sent");
-      window.posthog?.capture?.("brief_email_sent", { url: packet.url });
+      window.posthog?.capture?.("lookup_email_sent", { url });
     } catch {
       setEmailState("error");
     }
   }
 
-  const cta = packet ? brief?.cta || buildCta(packet, findings) : null;
-  const auditHref = packet ? buildAuditHref(packet, findings, brief?.verdict) : "/audit";
-  const research = packet ? isWellKnownHost(packet.hostname) || brief?.ownerLikelihood === "research" : false;
-  const verdict = brief?.verdict || cta?.headline || "";
-  const visibleFindings = findings.filter((finding) => !restates(`${finding.title}. ${finding.detail}`, verdict)).slice(0, 4);
-  const overviewActions =
-    brief?.source === "ai"
-      ? (brief.sections.overview.actions || []).filter(
-          (action) => !restates(action, verdict, ...visibleFindings.flatMap((finding) => [finding.title, finding.detail]))
-        )
-      : [];
-  const suggestedTitle = brief?.sections.meta.suggestedTitle;
-  const suggestedDescription = brief?.sections.meta.suggestedDescription;
-  const showMeta =
-    suggestedTitle &&
-    suggestedDescription &&
-    (suggestedTitle !== ogTitle || suggestedDescription !== ogDescription);
-
   return (
-    <div className="square-card p-5 mt-10" id="action-brief">
-      <div className="text-neutral-400 mb-2">Action brief</div>
+    <div className="square-card bg-transparent max-w-[882px] p-5 mt-10" id="email-report">
+      <div className="text-neutral-400 mb-2">Email this report</div>
+      <div className="text-xl font-medium text-pretty mb-2">Send the overview to your inbox</div>
+      <p className="text-neutral-300 text-pretty mb-5 max-w-[640px]">
+        Get a styled summary of this lookup — lighthouse scores, stack, sitemap, and meta — plus links to the full report, a free redesign, and contact.
+      </p>
       {!ready ? (
-        <div className="text-lg text-neutral-300">Reading the scan…</div>
+        <div className="text-lg text-neutral-300">Waiting for scan data…</div>
       ) : (
         <>
-          <div className="text-xl font-medium text-pretty mb-3">{verdict}</div>
-          {visibleFindings.length > 0 && (
-            <div className="grid md:grid-cols-2 gap-3 mb-5">
-              {visibleFindings.map((finding) => (
-                <div key={finding.id} className="square-card p-3">
-                  <div className={finding.severity === "high" ? "text-red-400" : "text-yellow-300"}>
-                    {finding.title}
-                  </div>
-                  <div className="text-neutral-300 text-pretty">{finding.detail}</div>
-                </div>
-              ))}
-            </div>
-          )}
-          {overviewActions.length ? (
-            <ol className="list-decimal pl-5 mb-5 text-neutral-200 flex flex-col gap-1">
-              {overviewActions.map((action) => (
-                <li key={action}>{action}</li>
-              ))}
-            </ol>
-          ) : null}
-          {showMeta ? (
-            <div className="square-card p-3 mb-5 text-neutral-300">
-              <div className="text-neutral-200 mb-1">Suggested meta</div>
-              <div className="font-medium text-neutral-50">{suggestedTitle}</div>
-              <div>{suggestedDescription}</div>
-            </div>
-          ) : null}
-          <div className="flex md:flex-row flex-col gap-2 mb-5">
-            <a href={auditHref} className="primary-cta p-2 text-center" onClick={() => window.posthog?.capture?.("audit_cta_clicked", { url, source: "brief" })}>
-              {research ? "Get a free hero redesign" : "I own this site — fix it"}
-            </a>
-            <a href="/lookup" className="secondary-cta p-2 text-center">
-              Scan my own site
-            </a>
-          </div>
           <form onSubmit={sendEmail} className="flex md:flex-row flex-col gap-2">
             <input
               type="email"
@@ -285,8 +232,12 @@ export default function ActionBrief({
               placeholder="Work email"
               className="square-card rounded-none p-2 text-neutral-300 w-full"
             />
-            <button type="submit" className="secondary-cta p-2 text-nowrap" disabled={emailState === "sending" || emailState === "sent"}>
-              {emailState === "sent" ? "Sent" : emailState === "sending" ? "Sending…" : "Email this brief"}
+            <button
+              type="submit"
+              className="primary-cta p-2 text-nowrap"
+              disabled={emailState === "sending" || emailState === "sent"}
+            >
+              {emailState === "sent" ? "Sent" : emailState === "sending" ? "Sending…" : "Send email"}
             </button>
           </form>
           {emailState === "error" ? <div className="text-red-400 mt-2">Couldn’t send. Try again.</div> : null}

@@ -2,15 +2,86 @@ import type { APIRoute } from "astro";
 import { Resend } from "resend";
 import { json } from "../../../lib/lookup/api";
 import { parseLookupUrl } from "../../../lib/lookup/parse-url";
+import {
+  buildLookupEmailHtml,
+  type EmailReportPayload,
+  type EmailReportScores,
+} from "../../../lib/lookup/email-report";
 
 export const prerender = false;
 
-function escapeHtml(value: string) {
-  return value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
+function asScores(value: unknown): EmailReportScores | null {
+  if (!value || typeof value !== "object") return null;
+  const scores = value as Record<string, unknown>;
+  const num = (key: string) => (typeof scores[key] === "number" ? (scores[key] as number) : null);
+  return {
+    performance: num("performance"),
+    accessibility: num("accessibility"),
+    bestPractices: num("bestPractices"),
+    seo: num("seo"),
+  };
+}
+
+function parsePayload(body: any, origin: string): EmailReportPayload | null {
+  const url = parseLookupUrl(body.url || body.pageUrl);
+  if (!url) return null;
+
+  const hostname =
+    typeof body.hostname === "string" && body.hostname
+      ? body.hostname
+      : url.hostname;
+
+  const stack = Array.isArray(body.stack)
+    ? body.stack
+        .filter((item: unknown) => item && typeof item === "object")
+        .map((item: any) => ({
+          name: typeof item.name === "string" ? item.name : "",
+          category: typeof item.category === "string" ? item.category : "Other",
+        }))
+        .filter((item: { name: string }) => item.name)
+        .slice(0, 40)
+    : [];
+
+  const sitemap =
+    body.sitemap && typeof body.sitemap === "object"
+      ? {
+          urlCount: typeof body.sitemap.urlCount === "number" ? body.sitemap.urlCount : 0,
+          hasSitemap: Boolean(body.sitemap.hasSitemap),
+        }
+      : { urlCount: 0, hasSitemap: false };
+
+  const reportUrl =
+    typeof body.reportUrl === "string" && body.reportUrl.startsWith("http")
+      ? body.reportUrl
+      : `${origin}/lookup?url=${encodeURIComponent(url.href)}`;
+  const auditUrl =
+    typeof body.auditUrl === "string" && body.auditUrl.startsWith("http")
+      ? body.auditUrl
+      : `${origin}/audit?url=${encodeURIComponent(url.href)}`;
+  const contactUrl =
+    typeof body.contactUrl === "string" && body.contactUrl.startsWith("http")
+      ? body.contactUrl
+      : `${origin}/contact-us`;
+
+  return {
+    hostname,
+    pageUrl: url.href,
+    reportUrl,
+    auditUrl,
+    contactUrl,
+    ogTitle: typeof body.ogTitle === "string" ? body.ogTitle : "",
+    ogDescription: typeof body.ogDescription === "string" ? body.ogDescription : "",
+    ogImageUrl: typeof body.ogImageUrl === "string" ? body.ogImageUrl : "",
+    hasTitle: Boolean(body.hasTitle ?? body.ogTitle),
+    hasDesc: Boolean(body.hasDesc ?? body.ogDescription),
+    hasOgImage: Boolean(body.hasOgImage ?? body.ogImageUrl),
+    stack,
+    sitemap,
+    scores: {
+      desktop: asScores(body.scores?.desktop),
+      mobile: asScores(body.scores?.mobile),
+    },
+  };
 }
 
 export const POST: APIRoute = async ({ request }) => {
@@ -22,50 +93,32 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   const email = typeof body.email === "string" ? body.email.trim() : "";
-  const url = parseLookupUrl(body.url);
-  const hostname = typeof body.hostname === "string" ? body.hostname : url?.hostname || "";
-  const verdict = typeof body.verdict === "string" ? body.verdict : "";
-  const actions = Array.isArray(body.actions) ? body.actions.filter((item: unknown) => typeof item === "string").slice(0, 6) : [];
-  const suggestedTitle = typeof body.suggestedTitle === "string" ? body.suggestedTitle : "";
-  const suggestedDescription = typeof body.suggestedDescription === "string" ? body.suggestedDescription : "";
-  const reportUrl = typeof body.reportUrl === "string" ? body.reportUrl : "";
-  const auditUrl = typeof body.auditUrl === "string" ? body.auditUrl : "https://www.crft.studio/audit";
-
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return json({ error: "Enter a valid email" }, { status: 400, cache: false });
   }
-  if (!url) {
+
+  const origin = new URL(request.url).origin;
+  const payload = parsePayload(body, origin);
+  if (!payload) {
     return json({ error: "Invalid URL" }, { status: 400, cache: false });
   }
 
-  const actionHtml = actions.length
-    ? `<ol>${actions.map((action: string) => `<li>${escapeHtml(action)}</li>`).join("")}</ol>`
-    : "";
-  const metaHtml =
-    suggestedTitle || suggestedDescription
-      ? `<p><b>Suggested title:</b> ${escapeHtml(suggestedTitle)}<br><b>Suggested description:</b> ${escapeHtml(suggestedDescription)}</p>`
-      : "";
-
+  const html = buildLookupEmailHtml(payload);
   const resend = new Resend(import.meta.env.RESEND_API);
   await resend.batch.send([
     {
       from: "Jeremy from CRFT Studio <audit@crft.studio>",
       to: email,
       cc: "jeremy@crft.studio",
-      subject: `Your CRFT Lookup brief for ${hostname}`,
-      html: `<p>Here's the action brief for ${escapeHtml(hostname)}.</p>
-      <p><b>${escapeHtml(verdict)}</b></p>
-      ${actionHtml}
-      ${metaHtml}
-      <p><a href="${escapeHtml(auditUrl)}">Get a free hero redesign</a>${reportUrl ? ` · <a href="${escapeHtml(reportUrl)}">Open the full report</a>` : ""}</p>
-      <p>Jeremy<br>Founder @ CRFT Studio</p>`,
+      subject: `CRFT Lookup report for ${payload.hostname}`,
+      html,
     },
     {
       from: "audit@crft.studio",
       to: "jeremy@crft.studio",
-      subject: `Lookup brief emailed: ${hostname}`,
-      html: `<p>${escapeHtml(email)} asked for the brief on ${escapeHtml(url.href)}</p>
-      <p>${escapeHtml(verdict)}</p>`,
+      subject: `Lookup emailed: ${payload.hostname}`,
+      html: `<p>${email} requested the lookup email for ${payload.pageUrl}</p>
+      <p><a href="${payload.reportUrl}">Open report</a></p>`,
     },
   ]);
 

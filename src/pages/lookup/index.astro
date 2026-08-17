@@ -53,7 +53,7 @@ if (parsedUrl && datetime) {
 import ogs from 'open-graph-scraper';
 import LookupCTA from "../../components/LookupCTA.astro";
 import LookupScanDatetime from "../../components/LookupScanDatetime.astro";
-import ActionBrief from "../../components/ActionBrief";
+import LookupEmailShare from "../../components/LookupEmailShare";
 
 let ogTitle = '', ogImageUrl = '', ogDescription = '';
 
@@ -1246,7 +1246,7 @@ if (parsedUrl) {
                                     </div>
                                 </div>
                             </div>
-                            <ActionBrief
+                            <LookupEmailShare
                                 client:load
                                 url={pagePath}
                                 hostname={parsedUrl.hostname}
@@ -1255,6 +1255,7 @@ if (parsedUrl) {
                                 hasOgImage={Boolean(ogImageUrl)}
                                 ogTitle={ogTitle || ''}
                                 ogDescription={ogDescription || ''}
+                                ogImageUrl={ogImageUrl || ''}
                             />
                             <div class="mt-28">
                                 <h2 class="text-2xl font-medium mb-2" id="lighthouse">Lighthouse</h2>
@@ -1262,7 +1263,7 @@ if (parsedUrl) {
                                 <div class="text-lg text-neutral-400 text-pretty mb-8 mt-5 max-w-[700px]">
                                     <FAQItem
                                     question="What is a Lighthouse score?"
-                                    answer="Google Lighthouse scores this page on performance, accessibility, best practices, and SEO. The brief above is the takeaway — the report below is the evidence. Use it to confirm which opportunities are actually worth a rebuild."
+                                    answer="Google Lighthouse scores this page on performance, accessibility, best practices, and SEO. The report below is the full evidence — use it alongside the overview above."
                                     />
                                 </div>
                                 <div>
