@@ -340,16 +340,25 @@ export function buildRuleBrief(packet: BriefPacket, findings: Finding[]): Action
   const stackNames = packet.stack.slice(0, 8).map((item) => item.name).join(", ");
   const topFinding = findings[0];
 
+  const mobile = packet.scores.mobile?.performance;
+  const desktop = packet.scores.desktop?.performance;
+  const empirical = [
+    mobile != null || desktop != null ? `Mobile ${mobile ?? "–"} / desktop ${desktop ?? "–"}` : "",
+    stackNames ? stackNames.split(", ").slice(0, 4).join(", ") : "",
+    packet.sitemap.hasSitemap ? `${packet.sitemap.urlCount} sitemap URLs` : "no sitemap",
+    !packet.meta.hasTitle || !packet.meta.hasDesc || !packet.meta.hasOgImage ? "incomplete meta" : "",
+  ]
+    .filter(Boolean)
+    .join(" · ");
+
   return {
-    verdict: topFinding
-      ? `${topFinding.title}. ${topFinding.detail}`
-      : `${packet.hostname} looks generally healthy — the first impression can still be sharper.`,
+    verdict: empirical || `${packet.hostname}: scan complete.`,
     ownerLikelihood: isWellKnownHost(packet.hostname) ? "research" : "unknown",
     projectType,
     sections: {
       overview: {
-        summary: topFinding?.detail || "No critical issues jumped out of this scan.",
-        actions: [],
+        summary: empirical || "No critical issues jumped out of this scan.",
+        actions: topFinding ? [topFinding.title] : [],
       },
       lighthouse: {
         summary: lighthouseNote(packet, topFinding),

@@ -53,7 +53,7 @@ if (parsedUrl && datetime) {
 import ogs from 'open-graph-scraper';
 import LookupCTA from "../../components/LookupCTA.astro";
 import LookupScanDatetime from "../../components/LookupScanDatetime.astro";
-import ActionBrief from "../../components/ActionBrief";
+import LookupEmailShare from "../../components/LookupEmailShare";
 
 let ogTitle = '', ogImageUrl = '', ogDescription = '';
 
@@ -1084,13 +1084,13 @@ if (parsedUrl) {
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <!-- <div>
                             <button id="downloadReport" class="square-card px-1 pr-2 py-[3px] flex flex-row gap-1 text-neutral-300 items-center transition-all hover:bg-neutral-700 lg:mt-0 mt-20 cursor-pointer">
                                 <div class="w-[24px] flex flex-row gap-1">
                                 <svg class="fill-neutral-300" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>                                </div>
                                 <div>Download Report</div>
                             </button>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="grid lg:grid-cols-[0.15fr_1fr] gap-5 lg:mt-0 mt-2">
                         <div class="h-full">
@@ -1246,7 +1246,7 @@ if (parsedUrl) {
                                     </div>
                                 </div>
                             </div>
-                            <ActionBrief
+                            <LookupEmailShare
                                 client:load
                                 url={pagePath}
                                 hostname={parsedUrl.hostname}
@@ -1255,6 +1255,7 @@ if (parsedUrl) {
                                 hasOgImage={Boolean(ogImageUrl)}
                                 ogTitle={ogTitle || ''}
                                 ogDescription={ogDescription || ''}
+                                ogImageUrl={ogImageUrl || ''}
                             />
                             <div class="mt-28">
                                 <h2 class="text-2xl font-medium mb-2" id="lighthouse">Lighthouse</h2>
@@ -1262,7 +1263,7 @@ if (parsedUrl) {
                                 <div class="text-lg text-neutral-400 text-pretty mb-8 mt-5 max-w-[700px]">
                                     <FAQItem
                                     question="What is a Lighthouse score?"
-                                    answer="Google Lighthouse scores this page on performance, accessibility, best practices, and SEO. The brief above is the takeaway — the report below is the evidence. Use it to confirm which opportunities are actually worth a rebuild."
+                                    answer="Google Lighthouse scores this page on performance, accessibility, best practices, and SEO. The report below is the full evidence — use it alongside the overview above."
                                     />
                                 </div>
                                 <div>
