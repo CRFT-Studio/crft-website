@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import NihalPFP from '../../src/images/nihal-pfp.png';
 import PietroPFP from '../../src/images/pietro-pfp.png';
+import HaileyPFP from '../../src/images/hailey-pfp-masked.png';
 ---
 <section>
     <div class="container">
@@ -30,7 +31,7 @@ import PietroPFP from '../../src/images/pietro-pfp.png';
             </blockquote>
         </div>
 
-        <blockquote class="flex flex-col-reverse lg:grid lg:grid-cols-[1fr_0.75fr] lg:gap-20 gap-10 align-top">
+        <blockquote class="flex flex-col-reverse lg:grid lg:grid-cols-[1fr_0.75fr] lg:gap-20 gap-10 align-top mb-16">
             <div class="square-card p-8 self-start">
                 <div class="flex flex-row gap-1 mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFED02"><path d="m233-120 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg>
@@ -50,5 +51,26 @@ import PietroPFP from '../../src/images/pietro-pfp.png';
                 <div class="text-2xl font-medium text-pretty mb-2">Pietro Saccomanni</div>
                 <div class="text-base font-normal text-neutral-300 text-pretty text-center">CEO @ MobiLoud & FeedBear, Co-founder @ MixBloom</div>
             </div>
-        </blockblockquote>
+        </blockquote>
+
+        <div class="grid lg:grid-cols-[0.5fr_1fr] lg:gap-14 gap-10 mb-16 align-top">
+            <div class="flex flex-col items-center">
+                <Image src={HaileyPFP} class='w-80 mb-6' alt="Nihal portrait" />
+                <div class="text-2xl font-medium text-pretty mb-2">Hailey Rose</div>
+                <div class="text-base font-normal text-neutral-300 text-pretty text-center">Author of Hidden</div>
+            </div>
+
+            <blockquote class="square-card p-8 self-start">
+                <div class="flex flex-row gap-1 mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFED02"><path d="m233-120 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFED02"><path d="m233-120 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFED02"><path d="m233-120 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFED02"><path d="m233-120 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFED02"><path d="m233-120 65-281L80-590l288-25 112-265 112 265 288 25-218 189 65 281-247-149-247 149Z"/></svg>
+                </div>
+                <p class="font-medium text-lg mb-3 text-pretty">Jeremy made my life so much easier! After struggling for months on WordPress he was able to craft a website that was easy to navigate, engaging and beautiful. I am incredibly relieved that I never have to stress or waste time over something like WordPress ever again. He made my experience with my website feel less intimidating, allowing me to finally stop procrastinating the creation of my portfolio.</p>
+                <p class="font-medium text-lg mb-3 text-pretty">His clear knowledge and experience brought forth a sense of ease while we worked together to bring my ideas to life. He truly listens to what you need or have envisioned for your work; you can tell that he truly cares about your success.</p>
+                <p class="font-medium text-lg text-pretty">If you need someone dependable, efficient and experienced, Jeremy and the CRFT Team are the ones to go to!</p>
+            </blockquote>
+        </div>
 </section>
