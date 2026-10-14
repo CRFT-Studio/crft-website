@@ -1,0 +1,53 @@
+---
+import AuditReport from "@/layouts/AuditReport.astro";
+
+export const auditData = {
+  firstName: "Ashley",
+  lastName: "Sneller",
+  companyName: "Benekiva",
+  url: "benekiva.com",
+  email: "Agencies",
+  role: "email",
+  date: "October 14th 2026",
+  beforeImgPath: "/src/images/audits/benekiva-after.png",
+  afterImgPath: "/src/images/audits/benekiva-before.png",
+  annotations: [
+    {
+      question: "Note 1 - Announcement banner",
+      answer: "Replace the full-width teal bar with a compact 'New' pill. On mobile, the current banner wraps to three lines and pushes the headline down the screen. The pill keeps the 5Star Life news visible without competing with the hero."
+    },
+    {
+      question: "Note 2 - Desktop and mobile navigation",
+      answer: "On desktop, split the nav links from the CTAs. Platform, Solutions, Resources, and About Us stay on the left; Sign in and Request a Demo sit on the right, so the primary action isn't lost in a row of underlined links. <br> <br> On mobile, keep Request a Demo outside the hamburger and place it before the menu icon, so a visitor can request a demo without opening the menu."
+    },
+    {
+      question: "Note 3 - H1 and subtitle",
+      answer: "The headline copy is already strong — keep it. The problem is presentation. Title case over a photo, with the subtitle trapped in a translucent box, makes the differentiator easy to miss. <br> <br> Set it in sentence case on a white background, and italicize 'how claims actually work.' That's the ownable line: not that you have a claims platform, but that it's built for how claims actually run. The subtitle then explains how — systems, data, and workflows in one place — without restating the headline or fighting the photograph."
+    },
+    {
+      question: "Note 4 - CTA button",
+      answer: "'Talk To A Claims Expert' is small, centered, and sitting on a busy photo, so it doesn't read as the next step. Left-align it under the subtitle, add an arrow, and on mobile make it full width so it's the obvious action once the value is clear."
+    },
+    {
+      question: "Note 5 - Outcomes",
+      answer: "The hero currently asks for a conversation before it proves anything. Place the results directly under the CTA — 200K+ phone calls eliminated, $2 million saved in interest in 6 months, and a 47% reduction in NIGOs. Specific numbers do more work than a logo bar alone. Keep the carriers below, and quantify them: 'Trusted by 500+ leading carriers.'"
+    },
+    {
+      question: "Note 6 - Hero image and layout",
+      answer: "Drop the carousel. A stock photo of a meeting, with copy overlaid on faces, doesn't show what Benekiva is. The arrows and dots also imply there's more to hunt for before a visitor understands the product. <br> <br> Use a split layout instead: copy on the left, the claims workspace on the right. On mobile, stack the product shot under the CTA and outcomes so neither the headline nor the UI is cropped or covered. Visitors should see the thing they're being asked to demo — claim details, parties, benefit eligibility — not a generic office scene."
+    }
+  ]
+};
+---
+<AuditReport
+firstName={auditData.firstName}
+lastName={auditData.lastName}
+companyName={auditData.companyName}
+url={auditData.url}
+email={auditData.email}
+role={auditData.role}
+date={auditData.date}
+beforeImgPath={auditData.beforeImgPath}
+afterImgPath={auditData.afterImgPath}
+annotations={auditData.annotations}
+/>
