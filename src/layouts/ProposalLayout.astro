@@ -1,0 +1,585 @@
+---
+import Navigation from "../components/Navigation.astro";
+import FAQItem from "../components/FAQItem.astro";
+import HeadScripts from "../components/HeadScripts.astro";
+import CrftLogo from "../components/proposal/CrftLogo.astro";
+import type { PriceFormat, Proposal } from "../data/proposals/types";
+import { cmsComparison, ga4Rows, labels } from "../data/proposals/shared";
+
+interface Props {
+  proposal: Proposal;
+}
+
+const { proposal } = Astro.props;
+const ui = labels(proposal.locale);
+const ga4 = ga4Rows(proposal.locale);
+const cms = cmsComparison(proposal.locale);
+const homepageOn = Boolean(proposal.homepage?.enabled);
+
+function formatMoney(amount: number, format: PriceFormat) {
+  if (format === "fr-suffix") {
+    return `${new Intl.NumberFormat("fr-CA", { maximumFractionDigits: 0 }).format(amount)} $`;
+  }
+  return `$${new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 }).format(amount)}`;
+}
+
+const devInitial = formatMoney(proposal.costs.dev.prices.monthly, proposal.costs.dev.priceFormat);
+const supportInitial = formatMoney(proposal.costs.support.prices.hourly, proposal.costs.support.priceFormat);
+const externalIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" width="20px" viewBox="0 -960 960 960" fill="#D69A5C"><path d="m216-160-56-56 464-464H360v-80h400v400h-80v-264L216-160Z"/></svg>`;
+---
+<!DOCTYPE html>
+<html lang={proposal.locale}>
+  <head>
+    <meta name="robots" content="noindex" />
+    <HeadScripts
+      title={proposal.metaTitle}
+      description={proposal.metaDescription}
+      ogImageUrl={proposal.ogImageUrl}
+    />
+  </head>
+  <body>
+    <div id="ph-modal" class="fixed hidden lg:items-center items-end lg:justify-center justify-end h-full w-full bg-neutral-800/10 backdrop-blur-xs z-50 transition-all">
+      <div class="square-card lg:h-auto w-auto h-[85vh] lg:overflow-hidden overflow-y-auto">
+        <div class="flex flex-row gap-4 flex-wrap items-center justify-between mb-9">
+          <div class="text-lg underline">{ui.phTitle}</div>
+          <a href="https://posthog.com/blog/posthog-vs-ga4" target="_blank" class="square-card px-1 py-0 flex flex-row items-center text-orange-300 gap-1">
+            <div>{ui.phMore}</div>
+            <Fragment set:html={externalIcon} />
+          </a>
+        </div>
+        <div class="lg:bg-transparent lg:border-0 square-card p-0 max-w-[800px] mx-auto">
+          <table class="w-full text-left lg:text-lg border-collapse">
+            <thead class="my-6 hidden lg:table-header-group">
+              <th></th>
+              <th>{ga4.leftName}</th>
+              <th>{ga4.rightName}</th>
+            </thead>
+            {ga4.rows.map((row) => (
+              <tr>
+                <td>{row.label}</td>
+                <td>
+                  <div class="text-sm text-neutral-400 lg:hidden mb-2">{ga4.leftName}</div>
+                  <div>{row.left}</div>
+                </td>
+                <td>
+                  <div class="text-sm text-neutral-400 lg:hidden mb-2">{ga4.rightName}</div>
+                  <div>{row.right}</div>
+                </td>
+              </tr>
+            ))}
+          </table>
+        </div>
+        <style>
+          @reference "../styles/global.css";
+          #ph-modal table td {
+            @apply p-3 border-b border-neutral-700;
+          }
+          @media (min-width: 1023px) {
+            #ph-modal table tr:last-child td, #ph-modal table tr:last-child th {
+              @apply border-b-0;
+            }
+          }
+          #ph-modal table th {
+            @apply p-3 pb-6 font-medium;
+          }
+          #ph-modal table tr :nth-child(3), #ph-modal table th:nth-child(3) {
+            @apply bg-green-300/10;
+          }
+          @media (max-width: 1023px) {
+            #ph-modal table tr, #ph-modal table td {
+              @apply block;
+            }
+            #ph-modal table tr:not(:first-child) td:first-child {
+              @apply pt-10 font-medium;
+            }
+          }
+        </style>
+      </div>
+    </div>
+    <div id="cms-modal" class="fixed hidden lg:items-center items-end lg:justify-center justify-end h-full w-full bg-neutral-800/10 backdrop-blur-xs z-50 transition-all">
+      <div class="square-card lg:h-auto w-auto h-[85vh] lg:overflow-hidden overflow-y-auto">
+        <div class="flex flex-row gap-4 flex-wrap items-center justify-center mb-9">
+          <div class="text-lg underline">{ui.cmsTitle}</div>
+        </div>
+        <div class="lg:bg-transparent lg:border-0 square-card p-0 max-w-[800px] mx-auto">
+          <table class="w-full text-left lg:text-lg border-collapse">
+            <thead class="my-6 hidden lg:table-header-group">
+              <tr>
+                <th></th>
+                <th>{cms.leftName}</th>
+                <th>{cms.rightName}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {cms.rows.map((row) => (
+                <tr>
+                  <td>{row.label}</td>
+                  <td>
+                    <div class="text-sm text-neutral-400 lg:hidden mb-2">{cms.leftName}</div>
+                    <div>{row.left}</div>
+                  </td>
+                  <td>
+                    <div class="text-sm text-neutral-400 lg:hidden mb-2">{cms.rightName}</div>
+                    <div>{row.right}</div>
+                  </td>
+                </tr>
+              ))}
+              <tr>
+                <td>{cms.summaryLabel}</td>
+                <td colspan="2">{cms.summary}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <style>
+          @reference "../styles/global.css";
+          #cms-modal table td {
+            @apply p-3 border-b border-neutral-700;
+          }
+          @media (min-width: 1023px) {
+            #cms-modal table tr:last-child td, #cms-modal table tr:last-child th {
+              @apply border-b-0;
+            }
+          }
+          #cms-modal table th {
+            @apply p-3 pb-6 font-medium;
+          }
+          @media (max-width: 1023px) {
+            #cms-modal table tr, #cms-modal table td {
+              @apply block;
+            }
+            #cms-modal table tr:not(:first-child) td:first-child {
+              @apply pt-10 font-medium;
+            }
+          }
+        </style>
+      </div>
+    </div>
+    <div class="opacity-0 pointer-events-none">
+      <Navigation />
+    </div>
+    <section style="margin-bottom: 0px; margin-top: 50px;" class="px-5">
+      <div class="max-w-[1350px] mx-auto">
+        <div class="grid lg:grid-cols-[0.2fr_1fr] gap-4">
+          <div class="order-top">
+            <div class="sticky top-10">
+              {proposal.alternate && (
+                <div class="square-card py-[1px] px-[1px] border-neutral-700 mb-2 inline-flex flex-row items-center justify-center font-mono text-neutral-300">
+                  {proposal.locale === "fr" ? (
+                    <>
+                      <a href={proposal.alternate.href} class="py-0.5 px-2">{proposal.alternate.label}</a>
+                      <div class="square-card py-0.5 px-2 cursor-pointer">{proposal.currentLangLabel}</div>
+                    </>
+                  ) : (
+                    <>
+                      <div class="square-card py-0.5 px-2 cursor-pointer">{proposal.currentLangLabel}</div>
+                      <a href={proposal.alternate.href} class="py-0.5 px-2">{proposal.alternate.label}</a>
+                    </>
+                  )}
+                </div>
+              )}
+              <div id="toc" data-toc-title={proposal.tocTitle} data-toc={JSON.stringify(proposal.toc)}></div>
+            </div>
+          </div>
+          <div class="border border-neutral-700 bg-neutral-800 lg:p-20 lg:pt-8 p-5">
+            <div class="lg:flex hidden flex-row items-center gap-6 flex-wrap">
+              <CrftLogo />
+              <div class="text-xl text-neutral-300">x</div>
+              {Astro.slots.has("clientLogo") ? (
+                <slot name="clientLogo" />
+              ) : proposal.clientUrl ? (
+                <a href={proposal.clientUrl} class="text-xl font-medium">{proposal.clientName}</a>
+              ) : (
+                <div class="text-xl font-medium">{proposal.clientName}</div>
+              )}
+            </div>
+            <div class="lg:block hidden h-[1px] bg-neutral-700 w-full mt-5 mb-16"></div>
+            {proposal.todos && (
+              <div class="square-card border-orange-300 mb-10">
+                <div class="text-orange-300 font-medium mb-3">{proposal.todos.heading}</div>
+                <ul class="list-disc pl-5 flex flex-col gap-3 text-neutral-200">
+                  {proposal.todos.items.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            <div>
+              <h1 class="lg:text-5xl text-3xl font-medium mb-5 leading-tight text-pretty">{proposal.title}</h1>
+            </div>
+            <div id="intro" class="text-lg" set:html={proposal.introHtml} />
+            <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
+            {homepageOn && proposal.homepage && (
+              <>
+                <div class="mb-10 text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
+                  <h2 id="homepage-redesign" class="inline">{proposal.homepage.heading}</h2>
+                </div>
+                <p class="text-neutral-400 text-lg mb-10" set:html={proposal.homepage.bodyHtml} />
+                {proposal.homepage.competitors && proposal.homepage.competitors.length > 0 && (
+                  <ul class="mb-10 flex flex-col gap-3 text-lg text-neutral-300">
+                    {proposal.homepage.competitors.map((competitor) => (
+                      <li>
+                        <a href={competitor.url} class="underline text-orange-300" target="_blank" rel="noopener noreferrer">{competitor.name}</a>
+                        {competitor.note && <span class="text-neutral-400"> — {competitor.note}</span>}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {proposal.homepage.redesign && (
+                  <div class="square-card pt-8 p-0 mb-20 overflow-hidden">
+                    <div class="lg:grid lg:grid-cols-[300px_1.5fr] flex flex-col gap-10 items-start">
+                      <div class="flex flex-col justify-between px-8 h-full pb-8">
+                        <div>
+                          <div class="text-xl font-medium mb-3">{proposal.homepage.redesign.title}</div>
+                          <p class="text-base text-pretty text-neutral-300 mb-4">{proposal.homepage.redesign.description}</p>
+                          <a href={proposal.homepage.redesign.url} target="_blank" rel="noopener noreferrer" class="flex flex-row gap-1 items-center">
+                            <div class="text-base text-orange-300 font-medium">{proposal.homepage.redesign.linkLabel}</div>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FDBA74"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+                          </a>
+                        </div>
+                      </div>
+                      {proposal.homepage.redesign.embedUrl && (
+                        <div class="w-[150%] h-[400px] overflow-hidden relative lg:pl-0 pl-5 pointer-events-none">
+                          <iframe
+                            src={proposal.homepage.redesign.embedUrl}
+                            class="scale-75 origin-top-left w-[calc(100%/0.75)] h-[calc(100%/0.75)] border-none rounded-tl-sm overflow-y-hidden"
+                            frameborder="0"
+                          ></iframe>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+                <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
+              </>
+            )}
+            <div>
+              <div class="text-lg text-neutral-400 mb-10">{ui.stack}</div>
+              <div class="grid lg:grid-cols-3 gap-4">
+                <a href="https://astro.build?utm_source=crftLookup" target="_blank" class="flex flex-col lg:items-start items-end gap-2 square-card p-0 relative hover:bg-neutral-700 transition-all text-left" data-tech-name="Astro" data-tech-icon="astro.svg">
+                  <div class="square-card px-1 py-0 flex flex-row items-center ml-auto text-orange-300 gap-1 border border-t-0 border-r-0">
+                    <div>{ui.learnAstro}</div>
+                    <Fragment set:html={externalIcon} />
+                  </div>
+                  <div class="p-4 pt-0 flex flex-col gap-2 items-start">
+                    <div id="astro" class="flex flex-row gap-2 items-center">
+                      <img src="/icons/Astro.svg" class="w-5 h-5" alt="" />
+                      <div>Astro</div>
+                    </div>
+                    <div class="text-pretty">{ui.astroBody}</div>
+                  </div>
+                </a>
+                <a href="https://www.sanity.io/" class="flex flex-col lg:items-start items-end gap-2 square-card p-0 relative hover:bg-neutral-700 transition-all text-left cursor-pointer" data-tech-name="Sanity" data-tech-icon="Sanity.svg">
+                  <div class="square-card px-1 py-0 flex flex-row items-center ml-auto text-orange-300 gap-1 border border-t-0 border-r-0">
+                    <div>{ui.learnSanity}</div>
+                    <Fragment set:html={externalIcon} />
+                  </div>
+                  <div class="p-4 pt-0 flex flex-col gap-2 items-start">
+                    <div id="sanity" class="flex flex-row gap-2 items-center">
+                      <div class="flex flex-row gap-1 items-center">
+                        <img src="/icons/Sanity.svg" class="w-5 h-5" alt="" />
+                      </div>
+                      <div>Sanity</div>
+                    </div>
+                    <div class="text-pretty">{ui.sanityBody}</div>
+                  </div>
+                </a>
+                <button id="ph-trigger" type="button" class="flex flex-col lg:items-start items-end gap-2 square-card p-0 relative hover:bg-neutral-700 transition-all text-left cursor-pointer" data-tech-name="PostHog" data-tech-icon="posthog.svg">
+                  <div class="square-card px-1 py-0 ml-auto flex flex-row items-center text-orange-300 gap-1 border border-t-0 border-r-0">
+                    <div>{ui.whyGa4}</div>
+                    <Fragment set:html={externalIcon} />
+                  </div>
+                  <div class="p-4 pt-0 flex flex-col gap-2 items-start">
+                    <div id="posthog" class="flex flex-row gap-2 items-center">
+                      <img src="/icons/PostHog.svg" class="w-5 h-5" alt="" />
+                      <div>PostHog</div>
+                    </div>
+                    <div class="text-pretty">{ui.posthogBody}</div>
+                  </div>
+                </button>
+              </div>
+              {proposal.showCmsCompare && (
+                <button id="cms-trigger" type="button" class="mt-6 text-orange-300 underline text-lg cursor-pointer">{ui.cmsCompare}</button>
+              )}
+            </div>
+            <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
+            <div class="mb-10 text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
+              <h2 id="sitemap" class="inline">{proposal.sitemap.heading}</h2>
+            </div>
+            {proposal.sitemap.noteHtml && (
+              <p class="text-neutral-400 text-lg mb-8" set:html={proposal.sitemap.noteHtml} />
+            )}
+            {proposal.sitemap.embedSrc && (
+              <div class="square-card p-0">
+                <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="450" src={proposal.sitemap.embedSrc} allowfullscreen></iframe>
+              </div>
+            )}
+            {proposal.sitemap.groups && (
+              <div class="grid md:grid-cols-2 gap-4">
+                {proposal.sitemap.groups.map((group) => (
+                  <div class="square-card">
+                    <div class="text-lg font-medium mb-3">{group.title}</div>
+                    <ul class="flex flex-col gap-2 text-neutral-300">
+                      {group.items.map((item) => (
+                        <li>
+                          <span class="text-neutral-100">{item.label}</span>
+                          {item.note && <span class="text-neutral-400"> — {item.note}</span>}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            )}
+            <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
+            <div class="flex flex-col gap-14">
+              <div class="flex flex-row flex-wrap gap-4 justify-between items-center mb-10">
+                <div class=" text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
+                  <h2 id="timelines" class="inline">{proposal.timeline.heading}</h2>
+                </div>
+                <div class="text-neutral-300 text-lg">{proposal.timeline.totalLabel}</div>
+              </div>
+              {proposal.timeline.phases.map((phase) => (
+                <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
+                  <div>
+                    <div class="sticky top-10 text-neutral-400">{phase.name}</div>
+                  </div>
+                  <div>
+                    <div class="mb-3 text-neutral-100">{phase.duration}</div>
+                    {phase.items.map((item, index) => (
+                      <div class:list={["square-card", index < phase.items.length - 1 && "border-b-0", phase.noteHtml && index === phase.items.length - 1 && "mb-2"]}>
+                        <div class="text-lg" set:html={item} />
+                      </div>
+                    ))}
+                    {phase.noteHtml && <div class="text-neutral-400" set:html={phase.noteHtml} />}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
+            <div class="mt-20 flex flex-col gap-14">
+              <div>
+                <div class=" text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
+                  <h2 id="costs" class="inline-block">{proposal.costs.heading}</h2>
+                </div>
+              </div>
+              <div class="grid gap-4">
+                <div class="square-card p-0">
+                  <div class="square-card py-0 px-1 border-0 border-b">{proposal.costs.devLabel}</div>
+                  <div class="p-5">
+                    <div class="flex lg:flex-row flex-col items-center justify-start mb-8 gap-4">
+                      <div
+                        id="dev-tabs"
+                        class="inline-flex flex-row card rounded-none p-[2px] border-[1px] gap-2 text-sm text-nowrap lg:max-w-full max-w-[65vw] overflow-x-auto"
+                        data-prices={JSON.stringify(proposal.costs.dev.prices)}
+                        data-format={proposal.costs.dev.priceFormat}
+                      >
+                        {proposal.costs.dev.tabs.map((tab, index) => (
+                          <div id={tab.id} class:list={["px-2 py-1 border-[1px] hover:cursor-pointer transition-all", index === 0 && "dev-tab-active"]}>{tab.label}</div>
+                        ))}
+                      </div>
+                    </div>
+                    <h1 class="text-4xl font-medium mb-3 leading-tight"><span id="dev-price">{devInitial}</span><span> {proposal.costs.dev.currencyLabel}</span><span class="bg-neutral-400 bg-clip-text">{proposal.costs.dev.periodLabel}</span></h1>
+                    <div class="text-lg font-medium leading-normal text-neutral-200 text-pretty">{proposal.costs.devSummaryHtml}</div>
+                    <div class="h-[1px] w-full bg-neutral-700 my-6"></div>
+                    <div class="grid lg:grid-cols-2 gap-8 text-pretty">
+                      {proposal.costs.features.map((feature) => (
+                        <div class="flex flex-row gap-2 items-start">
+                          <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#4ade80"><path d="m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/></svg>
+                          <div class="flex flex-col gap-2">
+                            <div class=" font-medium">{feature.title}</div>
+                            <div class=" font-normal text-neutral-300">{feature.body}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div class="square-card p-0">
+                  <div class="square-card py-0 px-1 border-0 border-b">{proposal.costs.supportLabel}</div>
+                  <div class="p-5">
+                    <div class="flex lg:flex-row flex-col justify-start mb-8 gap-4">
+                      <div
+                        id="tabs"
+                        class="inline-flex flex-row card rounded-none p-[2px] border-[1px] gap-2 text-sm text-nowrap lg:max-w-full max-w-[65vw] overflow-x-auto"
+                        data-prices={JSON.stringify(proposal.costs.support.prices)}
+                        data-format={proposal.costs.support.priceFormat}
+                      >
+                        {proposal.costs.support.tabs.map((tab, index) => (
+                          <div id={tab.id} class:list={["px-2 py-1 border-[1px] hover:cursor-pointer transition-all", index === 0 && "tab-active"]}>{tab.label}</div>
+                        ))}
+                      </div>
+                    </div>
+                    <h1 class="text-4xl font-medium mb-3 leading-tight"><span id="price">{supportInitial}</span><span> {proposal.costs.support.currencyLabel}</span><span class="bg-neutral-400 bg-clip-text">{proposal.costs.support.periodLabel}</span></h1>
+                    <div class="text-lg font-medium leading-normal text-neutral-200 text-pretty">{proposal.costs.supportSummaryHtml}</div>
+                  </div>
+                </div>
+                <div class="square-card p-0">
+                  <div class="square-card py-0 px-1 border-0 border-b">{proposal.costs.techLabel}</div>
+                  <div class="p-5">
+                    <div class="text-lg font-medium leading-normal text-neutral-200 text-pretty mb-6">{proposal.costs.techIntroHtml}</div>
+                    <table class="border-collapse border border-neutral-600 text-sm overflow-x-auto">
+                      <thead>
+                        <tr>
+                          {proposal.costs.techColumns.map((column) => (
+                            <th class="border border-neutral-600 p-2 text-left">{column}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {proposal.costs.techRows.map((row) => (
+                          <tr>
+                            <td class="border border-neutral-600 p-2">{row.service}</td>
+                            <td class="border border-neutral-600 p-2 text-pretty">{row.cost}</td>
+                            <td class="border border-neutral-600 p-2">{row.notes}</td>
+                          </tr>
+                        ))}
+                        <tr class="font-semibold bg-neutral-800">
+                          <td class="border border-neutral-600 p-2 text-pretty">{proposal.costs.techTotal.service}</td>
+                          <td class="border border-neutral-600 p-2">{proposal.costs.techTotal.cost}</td>
+                          <td class="border border-neutral-600 p-2"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
+            <div class="mt-20 flex flex-col gap-14">
+              <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
+                <div>
+                  <div class="sticky top-10 text-neutral-400">
+                    <div class=" text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
+                      <h2 id="faqs" class="inline">{proposal.faqsHeading}</h2>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  {proposal.faqs.map((faq) => (
+                    <FAQItem question={faq.question} answer={faq.answer} />
+                  ))}
+                  <div class="text-neutral-300" set:html={proposal.contactHtml} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <style>
+      @reference "../styles/global.css";
+      #tabs div, #dev-tabs div {
+        @apply border-transparent;
+      }
+      .tab-active, .dev-tab-active {
+        border-color: #525252 !important;
+        @apply bg-neutral-700;
+      }
+      .toc-current {
+        @apply text-orange-300 font-medium;
+      }
+    </style>
+    <script>
+      import $ from "jquery";
+
+      function formatMoney(amount, format) {
+        const value = Number(amount);
+        if (format === "fr-suffix") {
+          return `${value.toLocaleString("fr-CA")} $`;
+        }
+        return `$${value.toLocaleString("en-US")}`;
+      }
+
+      const devRoot = document.querySelector("#dev-tabs");
+      const devPrices = JSON.parse(devRoot?.dataset.prices || "{}");
+      const devFormat = devRoot?.dataset.format || "en-prefix";
+      function updateDevPrice() {
+        const activePlan = $(".dev-tab-active").attr("id");
+        const price = devPrices[activePlan];
+        if (price == null) return;
+        $("#dev-price").text(formatMoney(price, devFormat));
+      }
+      updateDevPrice();
+      $("#dev-tabs div").on("click", function () {
+        if ($(this).hasClass("dev-tab-active")) return;
+        $(".dev-tab-active").add(this).toggleClass("dev-tab-active");
+        updateDevPrice();
+      });
+
+      const supportRoot = document.querySelector("#tabs");
+      const supportPrices = JSON.parse(supportRoot?.dataset.prices || "{}");
+      const supportFormat = supportRoot?.dataset.format || "en-prefix";
+      function updatePrice() {
+        const activePlan = $(".tab-active").attr("id");
+        const price = supportPrices[activePlan];
+        if (price == null) return;
+        $("#price").text(formatMoney(price, supportFormat));
+      }
+      updatePrice();
+      $("#tabs div").on("click", function () {
+        if ($(this).hasClass("tab-active")) return;
+        $(".tab-active").add(this).toggleClass("tab-active");
+        updatePrice();
+      });
+
+      $("#ph-trigger").on("click", function () {
+        $("#ph-modal").toggleClass("hidden flex");
+      });
+      $("#ph-modal").on("click", function (event) {
+        if (!$(event.target).closest(".square-card").length) {
+          $("#ph-modal").toggleClass("hidden flex");
+        }
+      });
+      $("#cms-trigger").on("click", function () {
+        $("#cms-modal").toggleClass("hidden flex");
+      });
+      $("#cms-modal").on("click", function (event) {
+        if (!$(event.target).closest(".square-card").length) {
+          $("#cms-modal").toggleClass("hidden flex");
+        }
+      });
+
+      const tocContainer = document.querySelector("#toc");
+      const headings = JSON.parse(tocContainer?.dataset.toc || "[]");
+      const tocTitle = tocContainer?.dataset.tocTitle || "Table of contents";
+      if (tocContainer) {
+        if (headings.length === 0) {
+          tocContainer.style.display = "none";
+        } else {
+          const tocHtml = `
+            <div class="square-card p-3 px-4 border border-neutral-700 shadow-md">
+              <div class="text-lg mb-2">${tocTitle}</div>
+              <div class="mt-4 flex flex-col gap-2 text-neutral-300">
+                ${headings.map((heading) => `
+                  <div class="">
+                    <a href="#${heading.slug}" class="toc-link transition hover:text-orange-300">${heading.text}</a>
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+          `;
+          tocContainer.innerHTML = tocHtml;
+        }
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            document.querySelectorAll(".toc-link").forEach((link) => link.classList.remove("toc-current"));
+            const targetLink = document.querySelector(`a[href="#${entry.target.id}"].toc-link`);
+            if (targetLink) targetLink.classList.add("toc-current");
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: "0px 0px -50% 0px",
+        threshold: [1],
+      });
+      document.querySelectorAll("h2").forEach((heading) => {
+        heading.classList.add("scroll-mt-24");
+        observer.observe(heading);
+      });
+    </script>
+  </body>
+</html>
