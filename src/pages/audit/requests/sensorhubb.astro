@@ -1,0 +1,53 @@
+---
+import AuditReport from "@/layouts/AuditReport.astro";
+
+export const auditData = {
+  firstName: "Steven",
+  lastName: "Cotton",
+  companyName: "Sensorhubb",
+  url: "sensorhubb.com",
+  email: "Agencies",
+  role: "email",
+  date: "October 28th 2026",
+  beforeImgPath: "/src/images/audits/sensorhubb-before.png",
+  afterImgPath: "/src/images/audits/sensorhubb-after.png",
+  annotations: [
+    {
+      question: "Note 1 - Announcement banner",
+      answer: "The current banner sits on a dark gradient that blends into the navy header, so the SensorHubb 3.0 news and the nav read as one heavy bar. Soften it to a light strip above a white header. The release still gets a line, but it no longer competes with the logo or the primary CTA."
+    },
+    {
+      question: "Note 2 - Desktop and mobile navigation",
+      answer: "On desktop, drop the icon-heavy dark bar and the dual Login + Book a 30-Min Assessment treatment. Keep Platform, Industries, About, Contact, and Careers as plain links; pair Login with a single green Get Started button so the primary action is obvious. <br> <br> On mobile, the hamburger alone buries the assessment. Pull Get Started outside the menu and place it before the icon so a visitor can convert without opening navigation."
+    },
+    {
+      question: "Note 3 - H1 and subtitle",
+      answer: "The idea is strong — equipment talking, the right person listening — but the presentation dilutes it. 'Predict. Prevent. Protect.' repeats the logo tagline, the second line jumps to lime green with the brand name inline, and on mobile the H1 stacks into five lines before the value is clear. <br> <br> Collapse it into one sentence-case headline in a single color: 'Your equipment is talking. We ensure the right person is listening.' Drop the eyebrow and the brand name from the H1 — the logo already owns that. Keep the subtitle as the how: sensors, building systems, and existing platforms delivering the right signal into tools the team already uses."
+    },
+    {
+      question: "Note 4 - CTA buttons",
+      answer: "Two equal CTAs — See it in Action and Book a 30-Minute Assessment — split attention before the visitor has a reason to pick either. Worse: See it in Action still points to an old Microsoft Teams event that is no longer accessible, so half the hero's conversion path is a dead end. Drop that button entirely and collapse to one Get Started with an arrow. One working next step beats two middling ones, and the same label can live in the nav and the hero so the path stays consistent."
+    },
+    {
+      question: "Note 5 - Social proof",
+      answer: "The hero currently jumps from CTAs into Ingest / Detect / Deliver tabs before any proof. Those tabs belong lower, in How it Works — not above the fold competing with the offer. <br> <br> Put the trusted brands directly under the CTA instead: Hyatt, Subway, Jersey Mike's, Buffalo Wild Wings, Valley Health, and the rest. On mobile, add a short platform line — Available on Web, iOS and Android — so credibility and reach show up before the product shot."
+    },
+    {
+      question: "Note 6 - Hero image and layout",
+      answer: "The current hero leaves most of the product below the fold: floating metric chips and a partial phone, then an Ingest section that restarts the story. Visitors shouldn't have to scroll to understand what SensorHubb looks like. <br> <br> Anchor the hero on a real product frame — the desktop dashboard with temperature, humidity, CO₂, and history, plus the mobile app beside it. On mobile, stack the phone under the CTA and logos so the UI stays fully visible. Show the monitoring workspace they're being asked to start with, not a teaser that cuts off mid-card."
+    }
+  ]
+};
+---
+<AuditReport
+firstName={auditData.firstName}
+lastName={auditData.lastName}
+companyName={auditData.companyName}
+url={auditData.url}
+email={auditData.email}
+role={auditData.role}
+date={auditData.date}
+beforeImgPath={auditData.beforeImgPath}
+afterImgPath={auditData.afterImgPath}
+annotations={auditData.annotations}
+/>
