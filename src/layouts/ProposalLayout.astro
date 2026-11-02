@@ -3,6 +3,7 @@ import Navigation from "../components/Navigation.astro";
 import FAQItem from "../components/FAQItem.astro";
 import HeadScripts from "../components/HeadScripts.astro";
 import CrftLogo from "../components/proposal/CrftLogo.astro";
+import SitemapCanvas from "../components/sitemap/SitemapCanvas";
 import type { PriceFormat, Proposal } from "../data/proposals/types";
 import { cmsComparison, ga4Rows, labels } from "../data/proposals/shared";
 
@@ -15,6 +16,17 @@ const ui = labels(proposal.locale);
 const ga4 = ga4Rows(proposal.locale);
 const cms = cmsComparison(proposal.locale);
 const homepageOn = Boolean(proposal.homepage?.enabled);
+const sitemapTree = proposal.sitemap.tree;
+const divider = `<div class="h-[1px] bg-neutral-700 w-full my-20"></div>`;
+// Named slots for bespoke sections. Each renders only when a page fills it, followed by a divider.
+const slotted = {
+  afterIntro: Astro.slots.has("after-intro"),
+  afterHomepage: Astro.slots.has("after-homepage"),
+  afterStack: Astro.slots.has("after-stack"),
+  afterSitemap: Astro.slots.has("after-sitemap"),
+  afterTimelines: Astro.slots.has("after-timelines"),
+  afterCosts: Astro.slots.has("after-costs"),
+};
 
 function formatMoney(amount: number, format: PriceFormat) {
   if (format === "fr-suffix") {
@@ -209,6 +221,7 @@ const externalIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" widt
             </div>
             <div id="intro" class="text-lg" set:html={proposal.introHtml} />
             <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
+            {slotted.afterIntro && (<><slot name="after-intro" /><Fragment set:html={divider} /></>)}
             {homepageOn && proposal.homepage && (
               <>
                 <div class="mb-10 text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
@@ -253,6 +266,7 @@ const externalIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" widt
                 <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
               </>
             )}
+            {slotted.afterHomepage && (<><slot name="after-homepage" /><Fragment set:html={divider} /></>)}
             <div>
               <div class="text-lg text-neutral-400 mb-10">{ui.stack}</div>
               <div class="grid lg:grid-cols-3 gap-4">
@@ -303,13 +317,24 @@ const externalIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" widt
               )}
             </div>
             <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
+            {slotted.afterStack && (<><slot name="after-stack" /><Fragment set:html={divider} /></>)}
             <div class="mb-10 text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
               <h2 id="sitemap" class="inline">{proposal.sitemap.heading}</h2>
             </div>
             {proposal.sitemap.noteHtml && (
               <p class="text-neutral-400 text-lg mb-8" set:html={proposal.sitemap.noteHtml} />
             )}
-            {proposal.sitemap.embedSrc && (
+            {sitemapTree ? (
+              <div class="square-card p-0 overflow-hidden mb-4">
+                <SitemapCanvas
+                  client:visible
+                  url={sitemapTree.baseUrl}
+                  snapshot={{ urls: sitemapTree.paths.map((path) => new URL(path, sitemapTree.baseUrl).href), error: null }}
+                  labels={sitemapTree.labels}
+                  linkNodes={sitemapTree.linkNodes ?? false}
+                />
+              </div>
+            ) : proposal.sitemap.embedSrc && (
               <div class="square-card p-0">
                 <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="450" src={proposal.sitemap.embedSrc} allowfullscreen></iframe>
               </div>
@@ -332,6 +357,7 @@ const externalIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" widt
               </div>
             )}
             <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
+            {slotted.afterSitemap && (<><slot name="after-sitemap" /><Fragment set:html={divider} /></>)}
             <div class="flex flex-col gap-14">
               <div class="flex flex-row flex-wrap gap-4 justify-between items-center mb-10">
                 <div class=" text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
@@ -357,6 +383,7 @@ const externalIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" widt
               ))}
             </div>
             <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
+            {slotted.afterTimelines && (<><slot name="after-timelines" /><Fragment set:html={divider} /></>)}
             <div class="mt-20 flex flex-col gap-14">
               <div>
                 <div class=" text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
@@ -446,6 +473,7 @@ const externalIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" widt
               </div>
             </div>
             <div class="h-[1px] bg-neutral-700 w-full my-20"></div>
+            {slotted.afterCosts && (<><slot name="after-costs" /><Fragment set:html={divider} /></>)}
             <div class="mt-20 flex flex-col gap-14">
               <div class="grid lg:grid-cols-[0.2fr_1fr] gap-8 text-lg">
                 <div>

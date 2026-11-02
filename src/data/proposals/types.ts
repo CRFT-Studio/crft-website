@@ -32,8 +32,22 @@ export interface SitemapGroup {
   items: { label: string; note?: string }[];
 }
 
+/** A proposed sitemap rendered with the CRFT Lookup React Flow canvas. */
+export interface SitemapTree {
+  /** Origin used to build node URLs, e.g. "https://www.sensorhubb.com". */
+  baseUrl: string;
+  /** Every proposed page path, e.g. "/industries/healthcare". Parents are inferred. */
+  paths: string[];
+  /** Optional display names keyed by path ("/" for the root). Defaults to the path segment. */
+  labels?: Record<string, string>;
+  /** Show an open-in-new-tab link on each node. Defaults to false for proposed pages. */
+  linkNodes?: boolean;
+}
+
 export interface SitemapSection {
   heading: string;
+  /** Interactive tree. When set, it is shown instead of embedSrc. */
+  tree?: SitemapTree;
   embedSrc?: string;
   noteHtml?: string;
   groups?: SitemapGroup[];

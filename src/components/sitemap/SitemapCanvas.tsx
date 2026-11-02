@@ -22,6 +22,12 @@ const nodeTypes = { sitemap: SitemapNode };
 
 type SitemapCanvasProps = {
   url: string;
+  /** Supplying a saved response disables all live sitemap requests. */
+  snapshot?: SitemapResponse;
+  /** Optional display names keyed by path ("/" for the root). */
+  labels?: Record<string, string>;
+  /** Show the open-in-new-tab link on each node. Defaults to true. */
+  linkNodes?: boolean;
 };
 
 function StatusMessage({ children, error = false }: { children: ReactNode; error?: boolean }) {
@@ -47,6 +53,7 @@ function SitemapFlow({
   collapsedIds,
   onToggle,
   onToggleExpand,
+  linkNodes,
 }: {
   tree: SitemapTreeNode;
   totalUrls: number;
@@ -58,12 +65,13 @@ function SitemapFlow({
   collapsedIds: Set<string>;
   onToggle: (id: string) => void;
   onToggleExpand: () => void;
+  linkNodes: boolean;
 }) {
   const { fitView } = useReactFlow();
 
   const { nodes, edges, stats, matchIds } = useMemo(
-    () => toFlowElements(tree, { collapsedIds, query, totalUrls, onToggle }),
-    [tree, collapsedIds, query, totalUrls, onToggle],
+    () => toFlowElements(tree, { collapsedIds, query, totalUrls, onToggle, linkable: linkNodes }),
+    [tree, collapsedIds, query, totalUrls, onToggle, linkNodes],
   );
   const matchKey = matchIds.join("\0");
 
@@ -128,7 +136,7 @@ function SitemapFlow({
   );
 }
 
-export default function SitemapCanvas({ url }: SitemapCanvasProps) {
+export default function SitemapCanvas({ url, snapshot, labels, linkNodes = true }: SitemapCanvasProps) {
   const [tree, setTree] = useState<SitemapTreeNode | null>(null);
   const [totalUrls, setTotalUrls] = useState(0);
   const [error, setError] = useState<string | null>(null);
@@ -159,7 +167,7 @@ export default function SitemapCanvas({ url }: SitemapCanvasProps) {
       }
 
       try {
-        const result = await fetchLookupSection<SitemapResponse>("sitemap", url);
+        const result = snapshot ?? await fetchLookupSection<SitemapResponse>("sitemap", url);
         if (cancelled) return;
         if (result.error && !result.urls?.length) {
           setError(result.error);
@@ -176,7 +184,7 @@ export default function SitemapCanvas({ url }: SitemapCanvasProps) {
           return;
         }
         const origin = new URL(url).origin;
-        const nextTree = transformToHierarchy(result.urls, origin);
+        const nextTree = transformToHierarchy(result.urls, origin, labels);
         setTree(nextTree);
         setCollapsedIds(collectDefaultCollapsed(nextTree));
         setTotalUrls(result.urls.length);
@@ -196,7 +204,7 @@ export default function SitemapCanvas({ url }: SitemapCanvasProps) {
     return () => {
       cancelled = true;
     };
-  }, [url]);
+  }, [url, snapshot, labels]);
 
   useEffect(() => {
     if (!expanded) return;
@@ -242,6 +250,7 @@ export default function SitemapCanvas({ url }: SitemapCanvasProps) {
         collapsedIds={collapsedIds}
         onToggle={onToggle}
         onToggleExpand={() => setExpanded((value) => !value)}
+        linkNodes={linkNodes}
       />
     </ReactFlowProvider>
   );
