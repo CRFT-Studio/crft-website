@@ -444,9 +444,9 @@ export function baseFaqs(locale: Locale): Faq[] {
           "Très peu. Nos sites sont conçus pour une faible maintenance, avec la plupart des mises à jour gérées facilement par votre équipe dans Sanity. Nous sommes toujours disponibles pour les changements majeurs, le support ou les nouvelles fonctionnalités.",
       },
       {
-        question: "Le nouveau système est-il plus difficile à utiliser que WordPress ?",
+        question: "Le nouveau système est-il facile à utiliser ?",
         answer:
-          "Non—l'inverse. Sanity offre une interface moderne et conviviale adaptée à votre contenu, pas seulement aux articles de blog. De nombreux clients le trouvent plus rapide et plus intuitif que le tableau de bord WordPress traditionnel, surtout pour les utilisateurs non techniques.",
+          "Oui. Sanity offre une interface moderne et conviviale adaptée à votre contenu, pas seulement aux articles de blog. Votre équipe peut gérer le contenu sans compétences techniques, avec une formation lors du transfert.",
       },
       {
         question: "Que se passe-t-il si nous avons besoin de nouvelles fonctionnalités après le lancement ?",
@@ -482,9 +482,9 @@ export function baseFaqs(locale: Locale): Faq[] {
         "Very little. Our sites are designed for low maintenance, with most updates handled easily by your team in Sanity. We're always available for major changes, support, or new features.",
     },
     {
-      question: "Is the new system harder to use than WordPress?",
+      question: "Is the new system easy to use?",
       answer:
-        "No—the opposite. Sanity offers a modern, user-friendly interface tailored for your content, not just blog posts. Many clients find it quicker and more intuitive than the traditional WordPress dashboard, especially for non-technical users.",
+        "Yes. Sanity offers a modern, user-friendly interface tailored to your content, not just blog posts. Your team can manage content without technical skills, with training provided at handover.",
     },
     {
       question: "What if we need new features after launch?",
@@ -505,22 +505,24 @@ export function techTable(locale: Locale): { columns: [string, string, string]; 
       columns: ["Service", "Coût mensuel", "Notes"],
       rows: [
         { service: "Astro", cost: "0 $", notes: "Framework frontend gratuit, open-source, auto-hébergeable" },
-        { service: "Sanity CMS", cost: "15 $ USD/utilisateur/mois (plan Growth)", notes: "Gratuit" },
+        { service: "Cloudflare Pages", cost: "0 $", notes: "Déploiement et hébergement du site statique sur le plan gratuit, dans les limites incluses. Les fonctions dynamiques peuvent entraîner des frais Workers." },
+        { service: "Sanity CMS", cost: "0 $", notes: "Plan gratuit dans les limites incluses. Plan Growth optionnel à 15 $ USD/utilisateur/mois pour des rôles d’édition, des jeux de données privés et des fonctions de collaboration supplémentaires; dépassements et options facturés en sus." },
         { service: "PostHog", cost: "0 $", notes: "Le niveau gratuit généreux couvre l'utilisation pour plus de 90% de leurs utilisateurs (1M événements/mois)" },
         { service: "GitHub", cost: "0 $", notes: "Gratuit pour des dépôts publics et privés illimités" },
       ],
-      total: { service: "Coût mensuel total de la pile technologique", cost: "15 $ USD/utilisateur/mois" },
+      total: { service: "Coût mensuel total de la pile technologique", cost: "0 $ (dans les limites des plans gratuits)" },
     };
   }
   return {
     columns: ["Service", "Monthly Cost", "Notes"],
     rows: [
       { service: "Astro", cost: "$0", notes: "Free, open-source, self-hostable frontend framework" },
-      { service: "Sanity CMS", cost: "$15 USD/per user/month (Growth plan)", notes: "Free" },
+      { service: "Cloudflare Pages", cost: "$0", notes: "Static site deployment and hosting on a very permissive free plan." },
+      { service: "Sanity CMS", cost: "$0", notes: "Free plan within included limits. Optional Growth plan: $15 USD per user/month. See sanity.io/pricing for details." },
       { service: "PostHog", cost: "$0", notes: "Generous free tier covers usage for over 90% of their users (1M events/month)" },
       { service: "GitHub", cost: "$0", notes: "Free for unlimited public and private repositories" },
     ],
-    total: { service: "Total Monthly Tech Stack Cost", cost: "$15 USD/per user/month" },
+    total: { service: "Total Monthly Tech Stack Cost", cost: "$0 (within free-tier limits)" },
   };
 }
 
