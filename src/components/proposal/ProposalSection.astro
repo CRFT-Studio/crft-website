@@ -1,0 +1,28 @@
+---
+/**
+ * A bespoke proposal section with the same heading pill as the built-in sections.
+ * Use inside a ProposalLayout named slot, e.g.
+ *   <ProposalSection slot="after-homepage" id="lead-scoring" heading="Lead scoring">…</ProposalSection>
+ * `id` must match the TocEntry slug passed to tocFor(..., extras).
+ */
+interface Props {
+  id: string;
+  heading: string;
+}
+const { id, heading } = Astro.props;
+---
+<section>
+  <div class="mb-10 text-neutral-300 text-lg card rounded-none inline-block p-0 px-2 w-auto">
+    <h2 id={id} class="inline">{heading}</h2>
+  </div>
+  <div class="text-lg text-neutral-400 flex flex-col gap-6 proposal-prose">
+    <slot />
+  </div>
+</section>
+<style>
+  @reference "../../styles/global.css";
+  .proposal-prose :global(ul) { @apply list-disc pl-5 flex flex-col gap-2 text-neutral-300; }
+  .proposal-prose :global(h3) { @apply text-neutral-100 text-xl font-medium; }
+  .proposal-prose :global(table) { @apply border-collapse border border-neutral-600 text-base w-full; }
+  .proposal-prose :global(th), .proposal-prose :global(td) { @apply border border-neutral-600 p-2 text-left align-top; }
+</style>

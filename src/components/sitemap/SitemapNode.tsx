@@ -33,7 +33,7 @@ export function SitemapNode({ id, data, selected }: NodeProps<SitemapFlowNode>) 
           ? <ChevronRight className="h-3.5 w-3.5 shrink-0 text-neutral-400" />
           : <ChevronDown className="h-3.5 w-3.5 shrink-0 text-neutral-400" />
       )}
-      <a
+      {data.linkable && <a
         href={data.url}
         target="_blank"
         rel="noreferrer"
@@ -42,7 +42,7 @@ export function SitemapNode({ id, data, selected }: NodeProps<SitemapFlowNode>) 
         aria-label={`Open ${data.url}`}
       >
         <ExternalLink className="h-3.5 w-3.5" />
-      </a>
+      </a>}
       <Handle type="source" position={Position.Right} className="!h-2 !w-2 !border-0 !bg-orange-500 !opacity-0" />
     </div>
   );

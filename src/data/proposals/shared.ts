@@ -75,16 +75,36 @@ export function labels(locale: Locale) {
   };
 }
 
-export function tocFor(locale: Locale, homepageEnabled: boolean): TocEntry[] {
+/** Built-in section anchors that a bespoke (slotted) section can follow. */
+export type TocAnchor = "intro" | "homepage-redesign" | "sitemap" | "timelines" | "costs";
+
+/**
+ * Bespoke sections passed through ProposalLayout's named slots need a TOC entry.
+ * `entry.slug` must equal the `id` given to <ProposalSection>.
+ */
+export interface TocExtra {
+  after: TocAnchor;
+  entry: TocEntry;
+}
+
+export function tocFor(locale: Locale, homepageEnabled: boolean, extras: TocExtra[] = []): TocEntry[] {
   const ui = labels(locale);
-  const entries: TocEntry[] = [{ text: ui.intro, slug: "intro" }];
-  if (homepageEnabled) entries.push({ text: ui.homepage, slug: "homepage-redesign" });
-  entries.push(
+  const base: TocEntry[] = [{ text: ui.intro, slug: "intro" }];
+  if (homepageEnabled) base.push({ text: ui.homepage, slug: "homepage-redesign" });
+  base.push(
     { text: ui.sitemap, slug: "sitemap" },
     { text: ui.timelines, slug: "timelines" },
     { text: ui.costs, slug: "costs" },
     { text: ui.faqs, slug: "faqs" },
   );
+  if (extras.length === 0) return base;
+  const entries: TocEntry[] = [];
+  for (const entry of base) {
+    entries.push(entry);
+    for (const extra of extras) {
+      if (extra.after === entry.slug) entries.push(extra.entry);
+    }
+  }
   return entries;
 }
 
@@ -255,6 +275,36 @@ export function supportTabs(locale: Locale) {
     { id: "bundle20", label: "20 Hours (Save 15%)" },
     { id: "bundle30", label: "30 Hours (Save 20%)" },
     { id: "bundle40", label: "40 Hours (Save 25%)" },
+  ];
+}
+
+/**
+ * Rates published on /pricing (src/pages/pricing.astro). Monthly, quarterly (save 10%),
+ * annually (save 15%); support bundles 5–40 hours. Older proposals keep their own rates.
+ */
+export const PRICING_PAGE = {
+  dev: {
+    USD: { monthly: 5000, quarterly: 4500, annually: 4250 },
+    CAD: { monthly: 6850, quarterly: 6166, annually: 5242 },
+  },
+  support: {
+    USD: { hourly: 75, bundle5: 70, bundle10: 65, bundle20: 60, bundle30: 55, bundle40: 50 },
+    CAD: { hourly: 100, bundle5: 95, bundle10: 90, bundle20: 85, bundle30: 80, bundle40: 75 },
+  },
+} as const;
+
+export function pricingPageDevTabs(locale: Locale) {
+  if (locale === "fr") {
+    return [
+      { id: "monthly", label: "Mensuel" },
+      { id: "quarterly", label: "Trimestriel (Économisez 10%)" },
+      { id: "annually", label: "Annuel (Économisez 15%)" },
+    ];
+  }
+  return [
+    { id: "monthly", label: "Monthly" },
+    { id: "quarterly", label: "Quarterly (Save 10%)" },
+    { id: "annually", label: "Annually (Save 15%)" },
   ];
 }
 
@@ -477,14 +527,18 @@ export function techTable(locale: Locale): { columns: [string, string, string]; 
 export function costs(opts: {
   locale: Locale;
   currency: "CAD" | "USD";
-  monthly: number;
-  quarterly: number;
-  sixmonth: number;
+  monthly?: number;
+  quarterly?: number;
+  sixmonth?: number;
   devSummaryHtml: string;
   supportSummaryHtml: string;
   techIntroHtml: string;
   priceFormat?: PriceFormat;
   extraFeatures?: Feature[];
+  /** Override the build tabs and prices (e.g. PRICING_PAGE). Ignores monthly/quarterly/sixmonth. */
+  devPlan?: { prices: Record<string, number>; tabs: { id: string; label: string }[] };
+  /** Override the hourly support prices (e.g. PRICING_PAGE.support.USD). */
+  supportPriceList?: Record<string, number>;
 }): CostsSection {
   const ui = labels(opts.locale);
   const table = techTable(opts.locale);
@@ -494,15 +548,15 @@ export function costs(opts: {
     dev: plan(
       opts.locale,
       opts.currency,
-      { monthly: opts.monthly, quarterly: opts.quarterly, sixmonth: opts.sixmonth },
-      devTabs(opts.locale),
+      opts.devPlan?.prices ?? { monthly: opts.monthly ?? 0, quarterly: opts.quarterly ?? 0, sixmonth: opts.sixmonth ?? 0 },
+      opts.devPlan?.tabs ?? devTabs(opts.locale),
       "month",
       opts.priceFormat,
     ),
     devSummaryHtml: opts.devSummaryHtml,
     features: [...features(opts.locale), ...(opts.extraFeatures ?? [])],
     supportLabel: ui.support,
-    support: plan(opts.locale, opts.currency, supportPrices(opts.currency), supportTabs(opts.locale), "hour", opts.priceFormat),
+    support: plan(opts.locale, opts.currency, opts.supportPriceList ?? supportPrices(opts.currency), supportTabs(opts.locale), "hour", opts.priceFormat),
     supportSummaryHtml: opts.supportSummaryHtml,
     techLabel: ui.tech,
     techIntroHtml: opts.techIntroHtml,

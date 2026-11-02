@@ -30,11 +30,15 @@ export function nodeMatches(node: SitemapTreeNode, query: string) {
   );
 }
 
-export function transformToHierarchy(urls: string[], baseUrl: string): SitemapTreeNode {
+export function transformToHierarchy(
+  urls: string[],
+  baseUrl: string,
+  labels: Record<string, string> = {},
+): SitemapTreeNode {
   const origin = new URL(baseUrl).origin;
   const root: SitemapTreeNode = {
     id: "/",
-    name: origin.replace(/^https?:\/\//, ""),
+    name: labels["/"] ?? origin.replace(/^https?:\/\//, ""),
     path: "/",
     url: origin,
     children: [],
@@ -51,11 +55,12 @@ export function transformToHierarchy(urls: string[], baseUrl: string): SitemapTr
 
     for (const segment of segments) {
       acc += `/${segment}`;
-      let child = current.children.find((entry) => entry.name === decodeSegment(segment));
+      const id = acc;
+      let child = current.children.find((entry) => entry.id === id);
       if (!child) {
         child = {
-          id: acc,
-          name: decodeSegment(segment),
+          id,
+          name: labels[acc] ?? decodeSegment(segment),
           path: acc,
           url: `${origin}${acc}`,
           children: [],
@@ -132,6 +137,7 @@ export function toFlowElements(
     query: string;
     totalUrls: number;
     onToggle: (id: string) => void;
+    linkable?: boolean;
   },
 ): {
   nodes: SitemapFlowNode[];
@@ -168,7 +174,7 @@ export function toFlowElements(
     nodes.push({
       id: d.data.id,
       type: "sitemap",
-      position: { x: d.y, y: d.x - NODE_HEIGHT / 2 },
+      position: { x: d.y ?? 0, y: (d.x ?? 0) - NODE_HEIGHT / 2 },
       data: {
         label: d.data.name,
         url: d.data.url,
@@ -178,6 +184,7 @@ export function toFlowElements(
         isRoot: d.data.isRoot,
         isLeaf: d.data.childCount === 0,
         match: query ? nodeMatches(d.data, query) : false,
+        linkable: options.linkable ?? true,
         onToggle: options.onToggle,
       },
       width: NODE_WIDTH,

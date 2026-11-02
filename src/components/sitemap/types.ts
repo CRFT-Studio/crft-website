@@ -20,6 +20,8 @@ export type SitemapNodeData = {
   isRoot: boolean;
   isLeaf: boolean;
   match: boolean;
+  /** When false, the node has no outbound link (e.g. proposed pages that do not exist yet). */
+  linkable: boolean;
   onToggle: (id: string) => void;
 };
 
