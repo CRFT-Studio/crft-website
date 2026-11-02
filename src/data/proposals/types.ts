@@ -1,3 +1,5 @@
+import type { ImageMetadata } from "astro";
+
 export type Locale = "en" | "fr";
 export type PriceFormat = "en-prefix" | "fr-suffix";
 
@@ -24,12 +26,13 @@ export interface HomepageSection {
     url: string;
     linkLabel: string;
     embedUrl?: string;
+    image?: { src: ImageMetadata; alt: string };
   };
 }
 
 export interface SitemapGroup {
   title: string;
-  items: { label: string; note?: string }[];
+  items: { label: string; note?: string; link?: { href: string; text: string } }[];
 }
 
 /** A proposed sitemap rendered with the CRFT Lookup React Flow canvas. */

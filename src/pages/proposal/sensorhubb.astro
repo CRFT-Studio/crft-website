@@ -2,11 +2,16 @@
 import ProposalLayout from "../../layouts/ProposalLayout.astro";
 import ProposalSection from "../../components/proposal/ProposalSection.astro";
 import proposalData, { sections } from "../../data/proposals/sensorhubb";
+import { Image } from "astro:assets";
+import sensorhubbLogo from "../../images/sensorhubb-logo.avif";
 
 export const proposal = proposalData;
 ---
 <ProposalLayout proposal={proposal}>
-  <ProposalSection slot="after-homepage" id={sections.leadScoring.slug} heading={sections.leadScoring.text}>
+  <a slot="clientLogo" href={proposal.clientUrl}>
+    <Image src={sensorhubbLogo} alt="SensorHubb" class="w-[180px] h-auto" loading="eager" />
+  </a>
+  <ProposalSection slot="after-sitemap" id={sections.leadScoring.slug} heading={sections.leadScoring.text}>
     <p>Today the demo form asks for name, email, phone, company, location and number of locations. None of that tells your team whether a lead scores 70 or 25. We replace it with a short, stepped booking flow whose questions follow the scoring table in your ICP field guide, then write the result to HubSpot.</p>
     <table>
       <thead><tr><th>Question in the flow</th><th>ICP criterion (points)</th></tr></thead>
@@ -31,45 +36,4 @@ export const proposal = proposalData;
     <p>Not every role counts the same to your sales team. Question order, wording and weights are confirmed with sales during discovery.</p>
   </ProposalSection>
 
-  <ProposalSection slot="after-homepage" id={sections.siteAudit.slug} heading={sections.siteAudit.text}>
-    <h3>What we found on sensorhubb.com</h3>
-    <ul>
-      <li>The Industries pages are a strong base. Healthcare, K-12 and Life Sciences have pages. Food manufacturing appears on the homepage but has no page, while it is a Tier 2B priority.</li>
-      <li>Internal links to lowercase paths such as /industries/healthcare return 404, and there is no sitemap.xml.</li>
-      <li>“See it in Action” points to a Microsoft Teams event that is no longer accessible.</li>
-      <li>Integrations appear only in release notes and About. The MCP server is not marketed.</li>
-    </ul>
-    <h3>What we add</h3>
-    <ul>
-      <li>Role pages for the people in your field guide, facilities first. Their order and depth follow how your sales team weighs each role.</li>
-      <li>An integrations hub with pages for FMX, MaintainX and ServiceNow, alert routing, and building systems.</li>
-      <li>“What we monitor” pages for long-tail searches, such as walk-in freezer temperature monitoring or vaccine refrigerator monitoring.</li>
-      <li>Landing pages with one goal and one call to action each, for campaigns and for each segment.</li>
-    </ul>
-  </ProposalSection>
-
-  <ProposalSection slot="after-sitemap" id={sections.missingSignal.slug} heading={sections.missingSignal.text}>
-    <p>Your field guide tells SDRs to open facilities conversations with The Missing Signal. The site should do the same. The e-book becomes a gated landing page for facilities buyers. Its five questions become an interactive self-check that leads into the booking flow, and its own call to action, “Book a 30-minute signal assessment”, matches the one already on your site. The Partner Edition gets a partner landing page, so channel-sourced leads are attributed in HubSpot.</p>
-    <p>The MCP server gets its own page: ask your AI assistant which freezers are drifting, what was escalated, and which repairs recovered, without another dashboard. It appears on the homepage, the integrations hub and the facilities role page.</p>
-  </ProposalSection>
-
-  <ProposalSection slot="after-sitemap" id={sections.contentPlan.slug} heading={sections.contentPlan.text}>
-    <p>The ten problems in Chapter 6 came from forums where facilities crews talk to each other, so they match how buyers search. Each gets a format that fits its grade.</p>
-    <table>
-      <thead><tr><th>Problem</th><th>Grade</th><th>Format</th></tr></thead>
-      <tbody>
-        <tr><td>2. Logs and rounds leave gaps</td><td>Solves</td><td>Landing page</td></tr>
-        <tr><td>6. Nobody is watching when the building is empty</td><td>Solves</td><td>Landing page</td></tr>
-        <tr><td>1. The budget says no, so equipment runs past its life</td><td>Helps</td><td>Article: build the capital case with a drift record</td></tr>
-        <tr><td>4. Outside contractors let them down</td><td>Helps</td><td>Article: check that the repair held</td></tr>
-        <tr><td>5. Too few people, too many buildings</td><td>Helps</td><td>Article, linked from the facilities role page</td></tr>
-        <tr><td>7. Too hot, too cold</td><td>Helps</td><td>Article: settle comfort calls with a reading</td></tr>
-        <tr><td>8. Occupants misuse equipment, then call it broken</td><td>Helps</td><td>Article: the door or the compressor, with door sensor and temperature traces</td></tr>
-        <tr><td>10. Building controls nobody understands</td><td>Helps</td><td>Comparison page: SensorHubb and your BAS</td></tr>
-        <tr><td>3. Too little training</td><td>Not ours</td><td>No page. A plain-language alerts FAQ</td></tr>
-        <tr><td>9. Pay, respect and on-call</td><td>Not ours</td><td>No page</td></tr>
-      </tbody>
-    </table>
-    <p>The seven skeptics' tests become an evaluation checklist. Topics just outside the top ten (after-hours call-outs, missing drawings, calibration disputes) feed the article backlog.</p>
-  </ProposalSection>
 </ProposalLayout>

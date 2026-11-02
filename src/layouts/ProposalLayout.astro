@@ -1,5 +1,6 @@
 ---
 import Navigation from "../components/Navigation.astro";
+import { Image } from "astro:assets";
 import FAQItem from "../components/FAQItem.astro";
 import HeadScripts from "../components/HeadScripts.astro";
 import CrftLogo from "../components/proposal/CrftLogo.astro";
@@ -194,7 +195,7 @@ const externalIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" widt
             </div>
           </div>
           <div class="border border-neutral-700 bg-neutral-800 lg:p-20 lg:pt-8 p-5">
-            <div class="lg:flex hidden flex-row items-center gap-6 flex-wrap">
+            <div class:list={[Astro.slots.has("clientLogo") ? "flex" : "lg:flex hidden", "flex-row items-center gap-6 flex-wrap"]}>
               <CrftLogo />
               <div class="text-xl text-neutral-300">x</div>
               {Astro.slots.has("clientLogo") ? (
@@ -205,7 +206,7 @@ const externalIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" widt
                 <div class="text-xl font-medium">{proposal.clientName}</div>
               )}
             </div>
-            <div class="lg:block hidden h-[1px] bg-neutral-700 w-full mt-5 mb-16"></div>
+            <div class:list={[!Astro.slots.has("clientLogo") && "lg:block hidden", "h-[1px] bg-neutral-700 w-full mt-5 mb-16"]}></div>
             {proposal.todos && (
               <div class="square-card border-orange-300 mb-10">
                 <div class="text-orange-300 font-medium mb-3">{proposal.todos.heading}</div>
@@ -251,7 +252,18 @@ const externalIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" widt
                           </a>
                         </div>
                       </div>
-                      {proposal.homepage.redesign.embedUrl && (
+                      {proposal.homepage.redesign.image ? (
+                        <a href={proposal.homepage.redesign.url} target="_blank" rel="noopener noreferrer" class="block w-full px-5 lg:pl-0 lg:pr-8 pb-0">
+                          <Image
+                            src={proposal.homepage.redesign.image.src}
+                            alt={proposal.homepage.redesign.image.alt}
+                            widths={[480, 800, 1200]}
+                            sizes="(min-width: 1024px) 500px, 100vw"
+                            class="w-full h-auto"
+                            loading="lazy"
+                          />
+                        </a>
+                      ) : proposal.homepage.redesign.embedUrl && (
                         <div class="w-[150%] h-[400px] overflow-hidden relative lg:pl-0 pl-5 pointer-events-none">
                           <iframe
                             src={proposal.homepage.redesign.embedUrl}
@@ -342,13 +354,14 @@ const externalIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" widt
             {proposal.sitemap.groups && (
               <div class="grid md:grid-cols-2 gap-4">
                 {proposal.sitemap.groups.map((group) => (
-                  <div class="square-card">
-                    <div class="text-lg font-medium mb-3">{group.title}</div>
-                    <ul class="flex flex-col gap-2 text-neutral-300">
+                  <div class="square-card p-0">
+                    <div class="text-lg font-medium mb-3 border-b border-neutral-600 pl-5">{group.title}</div>
+                    <ul class="flex flex-col gap-2 text-neutral-300 p-5 pt-2">
                       {group.items.map((item) => (
                         <li>
-                          <span class="text-neutral-100">{item.label}</span>
-                          {item.note && <span class="text-neutral-400"> — {item.note}</span>}
+                          <span class="text-orange-300">{item.label}</span>
+                           {item.note && <span class="text-neutral-400"> — {item.note}</span>}
+                           {item.link && <a href={item.link.href} class="text-orange-300 underline"> {item.link.text}</a>}
                         </li>
                       ))}
                     </ul>
@@ -504,7 +517,7 @@ const externalIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" widt
         border-color: #525252 !important;
         @apply bg-neutral-700;
       }
-      .toc-current {
+      :global(#toc .toc-current) {
         @apply text-orange-300 font-medium;
       }
     </style>
@@ -591,23 +604,45 @@ const externalIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" widt
         }
       }
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            document.querySelectorAll(".toc-link").forEach((link) => link.classList.remove("toc-current"));
-            const targetLink = document.querySelector(`a[href="#${entry.target.id}"].toc-link`);
-            if (targetLink) targetLink.classList.add("toc-current");
-          }
+      const tocSections = Array.from(document.querySelectorAll<HTMLAnchorElement>("#toc .toc-link"))
+        .map((link) => ({ link, target: document.getElementById(link.hash.slice(1)) }))
+        .filter((section) => section.target !== null);
+
+      tocSections.forEach(({ target }) => target.classList.add("scroll-mt-24"));
+
+      function updateActiveSection() {
+        if (!tocSections.length) return;
+        let active = tocSections[0];
+        for (const section of tocSections) {
+          if (section.target.getBoundingClientRect().top <= 112) active = section;
+        }
+        if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+          active = tocSections[tocSections.length - 1];
+        }
+        tocSections.forEach(({ link }) => {
+          const isActive = link === active.link;
+          link.classList.toggle("toc-current", isActive);
+          if (isActive) link.setAttribute("aria-current", "location");
+          else link.removeAttribute("aria-current");
         });
-      }, {
-        root: null,
-        rootMargin: "0px 0px -50% 0px",
-        threshold: [1],
-      });
-      document.querySelectorAll("h2").forEach((heading) => {
-        heading.classList.add("scroll-mt-24");
-        observer.observe(heading);
-      });
+      }
+
+      let tocFramePending = false;
+      function scheduleTocUpdate() {
+        if (tocFramePending) return;
+        tocFramePending = true;
+        requestAnimationFrame(() => {
+          tocFramePending = false;
+          updateActiveSection();
+        });
+      }
+      window.addEventListener("scroll", scheduleTocUpdate, { passive: true });
+      window.addEventListener("resize", scheduleTocUpdate);
+      window.addEventListener("pageshow", scheduleTocUpdate);
+      window.addEventListener("load", scheduleTocUpdate);
+      const tocResizeObserver = new ResizeObserver(scheduleTocUpdate);
+      tocResizeObserver.observe(document.body);
+      updateActiveSection();
     </script>
   </body>
 </html>
