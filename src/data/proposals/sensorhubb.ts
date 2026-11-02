@@ -150,8 +150,10 @@ const proposal: Proposal = {
     totalLabel: "Estimated project duration: 4 months",
     phases: [
       { name: "Onboarding", duration: "Week 1", items: [
+        "Subscription begun and Basecamp project invite sent",
         "Kickoff with Steve and sales leadership",
         "Access to the current site, HubSpot (forms, properties, workflows), brand assets and product screenshots",
+        "Establish a baseline with <a href='/lookup' class='text-orange-300 underline'>CRFT Lookup</a>: Lighthouse scores, tech stack, sitemap and meta tags, building on the audit already shared",
         "Confirm the embargo date for The Missing Signal",
       ] },
       { name: "Discovery & sitemap", duration: "2 weeks", items: [
@@ -160,21 +162,33 @@ const proposal: Proposal = {
         "HubSpot field and routing plan for the ICP score",
       ] },
       { name: "Design", duration: "3 weeks", items: [
+        "Refine the website color palette and typography within SensorHubb’s existing brand identity",
+        "Wireframe core pages and the stepped booking flow before building out the designs",
         "Homepage, industry, role, integration, use-case and article templates",
         "Booking flow screens",
-      ] },
+      ], noteHtml: "We limit our use of vector design tools like Figma beyond initial ideation, and build high-fidelity designs in code. Your team reviews real responsive pages rather than a separate set of static mockups." },
       { name: "Build & content", duration: "8 weeks", items: [
-        "Astro templates and Sanity content types",
+        "Set up the code repository, responsive Astro templates and reusable components, and Sanity content types",
+        "Write and collaborate on copy for each page, with your approval of product claims and embargoed materials",
         "Scored booking flow into HubSpot, with UTM and partner attribution",
         "Integration, MCP, role and use-case pages; Missing Signal resource page and blog articles",
         "Migration of current content and redirects; sitemap.xml",
         "PostHog analytics and conversion events",
+        "Configure cookie consent where required for the chosen analytics and HubSpot setup",
       ] },
       { name: "QA, training & launch", duration: "2 weeks", items: [
         "Cross-browser, accessibility and performance pass; end-to-end tests of every HubSpot route",
         "Sanity training for your team",
+        "Deploy to Cloudflare Pages and configure the custom domain and DNS for launch",
         "Launch and redirect checks",
       ] },
+      { name: "Optional maintenance", duration: "After launch (as needed)", items: [
+        "Performance optimization and speed improvements",
+        "Dependency updates and website security checks",
+        "New industry, role, use-case and campaign landing pages as priorities evolve",
+        "Analytics monitoring and reporting on assessment bookings and the qualification flow",
+        "Technical support for the website, forms and HubSpot connections",
+      ], noteHtml: "Post-launch maintenance is optional and billed at the support rates below. It is separate from the four-month build estimate." },
     ],
   },
   costs: costs({
