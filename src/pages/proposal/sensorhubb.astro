@@ -12,28 +12,13 @@ export const proposal = proposalData;
     <Image src={sensorhubbLogo} alt="SensorHubb" class="w-[180px] h-auto" loading="eager" />
   </a>
   <ProposalSection slot="after-sitemap" id={sections.leadScoring.slug} heading={sections.leadScoring.text}>
-    <p>Today the demo form asks for name, email, phone, company, location and number of locations. None of that tells your team whether a lead scores 70 or 25. We replace it with a short, stepped booking flow whose questions follow the scoring table in your ICP field guide, then write the result to HubSpot.</p>
-    <table>
-      <thead><tr><th>Question in the flow</th><th>ICP criterion (points)</th></tr></thead>
-      <tbody>
-        <tr><td>Which regulators or audits apply to you?</td><td>Regulated obligation (20)</td></tr>
-        <tr><td>How many fridges, freezers, rooms or assets at your first site?</td><td>Monitoring points (15)</td></tr>
-        <tr><td>How many sites do you decide for?</td><td>Sites under one decision-maker (15)</td></tr>
-        <tr><td>Which maintenance system (CMMS) do you run?</td><td>CMMS or channel fit (15)</td></tr>
-        <tr><td>What do you use today, and when does it renew or expire?</td><td>Legacy system end of life (10)</td></tr>
-        <tr><td>Who signs, and is there a budget line?</td><td>Economic buyer and budget (10)</td></tr>
-        <tr><td>Your role</td><td>Facilities owner engaged (5) and persona</td></tr>
-        <tr><td>Do you need calibration certificates?</td><td>Calibration requirement (5)</td></tr>
-        <tr><td>How do you buy (direct, cooperative contract, RFP)?</td><td>Purchasing vehicle (5)</td></tr>
-      </tbody>
-    </table>
+    <p>We’ll replace the current contact-details form with a short, stepped booking flow that models your existing ICP scoring criteria in HubSpot. The aim is to turn your internal qualification process into a useful website journey—not introduce a new scoring system.</p>
     <ul>
-      <li>70 or above: book straight into an AE's calendar.</li>
-      <li>45 to 69: a thank-you page with The Missing Signal, and a nurture sequence in HubSpot.</li>
-      <li>Below 45: the self-serve path, or the product catalog until it launches. No demo is booked, as the field guide says.</li>
-      <li>Vertical, ICP score, trigger, persona and facilities-engaged are set on the HubSpot record, with UTM and partner source.</li>
+      <li>Translate the guide into concise questions, conditional steps and eligibility checks, using your existing weights, thresholds and routing exceptions.</li>
+      <li>Write responses, the provisional score and attribution to HubSpot, then route visitors to the appropriate booking, nurture or self-serve next step.</li>
+      <li>Keep criteria that require a sales conversation separate from form-derived points, with rep confirmation recorded in HubSpot rather than assumed by the form.</li>
+      <li>Confirm the question wording, field mapping and calendar handoffs with sales, and test each approved route before launch.</li>
     </ul>
-    <p>Not every role counts the same to your sales team. Question order, wording and weights are confirmed with sales during discovery.</p>
   </ProposalSection>
 
 </ProposalLayout>

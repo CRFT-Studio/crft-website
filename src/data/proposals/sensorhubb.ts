@@ -1,11 +1,11 @@
 import type { Proposal } from "./types";
 import heroMockup from "../../images/audits/sensorhubb-after.png";
-import { OG_DEFAULT, PRICING_PAGE, TODO_HEADING, baseFaqs, costs, labels, pricingPageDevTabs, supportSummary, tocFor } from "./shared";
+import { OG_DEFAULT, PRICING_PAGE, baseFaqs, costs, labels, pricingPageDevTabs, supportSummary, tocFor } from "./shared";
 
 const locale = "en" as const;
 const ui = labels(locale);
 
-/** Bespoke sections rendered through ProposalLayout slots in src/pages/proposal/sensorhubb.astro. */
+/** Bespoke sections rendered through ProposalLayout slots in the private SensorHubb proposal page. */
 export const sections = {
   leadScoring: { slug: "lead-scoring", text: "Lead scoring & booking" },
 };
@@ -27,7 +27,7 @@ const proposal: Proposal = {
     enabled: true,
     heading: ui.homepage,
     bodyHtml:
-      "We start from the hero mockup we shared on October 28 and fix what you flagged: lead with prediction, show the loop from alert to work order to verified recovery instead of raw readings, separate customers from hardware partners in the logo bar, use “Predict. Prevent. Protect.” correctly, and show the same readings on laptop and phone.",
+      "We start from the hero mockup we shared on October 28 and fix what you flagged: lead with prediction, show the loop from alert to work order to verified recovery instead of raw readings, separate customers from hardware partners in the logo bar, use “Predict. Prevent. Protect.” correctly, and show the same readings on laptop and phone. Proof follows the sales guide’s priorities: hotels are expansion-only, so Hyatt and other hospitality logos are not used to imply a primary acquisition segment. Every customer logo requires approval.",
     redesign: {
       title: "Hero mockup and annotations",
       description: "The first pass, built from public assets only. The redesign iterates from here with your input and real materials.",
@@ -40,7 +40,7 @@ const proposal: Proposal = {
   sitemap: {
     heading: ui.sitemap,
     noteHtml:
-      "Proposed structure, organized by industry, buyer role and use case. Descriptive, lowercase, hyphenated URLs match each page’s search intent; final wording is validated through keyword research during discovery. The annotations below compare this plan with the current site. Drag, zoom, search, or expand the canvas.",
+      "Proposed structure, organized by industry, buyer role and use case. Descriptive, lowercase, hyphenated URLs match each page’s search intent; final wording is validated through keyword research during discovery. The annotations below compare this plan with the current site. Life Sciences is a conditional test segment, not a committed launch priority; its proposed page requires sales-leadership approval. Drag, zoom, search, or expand the canvas.",
     tree: {
       baseUrl: "https://www.sensorhubb.com",
       labels: {
@@ -49,7 +49,7 @@ const proposal: Proposal = {
         "/platform/how-it-works": "How it works (the closed loop)",
         "/platform/predictive-analytics": "Predictive analytics",
         "/platform/mcp-server": "AI assistants (MCP server)",
-        "/platform/sensor-calibration": "Sensor calibration",
+        "/platform/sensor-calibration": "Sensor calibration & ISO/IEC 17025 evidence",
         "/integrations": "Integrations",
         "/integrations/fmx": "FMX",
         "/integrations/maintainx": "MaintainX",
@@ -60,7 +60,7 @@ const proposal: Proposal = {
         "/industries/healthcare-temperature-monitoring": "Healthcare temperature monitoring",
         "/industries/k12-school-monitoring": "K-12 school monitoring",
         "/industries/food-production-temperature-monitoring": "Food production & distribution monitoring",
-        "/industries/life-sciences-temperature-monitoring": "Life sciences temperature monitoring",
+        "/industries/life-sciences-temperature-monitoring": "Life sciences monitoring (test; approval required)",
         "/roles": "Roles",
         "/roles/facilities-directors": "Facilities & plant operations directors",
         "/roles/pharmacy-directors": "Pharmacy directors",
@@ -68,6 +68,10 @@ const proposal: Proposal = {
         "/roles/quality-compliance-managers": "Quality & compliance managers",
         "/roles/child-nutrition-directors": "Child nutrition directors",
         "/roles/business-managers-cfos": "Business managers & CFOs",
+        "/roles/practice-administrators": "Practice administrators",
+        "/roles/plant-managers": "Plant managers",
+        "/roles/qa-food-safety-managers": "QA & food safety managers",
+        "/roles/cmms-administrators": "CMMS administrators",
         "/use-cases": "Monitoring use cases",
         "/use-cases/walk-in-cooler-temperature-monitoring": "Walk-in cooler temperature monitoring",
         "/use-cases/walk-in-freezer-temperature-monitoring": "Walk-in freezer temperature monitoring",
@@ -79,15 +83,17 @@ const proposal: Proposal = {
         "/use-cases/door-open-monitoring": "Door-open monitoring",
         "/use-cases/continuous-temperature-monitoring": "Continuous temperature monitoring instead of manual logs",
         "/use-cases/after-hours-building-monitoring": "After-hours building monitoring",
+        "/use-cases/legacy-monitoring-replacement": "Replace end-of-life monitoring",
         "/resources": "Resources",
         "/resources/the-missing-signal": "The Missing Signal (e-book)",
         "/resources/signal-assessment": "Find your missing signal (self-check)",
         "/resources/sensor-monitoring-evaluation-checklist": "The seven skeptics' tests",
         "/resources/sensorhubb-vs-bas": "Does my BAS not already do this?",
+        "/resources/sensorhubb-and-your-cmms": "SensorHubb alongside your CMMS",
         "/blog": "Blog",
         "/customers": "Customers",
-        "/security": "Security & trust",
-        "/partners": "Partners",
+        "/security": "Security & governance",
+        "/partners": "Partner directory (subject to confirmation)",
         "/about": "About",
         "/careers": "Careers",
         "/contact": "Contact",
@@ -101,31 +107,44 @@ const proposal: Proposal = {
         "/integrations/fmx", "/integrations/maintainx", "/integrations/servicenow", "/integrations/alerts", "/integrations/building-systems",
         "/industries/healthcare-temperature-monitoring", "/industries/k12-school-monitoring", "/industries/food-production-temperature-monitoring", "/industries/life-sciences-temperature-monitoring",
         "/roles/facilities-directors", "/roles/pharmacy-directors", "/roles/laboratory-directors", "/roles/quality-compliance-managers", "/roles/child-nutrition-directors", "/roles/business-managers-cfos",
+        "/roles/practice-administrators", "/roles/plant-managers", "/roles/qa-food-safety-managers", "/roles/cmms-administrators",
         "/use-cases/walk-in-cooler-temperature-monitoring", "/use-cases/walk-in-freezer-temperature-monitoring", "/use-cases/vaccine-refrigerator-temperature-monitoring", "/use-cases/laboratory-freezer-temperature-monitoring", "/use-cases/server-room-environmental-monitoring", "/use-cases/water-leak-detection", "/use-cases/boiler-room-monitoring", "/use-cases/door-open-monitoring",
-        "/use-cases/continuous-temperature-monitoring", "/use-cases/after-hours-building-monitoring",
-        "/resources/the-missing-signal", "/resources/signal-assessment", "/resources/sensor-monitoring-evaluation-checklist", "/resources/sensorhubb-vs-bas",
+        "/use-cases/continuous-temperature-monitoring", "/use-cases/after-hours-building-monitoring", "/use-cases/legacy-monitoring-replacement",
+        "/resources/the-missing-signal", "/resources/signal-assessment", "/resources/sensor-monitoring-evaluation-checklist", "/resources/sensorhubb-vs-bas", "/resources/sensorhubb-and-your-cmms",
         "/blog", "/customers", "/security", "/partners", "/about", "/careers", "/contact", "/book-signal-assessment", "/book-a-demo", "/release-notes", "/press",
       ],
     },
     groups: [
-      { title: "Industries — retain & expand", items: [
-        { label: "/industries", note: "Current: Healthcare, K-12 and Life Sciences already have pages. Proposed: retain and strengthen that content under descriptive monitoring URLs, with a hub linking to each industry." },
+      { title: "Industries — follow sales priorities", items: [
+        { label: "/industries", note: "Current: Healthcare, K-12 and Life Sciences already have pages. Proposed: organize the hub around the sales guide’s priorities rather than treating every segment as an equal acquisition target. A partner-led K-12 journey is an assumption to validate with SensorHubb, not a confirmed channel arrangement." },
+        { label: "/industries/life-sciences-temperature-monitoring", note: "A test segment only. The proposed path is conditional on sales-leadership approval; confirm how existing content is retained or redirected before migration, rather than committing to strengthen or promote this segment." },
         { label: "/industries/food-production-temperature-monitoring", note: "Current: food manufacturing appears on the homepage but has no dedicated page, despite its Tier 2B priority. Proposed: a landing page for food production and distribution buyers." },
+        { label: "Hotels — expansion only", note: "Do not add a hotel acquisition campaign or lean on Hyatt as proof of a primary target market. Use hospitality evidence only in an approved expansion context." },
       ] },
       { title: "Roles — new buyer journeys", items: [
-        { label: "/roles", note: "Proposed addition: dedicated pages for facilities, pharmacy, laboratory, quality and compliance, child nutrition, and finance decision-makers. Facilities comes first; sales confirms each role’s priority and depth." },
+        { label: "/roles", note: "Proposed addition: dedicated pages for facilities, pharmacy, laboratory, quality and compliance, child nutrition, and finance decision-makers, plus Practice Administrator, Plant Manager, QA/Food Safety Manager and CMMS administrator. Facilities comes first; sales confirms each role’s priority and depth." },
         { label: "Industry vs. role intent", note: "Industry pages address sector-specific requirements; role pages address the buyer’s responsibilities, objections and next step. Link them rather than duplicating their content." },
+        { label: "Pharmacy & laboratory buyers", note: "Use regulator-specific messaging and evidence requirements from the field guide, validated with SensorHubb’s compliance team during discovery. Link to calibration and security/governance evidence rather than making broad compliance promises." },
       ] },
       { title: "Use cases — new search landing pages", items: [
         { label: "/use-cases", note: "Proposed addition: one home for asset- and problem-led searches, rather than overlapping monitoring and solutions sections. Dedicated URLs cover walk-in coolers, freezers, vaccine refrigerators, lab freezers, server rooms, leaks, mechanical rooms and open doors." },
         { label: "Continuous & after-hours monitoring", note: "Chapter 6 grades gaps in manual logs and unwatched empty buildings as “Solves”, so these get dedicated landing pages. Each page targets a distinct search intent, with relevant evidence and one primary call to action; campaign and segment pages follow the same rule." },
+        { label: "Buying triggers → landing pages", note: "Map the field guide’s buying triggers to distinct landing-page messages and HubSpot trigger fields. The proposed legacy-monitoring-replacement page addresses the renewal/end-of-life question already in the booking flow; validate further trigger pages against the guide before adding scope or duplicating existing use cases." },
       ] },
       { title: "Integrations & MCP — make them discoverable", items: [
         { label: "/integrations", note: "Current: integrations appear only in release notes and About. Proposed: a searchable hub with dedicated FMX, MaintainX and ServiceNow pages, plus alert routing and building-system connections." },
         { label: "/platform/mcp-server", note: "Current: the MCP server is not marketed. Proposed: a dedicated page showing how buyers can ask their AI assistant which freezers are drifting, what was escalated and which repairs recovered, without another dashboard. Link to it from the homepage, integrations hub and facilities role page, with approved capability and permissions claims." },
       ] },
+      { title: "Security & calibration — enterprise evidence", items: [
+        { label: "/security", note: "Lead enterprise journeys with security and governance. Address 21 CFR Part 11 requirements and SOC 2 evidence, including the scope and status of available documentation. Have SensorHubb verify every statement before publication; do not imply certification or compliance without supporting evidence." },
+        { label: "/platform/sensor-calibration", note: "Explain calibration and ISO/IEC 17025-accredited calibration evidence as part of the compliance answer, not an upsell. Specify certificate availability and the scope of the calibration provider’s accreditation only after verification; link from pharmacy, lab and regulated-industry pages." },
+      ] },
+      { title: "Partners — proposed directory", items: [
+        { label: "/partners", note: "A directory could help buyers find relevant implementation, channel or technology partners. We do not yet have a confirmed partner roster or classifications; SensorHubb must approve who is listed, their relationship, logos and any contact or referral process. An integration or customer logo alone is not evidence of a partnership." },
+        { label: "Channel journeys — validate during discovery", note: "Confirm which industries, if any, use partner-led purchasing and how referrals should be attributed and routed in HubSpot. K-12 is a working assumption to discuss, not a confirmed partner program; no K-12-specific partner page is committed at this stage." },
+      ] },
       { title: "Conversion — replace dead ends", items: [
-        { label: "/book-a-demo", note: "Current: demo booking is only available in a popup. Proposed: a dedicated page with a shareable URL for campaigns and sales outreach, room to explain what the demo covers and add relevant proof, a mobile-friendly stepped form, and clearer funnel measurement. Use the same ICP scoring and HubSpot routing as the signal-assessment journey.", link: { href: `#${sections.leadScoring.slug}`, text: "See lead scoring & booking below." } },
+        { label: "/book-a-demo", note: "Current: demo booking is only available in a popup. Proposed: a dedicated page with a shareable URL for campaigns and sales outreach, room to explain what the demo covers and add relevant proof, a mobile-friendly stepped form, and clearer funnel measurement. Demo and assessment journeys share eligibility overrides, provisional scoring, rep verification and HubSpot routing—not score-only calendar access.", link: { href: `#${sections.leadScoring.slug}`, text: "See lead scoring & booking below." } },
         { label: "/book-signal-assessment", note: "Current: “See it in Action” points to an inaccessible Microsoft Teams event. Proposed: a working, scored booking flow with a clear signal-assessment call to action." },
       ] },
       { title: "Resources — The Missing Signal & evaluation", items: [
@@ -133,6 +152,7 @@ const proposal: Proposal = {
         { label: "/resources/signal-assessment", note: "Turn the e-book’s five questions into an interactive self-check leading into the scored booking flow, with the existing call to action: “Book a 30-minute signal assessment”." },
         { label: "/resources/sensor-monitoring-evaluation-checklist", note: "Turn the seven skeptics’ tests into a practical vendor evaluation checklist." },
         { label: "/resources/sensorhubb-vs-bas", note: "Chapter 6 grades confusing building controls as “Helps”. Use a comparison page to explain how SensorHubb complements, rather than replaces, the BAS." },
+        { label: "/resources/sensorhubb-and-your-cmms", note: "Use the guide’s objections table to explain why an existing CMMS does not remove the need for a signal layer. Feed related objections into on-page FAQs and comparison content, using approved answers rather than inventing product capabilities." },
       ] },
       { title: "Blog — practical content, not extra landing pages", items: [
         { label: "/blog", note: "All articles live at /blog/{article-slug}, separate from /resources. Chapter 6’s forum-derived problems inform topics that match how facilities buyers search." },
@@ -154,12 +174,14 @@ const proposal: Proposal = {
         "Kickoff with Steve and sales leadership",
         "Access to the current site, HubSpot (forms, properties, workflows), brand assets and product screenshots",
         "Establish a baseline with <a href='/lookup' class='text-orange-300 underline'>CRFT Lookup</a>: Lighthouse scores, tech stack, sitemap and meta tags, building on the audit already shared",
-        "Confirm the embargo date for The Missing Signal",
+        "Confirm the embargo date for The Missing Signal and Steve’s permission to include its material in this private proposal; agree on protected sharing if required",
       ] },
       { name: "Discovery & sitemap", duration: "2 weeks", items: [
         "Short interviews with SDRs, AEs and enterprise sales to weight roles and qualifying questions",
         "Content inventory, redirect map, and the sitemap above, signed off before design",
         "HubSpot field and routing plan for the ICP score",
+        "Confirm segment priorities, Life Sciences test approval, partner relationships and channel assumptions (including K-12), eligibility overrides and rep-confirmed scoring criteria with sales leadership",
+        "Map objections and buying triggers to content; verify regulator-specific, security/governance and calibration evidence with SensorHubb",
       ] },
       { name: "Design", duration: "3 weeks", items: [
         "Refine the website color palette and typography within SensorHubb’s existing brand identity",
@@ -171,13 +193,14 @@ const proposal: Proposal = {
         "Set up the code repository, responsive Astro templates and reusable components, and Sanity content types",
         "Write and collaborate on copy for each page, with your approval of product claims and embargoed materials",
         "Scored booking flow into HubSpot, with UTM and partner attribution",
-        "Integration, MCP, role and use-case pages; Missing Signal resource page and blog articles",
+        "Integration, MCP, approved industry, role and use-case pages; security/governance and calibration content; a partner directory if the roster is confirmed; Missing Signal resource page and blog articles",
         "Migration of current content and redirects; sitemap.xml",
         "PostHog analytics and conversion events",
         "Configure cookie consent where required for the chosen analytics and HubSpot setup",
       ] },
       { name: "QA, training & launch", duration: "2 weeks", items: [
         "Cross-browser, accessibility and performance pass; end-to-end tests of every HubSpot route",
+        "Test disqualifiers, corporate and partner handoffs, and provisional versus rep-confirmed scoring; verify embargo and compliance-claim approvals before publishing",
         "Sanity training for your team",
         "Deploy to Cloudflare Pages and configure the custom domain and DNS for launch",
         "Launch and redirect checks",
@@ -206,15 +229,15 @@ const proposal: Proposal = {
     ...baseFaqs(locale),
     {
       question: "Does this replace HubSpot?",
-      answer: "No. HubSpot stays your CRM. The booking flow writes the ICP score, vertical, trigger and persona to the properties your sales team already uses, and routes each lead the way your field guide says.",
+      answer: "No. HubSpot stays your CRM. The booking flow writes provisional and rep-confirmed ICP scores, vertical, trigger, persona, eligibility outcome and routing reason to the properties agreed with sales. Eligibility overrides and partner or enterprise handoffs take precedence over the score.",
     },
     {
       question: "How do you handle integration and product claims?",
-      answer: "We keep the qualifiers you use in The Missing Signal, such as “subject to the deployed integration and permissions”. You approve every claim about integrations, calibration and the MCP server before launch.",
+      answer: "We keep the qualifiers you use in The Missing Signal, such as “subject to the deployed integration and permissions”. You approve every claim about integrations, calibration, security/governance and the MCP server before launch. References to 21 CFR Part 11, SOC 2 and ISO/IEC 17025 describe evidence and requirements to verify, not assumed certifications or blanket compliance claims.",
     },
     {
       question: "What about the embargo on The Missing Signal?",
-      answer: "The landing page and gated download stay unpublished until the date you set. This proposal page is unlisted and not indexed.",
+      answer: "The resource page and gated downloads stay unpublished until the date you set. This proposal itself discusses embargoed material, so we need your permission before sharing it. It carries a private-review notice and a noindex directive, but neither restricts access. Its URL is predictable; use authentication or password protection if required, as anyone who knows or guesses the URL can otherwise read it.",
     },
   ],
   contactHtml: ui.contact,

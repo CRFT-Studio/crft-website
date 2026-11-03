@@ -207,6 +207,7 @@ const externalIcon = `<svg xmlns="http://www.w3.org/2000/svg" height="20px" widt
               )}
             </div>
             <div class:list={[!Astro.slots.has("clientLogo") && "lg:block hidden", "h-[1px] bg-neutral-700 w-full mt-5 mb-16"]}></div>
+            <slot name="private-notice" />
             {proposal.todos && (
               <div class="square-card border-orange-300 mb-10">
                 <div class="text-orange-300 font-medium mb-3">{proposal.todos.heading}</div>
