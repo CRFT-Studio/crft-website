@@ -167,7 +167,7 @@ const proposal: Proposal = {
   },
   timeline: {
     heading: ui.timelines,
-    totalLabel: "Estimated project duration: 4 months",
+    totalLabel: "Estimated project duration: 3 months",
     phases: [
       { name: "Onboarding", duration: "Week 1", items: [
         "Subscription begun and Basecamp project invite sent",
@@ -183,7 +183,7 @@ const proposal: Proposal = {
         "Confirm segment priorities, Life Sciences test approval, partner relationships and channel assumptions (including K-12), eligibility overrides and rep-confirmed scoring criteria with sales leadership",
         "Map objections and buying triggers to content; verify regulator-specific, security/governance and calibration evidence with SensorHubb",
       ] },
-      { name: "Design", duration: "3 weeks", items: [
+      { name: "Design", duration: "1 week", items: [
         "Refine the website color palette and typography within SensorHubb’s existing brand identity",
         "Wireframe core pages and the stepped booking flow before building out the designs",
         "Homepage, industry, role, integration, use-case and article templates",
