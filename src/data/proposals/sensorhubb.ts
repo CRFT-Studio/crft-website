@@ -220,7 +220,7 @@ const proposal: Proposal = {
     devPlan: { prices: { ...PRICING_PAGE.dev.USD }, tabs: pricingPageDevTabs(locale) },
     supportPriceList: { ...PRICING_PAGE.support.USD },
     devSummaryHtml:
-      "A simple, straightforward monthly subscription until the launch of your website. An optional contract on request. $5,000 USD per month, or $4,500 USD per month billed quarterly (save 10%), or $4,250 USD per month billed annually (save 15%). The estimate above is four months. Pause or cancel anytime.",
+      "A simple, straightforward monthly subscription until the launch of your website. An optional contract on request. Pause or cancel anytime in a self-serve portal.",
     supportSummaryHtml: supportSummary(locale, "USD"),
     techIntroHtml: "These amounts are billed to SensorHubb and are not part of our fee. HubSpot stays on your existing plan.",
   }),
