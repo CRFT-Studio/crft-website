@@ -13,68 +13,49 @@ import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
 
 import react from "@astrojs/react";
+import { lookupRedirects } from "./src/lib/lookup-redirects.mjs";
+
+const SITE = "https://www.crft.studio";
+
+// Private, utility, or relocated routes. Prefix match so nested paths drop too.
+const NON_INDEXABLE_PREFIXES = [
+  "/proposal",
+  "/audit/requests",
+  "/lookup",
+  "/checkout",
+  "/thank-you",
+  "/success",
+  "/process-audit-request",
+  "/customers/mobiloud",
+];
+
+function isIndexablePath(pathname) {
+  const path = pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
+  return !NON_INDEXABLE_PREFIXES.some(
+    (prefix) => path === prefix || path.startsWith(`${prefix}/`),
+  );
+}
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.crft.studio',
+  site: SITE,
   integrations: [sitemap({
-      filter: (page) => !new URL(page).pathname.startsWith('/proposal') && !new URL(page).pathname.startsWith('/audit/requests') && !new URL(page).pathname.startsWith('/lookup'),
-  }), mdx(), robotsTxt(), react()],
+      filter: (page) => isIndexablePath(new URL(page).pathname),
+      serialize(item) {
+        const url = new URL(item.url);
+        item.url = url.pathname === "/"
+          ? `${SITE}/`
+          : `${SITE}${url.pathname.replace(/\/+$/, "")}`;
+        return item;
+      },
+  }), mdx(), robotsTxt({
+      sitemap: `${SITE}/sitemap-index.xml`,
+      policy: [{ userAgent: "*", allow: "/" }],
+  }), react()],
   output: "static",
   adapter: vercel(),
   trailingSlash: "never",
-  redirects: {
-    '/lookup': 'https://crftlookup.com',
-    '/lookup/report': 'https://crftlookup.com/dashboard/report',
-    ...Object.fromEntries([
-      'technology-detection',
-      'lighthouse',
-      'sitemap-visualizer',
-      'meta-tag-previewer',
-    ].map((page) => [`/lookup/${page}`, `https://crftlookup.com/features/${page}`])),
-    '/lookup/alternatives': 'https://crftlookup.com/alternatives',
-    ...Object.fromEntries([
-      'builtwith',
-      'ful',
-      'gtmetrix',
-      'metatagsio',
-      'octopus',
-      'pagespeed',
-      'pingdom',
-      'stackcrawler',
-      'wappalyzer',
-    ].map((name) => [`/lookup/${name}-alternative`, `https://crftlookup.com/alternatives/${name}-alternative`])),
-    ...Object.fromEntries([
-      'analytics-detector',
-      'cdn-detector',
-      'cms-detector',
-      'email-marketing-detector',
-      'js-framework-detector',
-      'shopify-app-detector',
-      'wp-plugin-detector',
-    ].map((page) => [`/lookup/use-cases/${page}`, `https://crftlookup.com/use-cases/${page}`])),
-    // Gallery URLs retain their /lookup prefix on the new site.
-    '/lookup/gallery': 'https://crftlookup.com/lookup/gallery',
-    ...Object.fromEntries([
-      'airbnb',
-      'apple',
-      'basecamp',
-      'brittany-chiang',
-      'cluely',
-      'figma',
-      'helium',
-      'incident',
-      'linear',
-      'notion',
-      'opal-camera',
-      'posthog',
-      'shopify',
-      'sketch',
-      'stripe',
-      'tailwind-css',
-      'uber',
-    ].map((page) => [`/lookup/gallery/${page}`, `https://crftlookup.com/lookup/gallery/${page}`])),
-  },
+  redirects: lookupRedirects(),
 
   vite: {
     plugins: [tailwindcss()]

@@ -16,7 +16,7 @@ Our free CRFT Lookup tool lets users scan any site to analyze its tech stack, Li
 ## Core Services and Offers
 - [Web Design & Development Services](https://www.crft.studio/#services) : Full-stack site design & dev, using Astro, React, Payload, and more
 - [Free Hero Redesign](https://www.crft.studio/audit) : Get a free homepage hero redesign with expert insights and mockups
-- [CRFT Lookup](https://www.crft.studio/lookup) : Analyze any website's tech stack, performance, SEO, and meta tags—free and shareable reports
+- [CRFT Lookup](https://www.crftlookup.com/lookup) : Analyze any website's tech stack, performance, SEO, and meta tags—free and shareable reports
 
 ## Documentation and Resources
 - [Glossary](https://www.crft.studio/glossary) : Definitions for web/tech terms used

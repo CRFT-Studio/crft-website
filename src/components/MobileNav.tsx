@@ -63,19 +63,19 @@ export function MobileNav() {
                     <div className=" text-neutral-300 mb-4">
                         All the info we look for in websites, consolidated. See the tech stack, pagespeed, sitemap and meta tags of the sites you're curious about.
                     </div>
-                    <a href="/lookup/gallery" className="flex flex-row justify-between items-center">
+                    <a href="https://www.crftlookup.com/lookup/gallery" className="flex flex-row justify-between items-center">
                       <div className="text-lg">Gallery</div>
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m517.85-480-184-184L376-706.15 602.15-480 376-253.85 333.85-296l184-184Z"/></svg>
                     </a>
-                    <a href="/lookup#features" className="flex flex-row justify-between items-center">
+                    <a href="https://www.crftlookup.com/lookup#features" className="flex flex-row justify-between items-center">
                       <div className="text-lg">Features</div>
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m517.85-480-184-184L376-706.15 602.15-480 376-253.85 333.85-296l184-184Z"/></svg>
                     </a>
-                    <a href="/lookup/alternatives" className="flex flex-row justify-between items-center">
+                    <a href="https://www.crftlookup.com/alternatives" className="flex flex-row justify-between items-center">
                       <div className="text-lg">Comparisons</div>
                       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m517.85-480-184-184L376-706.15 602.15-480 376-253.85 333.85-296l184-184Z"/></svg>
                     </a>
-                    <a href="/lookup" className="primary-cta text-base text-center font-medium mt-5 mb-2">Scan a Website</a>
+                    <a href="https://www.crftlookup.com/lookup" className="primary-cta text-base text-center font-medium mt-5 mb-2">Scan a Website</a>
                   </div>
                 </div>
               </DrawerContent>

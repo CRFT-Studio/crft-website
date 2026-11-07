@@ -30,6 +30,10 @@ import MyFittioAfter from "../images/audits/myfittio-after.png";
 
 const {heading, metaTitle, metaDescription, industry} = Astro.props;
 
+const description = industry
+  ? `Get a free ${industry} landing page hero redesign before you commit to a full rebuild. We'll share personalized insights to raise your ${industry} homepage hero's conversion rate.`
+  : metaDescription;
+
 const auditModules = import.meta.glob('../pages/audit/*.astro', { eager: true });
 const audits = Object.keys(auditModules).filter(path => !path.includes('index.astro')).map(path => ({ slug: path.replace('../pages/audit/', '').replace('.astro', ''), ...auditModules[path].auditData }));
 ---
@@ -37,7 +41,7 @@ const audits = Object.keys(auditModules).filter(path => !path.includes('index.as
     <head>
 		<HeadScripts
 		title={`${metaTitle} | CRFT Studio`}
-		description={metaDescription}
+		description={description}
 		ogImageUrl="https://www.crft.studio/open-graph-img.png"
 		/>
 	</head>

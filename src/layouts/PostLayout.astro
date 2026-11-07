@@ -1,4 +1,5 @@
 ---
+import { SITE_ORIGIN, canonicalUrl, jsonLd } from '../lib/seo';
 import Navigation from '../components/Navigation.astro';
 import LookupCard from '../components/LookupCard.astro';
 import HeadScripts from '../components/HeadScripts.astro';
@@ -9,6 +10,32 @@ const {frontmatter} = Astro.props;
 const {authors} = authorsData;
 import Jeremy from '../images/jeremy-pfp.png';
 import David from '../images/david-pfp.png';
+
+const canonical = canonicalUrl(Astro.url.pathname);
+const published = new Date(frontmatter.pubDate);
+const articleLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: frontmatter.title,
+    description: frontmatter.description,
+    ...(Number.isNaN(published.getTime()) ? {} : { datePublished: published.toISOString().slice(0, 10) }),
+    url: canonical,
+    mainEntityOfPage: canonical,
+    image: `${SITE_ORIGIN}/open-graph-img.png`,
+    author: (frontmatter.author ?? []).map((authorName) => ({
+        "@type": "Person",
+        name: authors[authorName]?.name ?? authorName,
+    })),
+    publisher: {
+        "@type": "Organization",
+        name: "CRFT Studio",
+        url: `${SITE_ORIGIN}/`,
+        logo: {
+            "@type": "ImageObject",
+            url: `${SITE_ORIGIN}/favicon.svg`,
+        },
+    },
+};
 
 const authorImages = {
     Jeremy: Jeremy,
@@ -22,7 +49,9 @@ const authorImages = {
     	title={`${frontmatter.title} | CRFT Studio`}
     	description={`${frontmatter.description} | CRFT Studio`}
     	ogImageUrl="https://www.crft.studio/open-graph-img.png"
+    	ogType="article"
     	/>
+    	<script type="application/ld+json" set:html={jsonLd(articleLd)} />
 	</head>
 	<body>
     	<Navigation/>
@@ -60,7 +89,7 @@ const authorImages = {
                             <div id="toc" class="square-card p-0 border-0 lg:mb-5 mb-10 lg:max-h-[30vh] overflow-y-auto"></div>
                             <div class="lg:block hidden square-card bg-transparent relative overflow-hidden max-w-[300px] h-[365px]">
                                 <div class="lg:max-w-[40ch] text-pretty mb-6">See the tech stack, pagespeed, sitemap and meta tags of the sites you're curious about.</div>
-                                <a href="/lookup" class="primary-cta py-1">Scan a website (free) →</a>
+                                <a href="https://www.crftlookup.com/lookup" class="primary-cta py-1">Scan a website (free) →</a>
                                 <div class="max-w-[300px] mt-8 flex flex-row gap-4">
                                     <div class="flex flex-row gap-4 origin-top-left scale-[0.55]">
                                         <LookupCard url="tailwindcss.com" img="https://tailwindcss.com/opengraph-image.jpg?22502194f1a254bc" metaTitle="Tailwind CSS - Rapidly build modern websites without ever leaving your HTML" performance="75" accessibility="86" bestPractices="96" seo="91">

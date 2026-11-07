@@ -1,0 +1,7 @@
+---
+// Fallback for any /lookup URL that does not have its own redirect.
+// Known pages are declared in src/lib/lookup-redirects.mjs and win over this route.
+export const prerender = false;
+
+return Astro.redirect("https://www.crftlookup.com/", 301);
+---
