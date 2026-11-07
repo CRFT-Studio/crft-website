@@ -173,7 +173,7 @@ const proposal: Proposal = {
         "Subscription begun and Basecamp project invite sent",
         "Kickoff with Steve and sales leadership",
         "Access to the current site, HubSpot (forms, properties, workflows), brand assets and product screenshots",
-        "Establish a baseline with <a href='/lookup' class='text-orange-300 underline'>CRFT Lookup</a>: Lighthouse scores, tech stack, sitemap and meta tags, building on the audit already shared",
+        "Establish a baseline with <a href='https://www.crftlookup.com/lookup' class='text-orange-300 underline'>CRFT Lookup</a>: Lighthouse scores, tech stack, sitemap and meta tags, building on the audit already shared",
         "Confirm the embargo date for The Missing Signal and Steve’s permission to include its material in this private proposal; agree on protected sharing if required",
       ] },
       { name: "Discovery & sitemap", duration: "2 weeks", items: [

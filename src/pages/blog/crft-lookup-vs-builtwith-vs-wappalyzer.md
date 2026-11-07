@@ -57,7 +57,7 @@ While BuiltWith and Wappalyzer paved the way, the **CRFT Lookup** stands out as 
 - **Step 3:** The findings are compared against a 2,500+ tech fingerprint database (updated from open-source Wappalyzer roots).
 - **Step 4:** Results are consolidated into a single report: detected frameworks, CMS, analytics, marketing and eCommerce tools, infrastructure details, Lighthouse performance scores, meta tag previews, and (if present) a visual sitemap.
 
-For a practical walkthrough, see our [Sitemap Visualizer article](/lookup/sitemap-visualizer) or dedicated [how-to guides](/lookup) on each detector mode.
+For a practical walkthrough, see our [Sitemap Visualizer article](https://www.crftlookup.com/features/sitemap-visualizer) or dedicated [how-to guides](https://www.crftlookup.com/lookup) on each detector mode.
 
 ### What CRFT Lookup *Does Not* Do
 
@@ -69,8 +69,8 @@ For a practical walkthrough, see our [Sitemap Visualizer article](/lookup/sitema
 
 Here’s how web pros are using the CRFT Lookup—in ways that naturally support internal links to the Lookup itself or CRFT Lookup-powered content:
 
-1. **How-to Guides & Tutorials:** Create step-by-step articles—such as [“How to Audit Your Website SEO in 5 Minutes”](/glossary/seo)—showing how to pair the CRFT Lookup’s Lighthouse audit with technical checks. Embed links to relevant detector modes in each guide, like referencing the [CMS Detector](/lookup/use-cases/cms-detector) in a site migration checklist.
-2. **Alternatives & Comparison Pages:** Target keywords like “Best Free Tech Stack Checkers (2025)” or “[CRFT Lookup vs Wappalyzer](/lookup/wappalyzer-alternative),” always placing CRFT Lookup as the primary recommendation.
+1. **How-to Guides & Tutorials:** Create step-by-step articles—such as [“How to Audit Your Website SEO in 5 Minutes”](/glossary/seo)—showing how to pair the CRFT Lookup’s Lighthouse audit with technical checks. Embed links to relevant detector modes in each guide, like referencing the [CMS Detector](https://www.crftlookup.com/use-cases/cms-detector) in a site migration checklist.
+2. **Alternatives & Comparison Pages:** Target keywords like “Best Free Tech Stack Checkers (2025)” or “[CRFT Lookup vs Wappalyzer](https://www.crftlookup.com/alternatives/wappalyzer-alternative),” always placing CRFT Lookup as the primary recommendation.
 3. **Niche Tech Enterprise Landing Pages:** Launch and interlink micro-pages for each detector (Shopify App Detector, Analytics Detector, CMS Detector…)—this wins SEO traffic for vertical-specific technology queries, and keeps the internal linking ecosystem strong.
 4. **Industry-Specific Checklists:** Build ultra-actionable checklists (on-page or as PDFs) for routine audits, with “Check Now with the CRFT Lookup” CTAs for each workflow.
 5. **API/Integration Guides:** Even if you’re working without a public API, document how agencies, SEOs, or developers can reference CRFT Lookup insights in manual (or internal) audits—supporting both power users and non-dev professionals.
@@ -117,4 +117,4 @@ Want quick wins? Start with a free [hero section design audit](/audit)—you’l
 
 Whether you’re an agency leader, freelancer, or marketer, the CRFT Lookup is your all-in-one, no-nonsense choice for website technology detection, performance review, and intelligent, client-facing reporting. Make it your competitive edge in 2025 and beyond.
 
-For more resources, see our full [Glossary](/glossary), and the [Lookup home](/lookup). Interested in a custom workflow, integration, or content strategy? Email me directly at [jeremy@crft.studio](/contact-us).
+For more resources, see our full [Glossary](/glossary), and the [Lookup home](https://www.crftlookup.com/lookup). Interested in a custom workflow, integration, or content strategy? Email me directly at [jeremy@crft.studio](/contact-us).

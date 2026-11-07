@@ -36,7 +36,7 @@ function timeline(locale: Locale) {
             "Projet commencé",
             "Invitation au projet Basecamp envoyée",
             "Réunion de lancement (optionnelle)",
-            'Nous analysons votre site web en utilisant <span><a href="/lookup" class="text-orange-300 underline">CRFT Lookup</a></span>, pour voir son score Lighthouse, sa pile technologique, la structure du plan de site et les balises meta.',
+            'Nous analysons votre site web en utilisant <span><a href="https://www.crftlookup.com/lookup" class="text-orange-300 underline">CRFT Lookup</a></span>, pour voir son score Lighthouse, sa pile technologique, la structure du plan de site et les balises meta.',
           ],
         },
         {
@@ -88,7 +88,7 @@ function timeline(locale: Locale) {
           "Project begun",
           "Basecamp project invite sent",
           "Kick-off meeting (optional)",
-          'We scan your website using the <span><a href="/lookup" class="text-orange-300 underline">CRFT Lookup</a></span>, to see its Lighthouse score, tech stack, sitemap structure and meta tags.',
+          'We scan your website using the <span><a href="https://www.crftlookup.com/lookup" class="text-orange-300 underline">CRFT Lookup</a></span>, to see its Lighthouse score, tech stack, sitemap structure and meta tags.',
         ],
       },
       {

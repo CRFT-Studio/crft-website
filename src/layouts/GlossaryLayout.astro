@@ -8,6 +8,7 @@ import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
 import GlossaryNav from "../components/GlossaryNav.astro";
 import TableOfContents from "../components/TableOfContents.astro";
+import { canonicalUrl, jsonLd } from "../lib/seo";
 
 const {frontmatter, headings} = Astro.props;
 const alphabet = [...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'];
@@ -26,6 +27,15 @@ const currentIndex = sortedPages.findIndex(page =>
 const prevPage = currentIndex > 0 ? sortedPages[currentIndex - 1] : sortedPages[sortedPages.length -1];
 const nextPage = currentIndex < sortedPages.length - 1 ? sortedPages[currentIndex + 1] : sortedPages[0];
 
+const termLd = {
+    "@context": "https://schema.org",
+    "@type": "DefinedTerm",
+    name: frontmatter.term || frontmatter.title,
+    description: frontmatter.shortDefinition || frontmatter.description,
+    url: canonicalUrl(Astro.url.pathname),
+    inDefinedTermSet: "https://www.crft.studio/glossary",
+};
+
 console.log("Current URL:", Astro.url.pathname);
 console.log("Page URLs:", glossaryPages.map(p => p.url));
 
@@ -40,6 +50,7 @@ console.log("Page URLs:", glossaryPages.map(p => p.url));
         description={`${frontmatter.description} | CRFT Glossary`}
         ogImageUrl="https://www.crft.studio/open-graph-img.png"
         />
+        <script type="application/ld+json" set:html={jsonLd(termLd)} />
     </head>
 
     <body>

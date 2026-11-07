@@ -7,7 +7,7 @@ author: ['Jeremy']
 tags: ['Resources']
 ---
 
-An effective website is the backbone of every winning brand. But even the most beautiful sites can underperform if their design fundamentals aren't rock solid. Regular audits ensure you're not leaving money—or credibility—on the table. This guide walks you through exactly how to audit your website’s design, when to reach for the [CRFT Lookup](/lookup) for technical insight, and—if you want an expert boost—how to request your [free hero section redesign](/audit) from CRFT Studio.
+An effective website is the backbone of every winning brand. But even the most beautiful sites can underperform if their design fundamentals aren't rock solid. Regular audits ensure you're not leaving money—or credibility—on the table. This guide walks you through exactly how to audit your website’s design, when to reach for the [CRFT Lookup](https://www.crftlookup.com/lookup) for technical insight, and—if you want an expert boost—how to request your [free hero section redesign](/audit) from CRFT Studio.
 
 ## Why a Design Audit Is a Secret Weapon for Growth
 
@@ -38,7 +38,7 @@ Your homepage hero is your digital first impression, and most visitors decide in
 
 If you answer "no" to any of these—or just want an outside perspective—[submit your site for a complimentary hero redesign](/audit). We’ll review your hero section and send you back a high-impact redesign, completely free.
 
-**Pro move:** Use the [CRFT Lookup](/lookup) to check your site’s core tech stack, font delivery, and ensure nothing (such as heavy tracking scripts or slowcarousels) is interfering with above-the-fold performance.
+**Pro move:** Use the [CRFT Lookup](https://www.crftlookup.com/lookup) to check your site’s core tech stack, font delivery, and ensure nothing (such as heavy tracking scripts or slowcarousels) is interfering with above-the-fold performance.
 
 ## Step 2: Assess Navigation and Site Structure
 
@@ -50,7 +50,7 @@ Navigation should feel instinctive, not like a scavenger hunt.
 - Are footer and contextual navs present for extra wayfinding?
 - Do you offer in-page anchors for longer single-page sites?
 
-**Technical note:** Dead links, poorly coded dropdowns, and third-party nav widgets can create headaches. If you’re unsure, parsing your website with the [CRFT Lookup](/lookup) can quickly identify navigation-related technologies or accessibility warnings.
+**Technical note:** Dead links, poorly coded dropdowns, and third-party nav widgets can create headaches. If you’re unsure, parsing your website with the [CRFT Lookup](https://www.crftlookup.com/lookup) can quickly identify navigation-related technologies or accessibility warnings.
 
 ## Step 3: Branding Consistency—A Visual Deep-Dive
 
@@ -61,7 +61,7 @@ Strong brands rely on a consistent application of design:
 - Are image treatments (illustrations, photos) stylistically consistent?
 - Check for unintentional visual drift—sometimes, legacy pages or blog posts break style rules or embed mismatched assets.
 - Review your favicon, touch icons, and Open Graph previews for congruence across platforms.
-- For inspiration or benchmarking, browse [Godly](https://godly.website/) or [Mobbin](https://mobbin.com/), and if desired, run competitor sites through the [CRFT Lookup](/lookup) to see which frameworks they're employing.
+- For inspiration or benchmarking, browse [Godly](https://godly.website/) or [Mobbin](https://mobbin.com/), and if desired, run competitor sites through the [CRFT Lookup](https://www.crftlookup.com/lookup) to see which frameworks they're employing.
 
 ## Step 4: Readability, Accessibility, and User Comfort
 
@@ -104,7 +104,7 @@ Trust signals are crucial for conversion, so review them carefully and consider 
 
 Superior design struggles to shine if hampered by slow, error-prone infrastructure:
 
-- Evaluate your site’s [performance score](/glossary/lighthouse). Use [CRFT Lookup](/lookup) for a one-click summary of Lighthouse, tech stack, and meta tag previews.
+- Evaluate your site’s [performance score](/glossary/lighthouse). Use [CRFT Lookup](https://www.crftlookup.com/lookup) for a one-click summary of Lighthouse, tech stack, and meta tag previews.
 - Review image compression, JavaScript bloat, and unnecessary third-party integrations.
 - Check for bloatware in your CMS or plugins (old themes, underused scripts).
 - Ensure all pages have unique meta titles, descriptions, and logical [URL structures](/glossary/url).
@@ -145,7 +145,7 @@ Reference our [call-to-action](/glossary/call-to-action) and conversion optimiza
    > *Bonus: When you share your audit findings with us at CRFT Studio, we’ll suggest high-impact improvements and direct you to relevant resources.*
 
 4. **Put larger changes into a roadmap.** Major template overhauls or accessibility projects likely require staged rollouts. Roadmap them for future sprints.
-5. **Re-audit quarterly.** Trends, user behavior, and your business evolve—make auditing a habit, leveraging the [CRFT Lookup](/lookup) for ease.
+5. **Re-audit quarterly.** Trends, user behavior, and your business evolve—make auditing a habit, leveraging the [CRFT Lookup](https://www.crftlookup.com/lookup) for ease.
 
 ## Why We Built the CRFT Lookup
 
@@ -153,7 +153,7 @@ We built it for ourselves to avoid hopping between SaaS tools/stats pages for cr
 
 ## Claim Your Edge: Free Hero Redesign—No Strings Attached
 
-Anyone can audit. But actionable design help—from a real human—accelerates your progress. Use this guide and the [CRFT Lookup](/lookup) to clarify your priorities. If you want our take before committing to a full site overhaul, [get your free hero section redesign](/audit) today.
+Anyone can audit. But actionable design help—from a real human—accelerates your progress. Use this guide and the [CRFT Lookup](https://www.crftlookup.com/lookup) to clarify your priorities. If you want our take before committing to a full site overhaul, [get your free hero section redesign](/audit) today.
 
 > **Ready for a no-strings-attached hero section upgrade? [Request your complimentary expert redesign here.](/audit)**
 
