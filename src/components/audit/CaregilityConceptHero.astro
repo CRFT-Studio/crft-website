@@ -1,0 +1,871 @@
+---
+/**
+ * Live port of Concept 1 (care-setting tabs).
+ * Copy lives in caregility-settings.ts. Photos and the logo are optimized at build time.
+ * Satoshi is registered under a private family name and applied only inside this frame.
+ * The copied Caregility nav is omitted; the logo stays in the frame.
+ * URL flags: ?still pauses the timer, ?tab=0..4 opens a setting.
+ */
+import { getImage } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import logoUrl from "../../assets/audit/caregility/logo.svg";
+import medsurg from "../../assets/audit/caregility/medsurg-virtual-nurse.jpg";
+import observation from "../../assets/audit/caregility/virtual-observation.jpg";
+import emergency from "../../assets/audit/caregility/ed-cart.jpg";
+import icu from "../../assets/audit/caregility/tele-icu.jpg";
+import command from "../../assets/audit/caregility/icc-monitor-view.webp";
+import { careSettings } from "./caregility-settings";
+
+async function photo(src: ImageMetadata, maxWidth: number) {
+  const width = Math.min(src.width, maxWidth);
+  const optimized = await getImage({ src, width, format: "webp", quality: 76 });
+  return optimized.src;
+}
+
+const images = {
+  medsurg: await photo(medsurg, 1400),
+  obs: await photo(observation, 1400),
+  ed: await photo(emergency, 1000),
+  icu: await photo(icu, 1400),
+  cc: await photo(command, 965),
+};
+
+const logoSrc = typeof logoUrl === "string" ? logoUrl : logoUrl.src;
+const initial = careSettings[0];
+---
+
+<div class="cg-frame">
+  <div class="cg-frame-bar">
+    <img class="cg-logo" src={logoSrc} alt="Caregility" width="190" height="50" />
+  </div>
+  <section class="cg-hero" data-cg-hero aria-label="Caregility homepage hero concept">
+    <div class="copy">
+      <div class="eyebrow">Connecting Care Everywhere</div>
+      <p class="display">Put expert help in <em>every</em> patient room.</p>
+      <p class="sub">One virtual care platform for virtual nursing, AI observation, tele-critical care and command center workflows. Pick a setting to see it at work.</p>
+      <div class="ctas">
+        <button type="button" class="btn btn-green">Schedule a Demo</button>
+        <button type="button" class="btn btn-ghost">See the platform →</button>
+      </div>
+      <div class="setting-now">
+        <div class="lbl" id="cg-lbl">{initial.lbl}</div>
+        <div class="what" id="cg-what">{initial.what}</div>
+        <div class="prods" id="cg-prods">
+          {initial.prods.map((item) => <span>{item}</span>)}
+        </div>
+      </div>
+    </div>
+    <div class="stage">
+      <div class="tabs" role="tablist" id="cg-tabs" aria-label="Care settings">
+        {careSettings.map((setting, index) => (
+          <button
+            type="button"
+            class:list={["tab", { on: index === 0 }]}
+            role="tab"
+            data-i={index}
+            aria-selected={index === 0 ? "true" : "false"}
+            tabindex={index === 0 ? 0 : -1}
+          >
+            {setting.tab}<span class="bar"></span>
+          </button>
+        ))}
+      </div>
+      <div class="panel">
+        <div class="photo">
+          <img id="cg-img" src={images.medsurg} alt={initial.tab} style={`object-position: ${initial.pos}`} />
+        </div>
+        <div class="ui metric" id="cg-metric">
+          <span class="chip" id="cg-mchip">{initial.mc}</span>
+          <div class="k" id="cg-mk">{initial.mk}</div>
+          <div class="l" id="cg-ml">{initial.ml}</div>
+        </div>
+        <div class="ui event" id="cg-event">
+          <div class="top">
+            <span class="chip prod" id="cg-eprod">{initial.ep}</span>
+            <span class="time" id="cg-etime">{initial.et}</span>
+          </div>
+          <div class="title" id="cg-etitle">{initial.title}</div>
+          <div class="meta" id="cg-emeta">{initial.meta}</div>
+          <div class="row">
+            <div class="avatar" id="cg-eav">{initial.av}</div>
+            <div class="who" id="cg-ewho">{initial.who}</div>
+            <div class="vid" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M15 8v8H3V8h12zm2 2.5 4-2.5v8l-4-2.5z"/></svg>
+            </div>
+          </div>
+        </div>
+        <div class="ui alert" id="cg-alert">
+          <div class="ic" id="cg-aic">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#12B76A" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+          </div>
+          <div>
+            <b id="cg-at">{initial.at}</b>
+            <span id="cg-as">{initial.as}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="strip">
+      <div class="proof">
+        <div class="p"><b>19,000+</b><small>patient rooms</small></div>
+        <div class="p"><b>99.99%</b><small>availability</small></div>
+        <div class="p"><b>55+</b><small>releases, no service interruption</small></div>
+        <div class="p"><b>24x7x365</b><small>live expert support</small></div>
+      </div>
+      <div class="certs"><span>HIPAA</span><span>ISO 27001</span><span>ISO 27701</span></div>
+    </div>
+  </section>
+</div>
+
+<script define:vars={{ settings: careSettings, images }}>
+  (() => {
+    const root = document.querySelector("[data-cg-hero]");
+    if (!root) return;
+    const $ = (id) => root.querySelector("#" + id);
+    const OK = '<svg width="18" height="18" viewBox="0 0 24 24" fill="#12B76A"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>';
+    const WARN = '<svg width="18" height="18" viewBox="0 0 24 24" fill="#E8590C"><path d="M12 2 1 21h22L12 2zm1 15h-2v-2h2v2zm0-4h-2V9h2v4z"/></svg>';
+    const icons = { ok: OK, warn: WARN };
+    const S = settings.map((setting) => ({ ...setting, img: images[setting.k] }));
+    const tabs = $("cg-tabs");
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const params = new URLSearchParams(location.search);
+    let cur = 0;
+    let auto = !reduce && !params.has("still");
+    let visible = true;
+    let timer;
+
+    function queue() {
+      clearTimeout(timer);
+      if (auto && visible) timer = setTimeout(() => show((cur + 1) % S.length), 6000);
+    }
+
+    function show(i) {
+      cur = i;
+      const s = S[i];
+      const tabButtons = root.querySelectorAll(".tab");
+      tabButtons.forEach((tab, j) => {
+        const on = j === i;
+        tab.classList.toggle("on", on);
+        tab.classList.toggle("auto", on && auto);
+        tab.setAttribute("aria-selected", on ? "true" : "false");
+        tab.tabIndex = on ? 0 : -1;
+        const bar = tab.querySelector(".bar");
+        bar.style.animation = "none";
+        void bar.offsetWidth;
+        bar.style.animation = "";
+      });
+      const cards = ["cg-event", "cg-metric", "cg-alert"].map($);
+      const first = root.dataset.ready !== "1";
+      if (!first) {
+        cards.forEach((card) => card.classList.add("fade"));
+        $("cg-img").style.opacity = "0";
+      }
+      const apply = () => {
+        const img = $("cg-img");
+        img.src = s.img;
+        img.style.objectPosition = s.pos;
+        img.style.opacity = "1";
+        img.alt = s.tab;
+        $("cg-lbl").textContent = s.lbl;
+        $("cg-what").textContent = s.what;
+        $("cg-prods").innerHTML = s.prods.map((item) => `<span>${item}</span>`).join("");
+        $("cg-eprod").textContent = s.ep;
+        $("cg-etime").textContent = s.et;
+        $("cg-etitle").textContent = s.title;
+        $("cg-emeta").textContent = s.meta;
+        $("cg-eav").textContent = s.av;
+        $("cg-ewho").textContent = s.who;
+        $("cg-mchip").textContent = s.mc;
+        $("cg-mk").textContent = s.mk;
+        $("cg-ml").textContent = s.ml;
+        $("cg-aic").innerHTML = icons[s.ai] || "";
+        $("cg-at").textContent = s.at;
+        $("cg-as").textContent = s.as;
+        cards.forEach((card, j) => setTimeout(() => card.classList.remove("fade"), first ? 0 : 120 + j * 120));
+        root.dataset.ready = "1";
+      };
+      if (first) apply();
+      else setTimeout(apply, reduce ? 0 : 250);
+      const active = tabButtons[i];
+      if (tabs.scrollWidth > tabs.clientWidth) {
+        tabs.scrollTo({
+          left: tabs.scrollLeft + active.getBoundingClientRect().left - tabs.getBoundingClientRect().left - 16,
+          behavior: reduce ? "auto" : "smooth",
+        });
+      }
+      queue();
+    }
+
+    tabs.addEventListener("click", (event) => {
+      const tab = event.target.closest(".tab");
+      if (!tab) return;
+      auto = false;
+      show(Number(tab.dataset.i));
+    });
+
+    tabs.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+      event.preventDefault();
+      auto = false;
+      const dir = event.key === "ArrowRight" ? 1 : -1;
+      const next = (cur + dir + S.length) % S.length;
+      show(next);
+      root.querySelectorAll(".tab")[next].focus();
+    });
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        visible = entries[0].isIntersecting;
+        queue();
+      }, { threshold: 0.25 });
+      observer.observe(root);
+    }
+
+    const requested = Number(params.get("tab"));
+    const start = Number.isInteger(requested) && requested >= 0 && requested < S.length ? requested : 0;
+    show(start);
+  })();
+</script>
+
+<style is:global>
+  @font-face {
+    font-family: "Caregility Satoshi";
+    src: url("../../assets/audit/caregility/fonts/Satoshi-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Caregility Satoshi";
+    src: url("../../assets/audit/caregility/fonts/Satoshi-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Caregility Satoshi";
+    src: url("../../assets/audit/caregility/fonts/Satoshi-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Caregility Satoshi";
+    src: url("../../assets/audit/caregility/fonts/Satoshi-Black.woff2") format("woff2");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  .cg-frame {
+    container: cg / inline-size;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+  }
+  .cg-frame-bar {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    padding: 0 28px;
+    background: #fff;
+  }
+  .cg-frame .cg-logo {
+    display: block;
+    width: auto;
+    height: 36px;
+  }
+
+  .cg-hero {
+    --navy: #212650;
+    --green: #6cca98;
+    --green-l: #b9ecb5;
+    --cyan: #00cad7;
+    --yellow: #edff7b;
+    --ink: #101828;
+    position: relative;
+    height: 826px;
+    margin: 0 !important;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: minmax(0, 500px) minmax(0, 1fr);
+    gap: 40px;
+    padding: 56px 56px 0;
+    background: var(--navy);
+    color: #fff;
+    font-family: "Caregility Satoshi", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .cg-hero *,
+  .cg-hero *::before,
+  .cg-hero *::after {
+    box-sizing: border-box;
+  }
+  .cg-hero :where(p, div, span, button, b, small) {
+    margin: 0;
+    padding: 0;
+  }
+  .cg-hero button {
+    font-family: inherit;
+  }
+  .cg-hero::before {
+    content: "";
+    position: absolute;
+    width: 900px;
+    height: 900px;
+    left: -420px;
+    top: -160px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 50%;
+    box-shadow: 0 0 0 140px rgba(255, 255, 255, 0.015);
+  }
+  .cg-hero::after {
+    content: "";
+    position: absolute;
+    width: 760px;
+    height: 760px;
+    right: -120px;
+    top: -200px;
+    background: radial-gradient(circle, rgba(0, 202, 215, 0.18), transparent 65%);
+  }
+  .cg-hero .copy {
+    position: relative;
+    z-index: 2;
+    min-width: 0;
+    padding-top: 34px;
+  }
+  .cg-hero .eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--green);
+  }
+  .cg-hero .display {
+    margin: 18px 0 20px;
+    font-size: 56px;
+    font-weight: 500;
+    line-height: 1.06;
+    letter-spacing: -0.015em;
+    color: #fff;
+  }
+  .cg-hero .display em {
+    font-style: normal;
+    color: var(--green);
+  }
+  .cg-hero .sub {
+    max-width: 440px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .cg-hero .ctas {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+  }
+  .cg-hero .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 24px;
+    border: 1.5px solid transparent;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .cg-hero .btn-green {
+    background: var(--green);
+    color: var(--navy);
+    font-weight: 700;
+  }
+  .cg-hero .btn-ghost {
+    border-color: rgba(255, 255, 255, 0.55);
+    background: transparent;
+    color: #fff;
+  }
+  .cg-hero .setting-now {
+    max-width: 440px;
+    margin-top: 44px;
+    padding: 18px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .cg-hero .setting-now .lbl {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--green-l);
+  }
+  .cg-hero .setting-now .what {
+    margin-top: 8px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #fff;
+  }
+  .cg-hero .setting-now .prods {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .cg-hero .setting-now .prods span {
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(108, 202, 152, 0.14);
+    color: var(--green-l);
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .cg-hero .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 9px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+  .cg-hero .stage {
+    position: relative;
+    z-index: 2;
+    min-width: 0;
+  }
+  .cg-hero .tabs {
+    display: flex;
+    gap: 6px;
+    width: max-content;
+    max-width: 100%;
+    padding: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .cg-hero .tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .cg-hero .tab {
+    position: relative;
+    flex: none;
+    overflow: hidden;
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 999px;
+    background: none;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 14.5px;
+    font-weight: 500;
+    line-height: 1.2;
+    cursor: pointer;
+  }
+  .cg-hero .tab.on {
+    background: #fff;
+    color: var(--navy);
+    font-weight: 700;
+  }
+  .cg-hero .tab:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
+  }
+  .cg-hero .tab .bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background: var(--green);
+  }
+  .cg-hero .tab.on.auto .bar {
+    animation: cg-tab-fill 6s linear forwards;
+  }
+  @keyframes cg-tab-fill {
+    to { width: 100%; }
+  }
+  .cg-hero .panel {
+    position: relative;
+    height: 528px;
+    margin-top: 22px;
+    overflow: visible;
+    border-radius: 28px;
+  }
+  .cg-hero .photo {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 28px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+  }
+  .cg-hero .photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.45s, transform 6s ease-out;
+  }
+  .cg-hero .photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(33, 38, 80, 0.45));
+    pointer-events: none;
+  }
+  .cg-hero .ui {
+    position: absolute;
+    border-radius: 18px;
+    background: #fff;
+    color: var(--ink);
+    box-shadow: 0 18px 50px rgba(16, 24, 40, 0.28);
+    transition: all 0.45s;
+  }
+  .cg-hero .ui.event {
+    left: -44px;
+    bottom: 38px;
+    width: 340px;
+    padding: 16px 18px;
+  }
+  .cg-hero .ui.event .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .cg-hero .ui.event .prod {
+    background: #e7f7ee;
+    color: #1d7a4e;
+  }
+  .cg-hero .ui.event .time {
+    color: #667085;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .cg-hero .ui.event .title {
+    margin: 10px 0 4px;
+    color: var(--navy);
+    font-size: 17px;
+    font-weight: 700;
+  }
+  .cg-hero .ui.event .meta {
+    color: #475467;
+    font-size: 13.5px;
+    line-height: 1.45;
+  }
+  .cg-hero .ui.event .row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .cg-hero .avatar {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--navy);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .cg-hero .ui.event .who {
+    flex: 1;
+    color: #344054;
+    font-size: 12.5px;
+    font-weight: 500;
+  }
+  .cg-hero .ui.event .vid {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: #12b76a;
+  }
+  .cg-hero .ui.metric {
+    left: -30px;
+    top: 30px;
+    width: 210px;
+    padding: 14px 18px;
+  }
+  .cg-hero .ui.metric .k {
+    color: var(--navy);
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .cg-hero .ui.metric .l {
+    margin-top: 6px;
+    color: #475467;
+    font-size: 12.5px;
+    line-height: 1.35;
+  }
+  .cg-hero .ui.metric .chip {
+    margin-bottom: 10px;
+    background: var(--yellow);
+    color: var(--navy);
+  }
+  .cg-hero .ui.alert {
+    right: 28px;
+    bottom: -26px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 300px;
+    padding: 12px 16px;
+  }
+  .cg-hero .ui.alert .ic {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: #fff1ec;
+  }
+  .cg-hero .ui.alert b {
+    display: block;
+    color: var(--navy);
+    font-size: 14px;
+  }
+  .cg-hero .ui.alert span {
+    color: #475467;
+    font-size: 12.5px;
+  }
+  .cg-hero .fade {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  .cg-hero .strip {
+    position: absolute;
+    left: 56px;
+    right: 56px;
+    bottom: 30px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .cg-hero .proof {
+    display: flex;
+    align-items: center;
+  }
+  .cg-hero .proof .p {
+    padding: 0 26px;
+    border-left: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  .cg-hero .proof .p:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .cg-hero .proof b {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .cg-hero .proof small {
+    font-size: 12.5px;
+    font-weight: 500;
+    opacity: 0.75;
+  }
+  .cg-hero .certs {
+    display: flex;
+    gap: 8px;
+  }
+  .cg-hero .certs span {
+    padding: 6px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  /* The concept switches at a 760px viewport. Inside this page the hero is framed,
+     so it stacks once the frame itself is under 1200px — otherwise the two columns collide. */
+  @container cg (max-width: 1200px) {
+    .cg-frame-bar {
+      height: 56px;
+      padding: 0 16px;
+    }
+    .cg-frame .cg-logo {
+      height: 32px;
+    }
+    .cg-hero {
+      height: auto;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding: 28px 16px 28px;
+    }
+    .cg-hero::before {
+      width: 520px;
+      height: 520px;
+      left: -300px;
+      top: -120px;
+    }
+    .cg-hero::after {
+      width: 420px;
+      height: 420px;
+      right: -180px;
+      top: 260px;
+    }
+    .cg-hero .copy {
+      padding-top: 0;
+    }
+    .cg-hero .eyebrow {
+      font-size: 11.5px;
+    }
+    .cg-hero .display {
+      margin: 12px 0;
+      font-size: 40px;
+    }
+    .cg-hero .sub {
+      font-size: 15.5px;
+      line-height: 1.5;
+    }
+    .cg-hero .ctas {
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .cg-hero .ctas .btn {
+      flex: 1;
+      justify-content: center;
+      padding: 12px 18px;
+      font-size: 14.5px;
+    }
+    .cg-hero .setting-now {
+      display: none;
+    }
+    .cg-hero .stage {
+      margin-top: 26px;
+    }
+    .cg-hero .tabs {
+      width: auto;
+      max-width: none;
+      margin: 0 -16px;
+      padding: 0 16px 2px;
+      border: 0;
+      border-radius: 0;
+      background: none;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-padding: 0 16px;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+    .cg-hero .tabs::-webkit-scrollbar {
+      display: none;
+    }
+    .cg-hero .tab {
+      flex: none;
+      scroll-snap-align: start;
+      padding: 9px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 14px;
+    }
+    .cg-hero .tab.on {
+      border-color: #fff;
+    }
+    .cg-hero .panel {
+      height: auto;
+      margin-top: 14px;
+    }
+    .cg-hero .photo {
+      position: relative;
+      inset: auto;
+      height: 360px;
+      border-radius: 20px;
+    }
+    .cg-hero .ui.metric,
+    .cg-hero .ui.alert {
+      display: none;
+    }
+    .cg-hero .ui.event {
+      position: relative;
+      left: auto;
+      bottom: auto;
+      width: auto;
+      margin: -46px 12px 0;
+      padding: 14px 16px;
+    }
+    .cg-hero .ui.event .title {
+      font-size: 16px;
+    }
+    .cg-hero .ui.event .meta {
+      font-size: 13px;
+    }
+    .cg-hero .strip {
+      position: static;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      margin-top: 26px;
+      padding-top: 20px;
+    }
+    .cg-hero .proof {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 0;
+      width: 100%;
+    }
+    .cg-hero .proof .p {
+      padding: 0 14px;
+    }
+    .cg-hero .proof .p:nth-child(odd) {
+      padding-left: 0;
+      border-left: 0;
+    }
+    .cg-hero .proof b {
+      font-size: 20px;
+    }
+    .cg-hero .proof small {
+      font-size: 11.5px;
+    }
+  }
+
+  @container cg (max-width: 720px) {
+    .cg-frame-bar {
+      height: 56px;
+      padding: 0 16px;
+    }
+    .cg-frame .cg-logo {
+      height: 32px;
+    }
+    .cg-hero .display {
+      font-size: 36px;
+    }
+    .cg-hero .photo {
+      height: 226px;
+    }
+    .cg-hero .tabs {
+      mask-image: linear-gradient(90deg, #000 85%, transparent);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cg-hero .tab.on.auto .bar {
+      animation: none;
+    }
+    .cg-hero .ui,
+    .cg-hero .photo img {
+      transition: none;
+    }
+  }
+</style>
