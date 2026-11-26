@@ -38,6 +38,36 @@ export const auditData = {
     }
   ]
 };
+
+const additionalSets = [
+  {
+    label: "Concept 2: Room 501",
+    beforeImgPath: auditData.beforeImgPath,
+    afterImgPath: "/src/images/audits/caregility/concept-2-desktop.webp",
+    annotations: [
+      {
+        question: "Note 1 - H1 and subtitle",
+        answer: "'One request. Every team connected.' makes 'Connecting Care Everywhere' concrete. The subtitle introduces Room 501 and names the teams and tools that handle the request, so readers know what the walkthrough will show."
+      },
+      {
+        question: "Note 2 - CTA buttons",
+        answer: "Replace 'Scroll & click to explore' with 'Schedule a Demo' as the primary action and 'See the platform' as the secondary action. Keep both beneath the subtitle on desktop and mobile so visitors can take the next step without completing the walkthrough."
+      },
+      {
+        question: "Note 3 - Patient-room visual",
+        answer: "Swap the hospital drawing for one scene that shows the patient, the virtual nurse on the in-room TV, and the command center. Match the numbered markers in the image to the steps below it so visitors can see where each handoff happens."
+      },
+      {
+        question: "Note 4 - Workflow timeline",
+        answer: "Follow one illustrative request from start to finish: the in-room device hears the patient ask for her nurse, the virtual nurse answers, the command center routes a task, and the bedside team closes it out in the EHR. Use a vertical timeline on mobile so the steps stay readable in order."
+      },
+      {
+        question: "Note 5 - Proof points",
+        answer: "Group patient rooms connected, platform availability, uninterrupted releases, and live support in a compact grid beneath the desktop CTAs. Keep the reliability and security details close to the demo decision while the timeline focuses on the patient request."
+      }
+    ]
+  }
+];
 ---
 <AuditReport
 firstName={auditData.firstName}
@@ -50,4 +80,6 @@ date={auditData.date}
 beforeImgPath={auditData.beforeImgPath}
 afterImgPath={auditData.afterImgPath}
 annotations={auditData.annotations}
+primaryTabLabel="Concept 1: Care settings"
+additionalSets={additionalSets}
 />

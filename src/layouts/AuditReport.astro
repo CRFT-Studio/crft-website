@@ -3,7 +3,7 @@ import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 import NihalPFP from '../images/nihal-pfp.png';
 import JeremyPFP from "../images/jeremy-pfp.png";
-import AuditExample from '../components/AuditExample.astro';
+import AuditReportTabs from '../components/AuditReportTabs.astro';
 import FAQItem from '../components/FAQItem.astro';
 import HeadScripts from '../components/HeadScripts.astro';
 import HowWeWork from '@/components/HowWeWork.astro';
@@ -19,7 +19,13 @@ import PrivyAfter from "../images/audits/privy-after.png";
 import serVmeBefore from "../images/audits/servme-before.png";
 import serVmeAfter from "../images/audits/servme-after.png";
 
-interface Props {
+interface AuditSet {
+    beforeImgPath: string;
+    afterImgPath: string;
+    annotations: Array<{ question: string; answer: string }>;
+}
+
+interface Props extends AuditSet {
     firstName: string;
     lastName: string;
     companyName: string;
@@ -27,21 +33,32 @@ interface Props {
     email: string;
     role: string;
     date: string;
-    beforeImgPath: string;
-    afterImgPath: string;
-    annotations: Array<{ question: string; answer: string}>;
+    primaryTabLabel?: string;
+    additionalSets?: Array<AuditSet & { label: string }>;
 }
 
-const { firstName, lastName, companyName, url, email, role, date, beforeImgPath, afterImgPath, annotations } = Astro.props;
+const {
+    firstName, companyName, url, date, beforeImgPath, afterImgPath, annotations,
+    primaryTabLabel = 'Primary', additionalSets = [],
+} = Astro.props;
 
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/images/audits/*.{jpeg,jpg,png,gif}');
-if (!images[beforeImgPath]) throw new Error(`"${beforeImgPath}" does not exist in glob: "src/images/audits/*.{jpeg,jpg,png,gif}"`);
-if (!images[afterImgPath]) throw new Error(`"${afterImgPath}" does not exist in glob: "src/images/audits/*.{jpeg,jpg,png,gif}"`);
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/images/audits/**/*.{jpeg,jpg,png,gif,webp}');
 
-const beforeImg = (await images[beforeImgPath]()).default;
-const afterImg = (await images[afterImgPath]()).default;
+async function loadAuditImage(path: string) {
+    if (!images[path]) throw new Error(`Audit image "${path}" was not found under src/images/audits`);
+    return (await images[path]()).default;
+}
+
+const sets = await Promise.all(
+    [{ label: primaryTabLabel, beforeImgPath, afterImgPath, annotations }, ...additionalSets].map(async (set) => ({
+        label: set.label,
+        annotations: set.annotations,
+        beforeImg: await loadAuditImage(set.beforeImgPath),
+        afterImg: await loadAuditImage(set.afterImgPath),
+    })),
+);
 ---
 <html lang="en">
     <head>
@@ -70,11 +87,7 @@ const afterImg = (await images[afterImgPath]()).default;
                 </div>
 
                 <div class="mt-24">
-                    <AuditExample callCTA companyName={companyName} websiteUrl={url} imageBefore={beforeImg} imageAfter={afterImg}>
-                        {annotations.map((annotation, index) => (
-                            <FAQItem slot="annotations" singleExpansion={index === 0} question={annotation.question} answer={annotation.answer} />
-                        ))}
-                    </AuditExample>
+                    <AuditReportTabs sets={sets} companyName={companyName} websiteUrl={url} />
                 </div>
             </div>
         </section>
@@ -151,7 +164,7 @@ const afterImg = (await images[afterImgPath]()).default;
                         <!-- Cal element-click embed code ends -->
                         <a href="/pricing" class="secondary-cta">View pricing</a>
                 </div>
-                <Image class="w-full" inferSize src={afterImg} alt={`${companyName} after`}/>
+                <AuditReportTabs preview sets={sets} companyName={companyName} websiteUrl={url} />
             </div>
         </section>
         <Footer hideTop/>

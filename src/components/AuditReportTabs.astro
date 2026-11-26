@@ -1,0 +1,114 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import AuditExample from './AuditExample.astro';
+import FAQItem from './FAQItem.astro';
+
+interface Props {
+    sets: Array<{
+        label: string;
+        beforeImg: ImageMetadata;
+        afterImg: ImageMetadata;
+        annotations: Array<{ question: string; answer: string }>;
+    }>;
+    companyName: string;
+    websiteUrl: string;
+    preview?: boolean;
+}
+
+const { sets, companyName, websiteUrl, preview = false } = Astro.props;
+const hasTabs = sets.length > 1;
+const sectionId = preview ? 'audit-preview' : 'audit-comparison';
+const Panel = hasTabs ? 'div' : Fragment;
+---
+
+{hasTabs && (
+    <div class="mb-8 flex justify-center">
+        <div
+            class="inline-flex flex-row card rounded-none p-[2px] border gap-2 text-sm text-nowrap overflow-x-auto"
+            role="tablist"
+            aria-label={preview ? 'Redesign preview' : 'Audit comparison'}
+            data-audit-tablist
+        >
+            {sets.map(({ label }, index) => (
+                <button
+                    type="button"
+                    class="border border-transparent px-2 py-1 cursor-pointer transition-all aria-selected:border-neutral-600 aria-selected:bg-neutral-700 focus-visible:outline-2 focus-visible:-outline-offset-2"
+                    role="tab"
+                    id={`${sectionId}-tab-${index}`}
+                    aria-controls={`${sectionId}-panel-${index}`}
+                    aria-selected={index === 0 ? 'true' : 'false'}
+                    tabindex={index === 0 ? 0 : -1}
+                >{label}</button>
+            ))}
+        </div>
+    </div>
+)}
+
+{sets.map(({ beforeImg, afterImg, annotations }, index) => (
+    <Panel {...(hasTabs ? {
+        role: 'tabpanel',
+        id: `${sectionId}-panel-${index}`,
+        'aria-labelledby': `${sectionId}-tab-${index}`,
+        hidden: index !== 0,
+        tabindex: 0,
+    } : {})}>
+        {preview ? (
+            <Image class="w-full" inferSize src={afterImg} alt={`${companyName} after`}/>
+        ) : (
+            <AuditExample callCTA initializeCallCTA={index === 0} companyName={companyName} websiteUrl={websiteUrl} imageBefore={beforeImg} imageAfter={afterImg}>
+                {annotations.map((annotation, annotationIndex) => (
+                    <FAQItem slot="annotations" singleExpansion={annotationIndex === 0} question={annotation.question} answer={annotation.answer} />
+                ))}
+            </AuditExample>
+        )}
+    </Panel>
+))}
+
+<script>
+    const tabLists = Array.from(document.querySelectorAll('[data-audit-tablist]'), (tabList) =>
+        Array.from(tabList.querySelectorAll<HTMLButtonElement>('[role="tab"]')),
+    );
+
+    function selectSet(selectedIndex: number) {
+        for (const tabs of tabLists) {
+            tabs.forEach((tab, index) => {
+                const selected = index === selectedIndex;
+                tab.setAttribute('aria-selected', String(selected));
+                tab.tabIndex = selected ? 0 : -1;
+
+                const panel = document.getElementById(tab.getAttribute('aria-controls')!);
+                if (panel) panel.hidden = !selected;
+            });
+        }
+    }
+
+    for (const tabs of tabLists) {
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => selectSet(index));
+            tab.addEventListener('keydown', (event) => {
+                let nextIndex: number;
+                switch (event.key) {
+                    case 'ArrowLeft':
+                        nextIndex = (index + tabs.length - 1) % tabs.length;
+                        break;
+                    case 'ArrowRight':
+                        nextIndex = (index + 1) % tabs.length;
+                        break;
+                    case 'Home':
+                        nextIndex = 0;
+                        break;
+                    case 'End':
+                        nextIndex = tabs.length - 1;
+                        break;
+                    default:
+                        return;
+                }
+
+                event.preventDefault();
+                selectSet(nextIndex);
+                tabs[nextIndex].focus();
+            });
+        });
+    }
+</script>
