@@ -1,200 +1,53 @@
 ---
-/*
-  Private prospect page for Caregility. noindex, and /audit/requests is already
-  left out of the sitemap (NON_INDEXABLE_PREFIXES in astro.config.mjs).
-  Do not add this URL to the main nav.
+import AuditReport from "@/layouts/AuditReport.astro";
 
-  Hero copy: src/components/audit/caregility-settings.ts
-  ?still pauses the tab timer. ?tab=0..4 opens a setting (2 is Emergency).
-*/
-import { Image } from "astro:assets";
-import Navigation from "../../../components/Navigation.astro";
-import Footer from "../../../components/Footer.astro";
-import HeadScripts from "../../../components/HeadScripts.astro";
-import CaregilityConceptHero from "../../../components/audit/CaregilityConceptHero.astro";
-import ShotPair from "../../../components/audit/ShotPair.astro";
-import JeremyPFP from "../../../images/jeremy-pfp.png";
-import currentDesktop from "../../../images/audits/caregility/current-desktop.webp";
-import currentMobile from "../../../images/audits/caregility/current-mobile.webp";
-import currentScrolled from "../../../images/audits/caregility/current-mobile-scrolled.webp";
-import currentPopup from "../../../images/audits/caregility/current-mobile-popup.webp";
-import concept1Desktop from "../../../images/audits/caregility/concept-1-desktop.webp";
-import concept1Mobile from "../../../images/audits/caregility/concept-1-mobile.webp";
-import concept2Desktop from "../../../images/audits/caregility/concept-2-desktop.webp";
-import concept2Mobile from "../../../images/audits/caregility/concept-2-mobile.webp";
-
-const observations = [
-  {
-    title: "On a phone, the first screen is text",
-    body: "The opening view is the headline, a short supporting line, and “Scroll & click to explore.” The hospital drawing, which is the product visual, sits lower and shows up once you scroll.",
-  },
-  {
-    title: "The hero seems to hold the next few screens",
-    body: "From the mobile captures, the hero looks like it stays in place for roughly four or five phone-lengths. The line-drawn hospital shifts sideways as you move, rather than the page continuing into the next section.",
-  },
-  {
-    title: "Hotspots read as unlabeled dots",
-    body: "Colored dots appear on the building without a visible name. Tapping one opens a full-screen panel over the illustration. In this capture, a dot opens a Pediatrics panel about NICU carts. The panel is readable. The dot itself doesn’t say what it will open.",
-  },
-];
+export const auditData = {
+  firstName: "Jessica",
+  lastName: "Clifton",
+  companyName: "Caregility",
+  url: "caregility.com",
+  email: "",
+  role: "",
+  date: "November 25th 2026",
+  beforeImgPath: "/src/images/audits/caregility-before.png",
+  afterImgPath: "/src/images/audits/caregility-after.png",
+  annotations: [
+    {
+      question: "Note 1 - Announcement banner",
+      answer: "The blue whitepaper banner wraps to three lines on mobile and pushes the headline down. Move the whitepaper into a resource callout farther down the page so the first screen can explain what Caregility does."
+    },
+    {
+      question: "Note 2 - H1 and subtitle",
+      answer: "'Connecting Care Everywhere' works as a tagline, but it doesn't tell a hospital team what changes for them. Keep it above the headline and lead with 'Put expert help in every patient room.' Use the subtitle to explain how: one platform for virtual nursing, AI observation, tele-critical care, and command center workflows."
+    },
+    {
+      question: "Note 3 - CTA buttons",
+      answer: "'Scroll & click to explore' explains how to use the illustration, but it doesn't give visitors a direct next step. Put 'Schedule a Demo' beneath the subtitle as the primary action and 'See the platform' beside it as a secondary option. On mobile, both are visible before the care-setting tabs."
+    },
+    {
+      question: "Note 4 - Care-setting tabs",
+      answer: "The hospital illustration's unlabeled dots make visitors tap to find out what each one means. Replace them with tabs for Med/Surg, Virtual Observation, Emergency, ICU, and Command Center. Open on Med/Surg to show an example immediately. On mobile, let the tabs scroll sideways and the page scroll normally."
+    },
+    {
+      question: "Note 5 - Hero image and layout",
+      answer: "Replace the hospital drawing with a patient-room photo that shows the bedside team and the virtual nurse on the in-room TV. Add a sample event card showing the virtual nurse starting discharge education while the bedside nurse handles other care. On mobile, stack the photo beneath the tabs and keep that one card legible."
+    },
+    {
+      question: "Note 6 - Proof points",
+      answer: "Put the scale and reliability figures in a strip directly below the hero. Lead with the 19,000+ patient rooms and 99.99% availability shown in the mockup: one tells hospital teams how widely the platform is used, and the other speaks to whether they can depend on it."
+    }
+  ]
+};
 ---
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta name="robots" content="noindex" />
-    <HeadScripts
-      title="Caregility homepage hero | CRFT Studio"
-      description="A private homepage hero concept for Caregility, prepared by CRFT Studio."
-    />
-  </head>
-  <body>
-    <Navigation />
-    <div class="square-card w-full border-x-0 border-t-0 py-1 text-center text-neutral-300">
-      This is a private page. No one will see it unless you share the URL.
-    </div>
-
-    <section class="mt-16 lg:mt-20" id="intro">
-      <div class="container">
-        <div class="mx-auto max-w-[760px] text-center">
-          <div class="mb-4 text-lg text-orange-300">Prepared for Caregility</div>
-          <h1 class="text-balance text-4xl font-semibold leading-tight lg:text-5xl">A homepage hero concept for Caregility</h1>
-          <p class="mx-auto mt-5 max-w-[62ch] text-pretty text-lg text-neutral-300 lg:text-xl">
-            Prepared by CRFT Studio. This looks at the live homepage hero on caregility.com, then tries a version where a visitor can see the product in a specific care setting without first scrolling through an illustration.
-          </p>
-        </div>
-        <div class="mt-8 flex flex-row flex-wrap items-center justify-center gap-4 text-neutral-300">
-          <Image src={JeremyPFP} alt="" class="aspect-square w-[56px] rounded-none object-cover square-card p-0" />
-          <div class="text-lg">Jeremy Vejgman · November 25, 2026</div>
-        </div>
-        <div class="mt-8 flex flex-row flex-wrap justify-center gap-x-6 gap-y-2 text-lg">
-          <a class="text-orange-300" href="#current">Current site</a>
-          <a class="text-orange-300" href="#proposed">Proposed concept</a>
-          <a class="text-orange-300" href="#alternative">Alternative direction</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="current">
-      <div class="container">
-        <div class="mb-10 max-w-[720px]">
-          <div class="mb-3 text-lg text-orange-300">01</div>
-          <h2 class="text-3xl font-medium leading-tight lg:text-4xl">Current site</h2>
-          <p class="mt-4 text-pretty text-lg text-neutral-300">
-            The live homepage hero, captured November 25, 2026. On a desktop window the illustration is on screen with the headline. The notes below are about the phone, where the first view is different. They’re readings of these captures, not a usability test.
-          </p>
-        </div>
-        <ShotPair
-          desktop={currentDesktop}
-          mobile={currentMobile}
-          desktopAlt="Caregility homepage hero on a desktop window, with the headline beside a line drawing of a hospital."
-          mobileAlt="Caregility homepage hero on a phone. The first screen is the headline and a short line of text, without the hospital illustration."
-        />
-        <ol class="mt-12 flex max-w-[760px] flex-col gap-8">
-          {observations.map((item, index) => (
-            <li class="grid grid-cols-[auto_1fr] gap-4">
-              <span class="text-orange-300">{String(index + 1).padStart(2, "0")}</span>
-              <div>
-                <h3 class="text-xl font-medium text-neutral-100">{item.title}</h3>
-                <p class="mt-2 text-pretty text-lg text-neutral-300">{item.body}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-        <div class="mt-12 grid items-start gap-8 sm:grid-cols-2">
-          <figure class="mx-auto w-full max-w-[280px]">
-            <figcaption class="mb-3 text-sm text-neutral-400">Further down the mobile hero</figcaption>
-            <div class="overflow-hidden rounded-[1.6rem] border-[7px] border-neutral-950 bg-neutral-950">
-              <Image
-                src={currentScrolled}
-                alt="Caregility mobile hero scrolled down to the line-drawn hospital, with green dots and no labels."
-                class="block h-auto w-full"
-                widths={[390, 780]}
-                sizes="280px"
-                quality={82}
-              />
-            </div>
-          </figure>
-          <figure class="mx-auto w-full max-w-[280px]">
-            <figcaption class="mb-3 text-sm text-neutral-400">After tapping a hotspot</figcaption>
-            <div class="overflow-hidden rounded-[1.6rem] border-[7px] border-neutral-950 bg-neutral-950">
-              <Image
-                src={currentPopup}
-                alt="Full-screen Pediatrics panel that opened after tapping a hotspot on the Caregility mobile hero."
-                class="block h-auto w-full"
-                widths={[390, 780]}
-                sizes="280px"
-                quality={82}
-              />
-            </div>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section id="proposed">
-      <div class="container">
-        <div class="mb-10 max-w-[720px]">
-          <div class="mb-3 text-lg text-orange-300">02</div>
-          <h2 class="text-3xl font-medium leading-tight lg:text-4xl">Proposed concept</h2>
-          <p class="mt-4 text-pretty text-lg text-neutral-300">
-            Care-setting tabs. Pick Med/Surg, Virtual Observation, Emergency, ICU, or Command Center and the photograph and cards update. The same hero adapts at 760px: on a phone the tabs scroll sideways and the extra cards drop away, leaving the event card on the photo.
-          </p>
-          <p class="mt-4 text-pretty text-lg text-neutral-300">
-            The preview below is working. A timer moves to the next setting until you choose one. Schedule a Demo and See the platform are part of the concept and don’t go anywhere yet. The Caregility navigation isn’t included. The logo stays in the frame so this can sit under CRFT’s own header.
-          </p>
-        </div>
-        <p class="mb-3 text-sm text-neutral-400">Live preview</p>
-        <CaregilityConceptHero />
-        <div class="mb-8 mt-16 max-w-[720px]">
-          <h3 class="text-2xl font-medium text-neutral-100">Static reference</h3>
-          <p class="mt-3 text-pretty text-lg text-neutral-300">
-            The same concept as a still, desktop and mobile. These frames include a stand-in for Caregility’s header. The live preview above keeps the logo and leaves that navigation out.
-          </p>
-        </div>
-        <ShotPair
-          desktop={concept1Desktop}
-          mobile={concept1Mobile}
-          chrome="Concept · care-setting tabs"
-          desktopAlt="Concept 1 desktop hero with care-setting tabs and a Med/Surg photograph."
-          mobileAlt="Concept 1 mobile hero with care-setting tabs, a patient-room photograph, and an event card."
-        />
-      </div>
-    </section>
-
-    <section id="alternative">
-      <div class="container">
-        <div class="mb-10 max-w-[720px]">
-          <div class="mb-3 text-lg text-orange-300">03</div>
-          <h2 class="text-3xl font-medium leading-tight lg:text-4xl">Alternative direction</h2>
-          <p class="mt-4 text-pretty text-lg text-neutral-300">
-            One patient moment. A single request in Room 501, followed from the bedside call through virtual nursing, the command center, and back to the bedside team. Shown here as screenshots only.
-          </p>
-        </div>
-        <ShotPair
-          desktop={concept2Desktop}
-          mobile={concept2Mobile}
-          chrome="Concept · one patient moment"
-          desktopAlt="Concept 2 desktop hero following one patient request in Room 501 across the care team."
-          mobileAlt="Concept 2 mobile hero with the Room 501 walkthrough and a short timeline."
-        />
-      </div>
-    </section>
-
-    <section id="sources">
-      <div class="container">
-        <div class="mx-auto max-w-[760px] square-card">
-          <h2 class="text-2xl font-medium text-neutral-100">A note on the imagery</h2>
-          <p class="mt-3 text-pretty text-lg text-neutral-300">
-            Photographs, the logo, and the product imagery come from caregility.com. Room numbers, names, and times in the interface cards are illustrative placeholders. They aren’t real patients or a live feed.
-          </p>
-          <p class="mt-4 text-pretty text-lg text-neutral-300">
-            Questions or changes, write to <a class="text-orange-300 underline" href="mailto:jeremy@crft.studio">jeremy@crft.studio</a>.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <Footer hideTop />
-  </body>
-</html>
+<AuditReport
+firstName={auditData.firstName}
+lastName={auditData.lastName}
+companyName={auditData.companyName}
+url={auditData.url}
+email={auditData.email}
+role={auditData.role}
+date={auditData.date}
+beforeImgPath={auditData.beforeImgPath}
+afterImgPath={auditData.afterImgPath}
+annotations={auditData.annotations}
+/>
